@@ -1,3 +1,7 @@
+library(devtools)
+
+load_all()
+document()
 
 
 catA <- rep("Callejero", round(runif(1, 10, 20), digits = 0))

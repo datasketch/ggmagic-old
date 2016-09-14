@@ -1,53 +1,33 @@
 
 
 #' @export
-whichggmagic <- function(d){
-  pf <- ggmagicFtypes()
-  possibleFtype <- guessFtype(d)
-  #add parsable ftypes
-  (pf %>% filter(ftype == possibleFtype))$ggmagicId
+ggWhich <- function(d){
+  pf <- ggFtype()
+  ftype <- guessFtype(d) # TODO possibleFtypes
+  names(keep(pf, ~ ftype %in% .))
 }
 
 
 #' @export
-availableggmagic <- function(){
-  meta <- system.file("meta.yaml",package="ggmagic", mustWork=TRUE)
-  l <- yaml.load_file(meta)
-  ids <- list.mapv(l, id)
-  #ftypes <- list.map(l, fringes[[1]]$ftypes)
-  #names(ftypes) <- ids
-  #d <- melt(ftypes)
-  #list.stack(ftypes)
-  ids
+ggList <- function(){
+  #http://stackoverflow.com/questions/7495685/how-to-access-the-help-documentation-rd-source-files-in-r
+  db <- Rd_db("ggmagic")
+  meta <- unname(map_chr(db, tools:::.Rd_get_name))
+  keep(meta, ~ grepl("^gg_.*\\.$",.))
 }
 
 #' @export
-ggmagicFtypes <- function(){
-  meta <- system.file("meta.yaml",package="ggmagic", mustWork=TRUE)
-  l <- yaml.load_file(meta)
-  ids <- list.mapv(l, id)
-  ftypes <- list.map(l, fringes[[1]]$ftypes)
-  names(ftypes) <- ids
-  d <- melt(ftypes)
-  names(d) <- c("ftype","ggmagicId")
-  d
-}
-
-#' @export
-printggmagic <- function(ids = NULL){
-  avIds <- availableggmagic()
-  if(is.null(ids))
-    ids <-avIds
-  else{
-    if(!all(ids %in% avIds))
-      stop("ggmagic ids not found")
+ggFtype <- function(gg = NULL){
+  db <- Rd_db("ggmagic")
+  meta <- lapply(db, tools:::.Rd_get_section, "section")
+  cleanFtypeDoc <- function(ftype){
+    ftype <- as.character(ftype[[2]][[2]])
+    strsplit(gsub(" |\n","",ftype),",")[[1]]
   }
-  path <- system.file("imgs",package="ggmagic", mustWork=TRUE)
-  pathTpl <- paste0(file.path(path,"{id}"),".png")
-  imgTags <- lapply(ids,function(id){
-    imgPath <- pystr_format(pathTpl,list(id=id))
-    src <- knitr::image_uri(imgPath)
-    img(src=src, width="100%", style="max-width:400px")
-  })
-  html_print(imgTags)
+  meta <- lapply(meta,cleanFtypeDoc)
+  names(meta) <- gsub(".Rd","",names(meta))
+  if(!is.null(gg)) return(meta[[gg]])
+  meta
 }
+
+

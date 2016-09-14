@@ -8,8 +8,21 @@ library(gridExtra)
 library(RColorBrewer)
 
 
-wafgraph <- function(data, filas = 5, titulo = "Report"){
 
+#' gg_waffle.: title.
+#' Hola esta es la descripción
+#' Tiene múltiples líneas
+#' @name gg_waffle.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_waffle. <- function(data, filas = 5, titulo = "Report"){
+  f <- fringe(data)
+  data <- f$d
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
@@ -22,21 +35,46 @@ wafgraph <- function(data, filas = 5, titulo = "Report"){
   return(graph)
 }
 
-vertical_bargraph <- function(data, titleLabel = "Report", xLabel = "Frequency",
+#' gg_bars_ver.
+#'
+#' Hola esta es la descripción
+#' Tiene múltiples líneas
+#' @name gg_bars_ver.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bars_ver. <- function(data, titleLabel = "Report", xLabel = "Frequency",
                               yLabel =  "Categories", fillLabel = "Types",
                               leg_pos = "right"){
-
+  f <- fringe(data)
+  data <- f$d
   graph <- ggplot(data = data, aes(x = factor(a), fill = factor(a))) + geom_bar()
   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel,  fill = fillLabel)
   graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
-
   return(graph)
 }
 
-ordered_vertical_bargraph <- function(data, titleLabel = "Report", xLabel = "Frequency",
+#' gg_bars_ver_ord.
+#'
+#' Hola esta es la descripción
+#' Tiene múltiples líneas
+#' @name gg_bars_ver_ord.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bars_ver_ord. <- function(data, titleLabel = "Report", xLabel = "Frequency",
                                       yLabel =  "Categories", fillLabel = "Types",
                                       leg_pos = "right"){
-
+  f <- fringe(data)
+  data <- f$d
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n())
@@ -55,7 +93,8 @@ ordered_vertical_bargraph <- function(data, titleLabel = "Report", xLabel = "Fre
 ordered_horizontal_bargraph <- function(data, titleLabel = "Report", xLabel = "Frequency",
                                       yLabel =  "Categories", fillLabel = "Types",
                                       leg_pos = "right"){
-
+  f <- fringe(data)
+  data <- f$data
   graph <- ordered_vertical_bargraph(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
 
   graph <- graph + coord_flip()
@@ -66,7 +105,8 @@ ordered_horizontal_bargraph <- function(data, titleLabel = "Report", xLabel = "F
 horizontal_bargraph <- function(data, titleLabel = "Report", xLabel = "Frequency",
                                 yLabel =  "Categories", fillLabel = "Types",
                                 leg_pos="top"){
-
+  f <- fringe(data)
+  data <- f$data
   graph <- vertical_bargraph(data, titleLabel, xLabel,
                              yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
@@ -79,7 +119,8 @@ horizontal_bargraph <- function(data, titleLabel = "Report", xLabel = "Frequency
 #Pie chart (falta agregar labels)
 #Restricciones: no m?s de 8 categor?as.
 piegraph <- function(data, titleLabel = "Report", fillLabel = "Types", leg_pos="right"){
-
+  f <- fringe(data)
+  data <- f$data
   graph <- ggplot(data=data, aes(x = factor(1), fill = factor(a))) +
            geom_bar(width = 1) + coord_polar(theta = "y")
   graph <- graph + labs(title = titleLabel, x = "", y = "", fill = fillLabel)
@@ -94,7 +135,8 @@ piegraph <- function(data, titleLabel = "Report", fillLabel = "Types", leg_pos="
 #Si es 0 no sale nada. Si es 1 es un pie chart.
 donutgraph <- function(data, width = 0.5, titleLabel = "Report",
                        fillLabel = "Types", leg_pos= "right"){
-
+  f <- fringe(data)
+  data <- f$data
   graph <- ggplot(data=data, aes(x = factor(1), fill = factor(a))) +
     geom_bar(width = width) + coord_polar(theta = "y")
   graph <- graph + labs(title = titleLabel, x = "", y = "", fill = fillLabel)
