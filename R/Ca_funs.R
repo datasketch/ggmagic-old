@@ -1,11 +1,11 @@
 
-library(ggplot2)
-library(waffle)
-library(extrafont)
-library(dplyr)
-library(grid)
-library(gridExtra)
-library(RColorBrewer)
+# library(ggplot2)
+# library(waffle)
+# library(extrafont)
+# library(dplyr)
+# library(grid)
+# library(gridExtra)
+# library(RColorBrewer)
 
 
 
