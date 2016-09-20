@@ -1,14 +1,4 @@
 
-# library(ggplot2)
-# library(waffle)
-# library(extrafont)
-# library(dplyr)
-# library(grid)
-# library(gridExtra)
-# library(RColorBrewer)
-
-
-
 #' gg_waffle.: title.
 #' Hola esta es la descripción
 #' Tiene múltiples líneas

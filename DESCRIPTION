@@ -9,7 +9,8 @@ Depends:
     tools,
     fringer,
     tidyverse,
-    waffle
+    waffle,
+    scales
 License: What license is it under?
 LazyData: true
 RoxygenNote: 5.0.1
