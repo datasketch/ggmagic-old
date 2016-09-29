@@ -1,6 +1,6 @@
-#' gg_pointline_hot_CaDa.: title.
+#' gg_pointline_hor_CaDa.: title.
 #' pointlines
-#' @name gg_pointline_hot_CaDa.
+#' @name gg_pointline_hor_CaDa.
 #' @param x A number.
 #' @param y A number.
 #' @export
