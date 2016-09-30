@@ -3,7 +3,7 @@
 \name{gg_kagi_DaNu.}
 \alias{gg_kagi_DaNu.}
 \title{gg_kagi_DaNu. : title.
-Kaggi}
+Kagi}
 \usage{
 gg_kagi_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
 }
@@ -17,7 +17,7 @@ The sum of \code{x} and \code{y}.
 }
 \description{
 gg_kagi_DaNu. : title.
-Kaggi
+Kagi
 }
 \section{ftypes}{
  Da-Nu

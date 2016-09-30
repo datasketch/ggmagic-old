@@ -25,3 +25,19 @@ gg_violin_DaNu.(dataDaNu)
 gg_area_DaNu.(dataDaNu)
 
 gg_kagi_DaNu.(dataDaNu)
+
+gg_smooth_DaNu.(dataDaNu)
+
+gg_div_DaNu.(dataDaNu)
+
+gg_bar_DaNu.(dataDaNu)
+
+gg_bubbles_DaNu.(dataDaNu)
+
+gg_lollipop_DaNu.(dataDaNu)
+
+gg_stepped_stacked_area_DaNu.(dataDaNu)
+
+
+
+
