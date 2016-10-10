@@ -1,56 +1,65 @@
+library(devtools)
+
+load_all()
 
 catA <- rep("Callejero", round(runif(1, 10, 20), digits = 0))
 catB <- rep("De raza", round(runif(1, 10, 20), digits = 0))
 catC <- rep("Mixto", round(runif(1, 10, 20), digits = 0))
-dataCatNum <- data.frame(c(catA, catB, catC))
-names(dataCatNum)[1] <- "a"
-dataCatNum$a <- as.character(dataCatNum$a)
-dataCatNum$b <- runif(nrow(dataCatNum), min = 0, max = 100)
+dataCaNu <- data.frame(c(catA, catB, catC))
+names(dataCaNu)[1] <- "GSRG"
+dataCaNu$GSRG <- as.character(dataCaNu$GSRG)
+dataCaNu$SRHTD <- runif(nrow(dataCaNu), min = 0, max = 100)
 
-
-filter1 <- group_by(dataCatNum, a)
-a <- summarise(filter1, sum = sum(b))
-a <- arrange(a, desc(sum))
-
-titleLabel <-  "hola"
-fillLabel <-  "alo"
-xLabel <- "Valor 1"
-yLabel <- "Valor 2"
-voltear <- TRUE
-source("Ca-Nu_fun.R")
-
-
-#barras en coordenadas polares - por variable categórica
-
-flowerGraph (dataCatNum, titleLabel, fillLabel)
-
-
-
-#barras en coordenadas polares - por variable numérica
-flowerNumGraph (dataCatNum, titleLabel, fillLabel)
+# Polar Bar
+gg_polar_bar_CaNu.(dataCaNu)
 
 #Stacked histogram
-barStackedGraph(dataCatNum, titleLabel, xLabel, yLabel,  fillLabel, voltear)
+gg_stacked_hist_ver_CaNu.(dataCaNu)
 
 
 #multiple density, single plot
-multDensSingPlot(dataCatNum, titleLabel, xLabel, yLabel, fillLabel, voltear)
-
-#multiple density, split plots
-multDensSpltPlot(dataCatNum, titleLabel, xLabel, yLabel, fillLabel, voltear)
+gg_coloured_multi_density_dist_CaNu.(dataCaNu)
+gg_area_multi_density_dist_CaNu.(dataCaNu)
 
 
-#multiple histogram, split plots
-densHistSpltPlot(dataCatNum, titleLabel, xLabel, yLabel, fillLabel, voltear)
+#Facet Density
+gg_facet_density_dist_ver_CaNu.(dataCaNu)
+gg_facet_density_dist_hor_CaNu.(dataCaNu)
+
+#Facet Histogram + Combinations
+gg_facet_hist_hor_CaNu.(dataCaNu)
+gg_facet_hist_ver_CaNu.(dataCaNu)
+gg_facet_hist_mean_hor_CaNu.(dataCaNu)
+gg_facet_hist_mean_ver_CaNu.(dataCaNu)
+gg_facet_dist_hist_hor_CaNu.(dataCaNu)
+gg_facet_dist_hist_ver_CaNu.(dataCaNu)
+gg_facet_dist_hist_mean_hor_CaNu.(dataCaNu)
+gg_facet_dist_hist_mean_hor_CaNu.(dataCaNu)
+gg_facet_dot_dist_ver_CaNu.(dataCaNu)
+gg_facet_dot_dist_hor_CaNu.(dataCaNu)
+gg_facet_dot_hist_ver_CaNu.(dataCaNu)
+gg_facet_dot_hist_hor_CaNu.(dataCaNu)
+gg_facet_dot_hist_mean_ver_CaNu.(dataCaNu)
+gg_facet_dot_hist_mean_hor_CaNu.(dataCaNu)
+gg_facet_dot_dist_hist_ver_CaNu.(dataCaNu)
+gg_facet_dot_dist_hist_hor_CaNu.(dataCaNu)
+gg_facet_dot_dist_hist_mean_ver_CaNu.(dataCaNu)
+gg_facet_dot_dist_hist_mean_ver_CaNu.(dataCaNu)
+
+# Point
+gg_facet_point_CaNu.(dataCaNu)
+gg_grouped_point_CaNu.(dataCaNu)
+gg_facet_point_trend_line_CaNu.(dataCaNu)
+gg_facet_trend_ribbon_CaNu.(dataCaNu)
 
 #boxplots
 
-boxSpltPlot(dataCatNum, titleLabel, xLabel, yLabel, fillLabel, voltear)
+boxSpltPlot(dataCaNu, titleLabel, xLabel, yLabel, fillLabel, voltear)
 
 #violin plots
 
-ViolinMultPlot(dataCatNum, titleLabel, xLabel, yLabel, fillLabel, voltear)
+ViolinMultPlot(dataCaNu, titleLabel, xLabel, yLabel, fillLabel, voltear)
 
 
 #violin plots + obs. dots
-ViolinDotMultPlot(dataCatNum, titleLabel, xLabel, yLabel, fillLabel, voltear)
+ViolinDotMultPlot(dataCaNu, titleLabel, xLabel, yLabel, fillLabel, voltear)

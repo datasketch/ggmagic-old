@@ -1,42 +1,101 @@
+library(devtools)
+
+load_all()
+document()
+library(ggmagic)
 
 catA <- rep("Callejero", round(runif(1, 10, 20), digits = 0))
 catB <- rep("De raza", round(runif(1, 10, 20), digits = 0))
 catC <- rep("Mixto", round(runif(1, 10, 20), digits = 0))
 
-dataCat2 <- data.frame(c(catA, catB, catC), c(catC, catB, catA))
-names(dataCat2)[1] <- "a"; names(dataCat2)[2] <- "b"
-dataCat2$a <- as.character(dataCat2$a); dataCat2$b <- as.character(dataCat2$b)
+catD <- rep("A", length(catA)*0.8)
+catE <- rep("B", length(catA)*0.9)
+catF <- rep("C", - length(catD) - length(catE) + length(catA) + length(catB) + length(catC))
+
+dataCaCa <- data.frame(c(catA, catB, catC), c(catD, catE, catF))
+names(dataCaCa)[1] <- "RSGSH"; names(dataCaCa)[2] <- "GREHSEZGH"
+dataCaCa[] <- sapply(dataCaCa, as.character)
+
+
+# Bubble
+gg_bubble_CaCa.(dataCaCa)
+
+# Facet Dot Bar
+gg_facet_dot_bar_ver_CaCa.(dataCaCa)
+gg_facet_dot_bar_hor_CaCa.(dataCaCa)
+
+# Facet Pie
+gg_facet_pie_CaCa.(dataCaCa)
+
+# Facet Donut
+gg_facet_donut_CaCa.(dataCaCa)
+
+# Facet Bullseye
+gg_facet_bullseye_CaCa.(dataCaCa)
+
+# Facet coloured Bar
+gg_facet_coloured_bar_ver_CaCa.(dataCaCa)
+gg_facet_coloured_bar_hor_CaCa.(dataCaCa)
+
+# Facet coloured by parameter
+gg_facet_coloured_parameter_bar_ver_CaCa.(dataCaCa,
+                                          parameter1 = c("Callejero"),
+                                          parameter2 = c("A"))
+gg_facet_coloured_parameter_bar_hor_CaCa.(dataCaCa,
+                                          parameter1 = c("Callejero", "De raza", "Mixto"),
+                                          parameter2 = c("A","B","C"))
 
 
 
-#Circle - Area Plot - 2D
-
-circleArea2DPlot(dataCat2, "Reporte de razas mixtas")
-flip_circleArea2DPlot(dataCat2)
-
-#Bar Plot 2D
-vertical_bargraph2D(dataCat2)
-horizontal_bargraph2D(dataCat2)
+# Stacked Bar
+gg_stacked_bar_ver_CaCa.(dataCaCa)
+gg_stacked_bar_hor_CaCa.(dataCaCa)
 
 
-ordered_vertical_bargraph2D(dataCat2)
-ordered_horizontal_bargraph2D(dataCat2)
+gg_ordered_stacked_bar_hor_CaCa(dataCaCa)
+gg_ordered_stacked_bar_ver_CaCa(dataCaCa)
 
-vertical_dotgraph2D(dataCat2)
-horizontal_dotgraph2D(dataCat2)
+# Stacked dot Bar
+gg_stacked_dot_bar_hor_CaCa.(dataCaCa)
+gg_stacked_dot_bar_ver_CaCa.(dataCaCa)
 
-vertical_unstacked_bargraph2D(dataCat2)
-horizontal_unstacked_bargraph2D(dataCat2)
+# Unstacked Coloured Bar
+gg_unstacked_coloured_bar_hor_CaCa.(dataCaCa)
+gg_unstacked_coloured_bar_ver_CaCa.(dataCaCa)
+
+# Unstacked Bar
+gg_unstacked_bar_hor_CaCa.(dataCaCa)
+gg_unstacked_bar_hor_CaCa.(dataCaCa)
 
 d2 <- data.frame(a=sample(letters[1:7],100,replace=TRUE),
                 b=sample(letters[8:13],100,replace=TRUE))
 
-horizontal_linegraph2D(d2)
-vertical_linegraph2D(d2)
+# Facet Line
+gg_facet_line_hor_CaCa.(d2)
+gg_facet_line_ver_CaCa.(d2)
 
-vertical_stacked_bargraph2D(dataCat2)
-horizontal_stacked_bargraph2D(dataCat2)
+# Facet Line Point
+gg_facet_line_point_hor_CaCa.(d2)
+gg_facet_line_point_ver_CaCa.(d2)
 
-horizontal_area_bargraph2D(d2)
+# 100% Stacked Bar
+gg_stacked_bar_100_ver_CaCa.(dataCaCa)
+gg_stacked_bar_100_hor_CaCa.(dataCaCa)
 
+# Stacked Area
+gg_stacked_area_hor_CaCa.(d2)
+gg_stacked_area_ver_CaCa.(dataCaCa)
 
+# Stacked Area 100%
+gg_stacked_area_100_hor_CaCa.(d2)
+gg_stacked_area_100_ver_CaCa.(d2)
+
+# Marimekko
+gg_marimekko_ver_CaCa.(dataCaCa)
+gg_marimekko_hor_CaCa.(dataCaCa)
+
+# Polar Stacked Bar
+gg_stacked_polar_bar_CaCa.(dataCaCa)
+
+# Polar Stacked 100% Bar
+gg_stacked_polar_bar_100_CaCa.(dataCaCa)

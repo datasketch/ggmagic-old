@@ -1,5 +1,3 @@
-#barras en coordenadas polares - por variable categÃ³rica
-
 library(ggplot2)
 library(waffle)
 library(extrafont)
@@ -9,85 +7,708 @@ library(grid)
 library(gridExtra)
 library(RColorBrewer)
 
-flowerGraph <- function(data, titleLabel = "", fillLabel = ""){
-  graph <- ggplot(data = data, aes(x = b, weight = b, fill = a)) + geom_bar() +
-    coord_polar() + ylab("Total Runs")
-  graph <- graph + labs(title = titleLabel, fill = fillLabel, x = "", y = "") + theme_bw()
+#' gg_polar_bar_CaNu.
+#' Polar Bar
+#' @name gg_polar_bar_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_polar_bar_CaNu. <- function(data, width = 0.95, titleLabel = "Report",
+                                   fillLabel = NULL, leg_pos= "right"){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+  graph <- ggplot(data = data, aes(x = a, weight = b, fill = a)) + geom_bar(width = width) +
+    coord_polar() + labs(title = titleLabel, fill = fillLabel, x = "", y = "") + theme_bw() +
+    theme(legend.position=leg_pos)
 
   return(graph)
-
 }
 
-#barras en coordenadas polares - por variable numÃ©rica
 
-flowerNumGraph <- function(data, titleLabel = "", fillLabel = ""){
-  graph <- ggplot(data = data, aes(x = a, weight = b, fill = a)) + geom_bar() +
-    coord_polar() + ylab("Total Runs")
-  graph <- graph + labs(title = titleLabel, fill = fillLabel, x = "", y = "") + theme_bw()
+#' gg_stacked_hist_ver_CaNu.
+#' Stacked Vertical Histogram
+#' @name gg_stacked_hist_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_stacked_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                            fillLabel = NULL, leg_pos="right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot(data, aes(b))
+  graph <- graph + geom_histogram(aes(fill = a), binwidth = 10) +
+    labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) +
+    theme_minimal() + theme(legend.position=leg_pos)
+  return(graph)
+}
+
+#' gg_coloured_multi_density_dist_CaNu.
+#' Coloured Density Distribution
+#' @name gg_coloured_multi_density_dist_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_coloured_multi_density_dist_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                                 fillLabel = NULL, leg_pos="right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot(data, aes(b))
+  graph <- graph + geom_density(aes(colour = a)) +
+    labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) +
+    theme_minimal() + theme(legend.position=leg_pos)
+
+  return(graph)
+}
+
+#' gg_area_multi_density_dist_CaNu.
+#' Filled Density Distribution
+#' @name gg_area_multi_density_dist_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                             fillLabel = NULL, leg_pos="right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot(data, aes(b))
+  graph <- graph + geom_density(aes(fill = a)) +
+    labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) +
+    theme_minimal() + theme(legend.position=leg_pos)
+
+  return(graph)
+}
+
+#' gg_facet_dist_ver_CaNu.
+#' Facet Vertical Dist
+#' @name gg_facet_dist_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                            fillLabel = NULL, leg_pos="right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot(data, aes(b))
+  graph <- graph + geom_density(aes(colour = a)) + theme(legend.position=leg_pos) +
+    labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
+  graph <- graph + facet_grid(. ~a)
+
+  return(graph)
+}
+
+#' gg_facet_dist_hor_CaNu.
+#' Facet Horizontal Dist
+#' @name gg_facet_dist_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                            fillLabel = NULL, leg_pos="right"){
+
+  graph <- gg_facet_density_dist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_facet_hist_ver_CaNu.
+#' Facet Vertical Histogram + Mean
+#' @name gg_facet_hist_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                    yLabel = "Count", fillLabel = NULL, leg_pos='right'){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+  graph <- ggplot(data, aes(x = b)) + geom_histogram() + theme(legend.position=leg_pos) +
+    facet_grid(. ~a) + geom_vline(aes(xintercept = mean(b)), linetype = "dashed", size = 1, colour = "red")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
+
+  return(graph)
+}
+
+#' gg_facet_hist_mean_hor_CaNu.
+#' Facet Horizontal Histogram + Mean
+#' @name gg_facet_hist_mean_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                    fillLabel = NULL, leg_pos="right"){
+
+  graph <- gg_facet_hist_mean_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_facet_hist_ver_CaNu.
+#' Facet Vertical Histogram
+#' @name gg_facet_hist_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                         yLabel = "Count", fillLabel = NULL, leg_pos='right'){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+  graph <- ggplot(data, aes(x = b)) + geom_histogram() + theme(legend.position=leg_pos) +
+    facet_grid(. ~a) + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
+
+  return(graph)
+}
+
+#' gg_facet_hist_hor_CaNu.
+#' Facet Horizontal Histogram
+#' @name gg_facet_hist_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                         fillLabel = NULL, leg_pos="right"){
+
+  graph <- gg_facet_hist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_facet_dist_hist_hor_CaNu.
+#' Facet Vertical Histogram + Dist
+#' @name gg_facet_dist_hist_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                         fillLabel = NULL, leg_pos="right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density..)) + geom_density(col="red") +
+    theme(legend.position=leg_pos) + theme_minimal()
+  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel)
+
+  return(graph)
+}
+
+#' gg_facet_dist_hist_hor_CaNu.
+#' Facet Horizontal Histogram + Dist
+#' @name gg_facet_dist_hist_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dist_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                    fillLabel = NULL, leg_pos="right"){
+
+  graph <- gg_facet_dist_hist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_facet_dist_hist_mean_ver_CaNu.
+#' Facet Vertical Histogram + Dist + Mean
+#' @name gg_facet_dist_hist_mean_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                         fillLabel = NULL, leg_pos="right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density..)) + geom_density(col="blue") +
+    geom_vline(aes(xintercept = mean(b)), linetype = "dashed", size = 1, colour = "red") +
+    theme(legend.position=leg_pos) + theme_minimal()
+  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel)
+
+  return(graph)
+}
+
+#' gg_facet_dist_hist_mean_hor_CaNu.
+#' Facet Horizontal Histogram + Dist + Mean
+#' @name gg_facet_dist_hist_mean_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                         fillLabel = NULL, leg_pos="right"){
+
+  graph <- gg_facet_dist_hist_mean_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_facet_dot_dist_ver_CaNu.
+#' Facet Vertical Dot Dist
+#' @name gg_facet_dot_dist_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dot_dist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                    fillLabel = NULL, leg_pos="right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot(data, aes(b))
+  graph <- graph + geom_density(aes(colour = a)) + geom_point(aes(y=0),size = 5,alpha = 0.3, color = "#D55E00") +
+    theme(legend.position=leg_pos) + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
+  graph <- graph + facet_grid(. ~a)
+
+  return(graph)
+}
+
+#' gg_facet_dot_dist_hor_CaNu.
+#' Facet Horizontal Dot Dist
+#' @name gg_facet_dot_dist_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dot_dist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                        fillLabel = NULL, leg_pos="right"){
+
+  graph <- gg_facet_dot_dist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_facet_dot_hist_ver_CaNu.
+#' Facet Vertical Dot Histogram
+#' @name gg_facet_dot_hist_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dot_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                    yLabel = "Count", fillLabel = NULL, leg_pos='right'){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+  graph <- ggplot(data, aes(x = b)) + geom_histogram() + geom_point(aes(y=0),size = 5,alpha = 0.3, color = "#D55E00") +
+    theme(legend.position=leg_pos) + facet_grid(. ~a) +
+    labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
+
+  return(graph)
+}
+
+#' gg_facet_dot_hist_hor_CaNu.
+#' Facet Horizontal Histogram + Dot
+#' @name gg_facet_dot_hist_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dot_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                    fillLabel = NULL, leg_pos="right"){
+
+  graph <- gg_facet_dot_hist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_facet_dot_hist_mean_ver_CaNu.
+#' Facet Vertical Histogram + Mean + Dot
+#' @name gg_facet_dot_hist_mean_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dot_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                         yLabel = "Count", fillLabel = NULL, leg_pos='right'){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+  graph <- ggplot(data, aes(x = b)) + geom_histogram() + theme(legend.position=leg_pos) +
+    facet_grid(. ~a) + geom_vline(aes(xintercept = mean(b)), linetype = "dashed", size = 1, colour = "red") +
+    geom_point(aes(y=0),size = 5,alpha = 0.3, color = "#D55E00")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
+
+  return(graph)
+}
+
+#' gg_facet_dot_hist_mean_hor_CaNu.
+#' Facet Horizontal Histogram + Mean + Dot
+#' @name gg_facet_dot_hist_mean_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dot_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                         fillLabel = NULL, leg_pos="right"){
+
+  graph <- gg_facet_dot_hist_mean_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_facet_dot_dist_hist_ver_CaNu.
+#' Facet Vertical Histogram + Dist + Dot
+#' @name gg_facet_dot_dist_hist_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dot_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                         fillLabel = NULL, leg_pos="right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density..)) + geom_density(col="red") +
+    geom_point(aes(y=0),size = 5,alpha = 0.3, color = "#D55E00") +
+    theme(legend.position=leg_pos) + theme_minimal()
+  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel)
+
+  return(graph)
+}
+
+#' gg_facet_dot_dist_hist_hor_CaNu.
+#' Facet Horizontal Histogram + Dist + Dot
+#' @name gg_facet_dot_dist_hist_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dot_dist_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                         fillLabel = NULL, leg_pos="right"){
+
+  graph <- gg_facet_dot_dist_hist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+
+  graph <- graph + coord_flip()
+
   return(graph)
 }
 
 
-#barras stacked
-barStackedGraph <- function(data, titleLabel = "", xLabel = "", yLabel = "", fillLabel = "", voltear = TRUE){
-  hist <- ggplot(data, aes(b))
-  hist <- hist + geom_histogram(aes(fill = a), binwidth = 10) + geom_density() + labs(title = titleLabel, x = xLabel, y = yLabel, fill = fillLabel) + theme_bw()
-  if(voltear){
-    hist <- hist + coord_flip()
+#' gg_facet_dot_dist_hist_mean_ver_CaNu.
+#' Facet Vertical Histogram + Dist + Mean + Dot
+#' @name gg_facet_dot_dist_hist_mean_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dot_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                              fillLabel = NULL, leg_pos="right"){
 
-  }
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density..)) + geom_density(col="blue") +
+    geom_vline(aes(xintercept = mean(b)), linetype = "dashed", size = 1, colour = "red") +
+    geom_point(aes(y=0),size = 5,alpha = 0.3, color = "#D55E00") +
+    theme(legend.position=leg_pos) + theme_minimal()
+  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel)
 
-
-
-  return(hist)
+  return(graph)
 }
 
+#' gg_facet_dot_dist_hist_mean_hor_CaNu.
+#' Facet Horizontal Histogram + Dist + Mean + Dot
+#' @name gg_facet_dot_dist_hist_mean_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dot_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                              fillLabel = NULL, leg_pos="right"){
 
-#multiple density, single plot
-multDensSingPlot <- function(data, titleLabel = "", xLabel = "", yLabel = "", fillLabel = "", voltear = TRUE){
-  density <- ggplot(data, aes(b))
-  density <- density + geom_density(aes(colour = a)) + labs(title = titleLabel, x = xLabel, y = yLabel, fill = fillLabel) + theme_bw()
+  graph <- gg_facet_dot_dist_hist_mean_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
 
-  if(voltear){
-    density <- density + coord_flip()
+  graph <- graph + coord_flip()
 
-  }
-
-
-  return(density)
+  return(graph)
 }
 
-#multiple density, split plots
-multDensSpltPlot <- function(data, titleLabel = "", xLabel = "", yLabel = "", fillLabel = "", voltear = TRUE){
-  density <- ggplot(data, aes(b))
-  density <- density + geom_density(aes(colour = a)) + labs(title = titleLabel, x = xLabel, y = yLabel, fill = fillLabel) + theme_bw()
-  density <- density + facet_grid(a ~ ., scales = "free")
+#' gg_facet_point_CaNu.
+#' Facet Point
+#' @name gg_facet_point_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+                                 fillLabel = NULL, type = 1){
 
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
 
-  if(voltear){
-    density <- density + coord_flip()
+  data_count <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = n())
 
-  }
-  return(density)
+  count <- data_count$count
+  count <- unlist(lapply(count, function(i){
+    return(1:i)
+  }))
+
+  data$xorder <- count
+
+  graph <- ggplot(data, aes(x=xorder, y=b)) + geom_point(shape = type)
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab)
+  graph <- graph + theme_minimal() + facet_grid(. ~a)
+
+  return(graph)
 }
 
-#multiple histogram, split plots
-densHistSpltPlot <- function(data, titleLabel = "", xLabel = "", yLabel = "", fillLabel = "", voltear = TRUE){
-  a <- ggplot(data, aes(x = b)) + geom_histogram(binwidth = 0.5, colour = "black",
-                                                       fill = "white") + facet_grid(a ~ .) + geom_vline(data = data,
-                                                                                                        aes(xintercept = mean(b)), linetype = "dashed", size = 1, colour = "blue")
-  a <- a + labs(title = titleLabel, x = xLabel, y = yLabel, fill = fillLabel) + theme_bw()
+#' gg_grouped_point_CaNu.
+#' Grouped Color Point
+#' @name gg_grouped_point_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_grouped_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+                                 fillLabel = NULL, leg_pos="right", type = 1){
 
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
 
-  if(voltear){
-    a <- a + coord_flip()
+  data_count <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = n())
 
-  }
+  count <- data_count$count
+  count <- unlist(lapply(count, function(i){
+    return(1:i)
+  }))
 
-  return(a)
+  data$xorder <- count
+
+  graph <- ggplot(data, aes(x=xorder, y=b)) + geom_point(aes(color = a), shape = type)
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab, fill = flabel)
+  graph <- graph + theme_minimal()
+
+  return(graph)
 }
 
+#' gg_facet_point_trend_line_CaNu.
+#' Facet Trend Line
+#' @name gg_facet_point_trend_line_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_point_trend_line_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+                                            fillLabel = NULL, type = 1){
 
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_count <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = n())
+
+  count <- data_count$count
+  count <- unlist(lapply(count, function(i){
+    return(1:i)
+  }))
+
+  data$xorder <- count
+
+  graph <- ggplot(data, aes(x = xorder, y = b)) + geom_point(shape = type) +
+    geom_smooth(method=lm, se=FALSE,colour="coral2", fill = "red", alpha = 0.05)
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab)
+  graph <- graph + theme_minimal() + facet_grid(. ~a)
+
+  return(graph)
+}
+
+gg_facet_trend_ribbon_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+                                        fillLabel = NULL, type = 1){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_count <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = n())
+
+  count <- data_count$count
+  count <- unlist(lapply(count, function(i){
+    return(1:i)
+  }))
+
+  data$xorder <- count
+
+  graph <- ggplot(data, aes(x = xorder, y = b)) + geom_point(shape = type) +
+    geom_smooth(colour="coral2", fill = "red", alpha = 0.05)
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab)
+  graph <- graph + theme_minimal() + facet_grid(. ~a)
+
+  return(graph)
+}
 
 #boxplots
 boxSpltPlot <- function(data, titleLabel = "", xLabel = "", yLabel = "", fillLabel = "", voltear = TRUE){

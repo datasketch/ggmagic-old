@@ -2,72 +2,70 @@ library(devtools)
 
 load_all()
 document()
-
+library(ggmagic)
 
 catA <- rep("Callejero", round(runif(1, 10, 20), digits = 0))
 catB <- rep("De raza", round(runif(1, 10, 20), digits = 0))
 catC <- rep("Mixto", round(runif(1, 10, 20), digits = 0))
 dataCat <- data.frame(c(catA, catB, catC))
-names(dataCat) <- "a"
-
+names(dataCat) <- "SGRWHSR"
+data <- dataCat
 # Waffle plot
-wafgraph(dataCat, 5, "Reporte \n de conteo de perros")
+gg_waffle_Ca.(d, 50, "Reporte \n de conteo de perros")
 
 d <- data.frame(a=sample(letters[1:7],10000,replace=TRUE))
 
-wafgraph(dataCat)
-
-#Wordcloud
-wcgraph(dataCat)
 # min.freq=1 por defecto
 # Parámetros:
 # minScale y maxScale
 
-# BARS
-vertical_bargraph(dataCat,leg_pos = "top")
-horizontal_bargraph(d,leg_pos = "bottom")
+# Coloured Bar
+gg_coloured_bar_ver_Ca.(dataCat, leg_pos = "top")
+gg_coloured_bar_hor_Ca.(d,leg_pos = "bottom")
 
-ordered_vertical_bargraph(dataCat)
-ordered_horizontal_bargraph(dataCat)
+# Bar
+gg_bar_ver_Ca.(dataCat)
+gg_bar_hor_Ca.(d)
 
-#PIE
-piegraph(data=dataCat, fillLabel = "Tipo", leg_pos = "right")
+# Coloured by parameter Bar
+gg_coloured_parameter_bar_ver_Ca.(dataCat)
+gg_coloured_parameter_bar_hor_Ca.(dataCat, parameter = c("Mixto", "De raza"))
 
-#DONUT
-donutgraph(dataCat, "Tipos", width = 0.2)
+# Ordered Bar
+gg_ordered_bar_ver_Ca.(dataCat)
+gg_ordered_bar_hor_Ca.(dataCat)
+
+# Pie
+gg_pie_Ca.(dataCat, leg_pos = "right")
+
+# Donut
+gg_donut_Ca.(dataCat, "Tipos", width = 0.2)
 
 # PILE CHART
-vertical_dotgraph(dataCat)
-horizontal_dotgraph(dataCat)
-#Dot chart
-# add options:
-# change shape
-# group (bin) values <- works only for divisible bins
-# theme
-# remove background
-# rename ticks for var names
-# add legends and caption
+gg_dot_bar_ver_Ca.(dataCat)
+gg_dot_bar_hor_Ca.(dataCat)
 
 # LINE
-horizontal_linegraph(d)
-vertical_linegraph(d)
+gg_line_hor_Ca.(d)
+gg_line_ver_Ca.(d)
+
+gg_line_point_hor_Ca.(dataCat)
+gg_line_point_ver_Ca.(dataCat)
 
 # GAUGE
-gaugeGraph(dataCat) #Gauge Chart
-# title, caption
-# breaks option
-
+gg_gauge_Ca.(dataCat)
+gg_gauge_dial_Ca.(dataCat)
 
 #CIRCLE AREA PLOT
-horizontal_circleAreaPlot(d, leg_pos = "top")
-vertical_circleAreaPlot(d, leg_pos = "left")
+gg_bubble_Ca.(d)
+gg_bubble_Ca.(dataCat)
 
-#BAR POLAR GRAPH
-barPolarGraph(dataCat, width = 1)
+# Polar Bar
+gg_polar_bar_Ca.(dataCat, width = 1)
 
-# STACKED BAR GRAPH
-horizontal_barStackGraph(dataCat)
-vertical_barStackGraph(dataCat)
+# Single Stacked Bar
+gg_single_stacked_bar_hor_Ca.(dataCat)
+gg_single_stacked_bar_ver_Ca.(dataCat)
 
-# BULL'S EYE BAR GRAPH
-bullsEyeGraph(dataCat)
+# Bullseye
+gg_bullseye_Ca.(dataCat)
