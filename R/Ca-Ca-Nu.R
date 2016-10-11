@@ -7,8 +7,29 @@ library(grid)
 library(gridExtra)
 library(RColorBrewer)
 
+
+
+#' circleAreaPlotCCN
+#' circle area plot
+#' @name circleAreaPlotCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
+
 circleAreaPlotCCN  <- function(data, titleLabel = "Report", xLabel = "Category",
                               yLabel = "Category", leg_pos = "right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -22,6 +43,20 @@ circleAreaPlotCCN  <- function(data, titleLabel = "Report", xLabel = "Category",
   return(graph)
 }
 
+
+#' flip_circleAreaPlotCCN
+#' flip circle area plot
+#' @name flip_circleAreaPlotCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
+
 flip_circleAreaPlotCCN  <- function(data, titleLabel = "Report", xLabel = "Category",
                                    yLabel = "Category", leg_pos = "top"){
 
@@ -31,9 +66,28 @@ flip_circleAreaPlotCCN  <- function(data, titleLabel = "Report", xLabel = "Categ
   return(graph)
 }
 
+#' vertical_bargraphCCN
+#' vertical bar graph
+#' @name vertical_bargraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
+
+
 vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
                                 yLabel = "Frequency", fillLabel = "Types", leg_pos = "top"){
 
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
   graph <- ggplot(data, aes(a, fill=b, weights = c)) + geom_bar()
   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
   graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
@@ -41,9 +95,29 @@ vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category
   return(graph)
 }
 
+
+#' ordered_vertical_bargraphCCN
+#' ordered vertical bar graph
+#' @name ordered_vertical_bargraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
 ordered_vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Frequency",
                                         yLabel =  "Categories", fillLabel = "Types",
                                         leg_pos = "right"){
+
+  data <- dataCat2Num
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
 
   graph <- ggplot(data, aes(x=reorder(data$b,rep(1,length(data$b)),sum),fill=a, weights = c)) +
     geom_bar()
@@ -53,6 +127,21 @@ ordered_vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "
 
   return(graph)
 }
+
+
+
+#' ordered_horizontal_bargraphCCN
+#' ordered horizontal bar graph
+#' @name ordered_horizontal_bargraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
 
 ordered_horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Frequency",
                                           yLabel =  "Categories", fillLabel = "Types",
@@ -65,6 +154,20 @@ ordered_horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel =
   return(graph)
 }
 
+
+#' horizontal_bargraphCCN
+#' horizontal bar graph
+#' @name horizontal_bargraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
+
 horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
                                   yLabel = "Category", fillLabel = "Types", leg_pos = "top"){
 
@@ -74,8 +177,26 @@ horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Catego
   return(graph)
 }
 
+
+#' vertical_dotgraphCCN
+#' vertical dot graph
+#' @name vertical_dotgraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
 vertical_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categories", yLabel = "Frequency",
                                 fillLabel = "Types", leg_pos = "right"){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
 
   graph <- ggplot(data = data, aes(a, fill = factor(b), weights = c)) +
     geom_dotplot(stackgroups = TRUE, binpositions = "all")
@@ -87,6 +208,21 @@ vertical_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categori
   return(graph)
 }
 
+
+
+#' horizontal_dotgraphCCN
+#' horizontal dot graph
+#' @name horizontal_dotgraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
+
 horizontal_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categories", yLabel = "Frequency",
                                   fillLabel = "Types", leg_pos = "top"){
 
@@ -97,9 +233,29 @@ horizontal_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Catego
   return(graph)
 }
 
+
+
+
+#' vertical_unstacked_bargraphCCN
+#' vertical unstacked bargraph
+#' @name vertical_unstacked_bargraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
 vertical_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
                                           yLabel = "Frequency", fillLabel = "Types",
                                           leg_pos = "top"){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
 
   graph <- ggplot(data, aes(a, weights = c)) + geom_bar(aes(fill=data$b), position = "dodge")
   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
@@ -107,6 +263,20 @@ vertical_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel =
 
   return(graph)
 }
+
+
+
+#' horizontal_unstacked_bargraphCCN
+#' horizontal unstacked bargraph
+#' @name horizontal_unstacked_bargraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
 
 horizontal_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
                                             yLabel = "Frequency", fillLabel = "Types",
@@ -120,8 +290,25 @@ horizontal_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel
 }
 
 
+#' horizontal_linegraphCCN
+#' horizontal linegraph
+#' @name horizontal_linegraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
 horizontal_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
                                    yLabel = "Frequency"){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -137,6 +324,18 @@ horizontal_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types
   return(graph)
 }
 
+#' vertical_linegraphCCN
+#' vertical linegraph
+#' @name vertical_linegraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
 vertical_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
                                  yLabel = "Frequency"){
 
@@ -146,9 +345,27 @@ vertical_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
   return(graph)
 }
 
+
+#' vertical_stacked_bargraphCCN
+#' vertical stacked bar graph
+#' @name vertical_stacked_bargraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
 vertical_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
                                         yLabel = "Frequency", fillLabel = "Types",
                                         leg_pos = "top"){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
 
   graph <- ggplot(data, aes(a, fill=b, weights = c)) + geom_bar(position = "fill")
   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
@@ -156,6 +373,19 @@ vertical_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "
 
   return(graph)
 }
+
+#' horizontal_stacked_bargraphCCN
+#' horizontal stacked bar graph
+#' @name horizontal_stacked_bargraphCCN
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
 
 horizontal_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
                                           yLabel = "Frequency", fillLabel = "Types",
@@ -169,9 +399,26 @@ horizontal_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel =
   return(graph)
 }
 
+#' horizontal_area_bargraphCC
+#' horizontal area bar graph
+#' @name horizontal_area_bargraphCC
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
 horizontal_area_bargraphCC <- function(data, titleLabel = "Report", xLabel = "Category",
                                        yLabel = "Frequency", fillLabel = "Types",
                                        leg_pos = "top"){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%

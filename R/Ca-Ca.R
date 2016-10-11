@@ -488,9 +488,9 @@ gg_unstacked_coloured_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLa
   return(graph)
 }
 
-#' gg_line_hor_CaCa.
+#' gg_facet_line_hor_CaCa.
 #' Horizontal Line
-#' @name gg_line_hor_CaCa.
+#' @name gg_facet_line_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
