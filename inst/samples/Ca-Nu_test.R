@@ -52,6 +52,42 @@ gg_grouped_point_CaNu.(dataCaNu)
 gg_facet_point_trend_line_CaNu.(dataCaNu)
 gg_facet_trend_ribbon_CaNu.(dataCaNu)
 
+# Donut
+gg_donut_CaNu.(dataCaNu)
+
+# Bullseye
+gg_bullseye_CaNu.(dataCaNu)
+
+# Dot Bar
+gg_dot_bar_ver_CaNu.(dataCaNu)
+gg_dot_bar_hor_CaNu.(dataCaNu)
+
+# Single Satcked Bar
+gg_single_stacked_bar_ver_CaNu.(dataCaNu)
+gg_single_stacked_bar_hor_CaNu.(dataCaNu)
+
+# Gauge
+gg_gauge_CaNu.(dataCaNu)
+gg_gauge_dial_Ca.(dataCaNu)
+
+#Grouped Line Point
+gg_multi_line_point_CaNu.(dataCaNu)
+gg_multi_line_CaNu.(dataCaNu)
+
+# Facet Line
+gg_facet_line_point_CaNu.(dataCaNu)
+gg_facet_line_CaNu.(dataCaNu)
+
+# Area
+gg_facet_area_hor_CaNu.(dataCaNu)
+gg_facet_area_ver_CaNu.(dataCaNu)
+gg_stacked_area_100_ver_CaNu.(dataCaNu)
+gg_stacked_area_100_hor_CaNu.(dataCaNu)
+gg_stacked_area_hor_CaNu.(dataCaNu)
+gg_stacked_area_ver_CaNu.(dataCaNu)
+
+gg_facet_stepped_area_ver_CaNu.(dataCaNu)
+
 #boxplots
 
 boxSpltPlot(dataCaNu, titleLabel, xLabel, yLabel, fillLabel, voltear)

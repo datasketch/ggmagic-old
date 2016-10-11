@@ -251,7 +251,7 @@ gg_donut_Ca. <- function(data, titleLabel = "Report", fillLabel = NULL,
   nms <- getCnames(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data=data, aes(x = factor(1), fill = factor(a))) +
+  graph <- ggplot(data=data, aes(x = factor(1), fill = a)) +
     geom_bar(width = width) + coord_polar(theta = "y")
   graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
   graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
@@ -464,9 +464,9 @@ gg_gauge_Ca. <- function(data){
   grid.draw(arrangeGrob(grobs = graphList,ncol=2))
 }
 
-#' gg_gauge_Ca.
+#' gg_gauge_dial_Ca.
 #' Gauge
-#' @name gg_gauge_Ca.
+#' @name gg_gauge_dial_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @return The sum of \code{x} and \code{y}.
