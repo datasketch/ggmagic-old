@@ -33,9 +33,6 @@ gg_polar_bar_CaNu. <- function(data, width = 0.95, titleLabel = "Report",
 
 
 
-
-
-
 #' gg_stacked_hist_ver_CaNu.
 #' Stacked Vertical Histogram
 #' @name gg_stacked_hist_ver_CaNu.
@@ -1097,6 +1094,64 @@ gg_donut_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
   return(graph)
 }
 
+
+#' gg_dot_bar_ver_CaNu.
+#' Vertical Dot Bar
+#' @name gg_dot_bar_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_dot_bar_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                 fillLabel = NULL, leg_pos = "right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = sum())
+
+  data_graph <- data_graph %>%
+    mutate(order = c(1:nrow(data_graph)))
+
+  graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
+                  aes(x = order, fill = factor(a), weight = b)) + geom_dotplot(method="histodot")
+
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel,  fill = flabel)
+  graph <- graph + theme_minimal() + scale_y_continuous(breaks = NULL) +
+    theme(legend.position=leg_pos)
+
+
+  return(graph)
+}
+
+#' gg_dot_bar_hor_CaNu.
+#' Horizontal Dot Bar
+#' @name gg_dot_bar_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_dot_bar_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                 fillLabel = NULL, leg_pos = "right"){
+
+  graph <- gg_dot_bar_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+
 #' gg_bullseye_CaNu.
 #' Bullseye
 #' @name gg_bullseye_CaNu.
@@ -1125,61 +1180,6 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
   return(graph)
 }
 
-#' gg_dot_bar_ver_CaNu.
-#' Vertical Dot Bar
-#' @name gg_dot_bar_ver_CaNu.
-#' @param x A number.
-#' @param y A number.
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_dot_bar_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
-                               fillLabel = NULL, leg_pos = "right"){
-
-  f <- fringe(data)
-  nms <- getCnames(f)
-  xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[1]
-  data <- f$d
-
-  data_graph <- data %>%
-    dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum())
-
-  data_graph <- data_graph %>%
-    mutate(order = c(1:nrow(data_graph)))
-
-  graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
-                  aes(x = order, fill = factor(a), weight = b)) + geom_dotplot(method="histodot")
-
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel,  fill = flabel)
-  graph <- graph + theme_minimal() + scale_y_continuous(breaks = NULL) +
-    theme(legend.position=leg_pos)
-
-
-  return(graph)
-}
-
-#' gg_dot_bar_ver_CaNu.
-#' Vertical Dot Bar
-#' @name gg_dot_bar_ver_CaNu.
-#' @param x A number.
-#' @param y A number.
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_dot_bar_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
-                                 fillLabel = NULL, leg_pos = "right"){
-
-  graph <- gg_dot_bar_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
-  graph <- graph + coord_flip()
-
-  return(graph)
-}
 
 #' gg_single_stacked_bar_hor_CaNu.
 #' Single Horizontal Stacked Bar
