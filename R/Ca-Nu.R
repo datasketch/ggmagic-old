@@ -35,63 +35,6 @@ gg_polar_bar_CaNu. <- function(data, width = 0.95, titleLabel = "Report",
 
 
 
-#' gg_dot_bar_ver_CaNu.
-#' vertical bar
-#' @name gg_dot_bar_ver_CaNu.
-#' @param x A category.
-#' @param y A number.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_dot_bar_ver_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
-                            yLabel = NULL){
-
-  f <- fringe(data)
-  nms <- getCnames(f)
-  xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
-  data <- f$d
-
-  graph <- ggplot(data, aes(x = a, y = b)) + geom_bar(stat = "identity") +
-    labs(title = titleLabel, x = "", y = "") + theme_bw()
-
-  return(graph)
-}
-
-
-#' gg_dot_bar_hor_CaNu.
-#' horizontal bar
-#' @name gg_dot_bar_hor_CaNu.
-#' @param x A category.
-#' @param y A number.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_dot_bar_hor_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
-                                yLabel = NULL){
-
-  f <- fringe(data)
-  nms <- getCnames(f)
-  xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
-  data <- f$d
-
-  graph <- ggplot(data, aes(x = a, y = b)) + geom_bar(stat = "identity") + coord_flip() +
-    labs(title = titleLabel,  x = "", y = "") + theme_bw()
-
-  return(graph)
-}
-
-
-
-
-
 
 #' gg_stacked_hist_ver_CaNu.
 #' Stacked Vertical Histogram

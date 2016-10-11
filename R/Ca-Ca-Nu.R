@@ -112,7 +112,6 @@ ordered_vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "
                                         yLabel =  "Categories", fillLabel = "Types",
                                         leg_pos = "right"){
 
-  data <- dataCat2Num
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
