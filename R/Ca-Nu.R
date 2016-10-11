@@ -12,6 +12,7 @@ library(RColorBrewer)
 #' @name gg_polar_bar_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -31,11 +32,16 @@ gg_polar_bar_CaNu. <- function(data, width = 0.95, titleLabel = "Report",
 }
 
 
+
+
+
+
 #' gg_stacked_hist_ver_CaNu.
 #' Stacked Vertical Histogram
 #' @name gg_stacked_hist_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -62,6 +68,7 @@ gg_stacked_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL
 #' @name gg_coloured_multi_density_dist_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -89,6 +96,7 @@ gg_coloured_multi_density_dist_CaNu. <- function(data, titleLabel = "Report", xL
 #' @name gg_area_multi_density_dist_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -116,6 +124,7 @@ gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "Report", xLabel
 #' @name gg_facet_dist_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -143,6 +152,7 @@ gg_facet_dist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, 
 #' @name gg_facet_dist_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -163,6 +173,7 @@ gg_facet_dist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, 
 #' @name gg_facet_hist_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -188,6 +199,7 @@ gg_facet_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = N
 #' @name gg_facet_hist_mean_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -208,6 +220,7 @@ gg_facet_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = N
 #' @name gg_facet_hist_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -232,6 +245,7 @@ gg_facet_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @name gg_facet_hist_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -252,6 +266,7 @@ gg_facet_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, 
 #' @name gg_facet_dist_hist_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -277,6 +292,7 @@ gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = N
 #' @name gg_facet_dist_hist_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -297,6 +313,7 @@ gg_facet_dist_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = N
 #' @name gg_facet_dist_hist_mean_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -323,6 +340,7 @@ gg_facet_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabe
 #' @name gg_facet_dist_hist_mean_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -343,6 +361,7 @@ gg_facet_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabe
 #' @name gg_facet_dot_dist_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -370,6 +389,7 @@ gg_facet_dot_dist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NU
 #' @name gg_facet_dot_dist_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -390,6 +410,7 @@ gg_facet_dot_dist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NU
 #' @name gg_facet_dot_hist_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -415,6 +436,7 @@ gg_facet_dot_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NU
 #' @name gg_facet_dot_hist_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -435,6 +457,7 @@ gg_facet_dot_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NU
 #' @name gg_facet_dot_hist_mean_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -461,6 +484,7 @@ gg_facet_dot_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel
 #' @name gg_facet_dot_hist_mean_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -481,6 +505,7 @@ gg_facet_dot_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel
 #' @name gg_facet_dot_dist_hist_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -507,6 +532,7 @@ gg_facet_dot_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel
 #' @name gg_facet_dot_dist_hist_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -528,6 +554,7 @@ gg_facet_dot_dist_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel
 #' @name gg_facet_dot_dist_hist_mean_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -555,6 +582,7 @@ gg_facet_dot_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", x
 #' @name gg_facet_dot_dist_hist_mean_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -575,6 +603,7 @@ gg_facet_dot_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", x
 #' @name gg_facet_point_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -866,6 +895,7 @@ gg_stacked_area_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Ind
 #' @name gg_grouped_point_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -977,6 +1007,7 @@ gg_multi_line_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', y
 #' @name gg_facet_point_trend_line_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples

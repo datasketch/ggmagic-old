@@ -17,6 +17,13 @@ gg_polar_bar_CaNu.(dataCaNu)
 gg_stacked_hist_ver_CaNu.(dataCaNu)
 
 
+#vertical bar plot
+gg_dot_bar_ver_CaNu.(dataCaNu)
+
+
+#horizontal bar plot
+gg_dot_bar_hor_CaNu.(dataCaNu)
+
 #multiple density, single plot
 gg_coloured_multi_density_dist_CaNu.(dataCaNu)
 gg_area_multi_density_dist_CaNu.(dataCaNu)

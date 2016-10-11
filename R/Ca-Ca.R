@@ -4,6 +4,7 @@
 #' @name gg_bubble_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -30,11 +31,12 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "Report", xLabel = NULL,
   return(graph)
 }
 
-#' gg_dot_bar_ver_CaCa.
+#' gg_facet_dot_bar_ver_CaCa.
 #' Facet Vertical Dot Bar
-#' @name gg_dot_bar_ver_CaCa.
+#' @name gg_facet_dot_bar_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -73,6 +75,7 @@ gg_facet_dot_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NUL
 #' @name gg_facet_dot_bar_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -93,6 +96,7 @@ gg_facet_dot_bar_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NUL
 #' @name gg_facet_pie_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -121,6 +125,7 @@ gg_facet_pie_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL,
 #' @name gg_facet_donut_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -148,6 +153,7 @@ gg_facet_donut_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL,
 #' @name gg_facet_bullseye_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -176,6 +182,7 @@ gg_facet_bullseye_CaCa. <- function(data, titleLabel = "Report", fillLabel = NUL
 #' @name gg_facet_coloured_bar_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -200,6 +207,7 @@ gg_facet_coloured_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel 
 #' @name gg_facet_coloured_bar_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -221,6 +229,7 @@ gg_facet_coloured_bar_hor_CaCa. <- function(data, titleLabel = "Report", xLabel 
 #' @name gg_facet_coloured_parameter_bar_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -259,6 +268,7 @@ gg_facet_coloured_parameter_bar_ver_CaCa. <- function(data, titleLabel = "Report
 #' @name gg_facet_coloured_parameter_bar_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -281,6 +291,7 @@ gg_facet_coloured_parameter_bar_hor_CaCa. <- function(data, titleLabel = "Report
 #' @name gg_stacked_bar_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -306,6 +317,7 @@ gg_stacked_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @name gg_stacked_bar_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -325,6 +337,7 @@ gg_stacked_bar_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @name gg_ordered_stacked_bar_hor_CaCa
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -353,6 +366,7 @@ gg_ordered_stacked_bar_hor_CaCa <- function(data, titleLabel = "Report", xLabel 
 #' @name gg_ordered_stacked_bar_ver_CaCa
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -374,6 +388,7 @@ gg_ordered_stacked_bar_ver_CaCa <- function(data, titleLabel = "Report", xLabel 
 #' @name gg_stacked_dot_bar_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -403,6 +418,7 @@ gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = N
 #' @name gg_stacked_dot_bar_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -424,6 +440,7 @@ gg_stacked_dot_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = N
 #' @name gg_unstacked_coloured_bar_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -454,6 +471,7 @@ gg_unstacked_coloured_bar_hor_CaCa. <- function(data, titleLabel = "Report", xLa
 #' @name gg_unstacked_coloured_bar_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -470,11 +488,12 @@ gg_unstacked_coloured_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLa
   return(graph)
 }
 
-#' gg_line_hor_CaCa.
+#' gg_facet_line_hor_CaCa.
 #' Horizontal Line
-#' @name gg_line_hor_CaCa.
+#' @name gg_facet_line_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -507,6 +526,7 @@ gg_facet_line_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @name gg_facet_line_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -526,6 +546,7 @@ gg_facet_line_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @name gg_facet_line_point_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -558,6 +579,7 @@ gg_facet_line_point_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = 
 #' @name gg_facet_line_point_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -577,6 +599,7 @@ gg_facet_line_point_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = 
 #' @name gg_stacked_bar_100_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -604,6 +627,7 @@ gg_stacked_bar_100_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = N
 #' @name gg_stacked_bar_100_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -626,6 +650,7 @@ gg_stacked_bar_100_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = N
 #' @name gg_stacked_area_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -658,6 +683,7 @@ gg_stacked_area_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL
 #' @name gg_stacked_area_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -679,6 +705,7 @@ gg_stacked_area_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL
 #' @name gg_stacked_area_100_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -710,6 +737,7 @@ gg_stacked_area_100_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = 
 #' @name gg_stacked_area_100_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -731,6 +759,7 @@ gg_stacked_area_100_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = 
 #' @name gg_marimekko_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -770,6 +799,7 @@ gg_marimekko_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = "Catego
 #' @name gg_marimekko_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -788,6 +818,7 @@ gg_marimekko_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = "Catego
 #' @name gg_stacked_polar_bar_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -820,6 +851,7 @@ gg_stacked_polar_bar_CaCa. <- function(data, titleLabel = "Report", xLabel = NUL
 #' @name gg_stacked_polar_bar_100_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
