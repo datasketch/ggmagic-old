@@ -10,6 +10,16 @@ names(dataCaNu)[1] <- "GSRG"
 dataCaNu$GSRG <- as.character(dataCaNu$GSRG)
 dataCaNu$SRHTD <- runif(nrow(dataCaNu), min = 0, max = 100)
 
+
+
+#vertical bar plot
+gg_coloured_x_bar_ver_CaNu.(dataCaNu)
+
+
+#horizontal bar plot
+gg_coloured_x_bar_hor_CaNu.(dataCaNu)
+
+
 # Polar Bar
 gg_polar_bar_CaNu.(dataCaNu)
 

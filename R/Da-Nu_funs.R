@@ -176,6 +176,12 @@ gg_kagi_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 
 gg_smooth_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xlab %||% nms[1]
+  ylab <- ylab %||% nms[2]
+  data <- f$d
+
   ggplot(data, aes(x = a, y = b)) + geom_point() +
   scale_x_date() + geom_smooth() + ggtitle(title) + xlab(xlab) + ylab(ylab)
 
@@ -194,6 +200,7 @@ gg_smooth_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' add(10, 1)
 
 gg_div_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+
   data$Year <- format(data$a, "%Y")
   data$Month <- format(data$a, "%b")
   data$Day <- format(data$a, "%d")
@@ -201,6 +208,13 @@ gg_div_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
   data$MonthDay <- format(data$a, "%d-%b")
 
   data$CommonDate <- as.Date(paste0("2000-",format(data$a, "%j")), "%Y-%j")
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xlab %||% nms[1]
+  ylab <- ylab %||% nms[2]
+  data <- f$d
+
   ggplot(data = data,
          mapping = aes(x = a, y = b, shape = Year, colour = Year)) +
     geom_point() +
@@ -224,6 +238,13 @@ gg_div_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 
 
 gg_bar_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xlab %||% nms[1]
+  ylab <- ylab %||% nms[2]
+  data <- f$d
+
   ggplot(data, aes(a, b)) +
   geom_bar(stat="identity", na.rm = TRUE) +
   scale_x_date(labels = date_format("%b %y")) +  theme_bw() +
@@ -244,6 +265,13 @@ gg_bar_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' add(10, 1)
 
 gg_bubbles_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xlab %||% nms[1]
+  ylab <- ylab %||% nms[2]
+  data <- f$d
+
   ggplot(data, aes(x = a, y = b, size = b) )+
   geom_point(shape = 21, colour = "#000000", fill = "#40b8d0") + theme(legend.position="none") +
     xlab(xlab) + ylab(ylab) + ggtitle(title)
@@ -263,9 +291,16 @@ gg_bubbles_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' add(10, 1)
 
 gg_lollipop_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
-    ggplot(data, aes(x = a, y = b)) +
-    geom_segment(aes(xend=a, yend=0)) + geom_point() +
-    xlab(xlab) + ylab(ylab) + ggtitle(title)
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xlab %||% nms[1]
+  ylab <- ylab %||% nms[2]
+  data <- f$d
+
+  ggplot(data, aes(x = a, y = b)) +
+  geom_segment(aes(xend=a, yend=0)) + geom_point() +
+  xlab(xlab) + ylab(ylab) + ggtitle(title)
 }
 
 
@@ -282,9 +317,16 @@ gg_lollipop_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' add(10, 1)
 
 gg_stepped_stacked_area_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
-    ggplot(data) +
-    geom_step(aes(x = seq_along(a), y = b)) + theme_bw() +
-    xlab(xlab) + ylab(ylab) + ggtitle(title)
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xlab %||% nms[1]
+  ylab <- ylab %||% nms[2]
+  data <- f$d
+
+  ggplot(data) +
+  geom_step(aes(x = seq_along(a), y = b)) + theme_bw() +
+  xlab(xlab) + ylab(ylab) + ggtitle(title)
 }
 
 

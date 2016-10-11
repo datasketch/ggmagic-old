@@ -3,7 +3,7 @@
 \name{gg_donut_CaNu.}
 \alias{gg_donut_CaNu.}
 \title{gg_donut_CaNu.
-Donut}
+dount}
 \usage{
 gg_donut_CaNu.(data, titleLabel = "Report", fillLabel = NULL, width = 0.3,
   leg_pos = "right")
@@ -18,7 +18,7 @@ The sum of \code{x} and \code{y}.
 }
 \description{
 gg_donut_CaNu.
-Donut
+dount
 }
 \section{ftypes}{
  Ca,Ca-Nu

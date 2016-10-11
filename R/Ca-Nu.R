@@ -7,6 +7,64 @@ library(grid)
 library(gridExtra)
 library(RColorBrewer)
 
+
+
+
+#' gg_coloured_x_bar_ver_CaNu.
+#' vertical bar
+#' @name gg_coloured_x_bar_ver_CaNu.
+#' @param x A category.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_coloured_x_bar_ver_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+                                       yLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
+
+  graph <- ggplot(data, aes(x = a, y = b)) + geom_bar(stat = "identity") +
+    labs(title = titleLabel, x = "", y = "") + theme_bw()
+
+  return(graph)
+}
+
+
+#' gg_coloured_x_bar_hor_CaNu.
+#' horizontal bar
+#' @name gg_coloured_x_bar_hor_CaNu.
+#' @param x A category.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_coloured_x_bar_hor_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+                                       yLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
+
+  graph <- ggplot(data, aes(x = a, y = b)) + geom_bar(stat = "identity") + coord_flip() +
+    labs(title = titleLabel,  x = "", y = "") + theme_bw()
+
+  return(graph)
+}
+
+
+
 #' gg_polar_bar_CaNu.
 #' Polar Bar
 #' @name gg_polar_bar_CaNu.
@@ -930,6 +988,7 @@ gg_grouped_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index'
 #' @name gg_multi_line_point_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -967,6 +1026,7 @@ gg_multi_line_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Ind
 #' @name gg_multi_line_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -1038,6 +1098,20 @@ gg_facet_point_trend_line_CaNu. <- function(data, titleLabel = "Report", xLabel 
   return(graph)
 }
 
+
+
+#' gg_facet_trend_ribbon_CaNu.
+#' Facet Trend ribbon
+#' @name gg_facet_trend_ribbon_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
 gg_facet_trend_ribbon_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
                                         fillLabel = NULL, type = 1){
 
@@ -1067,16 +1141,20 @@ gg_facet_trend_ribbon_CaNu. <- function(data, titleLabel = "Report", xLabel = 'I
 }
 
 #Width debe de ser un parámetro.  0 < width < 1.
+
 #' gg_donut_CaNu.
-#' Donut
+#' dount
 #' @name gg_donut_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
+
+
 gg_donut_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
                          width = 0.3, leg_pos="right"){
 
@@ -1100,6 +1178,7 @@ gg_donut_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
 #' @name gg_dot_bar_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -1137,6 +1216,7 @@ gg_dot_bar_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLa
 #' @name gg_dot_bar_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -1157,6 +1237,7 @@ gg_dot_bar_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLa
 #' @name gg_bullseye_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -1186,6 +1267,7 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
 #' @name gg_single_stacked_bar_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -1214,6 +1296,7 @@ gg_single_stacked_bar_hor_CaNu. <- function(data, titleLabel = "Report", yLabel 
 #' @name gg_single_stacked_bar_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -1234,6 +1317,7 @@ gg_single_stacked_bar_ver_CaNu. <- function(data, titleLabel = "Report", yLabel 
 #' @name gg_gauge_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -1291,6 +1375,7 @@ gg_gauge_CaNu. <- function(data){
 #' @name gg_gauge_dial_Ca.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
