@@ -2,6 +2,7 @@ library(devtools)
 
 load_all()
 document()
+install()
 library(ggmagic)
 
 catA <- rep("Callejero", round(runif(1, 10, 20), digits = 0))
