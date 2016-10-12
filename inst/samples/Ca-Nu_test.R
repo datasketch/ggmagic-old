@@ -33,8 +33,8 @@ gg_area_multi_density_dist_CaNu.(dataCaNu)
 
 
 #Facet Density
-gg_facet_density_dist_ver_CaNu.(dataCaNu)
-gg_facet_density_dist_hor_CaNu.(dataCaNu)
+gg_facet_dist_ver_CaNu.(dataCaNu)
+gg_facet_dist_hor_CaNu.(dataCaNu)
 
 #Facet Histogram + Combinations
 gg_facet_hist_hor_CaNu.(dataCaNu)

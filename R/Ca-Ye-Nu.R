@@ -83,8 +83,7 @@ gg_bars_stk_hor_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL,
     ggtitle(title) +
     scale_y_continuous(labels = comma) +
     scale_fill_discrete(name = clab) +
-    coord_flip() +
-    ggtitle(title)
+    coord_flip()
 }
 
 #' gg_lines_hor_CaYeNu.: title.
@@ -112,8 +111,38 @@ gg_lines_hor_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab
     xlab(xlab) +
     ggtitle(title) +
     scale_y_continuous(labels = comma) +
-    scale_colour_discrete(name = clab) +
-    ggtitle(title)
+    scale_colour_discrete(name = clab)
 }
 
 
+#' gg_circle_CaYeNu.: title.
+#' circle
+#' ciculos
+#' @name gg_circle_CaYeNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
+
+gg_circle_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xlab %||% nms[2]
+  ylab <- ylab %||% nms[3]
+  clab <- clab %||% nms[1]
+  data <- f$d
+
+
+      ggplot(data, aes(x = b, y = a)) +
+        geom_point(aes(size = c)) +
+        theme_bw() +
+        ylab(ylab) +
+        xlab(xlab) +
+        ggtitle(title)
+}

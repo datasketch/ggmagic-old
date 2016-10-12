@@ -216,7 +216,7 @@ gg_facet_dist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, 
 gg_facet_dist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
                                             fillLabel = NULL, leg_pos="right"){
 
-  graph <- gg_facet_density_dist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_facet_dist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
@@ -338,6 +338,35 @@ gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = N
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density..)) + geom_density(col="red") +
     theme(legend.position=leg_pos) + theme_minimal()
   graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel)
+
+  return(graph)
+}
+
+#' gg_facet_dist_hist_ver_CaNu.
+#' Facet Vertical Histogram + Dist
+#' @name gg_facet_dist_hist_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+                                         fillLabel = NULL, leg_pos="right"){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+  graph <- ggplot(data, aes(x=b)) + geom_histogram(aes(y=..density..)) +
+    geom_density(alpha=0.5, col="red")
+  graph <- graph + geom_vline(aes(xintercept=mean(a)),
+                              color="red", linetype="dashed", size=1)
+
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel)
+  graph <- graph + theme_minimal() + facet_grid(. ~a)
 
   return(graph)
 }
@@ -696,6 +725,7 @@ gg_facet_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', 
 #' @name gg_facet_line_point_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -733,6 +763,7 @@ gg_facet_line_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Ind
 #' @name gg_facet_line_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -770,6 +801,7 @@ gg_facet_line_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', y
 #' @name gg_facet_area_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -807,6 +839,7 @@ gg_facet_area_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = "Index
 #' @name gg_facet_area_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -826,6 +859,7 @@ gg_facet_area_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = "Index
 #' @name gg_stacked_area_100_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -868,6 +902,7 @@ gg_stacked_area_100_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = 
 #' @name gg_stacked_area_100_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -888,6 +923,7 @@ gg_stacked_area_100_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = 
 #' @name gg_stacked_area_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
@@ -930,6 +966,7 @@ gg_stacked_area_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Ind
 #' @name gg_stacked_area_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
+#' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca,Ca-Nu
 #' @examples
