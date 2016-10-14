@@ -20,8 +20,6 @@ library(RColorBrewer)
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
 circleAreaPlotCCN  <- function(data, titleLabel = "Report", xLabel = "Category",
                               yLabel = "Category", leg_pos = "right"){
 
@@ -55,8 +53,6 @@ circleAreaPlotCCN  <- function(data, titleLabel = "Report", xLabel = "Category",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
 flip_circleAreaPlotCCN  <- function(data, titleLabel = "Report", xLabel = "Category",
                                    yLabel = "Category", leg_pos = "top"){
 
@@ -77,9 +73,6 @@ flip_circleAreaPlotCCN  <- function(data, titleLabel = "Report", xLabel = "Categ
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
-
 vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
                                 yLabel = "Frequency", fillLabel = "Types", leg_pos = "top"){
 
@@ -107,7 +100,6 @@ vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 ordered_vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Frequency",
                                         yLabel =  "Categories", fillLabel = "Types",
                                         leg_pos = "right"){
@@ -140,8 +132,6 @@ ordered_vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
 ordered_horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Frequency",
                                           yLabel =  "Categories", fillLabel = "Types",
                                           leg_pos = "right"){
@@ -165,8 +155,6 @@ ordered_horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
 horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
                                   yLabel = "Category", fillLabel = "Types", leg_pos = "top"){
 
@@ -188,7 +176,6 @@ horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Catego
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 vertical_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categories", yLabel = "Frequency",
                                 fillLabel = "Types", leg_pos = "right"){
   f <- fringe(data)
@@ -220,8 +207,6 @@ vertical_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categori
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
 horizontal_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categories", yLabel = "Frequency",
                                   fillLabel = "Types", leg_pos = "top"){
 
@@ -246,7 +231,6 @@ horizontal_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Catego
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 vertical_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
                                           yLabel = "Frequency", fillLabel = "Types",
                                           leg_pos = "top"){
@@ -276,7 +260,6 @@ vertical_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 horizontal_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
                                             yLabel = "Frequency", fillLabel = "Types",
                                             leg_pos = "top"){
@@ -300,7 +283,6 @@ horizontal_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 horizontal_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
                                    yLabel = "Frequency"){
   f <- fringe(data)
@@ -334,7 +316,6 @@ horizontal_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 vertical_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
                                  yLabel = "Frequency"){
 
@@ -345,9 +326,9 @@ vertical_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
 }
 
 
-#' vertical_stacked_bargraphCCN
+#' gg_stacked_bar_ver_CaCaNu.
 #' vertical stacked bar graph
-#' @name vertical_stacked_bargraphCCN
+#' @name gg_stacked_bar_ver_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -356,26 +337,26 @@ vertical_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-vertical_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
-                                        yLabel = "Frequency", fillLabel = "Types",
+gg_stacked_bar_ver_CaCaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                        yLabel = NULL, fillLabel = NULL,
                                         leg_pos = "top"){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
+  flab <- fillLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, aes(a, fill=b, weights = c)) + geom_bar(position = "fill")
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
+  graph <- ggplot(data, aes(a, y = c, fill=b)) + geom_bar(stat="identity", position = "stack")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flab)
   graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
 
   return(graph)
 }
 
-#' horizontal_stacked_bargraphCCN
+#' gg_stacked_bar_hor_CaCaNu.
 #' horizontal stacked bar graph
-#' @name horizontal_stacked_bargraphCCN
+#' @name gg_stacked_bar_hor_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -384,15 +365,64 @@ vertical_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
-horizontal_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
+gg_stacked_bar_hor_CaCaNu. <- function(data, titleLabel = "Report", xLabel = "Category",
                                           yLabel = "Frequency", fillLabel = "Types",
                                           leg_pos = "top"){
 
 
-  graph <- vertical_stacked_bargraphCCN(data, titleLabel, xLabel, yLabel,
+  graph <- gg_stacked_bar_ver_CaCaNu.(data, titleLabel, xLabel, yLabel,
                                        fillLabel, leg_pos)
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_stacked_bar_100_ver_CaCaNu.
+#' 100% vertical stacked bar graph
+#' @name gg_stacked_bar_100_ver_CaCaNu.
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_stacked_bar_100_ver_CaCaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                       yLabel = NULL, fillLabel = NULL,
+                                       leg_pos = "top"){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  flab <- fillLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot(data, aes(a, y = c, fill=b)) + geom_bar(stat="identity", position = "fill")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flab)
+  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+
+  return(graph)
+}
+
+#' gg_stacked_bar_100_hor_CaCaNu.
+#' 100% horizontal stacked bar graph
+#' @name gg_stacked_bar_100_hor_CaCaNu.
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_stacked_bar_100_hor_CaCaNu. <- function(data, titleLabel = "Report", xLabel = "Category",
+                                       yLabel = "Frequency", fillLabel = "Types",
+                                       leg_pos = "top"){
+
+
+  graph <- gg_stacked_bar_100_ver_CaCaNu.(data, titleLabel, xLabel, yLabel,
+                                      fillLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -409,7 +439,6 @@ horizontal_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 horizontal_area_bargraphCC <- function(data, titleLabel = "Report", xLabel = "Category",
                                        yLabel = "Frequency", fillLabel = "Types",
                                        leg_pos = "top"){
