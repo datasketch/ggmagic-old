@@ -19,6 +19,9 @@ gg_coloured_x_bar_ver_CaNu.(dataCaNu)
 #horizontal bar plot
 gg_coloured_x_bar_hor_CaNu.(dataCaNu)
 
+#Ordered Bar
+gg_ordered_bar_ver_CaNu.(dataCaNu)
+gg_ordered_bar_hor_CaNu.(dataCaNu)
 
 # Polar Bar
 gg_polar_bar_CaNu.(dataCaNu)

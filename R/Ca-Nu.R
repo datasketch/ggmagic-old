@@ -1505,3 +1505,49 @@ ViolinDotMultPlot <- function(data, titleLabel = "", xLabel = "", yLabel = "", f
   return(violin)
 }
 
+#' gg_ordered_bar_ver_CaNu.
+#' Ordered vertical Bars
+#' @name gg_ordered_bar_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_ordered_bar_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                   yLabel =  NULL, leg_pos = "right"){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
+
+  graph <- ggplot(data, aes(x = reorder(a, b), y = b)) +
+    geom_bar(stat = "identity")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
+  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+
+  return(graph)
+}
+
+#' gg_ordered_bar_hor_CaNu.
+#' Ordered horizontal Bars
+#' @name gg_ordered_bar_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_ordered_bar_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                     yLabel =  NULL, leg_pos = "right"){
+
+  graph <- gg_ordered_bar_ver_CaNu.(data, titleLabel, xLabel, yLabel, leg_pos)
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
