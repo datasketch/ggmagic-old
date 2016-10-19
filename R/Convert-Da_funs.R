@@ -81,4 +81,20 @@ gg_conv_Da2Ca_weeks. <- function(df){
   return(weeks)
 }
 
+#' gg_conv_Da2Ca_weekend. : title.
+#' Convert Data type to Category weekend
+#' @name gg_conv_Da2Ca_weekend.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Da-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_conv_Da2Ca_weekend. <- function(df){
+  weekdays <- weekdays(df$a)
+  weekend <- ifelse(weekdays == "Saturday"|weekdays == "Sunday", 1, 0)
+  return(weekend)
+}
 
