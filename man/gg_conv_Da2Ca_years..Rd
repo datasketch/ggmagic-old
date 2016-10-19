@@ -5,7 +5,7 @@
 \title{gg_conv_Da2Ca_years. : title.
 Convert Data type to Category years}
 \usage{
-gg_conv_Da2Ca_years.(df)
+gg_conv_Da2Ca_years.(data)
 }
 \arguments{
 \item{x}{A number.}

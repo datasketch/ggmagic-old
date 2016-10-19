@@ -5,7 +5,7 @@
 \title{gg_conv_Da2Ca_months. : title.
 Convert Data type to Category months}
 \usage{
-gg_conv_Da2Ca_months.(df)
+gg_conv_Da2Ca_months.(data)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,7 +5,7 @@
 \title{gg_conv_Da2Ca_qtr. : title.
 Convert Data type to Category quaters}
 \usage{
-gg_conv_Da2Ca_qtr.(df)
+gg_conv_Da2Ca_qtr.(data)
 }
 \arguments{
 \item{x}{A number.}
