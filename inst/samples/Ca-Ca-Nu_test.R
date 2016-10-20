@@ -21,7 +21,10 @@ dataCaCaNu[] <- sapply(dataCaCaNu, as.character)
 
 dataCaCaNu$c <- runif(nrow(dataCaCaNu), min = 0, max = 50)
 
-
+# Coloured Bubble
+gg_coloured_bubble_CaCaNu.(dataCaCaNu)
+# Bubble
+gg_bubble_CaCaNu.(dataCaCaNu)
 
 circleAreaPlotCCN(dataCaCaNu)
 flip_circleAreaPlotCCN(dataCaCaNu)
@@ -46,3 +49,5 @@ gg_stacked_bar_100_hor_CaCaNu.(dataCaCaNu)
 gg_stacked_bar_100_ver_CaCaNu.(dataCaCaNu)
 
 horizontal_area_bargraphCC(dataCaCaNu)
+
+gg_facet_circular_bar_CaCaNu.(dataCaCaNu)

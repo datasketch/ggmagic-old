@@ -21,6 +21,9 @@ dataCaCa[] <- sapply(dataCaCa, as.character)
 # Bubble
 gg_bubble_CaCa.(dataCaCa)
 
+# Coloured Bubble
+gg_coloured_bubble_CaCa.(dataCaCa)
+
 # Facet Dot Bar
 gg_facet_dot_bar_ver_CaCa.(dataCaCa)
 gg_facet_dot_bar_hor_CaCa.(dataCaCa)
@@ -100,3 +103,6 @@ gg_stacked_polar_bar_CaCa.(dataCaCa)
 
 # Polar Stacked 100% Bar
 gg_stacked_polar_bar_100_CaCa.(dataCaCa)
+
+# Circular Bar
+gg_facet_circular_bar_CaCa.(dataCaCa)

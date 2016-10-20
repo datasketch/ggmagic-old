@@ -36,6 +36,9 @@ gg_ordered_bar_hor_CaNu.(dataCaNu)
 # Polar Bar
 gg_polar_bar_CaNu.(dataCaNu)
 
+# Circular Bar
+gg_circular_bar_CaNu.(dataCaNu)
+
 #Stacked histogram
 gg_stacked_hist_ver_CaNu.(dataCaNu)
 
@@ -110,6 +113,12 @@ gg_stacked_area_hor_CaNu.(dataCaNu)
 gg_stacked_area_ver_CaNu.(dataCaNu)
 
 gg_facet_stepped_area_ver_CaNu.(dataCaNu)
+
+# Facet Horizon
+gg_facet_horizon_CaNu.(dataCaNu)
+
+# Stream
+gg_stream_CaNu.(dataCaNu)
 
 #boxplots
 

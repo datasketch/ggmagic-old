@@ -1,11 +1,56 @@
-library(reshape2)
-library(ggplot2)
-library(waffle)
-library(extrafont)
-library(dplyr)
-library(grid)
-library(gridExtra)
-library(RColorBrewer)
+#' gg_horizon_NuNu.
+#' Horizon
+#' @name gg_horizon_NuNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_horizon_NuNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                           yLabel =  NULL, leg_pos = "right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot_horizon(data, 'a', 'b')
+  graph <- graph + scale_fill_continuous(low = 'green', high = 'red') + theme_minimal() +
+    labs(tittle = titleLabel, x = xlab, y = ylab)
+
+  return(graph)
+}
+
+#' gg_waterfall_NuNu.
+#' Waterfall
+#' @name gg_waterfall_NuNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_waterfall_NuNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                             yLabel =  NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot_waterfall(data,'a','b') + theme_minimal() +
+    labs(tittle = titleLabel, x = xlab, y = ylab)
+
+  return(graph)
+}
+
 
 dens2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = ""){
 

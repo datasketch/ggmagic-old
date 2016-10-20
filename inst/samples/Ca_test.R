@@ -74,3 +74,6 @@ gg_single_stacked_bar_ver_Ca.(dataCat)
 
 # Bullseye
 gg_bullseye_Ca.(dataCat)
+
+# Circular Bar
+gg_circular_bar_Ca.(dataCat)

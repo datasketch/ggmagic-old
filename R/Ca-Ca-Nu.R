@@ -1,13 +1,88 @@
-library(reshape2)
-library(ggplot2)
-library(waffle)
-library(extrafont)
-library(dplyr)
-library(grid)
-library(gridExtra)
-library(RColorBrewer)
+#' gg_bubble_CaCaNu.
+#' Bubble
+#' @name gg_bubble_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bubble_CaCaNu.  <- function(data, titleLabel = "Report", xLabel = NULL,
+                             yLabel = NULL){
 
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
 
+  graph <- ggplot(data, aes(x = a, y = b, size = c))
+  graph <- graph + geom_point()
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
+  graph <- graph + theme_minimal() + theme(legend.position="none")
+
+  return(graph)
+}
+
+#' gg_facet_circular_bar_CaCaNu.
+#' Circular Bar
+#' @name gg_facet_circular_bar_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_circular_bar_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
+                                        leg_pos="right", width = 0.85){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot(data, aes(x = a, y = c , fill = a )) +
+    geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
+
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
+  graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
+    theme(panel.grid=element_blank())
+  graph <- graph + theme(legend.position=leg_pos) + facet_grid(. ~b)
+
+  return(graph)
+}
+
+#' gg_coloured_bubble_CaCaNu.
+#' Coloured Bubble
+#' @name gg_coloured_bubble_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_coloured_bubble_CaCaNu.  <- function(data, titleLabel = "Report", xLabel = NULL,
+                                      yLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
+
+  graph <- ggplot(data, aes(x = a, y = b, size = c))
+  graph <- graph + geom_point(aes(color = a))
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
+  graph <- graph + theme_minimal() + theme(legend.position="none")
+
+  return(graph)
+}
 
 #' circleAreaPlotCCN
 #' circle area plot

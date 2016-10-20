@@ -1,19 +1,24 @@
+load_all()
 
-dataNumNum <- data.frame(runif(100, min = 0, max = 50),
+dataNuNu <- data.frame(runif(100, min = 0, max = 50),
                          runif(100, min = 0, max = 50))
 
-names(dataNumNum) <- c("a", "b")
+names(dataNuNu) <- c("a", "b")
 
 #density - 2D
-dens2D_Plot(dataNumNum)
-flip_dens2D_Plot(dataNumNum)
+dens2D_Plot(dataNuNu)
+flip_dens2D_Plot(dataNuNu)
 
 #histogram - 2D
-hist2D_Plot(dataNumNum)
-flip_hist2D_Plot(dataNumNum)
+hist2D_Plot(dataNuNu)
+flip_hist2D_Plot(dataNuNu)
 
+# Waterfall
+gg_waterfall_NuNu.(dataNuNu)
 
+# Horizon
+gg_horizon_NuNu.(dataNuNu)
 
 #MultiLine plot
 
-mult_Line_Plot(dataNumNum)
+mult_Line_Plot(dataNuNu)

@@ -31,6 +31,38 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "Report", xLabel = NULL,
   return(graph)
 }
 
+#' gg_coloured_bubble_CaCa.
+#' Coloured Bubble
+#' @name gg_coloured_bubble_CaCa.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_coloured_bubble_CaCa.  <- function(data, titleLabel = "Report", xLabel = NULL,
+                                      yLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(Count = n()) %>%
+    dplyr::arrange(desc(Count))
+  graph <- ggplot(data_graph, aes(x = a, y = b, size = Count))
+  graph <- graph + geom_point(aes(color = a))
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
+  graph <- graph + theme_minimal() + theme(legend.position="none")
+
+  return(graph)
+}
+
 #' gg_facet_dot_bar_ver_CaCa.
 #' Facet Vertical Dot Bar
 #' @name gg_facet_dot_bar_ver_CaCa.
@@ -876,6 +908,42 @@ gg_stacked_polar_bar_100_CaCa. <- function(data, titleLabel = "Report", xLabel =
     geom_bar(width = 1, position = "fill") + coord_polar()
   graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill=flabel)
   graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+
+  return(graph)
+}
+
+
+#' gg_facet_circular_bar_CaCa.
+#' Circular Bar
+#' @name gg_facet_circular_bar_CaCa.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_circular_bar_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL,
+                                leg_pos="right", width = 0.85){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(count = n()) %>%
+    dplyr::arrange(desc(count))
+
+  graph <- ggplot(data_graph, aes(x = a, y = count , fill = a )) +
+    geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
+
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
+  graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
+    theme(panel.grid=element_blank())
+  graph <- graph + theme(legend.position=leg_pos) + facet_grid(. ~b)
 
   return(graph)
 }

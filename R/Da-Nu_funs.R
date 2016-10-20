@@ -1,4 +1,58 @@
 
+#' gg_horizon_DaNu.
+#' Horizon
+#' @name gg_horizon_DaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_horizon_DaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                             yLabel =  NULL, leg_pos = "right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  data <- f$d
+  data$a <- as.Date(data$a)
+  graph <- ggplot_horizon(data, 'a', 'b')
+  graph <- graph + scale_fill_continuous(low = 'green', high = 'red') + theme_minimal() +
+    labs(tittle = titleLabel, x = xlab, y = ylab)
+
+  return(graph)
+}
+
+#' gg_waterfall_DaNu.
+#' Waterfall
+#' @name gg_waterfall_DaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_waterfall_DaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                             yLabel =  NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  data <- f$d
+  data$a <- as.Date(data$a)
+  graph <- ggplot_waterfall(data,'a','b') + theme_minimal() +
+    labs(tittle = titleLabel, x = xlab, y = ylab)
+
+  return(graph)
+}
+
+
 #' gg_lines_DaNu. : title.
 #' Lines
 #' @name gg_lines_DaNu.

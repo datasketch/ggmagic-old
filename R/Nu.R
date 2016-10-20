@@ -1,16 +1,56 @@
+#' gg_horizon_Nu.
+#' Horizon
+#' @name gg_horizon_Nu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_horizon_Nu. <- function(data, titleLabel = "Report", xLabel = "Index",
+                                   yLabel =  NULL, leg_pos = "right"){
 
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[1]
+  data <- f$d
 
-library(ggplot2)
-library(waffle)
-library(extrafont)
-library(dplyr)
-library(plyr)
-library(grid)
-library(gridExtra)
-library(RColorBrewer)
+  data_graph <- data %>% mutate(xorder = 1:nrow(.))
 
+  graph <- ggplot_horizon(data_graph, 'xorder', 'a')
+  graph <- graph + scale_fill_continuous(low = 'green', high = 'red') + theme_minimal() +
+    labs(tittle = titleLabel, x = xLabel, y = ylab)
 
-#voltear=FALSE, tipoLinea = 1, color = "black", linea = FALSE, point = FALSE,
+  return(graph)
+}
+
+#' gg_waterfall_Nu.
+#' Waterfall
+#' @name gg_waterfall_Nu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_waterfall_Nu. <- function(data, titleLabel = "Report", xLabel = "Index",
+                               yLabel =  NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>% mutate(xorder = 1:nrow(.))
+  graph <- ggplot_waterfall(data_graph, 'xorder', 'a') + theme_minimal() +
+    labs(tittle = titleLabel, x = xLabel, y = ylab)
+
+  return(graph)
+}
 
 hist_graph <- function(data, titleLabel = "Report", xLabel = "Values", yLabel = "Frequency"){
 

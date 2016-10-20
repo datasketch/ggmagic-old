@@ -10,7 +10,10 @@ Depends:
     fringer,
     tidyverse,
     waffle,
-    scales
+    scales,
+    grid,
+    gridExtra,
+    ggTimeSeries
 License: What license is it under?
 LazyData: true
 RoxygenNote: 5.0.1

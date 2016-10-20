@@ -1,13 +1,3 @@
-library(ggplot2)
-library(waffle)
-library(extrafont)
-library(dplyr)
-library(plyr)
-library(grid)
-library(gridExtra)
-library(RColorBrewer)
-
-
 #' gg_pie_CaNu.
 #' Pie
 #' @name gg_pie_CaNu.
@@ -219,6 +209,36 @@ gg_polar_bar_CaNu. <- function(data, width = 0.95, titleLabel = "Report",
   return(graph)
 }
 
+
+#' gg_circular_bar_CaNu.
+#' Circular Bar
+#' @name gg_circular_bar_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_circular_bar_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
+                                leg_pos="right", width = 0.85){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot(data, aes(x = a, y = b , fill = a )) +
+    geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
+
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
+  graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
+    theme(panel.grid=element_blank())
+  graph <- graph + theme(legend.position=leg_pos)
+
+  return(graph)
+}
 
 
 #' gg_stacked_hist_ver_CaNu.
@@ -1019,6 +1039,7 @@ gg_stacked_area_100_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = 
   data_graph <- data %>% arrange(xorder) %>%
     tidyr::spread(xorder, b) %>% tidyr::gather(xorder, b, -a)
   data_graph[is.na(data_graph)] <- 0
+  data_graph$xorder <- as.numeric(data_graph$xorder)
 
   graph <- ggplot(data = data_graph,
                   aes(x=xorder, y=b, group=a)) + geom_area(aes(fill = a), position = "fill")
@@ -1083,6 +1104,7 @@ gg_stacked_area_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Ind
   data_graph <- data %>% arrange(xorder) %>%
     tidyr::spread(xorder, b) %>% tidyr::gather(xorder, b, -a)
   data_graph[is.na(data_graph)] <- 0
+  data_graph$xorder <- as.numeric(data_graph$xorder)
 
   graph <- ggplot(data = data_graph,
                   aes(x=xorder, y=b, group=a)) + geom_area(aes(fill = a), position = "stack")
@@ -1681,3 +1703,38 @@ gg_ordered_bar_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 
   return(graph)
 }
+
+#' gg_stream_CaNu.
+#' Stream
+#' @name gg_stream_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_stream_CaNu. <- function(data, titleLabel = "Report", xLabel = "Index",
+                           yLabel =  NULL, fillLabel = NULL, leg_pos = "right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[2]
+  flab <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::mutate(xorder = 1:n()) %>%
+    tidyr::spread(xorder, b) %>% tidyr::gather(xorder, b, -a)
+  data_graph[is.na(data_graph)] <- 0
+  data_graph$xorder <- as.numeric(data_graph$xorder)
+
+  graph <- ggplot(data_graph, aes(x = xorder, y = b, group = a, fill = a)) +
+    stat_steamgraph() + theme_minimal() +
+    labs(tittle = titleLabel, x = xLabel, y = ylab, fill = flab)
+
+  return(graph)
+}
+
