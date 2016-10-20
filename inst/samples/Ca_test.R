@@ -61,6 +61,10 @@ gg_gauge_dial_Ca.(dataCat)
 gg_bubble_Ca.(d)
 gg_bubble_Ca.(dataCat)
 
+# Coloured bubble
+gg_coloured_bubble_Ca.(d)
+gg_coloured_bubble_Ca.(dataCat)
+
 # Polar Bar
 gg_polar_bar_Ca.(dataCat, width = 1)
 

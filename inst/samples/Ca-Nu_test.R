@@ -1,4 +1,5 @@
 library(devtools)
+document()
 install()
 load_all()
 
@@ -11,13 +12,22 @@ dataCaNu$GSRG <- as.character(dataCaNu$GSRG)
 dataCaNu$SRHTD <- runif(nrow(dataCaNu), min = 0, max = 100)
 
 
+# Pie
+gg_pie_CaNu.(dataCaNu)
 
-#vertical bar plot
-gg_coloured_x_bar_ver_CaNu.(dataCaNu)
+# Bubble
+gg_bubble_CaNu.(dataCaNu)
 
+# Coloured Bubble
+gg_coloured_bubble_CaNu.(dataCaNu)
 
-#horizontal bar plot
-gg_coloured_x_bar_hor_CaNu.(dataCaNu)
+# Coloured Bar
+gg_coloured_bar_ver_CaNu.(dataCaNu)
+gg_coloured_bar_ver_CaNu.(dataCaNu)
+
+# Coloured Parameter Bar
+gg_coloured_parameter_bar_ver_CaNu.(dataCaNu)
+gg_coloured_parameter_bar_hor_CaNu.(dataCaNu, parameter = "Callejero")
 
 #Ordered Bar
 gg_ordered_bar_ver_CaNu.(dataCaNu)

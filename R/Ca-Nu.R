@@ -8,11 +8,36 @@ library(gridExtra)
 library(RColorBrewer)
 
 
+#' gg_pie_CaNu.
+#' Pie
+#' @name gg_pie_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_pie_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, leg_pos="right"){
 
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+  graph <- ggplot(data=data, aes(x = factor(1), weight = b, fill = a)) +
+    geom_bar(width = 1) + coord_polar(theta = "y")
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
+  graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
+    theme(panel.grid=element_blank())
+  graph <- graph + theme(legend.position=leg_pos)
 
-#' gg_coloured_x_bar_ver_CaNu.
+  return(graph)
+}
+
+#' gg_coloured_bar_ver_CaNu.
 #' vertical bar
-#' @name gg_coloured_x_bar_ver_CaNu.
+#' @name gg_coloured_bar_ver_CaNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
@@ -21,25 +46,27 @@ library(RColorBrewer)
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_x_bar_ver_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
-                                       yLabel = NULL){
+gg_coloured_bar_ver_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
+  flab <- fillLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, aes(x = a, y = b)) + geom_bar(stat = "identity") +
-    labs(title = titleLabel, x = "", y = "") + theme_bw()
+  graph <- ggplot(data, aes(x = a, weight = b, fill = factor(a))) + geom_bar() +
+    labs(title = titleLabel, x = xlab, y = ylab, fill = flab) + theme_minimal() +
+    theme(legend.position=leg_pos)
 
   return(graph)
 }
 
 
-#' gg_coloured_x_bar_hor_CaNu.
+#' gg_coloured_bar_hor_CaNu.
 #' horizontal bar
-#' @name gg_coloured_x_bar_hor_CaNu.
+#' @name gg_coloured_bar_ver_CaNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
@@ -48,22 +75,125 @@ gg_coloured_x_bar_ver_CaNu.<- function(data, titleLabel = "Report", xLabel = NUL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_x_bar_hor_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
-                                       yLabel = NULL){
+gg_coloured_bar_hor_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+                                     yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
 
-  f <- fringe(data)
-  nms <- getCnames(f)
-  xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
-  data <- f$d
-
-  graph <- ggplot(data, aes(x = a, y = b)) + geom_bar(stat = "identity") + coord_flip() +
-    labs(title = titleLabel,  x = "", y = "") + theme_bw()
+  graph <- gg_coloured_bar_hor_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- graph + coord_flip()
 
   return(graph)
 }
 
 
+#' gg_coloured_parameter_bar_ver_CaNu.
+#' Vertical coloured by parameter bars
+#' @name gg_coloured_parameter_bar_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_coloured_parameter_bar_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                              yLabel = NULL, parameter = NULL,
+                                              leg_pos = "right"){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  p <-  parameter %||% sample(unique(data[,nms[1]]), 1)
+  data <- f$d
+  graph <- ggplot(data, aes(x = a, y = b)) +
+    geom_bar(stat="identity", aes(fill = a == p ))
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
+  graph <- graph + scale_fill_manual(values = c('red', 'black') ) + guides(fill=FALSE)
+  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  return(graph)
+}
+
+#' gg_coloured_parameter_bar_hor_CaNu.
+#' Horizontal coloured by parameter Bars
+#' @name gg_coloured_parameter_bar_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_coloured_parameter_bar_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                              yLabel = NULL, parameter = NULL,
+                                              leg_pos = "right"){
+
+  graph <- gg_coloured_parameter_bar_ver_CaNu.(data, titleLabel, xLabel,
+                                             yLabel, parameter, leg_pos)
+
+  graph <- graph + coord_flip()
+  return(graph)
+}
+
+#' gg_bubble_CaNu.
+#' Bubble
+#' @name gg_bubble_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bubble_CaNu.  <- function(data, titleLabel = "Report", xLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot(data, aes(x = a, y = 0, size = b))
+  graph <- graph + geom_point()
+  graph <- graph + labs(title = titleLabel, x = xlab, y = "")
+
+  graph <- graph + theme_minimal() + theme(legend.position="none") +
+    theme(axis.title.y=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks.y=element_blank())
+
+  return(graph)
+}
+
+#' gg_coloured_bubble_CaNu.
+#' Coloured Bubble
+#' @name gg_coloured_bubble_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_coloured_bubble_CaNu.  <- function(data, titleLabel = "Report", xLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot(data, aes(x = a, y = 0, size = b))
+  graph <- graph + geom_point(aes(color = a))
+  graph <- graph + labs(title = titleLabel, x = xlab, y = "")
+
+  graph <- graph + theme_minimal() + theme(legend.position="none") +
+    theme(axis.title.y=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks.y=element_blank())
+
+  return(graph)
+}
 
 #' gg_polar_bar_CaNu.
 #' Polar Bar

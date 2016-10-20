@@ -596,10 +596,11 @@ gg_single_stacked_bar_ver_Ca. <- function(data, titleLabel = "Report", yLabel = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_Ca.  <- function(data, titleLabel = "Report", xLabel = "Categories",
-                           yLabel = "Count"){
+gg_bubble_Ca.  <- function(data, titleLabel = "Report", xLabel = NULL){
 
   f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -609,9 +610,48 @@ gg_bubble_Ca.  <- function(data, titleLabel = "Report", xLabel = "Categories",
 
   graph <- ggplot(data_graph, aes(x = a, y = 0, size = count))
   graph <- graph + geom_point()
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = "")
 
-  graph <- graph + theme_minimal() + theme(legend.position="none")
+  graph <- graph + theme_minimal() + theme(legend.position="none") +
+    theme(axis.title.y=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks.y=element_blank())
+
+  return(graph)
+}
+
+#' gg_coloured_bubble_Ca.
+#' Coloured Bubble
+#' @name gg_coloured_bubble_Ca.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_coloured_bubble_Ca.  <- function(data, titleLabel = "Report", xLabel = NULL, fillLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  flab <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = n()) %>%
+    dplyr::arrange(desc(count))
+
+  graph <- ggplot(data_graph, aes(x = a, y = 0, size = count))
+  graph <- graph + geom_point(aes(color = a))
+  graph <- graph + labs(title = titleLabel, x = xlab, y = "", fill = flab)
+
+  graph <- graph + theme_minimal() + theme(legend.position="none") +
+    theme(axis.title.y=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks.y=element_blank())
 
   return(graph)
 }
