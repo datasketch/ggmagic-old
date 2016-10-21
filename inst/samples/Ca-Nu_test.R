@@ -22,8 +22,10 @@ gg_bubble_CaNu.(dataCaNu)
 gg_coloured_bubble_CaNu.(dataCaNu)
 
 # Coloured Bar
-gg_coloured_bar_ver_CaNu.(dataCaNu)
-gg_coloured_bar_ver_CaNu.(dataCaNu)
+gg_coloured_bar_x_ver_CaNu.(dataCaNu)
+gg_coloured_bar_x_hor_CaNu.(dataCaNu)
+gg_coloured_bar_y_ver_CaNu.(dataCaNu)
+gg_coloured_bar_y_hor_CaNu.(dataCaNu)
 
 # Coloured Parameter Bar
 gg_coloured_parameter_bar_ver_CaNu.(dataCaNu)

@@ -25,9 +25,9 @@ gg_pie_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, leg_pos=
   return(graph)
 }
 
-#' gg_coloured_bar_ver_CaNu.
+#' gg_coloured_bar_x_ver_CaNu.
 #' vertical bar
-#' @name gg_coloured_bar_ver_CaNu.
+#' @name gg_coloured_bar_x_ver_CaNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
@@ -36,7 +36,7 @@ gg_pie_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, leg_pos=
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_bar_ver_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+gg_coloured_bar_x_ver_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
 
   f <- fringe(data)
@@ -54,9 +54,9 @@ gg_coloured_bar_ver_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
 }
 
 
-#' gg_coloured_bar_hor_CaNu.
+#' gg_coloured_bar_x_hor_CaNu.
 #' horizontal bar
-#' @name gg_coloured_bar_ver_CaNu.
+#' @name gg_coloured_bar_x_hor_CaNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
@@ -65,15 +65,65 @@ gg_coloured_bar_ver_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_bar_hor_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+gg_coloured_bar_x_hor_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
                                      yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
 
-  graph <- gg_coloured_bar_hor_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_coloured_bar_x_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
+#' gg_coloured_bar_y_ver_CaNu.
+#' vertical bar
+#' @name gg_coloured_bar_y_ver_CaNu.
+#' @param x A category.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_coloured_bar_y_ver_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  flab <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>% dplyr::group_by(a) %>% dplyr::summarise(suma=sum(b))
+
+  graph <- ggplot(data_graph, aes(x = a, y = suma, fill = suma)) + geom_bar(stat = "identity") +
+    labs(title = titleLabel, x = xlab, y = ylab, fill = flab) + theme_minimal() +
+    theme(legend.position=leg_pos)
+
+  return(graph)
+}
+
+
+#' gg_coloured_bar_y_hor_CaNu.
+#' horizontal bar
+#' @name gg_coloured_bar_y_hor_CaNu.
+#' @param x A category.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_coloured_bar_y_hor_CaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
+
+  graph <- gg_coloured_bar_y_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
 
 #' gg_coloured_parameter_bar_ver_CaNu.
 #' Vertical coloured by parameter bars
@@ -98,7 +148,7 @@ gg_coloured_parameter_bar_ver_CaNu. <- function(data, titleLabel = "Report", xLa
   graph <- ggplot(data, aes(x = a, y = b)) +
     geom_bar(stat="identity", aes(fill = a == p ))
   graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
-  graph <- graph + scale_fill_manual(values = c('red', 'black') ) + guides(fill=FALSE)
+  graph <- graph + guides(fill=FALSE)
   graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
   return(graph)
 }
@@ -1342,8 +1392,6 @@ gg_facet_trend_ribbon_CaNu. <- function(data, titleLabel = "Report", xLabel = 'I
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
 gg_donut_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
                          width = 0.3, leg_pos="right"){
 

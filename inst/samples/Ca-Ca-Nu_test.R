@@ -23,11 +23,9 @@ dataCaCaNu$c <- runif(nrow(dataCaCaNu), min = 0, max = 50)
 
 # Coloured Bubble
 gg_coloured_bubble_CaCaNu.(dataCaCaNu)
+
 # Bubble
 gg_bubble_CaCaNu.(dataCaCaNu)
-
-circleAreaPlotCCN(dataCaCaNu)
-flip_circleAreaPlotCCN(dataCaCaNu)
 
 vertical_bargraphCCN(dataCaCaNu)
 ordered_vertical_bargraphCCN(dataCaCaNu)
@@ -43,11 +41,46 @@ horizontal_unstacked_bargraphCCN(dataCaCaNu)
 horizontal_linegraphCCN(dataCaCaNu)
 vertical_linegraphCCN(dataCaCaNu)
 
+# Stacked Bar
 gg_stacked_bar_hor_CaCaNu.(dataCaCaNu)
 gg_stacked_bar_ver_CaCaNu.(dataCaCaNu)
+
+# Stacked Bar 100%
 gg_stacked_bar_100_hor_CaCaNu.(dataCaCaNu)
 gg_stacked_bar_100_ver_CaCaNu.(dataCaCaNu)
 
 horizontal_area_bargraphCC(dataCaCaNu)
 
+# Facet Circular
 gg_facet_circular_bar_CaCaNu.(dataCaCaNu)
+
+# Facet Pie
+gg_facet_pie_CaCaNu.(dataCaCaNu)
+
+# Facet Donut
+gg_donut_CaCaNu.(dataCaCaNu)
+
+# Facet Bullseye
+gg_bullseye_CaCaNu.(dataCaCaNu)
+
+# Stacked Polar Bar
+gg_stacked_polar_bar_CaCaNu.(dataCaCaNu)
+
+# Stacked 100% Polar Bar
+gg_stacked_polar_bar_100_CaCaNu.(dataCaCaNu)
+
+# Facet Coloured Bars
+gg_facet_coloured_bar_x_ver_CaCaNu.(dataCaCaNu)
+gg_facet_coloured_bar_x_hor_CaCaNu.(dataCaCaNu)
+gg_facet_coloured_bar_y_ver_CaCaNu.(dataCaCaNu)
+gg_facet_coloured_bar_y_hor_CaCaNu.(dataCaCaNu)
+gg_facet_coloured_bar_z_ver_CaCaNu.(dataCaCaNu)
+gg_facet_coloured_bar_z_hor_CaCaNu.(dataCaCaNu)
+
+# Facet Coloured parameter Bar
+gg_facet_coloured_parameter_bar_ver_CaCa.(dataCaCaNu,
+                                          parameter1 = c("Callejero"),
+                                          parameter2 = c("A"))
+gg_facet_coloured_parameter_bar_hor_CaCa.(dataCaCaNu,
+                                          parameter1 = c("Callejero", "De raza", "Mixto"),
+                                          parameter2 = c("A","B","C"))

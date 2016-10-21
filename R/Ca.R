@@ -94,7 +94,7 @@ gg_coloured_parameter_bar_ver_Ca. <- function(data, titleLabel = "Report", xLabe
   graph <- ggplot(data_graph, aes(x = a, y = count)) +
     geom_bar(stat="identity", aes(fill = a == p ))
   graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
-  graph <- graph + scale_fill_manual(values = c('red', 'black') ) + guides(fill=FALSE)
+  graph <- graph + guides(fill=FALSE)
   graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
   return(graph)
 }

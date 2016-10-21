@@ -38,8 +38,10 @@ gg_facet_donut_CaCa.(dataCaCa)
 gg_facet_bullseye_CaCa.(dataCaCa)
 
 # Facet coloured Bar
-gg_facet_coloured_bar_ver_CaCa.(dataCaCa)
-gg_facet_coloured_bar_hor_CaCa.(dataCaCa)
+gg_facet_coloured_x_bar_ver_CaCa.(dataCaCa)
+gg_facet_coloured_x_bar_hor_CaCa.(dataCaCa)
+gg_facet_coloured_y_bar_ver_CaCa.(dataCaCa)
+gg_facet_coloured_y_bar_hor_CaCa.(dataCaCa)
 
 # Facet coloured by parameter
 gg_facet_coloured_parameter_bar_ver_CaCa.(dataCaCa,

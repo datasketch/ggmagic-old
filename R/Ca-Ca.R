@@ -209,9 +209,9 @@ gg_facet_bullseye_CaCa. <- function(data, titleLabel = "Report", fillLabel = NUL
   return(graph)
 }
 
-#' gg_facet_coloured_bar_ver_CaCa.
+#' gg_facet_coloured_x_bar_ver_CaCa.
 #' Facet Vertical coloured bars
-#' @name gg_facet_coloured_bar_ver_CaCa.
+#' @name gg_facet_coloured_x_bar_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -220,7 +220,7 @@ gg_facet_bullseye_CaCa. <- function(data, titleLabel = "Report", fillLabel = NUL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_coloured_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_coloured_x_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
                                     yLabel = 'Count', fillLabel = NULL,
                                     leg_pos = "right"){
   f <- fringe(data)
@@ -234,9 +234,9 @@ gg_facet_coloured_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel 
   return(graph)
 }
 
-#' gg_facet_coloured_bar_hor_CaCa.
+#' gg_facet_coloured_x_bar_hor_CaCa.
 #' Facet Horizontal coloured Bars
-#' @name gg_facet_coloured_bar_hor_CaCa.
+#' @name gg_facet_coloured_x_bar_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -245,12 +245,59 @@ gg_facet_coloured_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_coloured_bar_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_coloured_x_bar_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
                                     yLabel = 'Count', fillLabel = NULL,
                                     leg_pos = "right"){
 
-  graph <- gg_facet_coloured_bar_ver_CaCa.(data, titleLabel, xLabel,
+  graph <- gg_facet_coloured_x_bar_ver_CaCa.(data, titleLabel, xLabel,
                                    yLabel, fillLabel, leg_pos)
+
+  graph <- graph + coord_flip()
+  return(graph)
+}
+
+#' gg_facet_coloured_y_bar_ver_CaCa.
+#' Facet Vertical coloured bars
+#' @name gg_facet_coloured_y_bar_ver_CaCa.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_coloured_y_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                              yLabel = 'Count', fillLabel = NULL,
+                                              leg_pos = "right"){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  flabel <- fillLabel %||% nms[2]
+  data <- f$d
+  graph <- ggplot(data = data, aes(x = a, fill = factor(b))) + geom_bar()
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel,  fill = flabel)
+  graph <- graph + theme_minimal() + theme(legend.position=leg_pos) + facet_grid(.~b)
+  return(graph)
+}
+
+#' gg_facet_coloured_y_bar_hor_CaCa.
+#' Facet Horizontal coloured Bars
+#' @name gg_facet_coloured_y_bar_hor_CaCa.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_facet_coloured_y_bar_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                              yLabel = 'Count', fillLabel = NULL,
+                                              leg_pos = "right"){
+
+  graph <- gg_facet_coloured_y_bar_ver_CaCa.(data, titleLabel, xLabel,
+                                             yLabel, fillLabel, leg_pos)
 
   graph <- graph + coord_flip()
   return(graph)
