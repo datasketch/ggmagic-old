@@ -289,8 +289,6 @@ gg_div_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
 gg_bar_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 
   f <- fringe(data)
@@ -317,7 +315,6 @@ gg_bar_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_bubbles_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 
   f <- fringe(data)
@@ -343,7 +340,6 @@ gg_bubbles_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_lollipop_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 
   f <- fringe(data)
@@ -369,7 +365,6 @@ gg_lollipop_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_stepped_stacked_area_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 
   f <- fringe(data)

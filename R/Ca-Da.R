@@ -9,7 +9,6 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_pointline_hor_CaDa. <- function(data,title = "",xlab = NULL, clab = NULL){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -40,7 +39,6 @@ g
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_pointline_ver_CaDa. <- function(data,title = "",ylab = NULL, clab = NULL){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -74,7 +72,6 @@ gg_pointline_ver_CaDa. <- function(data,title = "",ylab = NULL, clab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_histogram_CaDa. <- function(data,title = "",xlab = NULL, clab = NULL){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -92,10 +89,4 @@ gg_histogram_CaDa. <- function(data,title = "",xlab = NULL, clab = NULL){
     theme_minimal()
   g
 }
-
-
-
-
-
-
 

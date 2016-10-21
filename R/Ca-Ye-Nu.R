@@ -1,4 +1,3 @@
-
 #' gg_bars_stk_ver_CaYeNu.: title.
 #' Barras stacked
 #' Tiene múltiples líneas
@@ -127,8 +126,6 @@ gg_lines_hor_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
 gg_circle_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab = NULL){
 
   f <- fringe(data)
