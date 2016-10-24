@@ -79,7 +79,7 @@ gg_coloured_bubble_CaCaNu.  <- function(data, titleLabel = "Report", xLabel = NU
   graph <- ggplot(data, aes(x = a, y = b, size = c))
   graph <- graph + geom_point(aes(color = a))
   graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
-  graph <- graph + theme_minimal() + theme(legend.position="none") + facet_grid(. ~b)
+  graph <- graph + theme_minimal() + theme(legend.position="none")
 
   return(graph)
 }
