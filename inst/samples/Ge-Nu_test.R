@@ -14,6 +14,11 @@ dataGeNu2 <- data.frame(id = mpios, num = runif(length(mpios), 0, 1))
 
 gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "pink")
 
+paises <- c("17", "18", "5", "3")
+dataGeNu1.1 <- data.frame(id = paises, num = runif(length(paises), 0, 1))
+
+gg_choropleth_latam_GeNu.(dataGeNu1.1)
+
 lat_max <- 6.276997
 long_max <- -69.635037
 lat_min <- 2.342537
@@ -29,7 +34,11 @@ gg_bubble_co_Ge.(dataGeNu3)
 long <- runif(10, long_min, long_max)
 lat <- runif(10, lat_min, lat_max)
 
+gg_bubble_latam_Ge.(dataGeNu3)
+
 dataGeNu3.1 <- data.frame(long = long, lat = lat, number = ceiling(runif(length(long), 0, 4))) #num = round(runif(length(lat), 1, 5), 0))
+
+gg_bubble_latam_GeNu.(dataGeNu3.1)
 
 gg_bubble_co_GeNu.(dataGeNu3.1)
 
