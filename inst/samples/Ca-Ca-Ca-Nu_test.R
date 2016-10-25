@@ -1,5 +1,7 @@
 library(devtools)
 load_all()
+document()
+install()
 library(ggmagic)
 
 data("G20")
