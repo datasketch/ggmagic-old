@@ -825,3 +825,102 @@ horizontal_area_bargraphCC <- function(data, titleLabel = "Report", xLabel = "Ca
 
   return(graph)
 }
+
+#' gg_treemap_x_CaCaNu.
+#' Treemap Fill by first Ca
+#' @name gg_treemap_x_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_treemap_x_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(count = sum(c)) %>%
+    dplyr::arrange(desc(count))
+
+  data_graph$a <- as.factor(data_graph$a)
+  data_graph$b <- as.factor(data_graph$b)
+
+  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a", label = "b"),
+                     group.label.colour = "black", label.colour = "black") +
+    labs(title = titleLabel)
+
+  return(graph)
+}
+
+#' gg_treemap_y_CaCaNu.
+#' Treemap Fill by second Ca
+#' @name gg_treemap_y_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_treemap_y_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(count = sum(c)) %>%
+    dplyr::arrange(desc(count))
+
+  data_graph$a <- as.factor(data_graph$a)
+  data_graph$b <- as.factor(data_graph$b)
+
+  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a", label = "b"),
+                     group.label.colour = "black", label.colour = "black") +
+    labs(title = titleLabel)
+
+  return(graph)
+}
+
+#' gg_treemap_density_z_CaCaNu.
+#' Treemap Density by Nu
+#' @name gg_treemap_density_z_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(Sum = sum(c)) %>%
+    dplyr::arrange(desc(Sum))
+
+  data_graph$a <- as.factor(data_graph$a)
+  data_graph$b <- as.factor(data_graph$b)
+
+  graph <- ggplotify(treemapify(data_graph, area = "Sum", fill = 'Sum', group = "a", label = "b"),
+                     group.label.colour = "black", label.colour = "black") +
+    labs(title = titleLabel)
+
+  return(graph)
+}

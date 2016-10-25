@@ -122,6 +122,10 @@ gg_facet_horizon_CaNu.(dataCaNu)
 # Stream
 gg_stream_CaNu.(dataCaNu)
 
+# Treemap
+gg_treemap_x_CaNu.(dataCaNu)
+gg_treemap_density_y_CaNu.(dataCaNu)
+
 #boxplots
 
 boxSpltPlot(dataCaNu, titleLabel, xLabel, yLabel, fillLabel, voltear)

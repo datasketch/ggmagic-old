@@ -1786,3 +1786,66 @@ gg_stream_CaNu. <- function(data, titleLabel = "Report", xLabel = "Index",
   return(graph)
 }
 
+#' gg_treemap_x_CaNu.
+#' Treemap fill by first Ca
+#' @name gg_treemap_x_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_treemap_x_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = sum(b)) %>%
+    dplyr::arrange(desc(count))
+
+  data_graph$a <- as.factor(data_graph$a)
+
+  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a"),
+                     group.label.colour = "black") + guides(fill=FALSE) +
+    labs(title = titleLabel)
+
+  return(graph)
+}
+
+#' gg_treemap_density_y_CaNu.
+#' Treemap Density by Nu
+#' @name gg_treemap_density_y_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_treemap_density_y_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(Sum = sum(b)) %>%
+    dplyr::arrange(desc(Sum))
+
+  data_graph$a <- as.factor(data_graph$a)
+
+  graph <- ggplotify(treemapify(data_graph, area = "Sum", fill = 'Sum', group = "a"),
+                     group.label.colour = "black") +
+    labs(title = titleLabel)
+
+  return(graph)
+}

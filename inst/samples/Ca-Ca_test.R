@@ -108,3 +108,7 @@ gg_stacked_polar_bar_100_CaCa.(dataCaCa)
 
 # Circular Bar
 gg_facet_circular_bar_CaCa.(dataCaCa)
+
+# Treemap
+gg_treemap_x_CaCa.(dataCaCa)
+gg_treemap_y_CaCa.(dataCaCa)

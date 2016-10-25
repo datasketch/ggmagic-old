@@ -84,3 +84,8 @@ gg_facet_coloured_parameter_bar_ver_CaCa.(dataCaCaNu,
 gg_facet_coloured_parameter_bar_hor_CaCa.(dataCaCaNu,
                                           parameter1 = c("Callejero", "De raza", "Mixto"),
                                           parameter2 = c("A","B","C"))
+
+# Treemap
+gg_treemap_x_CaCaNu.(dataCaCaNu)
+gg_treemap_y_CaCaNu.(dataCaCaNu)
+gg_treemap_density_z_CaCaNu.(dataCaCaNu)

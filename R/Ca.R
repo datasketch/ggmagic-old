@@ -754,6 +754,17 @@ gg_circular_bar_Ca. <- function(data, titleLabel = "Report", fillLabel = NULL,
   return(graph)
 }
 
+#' gg_treemap_Ca.
+#' Treemap fill by first Ca
+#' @name gg_treemap_Ca.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
 gg_treemap_Ca. <- function(data, titleLabel = "Report", fillLabel = NULL){
 
   f <- fringe(data)
@@ -766,14 +777,11 @@ gg_treemap_Ca. <- function(data, titleLabel = "Report", fillLabel = NULL){
     dplyr::summarise(count = n()) %>%
     dplyr::arrange(desc(count))
 
-  graph <- ggplotify(data_graph)
-  # graph <- ggplot(data_graph, aes(x = a, y = count , fill = a )) +
-  #   geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
-  #
-  # graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
-  # graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
-  #   theme(panel.grid=element_blank())
-  # graph <- graph + theme(legend.position=leg_pos)
+  data_graph$a <- as.factor(data_graph$a)
+
+  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a"),
+                     group.label.colour = "black") + guides(fill=FALSE) +
+    labs(title = titleLabel)
 
   return(graph)
 }
