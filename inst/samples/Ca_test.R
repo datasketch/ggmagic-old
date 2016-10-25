@@ -77,3 +77,5 @@ gg_bullseye_Ca.(dataCat)
 
 # Circular Bar
 gg_circular_bar_Ca.(dataCat)
+
+# Treemap

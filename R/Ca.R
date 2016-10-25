@@ -753,3 +753,28 @@ gg_circular_bar_Ca. <- function(data, titleLabel = "Report", fillLabel = NULL,
 
   return(graph)
 }
+
+gg_treemap_Ca. <- function(data, titleLabel = "Report", fillLabel = NULL){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = n()) %>%
+    dplyr::arrange(desc(count))
+
+  graph <- ggplotify(data_graph)
+  # graph <- ggplot(data_graph, aes(x = a, y = count , fill = a )) +
+  #   geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
+  #
+  # graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
+  # graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
+  #   theme(panel.grid=element_blank())
+  # graph <- graph + theme(legend.position=leg_pos)
+
+  return(graph)
+}
+
