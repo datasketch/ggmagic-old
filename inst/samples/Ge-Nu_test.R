@@ -12,9 +12,9 @@ depto_ <- c("05")
 mpios <- c("05045", "05051", "05055", "05059", "05079", "05086", "05088")
 dataGeNu2 <- data.frame(id = mpios, num = runif(length(mpios), 0, 1))
 
-gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "pink")
+gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "brown")
 
-paises <- c("57", "506", "55", "56")
+paises <- c("ARG", "CUB", "COL", "CHL")
 dataGeNu1.1 <- data.frame(id = paises, num = runif(length(paises), 0, 1))
 
 gg_choropleth_latam_GeNu.(dataGeNu1.1, color_map = "green")

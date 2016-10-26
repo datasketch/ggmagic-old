@@ -100,3 +100,33 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL){
 
   return(graph)
 }
+
+#' gg_point_CaCaCa.
+#' Coloured Point
+#' @name gg_point_CaCaCa.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_point_CaCaCa. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = NULL,
+                             fillLabel = NULL, size = 3){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[3]
+  data <- f$d
+
+  graph <- ggplot(data, aes(x = factor(a), y = factor(b), color=factor(c))) +
+    geom_point(size=size) +
+    labs(title = titleLabel, x = xlab, y = ylab) + theme_minimal() +
+    theme(legend.title=element_blank()) + theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    scale_x_discrete(labels = scales::comma) + theme(panel.grid.major = element_line(colour = "black"))
+
+  return(graph)
+}
