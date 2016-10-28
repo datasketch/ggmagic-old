@@ -4,6 +4,7 @@ library(devtools)
 load_all()
 document()
 install()
+library(ggmagic)
 
 dataCaDaNu <- data.frame(proj = paste0("p",sample(LETTERS[5:7],50, replace=TRUE)),
                    date = sample(seq(as.Date('1999-01-01'), as.Date('2002-01-01'), by="day"), 50),
