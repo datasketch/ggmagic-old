@@ -61,6 +61,117 @@ gg_stream_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
   return(graph)
 }
 
+#' gg_stacked_area_ver_CaDaNu.
+#' Stacked Vertical Area
+#' @name gg_stacked_area_ver_CaDaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_stacked_area_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                            yLabel = NULL, fillLabel = NULL,
+                                            leg_pos = "top"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
+  data_graph[is.na(data_graph)] <- 0
+  data_graph$b <- as.Date(data_graph$b)
+
+  graph <- ggplot(data = data_graph,
+                  aes(x=b, y=c, group=a)) + geom_area(aes(fill = a), position = "stack")
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab, fill = flabel)
+  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  return(graph)
+}
+
+#' gg_stacked_area_hor_CaDaNu.
+#' Stacked Horizontal Area
+#' @name gg_stacked_area_hor_CaDaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_stacked_area_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
+                                          yLabel = NULL, fillLabel = NULL,
+                                          leg_pos = "top"){
+
+  graph <- gg_stacked_area_ver_CaDaNu.(data, titleLabel, xLabel, yLabel)
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_stacked_area_100_ver_CaDaNu.
+#' Stacked Vertical Area 100%
+#' @name gg_stacked_area_100_ver_CaDaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_stacked_area_100_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+                                          yLabel = NULL, fillLabel = NULL,
+                                          leg_pos = "top"){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data_graph <- data %>%
+    tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
+  data_graph[is.na(data_graph)] <- 0
+  data_graph$b <- as.Date(data_graph$b)
+
+  graph <- ggplot(data = data_graph,
+                  aes(x=b, y=c, group=a)) + geom_area(aes(fill = a), position = "fill")
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab, fill = flabel)
+  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  return(graph)
+}
+
+#' gg_stacked_area_100_hor_CaDaNu.
+#' Stacked Horizontal Area 100%
+#' @name gg_stacked_area_100_hor_CaDaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_stacked_area_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
+                                          yLabel = NULL, fillLabel = NULL,
+                                          leg_pos = "top"){
+
+  graph <- gg_stacked_area_100_ver_CaDaNu.(data, titleLabel, xLabel, yLabel)
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+
 
 #gg_scatter_trend_hor_CaDaNu.
 

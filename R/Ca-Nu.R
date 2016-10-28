@@ -1054,9 +1054,9 @@ gg_facet_area_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = "Index
   return(graph)
 }
 
-#' gg_stacked_area_100_ver_CaCa.
+#' gg_stacked_area_100_ver_CaNu.
 #' Stacked Vertical Area 100%
-#' @name gg_stacked_area_100_ver_CaCa.
+#' @name gg_stacked_area_100_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
