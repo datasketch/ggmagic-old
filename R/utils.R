@@ -17,9 +17,10 @@ sysfile <- function(..., package = "ggmagic"){
   path
 }
 
+#' @export
 `%||%` <- function (x, y)
 {
-  if (is.empty(x))
+  if (is_empty(x))
     return(y)
   else if (is.null(x) || is.na(x))
     return(y)
@@ -29,10 +30,10 @@ sysfile <- function(..., package = "ggmagic"){
 }
 
 
-is.empty <- function(x){
-  #   !is.null(x)
-  !as.logical(length(x))
-}
+# is.empty <- function(x){
+#   #   !is.null(x)
+#   !as.logical(length(x))
+# }
 
 
 file_path_sans_ext <- function (x)
