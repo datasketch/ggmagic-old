@@ -30,9 +30,9 @@ gg_scatter_hor_CaDaNu.(dataCaDaNu)
 
 gg_stream_CaDaNu.(dfData)
 
-gg_stacked_area_ver_CaDaNu.(dfData)
-gg_stacked_area_hor_CaDaNu.(dfData)
-gg_stacked_area_100_ver_CaDaNu.(dfData)
-gg_stacked_area_100_hor_CaDaNu.(dfData)
+gg_area_stacked_ver_CaDaNu.(dfData)
+gg_area_stacked_hor_CaDaNu.(dfData)
+gg_area_stacked_100_ver_CaDaNu.(dfData)
+gg_area_stacked_100_hor_CaDaNu.(dfData)
 
 

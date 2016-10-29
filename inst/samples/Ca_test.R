@@ -21,20 +21,20 @@ d <- data.frame(a=sample(letters[1:7],10000,replace=TRUE))
 # minScale y maxScale
 
 # Coloured Bar
-gg_coloured_bar_ver_Ca.(dataCa, leg_pos = "top")
-gg_coloured_bar_hor_Ca.(d,leg_pos = "bottom")
+gg_bar_coloured_ver_Ca.(dataCa, leg_pos = "top")
+gg_bar_coloured_hor_Ca.(d,leg_pos = "bottom")
 
 # Bar
 gg_bar_ver_Ca.(dataCa)
 gg_bar_hor_Ca.(d)
 
 # Coloured by parameter Bar
-gg_coloured_parameter_bar_ver_Ca.(dataCa)
-gg_coloured_parameter_bar_hor_Ca.(dataCa, parameter = c("Mixto", "De raza"))
+gg_bar_coloured_parameter_ver_Ca.(dataCa)
+gg_bar_coloured_parameter_hor_Ca.(dataCa, parameter = c("Mixto", "De raza"))
 
 # Ordered Bar
-gg_ordered_bar_ver_Ca.(dataCa)
-gg_ordered_bar_hor_Ca.(dataCa)
+gg_bar_ordered_ver_Ca.(dataCa)
+gg_bar_ordered_hor_Ca.(dataCa)
 
 # Pie
 gg_pie_Ca.(dataCa, leg_pos = "right")
@@ -66,17 +66,17 @@ gg_coloured_bubble_Ca.(d)
 gg_coloured_bubble_Ca.(dataCa)
 
 # Polar Bar
-gg_polar_bar_Ca.(dataCa, width = 1)
+gg_bar_polar_Ca.(dataCa, width = 1)
 
 # Single Stacked Bar
-gg_single_stacked_bar_hor_Ca.(dataCa)
-gg_single_stacked_bar_ver_Ca.(dataCa)
+gg_bar_single_stacked_hor_Ca.(dataCa)
+gg_bar_single_stacked_ver_Ca.(dataCa)
 
 # Bullseye
 gg_bullseye_Ca.(dataCa)
 
 # Circular Bar
-gg_circular_bar_Ca.(dataCa)
+gg_bar_circular_Ca.(dataCa)
 
 # Treemap
 gg_treemap_Ca.(dataCa)

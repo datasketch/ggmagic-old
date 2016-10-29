@@ -24,9 +24,9 @@ gg_waffle_Ca. <- function(data, filas = 5, titulo = "Report"){
   return(graph)
 }
 
-#' gg_coloured_bar_ver_Ca.
+#' gg_bar_coloured_ver_Ca.
 #' Vertical coloured bars
-#' @name gg_coloured_bar_ver_Ca.
+#' @name gg_bar_coloured_ver_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -35,7 +35,7 @@ gg_waffle_Ca. <- function(data, filas = 5, titulo = "Report"){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_bar_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
                             yLabel = 'Count', fillLabel = NULL,
                             leg_pos = "right"){
   f <- fringe(data)
@@ -49,9 +49,9 @@ gg_coloured_bar_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
   return(graph)
 }
 
-#' gg_coloured_bar_hor_Ca.
+#' gg_bar_coloured_hor_Ca.
 #' Horizontal coloured Bars
-#' @name gg_coloured_bar_ver_Ca.
+#' @name gg_bar_coloured_ver_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -60,20 +60,20 @@ gg_coloured_bar_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_bar_hor_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
                             yLabel = 'Count', fillLabel = NULL,
                             leg_pos = "right"){
 
-  graph <- gg_coloured_bar_ver_Ca.(data, titleLabel, xLabel,
+  graph <- gg_bar_coloured_ver_Ca.(data, titleLabel, xLabel,
                                    yLabel, fillLabel, leg_pos)
 
   graph <- graph + coord_flip()
   return(graph)
 }
 
-#' gg_coloured_parameter_bar_ver_Ca.
+#' gg_bar_coloured_parameter_ver_Ca.
 #' Vertical coloured by parameter bars
-#' @name gg_coloured_parameter_bar_ver_Ca.
+#' @name gg_bar_coloured_parameter_ver_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -82,7 +82,7 @@ gg_coloured_bar_hor_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_parameter_bar_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
                                               yLabel = 'Count', parameter = NULL,
                                               leg_pos = "right"){
   f <- fringe(data)
@@ -99,9 +99,9 @@ gg_coloured_parameter_bar_ver_Ca. <- function(data, titleLabel = "Report", xLabe
   return(graph)
 }
 
-#' gg_coloured_parameter_bar_hor_Ca.
+#' gg_bar_coloured_parameter_hor_Ca.
 #' Horizontal coloured by parameter Bars
-#' @name gg_coloured_parameter_bar_hor_Ca.
+#' @name gg_bar_coloured_parameter_hor_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -110,11 +110,11 @@ gg_coloured_parameter_bar_ver_Ca. <- function(data, titleLabel = "Report", xLabe
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_parameter_bar_hor_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
                                               yLabel = 'Count', parameter = NULL,
                                               leg_pos = "right"){
 
-  graph <- gg_coloured_parameter_bar_ver_Ca.(data, titleLabel, xLabel,
+  graph <- gg_bar_coloured_parameter_ver_Ca.(data, titleLabel, xLabel,
                                              yLabel, parameter, leg_pos)
 
   graph <- graph + coord_flip()
@@ -166,9 +166,9 @@ gg_bar_hor_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
   return(graph)
 }
 
-#' gg_ordered_bar_ver_Ca.
+#' gg_bar_ordered_ver_Ca.
 #' Ordered vertical Bars
-#' @name gg_ordered_bar_ver_Ca.
+#' @name gg_bar_ordered_ver_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -177,7 +177,7 @@ gg_bar_hor_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_ordered_bar_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
                                    yLabel =  'Count', leg_pos = "right"){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -195,9 +195,9 @@ gg_ordered_bar_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
   return(graph)
 }
 
-#' gg_ordered_bar_hor_Ca.
+#' gg_bar_ordered_hor_Ca.
 #' Ordered horizontal Bars
-#' @name gg_ordered_bar_hor_Ca.
+#' @name gg_bar_ordered_hor_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -206,10 +206,10 @@ gg_ordered_bar_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_ordered_bar_hor_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
                                    yLabel =  'Count', leg_pos = "right"){
 
-  graph <- gg_ordered_bar_ver_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
+  graph <- gg_bar_ordered_ver_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
@@ -537,9 +537,9 @@ gg_gauge_dial_Ca. <- function(data){
   grid.draw(arrangeGrob(grobs = graphList,ncol=2))
 }
 
-#' gg_single_stacked_bar_hor_Ca.
+#' gg_bar_single_stacked_hor_Ca.
 #' Single Horizontal Stacked Bar
-#' @name gg_single_stacked_bar_hor_Ca.
+#' @name gg_bar_single_stacked_hor_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -548,7 +548,7 @@ gg_gauge_dial_Ca. <- function(data){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_single_stacked_bar_hor_Ca. <- function(data, titleLabel = "Report", yLabel = "Count",
+gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "Report", yLabel = "Count",
                                           fillLabel = "Types", leg_pos="right", width = 0.3){
 
   f <- fringe(data)
@@ -565,9 +565,9 @@ gg_single_stacked_bar_hor_Ca. <- function(data, titleLabel = "Report", yLabel = 
   return(graph)
 }
 
-#' gg_single_stacked_bar_ver_Ca.
+#' gg_bar_single_stacked_ver_Ca.
 #' Single Vertical Stacked Bar
-#' @name gg_single_stacked_bar_ver_Ca.
+#' @name gg_bar_single_stacked_ver_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -576,10 +576,10 @@ gg_single_stacked_bar_hor_Ca. <- function(data, titleLabel = "Report", yLabel = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_single_stacked_bar_ver_Ca. <- function(data, titleLabel = "Report", yLabel = "Frequency",
+gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "Report", yLabel = "Frequency",
                                    fillLabel = "Types", leg_pos="right", width = 0.3){
 
-  graph <- gg_single_stacked_bar_hor_Ca.(data, titleLabel, yLabel, fillLabel, leg_pos, width)
+  graph <- gg_bar_single_stacked_hor_Ca.(data, titleLabel, yLabel, fillLabel, leg_pos, width)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -656,9 +656,9 @@ gg_coloured_bubble_Ca.  <- function(data, titleLabel = "Report", xLabel = NULL, 
   return(graph)
 }
 
-#' gg_polar_bar_Ca.
+#' gg_bar_polar_Ca.
 #' Polar Bar
-#' @name gg_polar_bar_Ca.
+#' @name gg_bar_polar_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -667,7 +667,7 @@ gg_coloured_bubble_Ca.  <- function(data, titleLabel = "Report", xLabel = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_polar_bar_Ca. <- function(data, width = 0.95, titleLabel = "Report",
+gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "Report",
                              fillLabel = NULL, leg_pos= "right"){
 
   f <- fringe(data)
@@ -719,9 +719,9 @@ gg_bullseye_Ca. <- function(data, titleLabel = "Report", fillLabel = NULL,
   return(graph)
 }
 
-#' gg_circular_bar_Ca.
+#' gg_bar_circular_Ca.
 #' Circular Bar
-#' @name gg_circular_bar_Ca.
+#' @name gg_bar_circular_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -730,7 +730,7 @@ gg_bullseye_Ca. <- function(data, titleLabel = "Report", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_circular_bar_Ca. <- function(data, titleLabel = "Report", fillLabel = NULL,
+gg_bar_circular_Ca. <- function(data, titleLabel = "Report", fillLabel = NULL,
                                 leg_pos="right", width = 0.85){
 
   f <- fringe(data)

@@ -26,9 +26,9 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "Report", xLabel = NULL,
   return(graph)
 }
 
-#' gg_facet_circular_bar_CaCaNu.
+#' gg_bar_facet_circular_CaCaNu.
 #' Circular Bar
-#' @name gg_facet_circular_bar_CaCaNu.
+#' @name gg_bar_facet_circular_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -37,7 +37,7 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_circular_bar_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
+gg_bar_facet_circular_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
                                         leg_pos="right", width = 0.85){
 
   f <- fringe(data)
@@ -84,9 +84,9 @@ gg_coloured_bubble_CaCaNu.  <- function(data, titleLabel = "Report", xLabel = NU
   return(graph)
 }
 
-#' gg_facet_coloured_bar_x_ver_CaCaNu.
+#' gg_bar_facet_coloured_x_ver_CaCaNu.
 #' vertical bar
-#' @name gg_facet_coloured_bar_x_ver_CaCaNu.
+#' @name gg_bar_facet_coloured_x_ver_CaCaNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
@@ -95,7 +95,7 @@ gg_coloured_bubble_CaCaNu.  <- function(data, titleLabel = "Report", xLabel = NU
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_coloured_bar_x_ver_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_facet_coloured_x_ver_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
 
   f <- fringe(data)
@@ -113,9 +113,9 @@ gg_facet_coloured_bar_x_ver_CaCaNu.<- function(data, titleLabel = "Report", xLab
 }
 
 
-#' gg_facet_coloured_bar_x_hor_CaCaNu.
+#' gg_bar_facet_coloured_x_hor_CaCaNu.
 #' horizontal bar
-#' @name gg_facet_coloured_bar_x_hor_CaCaNu.
+#' @name gg_bar_facet_coloured_x_hor_CaCaNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
@@ -124,18 +124,18 @@ gg_facet_coloured_bar_x_ver_CaCaNu.<- function(data, titleLabel = "Report", xLab
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_coloured_bar_x_hor_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_facet_coloured_x_hor_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
 
-  graph <- gg_facet_coloured_bar_x_ver_CaCaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_bar_facet_coloured_x_ver_CaCaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_coloured_bar_y_ver_CaCaNu.
+#' gg_bar_facet_coloured_y_ver_CaCaNu.
 #' vertical bar
-#' @name gg_facet_coloured_bar_y_ver_CaCaNu.
+#' @name gg_bar_facet_coloured_y_ver_CaCaNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
@@ -144,7 +144,7 @@ gg_facet_coloured_bar_x_hor_CaCaNu.<- function(data, titleLabel = "Report", xLab
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_coloured_bar_y_ver_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_facet_coloured_y_ver_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
 
   f <- fringe(data)
@@ -162,9 +162,9 @@ gg_facet_coloured_bar_y_ver_CaCaNu.<- function(data, titleLabel = "Report", xLab
 }
 
 
-#' gg_facet_coloured_bar_y_hor_CaCaNu.
+#' gg_bar_facet_coloured_y_hor_CaCaNu.
 #' horizontal bar
-#' @name gg_facet_coloured_bar_y_hor_CaCaNu.
+#' @name gg_bar_facet_coloured_y_hor_CaCaNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
@@ -173,18 +173,18 @@ gg_facet_coloured_bar_y_ver_CaCaNu.<- function(data, titleLabel = "Report", xLab
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_coloured_bar_y_hor_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_facet_coloured_y_hor_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
 
-  graph <- gg_facet_coloured_bar_y_ver_CaCaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_bar_facet_coloured_y_ver_CaCaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_coloured_bar_z_ver_CaCaNu.
+#' gg_bar_facet_coloured_z_ver_CaCaNu.
 #' Facet coloured vertical bar
-#' @name gg_facet_coloured_bar_z_ver_CaCaNu.
+#' @name gg_bar_facet_coloured_z_ver_CaCaNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
@@ -193,7 +193,7 @@ gg_facet_coloured_bar_y_hor_CaCaNu.<- function(data, titleLabel = "Report", xLab
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_coloured_bar_z_ver_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_facet_coloured_z_ver_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
 
   f <- fringe(data)
@@ -212,9 +212,9 @@ gg_facet_coloured_bar_z_ver_CaCaNu.<- function(data, titleLabel = "Report", xLab
   return(graph)
 }
 
-#' gg_facet_coloured_bar_z_hor_CaCaNu.
+#' gg_bar_facet_coloured_z_hor_CaCaNu.
 #' Facet Coloured horizontal bar
-#' @name gg_facet_coloured_bar_z_hor_CaCaNu.
+#' @name gg_bar_facet_coloured_z_hor_CaCaNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
@@ -223,18 +223,18 @@ gg_facet_coloured_bar_z_ver_CaCaNu.<- function(data, titleLabel = "Report", xLab
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_coloured_bar_z_hor_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_facet_coloured_z_hor_CaCaNu.<- function(data, titleLabel = "Report", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
 
-  graph <- gg_facet_coloured_bar_z_ver_CaCaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_bar_facet_coloured_z_ver_CaCaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_coloured_parameter_bar_ver_CaCaNu.
+#' gg_bar_facet_coloured_parameter_ver_ver_CaCaNu.
 #' Facet Vertical coloured by parameter bars
-#' @name gg_facet_coloured_parameter_bar_ver_CaCaNu.
+#' @name gg_bar_facet_coloured_parameter_ver_ver_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -243,7 +243,7 @@ gg_facet_coloured_bar_z_hor_CaCaNu.<- function(data, titleLabel = "Report", xLab
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_coloured_parameter_bar_ver_CaCaNu. <- function(data, titleLabel = "Report",
+gg_bar_facet_coloured_parameter_ver_ver_CaCaNu. <- function(data, titleLabel = "Report",
                                                       xLabel = NULL, yLabel = 'Count',
                                                       parameter1 = NULL, parameter2 = NULL,
                                                       leg_pos = "right"){
@@ -271,9 +271,9 @@ gg_facet_coloured_parameter_bar_ver_CaCaNu. <- function(data, titleLabel = "Repo
   return(graph)
 }
 
-#' gg_facet_coloured_parameter_bar_hor_CaCa.
+#' gg_bar_facet_coloured_parameter_ver_hor_CaCa.
 #' Facet Horizontal coloured by parameter Bars
-#' @name gg_facet_coloured_parameter_bar_hor_CaCa.
+#' @name gg_bar_facet_coloured_parameter_ver_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -282,12 +282,12 @@ gg_facet_coloured_parameter_bar_ver_CaCaNu. <- function(data, titleLabel = "Repo
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_coloured_parameter_bar_hor_CaCa. <- function(data, titleLabel = "Report",
+gg_bar_facet_coloured_parameter_ver_hor_CaCa. <- function(data, titleLabel = "Report",
                                                       xLabel = NULL, yLabel = 'Count',
                                                       parameter1 = NULL, parameter2 = NULL,
                                                       leg_pos = "right"){
 
-  graph <- gg_facet_coloured_parameter_bar_ver_CaCa.(data, titleLabel, xLabel,
+  graph <- gg_bar_facet_coloured_parameter_ver_ver_CaCa.(data, titleLabel, xLabel,
                                                      yLabel, parameter1, parameter2, leg_pos)
 
   graph <- graph + coord_flip()
@@ -565,9 +565,9 @@ gg_bullseye_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
   return(graph)
 }
 
-#' gg_stacked_polar_bar_CaCaNu.
+#' gg_bar_stacked_polar_CaCaNu.
 #' Stacked Polar Bar
-#' @name gg_stacked_polar_bar_CaCaNu.
+#' @name gg_bar_stacked_polar_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -576,7 +576,7 @@ gg_bullseye_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_polar_bar_CaCaNu. <- function(data, width = 0.95, titleLabel = "Report",
+gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "Report",
                                fillLabel = NULL, leg_pos= "right"){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -590,9 +590,9 @@ gg_stacked_polar_bar_CaCaNu. <- function(data, width = 0.95, titleLabel = "Repor
   return(graph)
 }
 
-#' gg_stacked_polar_bar_100_CaCaNu.
-#' Stacked Polar Bar 100%
-#' @name gg_stacked_polar_bar_100_CaCaNu.
+#' gg_bar_stacked_polar_100_CaCaNu.
+#' Stacked Polar Bar 100
+#' @name gg_bar_stacked_polar_100_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -601,7 +601,7 @@ gg_stacked_polar_bar_CaCaNu. <- function(data, width = 0.95, titleLabel = "Repor
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_polar_bar_100_CaCaNu. <- function(data, width = 0.95, titleLabel = "Report",
+gg_bar_stacked_polar_100_CaCaNu. <- function(data, width = 0.95, titleLabel = "Report",
                                          fillLabel = NULL, leg_pos= "right"){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -692,9 +692,9 @@ vertical_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
 }
 
 
-#' gg_stacked_bar_ver_CaCaNu.
+#' gg_bar_stacked_ver_CaCaNu.
 #' vertical stacked bar graph
-#' @name gg_stacked_bar_ver_CaCaNu.
+#' @name gg_bar_stacked_ver_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -703,7 +703,7 @@ vertical_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_bar_ver_CaCaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
                                         yLabel = NULL, fillLabel = NULL,
                                         leg_pos = "top"){
   f <- fringe(data)
@@ -720,9 +720,9 @@ gg_stacked_bar_ver_CaCaNu. <- function(data, titleLabel = "Report", xLabel = NUL
   return(graph)
 }
 
-#' gg_stacked_bar_hor_CaCaNu.
+#' gg_bar_stacked_hor_CaCaNu.
 #' horizontal stacked bar graph
-#' @name gg_stacked_bar_hor_CaCaNu.
+#' @name gg_bar_stacked_hor_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -731,21 +731,21 @@ gg_stacked_bar_ver_CaCaNu. <- function(data, titleLabel = "Report", xLabel = NUL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_bar_hor_CaCaNu. <- function(data, titleLabel = "Report", xLabel = "Category",
+gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "Report", xLabel = "Category",
                                           yLabel = "Frequency", fillLabel = "Types",
                                           leg_pos = "top"){
 
 
-  graph <- gg_stacked_bar_ver_CaCaNu.(data, titleLabel, xLabel, yLabel,
+  graph <- gg_bar_stacked_ver_CaCaNu.(data, titleLabel, xLabel, yLabel,
                                        fillLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_stacked_bar_100_ver_CaCaNu.
-#' 100% vertical stacked bar graph
-#' @name gg_stacked_bar_100_ver_CaCaNu.
+#' gg_bar_stacked_100_ver_CaCaNu.
+#' 100 vertical stacked bar graph
+#' @name gg_bar_stacked_100_ver_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -754,7 +754,7 @@ gg_stacked_bar_hor_CaCaNu. <- function(data, titleLabel = "Report", xLabel = "Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_bar_100_ver_CaCaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL,
                                        leg_pos = "top"){
   f <- fringe(data)
@@ -771,9 +771,9 @@ gg_stacked_bar_100_ver_CaCaNu. <- function(data, titleLabel = "Report", xLabel =
   return(graph)
 }
 
-#' gg_stacked_bar_100_hor_CaCaNu.
-#' 100% horizontal stacked bar graph
-#' @name gg_stacked_bar_100_hor_CaCaNu.
+#' gg_bar_stacked_100_hor_CaCaNu.
+#' 100 horizontal stacked bar graph
+#' @name gg_bar_stacked_100_hor_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -782,12 +782,12 @@ gg_stacked_bar_100_ver_CaCaNu. <- function(data, titleLabel = "Report", xLabel =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_bar_100_hor_CaCaNu. <- function(data, titleLabel = "Report", xLabel = "Category",
+gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "Report", xLabel = "Category",
                                        yLabel = "Frequency", fillLabel = "Types",
                                        leg_pos = "top"){
 
 
-  graph <- gg_stacked_bar_100_ver_CaCaNu.(data, titleLabel, xLabel, yLabel,
+  graph <- gg_bar_stacked_100_ver_CaCaNu.(data, titleLabel, xLabel, yLabel,
                                       fillLabel, leg_pos)
   graph <- graph + coord_flip()
 

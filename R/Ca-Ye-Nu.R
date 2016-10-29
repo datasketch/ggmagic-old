@@ -1,7 +1,7 @@
-#' gg_bars_stk_ver_CaYeNu.: title.
+#' gg_bar_stk_ver_CaYeNu.: title.
 #' Barras stacked
 #' Tiene múltiples líneas
-#' @name gg_bars_stk_ver_CaYeNu.
+#' @name gg_bar_stk_ver_CaYeNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -10,7 +10,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bars_stk_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL){
+gg_bar_stk_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL){
   f <- fringe(data)
   nms <- getCnames(f)
   data <- f$d
@@ -26,10 +26,10 @@ gg_bars_stk_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL,
     ggtitle(title)
 }
 
-#' gg_bars_grp_ver_CaYeNu.: title.
+#' gg_bar_grp_ver_CaYeNu.: title.
 #' Barras stacked
 #' Tiene múltiples líneas
-#' @name gg_bars_grp_ver_CaYeNu.
+#' @name gg_bar_grp_ver_CaYeNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -38,7 +38,7 @@ gg_bars_stk_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bars_grp_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL){
+gg_bar_grp_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL){
   f <- fringe(data)
   nms <- getCnames(f)
   data <- f$d
@@ -56,10 +56,10 @@ gg_bars_grp_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL,
 
 
 
-#' gg_bars_stk_hor_CaYeNu.: title.
+#' gg_bar_stk_hor_CaYeNu.: title.
 #' Barras stacked
 #' Tiene múltiples líneas
-#' @name gg_bars_stk_hor_CaYeNu.
+#' @name gg_bar_stk_hor_CaYeNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -68,7 +68,7 @@ gg_bars_grp_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bars_stk_hor_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL){
+gg_bar_stk_hor_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]

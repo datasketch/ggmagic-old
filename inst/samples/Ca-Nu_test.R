@@ -22,24 +22,24 @@ gg_bubble_CaNu.(dataCaNu)
 gg_coloured_bubble_CaNu.(dataCaNu)
 
 # Coloured Bar
-gg_coloured_bar_x_ver_CaNu.(dataCaNu)
-gg_coloured_bar_x_hor_CaNu.(dataCaNu)
-gg_coloured_bar_y_ver_CaNu.(dataCaNu)
-gg_coloured_bar_y_hor_CaNu.(dataCaNu)
+gg_bar_coloured_x_ver_CaNu.(dataCaNu)
+gg_bar_coloured_x_hor_CaNu.(dataCaNu)
+gg_bar_coloured_y_ver_CaNu.(dataCaNu)
+gg_bar_coloured_y_hor_CaNu.(dataCaNu)
 
 # Coloured Parameter Bar
-gg_coloured_parameter_bar_ver_CaNu.(dataCaNu)
-gg_coloured_parameter_bar_hor_CaNu.(dataCaNu, parameter = "Callejero")
+gg_bar_coloured_parameter_ver_CaNu.(dataCaNu)
+gg_bar_coloured_parameter_hor_CaNu.(dataCaNu, parameter = "Callejero")
 
 #Ordered Bar
-gg_ordered_bar_ver_CaNu.(dataCaNu)
-gg_ordered_bar_hor_CaNu.(dataCaNu)
+gg_bar_ordered_ver_CaNu.(dataCaNu)
+gg_bar_ordered_hor_CaNu.(dataCaNu)
 
 # Polar Bar
-gg_polar_bar_CaNu.(dataCaNu)
+gg_bar_polar_CaNu.(dataCaNu)
 
 # Circular Bar
-gg_circular_bar_CaNu.(dataCaNu)
+gg_bar_circular_CaNu.(dataCaNu)
 
 #Stacked histogram
 gg_stacked_hist_ver_CaNu.(dataCaNu)
@@ -91,8 +91,8 @@ gg_dot_bar_ver_CaNu.(dataCaNu)
 gg_dot_bar_hor_CaNu.(dataCaNu)
 
 # Single Satcked Bar
-gg_single_stacked_bar_ver_CaNu.(dataCaNu)
-gg_single_stacked_bar_hor_CaNu.(dataCaNu)
+gg_bar_single_stacked_ver_CaNu.(dataCaNu)
+gg_bar_single_stacked_hor_CaNu.(dataCaNu)
 
 # Gauge
 gg_gauge_CaNu.(dataCaNu)
@@ -109,10 +109,10 @@ gg_facet_line_CaNu.(dataCaNu)
 # Area
 gg_facet_area_hor_CaNu.(dataCaNu)
 gg_facet_area_ver_CaNu.(dataCaNu)
-gg_stacked_area_100_ver_CaNu.(dataCaNu)
-gg_stacked_area_100_hor_CaNu.(dataCaNu)
-gg_stacked_area_hor_CaNu.(dataCaNu)
-gg_stacked_area_ver_CaNu.(dataCaNu)
+gg_area_stacked_100_ver_CaNu.(dataCaNu)
+gg_area_stacked_100_hor_CaNu.(dataCaNu)
+gg_area_stacked_hor_CaNu.(dataCaNu)
+gg_area_stacked_ver_CaNu.(dataCaNu)
 
 gg_facet_stepped_area_ver_CaNu.(dataCaNu)
 

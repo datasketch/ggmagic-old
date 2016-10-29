@@ -61,9 +61,9 @@ gg_stream_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
   return(graph)
 }
 
-#' gg_stacked_area_ver_CaDaNu.
+#' gg_area_stacked_ver_CaDaNu.
 #' Stacked Vertical Area
-#' @name gg_stacked_area_ver_CaDaNu.
+#' @name gg_area_stacked_ver_CaDaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -72,7 +72,7 @@ gg_stream_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_area_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL,
                                             leg_pos = "top"){
 
@@ -95,9 +95,9 @@ gg_stacked_area_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NU
   return(graph)
 }
 
-#' gg_stacked_area_hor_CaDaNu.
+#' gg_area_stacked_hor_CaDaNu.
 #' Stacked Horizontal Area
-#' @name gg_stacked_area_hor_CaDaNu.
+#' @name gg_area_stacked_hor_CaDaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -106,19 +106,19 @@ gg_stacked_area_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NU
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_area_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
+gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
                                           yLabel = NULL, fillLabel = NULL,
                                           leg_pos = "top"){
 
-  graph <- gg_stacked_area_ver_CaDaNu.(data, titleLabel, xLabel, yLabel)
+  graph <- gg_area_stacked_ver_CaDaNu.(data, titleLabel, xLabel, yLabel)
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_stacked_area_100_ver_CaDaNu.
-#' Stacked Vertical Area 100%
-#' @name gg_stacked_area_100_ver_CaDaNu.
+#' gg_area_stacked_100_ver_CaDaNu.
+#' Stacked Vertical Area 100
+#' @name gg_area_stacked_100_ver_CaDaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -127,7 +127,7 @@ gg_stacked_area_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'I
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_area_100_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
                                           yLabel = NULL, fillLabel = NULL,
                                           leg_pos = "top"){
 
@@ -150,9 +150,9 @@ gg_stacked_area_100_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
   return(graph)
 }
 
-#' gg_stacked_area_100_hor_CaDaNu.
-#' Stacked Horizontal Area 100%
-#' @name gg_stacked_area_100_hor_CaDaNu.
+#' gg_area_stacked_100_hor_CaDaNu.
+#' Stacked Horizontal Area 100
+#' @name gg_area_stacked_100_hor_CaDaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -161,11 +161,11 @@ gg_stacked_area_100_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_area_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
+gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
                                           yLabel = NULL, fillLabel = NULL,
                                           leg_pos = "top"){
 
-  graph <- gg_stacked_area_100_ver_CaDaNu.(data, titleLabel, xLabel, yLabel)
+  graph <- gg_area_stacked_100_ver_CaDaNu.(data, titleLabel, xLabel, yLabel)
   graph <- graph + coord_flip()
 
   return(graph)
