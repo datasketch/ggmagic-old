@@ -6,17 +6,18 @@ install()
 
 library(ggmagic)
 
-dsGreen <- "#95C11E"
-dsYellow <- "#FFED00"
-dsMagenta <- "#E5007D"
-dsBlue <- "#009EE3"
-dsOrange <- "#FFA500"
-dsPalette <- c(dsMagenta,dsBlue,dsGreen,dsOrange,dsYellow)
-
-##
+#
 # Pie
-gg_pie_CaNu.(sampleData("Ca-Nu")) + theme_ds() + scale_fill_manual(values = dsPalette)
+gg_pie_CaNu.(sampleData("Ca-Nu")) + theme_ds() +
+  scale_fill_manual(values = getPalette())
 
+gg_pie_CaNu.(sampleData("Ca-Nu")) + theme_ds_clean() +
+  scale_fill_manual(values = getPalette())
+
+
+data("G20")
+dataCaCaCa <- G20 %>% select(Region, Country, Economic.classification)
+gg_treemap_x_CaCaCa.(dataCaCaCa)+ theme_ds() + scale_fill_manual(values = getPalette())
 
 
 ggList()

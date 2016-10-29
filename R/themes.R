@@ -5,14 +5,30 @@ getPalette <- function(type = "qualitative", rev = FALSE){
   dsYellow <- "#FFED00"
   dsMagenta <- "#E5007D"
   dsBlue <- "#009EE3"
-  dsOrange <- "#FFA500"
-  dsPalette <- c(dsMagenta,dsBlue,dsGreen,dsOrange,dsYellow)
+  dsOrange <- "#D14A14"
+  dsLightBlue <- "#16C5E0"
+  dsPurple <- "#A839B0"
+  dsRed <- "#C92F2F"
+  dsPalette <- c(dsBlue,dsMagenta,dsGreen,dsOrange,dsYellow)
   p <- dsPalette
   if(type == "sequential") {
     p <-  c(dsMagenta,dsBlue)
   }
   if(rev) p <- rev(p)
   p
+}
+
+#' @export
+theme_ds_clean <- function(){
+  theme_ds() + theme(
+    axis.line=element_blank(),
+    axis.title.x=element_blank(),
+    axis.text.x=element_blank(),
+    axis.text.y=element_blank(),
+    axis.ticks=element_blank(),
+    axis.ticks.x=element_blank(),
+    axis.ticks.y=element_blank(),
+    panel.grid.major=element_blank())
 }
 
 
