@@ -8,11 +8,21 @@ library(ggmagic)
 
 #
 # Pie
-gg_pie_CaNu.(sampleData("Ca-Nu")) + theme_ds() +
+p <- gg_pie_CaNu.(sampleData("Ca-Nu")) + theme_ds() +
   scale_fill_manual(values = getPalette())
 
-gg_pie_CaNu.(sampleData("Ca-Nu")) + theme_ds_clean() +
+ggsave("~/Desktop/file.png", plot = p)
+
+save_ggmagic(p,"~/Desktop/file.png")
+
+
+gg_pie_CaNu.(sampleData("Ca-Nu")) +
+  labs(title = "RE",
+       subtitle="A well-crafted subtitle",
+       caption ="Lorem asi pasode dale") +
+  theme_ds_clean() +
   scale_fill_manual(values = getPalette())
+
 
 
 data("G20")
