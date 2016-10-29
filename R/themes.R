@@ -54,7 +54,7 @@ theme_ds <- function(){
   y_title_spacing <- function(spacing)
     max(0.8, min(2.4, spacing))
 
-  theme(
+  theme(legend.title=element_blank(),
     line = element_line(
       colour = line_colour,
       size = line_weight,

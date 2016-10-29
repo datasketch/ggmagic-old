@@ -11,7 +11,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_CaCa.  <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bubble_CaCa.  <- function(data, titleLabel = "", xLabel = NULL,
                              yLabel = NULL){
 
   f <- fringe(data)
@@ -24,10 +24,10 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "Report", xLabel = NULL,
     dplyr::group_by(a, b) %>%
     dplyr::summarise(Count = n()) %>%
     dplyr::arrange(desc(Count))
-  graph <- ggplot(data_graph, aes(x = a, y = b, size = Count))
+  graph <- ggplot(data_graph, aes(x = a, y = b, size = Count, color = ""))
   graph <- graph + geom_point()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
-  graph <- graph + theme_minimal() + theme(legend.position="none")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab) +
+    theme_ds() + scale_color_manual(values = getPalette()) + guides(size = FALSE, colour = FALSE)
 
   return(graph)
 }
@@ -43,7 +43,7 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_bubble_CaCa.  <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_coloured_bubble_CaCa.  <- function(data, titleLabel = "", xLabel = NULL,
                                       yLabel = NULL){
 
   f <- fringe(data)
@@ -58,8 +58,9 @@ gg_coloured_bubble_CaCa.  <- function(data, titleLabel = "Report", xLabel = NULL
     dplyr::arrange(desc(Count))
   graph <- ggplot(data_graph, aes(x = a, y = b, size = Count))
   graph <- graph + geom_point(aes(color = a))
-  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
-  graph <- graph + theme_minimal() + theme(legend.position="none")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab) +
+    labs(title = titleLabel, x = xlab, y = ylab) +
+    theme_ds() + scale_color_manual(values = getPalette()) + guides(colour = FALSE, size = FALSE)
 
   return(graph)
 }
@@ -75,7 +76,7 @@ gg_coloured_bubble_CaCa.  <- function(data, titleLabel = "Report", xLabel = NULL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_dot_bar_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
 
   f <- fringe(data)
@@ -135,7 +136,7 @@ gg_facet_dot_bar_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NUL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_pie_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL,
+gg_facet_pie_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
                                leg_pos="right"){
 
   f <- fringe(data)
@@ -144,10 +145,10 @@ gg_facet_pie_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL,
   data <- f$d
   graph <- ggplot(data=data, aes(x = factor(1), fill = a)) +
     geom_bar(width = 1) + coord_polar(theta = "y")
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
-  graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
-    theme(panel.grid=element_blank())
-  graph <- graph + theme(legend.position=leg_pos) + facet_grid(.~b)
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel) +
+    theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
+  graph <- graph + facet_grid(.~b)
 
   return(graph)
 }
@@ -164,19 +165,20 @@ gg_facet_pie_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_donut_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL,
+gg_facet_donut_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
                                width = 0.3, leg_pos="right"){
 
   f <- fringe(data)
   nms <- getCnames(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
+
   graph <- ggplot(data=data, aes(x = factor(1), fill = factor(a))) +
     geom_bar(width = width) + coord_polar(theta = "y")
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
-  graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
-    theme(panel.grid=element_blank())
-  graph <- graph + theme(legend.position=leg_pos) + facet_grid(.~b)
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel) +
+    theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
+  graph <- graph + facet_grid(.~b)
 
   return(graph)
 }
@@ -192,7 +194,7 @@ gg_facet_donut_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_bullseye_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL,
+gg_facet_bullseye_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
                             leg_pos="right"){
 
   f <- fringe(data)
@@ -202,10 +204,10 @@ gg_facet_bullseye_CaCa. <- function(data, titleLabel = "Report", fillLabel = NUL
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = a)) +
     geom_bar(width = 1) + coord_polar(theta = "x")
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
-  graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
-    theme(panel.grid=element_blank())
-  graph <- graph + theme(legend.position=leg_pos) + facet_grid(.~b)
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel) +
+    theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
+  graph <- graph + facet_grid(.~b)
 
   return(graph)
 }
@@ -221,17 +223,20 @@ gg_facet_bullseye_CaCa. <- function(data, titleLabel = "Report", fillLabel = NUL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_x_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_facet_coloured_x_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                     yLabel = 'Count', fillLabel = NULL,
                                     leg_pos = "right"){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
+  flabel <- fillLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data = data, aes(x = a, fill = factor(a))) + geom_bar()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel,  fill = flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos) + facet_grid(.~b)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel,  fill = flabel) +
+    theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  graph <- graph + facet_grid(.~b)
   return(graph)
 }
 
@@ -246,7 +251,7 @@ gg_bar_facet_coloured_x_ver_CaCa. <- function(data, titleLabel = "Report", xLabe
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_x_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_facet_coloured_x_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                     yLabel = 'Count', fillLabel = NULL,
                                     leg_pos = "right"){
 
@@ -268,7 +273,7 @@ gg_bar_facet_coloured_x_hor_CaCa. <- function(data, titleLabel = "Report", xLabe
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_y_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_facet_coloured_y_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                               yLabel = 'Count', fillLabel = NULL,
                                               leg_pos = "right"){
   f <- fringe(data)
@@ -277,8 +282,11 @@ gg_bar_facet_coloured_y_ver_CaCa. <- function(data, titleLabel = "Report", xLabe
   flabel <- fillLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data = data, aes(x = a, fill = factor(b))) + geom_bar()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel,  fill = flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos) + facet_grid(.~b)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel,  fill = flabel) +
+    theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  graph <- graph + facet_grid(.~b)
   return(graph)
 }
 
@@ -293,7 +301,7 @@ gg_bar_facet_coloured_y_ver_CaCa. <- function(data, titleLabel = "Report", xLabe
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_y_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_facet_coloured_y_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                               yLabel = 'Count', fillLabel = NULL,
                                               leg_pos = "right"){
 
@@ -304,9 +312,9 @@ gg_bar_facet_coloured_y_hor_CaCa. <- function(data, titleLabel = "Report", xLabe
   return(graph)
 }
 
-#' gg_bar_facet_coloured_parameter_ver_ver_CaCa.
+#' gg_bar_facet_coloured_parameter_ver_CaCa.
 #' Facet Vertical coloured by parameter bars
-#' @name gg_bar_facet_coloured_parameter_ver_ver_CaCa.
+#' @name gg_bar_facet_coloured_parameter_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -315,7 +323,7 @@ gg_bar_facet_coloured_y_hor_CaCa. <- function(data, titleLabel = "Report", xLabe
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_parameter_ver_ver_CaCa. <- function(data, titleLabel = "Report",
+gg_bar_facet_coloured_parameter_ver_CaCa. <- function(data, titleLabel = "",
                                                       xLabel = NULL, yLabel = 'Count',
                                                       parameter1 = NULL, parameter2 = NULL,
                                                       leg_pos = "right"){
@@ -336,16 +344,18 @@ gg_bar_facet_coloured_parameter_ver_ver_CaCa. <- function(data, titleLabel = "Re
   data_graph[is.na(data_graph)] <- FALSE
 
   graph <- ggplot(data_graph, aes(a, weight = count)) +
-    geom_bar(position ="dodge", aes(fill =  color == TRUE))
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
-  graph <- graph + guides(fill=FALSE)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos) + facet_grid(.~b)
+    geom_bar(position ="dodge", aes(fill =  color %in% TRUE))
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel) +
+    theme(legend.position=leg_pos) + guides(fill = FALSE)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  graph <- graph + facet_grid(.~b)
   return(graph)
 }
 
-#' gg_bar_facet_coloured_parameter_ver_hor_CaCa.
+#' gg_bar_facet_coloured_parameter_hor_CaCa.
 #' Facet Horizontal coloured by parameter Bars
-#' @name gg_bar_facet_coloured_parameter_ver_hor_CaCa.
+#' @name gg_bar_facet_coloured_parameter_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -354,12 +364,12 @@ gg_bar_facet_coloured_parameter_ver_ver_CaCa. <- function(data, titleLabel = "Re
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_parameter_ver_hor_CaCa. <- function(data, titleLabel = "Report",
+gg_bar_facet_coloured_parameter_hor_CaCa. <- function(data, titleLabel = "",
                                                       xLabel = NULL, yLabel = 'Count',
                                                       parameter1 = NULL, parameter2 = NULL,
                                                       leg_pos = "right"){
 
-  graph <- gg_bar_facet_coloured_parameter_ver_ver_CaCa.(data, titleLabel, xLabel,
+  graph <- gg_bar_facet_coloured_parameter_ver_CaCa.(data, titleLabel, xLabel,
                                              yLabel, parameter1, parameter2, leg_pos)
 
   graph <- graph + coord_flip()
@@ -377,8 +387,8 @@ gg_bar_facet_coloured_parameter_ver_hor_CaCa. <- function(data, titleLabel = "Re
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
-                                yLabel = 'Count', fillLabel = NULL, leg_pos = "top"){
+gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
+                                yLabel = 'Count', fillLabel = NULL, leg_pos = "right"){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -386,8 +396,9 @@ gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
   flabel <- fillLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data, aes(a, fill=b)) + geom_bar()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill=flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill=flabel) +
+    theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
 
   return(graph)
 }
@@ -404,7 +415,7 @@ gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
-                                  yLabel = 'Cpunt', fillLabel = NULL, leg_pos = "top"){
+                                  yLabel = 'Cpunt', fillLabel = NULL, leg_pos = "right"){
 
   graph <- gg_bar_stacked_ver_CaCa.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
@@ -423,7 +434,7 @@ gg_bar_stacked_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                       yLabel =  'Count', fillLabel = NULL,
                                       leg_pos = "right"){
 
@@ -435,8 +446,9 @@ gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "Report", xLabel
   graph <- ggplot(data, aes(x=reorder(data$b, rep(1, length(data$b)), sum), fill = a)) +
             geom_bar()
 
-  graph <- graph + labs(title = titleLabel, x = yLabel, y = xLabel,  fill = fillLabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, x = yLabel, y = xLabel,  fill = fillLabel) +
+    theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
 
   return(graph)
 }
@@ -452,11 +464,11 @@ gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "Report", xLabel
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ordered_stacked_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_ordered_stacked_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                             yLabel =  'Count', fillLabel = NULL,
                                             leg_pos = "right"){
 
-  graph <- gg_bar_ordered_stacked_hor_CaCa(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_bar_ordered_stacked_hor_CaCa.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
@@ -474,7 +486,7 @@ gg_bar_ordered_stacked_ver_CaCa. <- function(data, titleLabel = "Report", xLabel
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                          yLabel = 'Count', fillLabel = NULL,
                                          leg_pos = "right"){
 
@@ -504,7 +516,7 @@ gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = N
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_dot_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_stacked_dot_bar_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                          yLabel = 'Count', fillLabel = NULL,
                                          leg_pos = "right"){
 
@@ -526,9 +538,9 @@ gg_stacked_dot_bar_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = N
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_unstacked_coloured_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_unstacked_coloured_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                           yLabel = "Count", fillLabel = NULL,
-                                          leg_pos = "top"){
+                                          leg_pos = "right"){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -540,8 +552,10 @@ gg_bar_unstacked_coloured_hor_CaCa. <- function(data, titleLabel = "Report", xLa
     tidyr::spread(b, count) %>% tidyr::gather(b, count, -a)
 
   graph <- ggplot(data_graph, aes(a, weight=count, fill=b)) + geom_bar(position = "dodge")
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) +
+    theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
+
 
   return(graph)
 }
@@ -557,9 +571,9 @@ gg_bar_unstacked_coloured_hor_CaCa. <- function(data, titleLabel = "Report", xLa
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_unstacked_coloured_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_unstacked_coloured_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                         yLabel = "Count", fillLabel = NULL,
-                                        leg_pos = "top"){
+                                        leg_pos = "right"){
   graph <- gg_bar_unstacked_coloured_hor_CaCa.(data, titleLabel, xLabel, yLabel,
                                          fillLabel, leg_pos)
 
@@ -579,7 +593,7 @@ gg_bar_unstacked_coloured_ver_CaCa. <- function(data, titleLabel = "Report", xLa
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_line_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                  yLabel = "Count"){
 
   f <- fringe(data)
@@ -592,11 +606,11 @@ gg_facet_line_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
     dplyr::summarise(count = n()) %>%
     dplyr::arrange(desc(count))
 
-  graph <- ggplot(data = data_graph, aes(x = a, y = count, group=b)) + geom_line() +
+  graph <- ggplot(data = data_graph, aes(x = a, y = count, group=b, colour = "")) + geom_line() +
     facet_grid(. ~b)
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel) + guides(color = FALSE)
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
-  graph <- graph + theme_minimal()
 
   return(graph)
 }
@@ -612,7 +626,7 @@ gg_facet_line_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_line_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                             yLabel = "Count"){
 
   graph <- gg_facet_line_hor_CaCa.(data, titleLabel, xLabel, yLabel)
@@ -632,7 +646,7 @@ gg_facet_line_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_point_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_line_point_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                     yLabel = "Count"){
 
   f <- fringe(data)
@@ -645,11 +659,10 @@ gg_facet_line_point_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = 
     dplyr::summarise(count = n()) %>%
     dplyr::arrange(desc(count))
 
-  graph <- ggplot(data = data_graph, aes(x = a, y = count, group=b)) + geom_line() +
+  graph <- ggplot(data = data_graph, aes(x = a, y = count, group=b, colour = "")) + geom_line() +
     geom_point() + facet_grid(. ~b)
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
-
-  graph <- graph + theme_minimal()
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel) + guides(color = FALSE)
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
   return(graph)
 }
@@ -665,7 +678,7 @@ gg_facet_line_point_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_point_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_line_point_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                     yLabel = "Count"){
 
   graph <- gg_facet_line_point_hor_CaCa.(data, titleLabel, xLabel, yLabel)
@@ -685,9 +698,9 @@ gg_facet_line_point_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
-                                        yLabel = 'Percentage', fillLabel = NULL,
-                                        leg_pos = "top"){
+gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
+                                        yLabel = 'Percent', fillLabel = NULL,
+                                        leg_pos = "right"){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -695,9 +708,9 @@ gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = N
   flabel <- fillLabel %||% nms[2]
   data <- f$d
 
-  graph <- ggplot(data, aes(a, fill=b)) + geom_bar(position = "fill")
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- ggplot(data, aes(a, fill = b)) + geom_bar(position = "fill")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) +
+    guides(color = FALSE) + theme_ds() + scale_fill_manual(values = getPalette())
 
   return(graph)
 }
@@ -713,9 +726,9 @@ gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = N
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_100_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
-                                          yLabel = 'Percentage', fillLabel = NULL,
-                                          leg_pos = "top"){
+gg_bar_stacked_100_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
+                                          yLabel = 'Percent', fillLabel = NULL,
+                                          leg_pos = "right"){
 
 
   graph <- gg_bar_stacked_100_ver_CaCa.(data, titleLabel, xLabel, yLabel,

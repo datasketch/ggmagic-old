@@ -33,7 +33,7 @@ lat <- runif(100, lat_min, lat_max)
 
 dataGeNu3 <- data.frame(long = long, lat = lat) #num = round(runif(length(lat), 1, 5), 0))
 
-gg_bubble_co_Ge.(dataGeNu3, color_map = "grey")
+gg_bubble_co_Ge.(dataGeNu3, color_map = "grey", scale_point = 2)
 
 long <- runif(10, long_min, long_max)
 lat <- runif(10, lat_min, lat_max)

@@ -12,7 +12,7 @@ dataCa <- data.frame(c(catA, catB, catC))
 names(dataCa) <- "SGRWHSR"
 data <- dataCa
 # Waffle plot
-gg_waffle_Ca.(d, 50, "Reporte \n de conteo de perros")
+gg_waffle_Ca.(dataCa)
 
 d <- data.frame(a=sample(letters[1:7],10000,replace=TRUE))
 
@@ -21,8 +21,8 @@ d <- data.frame(a=sample(letters[1:7],10000,replace=TRUE))
 # minScale y maxScale
 
 # Coloured Bar
-gg_bar_coloured_ver_Ca.(dataCa, leg_pos = "top")
-gg_bar_coloured_hor_Ca.(d,leg_pos = "bottom")
+gg_bar_coloured_ver_Ca.(dataCa, leg_pos = "right")
+gg_bar_coloured_hor_Ca.(dataCa,leg_pos = "bottom")
 
 # Bar
 gg_bar_ver_Ca.(dataCa)

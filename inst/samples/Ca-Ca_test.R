@@ -44,10 +44,10 @@ gg_bar_facet_coloured_y_ver_CaCa.(dataCaCa)
 gg_bar_facet_coloured_y_hor_CaCa.(dataCaCa)
 
 # Facet coloured by parameter
-gg_bar_facet_coloured_parameter_ver_ver_CaCa.(dataCaCa,
+gg_bar_facet_coloured_parameter_ver_CaCa.(dataCaCa,
                                           parameter1 = c("Callejero"),
                                           parameter2 = c("A"))
-gg_bar_facet_coloured_parameter_ver_hor_CaCa.(dataCaCa,
+gg_bar_facet_coloured_parameter_hor_CaCa.(dataCaCa,
                                           parameter1 = c("Callejero", "De raza", "Mixto"),
                                           parameter2 = c("A","B","C"))
 
@@ -58,8 +58,8 @@ gg_bar_stacked_ver_CaCa.(dataCaCa)
 gg_bar_stacked_hor_CaCa.(dataCaCa)
 
 
-gg_bar_ordered_stacked_hor_CaCa(dataCaCa)
-gg_bar_ordered_stacked_ver_CaCa(dataCaCa)
+gg_bar_ordered_stacked_hor_CaCa.(dataCaCa)
+gg_bar_ordered_stacked_ver_CaCa.(dataCaCa)
 
 # Stacked dot Bar
 gg_stacked_dot_bar_hor_CaCa.(dataCaCa)
@@ -68,10 +68,6 @@ gg_stacked_dot_bar_ver_CaCa.(dataCaCa)
 # Unstacked Coloured Bar
 gg_bar_unstacked_coloured_hor_CaCa.(dataCaCa)
 gg_bar_unstacked_coloured_ver_CaCa.(dataCaCa)
-
-# Unstacked Bar
-gg_unstacked_bar_hor_CaCa.(dataCaCa)
-gg_unstacked_bar_hor_CaCa.(dataCaCa)
 
 d2 <- data.frame(a=sample(letters[1:7],100,replace=TRUE),
                 b=sample(letters[8:13],100,replace=TRUE))

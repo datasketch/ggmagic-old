@@ -12,8 +12,7 @@
 #' add(10, 1)
 gg_choropleth_co_GeNu. <- function(data, titleLabel = "Report",
                                    fillLabel = NULL, leg_pos = "right",
-                                   color_map = "gray", color_frontier = "white",
-                                   color_low = "lightblue", color_high = "darkblue"){
+                                   color_map = "gray", color_frontier = "white"){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -40,8 +39,8 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "Report",
     geom_map(data = data_graph, map = data_graph,
              aes(map_id = id, x = long, y = lat, group = group, fill = b),
              color = color_frontier, size = 0.25) + coord_map() +
-    expand_limits(x = data_graph$long, y = data_graph$lat) + theme_minimal() +
-    theme_void() + scale_fill_gradient(low = color_low, high = color_high, name = flab)
+    expand_limits(x = data_graph$long, y = data_graph$lat) + theme_ds() + theme_ds_clean() +
+    theme_void() + scale_fill_gradient(getPalette(type = "sequential"))
 
   options(warn=0)
 
@@ -61,8 +60,7 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "Report",
 #' add(10, 1)
 gg_choropleth_depto_GeNu. <- function(data, titleLabel = "Report", depto_ = "05",
                                       fillLabel = NULL, leg_pos = "right",
-                                      color_map = "gray", color_frontier = "white",
-                                      color_low = "lightblue", color_high = "darkblue"){
+                                      color_map = "gray", color_frontier = "white"){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -90,9 +88,9 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "Report", depto_ = "05"
   graph <- graph +
     geom_map(data = data_graph, map = data_graph,
              aes(map_id = id, x = long, y = lat, group = group, fill = b),
-             color = color_frontier, size=0.25) + coord_map() + theme_minimal() +
+             color = color_frontier, size=0.25) + coord_map() + theme_ds() + theme_ds_clean() +
     expand_limits(x = data_graph$long, y = data_graph$lat) +
-    theme_void() + scale_fill_gradient(low = color_low, high = color_high, name = flab)
+    theme_void() + scale_fill_gradient(getPalette(type = "sequential"))
 
   options(warn=0)
 
@@ -112,8 +110,7 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "Report", depto_ = "05"
 #' add(10, 1)
 gg_choropleth_latam_GeNu. <- function(data, titleLabel = "Report",
                                    fillLabel = NULL, leg_pos = "right",
-                                   color_map = "gray", color_frontier = "white",
-                                   color_low = "lightblue", color_high = "darkblue"){
+                                   color_map = "gray", color_frontier = "white"){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -135,14 +132,14 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "Report",
     geom_map(data = data_latam, map = data_latam,
              aes(map_id = id, x = long, y = lat, group = group), fill = color_map,
              color = color_frontier, size = 0.25) + coord_map() +
-    expand_limits(x = data_latam$long, y = data_latam$lat) + theme_minimal() +
+    expand_limits(x = data_latam$long, y = data_latam$lat) + theme_ds() + theme_ds_clean() +
     theme_void()
   graph <- graph +
     geom_map(data = data_graph, map = data_graph,
              aes(map_id = id, x = long, y = lat, group = group, fill = b),
              color = color_frontier, size = 0.25) + coord_map() +
     expand_limits(x = data_graph$long, y = data_graph$lat) + theme_minimal() +
-    theme_void() + scale_fill_gradient(low = color_low, high = color_high, name = flab)
+    theme_void() + scale_fill_gradient(getPalette(type = "sequential"))
 
   options(warn=0)
 
@@ -161,7 +158,8 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "Report",
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_co_Ge. <- function(data, titleLabel = "Report", fillLabel = NULL, color_point = "red",
-                              color_map = "gray", color_frontier = "white", scale_point = 0.25){
+                             color_map = "gray", color_frontier = "white", scale_point = 0.25,
+                             alpha = 0.5){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -181,8 +179,9 @@ gg_bubble_co_Ge. <- function(data, titleLabel = "Report", fillLabel = NULL, colo
     coord_fixed() + theme_minimal() +
     theme_void()
 
-  graph <- graph + geom_point(data = data_graph, aes(x = a, y = b), size = data_graph$count * scale_point,
-                              colour = color_point) + coord_map()
+  graph <- graph + geom_point(data = data_graph, aes(x = a, y = b),
+                              size = data_graph$count * scale_point,
+                              colour = color_point, alpha = alpha) + coord_map()
   options(warn=0)
 
   return(graph)
@@ -200,7 +199,8 @@ gg_bubble_co_Ge. <- function(data, titleLabel = "Report", fillLabel = NULL, colo
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_latam_Ge. <- function(data, titleLabel = "Report", fillLabel = NULL, color_point = "red",
-                                color_map = "gray", color_frontier = "white", scale_point = 0.25){
+                                color_map = "gray", color_frontier = "white", scale_point = 0.25,
+                                alpha = 0.5){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -220,8 +220,9 @@ gg_bubble_latam_Ge. <- function(data, titleLabel = "Report", fillLabel = NULL, c
     coord_fixed() + theme_minimal() +
     theme_void()
 
-  graph <- graph + geom_point(data = data_graph, aes(x = a, y = b), size = data_graph$count * scale_point,
-                              colour = color_point) + coord_map() + coord_fixed()
+  graph <- graph + geom_point(data = data_graph, aes(x = a, y = b),
+                              size = data_graph$count * scale_point,
+                              colour = color_point, alpha = alpha) + coord_map() + coord_fixed()
   options(warn=0)
 
   return(graph)
@@ -239,8 +240,9 @@ gg_bubble_latam_Ge. <- function(data, titleLabel = "Report", fillLabel = NULL, c
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_depto_Ge. <- function(data, titleLabel = "Report", depto_ = "05",
-                                 fillLabel = NULL, color_point = "red",
-                                 color_map = "gray", color_frontier = "white", scale_point = 0.25){
+                                fillLabel = NULL, color_point = "red",
+                                color_map = "gray", color_frontier = "white", scale_point = 0.25,
+                                alpha = 0.5){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -260,8 +262,9 @@ gg_bubble_depto_Ge. <- function(data, titleLabel = "Report", depto_ = "05",
     coord_map() + theme_minimal() +
     theme_void()
 
-  graph <- graph + geom_point(data = data_graph, aes(x = a, y = b), size = data_graph$count * scale_point,
-                              colour = color_point) + coord_map() + coord_fixed()
+  graph <- graph + geom_point(data = data_graph, aes(x = a, y = b),
+                              size = data_graph$count * scale_point,
+                              colour = color_point, alpha = alpha) + coord_map() + coord_fixed()
 
   options(warn=0)
 
@@ -280,7 +283,8 @@ gg_bubble_depto_Ge. <- function(data, titleLabel = "Report", depto_ = "05",
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_co_GeNu. <- function(data, titleLabel = "Report", fillLabel = NULL, color_point = "red",
-                               color_map = "gray", color_frontier = "white", scale_point = 0.25){
+                               color_map = "gray", color_frontier = "white", scale_point = 0.25,
+                               alpha = 0.5){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -297,8 +301,9 @@ gg_bubble_co_GeNu. <- function(data, titleLabel = "Report", fillLabel = NULL, co
     coord_fixed() + theme_minimal() +
     theme_void()
 
-  graph <- graph + geom_point(data = data, aes(x = a, y = b), size = data$c * scale_point,
-                              colour = color_point) + coord_map() + coord_fixed()
+  graph <- graph + geom_point(data = data, aes(x = a, y = b),
+                              size = data$c * scale_point,
+                              colour = color_point, alpha = alpha) + coord_map() + coord_fixed()
   options(warn=0)
 
   return(graph)
@@ -316,7 +321,8 @@ gg_bubble_co_GeNu. <- function(data, titleLabel = "Report", fillLabel = NULL, co
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_latam_GeNu. <- function(data, titleLabel = "Report", fillLabel = NULL, color_point = "red",
-                               color_map = "gray", color_frontier = "white", scale_point = 0.25){
+                               color_map = "gray", color_frontier = "white", scale_point = 0.25,
+                               alpha = 0.5){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -330,12 +336,12 @@ gg_bubble_latam_GeNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
     geom_map(map = data_latam,
              aes(map_id = id, x = long, y = lat, group = group), fill = color_map,
              color=color_frontier, size = 0.25) +
-    expand_limits(x = data_deptos$long, y = data_deptos$lat) +
+    expand_limits(x = data_latam$long, y = data_latam$lat) +
     coord_fixed() + theme_minimal() +
     theme_void()
 
   graph <- graph + geom_point(data = data, aes(x = a, y = b), size = data$c * scale_point,
-                              colour = color_point) + coord_map() + coord_fixed()
+                              colour = color_point, alpha = alpha) + coord_map() + coord_fixed()
   options(warn=0)
 
   return(graph)
@@ -354,7 +360,8 @@ gg_bubble_latam_GeNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
 #' add(10, 1)
 gg_bubble_depto_GeNu. <- function(data, titleLabel = "Report", depto_ = "05",
                                 fillLabel = NULL, color_point = "red",
-                                color_map = "gray", color_frontier = "white", scale_point = 0.25){
+                                color_map = "gray", color_frontier = "white", scale_point = 0.25,
+                                alpha = 0.5){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -374,7 +381,7 @@ gg_bubble_depto_GeNu. <- function(data, titleLabel = "Report", depto_ = "05",
     theme_void()
 
   graph <- graph + geom_point(data = data, aes(x = a, y = b), size = data$c * scale_point,
-                              colour = color_point) + coord_map() + coord_fixed()
+                              colour = color_point, alpha = alpha) + coord_map() + coord_fixed()
 
   options(warn=0)
 
@@ -393,7 +400,7 @@ gg_bubble_depto_GeNu. <- function(data, titleLabel = "Report", depto_ = "05",
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_co_CaGe. <- function(data, titleLabel = "Report", fillLabel = NULL, color_map = "gray",
-                               color_frontier = "white", scale_point = 0.25){
+                               color_frontier = "white", scale_point = 0.25, alpha = 0.5){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -413,7 +420,8 @@ gg_bubble_co_CaGe. <- function(data, titleLabel = "Report", fillLabel = NULL, co
     coord_fixed() + theme_minimal() +
     theme_void()
 
-  graph <- graph + geom_point(data = data_graph, aes(x = b, y = c, colour = a, size = count * scale_point)) +
+  graph <- graph + geom_point(data = data_graph, aes(x = b, y = c, colour = a,
+                                                     size = count * scale_point), alpha = alpha) +
     coord_map() + coord_fixed() + scale_size(guide = 'none')
   options(warn=0)
 
@@ -433,7 +441,8 @@ gg_bubble_co_CaGe. <- function(data, titleLabel = "Report", fillLabel = NULL, co
 #' add(10, 1)
 gg_bubble_depto_CaGe. <- function(data, titleLabel = "Report", depto_ = "05",
                                 fillLabel = NULL, color_point = "red",
-                                color_map = "gray", color_frontier = "white", scale_point = 0.25){
+                                color_map = "gray", color_frontier = "white", scale_point = 0.25,
+                                alpha = 0.5){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -453,7 +462,8 @@ gg_bubble_depto_CaGe. <- function(data, titleLabel = "Report", depto_ = "05",
     coord_map() + theme_minimal() +
     theme_void()
 
-  graph <- graph + geom_point(data = data_graph, aes(x = b, y = c, colour = a, size = count * scale_point)) +
+  graph <- graph + geom_point(data = data_graph, aes(x = b, y = c, colour = a,
+                                                     size = count * scale_point), alpha = alpha) +
     coord_map() + coord_fixed() + scale_size(guide = 'none')
   options(warn=0)
 

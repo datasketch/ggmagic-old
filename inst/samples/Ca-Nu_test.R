@@ -36,7 +36,7 @@ gg_bar_ordered_ver_CaNu.(dataCaNu)
 gg_bar_ordered_hor_CaNu.(dataCaNu)
 
 # Polar Bar
-gg_bar_polar_CaNu.(dataCaNu)
+gg_bar_polar_CaNu.(dataCaNu, width = 1)
 
 # Circular Bar
 gg_bar_circular_CaNu.(dataCaNu)
