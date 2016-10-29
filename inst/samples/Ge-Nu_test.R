@@ -75,3 +75,11 @@ df_points <- data.frame(long = points_long, lat = points_lat)
 
 gg_bubble_co_Ge.(df_points, color_map = "forestgreen")
 gg_bubble_latam_Ge.(df_points, scale_point = 5)
+
+type <- c("Desminado militar en operaciones", "Desminado militar en operaciones", "Sospecha de campo minado")
+lat <- c(2.115158, 10.477040, 6.139590)
+long <- c(-74.77349,-73.25066 ,-75.02309)
+df_CaGe <- data.frame(type = type, long = long, lat = lat)
+
+gg_bubble_co_CaGe.(df_CaGe)
+gg_bubble_depto_CaGe.(df_CaGe)

@@ -12,7 +12,8 @@
 #' add(10, 1)
 gg_choropleth_co_GeNu. <- function(data, titleLabel = "Report",
                                    fillLabel = NULL, leg_pos = "right",
-                                   color_map = "gray", color_frontier = "white"){
+                                   color_map = "gray", color_frontier = "white",
+                                   color_low = "lightblue", color_high = "darkblue"){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -40,7 +41,7 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "Report",
              aes(map_id = id, x = long, y = lat, group = group, fill = b),
              color = color_frontier, size = 0.25) + coord_map() +
     expand_limits(x = data_graph$long, y = data_graph$lat) + theme_minimal() +
-    theme_void() + scale_fill_continuous(guide = guide_legend(title = flab))
+    theme_void() + scale_fill_gradient(low = color_low, high = color_high, name = flab)
 
   options(warn=0)
 
@@ -60,7 +61,8 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "Report",
 #' add(10, 1)
 gg_choropleth_depto_GeNu. <- function(data, titleLabel = "Report", depto_ = "05",
                                       fillLabel = NULL, leg_pos = "right",
-                                      color_map = "gray", color_frontier = "white"){
+                                      color_map = "gray", color_frontier = "white",
+                                      color_low = "lightblue", color_high = "darkblue"){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -90,7 +92,7 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "Report", depto_ = "05"
              aes(map_id = id, x = long, y = lat, group = group, fill = b),
              color = color_frontier, size=0.25) + coord_map() + theme_minimal() +
     expand_limits(x = data_graph$long, y = data_graph$lat) +
-    theme_void() + scale_fill_continuous(guide = guide_legend(title = flab))
+    theme_void() + scale_fill_gradient(low = color_low, high = color_high, name = flab)
 
   options(warn=0)
 
@@ -110,7 +112,8 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "Report", depto_ = "05"
 #' add(10, 1)
 gg_choropleth_latam_GeNu. <- function(data, titleLabel = "Report",
                                    fillLabel = NULL, leg_pos = "right",
-                                   color_map = "gray", color_frontier = "white"){
+                                   color_map = "gray", color_frontier = "white",
+                                   color_low = "lightblue", color_high = "darkblue"){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -139,7 +142,7 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "Report",
              aes(map_id = id, x = long, y = lat, group = group, fill = b),
              color = color_frontier, size = 0.25) + coord_map() +
     expand_limits(x = data_graph$long, y = data_graph$lat) + theme_minimal() +
-    theme_void() + scale_fill_continuous(guide = guide_legend(title = flab))
+    theme_void() + scale_fill_gradient(low = color_low, high = color_high, name = flab)
 
   options(warn=0)
 
@@ -157,8 +160,7 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "Report",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_co_Ge. <- function(data, titleLabel = "Report", depto_ = "05",
-                              fillLabel = NULL, color_point = "red",
+gg_bubble_co_Ge. <- function(data, titleLabel = "Report", fillLabel = NULL, color_point = "red",
                               color_map = "gray", color_frontier = "white", scale_point = 0.25){
 
   f <- fringe(data)
@@ -197,8 +199,7 @@ gg_bubble_co_Ge. <- function(data, titleLabel = "Report", depto_ = "05",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_latam_Ge. <- function(data, titleLabel = "Report", depto_ = "05",
-                                fillLabel = NULL, color_point = "red",
+gg_bubble_latam_Ge. <- function(data, titleLabel = "Report", fillLabel = NULL, color_point = "red",
                                 color_map = "gray", color_frontier = "white", scale_point = 0.25){
 
   f <- fringe(data)
@@ -278,8 +279,7 @@ gg_bubble_depto_Ge. <- function(data, titleLabel = "Report", depto_ = "05",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_co_GeNu. <- function(data, titleLabel = "Report", depto_ = "05",
-                               fillLabel = NULL, color_point = "red",
+gg_bubble_co_GeNu. <- function(data, titleLabel = "Report", fillLabel = NULL, color_point = "red",
                                color_map = "gray", color_frontier = "white", scale_point = 0.25){
 
   f <- fringe(data)
@@ -315,8 +315,7 @@ gg_bubble_co_GeNu. <- function(data, titleLabel = "Report", depto_ = "05",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_latam_GeNu. <- function(data, titleLabel = "Report", depto_ = "05",
-                               fillLabel = NULL, color_point = "red",
+gg_bubble_latam_GeNu. <- function(data, titleLabel = "Report", fillLabel = NULL, color_point = "red",
                                color_map = "gray", color_frontier = "white", scale_point = 0.25){
 
   f <- fringe(data)
@@ -377,6 +376,85 @@ gg_bubble_depto_GeNu. <- function(data, titleLabel = "Report", depto_ = "05",
   graph <- graph + geom_point(data = data, aes(x = a, y = b), size = data$c * scale_point,
                               colour = color_point) + coord_map() + coord_fixed()
 
+  options(warn=0)
+
+  return(graph)
+}
+
+#' gg_bubble_co_CaGe.
+#' Points inside Colombia's deptos map
+#' @name gg_bubble_co_CaGe.
+#' @param x A category.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bubble_co_CaGe. <- function(data, titleLabel = "Report", fillLabel = NULL, color_map = "gray",
+                               color_frontier = "white", scale_point = 0.25){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flab <- fillLabel %||% nms[3]
+  data <- f$d
+
+  options(warn=-1)
+  data_deptos <- suppressMessages(read_csv(system.file("geo/deptos_co.csv", package = "ggmagic"), col_names = TRUE))
+
+  data_graph <- data %>% dplyr::group_by(a, b, c) %>% dplyr::summarise(count = n())
+
+  graph <- ggplot(data_deptos) +
+    geom_map(map = data_deptos,
+             aes(map_id = id, x = long, y = lat, group = group), fill = color_map,
+             color=color_frontier, size = 0.25) +
+    expand_limits(x = data_deptos$long, y = data_deptos$lat) +
+    coord_fixed() + theme_minimal() +
+    theme_void()
+
+  graph <- graph + geom_point(data = data_graph, aes(x = b, y = c, colour = a, size = count * scale_point)) +
+    coord_map() + coord_fixed() + scale_size(guide = 'none')
+  options(warn=0)
+
+  return(graph)
+}
+
+#' gg_bubble_depto_CaGe.
+#' Points inside Colombia's mpios map
+#' @name gg_bubble_depto_CaGe.
+#' @param x A category.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bubble_depto_CaGe. <- function(data, titleLabel = "Report", depto_ = "05",
+                                fillLabel = NULL, color_point = "red",
+                                color_map = "gray", color_frontier = "white", scale_point = 0.25){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flab <- fillLabel %||% nms[2]
+  data <- f$d
+
+  options(warn=-1)
+  data_mpios <- suppressMessages(read_csv(system.file("geo/mpios_depto_co.csv", package = "ggmagic"), col_names = TRUE))
+  data_mpios <- data_mpios %>% filter(depto == depto_)
+
+  data_graph <- data %>% dplyr::group_by(a, b, c) %>% dplyr::summarise(count = n())
+  graph <- ggplot() +
+    geom_map(data = data_mpios, map = data_mpios,
+             aes(map_id = id, x = long, y = lat, group = group), fill = color_map,
+             color = color_frontier, size = 0.25) +
+    expand_limits(x = data_mpios$long, y = data_mpios$lat) +
+    coord_map() + theme_minimal() +
+    theme_void()
+
+  graph <- graph + geom_point(data = data_graph, aes(x = b, y = c, colour = a, size = count * scale_point)) +
+    coord_map() + coord_fixed() + scale_size(guide = 'none')
   options(warn=0)
 
   return(graph)

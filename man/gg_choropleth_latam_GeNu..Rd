@@ -6,7 +6,8 @@
 Choropleth of Latam}
 \usage{
 gg_choropleth_latam_GeNu.(data, titleLabel = "Report", fillLabel = NULL,
-  leg_pos = "right", color_map = "gray", color_frontier = "white")
+  leg_pos = "right", color_map = "gray", color_frontier = "white",
+  color_low = "lightblue", color_high = "darkblue")
 }
 \arguments{
 \item{x}{A category.}
