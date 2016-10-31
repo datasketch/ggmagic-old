@@ -5,7 +5,7 @@
 \title{gg_treemap_x_CaNu.
 Treemap fill by first Ca}
 \usage{
-gg_treemap_x_CaNu.(data, titleLabel = "Report", fillLabel = NULL)
+gg_treemap_x_CaNu.(data, titleLabel = "", fillLabel = NULL)
 }
 \arguments{
 \item{x}{A number.}

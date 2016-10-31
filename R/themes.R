@@ -9,7 +9,7 @@ getPalette <- function(type = "qualitative", rev = FALSE){
   dsLightBlue <- "#16C5E0"
   dsPurple <- "#A839B0"
   dsRed <- "#C92F2F"
-  dsPalette <- c(dsBlue,dsMagenta,dsGreen,dsOrange,dsYellow)
+  dsPalette <- c(dsBlue,dsMagenta,dsGreen,dsOrange,dsYellow,dsLightBlue,dsPurple,dsRed)
   p <- dsPalette
   if(type == "sequential") {
     p <-  c(dsMagenta,dsBlue)
@@ -37,7 +37,7 @@ theme_ds <- function(){
   type <- 'outer'
   inner <- type == 'inner'
   palette <- list(
-    background = "#FDF8FD", # #ffffff #F0EDFF #F8EDFA #FDF8FD
+    background = "#ffffff", # #ffffff #F0EDFF #F8EDFA #FDF8FD
     text = list(inner = "#555555", outer = "#111111"),
     line = list(inner = "#826A50", outer = "#362C21"),
     gridline = "#c9c7d3",

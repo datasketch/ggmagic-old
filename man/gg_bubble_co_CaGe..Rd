@@ -6,7 +6,8 @@
 Points inside Colombia's deptos map}
 \usage{
 gg_bubble_co_CaGe.(data, titleLabel = "Report", fillLabel = NULL,
-  color_map = "gray", color_frontier = "white", scale_point = 0.25)
+  color_map = "gray", color_frontier = "white", scale_point = 0.25,
+  alpha = 0.5)
 }
 \arguments{
 \item{x}{A category.}

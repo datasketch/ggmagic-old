@@ -5,7 +5,7 @@
 \title{gg_bar_ordered_hor_CaNu.
 Ordered horizontal Bars}
 \usage{
-gg_bar_ordered_hor_CaNu.(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_ordered_hor_CaNu.(data, titleLabel = "", xLabel = NULL,
   yLabel = NULL, leg_pos = "right")
 }
 \arguments{

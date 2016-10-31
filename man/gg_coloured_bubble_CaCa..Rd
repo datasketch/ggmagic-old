@@ -5,7 +5,7 @@
 \title{gg_coloured_bubble_CaCa.
 Coloured Bubble}
 \usage{
-gg_coloured_bubble_CaCa.(data, titleLabel = "Report", xLabel = NULL,
+gg_coloured_bubble_CaCa.(data, titleLabel = "", xLabel = NULL,
   yLabel = NULL)
 }
 \arguments{

@@ -5,8 +5,8 @@
 \title{gg_bar_facet_coloured_y_hor_CaCa.
 Facet Horizontal coloured Bars}
 \usage{
-gg_bar_facet_coloured_y_hor_CaCa.(data, titleLabel = "Report",
-  xLabel = NULL, yLabel = "Count", fillLabel = NULL, leg_pos = "right")
+gg_bar_facet_coloured_y_hor_CaCa.(data, titleLabel = "", xLabel = NULL,
+  yLabel = "Count", fillLabel = NULL, leg_pos = "right")
 }
 \arguments{
 \item{x}{A number.}

@@ -5,7 +5,7 @@
 \title{gg_bar_ordered_stacked_ver_CaCa.
 Ordered Stacked Vertical Bar}
 \usage{
-gg_bar_ordered_stacked_ver_CaCa.(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_ordered_stacked_ver_CaCa.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "right")
 }
 \arguments{

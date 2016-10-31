@@ -5,7 +5,7 @@
 \title{gg_stacked_dot_bar_ver_CaCa.
 Stacked vertical dot Bar}
 \usage{
-gg_stacked_dot_bar_ver_CaCa.(data, titleLabel = "Report", xLabel = NULL,
+gg_stacked_dot_bar_ver_CaCa.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "right")
 }
 \arguments{

@@ -5,7 +5,7 @@
 \title{gg_facet_line_point_ver_CaCa.
 Vertical Line Point}
 \usage{
-gg_facet_line_point_ver_CaCa.(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_line_point_ver_CaCa.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count")
 }
 \arguments{

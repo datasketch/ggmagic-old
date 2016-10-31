@@ -5,7 +5,7 @@
 \title{gg_bar_coloured_y_ver_CaNu.
 vertical bar}
 \usage{
-gg_bar_coloured_y_ver_CaNu.(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_coloured_y_ver_CaNu.(data, titleLabel = "", xLabel = NULL,
   yLabel = NULL, fillLabel = NULL, leg_pos = "right")
 }
 \arguments{

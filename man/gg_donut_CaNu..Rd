@@ -5,7 +5,7 @@
 \title{gg_donut_CaNu.
 dount}
 \usage{
-gg_donut_CaNu.(data, titleLabel = "Report", fillLabel = NULL, width = 0.3,
+gg_donut_CaNu.(data, titleLabel = "", fillLabel = NULL, width = 0.3,
   leg_pos = "right")
 }
 \arguments{

@@ -5,7 +5,7 @@
 \title{gg_line_point_ver_Ca.
 Vertical Line Point}
 \usage{
-gg_line_point_ver_Ca.(data, titleLabel = "Report", xLabel = NULL,
+gg_line_point_ver_Ca.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", leg_pos = "right")
 }
 \arguments{

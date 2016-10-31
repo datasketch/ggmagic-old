@@ -6,7 +6,7 @@
 Stacked horizontal Bar}
 \usage{
 gg_bar_stacked_hor_CaCa.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = "Cpunt", fillLabel = NULL, leg_pos = "top")
+  yLabel = "Cpunt", fillLabel = NULL, leg_pos = "right")
 }
 \arguments{
 \item{x}{A number.}

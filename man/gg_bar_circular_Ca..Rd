@@ -5,7 +5,7 @@
 \title{gg_bar_circular_Ca.
 Circular Bar}
 \usage{
-gg_bar_circular_Ca.(data, titleLabel = "Report", fillLabel = NULL,
+gg_bar_circular_Ca.(data, titleLabel = "", fillLabel = NULL,
   leg_pos = "right", width = 0.85)
 }
 \arguments{
