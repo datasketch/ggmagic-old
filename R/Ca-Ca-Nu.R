@@ -939,7 +939,9 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "Report", fillLabel 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pyramid_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL){
+gg_pyramid_CaCaNu. <- function(data, titleLabel = "Report", xLabel = "Category",
+                               yLabel = "Frequency", fillLabel = "Types",
+                               leg_pos = "top"){
 
   f <- fringe(data)
   nms <- getCnames(f)
