@@ -7,7 +7,7 @@ vertical unstacked bargraph}
 \usage{
 vertical_unstacked_bargraphCCN(data, titleLabel = "Report",
   xLabel = "Category", yLabel = "Frequency", fillLabel = "Types",
-  leg_pos = "top")
+  leg_pos = "top", ...)
 }
 \arguments{
 \item{x}{A category.}

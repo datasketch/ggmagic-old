@@ -6,7 +6,7 @@
 vertical dot graph}
 \usage{
 vertical_dotgraphCCN(data, titleLabel = "Report", xLabel = "Categories",
-  yLabel = "Frequency", fillLabel = "Types", leg_pos = "right")
+  yLabel = "Frequency", fillLabel = "Types", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

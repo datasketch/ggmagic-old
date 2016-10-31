@@ -11,6 +11,7 @@ names(dataCaNu)[1] <- "GSRG"
 dataCaNu$GSRG <- as.character(dataCaNu$GSRG)
 dataCaNu$SRHTD <- runif(nrow(dataCaNu), min = 0, max = 100)
 
+dataCaNu <- rename(dataCaNu, c('GSRG' = 'a', 'SRHTD' = 'b'))
 
 # Pie
 gg_pie_CaNu.(dataCaNu)

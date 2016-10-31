@@ -6,7 +6,7 @@
 Circular Bar}
 \usage{
 gg_bar_facet_circular_CaCaNu.(data, titleLabel = "Report", fillLabel = NULL,
-  leg_pos = "right", width = 0.85)
+  leg_pos = "right", width = 0.85, ...)
 }
 \arguments{
 \item{x}{A number.}

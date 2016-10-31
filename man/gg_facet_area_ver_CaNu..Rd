@@ -6,7 +6,7 @@
 Facet Vertical Area}
 \usage{
 gg_facet_area_ver_CaNu.(data, titleLabel = "Report", xLabel = "Index",
-  yLabel = NULL)
+  yLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

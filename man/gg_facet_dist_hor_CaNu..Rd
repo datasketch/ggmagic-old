@@ -6,7 +6,7 @@
 Facet Horizontal Dist}
 \usage{
 gg_facet_dist_hor_CaNu.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = "Count", fillLabel = NULL, leg_pos = "right")
+  yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

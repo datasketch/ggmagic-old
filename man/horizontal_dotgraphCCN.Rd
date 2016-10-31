@@ -6,7 +6,7 @@
 horizontal dot graph}
 \usage{
 horizontal_dotgraphCCN(data, titleLabel = "Report", xLabel = "Categories",
-  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top")
+  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top", ...)
 }
 \arguments{
 \item{x}{A category.}

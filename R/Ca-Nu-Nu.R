@@ -9,9 +9,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
-gg_steamgraph_CaNuNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right"){
+gg_steamgraph_CaNuNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -36,8 +34,7 @@ gg_steamgraph_CaNuNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_p
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-gg_lines_CaNuNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right"){
+gg_lines_CaNuNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -51,7 +48,6 @@ gg_lines_CaNuNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="r
   guides(text = FALSE) + theme_bw()
 
 }
-gg_lines_CaNuNu.(data)
 
 
 
@@ -66,8 +62,7 @@ gg_lines_CaNuNu.(data)
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-gg_point_CaNuNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right"){
+gg_point_CaNuNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   flabel <- fillLabel %||% nms[1]

@@ -6,7 +6,7 @@
 Polar Bar}
 \usage{
 gg_bar_polar_CaNu.(data, width = 0.95, titleLabel = "Report",
-  fillLabel = NULL, leg_pos = "right")
+  fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -6,7 +6,7 @@
 Facet Horizontal Histogram + Dot}
 \usage{
 gg_facet_dot_hist_hor_CaNu.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = "Count", fillLabel = NULL, leg_pos = "right")
+  yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

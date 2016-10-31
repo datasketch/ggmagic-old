@@ -10,7 +10,7 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_horizon_DaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
-                             yLabel =  NULL, leg_pos = "right"){
+                             yLabel =  NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -37,7 +37,7 @@ gg_horizon_DaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_waterfall_DaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
-                             yLabel =  NULL){
+                             yLabel =  NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -63,7 +63,7 @@ gg_waterfall_DaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_lines_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -89,7 +89,7 @@ gg_lines_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_scatter_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_scatter_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -117,7 +117,7 @@ gg_scatter_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_box_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_box_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -145,7 +145,7 @@ gg_box_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_violin_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_violin_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -171,7 +171,7 @@ gg_violin_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_area_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -197,7 +197,7 @@ gg_area_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_kagi_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_kagi_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -227,7 +227,7 @@ gg_kagi_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' add(10, 1)
 
 
-gg_smooth_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_smooth_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -252,7 +252,7 @@ gg_smooth_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' add(1, 1)
 #' add(10, 1)
 
-gg_div_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_div_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   data$Year <- format(data$a, "%Y")
   data$Month <- format(data$a, "%b")
@@ -288,7 +288,7 @@ gg_div_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_bar_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -314,7 +314,7 @@ gg_bar_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubbles_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_bubbles_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -339,7 +339,7 @@ gg_bubbles_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lollipop_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_lollipop_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -364,7 +364,7 @@ gg_lollipop_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stepped_stacked_area_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
+gg_stepped_stacked_area_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)

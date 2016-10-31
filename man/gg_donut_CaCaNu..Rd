@@ -6,7 +6,7 @@
 Facet Donut}
 \usage{
 gg_donut_CaCaNu.(data, titleLabel = "Report", fillLabel = NULL,
-  width = 0.3, leg_pos = "right")
+  width = 0.3, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

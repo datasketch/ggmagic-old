@@ -5,14 +5,13 @@
 \title{gg_pyramid_CaCaNu.
 pyramid}
 \usage{
-gg_pyramid_CaCaNu.(data, titleLabel = "Report", fillLabel = NULL)
+gg_pyramid_CaCaNu.(data, titleLabel = "Report", xLabel = "Category",
+  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top", ...)
 }
 \arguments{
 \item{x}{A category.}
 
 \item{y}{A category.}
-
-\item{z}{A category.}
 }
 \value{
 The sum of \code{x} and \code{y}.

@@ -6,7 +6,8 @@
 Facet Vertical Histogram + Dist + Mean}
 \usage{
 gg_facet_dist_hist_mean_ver_CaNu.(data, titleLabel = "Report",
-  xLabel = NULL, yLabel = "Count", fillLabel = NULL, leg_pos = "right")
+  xLabel = NULL, yLabel = "Count", fillLabel = NULL, leg_pos = "right",
+  ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -7,7 +7,7 @@ Facet Horizontal coloured by parameter Bars}
 \usage{
 gg_bar_facet_coloured_parameter_ver_hor_CaCa.(data, titleLabel = "Report",
   xLabel = NULL, yLabel = "Count", parameter1 = NULL, parameter2 = NULL,
-  leg_pos = "right")
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

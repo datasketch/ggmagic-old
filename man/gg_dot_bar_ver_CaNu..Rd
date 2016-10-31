@@ -6,7 +6,7 @@
 Vertical Dot Bar}
 \usage{
 gg_dot_bar_ver_CaNu.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = "Count", fillLabel = NULL, leg_pos = "right")
+  yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

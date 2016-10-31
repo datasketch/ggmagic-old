@@ -6,7 +6,7 @@
 100 vertical stacked bar graph}
 \usage{
 gg_bar_stacked_100_ver_CaCaNu.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = NULL, fillLabel = NULL, leg_pos = "top")
+  yLabel = NULL, fillLabel = NULL, leg_pos = "top", ...)
 }
 \arguments{
 \item{x}{A category.}

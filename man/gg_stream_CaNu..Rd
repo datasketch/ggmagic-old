@@ -6,7 +6,7 @@
 Stream}
 \usage{
 gg_stream_CaNu.(data, titleLabel = "", xLabel = "Index", yLabel = NULL,
-  fillLabel = NULL, leg_pos = "right")
+  fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

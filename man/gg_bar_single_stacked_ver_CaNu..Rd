@@ -7,7 +7,7 @@ Single Vertical Stacked Bar}
 \usage{
 gg_bar_single_stacked_ver_CaNu.(data, titleLabel = "Report",
   yLabel = "Frequency", fillLabel = "Types", leg_pos = "right",
-  width = 0.3)
+  width = 0.3, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -6,7 +6,8 @@
 horizontal bar}
 \usage{
 gg_bar_facet_coloured_x_hor_CaCaNu.(data, titleLabel = "Report",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right")
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
+  ...)
 }
 \arguments{
 \item{x}{A category.}

@@ -7,7 +7,7 @@ horizontal unstacked bargraph}
 \usage{
 horizontal_unstacked_bargraphCCN(data, titleLabel = "Report",
   xLabel = "Category", yLabel = "Frequency", fillLabel = "Types",
-  leg_pos = "top")
+  leg_pos = "top", ...)
 }
 \arguments{
 \item{x}{A category.}

@@ -6,7 +6,7 @@
 Facet Trend ribbon}
 \usage{
 gg_facet_trend_ribbon_CaNu.(data, titleLabel = "Report", xLabel = "Index",
-  yLabel = NULL, fillLabel = NULL, type = 1)
+  yLabel = NULL, fillLabel = NULL, type = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

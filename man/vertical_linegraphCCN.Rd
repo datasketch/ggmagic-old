@@ -6,7 +6,7 @@
 vertical linegraph}
 \usage{
 vertical_linegraphCCN(data, titleLabel = "Report", xLabel = "Types",
-  yLabel = "Frequency")
+  yLabel = "Frequency", ...)
 }
 \arguments{
 \item{x}{A category.}

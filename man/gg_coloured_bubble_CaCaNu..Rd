@@ -6,7 +6,7 @@
 Coloured Bubble}
 \usage{
 gg_coloured_bubble_CaCaNu.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = NULL)
+  yLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

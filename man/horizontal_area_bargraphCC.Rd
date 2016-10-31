@@ -6,7 +6,7 @@
 horizontal area bar graph}
 \usage{
 horizontal_area_bargraphCC(data, titleLabel = "Report", xLabel = "Category",
-  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top")
+  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top", ...)
 }
 \arguments{
 \item{x}{A category.}

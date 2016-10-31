@@ -10,7 +10,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stk_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL){
+gg_bar_stk_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL, ...){
   f <- fringe(data)
   nms <- getCnames(f)
   data <- f$d
@@ -38,7 +38,7 @@ gg_bar_stk_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_grp_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL){
+gg_bar_grp_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL, ...){
   f <- fringe(data)
   nms <- getCnames(f)
   data <- f$d
@@ -68,7 +68,7 @@ gg_bar_grp_ver_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stk_hor_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL){
+gg_bar_stk_hor_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, clab = NULL, ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
@@ -97,7 +97,7 @@ gg_bar_stk_hor_CaYeNu. <- function(data, title = NULL,xlab = NULL, ylab = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_hor_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab = NULL){
+gg_lines_hor_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab = NULL, ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[2]
@@ -110,7 +110,7 @@ gg_lines_hor_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab
     xlab(xlab) +
     ggtitle(title) +
     scale_y_continuous(labels = comma) +
-    scale_colour_discrete(name = clab)
+    scale_colour_discrete(name = clab) + theme_bw()
 }
 
 
@@ -138,8 +138,39 @@ gg_circle_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab = 
 
       ggplot(data, aes(x = b, y = a)) +
         geom_point(aes(size = c)) +
-        theme_bw() +
         ylab(ylab) +
         xlab(xlab) +
-        ggtitle(title)
+        ggtitle(title)+
+        theme_bw()
 }
+
+
+
+#' gg_steamgraph_CaYeNu.
+#' steamgraph
+#' @name gg_steamgraph_CaYeNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_steamgraph_CaYeNu. <-  function(data, titleLabel = "", clab = NULL, leg_pos="right", ...){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xlab %||% nms[2]
+  ylab <- ylab %||% nms[3]
+  clab <- clab %||% nms[1]
+  data <- f$d
+
+  ggplot(data, aes(x = b, y = c, group = a, fill = a)) +
+  stat_steamgraph() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_manual(values = getPalette()) +
+  theme_bw()  + labs(title = titleLabel, x = "", y = "", fill = "")  +
+  theme(legend.position=leg_pos)
+}
+

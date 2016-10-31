@@ -6,7 +6,7 @@
 horizontal linegraph}
 \usage{
 horizontal_linegraphCCN(data, titleLabel = "Report", xLabel = "Types",
-  yLabel = "Frequency")
+  yLabel = "Frequency", ...)
 }
 \arguments{
 \item{x}{A category.}

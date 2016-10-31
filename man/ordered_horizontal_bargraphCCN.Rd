@@ -7,7 +7,7 @@ ordered horizontal bar graph}
 \usage{
 ordered_horizontal_bargraphCCN(data, titleLabel = "Report",
   xLabel = "Frequency", yLabel = "Categories", fillLabel = "Types",
-  leg_pos = "right")
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

@@ -6,7 +6,7 @@
 Vertical coloured by parameter bars}
 \usage{
 gg_bar_coloured_parameter_ver_CaNu.(data, titleLabel = "", xLabel = NULL,
-  yLabel = NULL, parameter = NULL, leg_pos = "right")
+  yLabel = NULL, parameter = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

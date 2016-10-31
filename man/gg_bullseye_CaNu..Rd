@@ -6,7 +6,7 @@
 Bullseye}
 \usage{
 gg_bullseye_CaNu.(data, titleLabel = "", fillLabel = NULL,
-  leg_pos = "right")
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

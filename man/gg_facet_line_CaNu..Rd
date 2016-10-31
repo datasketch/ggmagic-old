@@ -6,7 +6,7 @@
 Facet Line}
 \usage{
 gg_facet_line_CaNu.(data, titleLabel = "Report", xLabel = "Index",
-  yLabel = NULL, fillLabel = NULL, type = 1)
+  yLabel = NULL, fillLabel = NULL, type = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -1,5 +1,3 @@
-
-
 #' gg_bubble_CaCa.
 #' Bubble
 #' @name gg_bubble_CaCa.

@@ -6,7 +6,7 @@
 vertical bar}
 \usage{
 gg_bar_coloured_y_ver_CaNu.(data, titleLabel = "", xLabel = NULL,
-  yLabel = NULL, fillLabel = NULL, leg_pos = "right")
+  yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}
