@@ -51,8 +51,6 @@ gg_lines_CaNuNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="r
   guides(text = FALSE) + theme_bw()
 
 }
-gg_lines_CaNuNu.(data)
-
 
 
 #' gg_point_CaNuNu.
