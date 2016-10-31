@@ -5,7 +5,7 @@
 \title{gg_bullseye_Ca.
 Bullseye}
 \usage{
-gg_bullseye_Ca.(data, titleLabel = "Report", fillLabel = NULL,
+gg_bullseye_Ca.(data, titleLabel = "", fillLabel = NULL,
   leg_pos = "right")
 }
 \arguments{

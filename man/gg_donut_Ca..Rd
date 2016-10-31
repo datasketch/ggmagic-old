@@ -5,7 +5,7 @@
 \title{gg_donut_Ca.
 Donut}
 \usage{
-gg_donut_Ca.(data, titleLabel = "Report", fillLabel = NULL, width = 0.3,
+gg_donut_Ca.(data, titleLabel = "", fillLabel = NULL, width = 0.3,
   leg_pos = "right")
 }
 \arguments{

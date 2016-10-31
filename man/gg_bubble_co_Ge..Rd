@@ -5,9 +5,9 @@
 \title{gg_bubble_co_Ge.
 Points inside Colombia's deptos map}
 \usage{
-gg_bubble_co_Ge.(data, titleLabel = "Report", depto_ = "05",
-  fillLabel = NULL, color_point = "red", color_map = "gray",
-  color_frontier = "white")
+gg_bubble_co_Ge.(data, titleLabel = "Report", fillLabel = NULL,
+  color_point = "red", color_map = "gray", color_frontier = "white",
+  scale_point = 0.25, alpha = 0.5)
 }
 \arguments{
 \item{x}{A category.}

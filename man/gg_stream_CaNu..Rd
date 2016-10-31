@@ -5,8 +5,8 @@
 \title{gg_stream_CaNu.
 Stream}
 \usage{
-gg_stream_CaNu.(data, titleLabel = "Report", xLabel = "Index",
-  yLabel = NULL, fillLabel = NULL, leg_pos = "right")
+gg_stream_CaNu.(data, titleLabel = "", xLabel = "Index", yLabel = NULL,
+  fillLabel = NULL, leg_pos = "right")
 }
 \arguments{
 \item{x}{A number.}

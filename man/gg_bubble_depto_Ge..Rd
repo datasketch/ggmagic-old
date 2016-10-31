@@ -7,7 +7,7 @@ Points inside Colombia's mpios map}
 \usage{
 gg_bubble_depto_Ge.(data, titleLabel = "Report", depto_ = "05",
   fillLabel = NULL, color_point = "red", color_map = "gray",
-  color_frontier = "white")
+  color_frontier = "white", scale_point = 0.25, alpha = 0.5)
 }
 \arguments{
 \item{x}{A category.}

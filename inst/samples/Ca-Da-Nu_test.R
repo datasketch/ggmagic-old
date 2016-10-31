@@ -3,7 +3,8 @@
 library(devtools)
 load_all()
 document()
-#install()
+install()
+library(ggmagic)
 
 dataCaDaNu <- data.frame(proj = paste0("p",sample(LETTERS[5:7],50, replace=TRUE)),
                    date = sample(seq(as.Date('1999-01-01'), as.Date('2002-01-01'), by="day"), 50),
@@ -12,10 +13,10 @@ dataCaDaNu <- data.frame(proj = paste0("p",sample(LETTERS[5:7],50, replace=TRUE)
 
 Time = seq.Date(as.Date("2015-01-01"),to = Sys.Date(), by = "1 day")
 dfData = data.frame(
-  FSRG = c(rep('Almacén', length(Time)), rep('Almacén B', length(Time)),
+  Ca = c(rep('Almacén A', length(Time)), rep('Almacén B', length(Time)),
                     rep('Almacén C', length(Time)), rep('Almacén D', length(Time))),
-  BRTN = Time,
-  NRYN = abs(
+  Da = Time,
+  Nu = abs(
     c(
       cumsum(rnorm(length(Time), 0, 3)),
       cumsum(rnorm(length(Time), 0, 4)),
@@ -29,6 +30,9 @@ gg_scatter_hor_CaDaNu.(dataCaDaNu)
 
 gg_stream_CaDaNu.(dfData)
 
-
+gg_area_stacked_ver_CaDaNu.(dfData)
+gg_area_stacked_hor_CaDaNu.(dfData)
+gg_area_stacked_100_ver_CaDaNu.(dfData)
+gg_area_stacked_100_hor_CaDaNu.(dfData)
 
 

@@ -38,40 +38,36 @@ gg_facet_donut_CaCa.(dataCaCa)
 gg_facet_bullseye_CaCa.(dataCaCa)
 
 # Facet coloured Bar
-gg_facet_coloured_x_bar_ver_CaCa.(dataCaCa)
-gg_facet_coloured_x_bar_hor_CaCa.(dataCaCa)
-gg_facet_coloured_y_bar_ver_CaCa.(dataCaCa)
-gg_facet_coloured_y_bar_hor_CaCa.(dataCaCa)
+gg_bar_facet_coloured_x_ver_CaCa.(dataCaCa)
+gg_bar_facet_coloured_x_hor_CaCa.(dataCaCa)
+gg_bar_facet_coloured_y_ver_CaCa.(dataCaCa)
+gg_bar_facet_coloured_y_hor_CaCa.(dataCaCa)
 
 # Facet coloured by parameter
-gg_facet_coloured_parameter_bar_ver_CaCa.(dataCaCa,
+gg_bar_facet_coloured_parameter_ver_CaCa.(dataCaCa,
                                           parameter1 = c("Callejero"),
                                           parameter2 = c("A"))
-gg_facet_coloured_parameter_bar_hor_CaCa.(dataCaCa,
+gg_bar_facet_coloured_parameter_hor_CaCa.(dataCaCa,
                                           parameter1 = c("Callejero", "De raza", "Mixto"),
                                           parameter2 = c("A","B","C"))
 
 
 
 # Stacked Bar
-gg_stacked_bar_ver_CaCa.(dataCaCa)
-gg_stacked_bar_hor_CaCa.(dataCaCa)
+gg_bar_stacked_ver_CaCa.(dataCaCa)
+gg_bar_stacked_hor_CaCa.(dataCaCa)
 
 
-gg_ordered_stacked_bar_hor_CaCa(dataCaCa)
-gg_ordered_stacked_bar_ver_CaCa(dataCaCa)
+gg_bar_ordered_stacked_hor_CaCa.(dataCaCa)
+gg_bar_ordered_stacked_ver_CaCa.(dataCaCa)
 
 # Stacked dot Bar
 gg_stacked_dot_bar_hor_CaCa.(dataCaCa)
 gg_stacked_dot_bar_ver_CaCa.(dataCaCa)
 
 # Unstacked Coloured Bar
-gg_unstacked_coloured_bar_hor_CaCa.(dataCaCa)
-gg_unstacked_coloured_bar_ver_CaCa.(dataCaCa)
-
-# Unstacked Bar
-gg_unstacked_bar_hor_CaCa.(dataCaCa)
-gg_unstacked_bar_hor_CaCa.(dataCaCa)
+gg_bar_unstacked_coloured_hor_CaCa.(dataCaCa)
+gg_bar_unstacked_coloured_ver_CaCa.(dataCaCa)
 
 d2 <- data.frame(a=sample(letters[1:7],100,replace=TRUE),
                 b=sample(letters[8:13],100,replace=TRUE))
@@ -85,29 +81,29 @@ gg_facet_line_point_hor_CaCa.(d2)
 gg_facet_line_point_ver_CaCa.(d2)
 
 # 100% Stacked Bar
-gg_stacked_bar_100_ver_CaCa.(dataCaCa)
-gg_stacked_bar_100_hor_CaCa.(dataCaCa)
+gg_bar_stacked_100_ver_CaCa.(dataCaCa)
+gg_bar_stacked_100_hor_CaCa.(dataCaCa)
 
 # Stacked Area
-gg_stacked_area_hor_CaCa.(d2)
-gg_stacked_area_ver_CaCa.(dataCaCa)
+gg_area_stacked_hor_CaCa.(d2)
+gg_area_stacked_ver_CaCa.(dataCaCa)
 
 # Stacked Area 100%
-gg_stacked_area_100_hor_CaCa.(d2)
-gg_stacked_area_100_ver_CaCa.(d2)
+gg_area_stacked_100_hor_CaCa.(d2)
+gg_area_stacked_100_ver_CaCa.(d2)
 
 # Marimekko
 gg_marimekko_ver_CaCa.(dataCaCa)
 gg_marimekko_hor_CaCa.(dataCaCa)
 
 # Polar Stacked Bar
-gg_stacked_polar_bar_CaCa.(dataCaCa)
+gg_bar_stacked_polar_CaCa.(dataCaCa)
 
 # Polar Stacked 100% Bar
-gg_stacked_polar_bar_100_CaCa.(dataCaCa)
+gg_bar_stacked_polar_100_CaCa.(dataCaCa)
 
 # Circular Bar
-gg_facet_circular_bar_CaCa.(dataCaCa)
+gg_bar_facet_circular_CaCa.(dataCaCa)
 
 # Treemap
 gg_treemap_x_CaCa.(dataCaCa)

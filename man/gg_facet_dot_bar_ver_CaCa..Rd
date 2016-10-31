@@ -5,7 +5,7 @@
 \title{gg_facet_dot_bar_ver_CaCa.
 Facet Vertical Dot Bar}
 \usage{
-gg_facet_dot_bar_ver_CaCa.(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_dot_bar_ver_CaCa.(data, titleLabel = "", xLabel = NULL,
   yLabel = NULL, fillLabel = NULL, leg_pos = "right")
 }
 \arguments{

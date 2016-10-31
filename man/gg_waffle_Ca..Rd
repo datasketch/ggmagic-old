@@ -5,7 +5,8 @@
 \title{gg_waffle_Ca.: title.
 Waffle}
 \usage{
-gg_waffle_Ca.(data, filas = 5, titulo = "Report")
+gg_waffle_Ca.(data, square_size = 1, rows_number = 5, titleLabel = "",
+  leg_pos = "right")
 }
 \arguments{
 \item{x}{A number.}
