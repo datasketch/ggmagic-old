@@ -1849,3 +1849,58 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "Report", fillLabel = 
 
   return(graph)
 }
+
+
+
+#' gg_bubble_CaNu2.
+#' Bubbles
+#' @name gg_bubble_CaNu2.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+
+gg_bubble_CaNu2. <- function(data, sep = 3, lim_inf =-150, lim_sup = 150, xLabel = NULL ){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  data <- f$d
+
+  data <- data %>% drop_na(b)
+  data <- data %>% dplyr::group_by(a) %>% dplyr::summarise(b = mean(b))
+  data$b <- rescale(data$b, to = c(5, 30))
+  ncircles <- dim(data)[1]
+  limits <- c(lim_inf , lim_sup)
+  inset <- diff(limits) / sep
+
+  set.seed(7321)
+  xyr <- data.frame(
+    x = runif(ncircles, min(limits) + inset, max(limits) - inset),
+    y = runif(ncircles, min(limits) + inset, max(limits) - inset),
+    r = (data$b))
+
+  res <- circleLayout(xyr, limits, limits, maxiter = 1000)
+
+  dat.after <- circlePlotData(res$layout)
+
+  fi <- data.frame(id = 1:dim(data)[1], categoria = data$a)
+  fi <- inner_join(fi, dat.after)
+
+  cent <- fi %>% dplyr::group_by(categoria) %>% dplyr::summarise(x = mean(x), y = mean(y) )
+
+
+  ggplot(fi) +
+    geom_polygon(aes(x, y, group=id, fill = categoria))  + scale_fill_hue(l=40) +
+    coord_equal(xlim=limits, ylim=limits ) + geom_text(data=cent, aes(x, y, label=categoria)) +
+    theme_bw() +
+    theme(axis.text=element_blank(),
+          axis.ticks=element_blank(),
+          axis.title=element_blank()) + guides(fill = FALSE) + theme_void() +
+    labs(title='')
+
+}
