@@ -20,7 +20,7 @@ gg_bubble_CaNu.(dataCaNu)
 
 
 # Bubble2
-gg_bubble_CaNu2.(dataCaNu, 10)
+gg_bubble_CaNu2.(dataCaNu, sep = 10)
 
 # Coloured Bubble
 gg_coloured_bubble_CaNu.(dataCaNu)

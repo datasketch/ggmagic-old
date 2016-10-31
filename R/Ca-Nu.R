@@ -1891,7 +1891,7 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", fillLabel = NULL){
 #' add(1, 1)
 #' add(10, 1)
 
-gg_bubble_CaNu2. <- function(data, titleLabel = "", sep = 3, lim_inf =-150, lim_sup = 150, xLabel = NULL ){
+gg_bubble_CaNu2. <- function(data, titleLabel = "", leg_pos="right", sep = 3, lim_inf =-150, lim_sup = 150, xLabel = NULL ){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -1922,12 +1922,9 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "", sep = 3, lim_inf =-150, lim_
 
 
   ggplot(fi) +
-    geom_polygon(aes(x, y, group=id, fill = categoria))  + scale_fill_hue(l=40) +
+    geom_polygon(aes(x, y, group=id, fill = categoria))   + scale_color_discrete() +
     coord_equal(xlim=limits, ylim=limits ) + geom_text(data=cent, aes(x, y, label=categoria)) +
-    theme_bw() +
-    theme(axis.text=element_blank(),
-          axis.ticks=element_blank(),
-          axis.title=element_blank()) + guides(fill = FALSE) + theme_void() +
+    theme_bw() + guides(fill = FALSE) + theme_void() +
     labs(title=titleLabel)
 
 }

@@ -20,7 +20,7 @@ gg_lines_hor_YeNu. <- function(data, title = "",xlab = NULL, ylab = NULL){
     geom_line(stat = "identity") +
     ylab(ylab) +
     xlab(xlab) +
-    ggtitle(title) +
+    ggtitle(title) + theme_bw() +
     scale_y_continuous(labels = comma) +
     ggtitle(title)
 }
