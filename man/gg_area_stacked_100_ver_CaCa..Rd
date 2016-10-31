@@ -5,7 +5,7 @@
 \title{gg_area_stacked_100_ver_CaCa.
 Stacked vertical Area 100pct}
 \usage{
-gg_area_stacked_100_ver_CaCa.(data, titleLabel = "Report", xLabel = NULL,
+gg_area_stacked_100_ver_CaCa.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "top")
 }
 \arguments{

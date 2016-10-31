@@ -5,7 +5,7 @@
 \title{gg_marimekko_ver_CaCa.
 Vertical Marimekko}
 \usage{
-gg_marimekko_ver_CaCa.(data, titleLabel = "Report", xLabel = "Category",
+gg_marimekko_ver_CaCa.(data, titleLabel = "", xLabel = "Category",
   yLabel = "Frequency", fillLabel = "Types", leg_pos = "top")
 }
 \arguments{

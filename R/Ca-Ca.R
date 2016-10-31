@@ -747,7 +747,7 @@ gg_bar_stacked_100_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_area_stacked_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                        yLabel = 'Count', fillLabel = NULL,
                                        leg_pos = "top"){
 
@@ -780,7 +780,7 @@ gg_area_stacked_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_area_stacked_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                       yLabel = 'Count', fillLabel = NULL,
                                       leg_pos = "top"){
 
@@ -802,7 +802,7 @@ gg_area_stacked_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                       yLabel = 'Count', fillLabel = NULL,
                                       leg_pos = "top"){
 
@@ -834,7 +834,7 @@ gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_area_stacked_100_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                       yLabel = 'Count', fillLabel = NULL,
                                       leg_pos = "top"){
 
@@ -856,7 +856,7 @@ gg_area_stacked_100_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_marimekko_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = "Category",
+gg_marimekko_ver_CaCa. <- function(data, titleLabel = "", xLabel = "Category",
                                    yLabel = "Frequency", fillLabel = "Types",
                                    leg_pos = "top"){
   f <- fringe(data)
@@ -896,7 +896,7 @@ gg_marimekko_ver_CaCa. <- function(data, titleLabel = "Report", xLabel = "Catego
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_marimekko_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = "Category",
+gg_marimekko_hor_CaCa. <- function(data, titleLabel = "", xLabel = "Category",
                                    yLabel = "Frequency", fillLabel = "Types",
                                    leg_pos = "top"){
   graph <- gg_marimekko_ver_CaCa.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -915,7 +915,7 @@ gg_marimekko_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = "Catego
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_polar_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_stacked_polar_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                      yLabel = 'Count', fillLabel = NULL, leg_pos = "top"){
 
   f <- fringe(data)
@@ -948,7 +948,7 @@ gg_bar_stacked_polar_CaCa. <- function(data, titleLabel = "Report", xLabel = NUL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_polar_100_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_stacked_polar_100_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
                                            yLabel = 'Count', fillLabel = NULL, leg_pos = "top",
                                            width = 1){
 
@@ -983,7 +983,7 @@ gg_bar_stacked_polar_100_CaCa. <- function(data, titleLabel = "Report", xLabel =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_circular_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL,
+gg_bar_facet_circular_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
                                 leg_pos="right", width = 0.85){
 
   f <- fringe(data)
@@ -1018,7 +1018,7 @@ gg_bar_facet_circular_CaCa. <- function(data, titleLabel = "Report", fillLabel =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_x_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL){
+gg_treemap_x_CaCa. <- function(data, titleLabel = "", fillLabel = NULL){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -1051,7 +1051,7 @@ gg_treemap_x_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_y_CaCa. <- function(data, titleLabel = "Report", fillLabel = NULL){
+gg_treemap_y_CaCa. <- function(data, titleLabel = "", fillLabel = NULL){
 
   f <- fringe(data)
   nms <- getCnames(f)

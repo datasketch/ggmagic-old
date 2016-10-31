@@ -5,7 +5,7 @@
 \title{gg_bar_stacked_polar_100_CaCa.
 Stacked Polar  100pct}
 \usage{
-gg_bar_stacked_polar_100_CaCa.(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_stacked_polar_100_CaCa.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "top", width = 1)
 }
 \arguments{

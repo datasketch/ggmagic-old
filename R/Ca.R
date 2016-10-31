@@ -246,7 +246,7 @@ gg_pie_Ca. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right")
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), y = count, fill = a)) +
     geom_bar(stat = "identity", width = 1) + coord_polar(theta = "y") +
-    geom_text(data = data_graph, aes(y = pos/100, label = paste(percent, "%", sep = "")))
+    geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")))
   graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel) + guides(text = FALSE)
   graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
     #scale_y_continuous(breaks=data_graph$pos, labels=data_graph$percent)
