@@ -48,7 +48,10 @@ gg_lines_CaNuNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="r
   guides(text = FALSE) + theme_bw()
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 54df3d05e6bc76cde47e6335e11e243cd242a8b8
 
 
 #' gg_point_CaNuNu.

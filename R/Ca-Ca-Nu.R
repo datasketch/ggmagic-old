@@ -26,6 +26,8 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "Report", xLabel = NULL,
   return(graph)
 }
 
+
+
 #' gg_bar_facet_circular_CaCaNu.
 #' Circular Bar
 #' @name gg_bar_facet_circular_CaCaNu.
@@ -953,7 +955,7 @@ gg_pyramid_CaCaNu. <- function(data, titleLabel = "Report", xLabel = "Category",
   ggplot(data, aes(x = b, y = c, fill = a)) +
     geom_bar(data = subset(data, a == unique(data$a)[1]), stat = "identity") +
     geom_bar(data = subset(data, a == unique(data$a)[2]), stat = "identity",position = "identity") +
-    scale_y_continuous(labels = abs) + theme_bw() +
+    scale_y_continuous(labels = abs) + theme_ds() +
     coord_flip()
 }
 
