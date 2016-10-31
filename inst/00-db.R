@@ -9,6 +9,9 @@ library(ggmagic)
 #
 # Pie
 
+gg_pie_CaNu.(sampleData("Ca-Nu"), title = "hoaa\nfdsafds")
+
+
 p <- gg_pie_CaNu.(sampleData("Ca-Nu")) + theme_ds()
 p
 ggsave("~/Desktop/file.png", plot = p)

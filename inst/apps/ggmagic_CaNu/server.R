@@ -125,6 +125,7 @@ Asia	36.61
     # d <- data %>% select_(.dots = selectedCols)
     #names(d)[1:2]
   paste("WHICH VIZ: ",input$whichViz)
+  paste0(input$vizTitle,"\n",input$vizTitle2)
   })
 
   output$vizControls <- renderUI({
@@ -154,6 +155,7 @@ Asia	36.61
     list(
       selectInput("whichViz",label = "Which Viz",choices = bars_CaNu),
       textInput("vizTitle", "Title"),
+      textInput("vizTitle2", "Title Line 2"),
       #textInput("xLabel","xLabel"),
       #textInput("yLabel","yLabel"),
       br()
@@ -164,7 +166,7 @@ Asia	36.61
     data <- fringe()
     if(is.null(data)) return("null data")
     gg <- input$whichViz
-    title <- input$vizTitle
+    title <- paste0(input$vizTitle,"\n",input$vizTitle2)
     #xLabel <- input$xLabel
     #yLabel <- input$yLabel
     # p <- do.call(gg,list(data, title = title,
