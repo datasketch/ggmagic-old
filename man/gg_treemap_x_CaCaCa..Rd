@@ -5,7 +5,7 @@
 \title{gg_treemap_x_CaCaCa.
 Treemap fill first Ca}
 \usage{
-gg_treemap_x_CaCaCa.(data, titleLabel = "Report", fillLabel = NULL)
+gg_treemap_x_CaCaCa.(data, titleLabel = "Report", fillLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

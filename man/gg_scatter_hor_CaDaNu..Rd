@@ -6,7 +6,7 @@
 pointlines}
 \usage{
 gg_scatter_hor_CaDaNu.(data, title = "", xlab = NULL, ylab = NULL,
-  clab = NULL)
+  clab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

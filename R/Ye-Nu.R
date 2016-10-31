@@ -10,7 +10,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_hor_YeNu. <- function(data, title = "",xlab = NULL, ylab = NULL){
+gg_lines_hor_YeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
@@ -38,7 +38,7 @@ gg_lines_hor_YeNu. <- function(data, title = "",xlab = NULL, ylab = NULL){
 #' add(1, 1)
 #' add(10, 1)
 
-gg_lollipop_YeNu. <- function(data, title = "", xlab = NULL, ylab = NULL, size = 7){
+gg_lollipop_YeNu. <- function(data, title = "", xlab = NULL, ylab = NULL, size = 7, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)

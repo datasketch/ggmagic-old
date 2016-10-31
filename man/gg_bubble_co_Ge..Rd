@@ -7,7 +7,7 @@ Points inside Colombia's deptos map}
 \usage{
 gg_bubble_co_Ge.(data, titleLabel = "", fillLabel = NULL,
   color_point = "red", leg_pos = "right", color_map = "gray",
-  color_frontier = "white", scale_point = 0.25, alpha = 0.5)
+  color_frontier = "white", scale_point = 0.25, alpha = 0.5, ...)
 }
 \arguments{
 \item{x}{A category.}

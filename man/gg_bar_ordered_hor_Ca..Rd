@@ -6,7 +6,7 @@
 Ordered horizontal Bars}
 \usage{
 gg_bar_ordered_hor_Ca.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = "Count", leg_pos = "right")
+  yLabel = "Count", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

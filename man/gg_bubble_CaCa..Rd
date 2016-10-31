@@ -5,7 +5,7 @@
 \title{gg_bubble_CaCa.
 Bubble}
 \usage{
-gg_bubble_CaCa.(data, titleLabel = "", xLabel = NULL, yLabel = NULL)
+gg_bubble_CaCa.(data, titleLabel = "", xLabel = NULL, yLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

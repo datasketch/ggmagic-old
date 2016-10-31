@@ -11,7 +11,7 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "",
-                          leg_pos = "right"){
+                          leg_pos = "right", ...){
   f <- fringe(data)
   data <- f$d
   data_graph <- data %>%
@@ -40,7 +40,7 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
 #' add(10, 1)
 gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL,
                             yLabel = 'Count', fillLabel = NULL,
-                            leg_pos = "right"){
+                            leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
@@ -65,7 +65,7 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(10, 1)
 gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL,
                             yLabel = 'Count', fillLabel = NULL,
-                            leg_pos = "right"){
+                            leg_pos = "right", ...){
 
   graph <- gg_bar_coloured_ver_Ca.(data, titleLabel, xLabel,
                                    yLabel, fillLabel, leg_pos)
@@ -87,7 +87,7 @@ gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(10, 1)
 gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL,
                                               yLabel = 'Count', parameter = NULL,
-                                              leg_pos = "right"){
+                                              leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
@@ -115,7 +115,7 @@ gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", xLabel = NU
 #' add(10, 1)
 gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL,
                                               yLabel = 'Count', parameter = NULL,
-                                              leg_pos = "right"){
+                                              leg_pos = "right", ...){
 
   graph <- gg_bar_coloured_parameter_ver_Ca.(data, titleLabel, xLabel,
                                              yLabel, parameter, leg_pos)
@@ -136,7 +136,7 @@ gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", xLabel = NU
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL,
-                                    yLabel = 'Count', leg_pos = "right"){
+                                    yLabel = 'Count', leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
@@ -160,7 +160,7 @@ gg_bar_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL,
-                                    yLabel = 'Count', leg_pos = "right"){
+                                    yLabel = 'Count', leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
@@ -182,7 +182,7 @@ gg_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
-                                   yLabel =  'Count', leg_pos = "right"){
+                                   yLabel =  'Count', leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
@@ -212,7 +212,7 @@ gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
-                                   yLabel =  'Count', leg_pos = "right"){
+                                   yLabel =  'Count', leg_pos = "right", ...){
 
   graph <- gg_bar_ordered_ver_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
 
@@ -232,7 +232,7 @@ gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pie_Ca. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right"){
+gg_pie_Ca. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -267,7 +267,7 @@ gg_pie_Ca. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right")
 #' add(1, 1)
 #' add(10, 1)
 gg_donut_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
-                         width = 0.3, leg_pos="right"){
+                         width = 0.3, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -300,7 +300,7 @@ gg_donut_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
-                               fillLabel = NULL, leg_pos = "right"){
+                               fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -339,7 +339,7 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'C
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
-                               fillLabel = NULL, leg_pos = "right"){
+                               fillLabel = NULL, leg_pos = "right", ...){
 
   graph <- gg_dot_bar_ver_Ca.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
 
@@ -360,7 +360,7 @@ gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'C
 #' add(1, 1)
 #' add(10, 1)
 gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL,
-                            yLabel = 'Count', leg_pos = "right"){
+                            yLabel = 'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -393,7 +393,7 @@ gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_line_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL,
-                            yLabel = 'Count', leg_pos = "right"){
+                            yLabel = 'Count', leg_pos = "right", ...){
 
   graph <- gg_line_hor_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
@@ -413,7 +413,7 @@ gg_line_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL,
-                                  yLabel = 'Count', leg_pos = "right"){
+                                  yLabel = 'Count', leg_pos = "right", ...){
 
   graph <- gg_line_hor_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + geom_point()
@@ -433,7 +433,7 @@ gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL,
-                                  yLabel = 'Count', leg_pos = "right"){
+                                  yLabel = 'Count', leg_pos = "right", ...){
 
   graph <- gg_line_ver_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + geom_point()
@@ -452,7 +452,7 @@ gg_line_point_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_gauge_Ca. <- function(data){
+gg_gauge_Ca. <- function(data, ...){
 
   gg.gauge <- function(pos, breaks=c(0,30,70,100)) {
     require(ggplot2)
@@ -511,7 +511,7 @@ gg_gauge_Ca. <- function(data){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_gauge_dial_Ca. <- function(data){
+gg_gauge_dial_Ca. <- function(data, ...){
 
   gg.gauge <- function(pos, breaks=c(0,50,100)) {
     require(ggplot2)
@@ -567,7 +567,7 @@ gg_gauge_dial_Ca. <- function(data){
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "",
-                                          fillLabel = NULL, leg_pos="right", width = 0.3){
+                                          fillLabel = NULL, leg_pos="right", width = 0.3, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -601,7 +601,7 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "",
-                                   fillLabel = NULL, leg_pos="right", width = 0.3){
+                                   fillLabel = NULL, leg_pos="right", width = 0.3, ...){
 
   graph <- gg_bar_single_stacked_hor_Ca.(data, titleLabel, fillLabel, leg_pos, width)
   graph <- graph + coord_flip()
@@ -620,7 +620,7 @@ gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_Ca.  <- function(data, titleLabel = "", xLabel = NULL){
+gg_bubble_Ca.  <- function(data, titleLabel = "", xLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -657,7 +657,7 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", xLabel = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_bubble_Ca.  <- function(data, titleLabel = "", xLabel = NULL, fillLabel = NULL){
+gg_coloured_bubble_Ca.  <- function(data, titleLabel = "", xLabel = NULL, fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -697,7 +697,7 @@ gg_coloured_bubble_Ca.  <- function(data, titleLabel = "", xLabel = NULL, fillLa
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "",
-                             fillLabel = NULL, leg_pos= "right"){
+                             fillLabel = NULL, leg_pos= "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -730,7 +730,7 @@ gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_bullseye_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
-                          leg_pos="right"){
+                          leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -759,7 +759,7 @@ gg_bullseye_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_circular_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
-                                leg_pos="right", width = 0.85){
+                                leg_pos="right", width = 0.85, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -792,7 +792,7 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_Ca. <- function(data, titleLabel = "", fillLabel = NULL){
+gg_treemap_Ca. <- function(data, titleLabel = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)

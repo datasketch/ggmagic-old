@@ -6,7 +6,7 @@
 Stacked Vertical Area}
 \usage{
 gg_area_stacked_ver_CaDaNu.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = NULL, fillLabel = NULL, leg_pos = "top")
+  yLabel = NULL, fillLabel = NULL, leg_pos = "top", ...)
 }
 \arguments{
 \item{x}{A number.}

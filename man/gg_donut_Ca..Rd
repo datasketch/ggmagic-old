@@ -6,7 +6,7 @@
 Donut}
 \usage{
 gg_donut_Ca.(data, titleLabel = "", fillLabel = NULL, width = 0.3,
-  leg_pos = "right")
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

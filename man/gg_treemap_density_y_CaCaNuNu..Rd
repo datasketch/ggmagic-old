@@ -6,7 +6,7 @@
 Treemap Density by second Nu}
 \usage{
 gg_treemap_density_y_CaCaNuNu.(data, titleLabel = "Report",
-  fillLabel = NULL)
+  fillLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

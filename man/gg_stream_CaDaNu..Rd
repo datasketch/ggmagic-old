@@ -6,7 +6,7 @@
 Stream}
 \usage{
 gg_stream_CaDaNu.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = NULL, fillLabel = NULL, leg_pos = "right")
+  yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

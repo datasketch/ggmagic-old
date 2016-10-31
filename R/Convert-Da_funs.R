@@ -1,6 +1,3 @@
-library(lubridate)
-library(zoo)
-
 #' gg_conv_Da2Ca_weekdays. : title.
 #' Convert Data type to Category weekdays
 #' @name gg_conv_Da2Ca_weekdays.
@@ -12,7 +9,7 @@ library(zoo)
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_conv_Da2Ca_weekdays. <- function(data){
+gg_conv_Da2Ca_weekdays. <- function(data, ...){
   f <- fringe(data)
   data <- f$d
   weekdays <- weekdays(data$a)
@@ -30,7 +27,7 @@ gg_conv_Da2Ca_weekdays. <- function(data){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_conv_Da2Ca_months. <- function(data){
+gg_conv_Da2Ca_months. <- function(data, ...){
   f <- fringe(data)
   data <- f$d
   months <- months(data$a)
@@ -48,7 +45,7 @@ gg_conv_Da2Ca_months. <- function(data){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_conv_Da2Ca_years. <- function(data){
+gg_conv_Da2Ca_years. <- function(data, ...){
   f <- fringe(data)
   data <- f$d
   years <- year(data$a)
@@ -66,7 +63,7 @@ gg_conv_Da2Ca_years. <- function(data){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_conv_Da2Ca_qtr. <- function(data){
+gg_conv_Da2Ca_qtr. <- function(data, ...){
   f <- fringe(data)
   data <- f$d
   year_qtr <- as.yearqtr(data$a)
@@ -84,7 +81,7 @@ gg_conv_Da2Ca_qtr. <- function(data){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_conv_Da2Ca_weeks. <- function(data){
+gg_conv_Da2Ca_weeks. <- function(data, ...){
   f <- fringe(data)
   data <- f$d
   weeks <- as.numeric(format(data$a+3, "%U"))
@@ -102,7 +99,7 @@ gg_conv_Da2Ca_weeks. <- function(data){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_conv_Da2Ca_weekend. <- function(data){
+gg_conv_Da2Ca_weekend. <- function(data, ...){
   f <- fringe(data)
   data <- f$d
   weekdays <- weekdays(data$a)
