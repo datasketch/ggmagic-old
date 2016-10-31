@@ -6,7 +6,7 @@
 Waterfall}
 \usage{
 gg_waterfall_Nu.(data, titleLabel = "Report", xLabel = "Index",
-  yLabel = NULL)
+  yLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

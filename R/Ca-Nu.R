@@ -9,7 +9,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pie_CaNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right"){
+gg_pie_CaNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -44,7 +44,7 @@ gg_pie_CaNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", xLabel = NULL,
-                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right"){
+                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -348,7 +348,7 @@ gg_stacked_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL
 #' add(1, 1)
 #' add(10, 1)
 gg_coloured_multi_density_dist_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
-                                                 fillLabel = NULL, leg_pos="right"){
+                                                 fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -1908,7 +1908,7 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", reverse = FALSE,
 #' add(1, 1)
 #' add(10, 1)
 
-gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150, lim_sup = 150, xLabel = NULL){
+gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150, lim_sup = 150, xLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)

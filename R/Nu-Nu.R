@@ -10,7 +10,7 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_horizon_NuNu. <- function(data, titleLabel = "Report", xLabel = NULL,
-                           yLabel =  NULL, leg_pos = "right"){
+                           yLabel =  NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -37,7 +37,7 @@ gg_horizon_NuNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_waterfall_NuNu. <- function(data, titleLabel = "Report", xLabel = NULL,
-                             yLabel =  NULL){
+                             yLabel =  NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -52,7 +52,7 @@ gg_waterfall_NuNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 }
 
 
-dens2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = ""){
+dens2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = "", ...){
 
   graph <- ggplot(data, aes(x=a, y=b)) + geom_point() +
     stat_density2d(geom = "tile", aes(fill = ..density..), contour = F) +
@@ -62,7 +62,7 @@ dens2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = ""){
 
 }
 
-flip_dens2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = ""){
+flip_dens2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = "", ...){
 
   graph <- dens2D_Plot(data, titl, xLabel, yLabel, labelText)
   graph <- graph + coord_flip()
@@ -72,7 +72,7 @@ flip_dens2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = ""
 
 
 
-hist2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = ""){
+hist2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = "", ...){
 
   binNumber <- floor(sqrt(nrow(data)))
   graph <- ggplot(data, aes(x=a, y=b)) + stat_bin2d(bins=binNumber) +
@@ -82,7 +82,7 @@ hist2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = ""){
   return(graph)
 }
 
-flip_hist2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = ""){
+flip_hist2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = "", ...){
   graph <- hist2D_Plot(data, titl, xLabel, yLabel, labelText)
   graph <- graph + coord_flip()
 
@@ -90,7 +90,7 @@ flip_hist2D_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = ""
 }
 
 
-mult_Line_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = ""){
+mult_Line_Plot <- function(data, titl="", xLabel="", yLabel="", labelText = "", ...){
 
   label <- names(data)
   dataNumNum$idx <- seq(nrow(data))

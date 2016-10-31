@@ -6,7 +6,7 @@
 Coloured Point}
 \usage{
 gg_point_CaCaCa.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = NULL, fillLabel = NULL, size = 3)
+  yLabel = NULL, fillLabel = NULL, size = 3, ...)
 }
 \arguments{
 \item{x}{A number.}

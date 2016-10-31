@@ -6,7 +6,7 @@
 Horizontal coloured by parameter Bars}
 \usage{
 gg_bar_coloured_parameter_hor_Ca.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", parameter = NULL, leg_pos = "right")
+  yLabel = "Count", parameter = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

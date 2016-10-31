@@ -134,7 +134,7 @@ gg_lines_hor_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_circle_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab = NULL){
+gg_circle_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)

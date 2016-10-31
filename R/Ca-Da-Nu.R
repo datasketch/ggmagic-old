@@ -10,7 +10,7 @@
 #' add(1, 1)
 #' add(10, 1)
 
-gg_scatter_hor_CaDaNu. <- function(data,title = "",xlab = NULL, ylab=NULL, clab = NULL){
+gg_scatter_hor_CaDaNu. <- function(data,title = "",xlab = NULL, ylab=NULL, clab = NULL, ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[2]
@@ -39,7 +39,7 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "",xlab = NULL, ylab=NULL, clab 
 #' add(1, 1)
 #' add(10, 1)
 gg_stream_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
-                            yLabel =  NULL, fillLabel = NULL, leg_pos = "right"){
+                            yLabel =  NULL, fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -74,7 +74,7 @@ gg_stream_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' add(10, 1)
 gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL,
-                                            leg_pos = "top"){
+                                            leg_pos = "top", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -108,7 +108,7 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NU
 #' add(10, 1)
 gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
                                           yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "top"){
+                                          leg_pos = "top", ...){
 
   graph <- gg_area_stacked_ver_CaDaNu.(data, titleLabel, xLabel, yLabel)
   graph <- graph + coord_flip()
@@ -129,7 +129,7 @@ gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'I
 #' add(10, 1)
 gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
                                           yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "top"){
+                                          leg_pos = "top", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -163,7 +163,7 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #' add(10, 1)
 gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
                                           yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "top"){
+                                          leg_pos = "top", ...){
 
   graph <- gg_area_stacked_100_ver_CaDaNu.(data, titleLabel, xLabel, yLabel)
   graph <- graph + coord_flip()
@@ -182,7 +182,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 ###
 #
 # flip_circleAreaPlotCCN  <- function(data, titleLabel = "Report", xLabel = "Category",
-#                                     yLabel = "Category", leg_pos = "top"){
+#                                     yLabel = "Category", leg_pos = "top", ...){
 #
 #   graph <- circleAreaPlotCCN(data, titleLabel, xLabel, yLabel, leg_pos)
 #   graph <- graph + coord_flip()
@@ -191,7 +191,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 # }
 #
 # vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
-#                                  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top"){
+#                                  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top", ...){
 #
 #   graph <- ggplot(data, aes(a, fill=b, weights = c)) + geom_bar()
 #   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
@@ -202,7 +202,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #
 # ordered_vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Frequency",
 #                                          yLabel =  "Categories", fillLabel = "Types",
-#                                          leg_pos = "right"){
+#                                          leg_pos = "right", ...){
 #
 #   graph <- ggplot(data, aes(x=reorder(data$b,rep(1,length(data$b)),sum),fill=a, weights = c)) +
 #     geom_bar()
@@ -215,7 +215,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #
 # ordered_horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Frequency",
 #                                            yLabel =  "Categories", fillLabel = "Types",
-#                                            leg_pos = "right"){
+#                                            leg_pos = "right", ...){
 #
 #   graph <- ordered_vertical_bargraphCCN(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
 #
@@ -225,7 +225,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 # }
 #
 # horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
-#                                    yLabel = "Category", fillLabel = "Types", leg_pos = "top"){
+#                                    yLabel = "Category", fillLabel = "Types", leg_pos = "top", ...){
 #
 #   graph <- vertical_bargraphCCN(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
 #   graph <- graph + coord_flip()
@@ -234,7 +234,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 # }
 #
 # vertical_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categories", yLabel = "Frequency",
-#                                  fillLabel = "Types", leg_pos = "right"){
+#                                  fillLabel = "Types", leg_pos = "right", ...){
 #
 #   graph <- ggplot(data = data, aes(a, fill = factor(b), weights = c)) +
 #     geom_dotplot(stackgroups = TRUE, binpositions = "all")
@@ -247,7 +247,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 # }
 #
 # horizontal_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categories", yLabel = "Frequency",
-#                                    fillLabel = "Types", leg_pos = "top"){
+#                                    fillLabel = "Types", leg_pos = "top", ...){
 #
 #   graph <- vertical_dotgraphCCN(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
 #
@@ -258,7 +258,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #
 # vertical_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
 #                                            yLabel = "Frequency", fillLabel = "Types",
-#                                            leg_pos = "top"){
+#                                            leg_pos = "top", ...){
 #
 #   graph <- ggplot(data, aes(a, weights = c)) + geom_bar(aes(fill=data$b), position = "dodge")
 #   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
@@ -269,7 +269,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #
 # horizontal_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
 #                                              yLabel = "Frequency", fillLabel = "Types",
-#                                              leg_pos = "top"){
+#                                              leg_pos = "top", ...){
 #   graph <- vertical_unstacked_bargraphCCN(data, titleLabel, xLabel, yLabel,
 #                                           fillLabel, leg_pos)
 #
@@ -280,7 +280,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #
 #
 # horizontal_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
-#                                     yLabel = "Frequency"){
+#                                     yLabel = "Frequency", ...){
 #
 #   data_graph <- data %>%
 #     dplyr::group_by(a, b) %>%
@@ -297,7 +297,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 # }
 #
 # vertical_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
-#                                   yLabel = "Frequency"){
+#                                   yLabel = "Frequency", ...){
 #
 #   graph <- horizontal_linegraphCCN(data, titleLabel, xLabel, yLabel)
 #   graph <- graph + coord_flip()
@@ -307,7 +307,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #
 # vertical_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
 #                                          yLabel = "Frequency", fillLabel = "Types",
-#                                          leg_pos = "top"){
+#                                          leg_pos = "top", ...){
 #
 #   graph <- ggplot(data, aes(a, fill=b, weights = c)) + geom_bar(position = "fill")
 #   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
@@ -318,7 +318,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #
 # horizontal_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
 #                                            yLabel = "Frequency", fillLabel = "Types",
-#                                            leg_pos = "top"){
+#                                            leg_pos = "top", ...){
 #
 #
 #   graph <- vertical_stacked_bargraphCCN(data, titleLabel, xLabel, yLabel,
@@ -330,7 +330,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #
 # horizontal_area_bargraphCC <- function(data, titleLabel = "Report", xLabel = "Category",
 #                                        yLabel = "Frequency", fillLabel = "Types",
-#                                        leg_pos = "top"){
+#                                        leg_pos = "top", ...){
 #
 #   data_graph <- data %>%
 #     dplyr::group_by(a, b) %>%

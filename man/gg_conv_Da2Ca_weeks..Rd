@@ -5,7 +5,7 @@
 \title{gg_conv_Da2Ca_weeks. : title.
 Convert Data type to Category weeks}
 \usage{
-gg_conv_Da2Ca_weeks.(data)
+gg_conv_Da2Ca_weeks.(data, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -6,7 +6,7 @@
 Facet Pie}
 \usage{
 gg_facet_pie_CaCa.(data, titleLabel = "", fillLabel = NULL,
-  leg_pos = "right")
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

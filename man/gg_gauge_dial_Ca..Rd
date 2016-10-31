@@ -5,9 +5,9 @@
 \title{gg_gauge_dial_Ca.
 Gauge}
 \usage{
-gg_gauge_dial_Ca.(data)
+gg_gauge_dial_Ca.(data, ...)
 
-gg_gauge_dial_Ca.(data)
+gg_gauge_dial_Ca.(data, ...)
 }
 \arguments{
 \item{x}{A number.}

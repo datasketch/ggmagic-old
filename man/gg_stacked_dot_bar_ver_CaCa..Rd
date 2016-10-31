@@ -6,7 +6,7 @@
 Stacked vertical dot Bar}
 \usage{
 gg_stacked_dot_bar_ver_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", fillLabel = NULL, leg_pos = "right")
+  yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

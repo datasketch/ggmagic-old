@@ -5,7 +5,7 @@
 \title{gg_conv_Da2Ca_weekdays. : title.
 Convert Data type to Category weekdays}
 \usage{
-gg_conv_Da2Ca_weekdays.(data)
+gg_conv_Da2Ca_weekdays.(data, ...)
 }
 \arguments{
 \item{x}{A number.}

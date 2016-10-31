@@ -5,7 +5,7 @@
 \title{gg_treemap_y_CaCaNu.
 Treemap Fill by second Ca}
 \usage{
-gg_treemap_y_CaCaNu.(data, titleLabel = "", fillLabel = NULL)
+gg_treemap_y_CaCaNu.(data, titleLabel = "", fillLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

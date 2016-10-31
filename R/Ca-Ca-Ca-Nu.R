@@ -10,7 +10,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL){
+gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -44,7 +44,7 @@ gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL){
+gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -78,7 +78,7 @@ gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL){
+gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)

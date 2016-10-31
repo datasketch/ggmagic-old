@@ -6,7 +6,7 @@
 Stacked 100pct horizontal Bar}
 \usage{
 gg_bar_stacked_100_hor_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Percent", fillLabel = NULL, leg_pos = "right")
+  yLabel = "Percent", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -10,7 +10,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_x_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL){
+gg_treemap_x_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -44,7 +44,7 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_y_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL){
+gg_treemap_y_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -78,7 +78,7 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_z_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL){
+gg_treemap_z_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -113,7 +113,7 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL){
 #' add(1, 1)
 #' add(10, 1)
 gg_point_CaCaCa. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = NULL,
-                             fillLabel = NULL, size = 3){
+                             fillLabel = NULL, size = 3, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)

@@ -7,7 +7,7 @@ Choropleth by filtering deptos}
 \usage{
 gg_choropleth_depto_GeNu.(data, titleLabel = "", depto_ = "05",
   fillLabel = NULL, leg_pos = "right", color_map = "gray",
-  color_frontier = "white")
+  color_frontier = "white", ...)
 }
 \arguments{
 \item{x}{A category.}

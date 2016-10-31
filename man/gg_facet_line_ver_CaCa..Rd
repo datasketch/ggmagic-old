@@ -6,7 +6,7 @@
 Vertical Line}
 \usage{
 gg_facet_line_ver_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count")
+  yLabel = "Count", ...)
 }
 \arguments{
 \item{x}{A number.}

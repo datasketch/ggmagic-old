@@ -12,7 +12,7 @@
 #' add(10, 1)
 gg_choropleth_co_GeNu. <- function(data, titleLabel = "",
                                    fillLabel = NULL, leg_pos = "right",
-                                   color_map = "gray", color_frontier = "white"){
+                                   color_map = "gray", color_frontier = "white", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -65,7 +65,7 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "",
 #' add(10, 1)
 gg_choropleth_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05",
                                       fillLabel = NULL, leg_pos = "right",
-                                      color_map = "gray", color_frontier = "white"){
+                                      color_map = "gray", color_frontier = "white", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -116,7 +116,7 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05",
 #' add(10, 1)
 gg_choropleth_latam_GeNu. <- function(data, titleLabel = "",
                                    fillLabel = NULL, leg_pos = "right",
-                                   color_map = "gray", color_frontier = "white"){
+                                   color_map = "gray", color_frontier = "white", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -167,7 +167,7 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "",
 gg_bubble_co_Ge. <- function(data, titleLabel = "", fillLabel = NULL,
                              color_point = "red", leg_pos = "right",
                              color_map = "gray", color_frontier = "white", scale_point = 0.25,
-                             alpha = 0.5){
+                             alpha = 0.5, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -210,7 +210,7 @@ gg_bubble_co_Ge. <- function(data, titleLabel = "", fillLabel = NULL,
 gg_bubble_latam_Ge. <- function(data, titleLabel = "", fillLabel = NULL,
                                 color_point = "red", leg_pos = "right",
                                 color_map = "gray", color_frontier = "white", scale_point = 0.25,
-                                alpha = 0.5){
+                                alpha = 0.5, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -253,7 +253,7 @@ gg_bubble_latam_Ge. <- function(data, titleLabel = "", fillLabel = NULL,
 gg_bubble_depto_Ge. <- function(data, titleLabel = "", depto_ = "05", leg_pos = "right",
                                 fillLabel = NULL, color_point = "red",
                                 color_map = "gray", color_frontier = "white", scale_point = 0.25,
-                                alpha = 0.5){
+                                alpha = 0.5, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -296,7 +296,7 @@ gg_bubble_depto_Ge. <- function(data, titleLabel = "", depto_ = "05", leg_pos = 
 gg_bubble_co_GeNu. <- function(data, titleLabel = "", fillLabel = NULL,
                                leg_pos = "right", color_point = "red",
                                color_map = "gray", color_frontier = "white", scale_point = 0.25,
-                               alpha = 0.5){
+                               alpha = 0.5, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -336,7 +336,7 @@ gg_bubble_co_GeNu. <- function(data, titleLabel = "", fillLabel = NULL,
 gg_bubble_latam_GeNu. <- function(data, titleLabel = "", fillLabel = NULL,
                                   leg_pos = "right", color_point = "red",
                                color_map = "gray", color_frontier = "white", scale_point = 0.25,
-                               alpha = 0.5){
+                               alpha = 0.5, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -375,7 +375,7 @@ gg_bubble_latam_GeNu. <- function(data, titleLabel = "", fillLabel = NULL,
 gg_bubble_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05", leg_pos = "right",
                                 fillLabel = NULL, color_point = "red",
                                 color_map = "gray", color_frontier = "white", scale_point = 0.25,
-                                alpha = 0.5){
+                                alpha = 0.5, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -415,7 +415,7 @@ gg_bubble_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05", leg_pos 
 #' add(10, 1)
 gg_bubble_co_CaGe. <- function(data, titleLabel = "", fillLabel = NULL,
                                leg_pos = "right", color_map = "gray",
-                               color_frontier = "white", scale_point = 0.25, alpha = 0.5){
+                               color_frontier = "white", scale_point = 0.25, alpha = 0.5, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -458,7 +458,7 @@ gg_bubble_co_CaGe. <- function(data, titleLabel = "", fillLabel = NULL,
 gg_bubble_depto_CaGe. <- function(data, titleLabel = "", depto_ = "05", leg_pos = "right",
                                 fillLabel = NULL, color_point = "red",
                                 color_map = "gray", color_frontier = "white", scale_point = 0.25,
-                                alpha = 0.5){
+                                alpha = 0.5, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)

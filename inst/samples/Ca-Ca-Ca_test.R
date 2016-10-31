@@ -1,6 +1,8 @@
 library(devtools)
 load_all()
 library(ggmagic)
+document()
+install()
 
 data("G20")
 dataCaCaCa <- G20 %>% select(Region, Country, Economic.classification)
