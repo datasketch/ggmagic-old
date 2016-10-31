@@ -171,7 +171,7 @@ Asia	36.61
     #yLabel <- input$yLabel
     # p <- do.call(gg,list(data, title = title,
     #                      xLabel = xLabel, yLabel = yLabel))
-    p <- do.call(gg,list(data, title = title, leg_pos = "bottom"))
+    p <- do.call(gg,list(data, title = title))
     p
   })
 
