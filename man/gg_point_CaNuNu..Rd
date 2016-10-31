@@ -6,7 +6,7 @@
 point}
 \usage{
 gg_point_CaNuNu.(data, titleLabel = "", fillLabel = NULL,
-  leg_pos = "right", ...)
+  leg_pos = "right", shape_point = 1, ...)
 }
 \arguments{
 \item{x}{A category.}

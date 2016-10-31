@@ -5,7 +5,7 @@
 \title{gg_lines_CaNuNu.
 lines}
 \usage{
-gg_lines_CaNuNu.(data, titleLabel = "", fillLabel = NULL,
+gg_lines_CaNuNu.(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
   leg_pos = "right", ...)
 }
 \arguments{
