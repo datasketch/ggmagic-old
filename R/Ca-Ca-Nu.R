@@ -875,7 +875,7 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_y_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
+gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -908,7 +908,8 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
+gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "Report",
+                                         fillLabel = NULL){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -943,9 +944,9 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "Report", fillLabel 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pyramid_CaCaNu. <- function(data, titleLabel = "Report", xLabel = "Category",
+gg_pyramid_CaCaNu. <- function(data, titleLabel = "", xLabel = "Category",
                                yLabel = "Frequency", fillLabel = "Types",
-                               leg_pos = "top", ...){
+                               leg_pos = "right"){
 
   f <- fringe(data)
   nms <- getCnames(f)

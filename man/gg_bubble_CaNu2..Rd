@@ -6,7 +6,7 @@
 Bubbles}
 \usage{
 gg_bubble_CaNu2.(data, titleLabel = "", sep = 3, lim_inf = -150,
-  lim_sup = 150, xLabel = NULL, ...)
+  lim_sup = 150, xLabel = NULL)
 }
 \arguments{
 \item{x}{A number.}

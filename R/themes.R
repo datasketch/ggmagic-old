@@ -32,6 +32,7 @@ theme_ds_clean <- function(){
     axis.ticks=element_blank(),
     axis.ticks.x=element_blank(),
     axis.ticks.y=element_blank(),
+    axis.title.y = element_blank(),
     panel.grid.major=element_blank())
 }
 
