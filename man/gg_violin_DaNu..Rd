@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu_funs.R
 \name{gg_violin_DaNu.}
 \alias{gg_violin_DaNu.}
-\title{gg_violin_DaNu. : title.
+\title{gg_violin_DaNu.
 Violin}
 \usage{
 gg_violin_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
@@ -16,7 +16,7 @@ gg_violin_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_violin_DaNu. : title.
+gg_violin_DaNu.
 Violin
 }
 \section{ftypes}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu_funs.R
 \name{gg_lines_DaNu.}
 \alias{gg_lines_DaNu.}
-\title{gg_lines_DaNu. : title.
+\title{gg_lines_DaNu.
 Lines}
 \usage{
 gg_lines_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
@@ -16,7 +16,7 @@ gg_lines_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_lines_DaNu. : title.
+gg_lines_DaNu.
 Lines
 }
 \section{ftypes}{
