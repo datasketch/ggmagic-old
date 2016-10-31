@@ -5,7 +5,8 @@
 \title{gg_treemap_density_y_CaNu.
 Treemap Density by Nu}
 \usage{
-gg_treemap_density_y_CaNu.(data, titleLabel = "", fillLabel = NULL, ...)
+gg_treemap_density_y_CaNu.(data, titleLabel = "", reverse = FALSE,
+  fillLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}
