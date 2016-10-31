@@ -5,11 +5,15 @@ getPalette <- function(type = "qualitative", rev = FALSE){
   dsYellow <- "#FFED00"
   dsMagenta <- "#E5007D"
   dsBlue <- "#009EE3"
-  dsOrange <- "#D14A14"
+  dsOrange <- "#F9B233"
+  dsPink <- "#EF8998"
   dsLightBlue <- "#16C5E0"
   dsPurple <- "#A839B0"
   dsRed <- "#C92F2F"
-  dsPalette <- c(dsBlue,dsMagenta,dsGreen,dsOrange,dsYellow,dsLightBlue,dsPurple,dsRed)
+  dsGray <- "#A9A9A9"
+  dsLila <- "#9B71AF"
+  dsPalette <- c(dsBlue,dsMagenta,dsGreen,dsOrange,dsYellow,dsPink,
+                 dsLightBlue,dsPurple,dsRed,dsGray, dsLila)
   p <- dsPalette
   if(type == "sequential") {
     p <-  c(dsMagenta,dsBlue)

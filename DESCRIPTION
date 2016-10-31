@@ -14,7 +14,8 @@ Depends:
     grid,
     gridExtra,
     ggTimeSeries,
-    treemapify
+    treemapify,
+    packcircles
 License: What license is it under?
 LazyData: true
 RoxygenNote: 5.0.1

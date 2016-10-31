@@ -5,6 +5,10 @@ dataNuNu <- data.frame(runif(100, min = 0, max = 50),
 
 names(dataNuNu) <- c("a", "b")
 
+
+
+
+
 #density - 2D
 dens2D_Plot(dataNuNu)
 flip_dens2D_Plot(dataNuNu)

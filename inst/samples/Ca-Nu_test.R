@@ -18,6 +18,10 @@ gg_pie_CaNu.(dataCaNu)
 # Bubble
 gg_bubble_CaNu.(dataCaNu)
 
+
+# Bubble2
+gg_bubble_CaNu2.(dataCaNu, 10)
+
 # Coloured Bubble
 gg_coloured_bubble_CaNu.(dataCaNu)
 

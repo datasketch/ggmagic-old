@@ -10,7 +10,8 @@ shinyServer(function(input, output, session){
   
   ## DATA INPUT SECTION
   output$dataInputSectionDebug <- renderPrint({
-    #data()
+    data <- data()
+    guessFtype(data)
   })
   
   output$dataInputSection <- renderUI({
@@ -119,6 +120,21 @@ shinyServer(function(input, output, session){
     # pattern <- paste(ftype,collapse = "")
     # pattern <- paste0("_",pattern,"\\.")
     pattern <- "bar.*_CaNu\\."
+    bars_CaNu <- ggList(pattern)
+    list(
+      textInput("whichVizPattern",label = "Which Viz Patter")
+    )
+  })
+    output$vizControls2 <- renderUI({
+    if(is.null(fringe())) return()
+    data <- fringe()
+    if(is.null(input$whichVizPattern)) return()
+    #ftype <- "Ca-Nu"
+    ftype <- guessFtype(data)
+    # pattern <- paste(ftype,collapse = "")
+    # pattern <- paste0("_",pattern,"\\.")
+    #pattern <- "bar.*_CaNu\\."
+    pattern <- input$whichVizPattern %||% NULL
     bars_CaNu <- ggList(pattern)
     list(
       selectInput("whichViz",label = "Which Viz",choices = bars_CaNu),
