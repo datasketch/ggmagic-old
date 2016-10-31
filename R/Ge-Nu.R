@@ -92,10 +92,10 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05",
   graph <- graph +
     geom_map(data = data_graph, map = data_graph,
              aes(map_id = id, x = long, y = lat, group = group, fill = b),
-             color = color_frontier, size=0.25) + coord_map() + theme_ds() + theme_ds_clean() +
+             color = color_frontier, size=0.25) + coord_map() +
     expand_limits(x = data_graph$long, y = data_graph$lat) +
     scale_fill_gradient(getPalette(type = "sequential")) +
-    labs(x = "", y = "", title = titleLabel)
+    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean()
 
   options(warn=0)
 
@@ -137,14 +137,14 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "",
     geom_map(data = data_latam, map = data_latam,
              aes(map_id = id, x = long, y = lat, group = group), fill = color_map,
              color = color_frontier, size = 0.25) + coord_map() +
-    expand_limits(x = data_latam$long, y = data_latam$lat) + theme_ds() + theme_ds_clean()
+    expand_limits(x = data_latam$long, y = data_latam$lat)
   graph <- graph +
     geom_map(data = data_graph, map = data_graph,
              aes(map_id = id, x = long, y = lat, group = group, fill = b),
              color = color_frontier, size = 0.25) + coord_map() +
     expand_limits(x = data_graph$long, y = data_graph$lat) +
     scale_fill_gradient(getPalette(type = "sequential"))  +
-    labs(x = "", y = "", title = titleLabel)
+    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean()
 
   options(warn=0)
 
@@ -186,7 +186,7 @@ gg_bubble_co_Ge. <- function(data, titleLabel = "", fillLabel = NULL, color_poin
   graph <- graph + geom_point(data = data_graph, aes(x = a, y = b),
                               size = data_graph$count * scale_point,
                               colour = color_point, alpha = alpha) + coord_map()  +
-    labs(x = "", y = "", title = titleLabel)
+    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean()
   options(warn=0)
 
   return(graph)
@@ -227,7 +227,7 @@ gg_bubble_latam_Ge. <- function(data, titleLabel = "", fillLabel = NULL, color_p
   graph <- graph + geom_point(data = data_graph, aes(x = a, y = b),
                               size = data_graph$count * scale_point,
                               colour = color_point, alpha = alpha) + coord_map() + coord_fixed()  +
-    labs(x = "", y = "", title = titleLabel)
+    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean()
   options(warn=0)
 
   return(graph)
@@ -268,7 +268,7 @@ gg_bubble_depto_Ge. <- function(data, titleLabel = "", depto_ = "05",
   graph <- graph + geom_point(data = data_graph, aes(x = a, y = b),
                               size = data_graph$count * scale_point,
                               colour = color_point, alpha = alpha) + coord_map() + coord_fixed()  +
-    labs(x = "", y = "", title = titleLabel)
+    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean()
 
   options(warn=0)
 
@@ -307,7 +307,7 @@ gg_bubble_co_GeNu. <- function(data, titleLabel = "", fillLabel = NULL, color_po
   graph <- graph + geom_point(data = data, aes(x = a, y = b),
                               size = data$c * scale_point,
                               colour = color_point, alpha = alpha) + coord_map() + coord_fixed()  +
-    labs(x = "", y = "", title = titleLabel)
+    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean()
   options(warn=0)
 
   return(graph)
@@ -344,7 +344,7 @@ gg_bubble_latam_GeNu. <- function(data, titleLabel = "", fillLabel = NULL, color
 
   graph <- graph + geom_point(data = data, aes(x = a, y = b), size = data$c * scale_point,
                               colour = color_point, alpha = alpha) + coord_map() + coord_fixed()  +
-    labs(x = "", y = "", title = titleLabel)
+    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean()
   options(warn=0)
 
   return(graph)
@@ -383,7 +383,7 @@ gg_bubble_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05",
 
   graph <- graph + geom_point(data = data, aes(x = a, y = b), size = data$c * scale_point,
                               colour = color_point, alpha = alpha) + coord_map() + coord_fixed()  +
-    labs(x = "", y = "", title = titleLabel)
+    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean()
 
   options(warn=0)
 
@@ -424,7 +424,7 @@ gg_bubble_co_CaGe. <- function(data, titleLabel = "", fillLabel = NULL, color_ma
                                                      size = count * scale_point), alpha = alpha) +
     coord_map() + coord_fixed() + scale_size(guide = 'none') +
     scale_color_manual(values = getPalette()) +
-    labs(x = "", y = "", title = titleLabel)
+    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean()
   options(warn=0)
 
   return(graph)
@@ -466,7 +466,7 @@ gg_bubble_depto_CaGe. <- function(data, titleLabel = "", depto_ = "05",
                                                      size = count * scale_point), alpha = alpha) +
     coord_map() + coord_fixed() + scale_size(guide = 'none') +
     scale_color_manual(values = getPalette())  +
-    labs(x = "", y = "", title = titleLabel)
+    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean()
   options(warn=0)
 
   return(graph)
