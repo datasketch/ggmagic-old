@@ -24,6 +24,8 @@ dataCaCaNu$c <- runif(nrow(dataCaCaNu), min = 0, max = 50)
 # Coloured Bubble
 gg_coloured_bubble_CaCaNu.(dataCaCaNu)
 
+gg_pyramid_CaCaNu.(dataCaCaNu)
+
 # Bubble
 gg_bubble_CaCaNu.(dataCaCaNu)
 
