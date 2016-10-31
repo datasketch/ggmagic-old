@@ -5,7 +5,7 @@
 \title{gg_box_DaNu.
 Scatter}
 \usage{
-gg_box_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
+gg_box_DaNu.(data, title = "", xlab = NULL, ylab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

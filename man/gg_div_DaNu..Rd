@@ -5,7 +5,7 @@
 \title{gg_div_DaNu.
 div}
 \usage{
-gg_div_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
+gg_div_DaNu.(data, title = "", xlab = NULL, ylab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

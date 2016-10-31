@@ -5,7 +5,7 @@
 \title{gg_smooth_DaNu.
 smooth}
 \usage{
-gg_smooth_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
+gg_smooth_DaNu.(data, title = "", xlab = NULL, ylab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -8,13 +8,14 @@
 \title{gg_bar_DaNu.
 bar}
 \usage{
-gg_bar_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
+gg_bar_DaNu.(data, title = "", xlab = NULL, ylab = NULL, ...)
 
-gg_bubbles_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
+gg_bubbles_DaNu.(data, title = "", xlab = NULL, ylab = NULL, ...)
 
-gg_lollipop_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
+gg_lollipop_DaNu.(data, title = "", xlab = NULL, ylab = NULL, ...)
 
-gg_stepped_stacked_area_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
+gg_stepped_stacked_area_DaNu.(data, title = "", xlab = NULL, ylab = NULL,
+  ...)
 }
 \arguments{
 \item{x}{A data.}

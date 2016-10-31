@@ -7,7 +7,7 @@ Barras stacked
 Tiene múltiples líneas}
 \usage{
 gg_lines_hor_CaYeNu.(data, title = "", xlab = NULL, ylab = NULL,
-  clab = NULL)
+  clab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}
