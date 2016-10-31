@@ -77,6 +77,7 @@ Asia	36.61
       )
     }
     names(d) <- gsub(" ","_",names(d))
+    names(d) <- gsub("[[:punct:]]", "_",  names(d))
     if(is.null(inputData()))
       return()
     h <- rhandsontable(d, useTypes = FALSE, readOnly = FALSE,
@@ -106,7 +107,7 @@ Asia	36.61
   fringe <- reactive({
     if(is.null(input$selectedCols)) return()
     if(is.null(data())) return()
-    selectedCols <- input$selectedCols
+    selectedCols <- as.character(input$selectedCols)
     data <- data()
     d <- data %>% select_(.dots = selectedCols)
     #f <- fringe(d)
@@ -116,14 +117,14 @@ Asia	36.61
   ## VIZ SECTION
 
   output$debugViz <- renderPrint({
-    #if(is.null(fringe())) return()
-    #data <- fringe()
-    #ftype <- "Ca-Nu"
-    #data
-    #guessFtype(data)
-    #d <- data()
+    if(is.null(input$selectedCols)) return()
+    if(is.null(data())) return()
+    selectedCols <- as.character(input$selectedCols)
+    selectedCols
+    # data <- data()
+    # d <- data %>% select_(.dots = selectedCols)
     #names(d)[1:2]
-    paste("WHICH VIZ: ",input$whichViz)
+  paste("WHICH VIZ: ",input$whichViz)
   })
 
   output$vizControls <- renderUI({
@@ -136,7 +137,7 @@ Asia	36.61
     pattern <- "bar.*_CaNu\\."
     bars_CaNu <- ggList(pattern)
     list(
-      textInput("whichVizPattern",label = "Which Viz Pattern", value = "CaNu")
+      textInput("whichVizPattern",label = "Which Viz Pattern", value = "")
     )
   })
     output$vizControls2 <- renderUI({
