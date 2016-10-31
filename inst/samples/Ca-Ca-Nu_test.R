@@ -89,3 +89,19 @@ gg_bar_facet_coloured_parameter_ver_hor_CaCa.(dataCaCaNu,
 gg_treemap_x_CaCaNu.(dataCaCaNu)
 gg_treemap_y_CaCaNu.(dataCaCaNu)
 gg_treemap_density_z_CaCaNu.(dataCaCaNu)
+
+# pyramid
+
+catA <- rep("Callejero", round(runif(1, 10, 20), digits = 0))
+catB <- rep("De raza", round(runif(1, 10, 20), digits = 0))
+catD <- rep("A", length(catA)*0.8)
+catE <- rep("B", length(catA)*0.9)
+catF <- rep("C", - length(catD) - length(catE) + length(catA) + length(catB))
+
+dataCaCaNu <- data.frame(c(catA, catB), c(catD, catE, catF))
+names(dataCaCaNu)[1] <- "RSGSH"; names(dataCaCaNu)[2] <- "GREHSEZGH"
+dataCaCaNu[] <- sapply(dataCaCaNu, as.character)
+
+dataCaCaNu$c <- runif(nrow(dataCaCaNu), min = 0, max = 50)
+gg_pyramid_CaCaNu.(dataCaCaNu)
+

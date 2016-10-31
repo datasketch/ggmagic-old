@@ -5,7 +5,7 @@
 \title{gg_choropleth_co_GeNu.
 Choropleth of Colombia's deptos}
 \usage{
-gg_choropleth_co_GeNu.(data, titleLabel = "Report", fillLabel = NULL,
+gg_choropleth_co_GeNu.(data, titleLabel = "", fillLabel = NULL,
   leg_pos = "right", color_map = "gray", color_frontier = "white")
 }
 \arguments{
