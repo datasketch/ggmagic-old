@@ -6,7 +6,14 @@ install()
 
 library(ggmagic)
 
-#
+
+##
+
+d <- sampleData("Ye-Nu")
+gg_lines_hor_YeNu.(d)
+gg_lollipop_YeNu.(d)
+
+
 # Pie
 
 gg_pie_CaNu.(sampleData("Ca-Nu"), title = "hoaa\nfdsafds")
