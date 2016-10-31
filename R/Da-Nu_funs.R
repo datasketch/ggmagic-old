@@ -1,4 +1,3 @@
-
 #' gg_horizon_DaNu.
 #' Horizon
 #' @name gg_horizon_DaNu.
@@ -53,7 +52,7 @@ gg_waterfall_DaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 }
 
 
-#' gg_lines_DaNu. : title.
+#' gg_lines_DaNu.
 #' Lines
 #' @name gg_lines_DaNu.
 #' @param x A number.
@@ -79,7 +78,7 @@ gg_lines_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
     ggtitle(title)
 }
 
-#' gg_scatter_DaNu. : title.
+#' gg_scatter_DaNu.
 #' Scatter
 #' @name gg_scatter_DaNu.
 #' @param x A number.
@@ -107,7 +106,7 @@ gg_scatter_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
     ggtitle(title)
 }
 
-#' gg_box_DaNu. : title.
+#' gg_box_DaNu.
 #' Scatter
 #' @name gg_box_DaNu.
 #' @param x A number.
@@ -135,7 +134,7 @@ gg_box_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
     ggtitle(title)
 }
 
-#' gg_violin_DaNu. : title.
+#' gg_violin_DaNu.
 #' Violin
 #' @name gg_violin_DaNu.
 #' @param x A number.
@@ -161,7 +160,7 @@ gg_violin_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
     ggtitle(title)
 }
 
-#' gg_area_DaNu. : title.
+#' gg_area_DaNu. :
 #' Area
 #' @name gg_area_DaNu.
 #' @param x A number.
@@ -187,7 +186,7 @@ gg_area_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
     ggtitle(title)
 }
 
-#' gg_kagi_DaNu. : title.
+#' gg_kagi_DaNu.
 #' Kagi
 #' @name gg_kagi_DaNu.
 #' @param x A number.
@@ -215,7 +214,7 @@ gg_kagi_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 }
 
 
-#' gg_smooth_DaNu. : title.
+#' gg_smooth_DaNu.
 #' smooth
 #' @name gg_smooth_DaNu.
 #' @param x A number.
@@ -241,7 +240,7 @@ gg_smooth_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 
 }
 
-#' gg_div_DaNu. : title.
+#' gg_div_DaNu.
 #' div
 #' @name gg_div_DaNu.
 #' @param x A number.
@@ -278,7 +277,7 @@ gg_div_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 }
 
 
-#' gg_bar_DaNu. : title.
+#' gg_bar_DaNu.
 #' bar
 #' @name gg_bar_DaNu.
 #' @param x A data.
@@ -304,7 +303,7 @@ gg_bar_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 }
 
 
-#' gg_bubbles_DaNu. : title.
+#' gg_bubbles_DaNu.
 #' bubbles
 #' @name gg_bar_DaNu.
 #' @param x A data.
@@ -329,7 +328,7 @@ gg_bubbles_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 }
 
 
-#' gg_lollipop_DaNu. : title.
+#' gg_lollipop_DaNu.
 #' lollipop
 #' @name gg_bar_DaNu.
 #' @param x A data.
@@ -354,7 +353,7 @@ gg_lollipop_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL){
 }
 
 
-#' gg_stepped_stacked_area_DaNu. : title.
+#' gg_stepped_stacked_area_DaNu.
 #' stepped stacked area.
 #' @name gg_bar_DaNu.
 #' @param x A data.

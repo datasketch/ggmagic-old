@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu_funs.R
 \name{gg_scatter_DaNu.}
 \alias{gg_scatter_DaNu.}
-\title{gg_scatter_DaNu. : title.
+\title{gg_scatter_DaNu.
 Scatter}
 \usage{
 gg_scatter_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
@@ -16,7 +16,7 @@ gg_scatter_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_scatter_DaNu. : title.
+gg_scatter_DaNu.
 Scatter
 }
 \section{ftypes}{

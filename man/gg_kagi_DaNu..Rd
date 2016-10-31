@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu_funs.R
 \name{gg_kagi_DaNu.}
 \alias{gg_kagi_DaNu.}
-\title{gg_kagi_DaNu. : title.
+\title{gg_kagi_DaNu.
 Kagi}
 \usage{
 gg_kagi_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
@@ -16,7 +16,7 @@ gg_kagi_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_kagi_DaNu. : title.
+gg_kagi_DaNu.
 Kagi
 }
 \section{ftypes}{

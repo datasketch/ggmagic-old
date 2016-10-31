@@ -5,7 +5,7 @@
 \alias{gg_bubbles_DaNu.}
 \alias{gg_lollipop_DaNu.}
 \alias{gg_stepped_stacked_area_DaNu.}
-\title{gg_bar_DaNu. : title.
+\title{gg_bar_DaNu.
 bar}
 \usage{
 gg_bar_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
@@ -43,16 +43,16 @@ The sum of \code{x} and \code{y}.
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_DaNu. : title.
+gg_bar_DaNu.
 bar
 
-gg_bubbles_DaNu. : title.
+gg_bubbles_DaNu.
 bubbles
 
-gg_lollipop_DaNu. : title.
+gg_lollipop_DaNu.
 lollipop
 
-gg_stepped_stacked_area_DaNu. : title.
+gg_stepped_stacked_area_DaNu.
 stepped stacked area.
 }
 \section{ftypes}{

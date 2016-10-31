@@ -11,7 +11,7 @@ datesA <- seq.Date(as.Date("2015-01-01"),to = Sys.Date(), by = "1 day")
 numB <- rnorm(length(datesA))
 dataDaNu <- data.frame(a=datesA, b=cumsum(rnorm(length(datesA))))
 
-
+#devtools::install_github("jpmarindiaz/datafringe")
 gg_horizon_DaNu.(dataDaNu)
 
 gg_lines_DaNu.(dataDaNu)

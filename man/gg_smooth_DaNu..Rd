@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu_funs.R
 \name{gg_smooth_DaNu.}
 \alias{gg_smooth_DaNu.}
-\title{gg_smooth_DaNu. : title.
+\title{gg_smooth_DaNu.
 smooth}
 \usage{
 gg_smooth_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
@@ -16,7 +16,7 @@ gg_smooth_DaNu.(data, title = "", xlab = NULL, ylab = NULL)
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_smooth_DaNu. : title.
+gg_smooth_DaNu.
 smooth
 }
 \section{ftypes}{
