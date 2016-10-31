@@ -27,7 +27,13 @@ shinyServer(function(input, output, session){
   })
 
   output$dataInputControls <- renderUI({
-    textareaTpl <- '<textarea id="inputDataPasted" placeholder="{prefill}"></textarea>'
+    textareaTpl <- '<textarea id="inputDataPasted" placeholder="{prefill}">largesmall_value	mujeresPct
+Asia	36.61
+    América del Norte	52.51
+    Europa	49.73
+    América del Sur	52.02
+    África	36.26
+    Oceanía	52.19</textarea>'
     textArea <- pystr_format(textareaTpl, prefill = "Pegue datos aquí")
     dataInputControls <- list(
       "pasted" = HTML(textArea),
@@ -65,6 +71,13 @@ shinyServer(function(input, output, session){
 
   output$dataInputPreview <- renderRHandsontable({
     d <- inputData()
+    if(!all(is.na(as.numeric(names(d))))){
+      names(d)[!is.na(as.numeric(names(d)))] <- paste0("x",
+        names(d)[!is.na(as.numeric(names(d)))]
+      )
+    }
+    names(d) <- gsub(" ","_",names(d))
+    names(d) <- gsub("[[:punct:]]", "_",  names(d))
     if(is.null(inputData()))
       return()
     h <- rhandsontable(d, useTypes = FALSE, readOnly = FALSE,
@@ -94,7 +107,7 @@ shinyServer(function(input, output, session){
   fringe <- reactive({
     if(is.null(input$selectedCols)) return()
     if(is.null(data())) return()
-    selectedCols <- input$selectedCols
+    selectedCols <- as.character(input$selectedCols)
     data <- data()
     d <- data %>% select_(.dots = selectedCols)
     #f <- fringe(d)
@@ -104,13 +117,14 @@ shinyServer(function(input, output, session){
   ## VIZ SECTION
 
   output$debugViz <- renderPrint({
-    #if(is.null(fringe())) return()
-    #data <- fringe()
-    #ftype <- "Ca-Nu"
-    #data
-    #guessFtype(data)
-    d <- data()
-    names(d)[1:2]
+    if(is.null(input$selectedCols)) return()
+    if(is.null(data())) return()
+    selectedCols <- as.character(input$selectedCols)
+    selectedCols
+    # data <- data()
+    # d <- data %>% select_(.dots = selectedCols)
+    #names(d)[1:2]
+  paste("WHICH VIZ: ",input$whichViz)
   })
 
   output$vizControls <- renderUI({
@@ -123,7 +137,7 @@ shinyServer(function(input, output, session){
     pattern <- "bar.*_CaNu\\."
     bars_CaNu <- ggList(pattern)
     list(
-      textInput("whichVizPattern",label = "Which Viz Pattern", value = "CaNu")
+      textInput("whichVizPattern",label = "Which Viz Pattern", value = "")
     )
   })
     output$vizControls2 <- renderUI({
@@ -155,7 +169,7 @@ shinyServer(function(input, output, session){
     #yLabel <- input$yLabel
     # p <- do.call(gg,list(data, title = title,
     #                      xLabel = xLabel, yLabel = yLabel))
-    p <- do.call(gg,list(data, title = title))
+    p <- do.call(gg,list(data, title = title, leg_pos = "bottom"))
     p
   })
 
@@ -163,7 +177,7 @@ shinyServer(function(input, output, session){
     p <- plot()
     if(is.null(p)) return()
     list(
-      renderPlot(p),
+      renderPlot(p, width = 400),
       downloadButton('downloadData', 'Download')
     )
   })

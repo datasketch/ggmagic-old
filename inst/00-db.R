@@ -8,9 +8,9 @@ library(ggmagic)
 
 #
 # Pie
-p <- gg_pie_CaNu.(sampleData("Ca-Nu")) + theme_ds() +
-  scale_fill_manual(values = getPalette())
 
+p <- gg_pie_CaNu.(sampleData("Ca-Nu")) + theme_ds()
+p
 ggsave("~/Desktop/file.png", plot = p)
 
 save_ggmagic(p,"~/Desktop/file.png")
