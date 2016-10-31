@@ -6,8 +6,8 @@
 Points inside Latam map}
 \usage{
 gg_bubble_latam_GeNu.(data, titleLabel = "", fillLabel = NULL,
-  color_point = "red", color_map = "gray", color_frontier = "white",
-  scale_point = 0.25, alpha = 0.5)
+  leg_pos = "right", color_point = "red", color_map = "gray",
+  color_frontier = "white", scale_point = 0.25, alpha = 0.5)
 }
 \arguments{
 \item{x}{A category.}
