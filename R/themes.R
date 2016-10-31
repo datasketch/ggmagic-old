@@ -51,14 +51,16 @@ theme_ds <- function(){
   spacing <- 1.6
   line_colour <- "#1d1d1d"
   text_colour <- "#555555"
-  text_size <- 12
+  text_size <- 20
   line_weight <- 0.5
   x_title_spacing <- function(spacing)
     max(-1.2, -(spacing / 1.25) + 0.5)
   y_title_spacing <- function(spacing)
     max(0.8, min(2.4, spacing))
 
-  theme(legend.title=element_blank(),
+  theme(
+
+    legend.title=element_blank(),
     line = element_line(
       colour = line_colour,
       size = line_weight,
