@@ -4,7 +4,7 @@ library(rhandsontable)
 
 
 shinyUI(fluidPage(
-  
+
   titlePanel(""),
   fluidRow(
     useShinyjs()
@@ -15,25 +15,26 @@ shinyUI(fluidPage(
                       #verbatimTextOutput("debug"),
                       uiOutput("dataInputSection"),
                       uiOutput("dataInputControls"),
-                      verbatimTextOutput("dataInputSectionDebug")
+                      verbatimTextOutput("dataInputSectionDebug"),
+                      uiOutput("dataControls")
                   )
            ),
            column(6,
                   div(id="dataSection",
-                      rHandsontableOutput("dataInputPreview"),
-                      uiOutput("dataControls")
+                      rHandsontableOutput("dataInputPreview",height = 200),
+                      br()
                   )
-                  
+
            )),
   fluidRow(id="vizPage",
-           column(3,
+           column(6,
                   div(id = "vizControlsSection",
                       uiOutput("vizControls"),
                       uiOutput("vizControls2")
                   ),
                   verbatimTextOutput("debugViz")
            ),
-           column(9,
+           column(6,
                   uiOutput("viz")           )
   )
 ))

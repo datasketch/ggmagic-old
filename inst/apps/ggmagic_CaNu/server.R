@@ -7,24 +7,25 @@ library(ggmagic)
 library(datafringe)
 
 shinyServer(function(input, output, session){
-  
+
   ## DATA INPUT SECTION
   output$dataInputSectionDebug <- renderPrint({
     data <- data()
+    if(is.null(data)) return()
     guessFtype(data)
   })
-  
+
   output$dataInputSection <- renderUI({
     dataInputTypeChoices <- list("Copiar y Pegar"="pasted",
                                  "Cargar archivo"="fileUpload",
                                  "Datos de muestra"="sampleData")
-    
+
     list(
       radioButtons("dataInputType", "upload Data",
                    choices = dataInputTypeChoices, selected = dataInputTypeChoices[[1]])
     )
   })
-  
+
   output$dataInputControls <- renderUI({
     textareaTpl <- '<textarea id="inputDataPasted" placeholder="{prefill}"></textarea>'
     textArea <- pystr_format(textareaTpl, prefill = "Pegue datos aquí")
@@ -40,7 +41,7 @@ shinyServer(function(input, output, session){
     )
     dataInputControls[[input$dataInputType]]
   })
-  
+
   inputData <- reactive({
     inputType <- input$dataInputType
     #readDataFromInputType(inputType)
@@ -61,35 +62,35 @@ shinyServer(function(input, output, session){
     }
     return(df)
   })
-  
+
   output$dataInputPreview <- renderRHandsontable({
     d <- inputData()
     if(is.null(inputData()))
       return()
     h <- rhandsontable(d, useTypes = FALSE, readOnly = FALSE,
-                       width = "100%",height = 500) %>%
+                       width = "100%",height = 200) %>%
       hot_table(stretchH = "none") %>%
       hot_cols(manualColumnMove = TRUE)
     h
   })
-  
+
   data <- reactive({
     if(is.null(input$dataInputPreview))
       return()
     as_tibble(hot_to_r(input$dataInputPreview))
   })
-  
+
   output$dataControls <- renderUI({
     if(is.null(data())) return()
     d <- data()
     list(
       selectizeInput("selectedCols","Select Cols",
                      choices = names(d),
-                     selected = names(d)[1:2], 
+                     selected = names(d)[1:2],
                      multiple = TRUE)
     )
   })
-  
+
   fringe <- reactive({
     if(is.null(input$selectedCols)) return()
     if(is.null(data())) return()
@@ -99,9 +100,9 @@ shinyServer(function(input, output, session){
     #f <- fringe(d)
     d
   })
-  
+
   ## VIZ SECTION
-  
+
   output$debugViz <- renderPrint({
     #if(is.null(fringe())) return()
     #data <- fringe()
@@ -111,7 +112,7 @@ shinyServer(function(input, output, session){
     d <- data()
     names(d)[1:2]
   })
-  
+
   output$vizControls <- renderUI({
     if(is.null(fringe())) return()
     data <- fringe()
@@ -122,7 +123,7 @@ shinyServer(function(input, output, session){
     pattern <- "bar.*_CaNu\\."
     bars_CaNu <- ggList(pattern)
     list(
-      textInput("whichVizPattern",label = "Which Viz Patter")
+      textInput("whichVizPattern",label = "Which Viz Pattern", value = "CaNu")
     )
   })
     output$vizControls2 <- renderUI({
@@ -144,7 +145,7 @@ shinyServer(function(input, output, session){
       br()
     )
   })
-  
+
   plot <- reactive({
     data <- fringe()
     if(is.null(data)) return("null data")
@@ -152,12 +153,12 @@ shinyServer(function(input, output, session){
     title <- input$vizTitle
     #xLabel <- input$xLabel
     #yLabel <- input$yLabel
-    # p <- do.call(gg,list(data, title = title, 
+    # p <- do.call(gg,list(data, title = title,
     #                      xLabel = xLabel, yLabel = yLabel))
     p <- do.call(gg,list(data, title = title))
     p
   })
-  
+
   output$viz <- renderUI({
     p <- plot()
     if(is.null(p)) return()
@@ -177,13 +178,13 @@ shinyServer(function(input, output, session){
       save_ggmagic(p,file)
     }
   )
-  
+
   ## PUBLISH SECTION
-  
+
   output$debug <- renderPrint({
   })
-  
-  
+
+
 })
 
 
