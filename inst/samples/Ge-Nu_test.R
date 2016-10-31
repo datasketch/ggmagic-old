@@ -82,4 +82,12 @@ long <- c(-74.77349,-73.25066 ,-75.02309)
 df_CaGe <- data.frame(type = type, long = long, lat = lat)
 
 gg_bubble_co_CaGe.(df_CaGe)
+
+type <- c("Sospecha de campo minado", "Sospecha de campo minado", "Accidente por MAP", "Accidente por MAP")
+long <- c(-75.08235, -75.22135, -75.47778, -75.18678)
+lat <- c( 5.951820, 5.611950, 7.489444, 5.838575)
+
+df_CaGe <- data.frame(type = type, long = long, lat = lat)
 gg_bubble_depto_CaGe.(df_CaGe)
+
+

@@ -20,9 +20,14 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "Report",
   data <- f$d
 
   options(warn=-1)
+  data$a <- as.character(data$a)
+  data$a[data$a == "5"] <- "05"
+  data$a[data$a == "7"] <- "07"
+  data$a[data$a == "8"] <- "08"
+
   data_deptos <- suppressMessages(read_csv(system.file("geo/deptos_co.csv", package = "ggmagic"), col_names = TRUE))
   names(data_deptos)[which(names(data_deptos) == "id")] <- "a"
-  data_complete <- data.frame(a = unique(data_deptos$a))
+  data_complete <- data.frame(a = unique(data_deptos$a), stringsAsFactors = FALSE)
   data <- suppressMessages(dplyr::inner_join(data_complete, data))
 
   data_graph <- dplyr::inner_join(data, data_deptos, by = "a")
@@ -422,7 +427,8 @@ gg_bubble_co_CaGe. <- function(data, titleLabel = "Report", fillLabel = NULL, co
 
   graph <- graph + geom_point(data = data_graph, aes(x = b, y = c, colour = a,
                                                      size = count * scale_point), alpha = alpha) +
-    coord_map() + coord_fixed() + scale_size(guide = 'none')
+    coord_map() + coord_fixed() + scale_size(guide = 'none') +
+    scale_color_manual(values = getPalette())
   options(warn=0)
 
   return(graph)
@@ -464,7 +470,8 @@ gg_bubble_depto_CaGe. <- function(data, titleLabel = "Report", depto_ = "05",
 
   graph <- graph + geom_point(data = data_graph, aes(x = b, y = c, colour = a,
                                                      size = count * scale_point), alpha = alpha) +
-    coord_map() + coord_fixed() + scale_size(guide = 'none')
+    coord_map() + coord_fixed() + scale_size(guide = 'none') +
+    scale_color_manual(values = getPalette())
   options(warn=0)
 
   return(graph)
