@@ -1891,7 +1891,7 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", fillLabel = NULL, 
 #' add(1, 1)
 #' add(10, 1)
 
-gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150, lim_sup = 150, xLabel = NULL, ... ){
+gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150, lim_sup = 150, xLabel = NULL){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -1918,13 +1918,18 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150, lim
   fi <- data.frame(id = 1:dim(data)[1], categoria = data$a)
   fi <- inner_join(fi, dat.after)
 
-  cent <- fi %>% dplyr::group_by(categoria) %>% dplyr::summarise(x = mean(x), y = mean(y) )
+  cent <- fi %>% dplyr::group_by(categoria) %>%
+    dplyr::summarise(x = mean(x), y = mean(y))
 
 
-  ggplot(fi) +
-    geom_polygon(aes(x, y, group=id, fill = categoria))   + scale_color_discrete() +
-    coord_equal(xlim=limits, ylim=limits ) + geom_text(data=cent, aes(x, y, label=categoria)) +
-    theme_bw() + guides(fill = FALSE) + theme_void() +
-    labs(title=titleLabel)
+  graph <- ggplot(fi) +
+    geom_polygon(aes(x, y, group=id, fill = categoria)) +
+    scale_fill_manual(values = getPalette()) +
+    coord_equal(xlim=limits, ylim=limits) +
+    geom_text(data=cent, aes(x, y, label=categoria)) +
+    theme_ds() + theme_ds_clean() +
+    labs(title=titleLabel) + guides(fill = FALSE)
+
+  return(graph)
 
 }
