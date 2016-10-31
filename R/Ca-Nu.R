@@ -1813,7 +1813,7 @@ gg_stream_CaNu. <- function(data, titleLabel = "", xLabel = "Index",
   data_graph$xorder <- as.numeric(data_graph$xorder)
 
   graph <- ggplot(data_graph, aes(x = xorder, y = b, group = a, fill = a)) +
-    stat_steamgraph() + theme_minimal() +
+    stat_steamgraph() +
     labs(tittle = titleLabel, x = xLabel, y = ylab, fill = flab) +
     scale_fill_manual(values = getPalette()) + theme_ds()
   graph <- graph + theme(legend.position=leg_pos)
