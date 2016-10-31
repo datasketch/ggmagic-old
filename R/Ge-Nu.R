@@ -10,7 +10,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_choropleth_co_GeNu. <- function(data, titleLabel = "",
+gg_choropleth_co_GeNu. <- function(data, titleLabel = "", reverse = FALSE,
                                    fillLabel = NULL, leg_pos = "right",
                                    color_map = "gray", color_frontier = "white", ...){
 
@@ -43,9 +43,17 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "",
     geom_map(data = data_graph, map = data_graph,
              aes(map_id = id, x = long, y = lat, group = group, fill = b),
              color = color_frontier, size = 0.25) + coord_map() +
-    expand_limits(x = data_graph$long, y = data_graph$lat) + theme_ds() + theme_ds_clean() +
-    scale_fill_gradient(getPalette(type = "sequential")) +
-    labs(x = "", y = "", title = titleLabel) + theme(legend.position=leg_pos)
+    expand_limits(x = data_graph$long, y = data_graph$lat) + theme_ds() + theme_ds_clean()
+
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
+  graph <- graph + labs(x = "", y = "", title = titleLabel) +
+      theme(legend.position=leg_pos)
 
   options(warn=0)
 
@@ -63,7 +71,7 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_choropleth_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05",
+gg_choropleth_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05", reverse = FALSE,
                                       fillLabel = NULL, leg_pos = "right",
                                       color_map = "gray", color_frontier = "white", ...){
 
@@ -93,10 +101,18 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05",
     geom_map(data = data_graph, map = data_graph,
              aes(map_id = id, x = long, y = lat, group = group, fill = b),
              color = color_frontier, size=0.25) + coord_map() +
-    expand_limits(x = data_graph$long, y = data_graph$lat) +
-    scale_fill_gradient(getPalette(type = "sequential")) +
-    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean() +
-    theme(legend.position=leg_pos)
+    expand_limits(x = data_graph$long, y = data_graph$lat)
+
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
+
+  graph <- graph + labs(x = "", y = "", title = titleLabel) +
+    theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
 
   options(warn=0)
 
@@ -114,7 +130,7 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_choropleth_latam_GeNu. <- function(data, titleLabel = "",
+gg_choropleth_latam_GeNu. <- function(data, titleLabel = "", reverse = FALSE,
                                    fillLabel = NULL, leg_pos = "right",
                                    color_map = "gray", color_frontier = "white", ...){
 
@@ -143,10 +159,18 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "",
     geom_map(data = data_graph, map = data_graph,
              aes(map_id = id, x = long, y = lat, group = group, fill = b),
              color = color_frontier, size = 0.25) + coord_map() +
-    expand_limits(x = data_graph$long, y = data_graph$lat) +
-    scale_fill_gradient(getPalette(type = "sequential"))  +
-    labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean() +
-    theme(legend.position=leg_pos)
+    expand_limits(x = data_graph$long, y = data_graph$lat)
+
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
+
+  graph <- graph + labs(x = "", y = "", title = titleLabel) +
+    theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
 
   options(warn=0)
 
