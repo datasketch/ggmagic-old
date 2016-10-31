@@ -10,7 +10,7 @@ shinyUI(fluidPage(
     useShinyjs()
   ),
   fluidRow(id="dataPage",
-           column(3,
+           column(6,
                   div(id = "dataControlsSection",
                       #verbatimTextOutput("debug"),
                       uiOutput("dataInputSection"),
@@ -18,7 +18,7 @@ shinyUI(fluidPage(
                       verbatimTextOutput("dataInputSectionDebug")
                   )
            ),
-           column(9,
+           column(6,
                   div(id="dataSection",
                       rHandsontableOutput("dataInputPreview"),
                       uiOutput("dataControls")
@@ -28,7 +28,8 @@ shinyUI(fluidPage(
   fluidRow(id="vizPage",
            column(3,
                   div(id = "vizControlsSection",
-                      uiOutput("vizControls")
+                      uiOutput("vizControls"),
+                      uiOutput("vizControls2")
                   ),
                   verbatimTextOutput("debugViz")
            ),
