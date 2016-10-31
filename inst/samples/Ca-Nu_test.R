@@ -131,6 +131,7 @@ gg_stream_CaNu.(dataCaNu)
 gg_treemap_x_CaNu.(dataCaNu)
 gg_treemap_density_y_CaNu.(dataCaNu)
 
+
 #boxplots
 
 boxSpltPlot(dataCaNu, titleLabel, xLabel, yLabel, fillLabel, voltear)

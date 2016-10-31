@@ -9,8 +9,8 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_CaCaNu.  <- function(data, titleLabel = "Report", xLabel = NULL,
-                             yLabel = NULL, ...){
+gg_bubble_CaCaNu.  <- function(data, titleLabel = "", xLabel = NULL,
+                             yLabel = NULL){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -21,7 +21,9 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "Report", xLabel = NULL,
   graph <- ggplot(data, aes(x = a, y = b, size = c))
   graph <- graph + geom_point()
   graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
-  graph <- graph + theme_minimal() + theme(legend.position="none")
+  graph <- graph  + theme(legend.position="none") +
+    theme_ds() + scale_color_manual(values = getPalette()) +
+    guides(size = FALSE, colour = FALSE)
 
   return(graph)
 }

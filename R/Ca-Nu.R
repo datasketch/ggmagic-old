@@ -1413,7 +1413,7 @@ gg_donut_CaNu. <- function(data, titleLabel = "", fillLabel = NULL,
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(count = n()) %>%
+    dplyr::summarise(count = sum(b)) %>%
     dplyr::mutate(pos = cumsum(count) - count/2,
                   percent = 100 * round(count/sum(count), 4))
 
@@ -1450,7 +1450,7 @@ gg_dot_bar_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLa
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum())
+    dplyr::summarise(count = sum(b))
 
   data_graph <- data_graph %>%
     mutate(order = c(1:nrow(data_graph)))
@@ -1537,7 +1537,7 @@ gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "Report", yLabel 
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(count = n()) %>%
+    dplyr::summarise(count = sum(b)) %>%
     dplyr::mutate(pos = cumsum(count) - count/2,
                   percent = 100 * round(count/sum(count), 4))
 
