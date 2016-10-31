@@ -5,8 +5,8 @@
 \title{gg_bar_stacked_100_hor_CaCa.
 Stacked 100pct horizontal Bar}
 \usage{
-gg_bar_stacked_100_hor_CaCa.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = "Percentage", fillLabel = NULL, leg_pos = "top")
+gg_bar_stacked_100_hor_CaCa.(data, titleLabel = "", xLabel = NULL,
+  yLabel = "Percent", fillLabel = NULL, leg_pos = "right")
 }
 \arguments{
 \item{x}{A number.}

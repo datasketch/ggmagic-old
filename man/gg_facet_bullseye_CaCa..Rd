@@ -5,7 +5,7 @@
 \title{gg_facet_bullseye_CaCa.
 Facet Bullseye}
 \usage{
-gg_facet_bullseye_CaCa.(data, titleLabel = "Report", fillLabel = NULL,
+gg_facet_bullseye_CaCa.(data, titleLabel = "", fillLabel = NULL,
   leg_pos = "right")
 }
 \arguments{

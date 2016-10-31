@@ -6,10 +6,10 @@
 \title{gg_bar_coloured_ver_Ca.
 Vertical coloured bars}
 \usage{
-gg_bar_coloured_ver_Ca.(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_coloured_ver_Ca.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "right")
 
-gg_bar_coloured_hor_Ca.(data, titleLabel = "Report", xLabel = NULL,
+gg_bar_coloured_hor_Ca.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "right")
 }
 \arguments{
