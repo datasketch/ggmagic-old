@@ -91,7 +91,7 @@ gg_bar_facet_coloured_parameter_ver_hor_CaCaNu.(dataCaCaNu,
 # Treemap
 gg_treemap_x_CaCaNu.(dataCaCaNu)
 gg_treemap_y_CaCaNu.(dataCaCaNu)
-gg_treemap_density_z_CaCaNu.(dataCaCaNu)
+gg_treemap_density_z_CaCaNu.(dataCaCaNu, reverse = FALSE)
 
 # pyramid
 

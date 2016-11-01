@@ -892,18 +892,18 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL,
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
-    dplyr::summarise(count_ = sum(c))
+    dplyr::summarise(count = sum(c))
 
 
   data_graph$a <- as.factor(data_graph$a)
   data_graph$b <- as.factor(data_graph$b)
-  data_graph$lab <- as.factor(as.character(data_graph$prop))
 
   graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a",
-                                label = "lab"), group.label.colour = "white",
-                     label.colour = "white", label.size.fixed = 5,
-                     group.label.size.factor = 1) +
-    labs(title = titleLabel) + scale_fill_manual(values = getPalette())
+                                label = "b"), group.label.colour = "white",
+                     label.colour = "white", label.size.factor = 2,
+                     group.label.size.threshold = 1) + guides(fill = FALSE) +
+    labs(title = titleLabel) + scale_fill_manual(values = getPalette()) +
+    theme_ds() + theme_ds_clean()
 
   return(graph)
 }
@@ -934,9 +934,12 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL, ...){
   data_graph$a <- as.factor(data_graph$a)
   data_graph$b <- as.factor(data_graph$b)
 
-  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a", label = "b"),
-                     group.label.colour = "black", label.colour = "black") +
-    labs(title = titleLabel)
+  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b',
+                                group = "a", label = "b"), group.label.colour = "white",
+                     label.colour = "white", label.size.factor = 2,
+                     group.label.size.threshold = 1) + guides(fill = FALSE) +
+    labs(title = titleLabel) + scale_fill_manual(values = getPalette()) +
+    theme_ds() + theme_ds_clean()
 
   return(graph)
 }
@@ -952,7 +955,7 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "Report",
+gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", reverse = FALSE,
                                          fillLabel = NULL, ...){
 
   f <- fringe(data)
@@ -968,9 +971,19 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "Report",
   data_graph$a <- as.factor(data_graph$a)
   data_graph$b <- as.factor(data_graph$b)
 
-  graph <- ggplotify(treemapify(data_graph, area = "Sum", fill = 'Sum', group = "a", label = "b"),
-                     group.label.colour = "black", label.colour = "black") +
-    labs(title = titleLabel)
+  graph <- ggplotify(treemapify(data_graph, area = "Sum", fill = 'Sum',
+                                group = "a", label = "b"), group.label.colour = "white",
+                     label.colour = "white", label.size.factor = 2,
+                     group.label.size.threshold = 1) +
+    labs(title = titleLabel) + theme_ds() + theme_ds_clean()
+
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
 
   return(graph)
 }
@@ -1007,6 +1020,8 @@ gg_pyramid_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
     scale_y_continuous(labels = abs) + theme_ds() +
     scale_fill_manual(values=getPalette()) +
     labs(title = titleLabel, x = xLabel, y = yLabel) +
+    scale_y_continuous(labels = comma) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     coord_flip()
 
   return(graph)
