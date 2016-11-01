@@ -193,7 +193,7 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "", clab = NULL,
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     scale_fill_manual(values = getPalette()) +
     theme_ds() + labs(title = titleLabel, x = "", y = "", fill = "")  +
-    theme(legend.position = leg_pos) + theme_ds()
+    theme(legend.position = leg_pos)
 
   return(graph)
 }
