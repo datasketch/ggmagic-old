@@ -688,7 +688,7 @@ gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
-                                      yLabel = NULL, leg_pos = "top", ...){
+                                      yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -741,7 +741,7 @@ gg_area_stacked_ver_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
-                                        yLabel = NULL, leg_pos = "top", ...){
+                                        yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)

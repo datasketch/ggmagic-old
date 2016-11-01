@@ -209,8 +209,8 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NUL
 #' add(1, 1)
 #' add(10, 1)
 gg_slope_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
-                              leg_pos="right", size_text = 6,
-                              size_point = 3, size_line = 1,...){
+                              leg_pos="right", size_text = 6, size_vjust = 1.5,
+                              size_hjust = 0.5, size_point = 3, size_line = 1,...){
 
 
   f <- fringe(data)
@@ -221,8 +221,8 @@ gg_slope_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NUL
 
   graph <- ggplot(data) +
     geom_text(aes(x = as.factor(b), y = c + 0.5, group = a, color = a, label = c),
-              size = size_text, vjust = 1.5, hjust = 0.5, show.legend = FALSE,
-              check_overlap = TRUE) +
+              size = size_text, vjust = size_vjust, hjust = size_hjust,
+              show.legend = FALSE, check_overlap = TRUE) +
     geom_text(aes(x = as.factor(b), y = min(c) - mean(c), label = b),
               size = size_text, show.legend = FALSE, check_overlap = TRUE) +
     geom_line(aes(x = as.factor(b), y = c, group = a, color = a), size = size_line) +

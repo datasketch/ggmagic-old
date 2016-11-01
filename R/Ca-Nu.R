@@ -162,7 +162,7 @@ gg_bar_coloured_parameter_ver_CaNu. <- function(data, titleLabel = "", xLabel = 
   data <- f$d
   graph <- ggplot(data, aes(x = a, y = b)) +
     geom_bar(stat="identity", aes(fill = a %in% p ))
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
   graph <- graph + guides(fill = FALSE) + theme(legend.position = leg_pos) +
     theme_ds() + scale_fill_manual(values = getPalette())
   return(graph)
@@ -1089,13 +1089,11 @@ gg_facet_area_hor_CaNu. <- function(data, titleLabel = "", xLabel = "Index",
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_100_ver_CaNu. <- function(data, titleLabel = "", xLabel = 'Index',
-                                          yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "right", ...){
+                                          yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  ylab <- yLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
 
   data_count <- data %>%
@@ -1115,9 +1113,11 @@ gg_area_stacked_100_ver_CaNu. <- function(data, titleLabel = "", xLabel = 'Index
   data_graph$xorder <- as.numeric(data_graph$xorder)
 
   graph <- ggplot(data = data_graph,
-                  aes(x=xorder, y=b, group=a)) + geom_area(aes(fill = a), position = "fill")
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab, fill = flabel)
-  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
+                  aes(x=xorder, y=b, group=a)) +
+    geom_area(aes(fill = a), position = "fill")
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+    scale_y_continuous(labels = percent)
   return(graph)
 }
 
@@ -1154,13 +1154,11 @@ gg_area_stacked_100_hor_CaNu. <- function(data, titleLabel = "", xLabel = 'Index
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "", xLabel = 'Index',
-                                          yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "right", ...){
+                                          yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  ylab <- yLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
 
   data_count <- data %>%
@@ -1180,9 +1178,10 @@ gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "", xLabel = 'Index',
   data_graph$xorder <- as.numeric(data_graph$xorder)
 
   graph <- ggplot(data = data_graph,
-                  aes(x=xorder, y=b, group=a)) + geom_area(aes(fill = a), position = "stack")
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab, fill = flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+                  aes(x=xorder, y=b, group=a)) +
+    geom_area(aes(fill = a), position = "stack")
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
   return(graph)
 }
 
