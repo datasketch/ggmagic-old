@@ -1552,7 +1552,7 @@ gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", yLabel = "Cou
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(count = n()) %>%
+    dplyr::summarise(count = sum(b)) %>%
     dplyr::mutate(pos = cumsum(count) - count/2,
                   percent = 100 * round(count/sum(count), 4))
 
