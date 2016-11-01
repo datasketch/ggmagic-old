@@ -9,7 +9,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_horizon_NuNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_horizon_NuNu. <- function(data, titleLabel = "", xLabel = NULL, reverse = FALSE,
                            yLabel =  NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
@@ -18,9 +18,16 @@ gg_horizon_NuNu. <- function(data, titleLabel = "Report", xLabel = NULL,
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot_horizon(data, 'a', 'b')
-  graph <- graph + scale_fill_continuous(low = 'green', high = 'red') + theme_minimal() +
-    labs(tittle = titleLabel, x = xlab, y = ylab)
+  graph <- ggplot_horizon(data, 'a', 'b') +
+    labs(tittle = titleLabel, x = xlab, y = ylab) + theme_ds()
+
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
 
   return(graph)
 }
@@ -36,7 +43,7 @@ gg_horizon_NuNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_waterfall_NuNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_waterfall_NuNu. <- function(data, titleLabel = "", xLabel = NULL,
                              yLabel =  NULL, ...){
 
   f <- fringe(data)
@@ -45,7 +52,7 @@ gg_waterfall_NuNu. <- function(data, titleLabel = "Report", xLabel = NULL,
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot_waterfall(data,'a','b') + theme_minimal() +
+  graph <- ggplot_waterfall(data,'a','b') + theme_ds() +
     labs(tittle = titleLabel, x = xlab, y = ylab)
 
   return(graph)

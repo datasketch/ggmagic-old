@@ -27,9 +27,9 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "",xlab = NULL, ylab=NULL, clab 
   g
 }
 
-#' gg_stream_CaDaNu.
-#' Stream
-#' @name gg_stream_CaDaNu.
+#' gg_steam_CaDaNu.
+#' Steam
+#' @name gg_steam_CaDaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -38,7 +38,7 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "",xlab = NULL, ylab=NULL, clab 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stream_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_steam_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
                             yLabel =  NULL, fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)

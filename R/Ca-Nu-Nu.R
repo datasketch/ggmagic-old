@@ -1,6 +1,6 @@
-#' gg_stream_CaNuNu.
-#' Streamgraph
-#' @name gg_stream_CaNuNu.
+#' gg_steam_CaNuNu.
+#' Steamgraph
+#' @name gg_steam_CaNuNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
@@ -9,7 +9,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stream_CaNuNu. <- function(data, titleLabel = "", xLabel = NULL,
+gg_steam_CaNuNu. <- function(data, titleLabel = "", xLabel = NULL,
                               yLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)

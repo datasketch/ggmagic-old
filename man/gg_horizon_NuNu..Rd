@@ -5,7 +5,7 @@
 \title{gg_horizon_NuNu.
 Horizon}
 \usage{
-gg_horizon_NuNu.(data, titleLabel = "Report", xLabel = NULL,
+gg_horizon_NuNu.(data, titleLabel = "", xLabel = NULL, reverse = FALSE,
   yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{

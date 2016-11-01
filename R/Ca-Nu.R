@@ -1785,9 +1785,9 @@ gg_bar_ordered_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL,
   return(graph)
 }
 
-#' gg_stream_CaNu.
-#' Stream
-#' @name gg_stream_CaNu.
+#' gg_steam_CaNu.
+#' Steam
+#' @name gg_steam_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -1796,7 +1796,7 @@ gg_bar_ordered_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stream_CaNu. <- function(data, titleLabel = "", xLabel = "Index",
+gg_steam_CaNu. <- function(data, titleLabel = "", xLabel = "Index",
                            yLabel =  NULL, fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)

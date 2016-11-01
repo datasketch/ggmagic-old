@@ -22,7 +22,8 @@ dataCaCaNu[] <- sapply(dataCaCaNu, as.character)
 dataCaCaNu$c <- runif(nrow(dataCaCaNu), min = 0, max = 50)
 
 # Coloured Bubble
-gg_coloured_bubble_CaCaNu.(dataCaCaNu)
+gg_coloured_x_bubble_CaCaNu.(dataCaCaNu)
+gg_coloured_y_bubble_CaCaNu.(dataCaCaNu)
 
 gg_pyramid_CaCaNu.(dataCaCaNu)
 
@@ -80,10 +81,10 @@ gg_bar_facet_coloured_z_ver_CaCaNu.(dataCaCaNu)
 gg_bar_facet_coloured_z_hor_CaCaNu.(dataCaCaNu)
 
 # Facet Coloured parameter Bar
-gg_bar_facet_coloured_parameter_ver_ver_CaCa.(dataCaCaNu,
+gg_bar_facet_coloured_parameter_ver_ver_CaCaNu.(dataCaCaNu,
                                           parameter1 = c("Callejero"),
                                           parameter2 = c("A"))
-gg_bar_facet_coloured_parameter_ver_hor_CaCa.(dataCaCaNu,
+gg_bar_facet_coloured_parameter_ver_hor_CaCaNu.(dataCaCaNu,
                                           parameter1 = c("Callejero", "De raza", "Mixto"),
                                           parameter2 = c("A","B","C"))
 
