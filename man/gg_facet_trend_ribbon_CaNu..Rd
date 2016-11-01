@@ -5,7 +5,7 @@
 \title{gg_facet_trend_ribbon_CaNu.
 Facet Trend ribbon}
 \usage{
-gg_facet_trend_ribbon_CaNu.(data, titleLabel = "Report", xLabel = "Index",
+gg_facet_trend_ribbon_CaNu.(data, titleLabel = "", xLabel = "Index",
   yLabel = NULL, fillLabel = NULL, type = 1, ...)
 }
 \arguments{

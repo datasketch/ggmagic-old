@@ -5,7 +5,7 @@
 \title{gg_dot_bar_hor_CaNu.
 Horizontal Dot Bar}
 \usage{
-gg_dot_bar_hor_CaNu.(data, titleLabel = "Report", xLabel = NULL,
+gg_dot_bar_hor_CaNu.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{

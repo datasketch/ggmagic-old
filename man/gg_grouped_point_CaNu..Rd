@@ -5,7 +5,7 @@
 \title{gg_grouped_point_CaNu.
 Grouped Color Point}
 \usage{
-gg_grouped_point_CaNu.(data, titleLabel = "Report", xLabel = "Index",
+gg_grouped_point_CaNu.(data, titleLabel = "", xLabel = "Index",
   yLabel = NULL, fillLabel = NULL, leg_pos = "right", type = 1, ...)
 }
 \arguments{

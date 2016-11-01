@@ -5,9 +5,8 @@
 \title{gg_coloured_multi_density_dist_CaNu.
 Coloured Density Distribution}
 \usage{
-gg_coloured_multi_density_dist_CaNu.(data, titleLabel = "Report",
-  xLabel = NULL, yLabel = "Count", fillLabel = NULL, leg_pos = "right",
-  ...)
+gg_coloured_multi_density_dist_CaNu.(data, titleLabel = "", xLabel = NULL,
+  yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,7 +5,7 @@
 \title{gg_facet_area_ver_CaNu.
 Facet Vertical Area}
 \usage{
-gg_facet_area_ver_CaNu.(data, titleLabel = "Report", xLabel = "Index",
+gg_facet_area_ver_CaNu.(data, titleLabel = "", xLabel = "Index",
   yLabel = NULL, ...)
 }
 \arguments{

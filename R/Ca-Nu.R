@@ -131,10 +131,10 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", xLabel = NULL, rev
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_y_hor_CaNu.<- function(data, titleLabel = "", xLabel = NULL,
+gg_bar_coloured_y_hor_CaNu.<- function(data, titleLabel = "", xLabel = NULL, reverse = FALSE,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
 
-  graph <- gg_bar_coloured_y_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_bar_coloured_y_ver_CaNu.(data, titleLabel, xLabel, reverse, yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -266,7 +266,7 @@ gg_coloured_bubble_CaNu.  <- function(data, titleLabel = "", xLabel = NULL, ...)
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_polar_CaNu. <- function(data, width = 0.95, titleLabel = "Report",
+gg_bar_polar_CaNu. <- function(data, width = 0.95, titleLabel = "",
                                    fillLabel = NULL, leg_pos= "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -291,7 +291,7 @@ gg_bar_polar_CaNu. <- function(data, width = 0.95, titleLabel = "Report",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_circular_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
+gg_bar_circular_CaNu. <- function(data, titleLabel = "", fillLabel = NULL,
                                 leg_pos="right", width = 0.85, ...){
 
   f <- fringe(data)
@@ -299,7 +299,11 @@ gg_bar_circular_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, aes(x = a, y = b , fill = a )) +
+  data_graph <- data %>% dplyr::group_by(a) %>%
+    dplyr::summarise(count = sum(b)) %>%
+    dplyr::arrange(count)
+
+  graph <- ggplot(data_graph, aes(x = reorder(a,count), y = count , fill = a )) +
     geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
 
   graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel) +
@@ -320,7 +324,7 @@ gg_bar_circular_CaNu. <- function(data, titleLabel = "Report", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_stacked_hist_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                             fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
@@ -347,7 +351,7 @@ gg_stacked_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_multi_density_dist_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_coloured_multi_density_dist_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                                  fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
@@ -375,7 +379,7 @@ gg_coloured_multi_density_dist_CaNu. <- function(data, titleLabel = "Report", xL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                              fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
@@ -404,7 +408,7 @@ gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "Report", xLabel
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dist_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                             fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
@@ -432,7 +436,7 @@ gg_facet_dist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dist_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                             fillLabel = NULL, leg_pos="right", ...){
 
   graph <- gg_facet_dist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -453,7 +457,7 @@ gg_facet_dist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_hist_mean_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL,
                                     yLabel = "Count", fillLabel = NULL, leg_pos='right', ...){
 
   f <- fringe(data)
@@ -479,7 +483,7 @@ gg_facet_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = N
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_hist_mean_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                     fillLabel = NULL, leg_pos="right", ...){
 
   graph <- gg_facet_hist_mean_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -500,7 +504,7 @@ gg_facet_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = N
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_hist_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL,
                                          yLabel = "Count", fillLabel = NULL, leg_pos='right', ...){
 
   f <- fringe(data)
@@ -525,7 +529,7 @@ gg_facet_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_hist_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                          fillLabel = NULL, leg_pos="right", ...){
 
   graph <- gg_facet_hist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -546,7 +550,7 @@ gg_facet_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                          fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
@@ -572,7 +576,7 @@ gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = N
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                          fillLabel = NULL, leg_pos="right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -601,7 +605,7 @@ gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = N
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dist_hist_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                     fillLabel = NULL, leg_pos="right", ...){
 
   graph <- gg_facet_dist_hist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -622,7 +626,7 @@ gg_facet_dist_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = N
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                          fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
@@ -649,7 +653,7 @@ gg_facet_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabe
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                          fillLabel = NULL, leg_pos="right", ...){
 
   graph <- gg_facet_dist_hist_mean_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -670,7 +674,7 @@ gg_facet_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabe
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dot_dist_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                     fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
@@ -698,7 +702,7 @@ gg_facet_dot_dist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NU
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dot_dist_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                         fillLabel = NULL, leg_pos="right", ...){
 
   graph <- gg_facet_dot_dist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -719,7 +723,7 @@ gg_facet_dot_dist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NU
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_dot_hist_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL,
                                     yLabel = "Count", fillLabel = NULL, leg_pos='right', ...){
 
   f <- fringe(data)
@@ -745,7 +749,7 @@ gg_facet_dot_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NU
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dot_hist_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                     fillLabel = NULL, leg_pos="right", ...){
 
   graph <- gg_facet_dot_hist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -766,7 +770,7 @@ gg_facet_dot_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NU
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_dot_hist_mean_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL,
                                          yLabel = "Count", fillLabel = NULL, leg_pos='right', ...){
 
   f <- fringe(data)
@@ -793,7 +797,7 @@ gg_facet_dot_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dot_hist_mean_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                          fillLabel = NULL, leg_pos="right", ...){
 
   graph <- gg_facet_dot_hist_mean_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -814,7 +818,7 @@ gg_facet_dot_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dot_dist_hist_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                          fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
@@ -841,7 +845,7 @@ gg_facet_dot_dist_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dot_dist_hist_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                          fillLabel = NULL, leg_pos="right", ...){
 
   graph <- gg_facet_dot_dist_hist_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -863,7 +867,7 @@ gg_facet_dot_dist_hist_hor_CaNu. <- function(data, titleLabel = "Report", xLabel
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dot_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                               fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
@@ -891,7 +895,7 @@ gg_facet_dot_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "Report", x
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_facet_dot_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                               fillLabel = NULL, leg_pos="right", ...){
 
   graph <- gg_facet_dot_dist_hist_mean_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -912,7 +916,7 @@ gg_facet_dot_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "Report", x
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+gg_facet_point_CaNu. <- function(data, titleLabel = "", xLabel = 'Index', yLabel = NULL,
                                  fillLabel = NULL, type = 1, ...){
 
   f <- fringe(data)
@@ -950,7 +954,7 @@ gg_facet_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+gg_facet_line_point_CaNu. <- function(data, titleLabel = "", xLabel = 'Index', yLabel = NULL,
                                  fillLabel = NULL, type = 1, ...){
 
   f <- fringe(data)
@@ -988,7 +992,7 @@ gg_facet_line_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Ind
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+gg_facet_line_CaNu. <- function(data, titleLabel = "", xLabel = 'Index', yLabel = NULL,
                                       fillLabel = NULL, type = 1, ...){
 
   f <- fringe(data)
@@ -1026,7 +1030,7 @@ gg_facet_line_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', y
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_area_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = "Index",
+gg_facet_area_ver_CaNu. <- function(data, titleLabel = "", xLabel = "Index",
                                       yLabel = NULL, ...){
 
   f <- fringe(data)
@@ -1064,7 +1068,7 @@ gg_facet_area_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = "Index
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_area_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = "Index",
+gg_facet_area_hor_CaNu. <- function(data, titleLabel = "", xLabel = "Index",
                                     yLabel = NULL, ...){
 
   graph <- gg_facet_area_ver_CaNu.(data, titleLabel, xLabel, yLabel)
@@ -1128,9 +1132,9 @@ gg_area_stacked_100_ver_CaNu. <- function(data, titleLabel = "", xLabel = 'Index
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
+gg_area_stacked_100_hor_CaNu. <- function(data, titleLabel = "", xLabel = 'Index',
                                           yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "top", ...){
+                                          leg_pos = "right", ...){
 
   graph <- gg_area_stacked_100_ver_CaNu.(data, titleLabel, xLabel, yLabel)
   graph <- graph + coord_flip()
@@ -1149,9 +1153,9 @@ gg_area_stacked_100_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
+gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "", xLabel = 'Index',
                                           yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "top", ...){
+                                          leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -1193,9 +1197,9 @@ gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Ind
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
+gg_area_stacked_hor_CaNu. <- function(data, titleLabel = "", xLabel = 'Index',
                                           yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "top", ...){
+                                          leg_pos = "right", ...){
 
   graph <- gg_area_stacked_ver_CaNu.(data, titleLabel, xLabel, yLabel)
   graph <- graph + coord_flip()
@@ -1214,7 +1218,7 @@ gg_area_stacked_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Ind
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_grouped_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+gg_grouped_point_CaNu. <- function(data, titleLabel = "", xLabel = 'Index', yLabel = NULL,
                                  fillLabel = NULL, leg_pos="right", type = 1, ...){
 
   f <- fringe(data)
@@ -1252,7 +1256,7 @@ gg_grouped_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index'
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_multi_line_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+gg_multi_line_point_CaNu. <- function(data, titleLabel = "", xLabel = 'Index', yLabel = NULL,
                                    fillLabel = NULL, leg_pos="right", type = 1, ...){
 
   f <- fringe(data)
@@ -1290,7 +1294,7 @@ gg_multi_line_point_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Ind
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_multi_line_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+gg_multi_line_CaNu. <- function(data, titleLabel = "", xLabel = 'Index', yLabel = NULL,
                                         fillLabel = NULL, leg_pos="right", type = 1, ...){
 
   f <- fringe(data)
@@ -1328,7 +1332,7 @@ gg_multi_line_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', y
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_point_trend_line_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+gg_facet_point_trend_line_CaNu. <- function(data, titleLabel = "", xLabel = 'Index', yLabel = NULL,
                                             fillLabel = NULL, type = 1, ...){
 
   f <- fringe(data)
@@ -1370,7 +1374,7 @@ gg_facet_point_trend_line_CaNu. <- function(data, titleLabel = "Report", xLabel 
 #' add(1, 1)
 #' add(10, 1)
 
-gg_facet_trend_ribbon_CaNu. <- function(data, titleLabel = "Report", xLabel = 'Index', yLabel = NULL,
+gg_facet_trend_ribbon_CaNu. <- function(data, titleLabel = "", xLabel = 'Index', yLabel = NULL,
                                         fillLabel = NULL, type = 1, ...){
 
   f <- fringe(data)
@@ -1485,7 +1489,7 @@ gg_donut_CaNu. <- function(data, titleLabel = "", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_bar_hor_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
+gg_dot_bar_hor_CaNu. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                  fillLabel = NULL, leg_pos = "right", ...){
 
   graph <- gg_dot_bar_ver_CaNu.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -1515,10 +1519,10 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "", fillLabel = NULL,
   data <- f$d
 
   data_graph <- data %>% dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum(b)) %>% dplyr::arrange(desc(count))
+    dplyr::summarise(count = sum(b)) %>% dplyr::arrange(count)
   graph <- ggplot(data = data_graph,
-                  aes(x = factor(1), fill = a, weight = count)) +
-    geom_bar(width = 1) + coord_polar(theta = "x")
+                  aes(x = factor(1), fill = a, y = reorder(a, count))) +
+    geom_bar(stat = "identity", width = 1) + coord_polar(theta = "x")
   graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel) +
     scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
@@ -1538,7 +1542,7 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "Report", yLabel = "Count",
+gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", yLabel = "Count",
                                           fillLabel = "Types", leg_pos="right", width = 0.3, ...){
 
   f <- fringe(data)
@@ -1574,7 +1578,7 @@ gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "Report", yLabel 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_single_stacked_ver_CaNu. <- function(data, titleLabel = "Report", yLabel = "Frequency",
+gg_bar_single_stacked_ver_CaNu. <- function(data, titleLabel = "", yLabel = "Frequency",
                                           fillLabel = "Types", leg_pos="right", width = 0.3, ...){
 
   graph <- gg_bar_single_stacked_hor_CaNu.(data, titleLabel, yLabel, fillLabel, leg_pos, width)
@@ -1759,7 +1763,11 @@ gg_bar_ordered_ver_CaNu. <- function(data, titleLabel = "", xLabel = NULL,
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
-  graph <- ggplot(data, aes(x = reorder(a, b), y = b, fill = "")) +
+  data_graph <- data %>% dplyr::group_by(a) %>%
+    dplyr::summarise(count = sum(b)) %>%
+    dplyr::arrange(desc(count))
+
+  graph <- ggplot(data_graph, aes(x = reorder(a, count), y = count, fill = "")) +
     geom_bar(stat = "identity")
   graph <- graph + labs(title = titleLabel, x = xlab, y = ylab) +
     scale_fill_manual(values = getPalette()) + theme_ds() + guides(fill = FALSE)

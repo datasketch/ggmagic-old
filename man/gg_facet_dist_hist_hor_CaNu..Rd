@@ -6,10 +6,10 @@
 \title{gg_facet_dist_hist_hor_CaNu.
 Facet Vertical Histogram + Dist}
 \usage{
-gg_facet_dist_hist_ver_CaNu.(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_dist_hist_ver_CaNu.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 
-gg_facet_dist_hist_hor_CaNu.(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_dist_hist_hor_CaNu.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
