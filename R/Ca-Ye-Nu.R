@@ -172,14 +172,13 @@ gg_circle_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_steam_CaYeNu. <-  function(data, titleLabel = "", clab = NULL,
+gg_steam_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
                                    leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[2]
   ylab <- ylab %||% nms[3]
-  clab <- clab %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -192,9 +191,46 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "", clab = NULL,
     stat_steamgraph() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     scale_fill_manual(values = getPalette()) +
-    theme_ds() + labs(title = titleLabel, x = "", y = "", fill = "")  +
+    theme_ds() + labs(title = titleLabel, x = xlab, y = ylab)  +
     theme(legend.position = leg_pos)
 
   return(graph)
 }
 
+#' gg_slope_CaYeNu.
+#' Slope
+#' @name gg_slope_CaYeNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_slope_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
+                              leg_pos="right", size_text = 6, ...){
+
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
+  data <- f$d
+
+  graph <- ggplot(data) +
+    geom_text(aes(x = as.factor(b), y = c + 0.5, group = a, color = a, label = c),
+              size = size_text, vjust = 1.5, hjust = 0.5, show.legend = FALSE,
+              check_overlap = TRUE) +
+    geom_text(aes(x = as.factor(b), y = min(c) - mean(c), label = b),
+              size = size_text, show.legend = FALSE, check_overlap = TRUE) +
+    geom_line(aes(x = as.factor(b), y = c, group = a, color = a), size = 1) +
+    geom_point(aes(x = as.factor(b), y = c, group = a, color = a), size = 3) +
+    theme_ds() + theme_ds_clean() +
+    labs(title = titleLabel, x = xlab, y = ylab) +
+    scale_color_manual(values = getPalette())
+
+
+  return(graph)
+
+}
