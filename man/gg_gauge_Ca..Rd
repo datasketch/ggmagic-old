@@ -5,7 +5,7 @@
 \title{gg_gauge_Ca.
 Gauge}
 \usage{
-gg_gauge_Ca.(data)
+gg_gauge_Ca.(data, ...)
 }
 \arguments{
 \item{x}{A number.}

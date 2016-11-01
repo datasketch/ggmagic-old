@@ -27,13 +27,7 @@ shinyServer(function(input, output, session){
   })
 
   output$dataInputControls <- renderUI({
-    textareaTpl <- '<textarea id="inputDataPasted" placeholder="{prefill}">largesmall_value	mujeresPct
-Asia	36.61
-    América del Norte	52.51
-    Europa	49.73
-    América del Sur	52.02
-    África	36.26
-    Oceanía	52.19</textarea>'
+    textareaTpl <- '<textarea id="inputDataPasted" placeholder="{prefill}"></textarea>'
     textArea <- pystr_format(textareaTpl, prefill = "Pegue datos aquí")
     dataInputControls <- list(
       "pasted" = HTML(textArea),

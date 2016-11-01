@@ -10,7 +10,7 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_horizon_Nu. <- function(data, titleLabel = "Report", xLabel = "Index",
-                                   yLabel =  NULL, leg_pos = "right"){
+                                   yLabel =  NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -38,7 +38,7 @@ gg_horizon_Nu. <- function(data, titleLabel = "Report", xLabel = "Index",
 #' add(1, 1)
 #' add(10, 1)
 gg_waterfall_Nu. <- function(data, titleLabel = "Report", xLabel = "Index",
-                               yLabel =  NULL){
+                               yLabel =  NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -52,7 +52,7 @@ gg_waterfall_Nu. <- function(data, titleLabel = "Report", xLabel = "Index",
   return(graph)
 }
 
-hist_graph <- function(data, titleLabel = "Report", xLabel = "Values", yLabel = "Frequency"){
+hist_graph <- function(data, titleLabel = "Report", xLabel = "Values", yLabel = "Frequency", ...){
 
   graph <- ggplot(data, aes(x=a)) + geom_histogram()
 
@@ -67,7 +67,7 @@ hist_graph <- function(data, titleLabel = "Report", xLabel = "Values", yLabel = 
 }
 
 hist_dens_graph <- function(data, titleLabel = "Report", xLabel = "Values", yLabel = "Frequency",
-                            alfa = 0.5){
+                            alfa = 0.5, ...){
 
   graph <- ggplot(data, aes(x=a)) + geom_histogram(aes(y=..density..)) +
             geom_density(alpha=alfa, col="red")
@@ -82,7 +82,7 @@ hist_dens_graph <- function(data, titleLabel = "Report", xLabel = "Values", yLab
 }
 
 cumm_prob_graph <- function(data, titleLabel = "Report", xLabel = "Values",
-                            yLabel = "Cummulative Probability"){
+                            yLabel = "Cummulative Probability", ...){
 
   graph <- ggplot(data, aes(a)) + geom_step(aes(y=..y..),stat="ecdf")
 
@@ -94,7 +94,7 @@ cumm_prob_graph <- function(data, titleLabel = "Report", xLabel = "Values",
 }
 
 flip_cumm_prob_graph <- function(data, titleLabel = "Report", xLabel = "Values",
-                                 yLabel = "Cummulative Probability"){
+                                 yLabel = "Cummulative Probability", ...){
 
   graph <- cumm_prob_graph(data, titleLabel, xLabel, yLabel)
   graph <- graph + coord_flip()
@@ -105,7 +105,7 @@ flip_cumm_prob_graph <- function(data, titleLabel = "Report", xLabel = "Values",
 
 
 line_graph <- function(data, titleLabel = "Report", xLabel = "Observations",
-                       yLabel = "Values"){
+                       yLabel = "Values", ...){
 
   data_graph <- data %>%
                 dplyr::mutate(order = 1:nrow(data))
@@ -118,7 +118,7 @@ line_graph <- function(data, titleLabel = "Report", xLabel = "Observations",
 }
 
 flip_line_graph <- function(data, titleLabel = "Report", xLabel = "Obsevations",
-                            yLabel = "Values"){
+                            yLabel = "Values", ...){
 
   graph <- line_graph(data, titleLabel, xLabel, yLabel)
   graph <- graph + coord_flip()
@@ -127,7 +127,7 @@ flip_line_graph <- function(data, titleLabel = "Report", xLabel = "Obsevations",
 }
 
 scatter_graph <- function(data, titleLabel = "Report", xLabel = "Observations",
-                          yLabel = "Values", type = 0){
+                          yLabel = "Values", type = 0, ...){
 
   data_graph <- data %>%
                 dplyr::mutate(order = 1:nrow(data))
@@ -140,7 +140,7 @@ scatter_graph <- function(data, titleLabel = "Report", xLabel = "Observations",
 }
 
 flip_scatter_graph <- function(data, titleLabel = "Report", xLabel = "Observations",
-                               yLabel = "Values", type = 0){
+                               yLabel = "Values", type = 0, ...){
 
   graph <- scatter_graph(data, titleLabel, xLabel, yLabel, type)
   graph <- graph + coord_flip()
@@ -149,7 +149,7 @@ flip_scatter_graph <- function(data, titleLabel = "Report", xLabel = "Observatio
 }
 
 density_hist_graph <- function(data, titleLabel = "Report", xLabel = "Observations",
-                               yLabel = "Values"){
+                               yLabel = "Values", ...){
 
   graph <- ggplot(data, aes(x=a)) + geom_density()
   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel)
@@ -158,7 +158,7 @@ density_hist_graph <- function(data, titleLabel = "Report", xLabel = "Observatio
   return(graph)
 }
 
-box_graph <- function(data, titleLabel = "Report", yLabel = "Values"){
+box_graph <- function(data, titleLabel = "Report", yLabel = "Values", ...){
 
   graph <- ggplot(data,aes(x=factor(""),y=a))+geom_boxplot()+ xlab("")
   graph <- graph + labs(title = titleLabel, x = "", y = yLabel)
@@ -168,7 +168,7 @@ box_graph <- function(data, titleLabel = "Report", yLabel = "Values"){
 }
 
 flip_box_graph <- function(data, titleLabel = "Report",
-                         yLabel = "Values"){
+                         yLabel = "Values", ...){
 
   graph <- box_graph(data, titleLabel, yLabel)
   graph <- graph + coord_flip()
@@ -179,7 +179,7 @@ flip_box_graph <- function(data, titleLabel = "Report",
 # Gauge media, moda (discutir con JP)
 
 
-violin_graph <- function(data, titleLabel = "Report", yLabel = "Values"){
+violin_graph <- function(data, titleLabel = "Report", yLabel = "Values", ...){
 
   data_graph <- data %>%
               dplyr::mutate(order = rep(1, nrow(data)))
@@ -191,7 +191,7 @@ violin_graph <- function(data, titleLabel = "Report", yLabel = "Values"){
   return(graph)
 }
 
-flip_violin_graph <- function(data, titleLabel = "Report", yLabel = "Values"){
+flip_violin_graph <- function(data, titleLabel = "Report", yLabel = "Values", ...){
 
   graph <- violin_graph(data, titleLabel, yLabel)
   graph <- graph + coord_flip()
@@ -199,7 +199,7 @@ flip_violin_graph <- function(data, titleLabel = "Report", yLabel = "Values"){
   return(graph)
 }
 
-dot_graph <- function(data, titleLabel = "Report", xLabel = "Values", yLabel = "Frequency"){
+dot_graph <- function(data, titleLabel = "Report", xLabel = "Values", yLabel = "Frequency", ...){
 
   graph <- ggplot(data, aes(a)) + geom_dotplot()
   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel)
@@ -209,7 +209,7 @@ dot_graph <- function(data, titleLabel = "Report", xLabel = "Values", yLabel = "
 }
 
 flip_dot_graph <- function(data, titleLabel = "Report", xLabel = "Values",
-                           yLabel = "Frequency"){
+                           yLabel = "Frequency", ...){
 
   graph <- dot_graph(data, titleLabel, xLabel, yLabel)
   graph <- graph + coord_flip()

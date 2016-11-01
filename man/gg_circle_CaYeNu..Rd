@@ -7,7 +7,7 @@ circle
 ciculos}
 \usage{
 gg_circle_CaYeNu.(data, title = "", xlab = NULL, ylab = NULL,
-  clab = NULL)
+  clab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

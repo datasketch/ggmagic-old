@@ -5,8 +5,8 @@
 \title{gg_marimekko_hor_CaCa.
 Horizontal Marimekko}
 \usage{
-gg_marimekko_hor_CaCa.(data, titleLabel = "Report", xLabel = "Category",
-  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top")
+gg_marimekko_hor_CaCa.(data, titleLabel = "", xLabel = "Category",
+  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top", ...)
 }
 \arguments{
 \item{x}{A number.}

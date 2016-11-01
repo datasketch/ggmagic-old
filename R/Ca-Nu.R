@@ -92,7 +92,7 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", xLabel = NULL,
+gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", xLabel = NULL, reverse = FALSE,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
@@ -106,7 +106,15 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", xLabel = NULL,
 
   graph <- ggplot(data_graph, aes(x = a, y = suma, fill = suma)) + geom_bar(stat = "identity") +
     labs(title = titleLabel, x = xlab, y = ylab, fill = flab) + theme_ds() +
-    theme(legend.position=leg_pos) + scale_fill_gradient(getPalette(type = "sequential"))
+    theme(legend.position=leg_pos)
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
+
 
   return(graph)
 }
@@ -340,7 +348,7 @@ gg_stacked_hist_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL
 #' add(1, 1)
 #' add(10, 1)
 gg_coloured_multi_density_dist_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
-                                                 fillLabel = NULL, leg_pos="right"){
+                                                 fillLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -1805,7 +1813,7 @@ gg_stream_CaNu. <- function(data, titleLabel = "", xLabel = "Index",
   data_graph$xorder <- as.numeric(data_graph$xorder)
 
   graph <- ggplot(data_graph, aes(x = xorder, y = b, group = a, fill = a)) +
-    stat_steamgraph() + theme_minimal() +
+    stat_steamgraph() +
     labs(tittle = titleLabel, x = xLabel, y = ylab, fill = flab) +
     scale_fill_manual(values = getPalette()) + theme_ds()
   graph <- graph + theme(legend.position=leg_pos)
@@ -1856,7 +1864,8 @@ gg_treemap_x_CaNu. <- function(data, titleLabel = "", fillLabel = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", fillLabel = NULL, ...){
+gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", reverse = FALSE,
+                                       fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -1872,7 +1881,15 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", fillLabel = NULL, 
 
   graph <- ggplotify(treemapify(data_graph, area = "Sum", fill = 'Sum', group = "a"),
                      group.label.colour = "black") + theme(legend.title=element_blank()) +
-    labs(title = titleLabel) + scale_fill_gradient(getPalette(type = "sequential"))
+    labs(title = titleLabel)
+
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
 
   return(graph)
 }
@@ -1891,7 +1908,7 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", fillLabel = NULL, 
 #' add(1, 1)
 #' add(10, 1)
 
-gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150, lim_sup = 150, xLabel = NULL){
+gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150, lim_sup = 150, xLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)

@@ -6,7 +6,7 @@ document()
 install()
 
 
-data <- sampleData("CaYeNu")
+data <- sampleData("Ca-Ye-Nu")
 
 gg_bar_stk_ver_CaYeNu.(data)
 gg_bar_grp_ver_CaYeNu.(data)

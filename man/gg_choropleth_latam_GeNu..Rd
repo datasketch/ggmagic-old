@@ -5,8 +5,9 @@
 \title{gg_choropleth_latam_GeNu.
 Choropleth of Latam}
 \usage{
-gg_choropleth_latam_GeNu.(data, titleLabel = "", fillLabel = NULL,
-  leg_pos = "right", color_map = "gray", color_frontier = "white")
+gg_choropleth_latam_GeNu.(data, titleLabel = "", reverse = FALSE,
+  fillLabel = NULL, leg_pos = "right", color_map = "gray",
+  color_frontier = "white", ...)
 }
 \arguments{
 \item{x}{A category.}

@@ -6,7 +6,7 @@
 Horizontal Bars}
 \usage{
 gg_bar_hor_Ca.(data, titleLabel = "", xLabel = NULL, yLabel = "Count",
-  leg_pos = "right")
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -10,7 +10,7 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_CaCaNu.  <- function(data, titleLabel = "", xLabel = NULL,
-                             yLabel = NULL){
+                             yLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -875,7 +875,7 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL){
+gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -909,7 +909,7 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL){
 #' add(1, 1)
 #' add(10, 1)
 gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "Report",
-                                         fillLabel = NULL){
+                                         fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -946,7 +946,7 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "Report",
 #' add(10, 1)
 gg_pyramid_CaCaNu. <- function(data, titleLabel = "", xLabel = "Category",
                                yLabel = "Frequency", fillLabel = "Types",
-                               leg_pos = "right"){
+                               leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -955,11 +955,14 @@ gg_pyramid_CaCaNu. <- function(data, titleLabel = "", xLabel = "Category",
 
   data$c <- ifelse(data$a == unique(data$a)[1], -data$c, data$c)
 
-  ggplot(data, aes(x = b, y = c, fill = a)) +
+  graph <- ggplot(data, aes(x = b, y = c, fill = a)) +
     geom_bar(data = subset(data, a == unique(data$a)[1]), stat = "identity") +
     geom_bar(data = subset(data, a == unique(data$a)[2]), stat = "identity",position = "identity") +
     scale_y_continuous(labels = abs) + theme_ds() +
+    scale_fill_manual(values=getPalette()) +
     coord_flip()
+
+  return(graph)
 }
 
 

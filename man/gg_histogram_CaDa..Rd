@@ -5,7 +5,7 @@
 \title{gg_histogram_CaDa.: title.
 histogram}
 \usage{
-gg_histogram_CaDa.(data, title = "", xlab = NULL, clab = NULL)
+gg_histogram_CaDa.(data, title = "", xlab = NULL, clab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

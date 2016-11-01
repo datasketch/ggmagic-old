@@ -6,7 +6,7 @@
 Horizontal Line Point}
 \usage{
 gg_facet_line_point_hor_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count")
+  yLabel = "Count", ...)
 }
 \arguments{
 \item{x}{A number.}
