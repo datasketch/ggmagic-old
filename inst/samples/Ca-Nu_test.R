@@ -16,6 +16,9 @@ dataCaNu <- rename(dataCaNu, c('GSRG' = 'a', 'SRHTD' = 'b'))
 
 d <- sampleData("Ca-Nu", 1000)
 gg_bubble_CaNu2.(d)
+gg_bullseye_CaNu.(d)
+data_graph <- d %>% dplyr::group_by(a) %>%
+  dplyr::summarise(count = sum(b)) %>% dplyr::arrange(desc(count))
 
 # Pie
 gg_pie_CaNu.(dataCaNu)

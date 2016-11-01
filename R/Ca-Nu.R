@@ -1514,7 +1514,10 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "", fillLabel = NULL,
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data=data, aes(x = factor(1), fill = a, weight = b)) +
+  data_graph <- data %>% dplyr::group_by(a) %>%
+    dplyr::summarise(count = sum(b)) %>% dplyr::arrange(desc(count))
+  graph <- ggplot(data = data_graph,
+                  aes(x = factor(1), fill = a, weight = count)) +
     geom_bar(width = 1) + coord_polar(theta = "x")
   graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel) +
     scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
@@ -1933,8 +1936,14 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150,
 
   dat.after <- circlePlotData(res$layout)
 
+  data_graph <- data %>% dplyr::group_by(a) %>%
+    dplyr::summarise(count = sum(b)) %>%
+    dplyr::arrange(desc(count)) %>%
+    dplyr::mutate(id = 1:n(), categoria = a) %>%
+    dplyr::select(id, categoria)
+
   fi <- data.frame(id = 1:dim(data)[1], categoria = data$a)
-  fi <- inner_join(fi, dat.after)
+  fi <- inner_join(data_graph, dat.after)
 
   cent <- fi %>% dplyr::group_by(categoria) %>%
     dplyr::summarise(x = mean(x), y = mean(y))
