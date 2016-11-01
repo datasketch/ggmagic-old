@@ -45,7 +45,6 @@ gg_bar_facet_circular_CaCaNu. <- function(data, titleLabel = "",
                                         leg_pos="right", width = 0.85, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
   data <- f$d
 
   graph <- ggplot(data, aes(x = a, y = c , fill = a )) +
@@ -295,7 +294,7 @@ gg_bar_facet_coloured_parameter_ver_ver_CaCaNu. <- function(data, titleLabel = "
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
   p_a <-  parameter1 %||% sample(unique(data[,nms[1]]), length(unique(data[,nms[2]])))
   p_b <-  parameter2 %||% sample(unique(data[,nms[2]]), length(unique(data[,nms[2]])))
   data <- f$d
@@ -341,91 +340,10 @@ gg_bar_facet_coloured_parameter_ver_hor_CaCaNu. <- function(data, titleLabel = "
   return(graph)
 }
 
-#' vertical_bargraphCCN
-#' vertical bar graph
-#' @name vertical_bargraphCCN
-#' @param x A category.
-#' @param y A category.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-vertical_bargraphCCN <- function(data, titleLabel = "", xLabel = "Category",
-                                yLabel = "Frequency", fillLabel = "Types", leg_pos = "top", ...){
 
-  f <- fringe(data)
-  nms <- getCnames(f)
-  xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
-  data <- f$d
-  graph <- ggplot(data, aes(a, fill=b, weights = c)) + geom_bar()
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
-
-  return(graph)
-}
-
-
-#' ordered_vertical_bargraphCCN
-#' ordered vertical bar graph
-#' @name ordered_vertical_bargraphCCN
-#' @param x A category.
-#' @param y A category.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-ordered_vertical_bargraphCCN <- function(data, titleLabel = "", xLabel = "Frequency",
-                                        yLabel =  "Categories", fillLabel = "Types",
-                                        leg_pos = "right", ...){
-
-  f <- fringe(data)
-  nms <- getCnames(f)
-  xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
-  data <- f$d
-
-  graph <- ggplot(data, aes(x=reorder(data$b,rep(1,length(data$b)),sum),fill=a, weights = c)) +
-    geom_bar()
-
-  graph <- graph + labs(title = titleLabel, x = yLabel, y = xLabel,  fill = fillLabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
-
-  return(graph)
-}
-
-
-
-#' ordered_horizontal_bargraphCCN
-#' ordered horizontal bar graph
-#' @name ordered_horizontal_bargraphCCN
-#' @param x A category.
-#' @param y A category.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-ordered_horizontal_bargraphCCN <- function(data, titleLabel = "", xLabel = "Frequency",
-                                          yLabel =  "Categories", fillLabel = "Types",
-                                          leg_pos = "right", ...){
-
-  graph <- ordered_vertical_bargraphCCN(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
-
-  graph <- graph + coord_flip()
-
-  return(graph)
-}
-
-
-#' horizontal_bargraphCCN
+#' gg_bar_unstacked_hor_CaCaNu.
 #' horizontal bar graph
-#' @name horizontal_bargraphCCN
+#' @name gg_bar_unstacked_hor_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -434,62 +352,10 @@ ordered_horizontal_bargraphCCN <- function(data, titleLabel = "", xLabel = "Freq
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
-                                  yLabel = "Category", fillLabel = "Types", leg_pos = "top", ...){
+gg_bar_unstacked_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
+                                         yLabel = NULL, leg_pos = "right", ...){
 
-  graph <- vertical_bargraphCCN(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
-  graph <- graph + coord_flip()
-
-  return(graph)
-}
-
-
-#' vertical_dotgraphCCN
-#' vertical dot graph
-#' @name vertical_dotgraphCCN
-#' @param x A category.
-#' @param y A category.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-vertical_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categories", yLabel = "Frequency",
-                                fillLabel = "Types", leg_pos = "right", ...){
-  f <- fringe(data)
-  nms <- getCnames(f)
-  xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
-  data <- f$d
-
-  graph <- ggplot(data = data, aes(a, fill = factor(b), weights = c)) +
-    geom_dotplot(stackgroups = TRUE, binpositions = "all")
-
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel,  fill = fillLabel)
-  graph <- graph + theme_minimal() + scale_y_continuous(breaks = NULL) +
-    theme(legend.position=leg_pos)
-
-  return(graph)
-}
-
-
-
-#' horizontal_dotgraphCCN
-#' horizontal dot graph
-#' @name horizontal_dotgraphCCN
-#' @param x A category.
-#' @param y A category.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-horizontal_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categories", yLabel = "Frequency",
-                                  fillLabel = "Types", leg_pos = "top", ...){
-
-  graph <- vertical_dotgraphCCN(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_bar_unstacked_ver_CaCaNu.(data, titleLabel, xLabel, yLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
@@ -499,9 +365,9 @@ horizontal_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Catego
 
 
 
-#' vertical_unstacked_bargraphCCN
+#' gg_bar_unstacked_ver_CaCaNu.
 #' vertical unstacked bargraph
-#' @name vertical_unstacked_bargraphCCN
+#' @name gg_bar_unstacked_ver_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -510,18 +376,21 @@ horizontal_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Catego
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-vertical_unstacked_bargraphCCN <- function(data, titleLabel = "", xLabel = "Category",
-                                          yLabel = "Frequency", fillLabel = "Types",
-                                          leg_pos = "top", ...){
+gg_bar_unstacked_ver_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
+                                          yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
   data <- f$d
 
-  graph <- ggplot(data, aes(a, weights = c)) + geom_bar(aes(fill=data$b), position = "dodge")
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(count=sum(c)) %>%
+    tidyr::spread(b, count) %>% tidyr::gather(b, count, -a)
+
+  graph <- ggplot(data_graph, aes(a, weight=count, fill=b)) + geom_bar(position = "dodge")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab) +
+    theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
 
   return(graph)
 }
@@ -540,7 +409,6 @@ vertical_unstacked_bargraphCCN <- function(data, titleLabel = "", xLabel = "Cate
 gg_facet_pie_CaCaNu. <- function(data, titleLabel = "", leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
   data <- f$d
   graph <- ggplot(data=data, aes(x = factor(1), weight = c, fill = a)) +
     geom_bar(width = 1) + coord_polar(theta = "y")
@@ -569,7 +437,6 @@ gg_facet_donut_CaCaNu. <- function(data, titleLabel = "",
                            width = 0.3, leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
   data <- f$d
   graph <- ggplot(data=data, aes(x = factor(1), fill = a, weight = c)) +
     geom_bar(width = width) + coord_polar(theta = "y")
@@ -592,12 +459,9 @@ gg_facet_donut_CaCaNu. <- function(data, titleLabel = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_bullseye_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL,
-                              leg_pos="right", ...){
+gg_facet_bullseye_CaCaNu. <- function(data, titleLabel = "", leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = a, weight = c)) +
@@ -622,15 +486,17 @@ gg_facet_bullseye_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "",
-                               fillLabel = NULL, leg_pos= "right", ...){
+                                         leg_pos= "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data = data, aes(x = a, weight = c, fill = b)) +
     geom_bar(width = width, position = "stack") +
-    coord_polar() + labs(title = titleLabel, fill = flabel, x = "", y = "") + theme_bw() +
-    theme(legend.position=leg_pos)
+    coord_polar()
+  graph <- graph + labs(title = titleLabel, x = "", y = "")
+  graph <- graph + theme(legend.position=leg_pos) + theme_ds() +
+    theme_ds_clean() + scale_fill_manual(values = getPalette())
+  graph <- graph + theme(legend.position=leg_pos)
 
   return(graph)
 }
@@ -654,34 +520,11 @@ gg_bar_stacked_polar_100_CaCaNu. <- function(data, width = 0.95, titleLabel = ""
   data <- f$d
   graph <- ggplot(data = data, aes(x = a, weight = c, fill = b)) +
     geom_bar(width = width, position = "fill") +
-    coord_polar() + labs(title = titleLabel, fill = flabel, x = "", y = "") + theme_bw() +
-    theme(legend.position=leg_pos)
-
+    coord_polar() + theme(legend.position=leg_pos) + theme_ds() +
+    theme_ds_clean() + scale_fill_manual(values = getPalette())
+  graph <- graph + theme(legend.position=leg_pos)
   return(graph)
 }
-
-#' horizontal_unstacked_bargraphCCN
-#' horizontal unstacked bargraph
-#' @name horizontal_unstacked_bargraphCCN
-#' @param x A category.
-#' @param y A category.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-horizontal_unstacked_bargraphCCN <- function(data, titleLabel = "", xLabel = "Category",
-                                            yLabel = "Frequency", fillLabel = "Types",
-                                            leg_pos = "right", ...){
-  graph <- vertical_unstacked_bargraphCCN(data, titleLabel, xLabel, yLabel,
-                                         fillLabel, leg_pos)
-
-  graph <- graph + coord_flip()
-
-  return(graph)
-}
-
 
 #' horizontal_linegraphCCN
 #' horizontal linegraph
@@ -709,7 +552,7 @@ horizontal_linegraphCCN <- function(data, titleLabel = "", xLabel = "Types",
 
   graph <- ggplot(data = data_graph, aes(x = a, y = sum, group=b)) + geom_line() +
     geom_point() + facet_grid(. ~b)
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel)
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab)
 
   graph <- graph + theme_minimal()
 
@@ -749,18 +592,16 @@ vertical_linegraphCCN <- function(data, titleLabel = "", xLabel = "Types",
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
-                                        yLabel = NULL, fillLabel = NULL,
-                                        leg_pos = "top", ...){
+                                        yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
-  flab <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% nms[3]
   data <- f$d
 
   graph <- ggplot(data, aes(a, y = c, fill=b)) + geom_bar(stat="identity", position = "stack")
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flab)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
+  graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
 
   return(graph)
 }
@@ -776,13 +617,11 @@ gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = "Category",
-                                          yLabel = "Frequency", fillLabel = "Types",
-                                          leg_pos = "top", ...){
+gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
+                                          yLabel = NULL, leg_pos = "right", ...){
 
 
-  graph <- gg_bar_stacked_ver_CaCaNu.(data, titleLabel, xLabel, yLabel,
-                                       fillLabel, leg_pos)
+  graph <- gg_bar_stacked_ver_CaCaNu.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -800,18 +639,18 @@ gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = "Category
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
-                                       yLabel = NULL, fillLabel = NULL,
-                                       leg_pos = "top", ...){
+                                       yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
-  flab <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% nms[3]
   data <- f$d
 
-  graph <- ggplot(data, aes(a, y = c, fill=b)) + geom_bar(stat="identity", position = "fill")
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flab)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- ggplot(data, aes(a, y = c, fill=b)) +
+    geom_bar(stat="identity", position = "fill")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
+  graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette()) +
+    scale_y_continuous(labels = percent)
 
   return(graph)
 }
@@ -827,21 +666,51 @@ gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = "Category",
-                                       yLabel = "Frequency", fillLabel = "Types",
-                                       leg_pos = "top", ...){
+gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
+                                       yLabel = NULL, leg_pos = "right", ...){
 
 
-  graph <- gg_bar_stacked_100_ver_CaCaNu.(data, titleLabel, xLabel, yLabel,
-                                      fillLabel, leg_pos)
+  graph <- gg_bar_stacked_100_ver_CaCaNu.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' horizontal_area_bargraphCC
-#' horizontal area bar graph
-#' @name horizontal_area_bargraphCC
+#' gg_area_stacked_hor_CaCaNu.
+#' Stacked horizontal Area
+#' @name gg_area_stacked_hor_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
+                                      yLabel = NULL, leg_pos = "top", ...){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[3]
+  data <- f$d
+
+
+  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(count=sum(c)) %>%
+    tidyr::spread(b, count) %>% tidyr::gather(b, count, -a)
+  data_graph[is.na(data_graph)] <- 0
+  graph <- ggplot(data = data_graph,
+                  aes(x=a, y=count, group=b)) + geom_area(aes(fill = b), position = "stack")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
+  graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
+
+  return(graph)
+}
+
+#' gg_area_stacked_ver_CaCaNu.
+#' Stacked area
+#' @name gg_area_stacked_ver_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -850,23 +719,66 @@ gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = "Cate
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-horizontal_area_bargraphCC <- function(data, titleLabel = "", xLabel = "Category",
-                                       yLabel = "Frequency", fillLabel = "Types",
-                                       leg_pos = "top", ...){
+gg_area_stacked_ver_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
+                                           yLabel = NULL, leg_pos = "right", ...){
+
+
+  graph <- gg_area_stacked_hor_CaCaNu.(data, titleLabel, xLabel, yLabel, leg_pos)
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_area_stacked_100_hor_CaCaNu.
+#' Stacked horizontal Area 100
+#' @name gg_area_stacked_100_hor_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
+                                        yLabel = NULL, leg_pos = "top", ...){
+
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
   data <- f$d
 
-  data_graph <- data %>%
-    dplyr::group_by(a, b) %>%
-    dplyr::summarise(sum = sum(c)) %>%
-    dplyr::arrange(desc(sum))
+
+  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(count=sum(c)) %>%
+    tidyr::spread(b, count) %>% tidyr::gather(b, count, -a)
+  data_graph[is.na(data_graph)] <- 0
   graph <- ggplot(data = data_graph,
-                  aes(x=a, y=sum, group=b)) + geom_area(aes(fill = b), position = "stack")
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+                  aes(x=a, y=count, group=b)) + geom_area(aes(fill = b), position = "fill")
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab)
+  graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette()) +
+    scale_y_continuous(labels = percent)
+
+  return(graph)
+}
+
+#' gg_area_stacked_100_ver_CaCaNu.
+#' Stacked area 100
+#' @name gg_area_stacked_100_ver_CaCaNu.
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_area_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
+                                        yLabel = NULL, leg_pos = "right", ...){
+
+
+  graph <- gg_area_stacked_100_hor_CaCaNu.(data, titleLabel, xLabel, yLabel, leg_pos)
+  graph <- graph + coord_flip()
 
   return(graph)
 }
@@ -1006,7 +918,7 @@ gg_pyramid_CaCaNu. <- function(data, titleLabel = "", xLabel = NULL,
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
-  xlab <- xLabel %||% nms[1]
+  xlab <- xLabel %||% nms[3]
   data <- f$d
 
   data$c <- ifelse(data$a %in% unique(data$a)[1], -data$c, data$c)

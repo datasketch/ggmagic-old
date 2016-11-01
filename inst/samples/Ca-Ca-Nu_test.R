@@ -30,17 +30,11 @@ gg_pyramid_CaCaNu.(dataCaCaNu)
 # Bubble
 gg_bubble_CaCaNu.(dataCaCaNu)
 
-vertical_bargraphCCN(dataCaCaNu)
-ordered_vertical_bargraphCCN(dataCaCaNu)
-ordered_horizontal_bargraphCCN(dataCaCaNu)
-horizontal_bargraphCCN(dataCaCaNu)
+# Unstacked Bar
+gg_bar_unstacked_ver_CaCaNu.(dataCaCaNu)
+gg_bar_unstacked_hor_CaCaNu.(dataCaCaNu)
 
-vertical_dotgraphCCN(dataCaCaNu)
-horizontal_dotgraphCCN(dataCaCaNu)
-
-vertical_unstacked_bargraphCCN(dataCaCaNu)
-horizontal_unstacked_bargraphCCN(dataCaCaNu)
-
+# Line
 horizontal_linegraphCCN(dataCaCaNu)
 vertical_linegraphCCN(dataCaCaNu)
 
@@ -52,7 +46,13 @@ gg_bar_stacked_ver_CaCaNu.(dataCaCaNu)
 gg_bar_stacked_100_hor_CaCaNu.(dataCaCaNu)
 gg_bar_stacked_100_ver_CaCaNu.(dataCaCaNu)
 
-horizontal_area_bargraphCC(dataCaCaNu)
+# Stacked Area
+gg_area_stacked_hor_CaCaNu.(dataCaCaNu)
+gg_area_stacked_ver_CaCaNu.(dataCaCaNu)
+
+# 100 Stacked Area
+gg_area_stacked_100_hor_CaCaNu.(dataCaCaNu)
+gg_area_stacked_100_ver_CaCaNu.(dataCaCaNu)
 
 # Facet Circular
 gg_bar_facet_circular_CaCaNu.(dataCaCaNu)
