@@ -14,6 +14,9 @@ dataCaNu$SRHTD <- runif(nrow(dataCaNu), min = 0, max = 100)
 
 dataCaNu <- rename(dataCaNu, c('GSRG' = 'a', 'SRHTD' = 'b'))
 
+d <- sampleData("Ca-Nu", 1000)
+gg_bubble_CaNu2.(d)
+
 # Pie
 gg_pie_CaNu.(dataCaNu)
 

@@ -1908,7 +1908,8 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", reverse = FALSE,
 #' add(1, 1)
 #' add(10, 1)
 
-gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150, lim_sup = 150, xLabel = NULL, ...){
+gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150,
+                             lim_sup = 150, xLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -1926,7 +1927,7 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150, lim
   xyr <- data.frame(
     x = runif(ncircles, min(limits) + inset, max(limits) - inset),
     y = runif(ncircles, min(limits) + inset, max(limits) - inset),
-    r = (data$b))
+    r = (data$b)) %>% arrange(desc(r))
 
   res <- circleLayout(xyr, limits, limits, maxiter = 1000)
 
