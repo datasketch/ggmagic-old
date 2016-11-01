@@ -7,7 +7,7 @@ Barras stacked
 Tiene múltiples líneas}
 \usage{
 gg_bar_grp_ver_CaYeNu.(data, title = NULL, xlab = NULL, ylab = NULL,
-  clab = NULL, ...)
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
