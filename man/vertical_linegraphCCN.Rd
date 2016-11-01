@@ -5,7 +5,7 @@
 \title{vertical_linegraphCCN
 vertical linegraph}
 \usage{
-vertical_linegraphCCN(data, titleLabel = "Report", xLabel = "Types",
+vertical_linegraphCCN(data, titleLabel = "", xLabel = "Types",
   yLabel = "Frequency", ...)
 }
 \arguments{

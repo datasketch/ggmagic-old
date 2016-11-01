@@ -124,8 +124,8 @@ gg_facet_stepped_area_ver_CaNu.(dataCaNu)
 # Facet Horizon
 gg_facet_horizon_CaNu.(dataCaNu)
 
-# Stream
-gg_stream_CaNu.(dataCaNu)
+# Steam
+gg_steam_CaNu.(dataCaNu)
 
 # Treemap
 gg_treemap_x_CaNu.(dataCaNu)

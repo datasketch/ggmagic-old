@@ -5,7 +5,7 @@
 \title{vertical_bargraphCCN
 vertical bar graph}
 \usage{
-vertical_bargraphCCN(data, titleLabel = "Report", xLabel = "Category",
+vertical_bargraphCCN(data, titleLabel = "", xLabel = "Category",
   yLabel = "Frequency", fillLabel = "Types", leg_pos = "top", ...)
 }
 \arguments{

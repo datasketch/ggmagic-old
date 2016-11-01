@@ -5,9 +5,8 @@
 \title{gg_bar_stacked_100_hor_CaCaNu.
 100 horizontal stacked bar graph}
 \usage{
-gg_bar_stacked_100_hor_CaCaNu.(data, titleLabel = "Report",
-  xLabel = "Category", yLabel = "Frequency", fillLabel = "Types",
-  leg_pos = "top", ...)
+gg_bar_stacked_100_hor_CaCaNu.(data, titleLabel = "", xLabel = "Category",
+  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top", ...)
 }
 \arguments{
 \item{x}{A category.}

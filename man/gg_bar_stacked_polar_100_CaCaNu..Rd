@@ -5,7 +5,7 @@
 \title{gg_bar_stacked_polar_100_CaCaNu.
 Stacked Polar Bar 100}
 \usage{
-gg_bar_stacked_polar_100_CaCaNu.(data, width = 0.95, titleLabel = "Report",
+gg_bar_stacked_polar_100_CaCaNu.(data, width = 0.95, titleLabel = "",
   fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{

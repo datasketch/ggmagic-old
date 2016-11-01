@@ -5,9 +5,8 @@
 \title{horizontal_unstacked_bargraphCCN
 horizontal unstacked bargraph}
 \usage{
-horizontal_unstacked_bargraphCCN(data, titleLabel = "Report",
-  xLabel = "Category", yLabel = "Frequency", fillLabel = "Types",
-  leg_pos = "top", ...)
+horizontal_unstacked_bargraphCCN(data, titleLabel = "", xLabel = "Category",
+  yLabel = "Frequency", fillLabel = "Types", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

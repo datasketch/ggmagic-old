@@ -28,7 +28,7 @@ dfData = data.frame(
 
 gg_scatter_hor_CaDaNu.(dataCaDaNu)
 
-gg_stream_CaDaNu.(dfData)
+gg_steam_CaDaNu.(dfData)
 
 gg_area_stacked_ver_CaDaNu.(dfData)
 gg_area_stacked_hor_CaDaNu.(dfData)

@@ -5,9 +5,8 @@
 \title{ordered_vertical_bargraphCCN
 ordered vertical bar graph}
 \usage{
-ordered_vertical_bargraphCCN(data, titleLabel = "Report",
-  xLabel = "Frequency", yLabel = "Categories", fillLabel = "Types",
-  leg_pos = "right", ...)
+ordered_vertical_bargraphCCN(data, titleLabel = "", xLabel = "Frequency",
+  yLabel = "Categories", fillLabel = "Types", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

@@ -5,7 +5,7 @@
 \title{horizontal_area_bargraphCC
 horizontal area bar graph}
 \usage{
-horizontal_area_bargraphCC(data, titleLabel = "Report", xLabel = "Category",
+horizontal_area_bargraphCC(data, titleLabel = "", xLabel = "Category",
   yLabel = "Frequency", fillLabel = "Types", leg_pos = "top", ...)
 }
 \arguments{

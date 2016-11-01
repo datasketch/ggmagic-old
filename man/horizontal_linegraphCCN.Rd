@@ -5,7 +5,7 @@
 \title{horizontal_linegraphCCN
 horizontal linegraph}
 \usage{
-horizontal_linegraphCCN(data, titleLabel = "Report", xLabel = "Types",
+horizontal_linegraphCCN(data, titleLabel = "", xLabel = "Types",
   yLabel = "Frequency", ...)
 }
 \arguments{
