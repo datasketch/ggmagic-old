@@ -156,9 +156,9 @@ gg_circle_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab = 
 
 
 
-#' gg_steamgraph_CaYeNu.
-#' steamgraph
-#' @name gg_steamgraph_CaYeNu.
+#' gg_stream_CaYeNu.
+#' Stream
+#' @name gg_stream_CaYeNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -167,7 +167,7 @@ gg_circle_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL, clab = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_steamgraph_CaYeNu. <-  function(data, titleLabel = "", clab = NULL,
+gg_stream_CaYeNu. <-  function(data, titleLabel = "", clab = NULL,
                                    leg_pos="right", ...){
 
   f <- fringe(data)

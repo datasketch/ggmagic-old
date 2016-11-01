@@ -21,7 +21,7 @@ gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "gold")
 paises <- c("ARG", "CUB", "COL", "CHL")
 dataGeNu1.1 <- data.frame(id = paises, num = runif(length(paises), 0, 1))
 
-gg_choropleth_latam_GeNu.(dataGeNu1.1, color_map = "green")
+gg_choropleth_latam_GeNu.(dataGeNu1.1, color_map = "green", reverse = TRUE)
 
 lat_max <- 6.276997
 long_max <- -69.635037
