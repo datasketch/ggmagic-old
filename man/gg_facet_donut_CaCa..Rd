@@ -5,7 +5,7 @@
 \title{gg_facet_donut_CaCa.
 Facet Donut}
 \usage{
-gg_facet_donut_CaCa.(data, titleLabel = "", fillLabel = NULL, width = 0.3,
+gg_facet_donut_CaCa.(data, titleLabel = "", width = 0.3,
   leg_pos = "right", ...)
 }
 \arguments{
