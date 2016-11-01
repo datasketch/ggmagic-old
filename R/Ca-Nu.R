@@ -1411,8 +1411,9 @@ gg_facet_trend_ribbon_CaNu. <- function(data, titleLabel = "Report", xLabel = 'I
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
+
 gg_donut_CaNu. <- function(data, titleLabel = "", fillLabel = NULL,
-                         width = 0.3, leg_pos="right", ...){
+                           width = 0.3, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -1436,6 +1437,8 @@ gg_donut_CaNu. <- function(data, titleLabel = "", fillLabel = NULL,
 }
 
 
+
+
 #' gg_dot_bar_ver_CaNu.
 #' Vertical Dot Bar
 #' @name gg_dot_bar_ver_CaNu.
@@ -1447,29 +1450,26 @@ gg_donut_CaNu. <- function(data, titleLabel = "", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_bar_ver_CaNu. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = 'Count',
-                                 fillLabel = NULL, leg_pos = "right", ...){
+gg_donut_CaNu. <- function(data, titleLabel = "", fillLabel = NULL,
+                           width = 0.3, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xLabel %||% nms[1]
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum(b))
+    dplyr::summarise(count = sum(b)) %>%
+    dplyr::mutate(pos = cumsum(count) - count/2,
+                  percent = 100 * round(count/sum(count), 4))
 
-  data_graph <- data_graph %>%
-    mutate(order = c(1:nrow(data_graph)))
-
-  graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
-                  aes(x = order, fill = factor(a), weight = b)) + geom_dotplot(method="histodot")
-
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel,  fill = flabel)
-  graph <- graph + theme_minimal() + scale_y_continuous(breaks = NULL) +
-    theme(legend.position=leg_pos)
-
+  graph <- ggplot(data=data_graph, aes(x = factor(1), fill = a, weight = count)) +
+    geom_bar(width = width) + coord_polar(theta = "y") +
+    geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")))
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel) +
+    scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
+  graph <- graph + theme(legend.position=leg_pos)
 
   return(graph)
 }
@@ -1545,7 +1545,7 @@ gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "Report", yLabel 
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum(b)) %>%
+    dplyr::summarise(count = n()) %>%
     dplyr::mutate(pos = cumsum(count) - count/2,
                   percent = 100 * round(count/sum(count), 4))
 
