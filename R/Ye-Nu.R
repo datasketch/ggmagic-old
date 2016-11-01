@@ -17,7 +17,7 @@ gg_lines_hor_YeNu. <- function(data, title = "",xlab = NULL, ylab = NULL,...){
   ylab <- ylab %||% nms[2]
   data <- f$d
   ggplot(data, aes(x= a,y=b,group=1)) +
-    geom_line(stat = "identity") +
+    geom_line(stat = "identity",colour = "#009EE3") +
     ylab(ylab) +
     xlab(xlab) +
     ggtitle(title) + theme_ds() +
