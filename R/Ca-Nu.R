@@ -1950,3 +1950,44 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150, lim
   return(graph)
 
 }
+
+#' gg_slope_CaNu.
+#' Slope
+#' @name gg_slope_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu,Ca-Nu-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_slope_CaNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
+                              leg_pos="right", size_text = 6,
+                              size_point = 3, size_line = 1,...){
+
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
+  data <- f$d
+
+  data_graph <- data %>% group_by(a) %>% dplyr::mutate(xorder = 1:n())
+
+  graph <- ggplot(data_graph) +
+    geom_text(aes(x = as.factor(xorder), y = b + 0.5, group = a, color = a, label = b),
+              size = size_text, vjust = 1.5, hjust = 0.5, show.legend = FALSE,
+              check_overlap = TRUE) +
+    geom_text(aes(x = as.factor(xorder), y = min(b) - mean(b), label = xorder),
+              size = size_text, show.legend = FALSE, check_overlap = TRUE) +
+    geom_line(aes(x = as.factor(xorder), y = b, group = a, color = a), size = size_line) +
+    geom_point(aes(x = as.factor(xorder), y = b, group = a, color = a), size = size_point) +
+    theme_ds() + theme_ds_clean() +
+    labs(title = titleLabel, x = xlab, y = ylab) +
+    scale_color_manual(values = getPalette()) + theme(legend.position = leg_pos)
+
+
+  return(graph)
+
+}

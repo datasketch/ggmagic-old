@@ -209,7 +209,8 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NUL
 #' add(1, 1)
 #' add(10, 1)
 gg_slope_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
-                              leg_pos="right", size_text = 6, ...){
+                              leg_pos="right", size_text = 6,
+                              size_point = 3, size_line = 1,...){
 
 
   f <- fringe(data)
@@ -224,8 +225,8 @@ gg_slope_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NUL
               check_overlap = TRUE) +
     geom_text(aes(x = as.factor(b), y = min(c) - mean(c), label = b),
               size = size_text, show.legend = FALSE, check_overlap = TRUE) +
-    geom_line(aes(x = as.factor(b), y = c, group = a, color = a), size = 1) +
-    geom_point(aes(x = as.factor(b), y = c, group = a, color = a), size = 3) +
+    geom_line(aes(x = as.factor(b), y = c, group = a, color = a), size = size_line) +
+    geom_point(aes(x = as.factor(b), y = c, group = a, color = a), size = size_point) +
     theme_ds() + theme_ds_clean() +
     labs(title = titleLabel, x = xlab, y = ylab) +
     scale_color_manual(values = getPalette()) + theme(legend.position = leg_pos)
