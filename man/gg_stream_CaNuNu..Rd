@@ -5,7 +5,7 @@
 \title{gg_stream_CaNuNu.
 Streamgraph}
 \usage{
-gg_stream_CaNuNu.(data, titleLabel = "", fillLabel = NULL,
+gg_stream_CaNuNu.(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
   leg_pos = "right", ...)
 }
 \arguments{
