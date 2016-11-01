@@ -537,17 +537,16 @@ vertical_unstacked_bargraphCCN <- function(data, titleLabel = "", xLabel = "Cate
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_pie_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_pos="right", ...){
+gg_facet_pie_CaCaNu. <- function(data, titleLabel = "", leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data=data, aes(x = factor(1), weight = c, fill = a)) +
     geom_bar(width = 1) + coord_polar(theta = "y")
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
-  graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
-    theme(panel.grid=element_blank())
+  graph <- graph + labs(title = titleLabel, x = "", y = "")
+  graph <- graph + theme(legend.position=leg_pos) + theme_ds() +
+    theme_ds_clean() + scale_fill_manual(values = getPalette())
   graph <- graph + theme(legend.position=leg_pos) + facet_grid(. ~b)
 
   return(graph)
@@ -555,9 +554,9 @@ gg_facet_pie_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_po
 
 #Width debe de ser un parámetro.  0 < width < 1.
 
-#' gg_donut_CaCaNu.
+#' gg_facet_donut_CaCaNu.
 #' Facet Donut
-#' @name gg_donut_CaCaNu.
+#' @name gg_facet_donut_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -566,26 +565,25 @@ gg_facet_pie_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL, leg_po
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_donut_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL,
+gg_facet_donut_CaCaNu. <- function(data, titleLabel = "",
                            width = 0.3, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data=data, aes(x = factor(1), fill = a, weight = c)) +
     geom_bar(width = width) + coord_polar(theta = "y")
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
-  graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
-    theme(panel.grid=element_blank())
+  graph <- graph + labs(title = titleLabel, x = "", y = "")
+  graph <- graph + theme(legend.position=leg_pos) + theme_ds() +
+    theme_ds_clean() + scale_fill_manual(values = getPalette())
   graph <- graph + theme(legend.position=leg_pos) + facet_grid(. ~b)
 
   return(graph)
 }
 
-#' gg_bullseye_CaCaNu.
+#' gg_facet_bullseye_CaCaNu.
 #' Facet Bullseye
-#' @name gg_bullseye_CaCaNu.
+#' @name gg_facet_bullseye_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -594,7 +592,7 @@ gg_donut_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bullseye_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL,
+gg_facet_bullseye_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL,
                               leg_pos="right", ...){
 
   f <- fringe(data)
@@ -604,9 +602,9 @@ gg_bullseye_CaCaNu. <- function(data, titleLabel = "", fillLabel = NULL,
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = a, weight = c)) +
     geom_bar(width = 1) + coord_polar(theta = "x")
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
-  graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
-    theme(panel.grid=element_blank())
+  graph <- graph + labs(title = titleLabel, x = "", y = "")
+  graph <- graph + theme(legend.position=leg_pos) + theme_ds() +
+    theme_ds_clean() + scale_fill_manual(values = getPalette())
   graph <- graph + theme(legend.position=leg_pos) + facet_grid(. ~b)
 
   return(graph)

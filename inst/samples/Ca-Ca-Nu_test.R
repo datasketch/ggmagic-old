@@ -61,10 +61,10 @@ gg_bar_facet_circular_CaCaNu.(dataCaCaNu)
 gg_facet_pie_CaCaNu.(dataCaCaNu)
 
 # Facet Donut
-gg_donut_CaCaNu.(dataCaCaNu)
+gg_facet_donut_CaCaNu.(dataCaCaNu)
 
 # Facet Bullseye
-gg_bullseye_CaCaNu.(dataCaCaNu)
+gg_facet_bullseye_CaCaNu.(dataCaCaNu)
 
 # Stacked Polar Bar
 gg_bar_stacked_polar_CaCaNu.(dataCaCaNu)
