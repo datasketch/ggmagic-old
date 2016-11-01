@@ -8,6 +8,9 @@ library(ggmagic)
 
 
 ##
+d <- sampleData("Ye",nrow = 11)
+d$a <- as.factor(d$a)
+gg_pie_Ca.(d)
 
 d <- sampleData("Ye-Nu")
 gg_lines_hor_YeNu.(d)
