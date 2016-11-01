@@ -123,3 +123,36 @@ gg_point_CaNuNu. <- function(data, titleLabel = "", xLabel = NULL,
   return(graph)
 }
 
+#' gg_slope_CaNuNu.
+#' Slope
+#' @name gg_slope_CaNuNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu,Ca-Nu-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_slope_CaNuNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
+                              leg_pos="right", size_text = 6, ...){
+
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
+  data <- f$d
+
+  graph <- ggplot(data) +
+    geom_line(aes(x = b, y = c, group = a, color = a), size = 1) +
+    geom_point(aes(x = b, y = c, group = a, color = a), size = 3) +
+    theme_ds() +
+    labs(title = titleLabel, x = xlab, y = ylab) +
+    scale_color_manual(values = getPalette())
+
+
+  return(graph)
+
+}
+
