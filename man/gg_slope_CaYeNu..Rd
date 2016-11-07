@@ -6,7 +6,8 @@
 Slope}
 \usage{
 gg_slope_CaYeNu.(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
-  leg_pos = "right", size_text = 6, size_point = 3, size_line = 1, ...)
+  leg_pos = "right", size_text = 6, size_vjust = 1.5, size_hjust = 0.5,
+  size_point = 3, size_line = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

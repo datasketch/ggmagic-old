@@ -6,8 +6,8 @@
 Choropleth of Colombia's deptos}
 \usage{
 gg_choropleth_co_GeNu.(data, titleLabel = "", reverse = FALSE,
-  fillLabel = NULL, leg_pos = "right", color_map = "gray",
-  color_frontier = "white", ...)
+  text_size = 2, fillLabel = NULL, leg_pos = "right", text = FALSE,
+  prop_text = 0.5, color_map = "gray", color_frontier = "white", ...)
 }
 \arguments{
 \item{x}{A category.}
