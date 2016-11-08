@@ -7,7 +7,15 @@ library(ggmagic)
 deptos <- c("05", "08", "11", "13", "15", "17", "18", "19", "20", "23", "25", "27", "41", "44", "47", "50")
 dataGeNu <- data.frame(id = deptos, num = runif(length(deptos), 0, 1))
 
-gg_choropleth_co_GeNu.(dataGeNu, color_map = "gold", text_size = 2.5, text = TRUE, prop_text = 0.1)
+gg_choropleth_co_GeNu.(dataGeNu, color_map = "gold", text_size = 2.5,
+                       text = TRUE, prop_text = "all")
+
+gg_choropleth_co_GeNu.(dataGeNu, color_map = "gold", text_size = 2.5,
+                       text = TRUE, prop_text = 0.5)
+
+gg_choropleth_co_GeNu.(dataGeNu, color_map = "gold", text_size = 2.5,
+                       text = TRUE, prop_text = c("Valle del Cauca", "Nariño", "Amazonas"))
+
 
 depto_ <- c("05")
 mpios <- c("05002", "05004", "05021", "05030", "05031", "05034", "05036", "05038", "05040", "05044", "05045", "05051", "05055", "05059",
@@ -16,7 +24,14 @@ mpios <- c("05002", "05004", "05021", "05030", "05031", "05034", "05036", "05038
            ",05250", "05264", "05266", "05282", "05284", "05306", "05308", "05313", "05315")
 dataGeNu2 <- data.frame(id = mpios, num = runif(length(mpios), 0, 1))
 
-gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "gold", text = TRUE, text_size = 2.5)
+gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "gold",
+                          text = TRUE, text_size = 2.5)
+
+gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "gold",
+                          text = TRUE, text_size = 2.5, prop_text = "all")
+
+gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "gold",
+                          text = TRUE, text_size = 2.5, prop_text = c("Mutatá"))
 
 paises <- c("ARG", "CUB", "COL", "CHL")
 dataGeNu1.1 <- data.frame(id = paises, num = runif(length(paises), 0, 1))
@@ -33,7 +48,14 @@ lat <- runif(100, lat_min, lat_max)
 
 dataGeNu3 <- data.frame(long = long, lat = lat) #num = round(runif(length(lat), 1, 5), 0))
 
-gg_bubble_co_Ge.(dataGeNu3, color_map = "grey", scale_point = 2, text =TRUE, text_size = 3)
+gg_bubble_co_Ge.(dataGeNu3, color_map = "grey", scale_point = 2,
+                 text =TRUE, text_size = 3)
+
+gg_bubble_co_Ge.(dataGeNu3, color_map = "grey", scale_point = 2,
+                 text =TRUE, text_size = 3, prop_text = "all")
+
+gg_bubble_co_Ge.(dataGeNu3, color_map = "grey", scale_point = 2,
+                 text =TRUE, text_size = 3, prop_text = "La Guajira")
 
 long <- runif(10, long_min, long_max)
 lat <- runif(10, lat_min, lat_max)
@@ -88,6 +110,6 @@ long <- c(-75.08235, -75.22135, -75.47778, -75.18678)
 lat <- c( 5.951820, 5.611950, 7.489444, 5.838575)
 
 df_CaGe <- data.frame(type = type, long = long, lat = lat)
-gg_bubble_depto_CaGe.(df_CaGe)
+gg_bubble_depto_CaGe.(df_CaGe, scale_point = 50)
 
 

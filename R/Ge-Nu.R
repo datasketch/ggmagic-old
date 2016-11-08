@@ -53,10 +53,18 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "", reverse = FALSE, text_
                                  aes(label = name_id, x = x, y = y,
                                      check_overlap = TRUE), size = text_size)
     }else{
-      data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
-      graph <- graph + geom_text(data = data_centroids,
-                                 aes(label = name_id, x = x, y = y,
-                                     check_overlap = TRUE), size = text_size)
+      if(is.vector(prop_text) & class(prop_text) == "character"){
+        prop_text <- data.frame(name_id = prop_text)
+        prop_text <- prop_text %>% dplyr::inner_join(., data_centroids, by = c("name_id"))
+        graph <- graph + geom_text(data = prop_text,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }else{
+        data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
+        graph <- graph + geom_text(data = data_centroids,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }
     }
   }
   if(reverse){
@@ -126,10 +134,18 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05", reve
                                  aes(label = name_id, x = x, y = y,
                                      check_overlap = TRUE), size = text_size)
     }else{
-      data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
-      graph <- graph + geom_text(data = data_centroids,
-                                 aes(label = name_id, x = x, y = y,
-                                     check_overlap = TRUE), size = text_size)
+      if(is.vector(prop_text) & class(prop_text) == "character"){
+        prop_text <- data.frame(name_id = prop_text)
+        prop_text <- prop_text %>% dplyr::inner_join(., data_centroids, by = c("name_id"))
+        graph <- graph + geom_text(data = prop_text,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }else{
+        data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
+        graph <- graph + geom_text(data = data_centroids,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }
     }
   }
 
@@ -254,10 +270,18 @@ gg_bubble_co_Ge. <- function(data, titleLabel = "", fillLabel = NULL, prop_text 
                                  aes(label = name_id, x = x, y = y,
                                      check_overlap = TRUE), size = text_size)
     }else{
-      data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
-      graph <- graph + geom_text(data = data_centroids,
-                                 aes(label = name_id, x = x, y = y,
-                                     check_overlap = TRUE), size = text_size)
+      if(is.vector(prop_text) & class(prop_text) == "character"){
+        prop_text <- data.frame(name_id = prop_text)
+        prop_text <- prop_text %>% dplyr::inner_join(., data_centroids, by = c("name_id"))
+        graph <- graph + geom_text(data = prop_text,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }else{
+        data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
+        graph <- graph + geom_text(data = data_centroids,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }
     }
   }
   options(warn=0)
@@ -355,10 +379,18 @@ gg_bubble_depto_Ge. <- function(data, titleLabel = "", depto_ = "05", leg_pos = 
                                  aes(label = name_id, x = x, y = y,
                                      check_overlap = TRUE), size = text_size)
     }else{
-      data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
-      graph <- graph + geom_text(data = data_centroids,
-                                 aes(label = name_id, x = x, y = y,
-                                     check_overlap = TRUE), size = text_size)
+      if(is.vector(prop_text) & class(prop_text) == "character"){
+        prop_text <- data.frame(name_id = prop_text)
+        prop_text <- prop_text %>% dplyr::inner_join(., data_centroids, by = c("name_id"))
+        graph <- graph + geom_text(data = prop_text,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }else{
+        data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
+        graph <- graph + geom_text(data = data_centroids,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }
     }
   }
   options(warn=0)
@@ -410,10 +442,18 @@ gg_bubble_co_GeNu. <- function(data, titleLabel = "", fillLabel = NULL, text = F
                                  aes(label = name_id, x = x, y = y,
                                      check_overlap = TRUE), size = text_size)
     }else{
-      data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
-      graph <- graph + geom_text(data = data_centroids,
-                                 aes(label = name_id, x = x, y = y,
-                                     check_overlap = TRUE), size = text_size)
+      if(is.vector(prop_text) & class(prop_text) == "character"){
+        prop_text <- data.frame(name_id = prop_text)
+        prop_text <- prop_text %>% dplyr::inner_join(., data_centroids, by = c("name_id"))
+        graph <- graph + geom_text(data = prop_text,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }else{
+        data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
+        graph <- graph + geom_text(data = data_centroids,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }
     }
   }
   options(warn=0)
@@ -505,10 +545,18 @@ gg_bubble_depto_GeNu. <- function(data, titleLabel = "", depto_ = "05", leg_pos 
                                  aes(label = name_id, x = x, y = y,
                                      check_overlap = TRUE), size = text_size)
     }else{
-      data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
-      graph <- graph + geom_text(data = data_centroids,
-                                 aes(label = name_id, x = x, y = y,
-                                     check_overlap = TRUE), size = text_size)
+      if(is.vector(prop_text) & class(prop_text) == "character"){
+        prop_text <- data.frame(name_id = prop_text)
+        prop_text <- prop_text %>% dplyr::inner_join(., data_centroids, by = c("name_id"))
+        graph <- graph + geom_text(data = prop_text,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }else{
+        data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
+        graph <- graph + geom_text(data = data_centroids,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }
     }
   }
 
@@ -571,7 +619,7 @@ gg_bubble_co_CaGe. <- function(data, titleLabel = "", fillLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_depto_CaGe. <- function(data, titleLabel = "", depto_ = "05", leg_pos = "right",
-                                fillLabel = NULL, color_point = "red",
+                                fillLabel = NULL, text = FALSE, text_size = 2.5, prop_text = 0.1,
                                 color_map = "gray", color_frontier = "white", scale_point = 0.25,
                                 alpha = 0.5, ...){
 
@@ -584,19 +632,45 @@ gg_bubble_depto_CaGe. <- function(data, titleLabel = "", depto_ = "05", leg_pos 
   data_mpios <- suppressMessages(read_csv(system.file("geo/mpios_depto_co.csv", package = "ggmagic"), col_names = TRUE))
   data_mpios <- data_mpios %>% filter(depto == depto_)
 
+  data_centroids <- suppressMessages(read_csv(system.file("geo/centroids_mpios_depto_co.csv", package = "ggmagic"), col_names = TRUE))
+
   data_graph <- data %>% dplyr::group_by(a, b, c) %>% dplyr::summarise(count = n())
+
   graph <- ggplot() +
     geom_map(data = data_mpios, map = data_mpios,
              aes(map_id = id, x = long, y = lat, group = group), fill = color_map,
              color = color_frontier, size = 0.25) +
     expand_limits(x = data_mpios$long, y = data_mpios$lat) + coord_map()
 
-  graph <- graph + geom_point(data = data_graph, aes(x = b, y = c, colour = a,
-                                                     size = count * scale_point), alpha = alpha) +
+  graph <- graph + geom_point(data = data_graph,
+                              aes(x = b, y = c, group = a, color = a, size = count * scale_point),
+                              alpha = alpha) +
     coord_map() + coord_fixed() + scale_size(guide = 'none') +
     scale_color_manual(values = getPalette())  +
     labs(x = "", y = "", title = titleLabel) + theme_ds() + theme_ds_clean() +
     theme(legend.position=leg_pos)
+
+  if(text){
+    data_centroids <- data_centroids %>% filter(depto == depto_)
+    if(prop_text == "all"){
+      graph <- graph + geom_text(data = data_centroids,
+                                 aes(label = name_id, x = x, y = y,
+                                     check_overlap = TRUE), size = text_size)
+    }else{
+      if(is.vector(prop_text) & class(prop_text) == "character"){
+        prop_text <- data.frame(name_id = prop_text)
+        prop_text <- prop_text %>% dplyr::inner_join(., data_centroids, by = c("name_id"))
+        graph <- graph + geom_text(data = prop_text,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }else{
+        data_centroids <- sample_n(data_centroids, dim(data_centroids)[1] * prop_text)
+        graph <- graph + geom_text(data = data_centroids,
+                                   aes(label = name_id, x = x, y = y,
+                                       check_overlap = TRUE), size = text_size)
+      }
+    }
+  }
   options(warn=0)
 
   return(graph)
