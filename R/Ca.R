@@ -39,7 +39,7 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL,
-                            yLabel = 'Count', fillLabel = NULL,
+                            yLabel = 'Count', fillLabel = NULL, text = TRUE, size_text = 3,
                             leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -47,10 +47,17 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL,
   data <- f$d
   graph <- ggplot(data = data, aes(x = a, fill = factor(a))) + geom_bar()
   graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
-  graph <- graph + theme(legend.position = leg_pos) + guides(fill  = FALSE) +
-    theme_ds() + scale_fill_manual(values = getPalette())
-  return(graph)
+
+  ifelse(text == TRUE,
+         return(graph +
+                 geom_text(stat = "count", aes(label = ..count.., y = ..count..), vjust=1.5, colour="black",
+                           position=position_dodge(.9), size = size_text) +
+                 theme(legend.position = leg_pos) + guides(fill  = FALSE) +
+                 theme_ds() + scale_fill_manual(values = getPalette())
+                 ), return(graph + theme(legend.position = leg_pos) + guides(fill  = FALSE) +
+                             theme_ds() + scale_fill_manual(values = getPalette())))
 }
+
 
 #' gg_bar_coloured_hor_Ca.
 #' Horizontal coloured Bars
@@ -64,14 +71,17 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL,
-                            yLabel = 'Count', fillLabel = NULL,
+                            yLabel = 'Count', fillLabel = NULL, text = TRUE, size_text = 3,
                             leg_pos = "right", ...){
 
   graph <- gg_bar_coloured_ver_Ca.(data, titleLabel, xLabel,
-                                   yLabel, fillLabel, leg_pos)
+                                   yLabel, fillLabel, leg_pos, text)
 
-  graph <- graph + coord_flip()
-  return(graph)
+  ifelse(text == TRUE,
+         return(graph +
+                  geom_text(stat = "count", aes(label = ..count.., y = ..count..), vjust= 1.5, colour="black", size = size_text) + coord_flip()),
+        return(graph +  coord_flip()))
+
 }
 
 #' gg_bar_coloured_parameter_ver_Ca.

@@ -22,7 +22,7 @@ d <- data.frame(a=sample(letters[1:7],10000,replace=TRUE))
 
 # Coloured Bar
 gg_bar_coloured_ver_Ca.(dataCa, leg_pos = "right")
-gg_bar_coloured_hor_Ca.(dataCa,leg_pos = "bottom")
+gg_bar_coloured_hor_Ca.(dataCa,leg_pos = "bottom", text = TRUE, size_text = 4)
 
 # Bar
 gg_bar_ver_Ca.(dataCa)

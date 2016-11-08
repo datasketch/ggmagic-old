@@ -34,6 +34,9 @@ gg_coloured_bubble_CaNu.(dataCaNu)
 
 # Coloured Bar
 gg_bar_coloured_x_ver_CaNu.(dataCaNu)
+
+
+
 gg_bar_coloured_x_hor_CaNu.(dataCaNu)
 gg_bar_coloured_y_ver_CaNu.(dataCaNu, reverse = TRUE)
 gg_bar_coloured_y_hor_CaNu.(dataCaNu)
