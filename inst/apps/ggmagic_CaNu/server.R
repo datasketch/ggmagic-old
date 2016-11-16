@@ -10,9 +10,7 @@ shinyServer(function(input, output, session){
 
   ## DATA INPUT SECTION
   output$dataInputSectionDebug <- renderPrint({
-    data <- data()
-    if(is.null(data)) return()
-    guessFtype(data)
+    str(inputData())
   })
 
   output$dataInputSection <- renderUI({
@@ -63,15 +61,19 @@ shinyServer(function(input, output, session){
     return(df)
   })
 
+  output$debug <- renderPrint({
+    str(fringe()$data)
+  })
+
   output$dataInputPreview <- renderRHandsontable({
     d <- inputData()
-    if(!all(is.na(as.numeric(names(d))))){
-      names(d)[!is.na(as.numeric(names(d)))] <- paste0("x",
-        names(d)[!is.na(as.numeric(names(d)))]
-      )
-    }
-    names(d) <- gsub(" ","_",names(d))
-    names(d) <- gsub("[[:punct:]]", "_",  names(d))
+    # if(!all(is.na(as.numeric(names(d))))){
+    #   names(d)[!is.na(as.numeric(names(d)))] <- paste0("x",
+    #     names(d)[!is.na(as.numeric(names(d)))]
+    #   )
+    # }
+    # names(d) <- gsub(" ","_",names(d))
+    # names(d) <- gsub("[[:punct:]]", "_",  names(d))
     if(is.null(inputData()))
       return()
     h <- rhandsontable(d, useTypes = FALSE, readOnly = FALSE,
@@ -103,23 +105,25 @@ shinyServer(function(input, output, session){
     if(is.null(data())) return()
     selectedCols <- as.character(input$selectedCols)
     data <- data()
-    d <- data %>% select_(.dots = selectedCols)
+    #d <- data %>% select_(.dots = selectedCols)
     #f <- fringe(d)
+    d <- data[selectedCols]
     d
   })
 
   ## VIZ SECTION
 
   output$debugViz <- renderPrint({
-    if(is.null(input$selectedCols)) return()
-    if(is.null(data())) return()
+    data <- data()
     selectedCols <- as.character(input$selectedCols)
     selectedCols
-    # data <- data()
-    # d <- data %>% select_(.dots = selectedCols)
-    #names(d)[1:2]
-  paste("WHICH VIZ: ",input$whichViz)
-  paste0(input$vizTitle,"\n",input$vizTitle2)
+    str(data[selectedCols])
+    #d <- data %>% select_(.dots = selectedCols)
+    #f <- fringe(d)
+    #str(d)
+    # if(is.null(fringe())) return("NULL fringe")
+    # data <- fringe()
+    # str(fringe())
   })
 
   output$vizControls <- renderUI({
@@ -135,7 +139,7 @@ shinyServer(function(input, output, session){
       textInput("whichVizPattern",label = "Which Viz Pattern", value = "")
     )
   })
-    output$vizControls2 <- renderUI({
+  output$vizControls2 <- renderUI({
     if(is.null(fringe())) return()
     data <- fringe()
     if(is.null(input$whichVizPattern)) return()
@@ -191,8 +195,7 @@ shinyServer(function(input, output, session){
 
   ## PUBLISH SECTION
 
-  output$debug <- renderPrint({
-  })
+
 
 
 })

@@ -7,6 +7,10 @@ library(ggmagic)
 data <- read_csv("data/sample1.csv")
 
 
+
+
+
+
 #gg <- sample(bars_CaNu,1)
 gg <- "gg_bar_circular_CaNu."
 p <- do.call(gg,list(data))
@@ -29,7 +33,7 @@ guessFtype(data)
 
 
 txt <- "Country	2000
-Antigua and Barbuda	
+Antigua and Barbuda
 Argentina	17.134
 The Bahamas	7
 Barbados	9.75
