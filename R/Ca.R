@@ -489,8 +489,7 @@ gg_gauge_Ca. <- function(data, titleLabel = '', subtitle = '', caption = '', nco
             axis.title=element_blank(),
             axis.ticks=element_blank(),
             panel.grid=element_blank(),
-            panel.border=element_blank()) +
-      labs(title = titleLabel, subtitle = subtitle, caption = caption)
+            panel.border=element_blank())
     return(graph)
   }
 
@@ -615,8 +614,8 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", 
 gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                    fillLabel = NULL, leg_pos="right", width = 0.3, ...){
 
-  graph <- gg_bar_single_stacked_hor_Ca.(data, titleLabel, fillLabel, leg_pos, width, subtitle, caption)
-  graph <- graph + coord_flip()
+  graph <- gg_bar_single_stacked_hor_Ca.(data, titleLabel, fillLabel, leg_pos, width)
+  graph <- graph + coord_flip() + labs(subtitle = subtitle, caption = caption)
 
   return(graph)
 }
@@ -669,7 +668,7 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_bubble_Ca.  <- function(data, titleLabel = "", xLabel = NULL, fillLabel = NULL, ...){
+gg_coloured_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -684,7 +683,7 @@ gg_coloured_bubble_Ca.  <- function(data, titleLabel = "", xLabel = NULL, fillLa
 
   graph <- ggplot(data_graph, aes(x = a, y = 0, size = count))
   graph <- graph + geom_point(aes(color = a))
-  graph <- graph + labs(title = titleLabel, x = xlab, y = "", fill = flab)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = "", fill = flab, subtitle = subtitle, caption = caption)
 
   graph <- graph + scale_color_manual(values = getPalette())
 
@@ -708,7 +707,7 @@ gg_coloured_bubble_Ca.  <- function(data, titleLabel = "", xLabel = NULL, fillLa
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "",
+gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "", subtitle = "", caption = "",
                              fillLabel = NULL, leg_pos= "right", ...){
 
   f <- fringe(data)
@@ -723,7 +722,7 @@ gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "",
 
   graph <- ggplot(data=data_graph, aes(a, fill = a, weight = count)) +
             geom_bar(width = width) + coord_polar()
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel, subtitle = subtitle, caption = caption)
   graph <- graph + scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
@@ -741,7 +740,7 @@ gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bullseye_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
+gg_bullseye_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                           leg_pos="right", ...){
 
   f <- fringe(data)
@@ -751,7 +750,7 @@ gg_bullseye_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = a)) +
     geom_bar(width = 1) + coord_polar(theta = "x")
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel, subtitle = subtitle, caption = caption)
 
   graph <- graph + scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
@@ -770,7 +769,7 @@ gg_bullseye_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_circular_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
+gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                 leg_pos="right", width = 0.85, ...){
 
   f <- fringe(data)
@@ -786,7 +785,7 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
   graph <- ggplot(data_graph, aes(x = a, y = count , fill = a )) +
     geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
 
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel, subtitle = subtitle, caption = caption)
   graph <- graph + scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
@@ -804,7 +803,7 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_Ca. <- function(data, titleLabel = "", fillLabel = NULL, ...){
+gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -820,8 +819,73 @@ gg_treemap_Ca. <- function(data, titleLabel = "", fillLabel = NULL, ...){
 
   graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a"),
                      group.label.colour = "black") + guides(fill=FALSE) +
-    scale_fill_manual(values = getPalette()) + labs(title = titleLabel)
+    scale_fill_manual(values = getPalette()) + labs(title = titleLabel, subtitle = subtitle, caption =  caption)
 
   return(graph)
 }
 
+#' gg_bubble_CaNu2.
+#' bubbles
+#' @name gg_bubble_CaNu2.
+#' @param x A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-40,
+                             lim_sup = 40, fillLabel = NULL, ...){
+  data <- dataCa
+  f <- fringe(data)
+  nms <- getCnames(f)
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data <- data %>% drop_na(a)
+  data <- data %>% dplyr::group_by(a) %>% dplyr::summarise(b = n())
+  data$b <- rescale(data$b, to = c(5,15))
+  ncircles <- dim(data)[1]
+  limits <- c(lim_inf , lim_sup)
+  inset <- diff(limits) / sep
+
+  set.seed(7321)
+  # xyr <- data.frame(
+  #   x = runif(ncircles, min(limits) + inset, max(limits) - inset),
+  #   y = runif(ncircles, min(limits) + inset, max(limits) - inset),
+  #   r = (data$b)) %>% arrange(desc(r))
+
+  xyr <- data.frame(
+    x = rnorm(ncircles, mean =  min(limits) + inset, sd = 1),
+    y = rnorm(ncircles, mean =  min(limits) + inset, sd = 1),
+    r = (data$b)) %>% arrange(desc(r))
+
+
+  res <- circleLayout(xyr, limits, limits, maxiter = 1000)
+
+  dat.after <- circlePlotData(res$layout)
+
+  data_graph <- data %>% dplyr::group_by(a) %>%
+    dplyr::summarise(count = sum(b)) %>%
+    dplyr::arrange(desc(count)) %>%
+    dplyr::mutate(id = 1:n(), categoria = a) %>%
+    dplyr::select(id, categoria)
+
+  fi <- data.frame(id = 1:dim(data)[1], categoria = data$a)
+  fi <- inner_join(data_graph, dat.after)
+
+  cent <- fi %>% dplyr::group_by(categoria) %>%
+    dplyr::summarise(x = mean(x), y = mean(y))
+
+
+  graph <- ggplot(fi) +
+    geom_polygon(aes(x, y, group=id, fill = categoria)) +
+    scale_fill_manual(values = getPalette()) +
+    coord_equal(xlim=limits, ylim=limits) +
+    geom_text(data=cent, aes(x, y, label=categoria)) +
+    theme_ds() + theme_ds_clean() +
+    labs(title=titleLabel) + guides(fill = FALSE)
+
+  return(graph)
+
+}

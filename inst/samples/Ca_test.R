@@ -12,7 +12,7 @@ dataCa <- data.frame(c(catA, catB, catC))
 names(dataCa) <- "SGRWHSR"
 data <- dataCa
 # Waffle plot
-gg_waffle_Ca.(dataCa, subtitle = "hola", caption = 'chao')
+gg_waffle_Ca.(dataCa)
 
 d <- data.frame(a=sample(letters[1:7],10000,replace=TRUE))
 
