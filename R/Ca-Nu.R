@@ -124,7 +124,6 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", xLabel = NULL, tex
       graph
     }
   }
-
 }
 
 
@@ -140,7 +139,10 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", xLabel = NULL, tex
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", xLabel = NULL, reverse = FALSE,
+                                       text = TRUE, type = 'percent', size_text = 3,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
+
+
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -149,11 +151,15 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", xLabel = NULL, rev
   flab <- fillLabel %||% nms[1]
   data <- f$d
 
-  data_graph <- data %>% dplyr::group_by(a) %>% dplyr::summarise(suma=sum(b))
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(suma=sum(b)) %>%
+    dplyr::mutate(percent = 100 * round(suma/sum(suma), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = suma, fill = suma)) + geom_bar(stat = "identity") +
     labs(title = titleLabel, x = xlab, y = ylab, fill = flab) + theme_ds() +
     theme(legend.position=leg_pos)
+
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
                                          high = getPalette(type = "sequential")[1])
@@ -162,10 +168,16 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", xLabel = NULL, rev
                                          high = getPalette(type = "sequential")[2])
   }
 
-
-  return(graph)
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(aes(x = a, y = suma, label = round(suma,2)), size = size_text))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(aes(x = a, y = suma, label = paste(percent, "%", sep = "")), size = size_text))
+    }else{
+      graph
+    }
+  }
 }
-
 
 #' gg_bar_coloured_y_hor_CaNu.
 #' horizontal bar
@@ -1965,8 +1977,8 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", reverse = FALSE,
 #' add(1, 1)
 #' add(10, 1)
 
-gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-150,
-                             lim_sup = 150, xLabel = NULL, ...){
+gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-40,
+                             lim_sup = 40, xLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)

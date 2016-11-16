@@ -60,7 +60,6 @@ theme_ds <- function(){
     max(0.8, min(2.4, spacing))
 
   theme(
-
     legend.title=element_blank(),
     line = element_line(
       colour = line_colour,
@@ -94,9 +93,7 @@ theme_ds <- function(){
       size = rel(0.8)),
     axis.line = element_line(
       colour = line_colour),
-    # axis.line.x = function(...) element_line(...),
     axis.line.x = element_line(colour = line_colour),
-    # axis.line.y = function(...) element_line(...),
     axis.line.y = element_line(colour = line_colour),
     axis.text.x = element_text(
       debug=FALSE,
@@ -110,9 +107,7 @@ theme_ds <- function(){
       hjust = 1,
       colour = text_colour,
       face='bold'),
-    # axis.ticks = function(...) element_blank(),
     axis.ticks = element_line(colour = line_colour),
-    # axis.title = function(...) element_text(face='bold', ...),
     axis.title = element_text(face='bold',colour = text_colour),
     axis.title.x = element_text(
       debug=FALSE,
@@ -139,24 +134,13 @@ theme_ds <- function(){
       debug=FALSE,
       margin=margin(),
       size = rel(0.8)),
-    legend.text.align = NULL,
-    legend.title = element_text(
-      debug=FALSE,
-      margin=margin(),
-      size = rel(0.8),
-      face = "bold",
-      hjust = 0),
-    legend.title.align = NULL,
     legend.position = "right",
     legend.direction = NULL,
     legend.justification = "center",
     legend.box = NULL,
     panel.background = element_rect(fill = palette$background,colour = NA),
     panel.border = element_blank(),
-    # panel.grid.major = function(...) element_line(linetype='dashed', ...),
-    # panel.grid.minor = function(...) element_blank()
     panel.grid.major = element_line(linetype='dashed',colour = palette$gridline),
-    #panel.grid.minor = element_line(colour = palette$gridline),
     panel.grid.minor = element_blank(),
     panel.margin = grid::unit(0.5 * spacing, 'cm'),
     panel.margin.x = NULL,
@@ -165,8 +149,6 @@ theme_ds <- function(){
     strip.background = element_rect(
       fill = ifelse(inner, 'white', palette$background),
       colour = NA),
-    #strip.text = layout$strip.text(colour=text_colour),
-    strip.text = element_text(face='bold', colour=text_colour),
     strip.text.x = element_text(
       debug=FALSE,
       margin=margin(),
@@ -183,7 +165,7 @@ theme_ds <- function(){
     plot.background = element_rect(
       colour = ifelse(inner, 'white', palette$background),
       fill = ifelse(inner, 'white', palette$background)),
-    # plot.title = function(...) element_text(face='bold', ...),
+
     plot.title = element_text(
       debug=FALSE,
       margin=margin(0, 0, 6.6, 0),
@@ -194,3 +176,6 @@ theme_ds <- function(){
     complete = TRUE
   )
 }
+
+
+

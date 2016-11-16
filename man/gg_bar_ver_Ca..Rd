@@ -5,8 +5,8 @@
 \title{gg_bar_ver_Ca.
 Vertical bars}
 \usage{
-gg_bar_ver_Ca.(data, titleLabel = "", xLabel = NULL, yLabel = "Count",
-  leg_pos = "right", ...)
+gg_bar_ver_Ca.(data, titleLabel = "", xLabel = NULL, subtitle = "",
+  caption = "", yLabel = "Count", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

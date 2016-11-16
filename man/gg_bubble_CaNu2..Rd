@@ -5,8 +5,8 @@
 \title{gg_bubble_CaNu2.
 Bubbles}
 \usage{
-gg_bubble_CaNu2.(data, titleLabel = "", sep = 3, lim_inf = -150,
-  lim_sup = 150, xLabel = NULL, ...)
+gg_bubble_CaNu2.(data, titleLabel = "", sep = 3, lim_inf = -40,
+  lim_sup = 40, xLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

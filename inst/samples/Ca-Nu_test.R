@@ -21,13 +21,15 @@ data_graph <- d %>% dplyr::group_by(a) %>%
   dplyr::summarise(count = sum(b)) %>% dplyr::arrange(desc(count))
 
 # Pie
-gg_pie_CaNu.(dataCaNu)
+gg_pie_CaNu.(dataCaNu, text = FALSE)
+gg_pie_CaNu.(dataCaNu, type = 'count')
+
 
 # Bubble
 gg_bubble_CaNu.(dataCaNu)
 
 # Bubble2
-gg_bubble_CaNu2.(dataCaNu, sep = 10)
+gg_bubble_CaNu2.(dataCaNu)
 
 # Coloured Bubble
 gg_coloured_bubble_CaNu.(dataCaNu)
@@ -37,8 +39,11 @@ gg_bar_coloured_x_ver_CaNu.(dataCaNu)
 
 
 
-gg_bar_coloured_x_hor_CaNu.(dataCaNu)
-gg_bar_coloured_y_ver_CaNu.(dataCaNu, reverse = TRUE)
+gg_bar_coloured_x_hor_CaNu.(dataCaNu, type = 'count')
+
+
+
+gg_bar_coloured_y_ver_CaNu.(dataCaNu, reverse = TRUE, type = 'count')
 gg_bar_coloured_y_hor_CaNu.(dataCaNu)
 
 # Coloured Parameter Bar

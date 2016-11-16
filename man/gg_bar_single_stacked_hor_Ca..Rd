@@ -5,8 +5,8 @@
 \title{gg_bar_single_stacked_hor_Ca.
 Single Horizontal Stacked Bar}
 \usage{
-gg_bar_single_stacked_hor_Ca.(data, titleLabel = "", fillLabel = NULL,
-  leg_pos = "right", width = 0.3, ...)
+gg_bar_single_stacked_hor_Ca.(data, titleLabel = "", subtitle = "",
+  caption = "", fillLabel = NULL, leg_pos = "right", width = 0.3, ...)
 }
 \arguments{
 \item{x}{A number.}
