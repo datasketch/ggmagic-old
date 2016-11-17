@@ -5,8 +5,9 @@
 \title{gg_area_multi_density_dist_CaNu.
 Filled Density Distribution}
 \usage{
-gg_area_multi_density_dist_CaNu.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
+gg_area_multi_density_dist_CaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = "Count", fillLabel = NULL,
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

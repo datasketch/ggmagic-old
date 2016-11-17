@@ -5,9 +5,10 @@
 \title{gg_bar_coloured_x_ver_CaNu.
 vertical bar}
 \usage{
-gg_bar_coloured_x_ver_CaNu.(data, titleLabel = "", xLabel = NULL,
-  text = TRUE, type = "percent", size_text = 3, yLabel = NULL,
-  fillLabel = NULL, leg_pos = "right", ...)
+gg_bar_coloured_x_ver_CaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, text = TRUE, type = "percent",
+  size_text = 3, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
+  ...)
 }
 \arguments{
 \item{x}{A category.}

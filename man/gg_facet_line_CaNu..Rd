@@ -5,8 +5,8 @@
 \title{gg_facet_line_CaNu.
 Facet Line}
 \usage{
-gg_facet_line_CaNu.(data, titleLabel = "", xLabel = "Index",
-  yLabel = NULL, fillLabel = NULL, type = 1, ...)
+gg_facet_line_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = "Index", yLabel = NULL, fillLabel = NULL, type = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

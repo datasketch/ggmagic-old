@@ -5,8 +5,9 @@
 \title{gg_facet_dot_hist_mean_ver_CaNu.
 Facet Vertical Histogram + Mean + Dot}
 \usage{
-gg_facet_dot_hist_mean_ver_CaNu.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
+gg_facet_dot_hist_mean_ver_CaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = "Count", fillLabel = NULL,
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

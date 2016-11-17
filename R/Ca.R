@@ -824,9 +824,9 @@ gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", f
   return(graph)
 }
 
-#' gg_bubble_CaNu2.
+#' gg_bubble_Ca2.
 #' bubbles
-#' @name gg_bubble_CaNu2.
+#' @name gg_bubble_Ca2.
 #' @param x A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
@@ -834,7 +834,7 @@ gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", f
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-40,
+gg_bubble_Ca2. <- function(data, titleLabel = "", subtitle = "", caption = "",  sep = 3, lim_inf =-40,
                              lim_sup = 40, fillLabel = NULL, ...){
   data <- dataCa
   f <- fringe(data)
@@ -850,20 +850,14 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-40,
   inset <- diff(limits) / sep
 
   set.seed(7321)
-  # xyr <- data.frame(
-  #   x = runif(ncircles, min(limits) + inset, max(limits) - inset),
-  #   y = runif(ncircles, min(limits) + inset, max(limits) - inset),
-  #   r = (data$b)) %>% arrange(desc(r))
-
-  xyr <- data.frame(
-    x = rnorm(ncircles, mean =  min(limits) + inset, sd = 1),
-    y = rnorm(ncircles, mean =  min(limits) + inset, sd = 1),
-    r = (data$b)) %>% arrange(desc(r))
-
+   xyr <- data.frame(
+     x = runif(ncircles, min(limits) + inset, max(limits) - inset),
+     y = runif(ncircles, min(limits) + inset, max(limits) - inset),
+     r = (data$b)) %>% arrange(desc(r))
 
   res <- circleLayout(xyr, limits, limits, maxiter = 1000)
 
-  dat.after <- circlePlotData(res$layout)
+  dat.after <- circlePlotData(res$layout, npoints = 1000)
 
   data_graph <- data %>% dplyr::group_by(a) %>%
     dplyr::summarise(count = sum(b)) %>%
@@ -884,7 +878,7 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "",  sep = 3, lim_inf =-40,
     coord_equal(xlim=limits, ylim=limits) +
     geom_text(data=cent, aes(x, y, label=categoria)) +
     theme_ds() + theme_ds_clean() +
-    labs(title=titleLabel) + guides(fill = FALSE)
+    labs(title=titleLabel, subtitle = subtitle, caption = caption) + guides(fill = FALSE)
 
   return(graph)
 

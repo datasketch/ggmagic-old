@@ -80,3 +80,5 @@ gg_bar_circular_Ca.(dataCa)
 # Treemap
 gg_treemap_Ca.(dataCa)
 
+# Bubbles 2
+gg_bubble_Ca2.(dataCa)

@@ -5,8 +5,9 @@
 \title{gg_steam_CaNu.
 Steam}
 \usage{
-gg_steam_CaNu.(data, titleLabel = "", xLabel = "Index", yLabel = NULL,
-  fillLabel = NULL, leg_pos = "right", ...)
+gg_steam_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = "Index", yLabel = NULL, fillLabel = NULL, leg_pos = "right",
+  ...)
 }
 \arguments{
 \item{x}{A number.}
