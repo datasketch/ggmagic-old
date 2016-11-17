@@ -6,7 +6,7 @@
 Facet Horizontal coloured Bars}
 \usage{
 gg_bar_facet_coloured_y_hor_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
+  yLabel = "Count", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

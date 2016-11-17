@@ -5,7 +5,7 @@
 \title{gg_facet_dot_dist_hist_ver_CaNu.
 Facet Vertical Histogram + Dist + Dot}
 \usage{
-gg_facet_dot_dist_hist_ver_CaNu.(data, titleLabel = "Report", xLabel = NULL,
+gg_facet_dot_dist_hist_ver_CaNu.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{

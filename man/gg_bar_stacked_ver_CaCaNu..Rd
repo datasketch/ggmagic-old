@@ -5,8 +5,8 @@
 \title{gg_bar_stacked_ver_CaCaNu.
 vertical stacked bar graph}
 \usage{
-gg_bar_stacked_ver_CaCaNu.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = NULL, fillLabel = NULL, leg_pos = "top", ...)
+gg_bar_stacked_ver_CaCaNu.(data, titleLabel = "", xLabel = NULL,
+  yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

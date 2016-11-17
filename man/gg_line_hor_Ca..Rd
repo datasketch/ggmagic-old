@@ -5,8 +5,8 @@
 \title{gg_line_hor_Ca.
 Horizontal Line}
 \usage{
-gg_line_hor_Ca.(data, titleLabel = "", xLabel = NULL, yLabel = "Count",
-  leg_pos = "right", ...)
+gg_line_hor_Ca.(data, titleLabel = "", xLabel = NULL, subtitle = "",
+  caption = "", yLabel = "Count", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

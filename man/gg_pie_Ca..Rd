@@ -5,8 +5,8 @@
 \title{gg_pie_Ca.
 Pie}
 \usage{
-gg_pie_Ca.(data, titleLabel = "", fillLabel = NULL, leg_pos = "right",
-  ...)
+gg_pie_Ca.(data, titleLabel = "", subtitle = "", caption = "",
+  fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

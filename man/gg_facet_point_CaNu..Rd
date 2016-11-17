@@ -5,7 +5,7 @@
 \title{gg_facet_point_CaNu.
 Facet Point}
 \usage{
-gg_facet_point_CaNu.(data, titleLabel = "Report", xLabel = "Index",
+gg_facet_point_CaNu.(data, titleLabel = "", xLabel = "Index",
   yLabel = NULL, fillLabel = NULL, type = 1, ...)
 }
 \arguments{

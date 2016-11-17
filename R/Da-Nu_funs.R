@@ -9,7 +9,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_horizon_DaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_horizon_DaNu. <- function(data, titleLabel = "", xLabel = NULL,
                              yLabel =  NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
@@ -97,7 +97,7 @@ gg_scatter_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
   ylab <- ylab %||% nms[2]
   data <- f$d
 
-  ggplot(data, aes(x =as.Data(a), y = b)) +
+  ggplot(data, aes(x =as.Date(a), y = b)) +
     geom_point() +
     ylab(ylab) +
     xlab(xlab) +

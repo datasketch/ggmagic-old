@@ -6,7 +6,7 @@
 Stacked vertical Area}
 \usage{
 gg_area_stacked_ver_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", fillLabel = NULL, leg_pos = "top", ...)
+  yLabel = "Count", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

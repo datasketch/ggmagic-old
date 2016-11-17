@@ -1,13 +1,8 @@
 load_all()
 
-dataNuNu <- data.frame(runif(100, min = 0, max = 50),
-                         runif(100, min = 0, max = 50))
+dataNuNu <- data.frame(x = 1:100, y = cumsum(rnorm(100)))
 
 names(dataNuNu) <- c("a", "b")
-
-
-
-
 
 #density - 2D
 dens2D_Plot(dataNuNu)
@@ -24,5 +19,4 @@ gg_waterfall_NuNu.(dataNuNu)
 gg_horizon_NuNu.(dataNuNu)
 
 #MultiLine plot
-
 mult_Line_Plot(dataNuNu)

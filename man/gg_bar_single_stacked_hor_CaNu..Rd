@@ -5,9 +5,8 @@
 \title{gg_bar_single_stacked_hor_CaNu.
 Single Horizontal Stacked Bar}
 \usage{
-gg_bar_single_stacked_hor_CaNu.(data, titleLabel = "Report",
-  yLabel = "Count", fillLabel = "Types", leg_pos = "right", width = 0.3,
-  ...)
+gg_bar_single_stacked_hor_CaNu.(data, titleLabel = "", yLabel = "Count",
+  fillLabel = "Types", leg_pos = "right", width = 0.3, ...)
 }
 \arguments{
 \item{x}{A number.}

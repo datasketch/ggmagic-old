@@ -5,8 +5,8 @@
 \title{gg_donut_Ca.
 Donut}
 \usage{
-gg_donut_Ca.(data, titleLabel = "", fillLabel = NULL, width = 0.3,
-  leg_pos = "right", ...)
+gg_donut_Ca.(data, titleLabel = "", subtitle = "", caption = "",
+  fillLabel = NULL, width = 0.3, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

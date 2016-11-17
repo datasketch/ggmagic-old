@@ -5,9 +5,8 @@
 \title{gg_facet_dist_hist_mean_hor_CaNu.
 Facet Horizontal Histogram + Dist + Mean}
 \usage{
-gg_facet_dist_hist_mean_hor_CaNu.(data, titleLabel = "Report",
-  xLabel = NULL, yLabel = "Count", fillLabel = NULL, leg_pos = "right",
-  ...)
+gg_facet_dist_hist_mean_hor_CaNu.(data, titleLabel = "", xLabel = NULL,
+  yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

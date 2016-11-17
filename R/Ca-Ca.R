@@ -163,17 +163,15 @@ gg_facet_pie_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_donut_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
-                               width = 0.3, leg_pos="right", ...){
+gg_facet_donut_CaCa. <- function(data, titleLabel = "",
+                                 width = 0.3, leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = factor(a))) +
     geom_bar(width = width) + coord_polar(theta = "y")
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel) +
+  graph <- graph + labs(title = titleLabel, x = "", y = "") +
     theme(legend.position=leg_pos) + guides(text = FALSE)
   graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
   graph <- graph + facet_grid(.~b)
@@ -192,17 +190,14 @@ gg_facet_donut_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_bullseye_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
-                            leg_pos="right", ...){
+gg_facet_bullseye_CaCa. <- function(data, titleLabel = "", leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = a)) +
     geom_bar(width = 1) + coord_polar(theta = "x")
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel) +
+  graph <- graph + labs(title = titleLabel, x = "", y = "") +
     theme(legend.position=leg_pos) + guides(text = FALSE)
   graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
   graph <- graph + facet_grid(.~b)
@@ -222,15 +217,13 @@ gg_facet_bullseye_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_facet_coloured_x_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                    yLabel = 'Count', fillLabel = NULL,
-                                    leg_pos = "right", ...){
+                                    yLabel = 'Count', leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data = data, aes(x = a, fill = factor(a))) + geom_bar()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel,  fill = flabel) +
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel) +
     theme(legend.position=leg_pos) + guides(text = FALSE)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -250,11 +243,10 @@ gg_bar_facet_coloured_x_ver_CaCa. <- function(data, titleLabel = "", xLabel = NU
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_facet_coloured_x_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                    yLabel = 'Count', fillLabel = NULL,
-                                    leg_pos = "right", ...){
+                                    yLabel = 'Count', leg_pos = "right", ...){
 
   graph <- gg_bar_facet_coloured_x_ver_CaCa.(data, titleLabel, xLabel,
-                                   yLabel, fillLabel, leg_pos)
+                                   yLabel, leg_pos)
 
   graph <- graph + coord_flip()
   return(graph)
@@ -272,15 +264,13 @@ gg_bar_facet_coloured_x_hor_CaCa. <- function(data, titleLabel = "", xLabel = NU
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_facet_coloured_y_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                              yLabel = 'Count', fillLabel = NULL,
-                                              leg_pos = "right", ...){
+                                              yLabel = 'Count', leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data = data, aes(x = a, fill = factor(b))) + geom_bar()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel,  fill = flabel) +
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel) +
     theme(legend.position=leg_pos) + guides(text = FALSE)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -300,11 +290,10 @@ gg_bar_facet_coloured_y_ver_CaCa. <- function(data, titleLabel = "", xLabel = NU
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_facet_coloured_y_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                              yLabel = 'Count', fillLabel = NULL,
-                                              leg_pos = "right", ...){
+                                              yLabel = 'Count', leg_pos = "right", ...){
 
   graph <- gg_bar_facet_coloured_y_ver_CaCa.(data, titleLabel, xLabel,
-                                             yLabel, fillLabel, leg_pos)
+                                             yLabel, leg_pos)
 
   graph <- graph + coord_flip()
   return(graph)
@@ -386,15 +375,14 @@ gg_bar_facet_coloured_parameter_hor_CaCa. <- function(data, titleLabel = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                yLabel = 'Count', fillLabel = NULL, leg_pos = "right", ...){
+                                yLabel = 'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data, aes(a, fill=b)) + geom_bar()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill=flabel) +
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel) +
     theme(legend.position=leg_pos) + guides(text = FALSE)
   graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
 
@@ -413,9 +401,9 @@ gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
-                                  yLabel = 'Cpunt', fillLabel = NULL, leg_pos = "right", ...){
+                                  yLabel = 'Count', leg_pos = "right", ...){
 
-  graph <- gg_bar_stacked_ver_CaCa.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_bar_stacked_ver_CaCa.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -433,18 +421,16 @@ gg_bar_stacked_hor_CaCa. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                      yLabel =  'Count', fillLabel = NULL,
-                                      leg_pos = "right", ...){
+                                      yLabel =  'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data, aes(x=reorder(data$b, rep(1, length(data$b)), sum), fill = a)) +
             geom_bar()
 
-  graph <- graph + labs(title = titleLabel, x = yLabel, y = xLabel,  fill = fillLabel) +
+  graph <- graph + labs(title = titleLabel, x = yLabel, y = xLabel) +
     theme(legend.position=leg_pos) + guides(text = FALSE)
   graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
 
@@ -463,10 +449,9 @@ gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "", xLabel = NUL
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ordered_stacked_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                            yLabel =  'Count', fillLabel = NULL,
-                                            leg_pos = "right", ...){
+                                            yLabel =  'Count', leg_pos = "right", ...){
 
-  graph <- gg_bar_ordered_stacked_hor_CaCa.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_bar_ordered_stacked_hor_CaCa.(data, titleLabel, xLabel, yLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
@@ -485,18 +470,16 @@ gg_bar_ordered_stacked_ver_CaCa. <- function(data, titleLabel = "", xLabel = NUL
 #' add(1, 1)
 #' add(10, 1)
 gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                         yLabel = 'Count', fillLabel = NULL,
-                                         leg_pos = "right", ...){
+                                         yLabel = 'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data = data, aes(a, fill = factor(b))) +
                   geom_dotplot(stackgroups = TRUE, binpositions = "all")
 
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel,  fill = fillLabel)
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel)
   graph <- graph + theme_minimal() + scale_y_continuous(breaks = NULL) +
             theme(legend.position=leg_pos)
 
@@ -515,10 +498,9 @@ gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_stacked_dot_bar_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                         yLabel = 'Count', fillLabel = NULL,
-                                         leg_pos = "right", ...){
+                                         yLabel = 'Count', leg_pos = "right", ...){
 
-  graph <- gg_stacked_dot_bar_hor_CaCa.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_stacked_dot_bar_hor_CaCa.(data, titleLabel, xLabel, yLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
@@ -537,20 +519,18 @@ gg_stacked_dot_bar_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_unstacked_coloured_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                          yLabel = "Count", fillLabel = NULL,
-                                          leg_pos = "right", ...){
+                                          yLabel = "Count", leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
   data <- f$d
 
   data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(count=n()) %>%
     tidyr::spread(b, count) %>% tidyr::gather(b, count, -a)
 
   graph <- ggplot(data_graph, aes(a, weight=count, fill=b)) + geom_bar(position = "dodge")
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) +
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel) +
     theme(legend.position=leg_pos) + guides(text = FALSE)
   graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
 
@@ -570,10 +550,8 @@ gg_bar_unstacked_coloured_hor_CaCa. <- function(data, titleLabel = "", xLabel = 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_unstacked_coloured_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                        yLabel = "Count", fillLabel = NULL,
-                                        leg_pos = "right", ...){
-  graph <- gg_bar_unstacked_coloured_hor_CaCa.(data, titleLabel, xLabel, yLabel,
-                                         fillLabel, leg_pos)
+                                        yLabel = "Count", leg_pos = "right", ...){
+  graph <- gg_bar_unstacked_coloured_hor_CaCa.(data, titleLabel, xLabel, yLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
@@ -697,18 +675,17 @@ gg_facet_line_point_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                        yLabel = 'Percent', fillLabel = NULL,
-                                        leg_pos = "right", ...){
+                                        yLabel = 'Percent', leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
   data <- f$d
 
   graph <- ggplot(data, aes(a, fill = b)) + geom_bar(position = "fill")
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel) +
-    guides(color = FALSE) + theme_ds() + scale_fill_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel) +
+    guides(color = FALSE) + theme_ds() + scale_fill_manual(values = getPalette()) +
+    scale_y_continuous(labels = percent)
 
   return(graph)
 }
@@ -725,12 +702,10 @@ gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_100_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                          yLabel = 'Percent', fillLabel = NULL,
-                                          leg_pos = "right", ...){
+                                          yLabel = 'Percent', leg_pos = "right", ...){
 
 
-  graph <- gg_bar_stacked_100_ver_CaCa.(data, titleLabel, xLabel, yLabel,
-                                       fillLabel, leg_pos)
+  graph <- gg_bar_stacked_100_ver_CaCa.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -748,13 +723,11 @@ gg_bar_stacked_100_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                       yLabel = 'Count', fillLabel = NULL,
-                                       leg_pos = "top", ...){
+                                       yLabel = 'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
   data <- f$d
 
 
@@ -763,8 +736,10 @@ gg_area_stacked_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
   data_graph[is.na(data_graph)] <- 0
   graph <- ggplot(data = data_graph,
                   aes(x=a, y=count, group=b)) + geom_area(aes(fill = b), position = "stack")
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
+  graph <- graph + theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
+
 
   return(graph)
 }
@@ -781,11 +756,9 @@ gg_area_stacked_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                      yLabel = 'Count', fillLabel = NULL,
-                                      leg_pos = "top", ...){
+                                      yLabel = 'Count', leg_pos = "right", ...){
 
-  graph <- gg_area_stacked_hor_CaCa.(data, titleLabel, xLabel, yLabel,
-                                        fillLabel, leg_pos)
+  graph <- gg_area_stacked_hor_CaCa.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -803,13 +776,11 @@ gg_area_stacked_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                      yLabel = 'Count', fillLabel = NULL,
-                                      leg_pos = "top", ...){
+                                      yLabel = 'Percent', leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
   data <- f$d
 
 
@@ -818,8 +789,11 @@ gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
   data_graph[is.na(data_graph)] <- 0
   graph <- ggplot(data = data_graph,
                   aes(x=a, y=count, group=b)) + geom_area(aes(fill = b), position = "fill")
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill = flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
+  graph <- graph + theme(legend.position=leg_pos)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+    scale_y_continuous(labels = percent)
+
   return(graph)
 }
 
@@ -835,11 +809,9 @@ gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_100_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                      yLabel = 'Count', fillLabel = NULL,
-                                      leg_pos = "top", ...){
+                                      yLabel = 'Count', leg_pos = "right", ...){
 
-  graph <- gg_area_stacked_100_hor_CaCa.(data, titleLabel, xLabel, yLabel,
-                                     fillLabel, leg_pos)
+  graph <- gg_area_stacked_100_hor_CaCa.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -856,9 +828,8 @@ gg_area_stacked_100_ver_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_marimekko_ver_CaCa. <- function(data, titleLabel = "", xLabel = "Category",
-                                   yLabel = "Frequency", fillLabel = "Types",
-                                   leg_pos = "top", ...){
+gg_marimekko_ver_CaCa. <- function(data, titleLabel = "", xLabel = "Count",
+                                   yLabel = "Percent", leg_pos = "right", ...){
   f <- fringe(data)
   data <- f$d
   xvar <- deparse(substitute(a))
@@ -881,7 +852,10 @@ gg_marimekko_ver_CaCa. <- function(data, titleLabel = "", xLabel = "Category",
 
   graph <- ggplot(alldata, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax)) +
     geom_rect(color="black", aes_string(fill=yvar)) +
-    xlab(paste(xvar, "(count)")) + ylab(paste(yvar, "(proportion)"))
+    labs(x = xLabel, y = yLabel, title = titleLabel)
+  graph <- graph + theme(legend.position=leg_pos)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
+
   return(graph)
 }
 
@@ -898,7 +872,7 @@ gg_marimekko_ver_CaCa. <- function(data, titleLabel = "", xLabel = "Category",
 #' add(10, 1)
 gg_marimekko_hor_CaCa. <- function(data, titleLabel = "", xLabel = "Category",
                                    yLabel = "Frequency", fillLabel = "Types",
-                                   leg_pos = "top", ...){
+                                   leg_pos = "right", ...){
   graph <- gg_marimekko_ver_CaCa.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
   return(graph)
@@ -916,12 +890,11 @@ gg_marimekko_hor_CaCa. <- function(data, titleLabel = "", xLabel = "Category",
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_polar_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                     yLabel = 'Count', fillLabel = NULL, leg_pos = "top", ...){
+                                     yLabel = 'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
   data <- f$d
 
   data_graph <- data %>%
@@ -931,8 +904,8 @@ gg_bar_stacked_polar_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 
   graph <- ggplot(data_graph, aes(a, fill = b, weight = count)) + geom_bar(width = 1) +
     coord_polar()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill=flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
+  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
 
   return(graph)
 }
@@ -949,13 +922,12 @@ gg_bar_stacked_polar_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_polar_100_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
-                                           yLabel = 'Count', fillLabel = NULL, leg_pos = "top",
+                                           yLabel = 'Count', leg_pos = "right",
                                            width = 1, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  flabel <- fillLabel %||% nms[2]
   data <- f$d
 
   data_graph <- data %>%
@@ -965,8 +937,10 @@ gg_bar_stacked_polar_100_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 
   graph <- ggplot(data_graph, aes(a, fill = b, weight = count)) +
     geom_bar(width = 1, position = "fill") + coord_polar()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, fill=flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel)
+  graph <- graph + theme(legend.position=leg_pos)
+  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
+
 
   return(graph)
 }
@@ -983,12 +957,10 @@ gg_bar_stacked_polar_100_CaCa. <- function(data, titleLabel = "", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_circular_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
-                                leg_pos="right", width = 0.85, ...){
+gg_bar_facet_circular_CaCa. <- function(data, titleLabel = "",
+                                        leg_pos="right", width = 0.85, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -999,9 +971,10 @@ gg_bar_facet_circular_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
   graph <- ggplot(data_graph, aes(x = a, y = count , fill = a )) +
     geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
 
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel)
-  graph <- graph + theme_minimal() + theme(axis.text=element_blank()) +
-    theme(panel.grid=element_blank())
+  graph <- graph + labs(title = titleLabel, x = "", y = "")
+  graph <- graph + theme(legend.position=leg_pos)
+  graph <- graph + theme_ds() + theme_ds_clean() +
+    scale_fill_manual(values = getPalette())
   graph <- graph + theme(legend.position=leg_pos) + facet_grid(. ~b)
 
   return(graph)
@@ -1021,8 +994,6 @@ gg_bar_facet_circular_CaCa. <- function(data, titleLabel = "", fillLabel = NULL,
 gg_treemap_x_CaCa. <- function(data, titleLabel = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -1033,9 +1004,13 @@ gg_treemap_x_CaCa. <- function(data, titleLabel = "", fillLabel = NULL, ...){
   data_graph$a <- as.factor(data_graph$a)
   data_graph$b <- as.factor(data_graph$b)
 
-  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a", label = 'b'),
-                     group.label.colour = "black", label.colour = "black") + #guides(fill=FALSE) +
-    labs(title = titleLabel)
+  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a',
+                                group = "a", label = 'b'),
+                     group.label.colour = "white",
+                     label.colour = "white", label.size.factor = 2,
+                     group.label.size.threshold = 1) + guides(fill = FALSE) +
+    labs(title = titleLabel) + scale_fill_manual(values = getPalette()) +
+    theme_ds() + theme_ds_clean()
 
   return(graph)
 }
@@ -1051,11 +1026,9 @@ gg_treemap_x_CaCa. <- function(data, titleLabel = "", fillLabel = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_y_CaCa. <- function(data, titleLabel = "", fillLabel = NULL, ...){
+gg_treemap_y_CaCa. <- function(data, titleLabel = "", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -1066,9 +1039,13 @@ gg_treemap_y_CaCa. <- function(data, titleLabel = "", fillLabel = NULL, ...){
   data_graph$a <- as.factor(data_graph$a)
   data_graph$b <- as.factor(data_graph$b)
 
-  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a", label = "b"),
-                     group.label.colour = "black", label.colour = "black") + #guides(fill=FALSE) +
-    labs(title = titleLabel)
+  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b',
+                                group = "a", label = "b"),
+                     group.label.colour = "white",
+                     label.colour = "white", label.size.factor = 2,
+                     group.label.size.threshold = 1) + guides(fill = FALSE) +
+    labs(title = titleLabel) + scale_fill_manual(values = getPalette()) +
+    theme_ds() + theme_ds_clean()
 
   return(graph)
 }

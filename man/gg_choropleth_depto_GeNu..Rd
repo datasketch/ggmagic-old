@@ -6,8 +6,9 @@
 Choropleth by filtering deptos}
 \usage{
 gg_choropleth_depto_GeNu.(data, titleLabel = "", depto_ = "05",
-  reverse = FALSE, fillLabel = NULL, leg_pos = "right",
-  color_map = "gray", color_frontier = "white", ...)
+  reverse = FALSE, prop_text = 0.1, fillLabel = NULL, leg_pos = "right",
+  text = FALSE, text_size = 2, color_map = "gray",
+  color_frontier = "white", ...)
 }
 \arguments{
 \item{x}{A category.}

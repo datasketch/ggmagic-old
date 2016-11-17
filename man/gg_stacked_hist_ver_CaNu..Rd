@@ -5,7 +5,7 @@
 \title{gg_stacked_hist_ver_CaNu.
 Stacked Vertical Histogram}
 \usage{
-gg_stacked_hist_ver_CaNu.(data, titleLabel = "Report", xLabel = NULL,
+gg_stacked_hist_ver_CaNu.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{

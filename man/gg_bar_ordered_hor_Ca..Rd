@@ -5,8 +5,8 @@
 \title{gg_bar_ordered_hor_Ca.
 Ordered horizontal Bars}
 \usage{
-gg_bar_ordered_hor_Ca.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = "Count", leg_pos = "right", ...)
+gg_bar_ordered_hor_Ca.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = "Count", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

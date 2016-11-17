@@ -5,8 +5,8 @@
 \title{gg_bullseye_Ca.
 Bullseye}
 \usage{
-gg_bullseye_Ca.(data, titleLabel = "", fillLabel = NULL,
-  leg_pos = "right", ...)
+gg_bullseye_Ca.(data, titleLabel = "", subtitle = "", caption = "",
+  fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -14,22 +14,36 @@ dataCaNu$SRHTD <- runif(nrow(dataCaNu), min = 0, max = 100)
 
 dataCaNu <- rename(dataCaNu, c('GSRG' = 'a', 'SRHTD' = 'b'))
 
+d <- sampleData("Ca-Nu", 1000)
+gg_bubble_CaNu2.(d)
+gg_bullseye_CaNu.(d)
+data_graph <- d %>% dplyr::group_by(a) %>%
+  dplyr::summarise(count = sum(b)) %>% dplyr::arrange(desc(count))
+
 # Pie
-gg_pie_CaNu.(dataCaNu)
+gg_pie_CaNu.(dataCaNu, text = FALSE)
+gg_pie_CaNu.(dataCaNu, type = 'count')
+
 
 # Bubble
 gg_bubble_CaNu.(dataCaNu)
 
 # Bubble2
-gg_bubble_CaNu2.(dataCaNu, sep = 10)
+gg_bubble_CaNu2.(dataCaNu)
 
 # Coloured Bubble
 gg_coloured_bubble_CaNu.(dataCaNu)
 
 # Coloured Bar
 gg_bar_coloured_x_ver_CaNu.(dataCaNu)
-gg_bar_coloured_x_hor_CaNu.(dataCaNu)
-gg_bar_coloured_y_ver_CaNu.(dataCaNu, reverse = TRUE)
+
+
+
+gg_bar_coloured_x_hor_CaNu.(dataCaNu, type = 'count')
+
+
+
+gg_bar_coloured_y_ver_CaNu.(dataCaNu, reverse = TRUE, type = 'count')
 gg_bar_coloured_y_hor_CaNu.(dataCaNu)
 
 # Coloured Parameter Bar
@@ -124,13 +138,17 @@ gg_facet_stepped_area_ver_CaNu.(dataCaNu)
 # Facet Horizon
 gg_facet_horizon_CaNu.(dataCaNu)
 
-# Stream
-gg_stream_CaNu.(dataCaNu)
+# Steam
+gg_steam_CaNu.(dataCaNu)
 
 # Treemap
 gg_treemap_x_CaNu.(dataCaNu)
 gg_treemap_density_y_CaNu.(dataCaNu, reverse = TRUE)
 
+data <- data.frame(hechos = c("secuestro", "secuestro", "delito", "delito", "ex", "ex"),
+                   year = c(5000,160,5923,21563,952, 4565))
+
+gg_slope_CaNu.(data, size_point = 1)
 
 #boxplots
 

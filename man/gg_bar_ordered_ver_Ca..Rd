@@ -5,8 +5,8 @@
 \title{gg_bar_ordered_ver_Ca.
 Ordered vertical Bars}
 \usage{
-gg_bar_ordered_ver_Ca.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = "Count", leg_pos = "right", ...)
+gg_bar_ordered_ver_Ca.(data, titleLabel = "", xLabel = NULL,
+  subtitle = "", caption = "", yLabel = "Count", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

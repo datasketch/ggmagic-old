@@ -7,7 +7,15 @@ library(ggmagic)
 deptos <- c("05", "08", "11", "13", "15", "17", "18", "19", "20", "23", "25", "27", "41", "44", "47", "50")
 dataGeNu <- data.frame(id = deptos, num = runif(length(deptos), 0, 1))
 
-gg_choropleth_co_GeNu.(dataGeNu, color_map = "gold")
+gg_choropleth_co_GeNu.(dataGeNu, color_map = "gold", text_size = 2.5,
+                       text = TRUE, prop_text = "all")
+
+gg_choropleth_co_GeNu.(dataGeNu, color_map = "gold", text_size = 2.5,
+                       text = TRUE, prop_text = 0.5)
+
+gg_choropleth_co_GeNu.(dataGeNu, color_map = "gold", text_size = 2.5,
+                       text = TRUE, prop_text = c("Valle del Cauca", "Nariño", "Amazonas"))
+
 
 depto_ <- c("05")
 mpios <- c("05002", "05004", "05021", "05030", "05031", "05034", "05036", "05038", "05040", "05044", "05045", "05051", "05055", "05059",
@@ -16,7 +24,14 @@ mpios <- c("05002", "05004", "05021", "05030", "05031", "05034", "05036", "05038
            ",05250", "05264", "05266", "05282", "05284", "05306", "05308", "05313", "05315")
 dataGeNu2 <- data.frame(id = mpios, num = runif(length(mpios), 0, 1))
 
-gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "gold")
+gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "gold",
+                          text = TRUE, text_size = 2.5)
+
+gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "gold",
+                          text = TRUE, text_size = 2.5, prop_text = "all")
+
+gg_choropleth_depto_GeNu.(dataGeNu2, depto_ = depto_, color_map = "gold",
+                          text = TRUE, text_size = 2.5, prop_text = c("Mutatá"))
 
 paises <- c("ARG", "CUB", "COL", "CHL")
 dataGeNu1.1 <- data.frame(id = paises, num = runif(length(paises), 0, 1))
@@ -33,7 +48,14 @@ lat <- runif(100, lat_min, lat_max)
 
 dataGeNu3 <- data.frame(long = long, lat = lat) #num = round(runif(length(lat), 1, 5), 0))
 
-gg_bubble_co_Ge.(dataGeNu3, color_map = "grey", scale_point = 2)
+gg_bubble_co_Ge.(dataGeNu3, color_map = "grey", scale_point = 2,
+                 text =TRUE, text_size = 3)
+
+gg_bubble_co_Ge.(dataGeNu3, color_map = "grey", scale_point = 2,
+                 text =TRUE, text_size = 3, prop_text = "all")
+
+gg_bubble_co_Ge.(dataGeNu3, color_map = "grey", scale_point = 2,
+                 text =TRUE, text_size = 3, prop_text = "La Guajira")
 
 long <- runif(10, long_min, long_max)
 lat <- runif(10, lat_min, lat_max)
@@ -44,7 +66,7 @@ dataGeNu3.1 <- data.frame(long = long, lat = lat, number = ceiling(runif(length(
 
 gg_bubble_latam_GeNu.(dataGeNu3.1)
 
-gg_bubble_co_GeNu.(dataGeNu3.1, color_map = "forestgreen")
+gg_bubble_co_GeNu.(dataGeNu3.1, color_map = "forestgreen", text = TRUE)
 
 lat_max <- 3.644543
 long_max <- -76.247046
@@ -57,14 +79,14 @@ lat <- runif(25, lat_min, lat_max)
 
 dataGeNu4 <- data.frame(long = long, lat = lat) #num = round(runif(length(lat), 1, 5), 0))
 
-gg_bubble_depto_Ge.(dataGeNu4, depto_ = depto_, color_map = "lightgreen")
+gg_bubble_depto_Ge.(dataGeNu4, depto_ = depto_, color_map = "lightgreen", text = TRUE)
 
 long <- runif(10, long_min, long_max)
 lat <- runif(10, lat_min, lat_max)
 
 dataGeNu4.1 <- data.frame(long = long, lat = lat, number = ceiling(runif(length(long), 0, 3))) #num = round(runif(length(lat), 1, 5), 0))
 
-gg_bubble_depto_GeNu.(dataGeNu4.1, depto = depto_, color_map = "lightblue")
+gg_bubble_depto_GeNu.(dataGeNu4.1, depto = depto_, color_map = "lightblue", text = TRUE)
 
 
 
@@ -73,7 +95,7 @@ points_lat <- c(2.115158, 10.477040,6.139590,5.438429,5.166737,5.373123,5.356951
 
 df_points <- data.frame(long = points_long, lat = points_lat)
 
-gg_bubble_co_Ge.(df_points, color_map = "forestgreen")
+gg_bubble_co_Ge.(df_points, color_map = "forestgreen", text = TRUE)
 gg_bubble_latam_Ge.(df_points, scale_point = 5)
 
 type <- c("Desminado militar en operaciones", "Desminado militar en operaciones", "Sospecha de campo minado")
@@ -88,6 +110,6 @@ long <- c(-75.08235, -75.22135, -75.47778, -75.18678)
 lat <- c( 5.951820, 5.611950, 7.489444, 5.838575)
 
 df_CaGe <- data.frame(type = type, long = long, lat = lat)
-gg_bubble_depto_CaGe.(df_CaGe)
+gg_bubble_depto_CaGe.(df_CaGe, scale_point = 50)
 
 

@@ -5,8 +5,8 @@
 \title{gg_pyramid_CaCaNu.
 pyramid}
 \usage{
-gg_pyramid_CaCaNu.(data, titleLabel = "", xLabel = "Category",
-  yLabel = "Frequency", fillLabel = "Types", leg_pos = "right", ...)
+gg_pyramid_CaCaNu.(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

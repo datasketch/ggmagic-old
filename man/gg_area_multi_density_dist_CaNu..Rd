@@ -5,7 +5,7 @@
 \title{gg_area_multi_density_dist_CaNu.
 Filled Density Distribution}
 \usage{
-gg_area_multi_density_dist_CaNu.(data, titleLabel = "Report", xLabel = NULL,
+gg_area_multi_density_dist_CaNu.(data, titleLabel = "", xLabel = NULL,
   yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{

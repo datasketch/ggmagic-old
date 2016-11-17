@@ -22,24 +22,19 @@ dataCaCaNu[] <- sapply(dataCaCaNu, as.character)
 dataCaCaNu$c <- runif(nrow(dataCaCaNu), min = 0, max = 50)
 
 # Coloured Bubble
-gg_coloured_bubble_CaCaNu.(dataCaCaNu)
+gg_coloured_x_bubble_CaCaNu.(dataCaCaNu)
+gg_coloured_y_bubble_CaCaNu.(dataCaCaNu)
 
 gg_pyramid_CaCaNu.(dataCaCaNu)
 
 # Bubble
 gg_bubble_CaCaNu.(dataCaCaNu)
 
-vertical_bargraphCCN(dataCaCaNu)
-ordered_vertical_bargraphCCN(dataCaCaNu)
-ordered_horizontal_bargraphCCN(dataCaCaNu)
-horizontal_bargraphCCN(dataCaCaNu)
+# Unstacked Bar
+gg_bar_unstacked_ver_CaCaNu.(dataCaCaNu)
+gg_bar_unstacked_hor_CaCaNu.(dataCaCaNu)
 
-vertical_dotgraphCCN(dataCaCaNu)
-horizontal_dotgraphCCN(dataCaCaNu)
-
-vertical_unstacked_bargraphCCN(dataCaCaNu)
-horizontal_unstacked_bargraphCCN(dataCaCaNu)
-
+# Line
 horizontal_linegraphCCN(dataCaCaNu)
 vertical_linegraphCCN(dataCaCaNu)
 
@@ -51,7 +46,13 @@ gg_bar_stacked_ver_CaCaNu.(dataCaCaNu)
 gg_bar_stacked_100_hor_CaCaNu.(dataCaCaNu)
 gg_bar_stacked_100_ver_CaCaNu.(dataCaCaNu)
 
-horizontal_area_bargraphCC(dataCaCaNu)
+# Stacked Area
+gg_area_stacked_hor_CaCaNu.(dataCaCaNu)
+gg_area_stacked_ver_CaCaNu.(dataCaCaNu)
+
+# 100 Stacked Area
+gg_area_stacked_100_hor_CaCaNu.(dataCaCaNu)
+gg_area_stacked_100_ver_CaCaNu.(dataCaCaNu)
 
 # Facet Circular
 gg_bar_facet_circular_CaCaNu.(dataCaCaNu)
@@ -60,10 +61,10 @@ gg_bar_facet_circular_CaCaNu.(dataCaCaNu)
 gg_facet_pie_CaCaNu.(dataCaCaNu)
 
 # Facet Donut
-gg_donut_CaCaNu.(dataCaCaNu)
+gg_facet_donut_CaCaNu.(dataCaCaNu)
 
 # Facet Bullseye
-gg_bullseye_CaCaNu.(dataCaCaNu)
+gg_facet_bullseye_CaCaNu.(dataCaCaNu)
 
 # Stacked Polar Bar
 gg_bar_stacked_polar_CaCaNu.(dataCaCaNu)
@@ -80,17 +81,17 @@ gg_bar_facet_coloured_z_ver_CaCaNu.(dataCaCaNu)
 gg_bar_facet_coloured_z_hor_CaCaNu.(dataCaCaNu)
 
 # Facet Coloured parameter Bar
-gg_bar_facet_coloured_parameter_ver_ver_CaCa.(dataCaCaNu,
+gg_bar_facet_coloured_parameter_ver_ver_CaCaNu.(dataCaCaNu,
                                           parameter1 = c("Callejero"),
                                           parameter2 = c("A"))
-gg_bar_facet_coloured_parameter_ver_hor_CaCa.(dataCaCaNu,
+gg_bar_facet_coloured_parameter_ver_hor_CaCaNu.(dataCaCaNu,
                                           parameter1 = c("Callejero", "De raza", "Mixto"),
                                           parameter2 = c("A","B","C"))
 
 # Treemap
 gg_treemap_x_CaCaNu.(dataCaCaNu)
 gg_treemap_y_CaCaNu.(dataCaCaNu)
-gg_treemap_density_z_CaCaNu.(dataCaCaNu)
+gg_treemap_density_z_CaCaNu.(dataCaCaNu, reverse = FALSE)
 
 # pyramid
 

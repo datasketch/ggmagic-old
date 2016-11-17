@@ -5,8 +5,8 @@
 \title{gg_line_ver_Ca.
 Vertical Line}
 \usage{
-gg_line_ver_Ca.(data, titleLabel = "", xLabel = NULL, yLabel = "Count",
-  leg_pos = "right", ...)
+gg_line_ver_Ca.(data, titleLabel = "", xLabel = NULL, subtitle = "",
+  caption = "", yLabel = "Count", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

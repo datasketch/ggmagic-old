@@ -5,9 +5,8 @@
 \title{gg_bar_facet_coloured_z_hor_CaCaNu.
 Facet Coloured horizontal bar}
 \usage{
-gg_bar_facet_coloured_z_hor_CaCaNu.(data, titleLabel = "Report",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
-  ...)
+gg_bar_facet_coloured_z_hor_CaCaNu.(data, titleLabel = "", xLabel = NULL,
+  yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

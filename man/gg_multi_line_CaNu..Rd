@@ -5,7 +5,7 @@
 \title{gg_multi_line_CaNu.
 Grouped Line Coloured}
 \usage{
-gg_multi_line_CaNu.(data, titleLabel = "Report", xLabel = "Index",
+gg_multi_line_CaNu.(data, titleLabel = "", xLabel = "Index",
   yLabel = NULL, fillLabel = NULL, leg_pos = "right", type = 1, ...)
 }
 \arguments{
