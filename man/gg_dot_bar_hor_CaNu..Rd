@@ -6,7 +6,7 @@
 Horizontal Dot Bar}
 \usage{
 gg_dot_bar_hor_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = "Count", fillLabel = NULL, leg_pos = "right",
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
   ...)
 }
 \arguments{

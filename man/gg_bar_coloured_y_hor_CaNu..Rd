@@ -6,8 +6,9 @@
 horizontal bar}
 \usage{
 gg_bar_coloured_y_hor_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, reverse = FALSE, yLabel = NULL,
-  fillLabel = NULL, leg_pos = "right", ...)
+  caption = "", xLabel = NULL, reverse = FALSE, text = TRUE,
+  type = "percent", size_text = 3, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

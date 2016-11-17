@@ -47,11 +47,7 @@ gg_lollipop_YeNu. <- function(data, title = "", xlab = NULL, ylab = NULL, size =
   data <- f$d
 
   ggplot(data, aes(x = a, y = b)) +
-  geom_segment(aes(xend=a, yend=0)) + geom_point(colour = "#009EE3", size = size) +
-  theme_ds() +
-  xlab(xlab) + ylab(ylab) + ggtitle(title)
+    geom_segment(aes(xend=a, yend=0)) + geom_point(colour = "#009EE3", size = size) +
+    theme_ds() +
+    xlab(xlab) + ylab(ylab) + ggtitle(title)
 }
-
-
-
-
