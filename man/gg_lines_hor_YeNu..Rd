@@ -6,8 +6,7 @@
 Barras stacked
 Tiene múltiples líneas}
 \usage{
-gg_lines_hor_YeNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, ...)
+gg_lines_hor_YeNu.(data, title = "", xlab = NULL, ylab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

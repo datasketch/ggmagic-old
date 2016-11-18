@@ -2091,9 +2091,8 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_slope_CaNu. <-  function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                            leg_pos="right", size_text = 6,
+                            leg_pos="right", overlap = TRUE, size_text = 6,
                             size_point = 3, size_line = 1,...){
-
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -2104,17 +2103,16 @@ gg_slope_CaNu. <-  function(data, titleLabel = "", subtitle = "", caption = "", 
   data_graph <- data %>% group_by(a) %>% dplyr::mutate(xorder = 1:n())
 
   graph <- ggplot(data_graph) +
-    geom_text(aes(x = as.factor(xorder), y = b + 0.5, group = a, color = a, label = b),
-              size = size_text, vjust = 1.5, hjust = 0.5, show.legend = FALSE,
-              check_overlap = TRUE) +
+    geom_line(aes(x = as.factor(xorder), y = b, group = a, color = a), size = size_line) +
+    geom_point(aes(x = as.factor(xorder), y = b, group = a, color = a), size = size_point)+
+    theme_ds_clean() +  labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     geom_text(aes(x = as.factor(xorder), y = min(b) - mean(b), label = xorder),
               size = size_text, show.legend = FALSE, check_overlap = TRUE) +
-    geom_line(aes(x = as.factor(xorder), y = b, group = a, color = a), size = size_line) +
-    geom_point(aes(x = as.factor(xorder), y = b, group = a, color = a), size = size_point) +
-    theme_ds() + theme_ds_clean() +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    annotate("text", x = filter(data_graph,xorder == 1)$xorder-.15, y = filter(data_graph,xorder == 1)$b,
+             label = filter(data_graph,xorder == 1)$b, check_overlap = overlap) +
+    annotate("text", x = filter(data_graph,xorder == 2)$xorder+.15, y = filter(data_graph,xorder == 2)$b,
+             label = filter(data_graph,xorder == 2)$b, check_overlap = overlap)+
     scale_color_manual(values = getPalette()) + theme(legend.position = leg_pos)
-
 
   return(graph)
 

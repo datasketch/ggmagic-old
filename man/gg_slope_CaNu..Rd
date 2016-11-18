@@ -6,8 +6,8 @@
 Slope}
 \usage{
 gg_slope_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", size_text = 6,
-  size_point = 3, size_line = 1, ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", overlap = TRUE,
+  size_text = 6, size_point = 3, size_line = 1, ...)
 }
 \arguments{
 \item{x}{A number.}
