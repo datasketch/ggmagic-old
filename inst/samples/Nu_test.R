@@ -1,36 +1,35 @@
 
 load_all()
 
-dataNu <- data.frame(rnorm(150))
-names(dataNu)[1] <- "a"
+dataNu <- data.frame(num = rnorm(150))
 
 # Horizon
-gg_horizon_Nu.(data.frame(rf = dfData$y))
+gg_horizon_Nu.(dataNu)
 
 # Waterfall
 gg_waterfall_Nu.(dataNu)
 
 #Histogram + density + dots (with selection options)
-hist_graph(dataNu)
-hist_dens_graph(dataNu)
-cumm_prob_graph(dataNu)
-flip_cumm_prob_graph(dataNu)
+gg_hist_Nu.(dataNu)
+gg_hist_dens_Nu.(dataNu)
+gg_cumm_dist_Nu.(dataNu)
+gg_flip_cumm_dist_Nu.(dataNu)
 
-line_graph(dataNu)
-flip_line_graph(dataNu)
+gg_line_Nu.(dataNu)
+gg_flip_line_Nu.(dataNu)
 
-scatter_graph(dataNu, type=2)
-flip_scatter_graph(dataNu)
+gg_scatter_Nu.(dataNu, type=2)
+gg_flip_scatter_Nu.(dataNu)
 
-density_hist_graph(dataNu)
-box_graph(dataNu)
-flip_box_graph(dataNu)
+gg_density_hist_Nu.(dataNu)
+gg_box_Nu.(dataNu)
+gg_flip_box_Nu.(dataNu)
 
-violin_graph(dataNu)
-flip_violin_graph(dataNu)
+gg_violin_Nu.(dataNu)
+gg_flip_violin_Nu.(dataNu)
 
-dot_graph(dataNu)
-flip_dot_graph(dataNu)
+gg_dot_Nu.(dataNu)
+gg_flip_dot_Nu.(dataNu)
 
 
 

@@ -5,12 +5,12 @@ dataNuNu <- data.frame(x = 1:100, y = cumsum(rnorm(100)))
 names(dataNuNu) <- c("a", "b")
 
 #density - 2D
-dens2D_Plot(dataNuNu)
-flip_dens2D_Plot(dataNuNu)
+gg_dens2D_NuNu.(dataNuNu)
+gg_flip_dens2D_NuNu.(dataNuNu)
 
 #histogram - 2D
-hist2D_Plot(dataNuNu)
-flip_hist2D_Plot(dataNuNu)
+gg_hist2D_NuNu.(dataNuNu)
+gg_flip_hist2D_NuNu.(dataNuNu)
 
 # Waterfall
 gg_waterfall_NuNu.(dataNuNu)
@@ -19,4 +19,6 @@ gg_waterfall_NuNu.(dataNuNu)
 gg_horizon_NuNu.(dataNuNu)
 
 #MultiLine plot
-mult_Line_Plot(dataNuNu)
+gg_mult_line_NuNu.(dataNuNu)
+
+gg_scatter_NuNu.(dataNuNu)

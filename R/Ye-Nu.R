@@ -10,7 +10,8 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_hor_YeNu. <- function(data, title = "",xlab = NULL, ylab = NULL,...){
+gg_lines_hor_YeNu. <- function(data, title = "", subtitle = "", caption = "",
+                               xlab = NULL, ylab = NULL,...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
@@ -18,11 +19,9 @@ gg_lines_hor_YeNu. <- function(data, title = "",xlab = NULL, ylab = NULL,...){
   data <- f$d
   ggplot(data, aes(x= a,y=b,group=1)) +
     geom_line(stat = "identity",colour = "#009EE3") +
-    ylab(ylab) +
-    xlab(xlab) +
-    ggtitle(title) + theme_ds() +
+    theme_ds() +
     scale_y_continuous(labels = comma) +
-    ggtitle(title)
+    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 }
 
 #' gg_lollipop_YeNu.
@@ -38,7 +37,7 @@ gg_lines_hor_YeNu. <- function(data, title = "",xlab = NULL, ylab = NULL,...){
 #' add(1, 1)
 #' add(10, 1)
 
-gg_lollipop_YeNu. <- function(data, title = "", xlab = NULL, ylab = NULL, size = 7,...){
+gg_lollipop_YeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, size = 7,...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -49,5 +48,5 @@ gg_lollipop_YeNu. <- function(data, title = "", xlab = NULL, ylab = NULL, size =
   ggplot(data, aes(x = a, y = b)) +
     geom_segment(aes(xend=a, yend=0)) + geom_point(colour = "#009EE3", size = size) +
     theme_ds() +
-    xlab(xlab) + ylab(ylab) + ggtitle(title)
+    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 }
