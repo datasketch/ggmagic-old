@@ -5,8 +5,8 @@
 \title{gg_bar_stacked_polar_CaCa.
 Stacked Polar bar}
 \usage{
-gg_bar_stacked_polar_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", leg_pos = "right", ...)
+gg_bar_stacked_polar_CaCa.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

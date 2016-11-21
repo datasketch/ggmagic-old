@@ -5,8 +5,8 @@
 \title{gg_scatter_hor_CaDaNu.: title.
 pointlines}
 \usage{
-gg_scatter_hor_CaDaNu.(data, title = "", xlab = NULL, ylab = NULL,
-  clab = NULL, ...)
+gg_scatter_hor_CaDaNu.(data, title = "", subtitle = "", caption = "",
+  xlab = NULL, ylab = NULL, clab = NULL, angle = 45, ...)
 }
 \arguments{
 \item{x}{A number.}

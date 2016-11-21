@@ -5,8 +5,8 @@
 \title{gg_stacked_dot_bar_hor_CaCa.
 Stacked horizontal dot Bar}
 \usage{
-gg_stacked_dot_bar_hor_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", leg_pos = "right", ...)
+gg_stacked_dot_bar_hor_CaCa.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

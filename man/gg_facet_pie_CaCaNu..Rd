@@ -5,7 +5,8 @@
 \title{gg_facet_pie_CaCaNu.
 Facet Pie}
 \usage{
-gg_facet_pie_CaCaNu.(data, titleLabel = "", leg_pos = "right", ...)
+gg_facet_pie_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

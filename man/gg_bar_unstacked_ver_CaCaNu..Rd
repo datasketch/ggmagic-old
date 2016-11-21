@@ -5,8 +5,8 @@
 \title{gg_bar_unstacked_ver_CaCaNu.
 vertical unstacked bargraph}
 \usage{
-gg_bar_unstacked_ver_CaCaNu.(data, titleLabel = "", xLabel = NULL,
-  yLabel = NULL, leg_pos = "right", ...)
+gg_bar_unstacked_ver_CaCaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

@@ -5,8 +5,8 @@
 \title{gg_treemap_density_y_CaCaNuNu.
 Treemap Density by second Nu}
 \usage{
-gg_treemap_density_y_CaCaNuNu.(data, titleLabel = "Report",
-  fillLabel = NULL, ...)
+gg_treemap_density_y_CaCaNuNu.(data, titleLabel = "", subtitle = "",
+  caption = "", fillLabel = NULL, reverse = FALSE, ...)
 }
 \arguments{
 \item{x}{A number.}

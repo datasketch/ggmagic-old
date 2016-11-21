@@ -5,8 +5,8 @@
 \title{gg_facet_line_hor_CaCa.
 Horizontal Line}
 \usage{
-gg_facet_line_hor_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", ...)
+gg_facet_line_hor_CaCa.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = "Count", ...)
 }
 \arguments{
 \item{x}{A number.}

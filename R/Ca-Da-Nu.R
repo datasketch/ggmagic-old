@@ -10,21 +10,25 @@
 #' add(1, 1)
 #' add(10, 1)
 
-gg_scatter_hor_CaDaNu. <- function(data,title = "",xlab = NULL, ylab=NULL, clab = NULL, ...){
-  f <- fringe(data)
+gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "", xlab = NULL,
+                                   ylab=NULL, clab = NULL, angle = 45, ...){
+
+ data <- data %>% dplyr::arrange(date)
+
+ f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[2]
   ylab <- ylab %||% nms[3]
   clab <- clab %||% nms[1]
   d <- f$d
-  g <- ggplot(d, aes(x = as.Date(b), y = c, colour = a)) +
-    geom_point() +
-    scale_colour_brewer(clab,palette = 'Set1') +
-    ylab(ylab) +
-    xlab(xlab) +
-    ggtitle(title) +
-    theme_minimal()
-  g
+  d$b <- lubridate::as_date(d$b)
+
+  graph <- ggplot(d, aes(x = as.Date(b, origin = data[1,2]), y = c, colour = a)) +
+           geom_point() +
+           scale_color_manual(values = getPalette()) +
+           theme_ds() + labs(title = title, subtitle = subtitle, caption = caption, x= xlab, y = ylab) +
+           theme(axis.text.x = element_text(angle = angle, hjust = 1))
+  graph
 }
 
 #' gg_steam_CaDaNu.
@@ -38,8 +42,8 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "",xlab = NULL, ylab=NULL, clab 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_steam_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
-                            yLabel =  NULL, fillLabel = NULL, leg_pos = "right", ...){
+gg_steam_CaDaNu. <- function(data, titleLabel = "", subtitle  = "", caption = "", xLabel = NULL,
+                            yLabel =  NULL, fillLabel = NULL, leg_pos = "right", angle = 45, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -52,12 +56,12 @@ gg_steam_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
   data_graph <- data %>% dplyr::arrange(b) %>%
     tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
   data_graph[is.na(data_graph)] <- 0
-  data_graph$b <- as.Date(data_graph$b)
+  data_graph$b <- lubridate::as_date(as.numeric(data_graph$b))
 
   graph <- ggplot(data_graph, aes(x = b, y = c, group = a, fill = a)) +
-    stat_steamgraph() + theme_minimal() +
-    labs(tittle = titleLabel, x = xlab, y = ylab, fill = flab) +
-    scale_fill_discrete(flab)
+           stat_steamgraph() + theme_ds() +
+           labs(tittle = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flab) +
+           scale_fill_manual(values = getPalette()) +  theme(axis.text.x = element_text(angle = angle, hjust = 1))
   return(graph)
 }
 
@@ -72,7 +76,7 @@ gg_steam_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL,
                                             leg_pos = "top", ...){
 
@@ -86,12 +90,12 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NU
   data_graph <- data %>%
     tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
   data_graph[is.na(data_graph)] <- 0
-  data_graph$b <- as.Date(data_graph$b)
+  data_graph$b <- lubridate::as_date(as.numeric(data_graph$b))
 
   graph <- ggplot(data = data_graph,
                   aes(x=b, y=c, group=a)) + geom_area(aes(fill = a), position = "stack")
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab, fill = flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab, fill = flabel)
+  graph <- graph + theme_ds() + theme(legend.position=leg_pos) + scale_fill_manual(values = getPalette())
   return(graph)
 }
 
@@ -106,11 +110,11 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NU
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
-                                          yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "top", ...){
+gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                        yLabel = NULL, fillLabel = NULL,
+                                        leg_pos = "top", ...){
 
-  graph <- gg_area_stacked_ver_CaDaNu.(data, titleLabel, xLabel, yLabel)
+  graph <- gg_area_stacked_ver_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -127,7 +131,7 @@ gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'I
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                           yLabel = NULL, fillLabel = NULL,
                                           leg_pos = "top", ...){
 
@@ -141,12 +145,12 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
   data_graph <- data %>%
     tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
   data_graph[is.na(data_graph)] <- 0
-  data_graph$b <- as.Date(data_graph$b)
+  data_graph$b <- lubridate::as_date(as.numeric(data_graph$b))
 
   graph <- ggplot(data = data_graph,
                   aes(x=b, y=c, group=a)) + geom_area(aes(fill = a), position = "fill")
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = ylab, fill = flabel)
-  graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption =  caption, x = xLabel, y = ylab, fill = flabel)
+  graph <- graph + theme_ds() + theme(legend.position=leg_pos) + scale_fill_manual(values = getPalette())
   return(graph)
 }
 
@@ -161,11 +165,11 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel = 'Index',
-                                          yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "top", ...){
+gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                            yLabel = NULL, fillLabel = NULL,
+                                            leg_pos = "top", ...){
 
-  graph <- gg_area_stacked_100_ver_CaDaNu.(data, titleLabel, xLabel, yLabel)
+  graph <- gg_area_stacked_100_ver_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -181,7 +185,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 
 ###
 #
-# flip_circleAreaPlotCCN  <- function(data, titleLabel = "Report", xLabel = "Category",
+# flip_circleAreaPlotCCN  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
 #                                     yLabel = "Category", leg_pos = "top", ...){
 #
 #   graph <- circleAreaPlotCCN(data, titleLabel, xLabel, yLabel, leg_pos)
@@ -190,7 +194,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
+# vertical_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
 #                                  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top", ...){
 #
 #   graph <- ggplot(data, aes(a, fill=b, weights = c)) + geom_bar()
@@ -200,7 +204,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# ordered_vertical_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Frequency",
+# ordered_vertical_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Frequency",
 #                                          yLabel =  "Categories", fillLabel = "Types",
 #                                          leg_pos = "right", ...){
 #
@@ -213,7 +217,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# ordered_horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Frequency",
+# ordered_horizontal_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Frequency",
 #                                            yLabel =  "Categories", fillLabel = "Types",
 #                                            leg_pos = "right", ...){
 #
@@ -224,7 +228,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# horizontal_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
+# horizontal_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
 #                                    yLabel = "Category", fillLabel = "Types", leg_pos = "top", ...){
 #
 #   graph <- vertical_bargraphCCN(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -233,7 +237,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# vertical_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categories", yLabel = "Frequency",
+# vertical_dotgraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Categories", yLabel = "Frequency",
 #                                  fillLabel = "Types", leg_pos = "right", ...){
 #
 #   graph <- ggplot(data = data, aes(a, fill = factor(b), weights = c)) +
@@ -246,7 +250,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# horizontal_dotgraphCCN <- function(data, titleLabel = "Report", xLabel = "Categories", yLabel = "Frequency",
+# horizontal_dotgraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Categories", yLabel = "Frequency",
 #                                    fillLabel = "Types", leg_pos = "top", ...){
 #
 #   graph <- vertical_dotgraphCCN(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
@@ -256,7 +260,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# vertical_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
+# vertical_unstacked_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
 #                                            yLabel = "Frequency", fillLabel = "Types",
 #                                            leg_pos = "top", ...){
 #
@@ -267,7 +271,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# horizontal_unstacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
+# horizontal_unstacked_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
 #                                              yLabel = "Frequency", fillLabel = "Types",
 #                                              leg_pos = "top", ...){
 #   graph <- vertical_unstacked_bargraphCCN(data, titleLabel, xLabel, yLabel,
@@ -279,7 +283,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 # }
 #
 #
-# horizontal_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
+# horizontal_linegraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Types",
 #                                     yLabel = "Frequency", ...){
 #
 #   data_graph <- data %>%
@@ -296,7 +300,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# vertical_linegraphCCN <- function(data, titleLabel = "Report", xLabel = "Types",
+# vertical_linegraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Types",
 #                                   yLabel = "Frequency", ...){
 #
 #   graph <- horizontal_linegraphCCN(data, titleLabel, xLabel, yLabel)
@@ -305,7 +309,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# vertical_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
+# vertical_stacked_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
 #                                          yLabel = "Frequency", fillLabel = "Types",
 #                                          leg_pos = "top", ...){
 #
@@ -316,7 +320,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# horizontal_stacked_bargraphCCN <- function(data, titleLabel = "Report", xLabel = "Category",
+# horizontal_stacked_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
 #                                            yLabel = "Frequency", fillLabel = "Types",
 #                                            leg_pos = "top", ...){
 #
@@ -328,7 +332,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "Report", xLabel 
 #   return(graph)
 # }
 #
-# horizontal_area_bargraphCC <- function(data, titleLabel = "Report", xLabel = "Category",
+# horizontal_area_bargraphCC <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
 #                                        yLabel = "Frequency", fillLabel = "Types",
 #                                        leg_pos = "top", ...){
 #

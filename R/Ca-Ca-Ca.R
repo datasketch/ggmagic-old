@@ -10,7 +10,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_x_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
+gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -28,7 +28,8 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, 
 
   graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "b", label = 'c'),
                      group.label.colour = "black", label.colour = "black") + #guides(fill=FALSE) +
-    labs(title = titleLabel, fill = flabel)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = flabel) +
+     scale_fill_manual(values = getPalette())
 
   return(graph)
 }
@@ -44,7 +45,7 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_y_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
+gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -62,8 +63,8 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, 
 
   graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a", label = "c"),
                      group.label.colour = "black", label.colour = "black") + #guides(fill=FALSE) +
-    labs(title = titleLabel, fill = flabel)
-
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = flabel) +
+    scale_fill_manual(values = getPalette())
   return(graph)
 }
 
@@ -78,7 +79,7 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_z_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
+gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -96,7 +97,8 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, 
 
   graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'c', group = "a", label = "b"),
                      group.label.colour = "black", label.colour = "black") +
-    labs(title = titleLabel)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption) +
+    scale_fill_manual(values = getPalette())
 
   return(graph)
 }
@@ -112,8 +114,8 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "Report", fillLabel = NULL, 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_point_CaCaCa. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel = NULL,
-                             fillLabel = NULL, size = 3, ...){
+gg_point_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                             fillLabel = NULL, size = 3, angle = 45, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -124,9 +126,9 @@ gg_point_CaCaCa. <- function(data, titleLabel = "Report", xLabel = NULL, yLabel 
 
   graph <- ggplot(data, aes(x = factor(a), y = factor(b), color=factor(c))) +
     geom_point(size=size) +
-    labs(title = titleLabel, x = xlab, y = ylab) + theme_minimal() +
-    theme(legend.title=element_blank()) + theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-    scale_x_discrete(labels = scales::comma) + theme(panel.grid.major = element_line(colour = "black"))
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_minimal() +
+    theme(legend.title=element_blank()) + scale_x_discrete(labels = scales::comma) +
+    theme_ds() + scale_color_manual(values = getPalette()) +   theme(axis.text.x = element_text(angle = angle, hjust = 1))
 
   return(graph)
 }

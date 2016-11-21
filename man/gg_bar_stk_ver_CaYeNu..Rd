@@ -6,8 +6,8 @@
 Barras stacked
 Tiene múltiples líneas}
 \usage{
-gg_bar_stk_ver_CaYeNu.(data, title = NULL, xlab = NULL, ylab = NULL,
-  leg_pos = "right", ...)
+gg_bar_stk_ver_CaYeNu.(data, title = "", subtitle = "", caption = "",
+  xlab = NULL, ylab = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

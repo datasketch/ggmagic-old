@@ -5,8 +5,9 @@
 \title{gg_area_stacked_hor_CaDaNu.
 Stacked Horizontal Area}
 \usage{
-gg_area_stacked_hor_CaDaNu.(data, titleLabel = "Report", xLabel = "Index",
-  yLabel = NULL, fillLabel = NULL, leg_pos = "top", ...)
+gg_area_stacked_hor_CaDaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "top", ...)
 }
 \arguments{
 \item{x}{A number.}

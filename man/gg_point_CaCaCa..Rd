@@ -5,8 +5,9 @@
 \title{gg_point_CaCaCa.
 Coloured Point}
 \usage{
-gg_point_CaCaCa.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = NULL, fillLabel = NULL, size = 3, ...)
+gg_point_CaCaCa.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, size = 3,
+  angle = 45, ...)
 }
 \arguments{
 \item{x}{A number.}

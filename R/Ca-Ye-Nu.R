@@ -10,7 +10,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_grp_ver_CaYeNu. <- function(data, title = NULL, xlab = NULL, ylab = NULL,
+gg_bar_grp_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xlab = NULL, ylab = NULL,
                                    leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -22,7 +22,7 @@ gg_bar_grp_ver_CaYeNu. <- function(data, title = NULL, xlab = NULL, ylab = NULL,
     scale_y_continuous(labels = comma) +
     ggtitle(title) + theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(legend.position = leg_pos) +
-    labs(title = title, x = xlab, y = ylab)
+    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
   return(graph)
 }
@@ -39,10 +39,10 @@ gg_bar_grp_ver_CaYeNu. <- function(data, title = NULL, xlab = NULL, ylab = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_grp_hor_CaYeNu. <- function(data, title = NULL, xlab = NULL, ylab = NULL,
+gg_bar_grp_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xlab = NULL, ylab = NULL,
                                    leg_pos = "right", ...){
 
-  graph <- gg_bar_grp_ver_CaYeNu.(data, title, xlab, ylab, leg_pos) + coord_flip()
+  graph <- gg_bar_grp_ver_CaYeNu.(data, title, subtitle, caption, xlab, ylab, leg_pos) + coord_flip()
 
   return(graph)
 }
@@ -61,7 +61,7 @@ gg_bar_grp_hor_CaYeNu. <- function(data, title = NULL, xlab = NULL, ylab = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stk_hor_CaYeNu. <- function(data, title = NULL, xlab = NULL, ylab = NULL,
+gg_bar_stk_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xlab = NULL, ylab = NULL,
                                    leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -73,7 +73,7 @@ gg_bar_stk_hor_CaYeNu. <- function(data, title = NULL, xlab = NULL, ylab = NULL,
     scale_y_continuous(labels = comma) +
     coord_flip() + theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(legend.position = leg_pos) +
-    labs(title = title, x = xlab, y = ylab)
+    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
   return(graph)
 }
@@ -90,10 +90,10 @@ gg_bar_stk_hor_CaYeNu. <- function(data, title = NULL, xlab = NULL, ylab = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stk_ver_CaYeNu. <- function(data, title = NULL, xlab = NULL, ylab = NULL,
+gg_bar_stk_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xlab = NULL, ylab = NULL,
                                    leg_pos = "right", ...){
 
-  graph <- gg_bar_stk_hor_CaYeNu.(data, title, xlab, ylab, leg_pos) + coord_flip()
+  graph <- gg_bar_stk_hor_CaYeNu.(data, title, subtitle, caption, xlab, ylab, leg_pos) + coord_flip()
 
   return(graph)
 }
@@ -110,19 +110,19 @@ gg_bar_stk_ver_CaYeNu. <- function(data, title = NULL, xlab = NULL, ylab = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_hor_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL,
-                                 leg_pos = "right", ...){
+gg_lines_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL,
+                                 ylab = NULL, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[2]
   ylab <- ylab %||% nms[3]
   data <- f$d
   graph <- ggplot(data, aes(x=b,y=c,group=a,colour=a)) +
-    geom_line(stat = "identity") +
-    scale_y_continuous(labels = comma) +
-    scale_color_manual(values = getPalette()) + theme_ds() +
-    theme(legend.position = leg_pos) +
-    labs(title = title, x = xlab, y = ylab)
+           geom_line(stat = "identity") +
+           scale_y_continuous(labels = comma) +
+           scale_color_manual(values = getPalette()) + theme_ds() +
+           theme(legend.position = leg_pos) +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
   return(graph)
 }
@@ -140,7 +140,7 @@ gg_lines_hor_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_circle_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL,
+gg_circle_CaYeNu. <- function(data, title = "", subtitle = "", caption = "",xlab = NULL, ylab = NULL,
                               leg_pos = "right", ...){
 
   f <- fringe(data)
@@ -154,7 +154,7 @@ gg_circle_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL,
         geom_point(aes(size = c, colour = "")) +
         theme_ds() + scale_color_manual(values = getPalette()) + guides(size = FALSE) +
     theme(legend.position = leg_pos) +
-    labs(title = title, x = xlab, y = ylab)
+    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
   return(graph)
 }
@@ -172,13 +172,13 @@ gg_circle_CaYeNu. <- function(data, title = "",xlab = NULL, ylab = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_steam_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
-                                   leg_pos="right", ...){
+gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "", xLabel = NULL,
+                              yLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[2]
-  ylab <- ylab %||% nms[3]
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
   data <- f$d
 
   data_graph <- data %>%
@@ -191,7 +191,7 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NUL
     stat_steamgraph() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     scale_fill_manual(values = getPalette()) +
-    theme_ds() + labs(title = titleLabel, x = xlab, y = ylab)  +
+    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)  +
     theme(legend.position = leg_pos)
 
   return(graph)
@@ -208,8 +208,8 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NUL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_slope_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
-                              leg_pos="right", size_text = 6, size_vjust = 1.5,
+gg_slope_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                              leg_pos="right", size_text = 6, size_vjust = 1.5, overlap = TRUE,
                               size_hjust = 0.5, size_point = 3, size_line = 1,...){
 
 
@@ -219,19 +219,23 @@ gg_slope_CaYeNu. <-  function(data, titleLabel = "", xLabel = NULL, yLabel = NUL
   ylab <- yLabel %||% nms[3]
   data <- f$d
 
+  data <- data %>% group_by(a) %>% dplyr::mutate(xorder = 1:n())
+
   graph <- ggplot(data) +
-    geom_text(aes(x = as.factor(b), y = c + 0.5, group = a, color = a, label = c),
-              size = size_text, vjust = size_vjust, hjust = size_hjust,
-              show.legend = FALSE, check_overlap = TRUE) +
     geom_text(aes(x = as.factor(b), y = min(c) - mean(c), label = b),
               size = size_text, show.legend = FALSE, check_overlap = TRUE) +
     geom_line(aes(x = as.factor(b), y = c, group = a, color = a), size = size_line) +
     geom_point(aes(x = as.factor(b), y = c, group = a, color = a), size = size_point) +
     theme_ds() + theme_ds_clean() +
-    labs(title = titleLabel, x = xlab, y = ylab) +
-    scale_color_manual(values = getPalette()) + theme(legend.position = leg_pos)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    scale_color_manual(values = getPalette()) + theme(legend.position = leg_pos) +
+    annotate("text", x = filter(data,xorder == 1)$xorder-.1, y = filter(data,xorder == 1)$c,
+             label = filter(data,xorder == 1)$c, check_overlap = overlap) +
+    annotate("text", x = filter(data,xorder == 2)$xorder+.1, y = filter(data,xorder == 2)$c,
+             label = filter(data,xorder == 2)$c, check_overlap = overlap)
 
 
   return(graph)
 
 }
+

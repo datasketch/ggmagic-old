@@ -5,8 +5,8 @@
 \title{gg_treemap_x_CaCaNu.
 Treemap Fill by first Ca}
 \usage{
-gg_treemap_x_CaCaNu.(data, titleLabel = "", fillLabel = NULL,
-  label_size = 5, ...)
+gg_treemap_x_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  fillLabel = NULL, label_size = 5, ...)
 }
 \arguments{
 \item{x}{A number.}

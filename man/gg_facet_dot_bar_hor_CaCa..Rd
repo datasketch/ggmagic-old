@@ -5,8 +5,9 @@
 \title{gg_facet_dot_bar_hor_CaCa.
 Facet Horizontal Dot Bar}
 \usage{
-gg_facet_dot_bar_hor_CaCa.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...)
+gg_facet_dot_bar_hor_CaCa.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

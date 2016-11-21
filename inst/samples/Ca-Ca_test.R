@@ -63,7 +63,7 @@ gg_bar_ordered_stacked_ver_CaCa.(dataCaCa)
 
 # Stacked dot Bar
 gg_stacked_dot_bar_hor_CaCa.(dataCaCa)
-gg_stacked_dot_bar_ver_CaCa.(dataCaCa)
+gg_stacked_dot_bar_ver_CaCa.(dataCaCa, subtitle = 'ssd', caption = 'sdfs')
 
 # Unstacked Coloured Bar
 gg_bar_unstacked_coloured_hor_CaCa.(dataCaCa)
