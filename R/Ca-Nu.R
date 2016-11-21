@@ -74,10 +74,10 @@ gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = count, label = round(count,2)), size = size_text))
+    return(graph + geom_text(aes(x = a, y = count + 0.05, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = count, label = paste(percent, "%", sep = "")), size = size_text))
+      return(graph + geom_text(aes(x = a, y = count + 0.05, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0))
     }else{
       graph
     }

@@ -5,7 +5,8 @@
 \title{gg_treemap_z_CaCaCaNu.
 Treemap fill third Ca}
 \usage{
-gg_treemap_z_CaCaCaNu.(data, titleLabel = "Report", fillLabel = NULL, ...)
+gg_treemap_z_CaCaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  fillLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}
