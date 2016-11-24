@@ -99,7 +99,7 @@ gg_bar_stk_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 }
 
 #' gg_lines_hor_CaYeNu.: title.
-#' Barras stacked
+#' Lines
 #' Tiene múltiples líneas
 #' @name gg_lines_hor_CaYeNu.
 #' @param x A number.
@@ -111,17 +111,19 @@ gg_bar_stk_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_lines_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL,
-                                 ylab = NULL, leg_pos = "right", ...){
+                                 ylab = NULL, leg_pos = "right", angle = 90, ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[2]
   ylab <- ylab %||% nms[3]
   data <- f$d
+
   graph <- ggplot(data, aes(x=b,y=c,group=a,colour=a)) +
-           geom_line(stat = "identity") +
+           geom_line(stat = "identity") + theme_ds() +
            scale_y_continuous(labels = comma) +
-           scale_color_manual(values = getPalette()) + theme_ds() +
+           scale_color_manual(values = getPalette())  +
            theme(legend.position = leg_pos) +
+           theme(axis.text.x = element_text(angle = angle, hjust = 1)) +
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
   return(graph)

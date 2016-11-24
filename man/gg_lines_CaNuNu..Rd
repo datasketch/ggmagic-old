@@ -5,8 +5,8 @@
 \title{gg_lines_CaNuNu.
 lines}
 \usage{
-gg_lines_CaNuNu.(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
-  leg_pos = "right", ...)
+gg_lines_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

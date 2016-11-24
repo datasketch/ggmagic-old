@@ -5,8 +5,8 @@
 \title{gg_horizon_DaNu.
 Horizon}
 \usage{
-gg_horizon_DaNu.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = NULL, leg_pos = "right", ...)
+gg_horizon_DaNu.(data, title = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", reverse = FALSE, ...)
 }
 \arguments{
 \item{x}{A number.}

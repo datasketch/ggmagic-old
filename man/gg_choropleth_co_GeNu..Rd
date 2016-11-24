@@ -5,9 +5,10 @@
 \title{gg_choropleth_co_GeNu.
 Choropleth of Colombia's deptos}
 \usage{
-gg_choropleth_co_GeNu.(data, titleLabel = "", reverse = FALSE,
-  text_size = 2, fillLabel = NULL, leg_pos = "right", text = FALSE,
-  prop_text = 0.5, color_map = "gray", color_frontier = "white", ...)
+gg_choropleth_co_GeNu.(data, titleLabel = "", subtitle = "", caption = "",
+  reverse = FALSE, text_size = 2, fillLabel = NULL, leg_pos = "right",
+  text = FALSE, prop_text = 0.5, color_map = "gray",
+  color_frontier = "white", ...)
 }
 \arguments{
 \item{x}{A category.}

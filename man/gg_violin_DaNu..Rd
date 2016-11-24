@@ -5,7 +5,8 @@
 \title{gg_violin_DaNu.
 Violin}
 \usage{
-gg_violin_DaNu.(data, title = "", xlab = NULL, ylab = NULL, ...)
+gg_violin_DaNu.(data, title = "", subtitle = "", caption = "",
+  xlab = NULL, ylab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

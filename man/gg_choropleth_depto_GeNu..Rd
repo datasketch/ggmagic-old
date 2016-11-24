@@ -5,10 +5,10 @@
 \title{gg_choropleth_depto_GeNu.
 Choropleth by filtering deptos}
 \usage{
-gg_choropleth_depto_GeNu.(data, titleLabel = "", depto_ = "05",
-  reverse = FALSE, prop_text = 0.1, fillLabel = NULL, leg_pos = "right",
-  text = FALSE, text_size = 2, color_map = "gray",
-  color_frontier = "white", ...)
+gg_choropleth_depto_GeNu.(data, titleLabel = "", subtitle = "",
+  caption = "", depto_ = "05", reverse = FALSE, prop_text = 0.1,
+  fillLabel = NULL, leg_pos = "right", text = FALSE, text_size = 2,
+  color_map = "gray", color_frontier = "white", ...)
 }
 \arguments{
 \item{x}{A category.}

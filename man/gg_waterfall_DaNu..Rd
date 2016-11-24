@@ -5,8 +5,8 @@
 \title{gg_waterfall_DaNu.
 Waterfall}
 \usage{
-gg_waterfall_DaNu.(data, titleLabel = "Report", xLabel = NULL,
-  yLabel = NULL, ...)
+gg_waterfall_DaNu.(data, title = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

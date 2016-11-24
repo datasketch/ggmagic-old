@@ -166,7 +166,7 @@ gg_cumm_dist_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-flip_cumm_prob_graph <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+gg_flip_cumm_dist_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                                  yLabel = NULL, ...){
 
   graph <- gg_cumm_dist_Nu.(data, title, subtitle, caption, xLabel, yLabel)
