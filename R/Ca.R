@@ -40,22 +40,34 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
 #' add(10, 1)
 gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                     xLabel = NULL, yLabel = 'Count', fillLabel = NULL,
-                                    text = TRUE, size_text = 3, leg_pos = "right", ...){
+                                    text = TRUE, type = 'percent', size_text = 3, pos = 0.5,
+                                    leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data = data, aes(x = a, fill = factor(a))) + geom_bar()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, subtitle = subtitle, caption = caption)
 
-  ifelse(text == TRUE,
-         return(graph +
-                 geom_text(stat = "count", aes(label = ..count.., y = ..count..), vjust=1.5, colour="black",
-                           position=position_dodge(.9), size = size_text) +
-                 theme(legend.position = leg_pos) + guides(fill  = FALSE) +
-                 theme_ds() + scale_fill_manual(values = getPalette())
-                 ), return(graph + theme(legend.position = leg_pos) + guides(fill  = FALSE) +
-                             theme_ds() + scale_fill_manual(values = getPalette())))
+  data_graph <- data %>%
+                dplyr::group_by(a) %>%
+                dplyr::summarise(count = n()) %>%
+                dplyr::mutate(percent = 100 * round(count/sum(count), 4))
+
+  graph <- ggplot(data = data_graph, aes(y = count , x = a, fill = factor(a))) + geom_bar(stat = 'identity')
+  graph <- graph +
+           guides(fill = FALSE) +
+           theme(legend.position = leg_pos) +
+           theme_ds() + scale_fill_manual(values = getPalette()) +
+           labs(title = titleLabel, x= xlab, y = yLabel, subtitle = subtitle, caption = caption)
+
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+    }else{
+      graph
+    }
+  }
 }
 
 
@@ -70,17 +82,14 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                            yLabel = 'Count', fillLabel = NULL, text = TRUE, size_text = 3,
-                            leg_pos = "right", ...){
+gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                    xLabel = NULL, yLabel = 'Count', fillLabel = NULL,
+                                    text = TRUE, type = 'percent', size_text = 3, pos = 1, leg_pos = "right", ...){
 
   graph <- gg_bar_coloured_ver_Ca.(data, titleLabel, subtitle, caption, xLabel,
-                                   yLabel, fillLabel, leg_pos, text)
+                                   yLabel, fillLabel, text, type, size_text, pos, leg_pos) +  coord_flip()
+  return(graph)
 
-  ifelse(text == TRUE,
-         return(graph +
-                  geom_text(stat = "count", aes(label = ..count.., y = ..count..), vjust= 1.5, colour="black", size = size_text) + coord_flip()),
-        return(graph +  coord_flip()))
 
 }
 
@@ -97,19 +106,39 @@ gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(10, 1)
 gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                               xLabel = NULL, yLabel = 'Count', parameter = NULL,
+                                              text = TRUE, type = 'percent', size_text = 3, pos = 0.5,
                                               leg_pos = "right", ...){
+
+
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
   p <-  parameter %||% sample(unique(data[,nms[1]]), 1)
   data <- f$d
-  data_graph <- data %>% dplyr::group_by(a) %>% dplyr::summarise(count = n())
+
+  data_graph <- data %>%
+                dplyr::group_by(a) %>%
+                dplyr::summarise(count = n()) %>%
+                dplyr::mutate(percent = 100 * round(count/sum(count), 4))
+
   graph <- ggplot(data_graph, aes(x = a, y = count)) +
-    geom_bar(stat="identity", aes(fill = a %in% p ))
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, subtitle = subtitle, caption = caption)
+           geom_bar(stat="identity", aes(fill = a %in% p ))
+  graph <- graph +
+           labs(title = titleLabel, x = xlab, y = yLabel, subtitle = subtitle, caption = caption)
   graph <- graph + guides(fill = FALSE) + theme(legend.position = leg_pos) +
-    theme_ds() + scale_fill_manual(values = getPalette())
-  return(graph)
+           theme_ds() + scale_fill_manual(values = getPalette())
+
+
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+    }else{
+      graph
+    }
+  }
+
 }
 
 #' gg_bar_coloured_parameter_hor_Ca.
@@ -125,9 +154,11 @@ gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = 
 #' add(10, 1)
 gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                               xLabel = NULL, yLabel = 'Count', parameter = NULL,
+                                              text = TRUE, type = 'percent', size_text = 3, pos = 1,
                                               leg_pos = "right", ...){
 
-  graph <- gg_bar_coloured_parameter_ver_Ca.(data, titleLabel, xLabel, yLabel, parameter, leg_pos) +
+  graph <- gg_bar_coloured_parameter_ver_Ca.(data, titleLabel, subtitle, caption, xLabel, yLabel,
+                                             parameter, text, type, size_text, pos,leg_pos) +
            labs(subtitle = subtitle, caption = caption)
 
   graph <- graph + coord_flip()
@@ -145,17 +176,34 @@ gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", subtitle = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL, subtitle = "", caption = "",
-                                    yLabel = 'Count', leg_pos = "right", ...){
+gg_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                           text = TRUE, type = 'percent', size_text = 3, pos = 0.5,
+                           leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data = data, aes(x = factor(a), fill = "")) + geom_bar()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, subtitle = subtitle, caption = caption)
+
+  data_graph <- data %>%
+                dplyr::group_by(a) %>%
+                dplyr::summarise(count = n()) %>%
+                dplyr::mutate(percent = 100 * round(count/sum(count), 4))
+
+  graph <- ggplot(data = data_graph , aes(y = count ,x = factor(a), fill = "")) + geom_bar(stat ='identity') +
+           labs(title = titleLabel, x = xlab, y = yLabel, subtitle = subtitle, caption = caption)
   graph <- graph + theme(legend.position=leg_pos) + guides(fill = FALSE) +
-    theme_ds() + scale_fill_manual(values = getPalette())
-  return(graph)
+           theme_ds() +
+           scale_fill_manual(values = getPalette())
+
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+    }else{
+      graph
+    }
+  }
 }
 
 #' gg_bar_hor_Ca.
@@ -169,13 +217,14 @@ gg_bar_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL, subtitle = "", 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = 'Count', leg_pos = "right", ...){
+gg_bar_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                           text = TRUE, type = 'percent', size_text = 3, pos = 50,
+                           leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
-  graph <- gg_bar_ver_Ca.(data, titleLabel, xlab, yLabel, leg_pos) + labs(subtitle = subtitle, caption = caption)
-
+  graph <- gg_bar_ver_Ca.(data, titleLabel, subtitle, caption, xLabel, yLabel, text, type,
+                          size_text, pos, leg_pos)
   graph <- graph + coord_flip()
   return(graph)
 }
@@ -191,23 +240,36 @@ gg_bar_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL, subtitle = "",
-                                   caption = "", yLabel =  'Count', leg_pos = "right", ...){
+gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                   yLabel = NULL,text = TRUE, type = 'percent', size_text = 3, pos = 0.5,
+                                   leg_pos = "right", ...){
+
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
+
   data_graph <- data %>%
-    dplyr::group_by(a) %>%
-    dplyr::summarise(count = n())
+                dplyr::group_by(a) %>%
+                dplyr::summarise(count = n()) %>%
+                dplyr::mutate(percent = 100 * round(count/sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = reorder(a, count), y = count, fill = "")) +
-            geom_bar(stat = "identity")
-  graph <- graph + labs(title = titleLabel, x = yLabel, y = xLabel, subtitle = subtitle, caption = caption)
-  graph <- graph + theme(legend.position=leg_pos) +
-    theme_ds() + scale_fill_manual(values = getPalette()) + guides(fill = FALSE)
+           geom_bar(stat = "identity")
+  graph <- graph +
+           labs(title = titleLabel, x = yLabel, y = xLabel, subtitle = subtitle, caption = caption) +
+           theme(legend.position=leg_pos) +
+           theme_ds() + scale_fill_manual(values = getPalette()) + guides(fill = FALSE)
 
-  return(graph)
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+    }else{
+      graph
+    }
+  }
 }
 
 #' gg_bar_ordered_hor_Ca.
@@ -222,11 +284,13 @@ gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", xLabel = NULL, subtitl
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                   yLabel =  'Count', leg_pos = "right", ...){
+                                   yLabel = NULL, text = TRUE, type = 'percent', size_text = 3, pos = 0.5,
+                                   leg_pos = "right", ...){
 
-  graph <- gg_bar_ordered_ver_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
+  graph <- gg_bar_ordered_ver_Ca.(data, titleLabel, subtitle, caption, xLabel, yLabel, text, type, size_text,
+                                  pos, leg_pos)
 
-  graph <- graph + coord_flip() + labs(subtitle = subtitle, caption = caption)
+  graph <- graph + coord_flip()
 
   return(graph)
 }
@@ -243,7 +307,7 @@ gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption
 #' add(1, 1)
 #' add(10, 1)
 gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                       fillLabel = NULL, leg_pos="right", ...){
+                       fillLabel = NULL, text = TRUE, type = 'percent',size_text = 4 ,leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -251,18 +315,24 @@ gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
   data <- f$d
 
   data_graph <- data %>% dplyr::group_by(a) %>%
-    dplyr::summarise(count = n()) %>%
-    dplyr::mutate(pos = cumsum(count) - count/2,
-                  percent = 100 * round(count/sum(count), 4))
+                dplyr::summarise(count = n()) %>%
+                dplyr::mutate(pos = cumsum(count) - count/2,
+                percent = 100 * round(count/sum(count), 4))
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), y = count, fill = a)) +
-    geom_bar(stat = "identity", width = 1) + coord_polar(theta = "y") +
-    geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")))
+           geom_bar(stat = "identity", width = 1) + coord_polar(theta = "y")
   graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel,  subtitle = subtitle, caption = caption) + guides(text = FALSE)
-  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
-    #scale_y_continuous(breaks=data_graph$pos, labels=data_graph$percent)
+  graph <- graph  + theme_ds_clean() + scale_fill_manual(values = getPalette())
 
-  return(graph)
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(aes(y = pos, label = round(count,2)), size = size_text))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(aes(y = pos, label = paste(percent, "%", sep = "")), size = size_text))
+    }else{
+      graph
+    }
+  }
 }
 
 #Width debe de ser un parámetro.  0 < width < 1.
@@ -278,25 +348,34 @@ gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
-                         width = 0.3, leg_pos="right", ...){
+                         width = 0.3, text = TRUE, type = 'percent',size_text = 4, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
+
   data_graph <- data %>% dplyr::group_by(a) %>%
-    dplyr::summarise(count = n()) %>%
-    dplyr::mutate(pos = cumsum(count) - count/2,
-                  percent = 100 * round(count/sum(count), 4))
+                dplyr::summarise(count = n()) %>%
+                dplyr::mutate(pos = cumsum(count) - count/2,
+                              percent = 100 * round(count/sum(count), 4))
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), y = count, fill = a)) +
-    geom_bar(stat = "identity", width = width) + coord_polar(theta = "y") +
-    geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")))
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel, subtitle = subtitle, caption = caption)
+           geom_bar(stat = "identity", width = width) + coord_polar(theta = "y")
+  graph <- graph +
+           labs(title = titleLabel, x = "", y = "", fill = flabel, subtitle = subtitle, caption = caption)
   graph <- graph + theme(legend.position=leg_pos) +
-    theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
+           theme_ds_clean() + scale_fill_manual(values = getPalette())
 
-  return(graph)
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(aes(y = pos, label = round(count,2)), size = size_text))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(aes(y = pos, label = paste(percent, "%", sep = "")), size = size_text))
+    }else{
+      graph
+    }
+  }
 }
 
 #' gg_dot_bar_ver_Ca.
@@ -311,7 +390,7 @@ gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fil
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel = 'Count', fillLabel = NULL, leg_pos = "right", ...){
+                               yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -320,20 +399,18 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
   data <- f$d
 
   data_graph <- data %>%
-    dplyr::group_by(a) %>%
-    dplyr::summarise(count = n())
-
+                dplyr::group_by(a) %>%
+                dplyr::summarise(count = n())
   data_graph <- data_graph %>%
                 mutate(order = c(1:nrow(data_graph)))
 
   graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
-                  aes(x = order, fill = factor(a))) + geom_dotplot(method="histodot")
-
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel,  fill = flabel, subtitle = subtitle, caption = caption)
-  graph <- graph + theme_minimal() + scale_y_continuous(breaks = NULL) +
-            theme(legend.position=leg_pos) + theme_ds() +
-    scale_fill_manual(values = getPalette())
-
+                  aes(x = order, fill = factor(a))) + geom_dotplot(method="histodot") +
+           labs(title = titleLabel, x = xLabel, y = yLabel,  fill = flabel, subtitle = subtitle, caption = caption)
+  graph <- graph +
+           scale_y_continuous(breaks = NULL) +
+           theme(legend.position=leg_pos) + theme_ds() +
+           scale_fill_manual(values = getPalette())
 
   return(graph)
 }
@@ -352,9 +429,10 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
 gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
                                subtitle = "", caption = "", fillLabel = NULL, leg_pos = "right", ...){
 
-  graph <- gg_dot_bar_ver_Ca.(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_dot_bar_ver_Ca.(data, titleLabel, xLabel, yLabel,subtitle = subtitle, caption = caption,
+                              fillLabel, leg_pos)
 
-  graph <- graph + coord_flip() + labs(subtitle = subtitle, caption = caption)
+  graph <- graph + coord_flip()
 
   return(graph)
 }
