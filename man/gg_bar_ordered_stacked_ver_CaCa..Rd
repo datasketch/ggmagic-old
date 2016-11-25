@@ -6,7 +6,8 @@
 Ordered Stacked Vertical Bar}
 \usage{
 gg_bar_ordered_stacked_ver_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
+  l_ncol = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

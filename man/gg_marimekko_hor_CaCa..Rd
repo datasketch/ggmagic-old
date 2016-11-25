@@ -6,8 +6,7 @@
 Horizontal Marimekko}
 \usage{
 gg_marimekko_hor_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = "Category", yLabel = "Frequency", fillLabel = "Types",
-  leg_pos = "right", ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", l_ncol = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

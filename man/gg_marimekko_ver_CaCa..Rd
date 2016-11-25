@@ -6,7 +6,7 @@
 Vertical Marimekko}
 \usage{
 gg_marimekko_ver_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = "Count", yLabel = "Percent", leg_pos = "right", ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", l_ncol = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

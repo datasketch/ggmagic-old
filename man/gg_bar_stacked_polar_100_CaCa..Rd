@@ -6,8 +6,9 @@
 Stacked Polar  100pct}
 \usage{
 gg_bar_stacked_polar_100_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
-  width = 1, ...)
+  caption = "", xLabel = NULL, yLabel = NULL, text = TRUE,
+  type = "percent", size_text = 2, leg_pos = "right", width = 1,
+  l_ncol = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

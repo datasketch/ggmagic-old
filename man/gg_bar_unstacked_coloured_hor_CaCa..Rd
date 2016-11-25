@@ -6,7 +6,8 @@
 Unstacked Coloured horizontal Bar}
 \usage{
 gg_bar_unstacked_coloured_hor_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
+  l_ncol = 1, ...)
 }
 \arguments{
 \item{x}{A number.}
