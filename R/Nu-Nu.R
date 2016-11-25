@@ -229,8 +229,9 @@ gg_scatter_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLab
   data <- f$d
 
 graph <- ggplot(data = data, aes(x = a, y = b)) +
-         geom_point(shape=1) + theme_ds() +
+         geom_point(shape=1,color = '#009EE3') + theme_ds() +
          labs(title = title, subtitle = subtitle, caption = caption, y = yLabel, x = xLabel)
+return(graph)
 
 }
 

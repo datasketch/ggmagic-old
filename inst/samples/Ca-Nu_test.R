@@ -4,6 +4,7 @@ install()
 
 load_all()
 
+
 catA <- rep("Callejero", round(runif(1, 10, 20), digits = 0))
 catB <- rep("De raza", round(runif(1, 10, 20), digits = 0))
 catC <- rep("Mixto", round(runif(1, 10, 20), digits = 0))

@@ -20,7 +20,7 @@ gg_bar_grp_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
   graph <- ggplot(data, aes(x = b, y = c, group = a, fill = a)) +
     geom_bar( position = "dodge", stat="identity") +
     scale_y_continuous(labels = comma) +
-    ggtitle(title) + theme_ds() + scale_fill_manual(values = getPalette()) +
+    theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(legend.position = leg_pos) +
     labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 

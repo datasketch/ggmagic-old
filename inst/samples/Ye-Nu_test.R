@@ -14,6 +14,6 @@ gg_lollipop_YeNu.(data)
 
 gg_waterfall_YeNu.(data)
 
-gg_bar_coloured_x_ver_CaNu.(data)
+gg_bar_coloured_x_ver_CaNu.(data, text = FALSE)
 
 gg_area_YeNu.(data)

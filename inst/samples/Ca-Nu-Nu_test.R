@@ -11,4 +11,4 @@ gg_lines_CaNuNu.(data)
 gg_point_CaNuNu.(data, shape_point = 8)
 
 gg_point_lines_CaNuNu.(data)
-
+gg_circle_CaNuNu.(data)

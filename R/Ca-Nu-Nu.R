@@ -124,4 +124,33 @@ gg_point_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   return(graph)
 }
 
+#' gg_circle_CaNuNu.
+#' Point
+#' @name gg_circle_CaNuNu.
+#' @param x A category.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Nu-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+#'
+gg_circle_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                             yLabel = NULL, leg_pos="right", size = 10, ...){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
+  data <- f$d
+
+graph <- ggplot(data, aes(x = b , y = c, fill = a, color  = a))  +
+         geom_point(size = size) +
+         scale_color_manual(values = getPalette()) +
+         theme(legend.position=leg_pos) +
+         theme_ds() +
+         labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+
+return(graph)
+}
 

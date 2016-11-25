@@ -54,7 +54,7 @@ gg_bar_facet_coloured_parameter_hor_CaCa.(dataCaCa,
 
 
 # Stacked Bar
-gg_bar_stacked_ver_CaCa.(dataCaCa)
+gg_bar_stacked_ver_CaCa.(dataCaCa, l_ncol = 3)
 gg_bar_stacked_hor_CaCa.(dataCaCa)
 
 
@@ -85,12 +85,12 @@ gg_bar_stacked_100_ver_CaCa.(dataCaCa)
 gg_bar_stacked_100_hor_CaCa.(dataCaCa)
 
 # Stacked Area
-gg_area_stacked_hor_CaCa.(d2)
-gg_area_stacked_ver_CaCa.(dataCaCa)
+gg_area_stacked_hor_CaCa.(d2, l_ncol = 2)
+gg_area_stacked_ver_CaCa.(dataCaCa, l_ncol = 2)
 
 # Stacked Area 100%
-gg_area_stacked_100_hor_CaCa.(d2)
-gg_area_stacked_100_ver_CaCa.(d2)
+gg_area_stacked_100_hor_CaCa.(d2, l_ncol = 3)
+gg_area_stacked_100_ver_CaCa.(d2, l_ncol = 2)
 
 # Marimekko
 gg_marimekko_ver_CaCa.(dataCaCa)

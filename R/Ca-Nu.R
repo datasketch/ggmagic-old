@@ -64,9 +64,9 @@ gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
   data <- f$d
 
   data_graph <- data %>%
-               dplyr::group_by(a) %>%
-               dplyr::summarise(count = sum(b)) %>%
-               dplyr::mutate(percent = 100 * round(count/sum(count), 4))
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = sum(b)) %>%
+    dplyr::mutate(percent = 100 * round(count/sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = count, fill = factor(a))) + geom_bar(stat = "identity") +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flab) +  theme_ds() +
@@ -125,6 +125,7 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
     }
   }
 }
+
 
 
 #' gg_bar_coloured_y_ver_CaNu.
