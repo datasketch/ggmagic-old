@@ -196,6 +196,7 @@ gg_facet_bullseye_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
   f <- fringe(data)
   data <- f$d
 
+
   graph <- ggplot(data=data, aes(x = factor(1), fill = a)) +
     geom_bar(width = 1) + coord_polar(theta = "x")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
@@ -224,10 +225,14 @@ gg_bar_facet_coloured_x_ver_CaCa. <- function(data, titleLabel = "", subtitle = 
   xlab <- xLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data = data, aes(x = a, fill = factor(a))) + geom_bar()
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
-    theme(legend.position=leg_pos) + guides(text = FALSE)
-  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+           theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph +
+           theme_ds() +
+           scale_fill_manual(values = getPalette()) +
+           theme(axis.text.x = element_text(angle = 45, hjust = 1))
   graph <- graph + facet_grid(.~b)
   return(graph)
 }

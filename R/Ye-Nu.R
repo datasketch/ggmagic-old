@@ -93,7 +93,7 @@ gg_waterfall_YeNu. <- function(data, title = "", subtitle = "", caption = "", xL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', size_text = 3,
+gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', size_text = 3,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
