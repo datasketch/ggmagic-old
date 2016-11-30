@@ -5,8 +5,9 @@
 \title{gg_bar_unstacked_coloured_ver_CaCa.
 Unstacked Coloured vertical Bar}
 \usage{
-gg_bar_unstacked_coloured_ver_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", leg_pos = "right", ...)
+gg_bar_unstacked_coloured_ver_CaCa.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
+  l_ncol = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -8,5 +8,5 @@ data("G20")
 dataCaCaNuNu <- G20 %>% select(Region, Country, Nom.GDP.mil.USD, HDI)
 
 # Treemap
-gg_treemap_density_x_CaCaNuNu.(dataCaCaNuNu)
+gg_treemap_density_x_CaCaNuNu.(dataCaCaNuNu, reverse = TRUE)
 gg_treemap_density_y_CaCaNuNu.(dataCaCaNuNu)

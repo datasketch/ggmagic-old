@@ -5,8 +5,9 @@
 \title{gg_facet_dot_dist_hor_CaNu.
 Facet Horizontal Dot Dist}
 \usage{
-gg_facet_dot_dist_hor_CaNu.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
+gg_facet_dot_dist_hor_CaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = "Count", fillLabel = NULL,
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,8 +5,8 @@
 \title{gg_area_stacked_ver_CaNu.
 Stacked Vertical Area}
 \usage{
-gg_area_stacked_ver_CaNu.(data, titleLabel = "", xLabel = "Index",
-  yLabel = NULL, leg_pos = "right", ...)
+gg_area_stacked_ver_CaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = "Index", yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

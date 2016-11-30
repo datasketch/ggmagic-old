@@ -5,7 +5,8 @@
 \title{gg_lines_DaNu.
 Lines}
 \usage{
-gg_lines_DaNu.(data, title = "", xlab = NULL, ylab = NULL, ...)
+gg_lines_DaNu.(data, title = "", subtitle = "", caption = "",
+  xlab = NULL, ylab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

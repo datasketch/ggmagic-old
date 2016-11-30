@@ -5,8 +5,8 @@
 \title{gg_bar_polar_CaNu.
 Polar Bar}
 \usage{
-gg_bar_polar_CaNu.(data, width = 0.95, titleLabel = "", fillLabel = NULL,
-  leg_pos = "right", ...)
+gg_bar_polar_CaNu.(data, width = 0.95, titleLabel = "", subtitle = "",
+  caption = "", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

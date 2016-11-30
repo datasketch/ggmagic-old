@@ -5,8 +5,8 @@
 \title{gg_coloured_y_bubble_CaCaNu.
 Coloured Bubble second Ca}
 \usage{
-gg_coloured_y_bubble_CaCaNu.(data, titleLabel = "", xLabel = NULL,
-  yLabel = NULL, ...)
+gg_coloured_y_bubble_CaCaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

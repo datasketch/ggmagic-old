@@ -5,8 +5,8 @@
 \title{vertical_linegraphCCN
 vertical linegraph}
 \usage{
-vertical_linegraphCCN(data, titleLabel = "", xLabel = "Types",
-  yLabel = "Frequency", ...)
+vertical_linegraphCCN(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = "Types", yLabel = "Frequency", ...)
 }
 \arguments{
 \item{x}{A category.}

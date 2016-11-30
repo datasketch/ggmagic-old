@@ -5,8 +5,9 @@
 \title{gg_bar_facet_coloured_z_ver_CaCaNu.
 Facet coloured vertical bar}
 \usage{
-gg_bar_facet_coloured_z_ver_CaCaNu.(data, titleLabel = "", xLabel = NULL,
-  yLabel = NULL, reverse = FALSE, leg_pos = "right", ...)
+gg_bar_facet_coloured_z_ver_CaCaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, reverse = FALSE,
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

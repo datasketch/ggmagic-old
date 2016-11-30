@@ -5,8 +5,8 @@
 \title{horizontal_linegraphCCN
 horizontal linegraph}
 \usage{
-horizontal_linegraphCCN(data, titleLabel = "", xLabel = "Types",
-  yLabel = "Frequency", ...)
+horizontal_linegraphCCN(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = "Types", yLabel = "Frequency", ...)
 }
 \arguments{
 \item{x}{A category.}

@@ -5,8 +5,8 @@
 \title{gg_marimekko_ver_CaCa.
 Vertical Marimekko}
 \usage{
-gg_marimekko_ver_CaCa.(data, titleLabel = "", xLabel = "Count",
-  yLabel = "Percent", leg_pos = "right", ...)
+gg_marimekko_ver_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", l_ncol = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,8 +5,8 @@
 \title{gg_horizon_Nu.
 Horizon}
 \usage{
-gg_horizon_Nu.(data, titleLabel = "Report", xLabel = "Index",
-  yLabel = NULL, leg_pos = "right", ...)
+gg_horizon_Nu.(data, title = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", reverse = FALSE, ...)
 }
 \arguments{
 \item{x}{A number.}

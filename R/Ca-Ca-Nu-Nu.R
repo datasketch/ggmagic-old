@@ -10,7 +10,8 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
+gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = "", caption = "",
+                                           fillLabel = NULL, reverse = FALSE, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -22,7 +23,17 @@ gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "Report", fillLabe
 
   graph <- ggplotify(treemapify(data, area = "c", fill = 'd', group = "a", label = "b"),
                      group.label.colour = "black", label.colour = "black") +
-    labs(title = titleLabel)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption)
+
+
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
+
 
   return(graph)
 }
@@ -38,7 +49,8 @@ gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "Report", fillLabe
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_density_y_CaCaNuNu. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
+gg_treemap_density_y_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = "", caption = "",
+                                           fillLabel = NULL,reverse = FALSE, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -50,7 +62,14 @@ gg_treemap_density_y_CaCaNuNu. <- function(data, titleLabel = "Report", fillLabe
 
   graph <- ggplotify(treemapify(data, area = "d", fill = 'c', group = "a", label = "b"),
                      group.label.colour = "black", label.colour = "black") +
-    labs(title = titleLabel)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption)
 
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
   return(graph)
 }

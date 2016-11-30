@@ -5,7 +5,8 @@
 \title{gg_coloured_bubble_CaNu.
 Coloured Bubble}
 \usage{
-gg_coloured_bubble_CaNu.(data, titleLabel = "", xLabel = NULL, ...)
+gg_coloured_bubble_CaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

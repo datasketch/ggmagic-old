@@ -5,8 +5,9 @@
 \title{gg_bar_ordered_stacked_hor_CaCa.
 Ordered Stacked horizontal Bar}
 \usage{
-gg_bar_ordered_stacked_hor_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", leg_pos = "right", ...)
+gg_bar_ordered_stacked_hor_CaCa.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
+  l_ncol = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

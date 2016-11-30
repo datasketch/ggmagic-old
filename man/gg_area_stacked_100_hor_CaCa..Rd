@@ -5,8 +5,9 @@
 \title{gg_area_stacked_100_hor_CaCa.
 Stacked horizontal Area 100pct}
 \usage{
-gg_area_stacked_100_hor_CaCa.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Percent", leg_pos = "right", ...)
+gg_area_stacked_100_hor_CaCa.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
+  l_ncol = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -4,6 +4,7 @@ install()
 
 load_all()
 
+
 catA <- rep("Callejero", round(runif(1, 10, 20), digits = 0))
 catB <- rep("De raza", round(runif(1, 10, 20), digits = 0))
 catC <- rep("Mixto", round(runif(1, 10, 20), digits = 0))
@@ -45,6 +46,7 @@ gg_bar_coloured_x_hor_CaNu.(dataCaNu, type = 'count')
 
 gg_bar_coloured_y_ver_CaNu.(dataCaNu, reverse = TRUE, type = 'count')
 gg_bar_coloured_y_hor_CaNu.(dataCaNu)
+
 
 # Coloured Parameter Bar
 gg_bar_coloured_parameter_ver_CaNu.(dataCaNu)
@@ -133,12 +135,11 @@ gg_area_stacked_100_hor_CaNu.(dataCaNu)
 gg_area_stacked_hor_CaNu.(dataCaNu)
 gg_area_stacked_ver_CaNu.(dataCaNu)
 
-gg_facet_stepped_area_ver_CaNu.(dataCaNu)
 
 # Facet Horizon
 gg_facet_horizon_CaNu.(dataCaNu)
 
-# Steam
+# stream
 gg_steam_CaNu.(dataCaNu)
 
 # Treemap
@@ -150,14 +151,16 @@ data <- data.frame(hechos = c("secuestro", "secuestro", "delito", "delito", "ex"
 
 gg_slope_CaNu.(data, size_point = 1)
 
+
 #boxplots
 
-boxSpltPlot(dataCaNu, titleLabel, xLabel, yLabel, fillLabel, voltear)
+gg_boxplot_CaNu.(dataCaNu, voltear = FALSE)
+
 
 #violin plots
 
-ViolinMultPlot(dataCaNu, titleLabel, xLabel, yLabel, fillLabel, voltear)
+gg_violin_mult_CaNu.(dataCaNu, voltear = FALSE)
 
 
 #violin plots + obs. dots
-ViolinDotMultPlot(dataCaNu, titleLabel, xLabel, yLabel, fillLabel, voltear)
+gg_violin_dot_mult_CaNu.(dataCaNu)

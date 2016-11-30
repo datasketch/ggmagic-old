@@ -31,9 +31,10 @@ gg_bar_hor_Ca.(d)
 # Coloured by parameter Bar
 gg_bar_coloured_parameter_ver_Ca.(dataCa)
 gg_bar_coloured_parameter_hor_Ca.(dataCa, parameter = c("Mixto", "De raza"))
+
 # Ordered Bar
-gg_bar_ordered_ver_Ca.(dataCa, caption= 'hola')
-gg_bar_ordered_hor_Ca.(dataCa)
+gg_bar_ordered_ver_Ca.(dataCa, type = 'percent')
+gg_bar_ordered_hor_Ca.(dataCa, type = 'count')
 
 # Pie
 gg_pie_Ca.(dataCa, leg_pos = "right")
@@ -42,7 +43,7 @@ gg_pie_Ca.(dataCa, leg_pos = "right")
 gg_donut_Ca.(dataCa, "Tipos", width = 0.2)
 
 # PILE CHART
-gg_dot_bar_ver_Ca.(dataCa, subtitle = 'hola', caption = 'chau')
+gg_dot_bar_ver_Ca.(dataCa)
 gg_dot_bar_hor_Ca.(dataCa)
 
 # LINE
@@ -80,3 +81,5 @@ gg_bar_circular_Ca.(dataCa)
 # Treemap
 gg_treemap_Ca.(dataCa)
 
+# Bubbles 2
+gg_bubble_Ca2.(dataCa)

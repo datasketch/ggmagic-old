@@ -5,8 +5,8 @@
 \title{gg_facet_donut_CaCaNu.
 Facet Donut}
 \usage{
-gg_facet_donut_CaCaNu.(data, titleLabel = "", width = 0.3,
-  leg_pos = "right", ...)
+gg_facet_donut_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  width = 0.3, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

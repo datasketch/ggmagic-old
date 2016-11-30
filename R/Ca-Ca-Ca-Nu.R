@@ -10,7 +10,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
+gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -28,7 +28,7 @@ gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL
 
   graph <- ggplotify(treemapify(data_graph, area = "Sum", fill = 'a', group = "b", label = 'c'),
                      group.label.colour = "black", label.colour = "black") + #guides(fill=FALSE) +
-    labs(title = titleLabel, fill = flabel)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = flabel)
 
   return(graph)
 }
@@ -44,7 +44,7 @@ gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
+gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -62,7 +62,7 @@ gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL
 
   graph <- ggplotify(treemapify(data_graph, area = "Sum", fill = 'b', group = "a", label = "c"),
                      group.label.colour = "black", label.colour = "black") + #guides(fill=FALSE) +
-    labs(title = titleLabel, fill = flabel)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = flabel)
 
   return(graph)
 }
@@ -78,7 +78,7 @@ gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL, ...){
+gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -96,7 +96,7 @@ gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "Report", fillLabel = NULL
 
   graph <- ggplotify(treemapify(data_graph, area = "Sum", fill = 'c', group = "a", label = "b"),
                      group.label.colour = "black", label.colour = "black") +
-    labs(title = titleLabel)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption)
 
   return(graph)
 }

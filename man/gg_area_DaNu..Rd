@@ -5,7 +5,8 @@
 \title{gg_area_DaNu. :
 Area}
 \usage{
-gg_area_DaNu.(data, title = "", xlab = NULL, ylab = NULL, ...)
+gg_area_DaNu.(data, title = "", subtitle = "", caption = "",
+  xlab = NULL, ylab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

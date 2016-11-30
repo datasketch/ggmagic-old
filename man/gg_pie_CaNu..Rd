@@ -5,8 +5,9 @@
 \title{gg_pie_CaNu.
 Pie}
 \usage{
-gg_pie_CaNu.(data, titleLabel = "", fillLabel = NULL, text = TRUE,
-  type = "percent", size_text = 3, leg_pos = "right", ...)
+gg_pie_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  fillLabel = NULL, text = TRUE, type = "percent", size_text = 3,
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

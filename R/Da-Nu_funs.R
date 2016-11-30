@@ -9,19 +9,27 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_horizon_DaNu. <- function(data, titleLabel = "", xLabel = NULL,
-                             yLabel =  NULL, leg_pos = "right", ...){
+
+gg_horizon_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+                             yLabel =  NULL, leg_pos = "right", reverse = FALSE, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
-  data$a <- as.Date(data$a)
+  data$a <- lubridate::as_date(data$a)
   graph <- ggplot_horizon(data, 'a', 'b')
-  graph <- graph + scale_fill_continuous(low = 'green', high = 'red') + theme_minimal() +
-    labs(tittle = titleLabel, x = xlab, y = ylab)
+  graph <- graph + theme_ds() +
+    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
   return(graph)
 }
 
@@ -36,7 +44,7 @@ gg_horizon_DaNu. <- function(data, titleLabel = "", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_waterfall_DaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
+gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel =  NULL, ...){
 
   f <- fringe(data)
@@ -44,9 +52,10 @@ gg_waterfall_DaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
-  data$a <- as.Date(data$a)
-  graph <- ggplot_waterfall(data,'a','b') + theme_minimal() +
-    labs(tittle = titleLabel, x = xlab, y = ylab)
+  data$a <- lubridate::as_date(data$a)
+  graph <- ggplot_waterfall(data,'a','b') + theme_ds() + theme(legend.position="none") +
+           scale_color_manual(breaks = c("+",  "-", ""), values = c("#E5007D", "#009EE3", "black")) +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
   return(graph)
 }
@@ -63,19 +72,18 @@ gg_waterfall_DaNu. <- function(data, titleLabel = "Report", xLabel = NULL,
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
-
-  ggplot(data, aes(x = as.Date(a), y = b, group=1)) +
-    geom_line(stat = "identity") +
-    ylab(ylab) +
-    xlab(xlab) +
-    ggtitle(title)
+  data$a <- lubridate::as_date(data$a)
+  graph <- ggplot(data, aes(x = a, y = b, group=1)) +
+           geom_line(stat = "identity", color = "#009EE3") +  theme_ds() +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  return(graph)
 }
 
 #' gg_scatter_DaNu.
@@ -89,21 +97,22 @@ gg_lines_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_scatter_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_scatter_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
+  data$a <- lubridate::as_date(data$a)
 
-  ggplot(data, aes(x =as.Date(a), y = b)) +
-    geom_point() +
-    ylab(ylab) +
-    xlab(xlab) +
-    ggtitle(title) +
-    scale_y_continuous(labels = comma) +
-    ggtitle(title)
+  graph <- ggplot(data, aes(x = a, y = b)) +
+           geom_point(color = "#009EE3") + theme_ds() +
+           scale_y_continuous(labels = comma) +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+
+
+  return(graph)
 }
 
 #' gg_box_DaNu.
@@ -117,21 +126,22 @@ gg_scatter_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_box_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_box_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
+  data$a <- lubridate::as_date(data$a)
 
-  ggplot(data, aes(x = as.Data(a), y = b, group=1)) +
-    geom_boxplot() +
-    ylab(ylab) +
-    xlab(xlab) +
-    ggtitle(title) +
-    scale_y_continuous(labels = comma) +
-    ggtitle(title)
+  graph <- ggplot(data) + geom_boxplot(aes(y = b,x = reorder(format(a,'%B'), a), fill=format(a,'%Y'))) +
+           theme_ds() + theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+           scale_fill_manual(values = getPalette()) +
+           scale_y_continuous(labels = comma) +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+
+   return(graph)
 }
 
 #' gg_violin_DaNu.
@@ -145,19 +155,21 @@ gg_box_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_violin_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_violin_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
+  data$a <- lubridate::as_date(data$a)
 
-  ggplot(data, aes(x = as.Data(a), y = b, group=1)) +
-    geom_violin() +
-    ylab(ylab) +
-    xlab(xlab) +
-    ggtitle(title)
+  graph <- ggplot(data) + geom_violin(aes(y = b,x = reorder(format(a,'%B'), a), fill=format(a,'%Y'))) +
+           theme_ds() + theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+           scale_fill_manual(values = getPalette()) +
+           scale_y_continuous(labels = comma) +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  return(graph)
 }
 
 #' gg_area_DaNu. :
@@ -171,19 +183,20 @@ gg_violin_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_area_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
+  data$a <- lubridate::as_date(data$a)
 
-  ggplot(data, aes(x = as.Data(a), y = b, group=1)) +
-    geom_area() +
-    ylab(ylab) +
-    xlab(xlab) +
-    ggtitle(title)
+  graph <- ggplot(data, aes(x = a, y = b, group=1)) +
+           geom_area(fill = "#009EE3") + theme_ds() +
+           scale_y_continuous(labels = comma) +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  return(graph)
 }
 
 #' gg_kagi_DaNu.
@@ -197,20 +210,22 @@ gg_area_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_kagi_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
+  data$a <- lubridate::as_date(data$a)
 
-  ggplot(data, aes(x = as.Date(a), y = b)) +
-    geom_line(aes(color=ifelse(c(diff(b),NA) > 0, "Gain", "Loss"), group=NA)) +
-    scale_color_manual(guide="none",values=c(Gain="Green", Loss="Red")) +
-    ylab(ylab) +
-    xlab(xlab) +
-    ggtitle(title)
+ graph <- ggplot(data, aes(x = a, y = b)) +
+          geom_line(aes(color=ifelse(c(diff(b),NA) > 0, "Gain", "Loss"), group=NA)) +
+          scale_color_manual(guide="none",values=c(Gain="#009EE3", Loss="#E5007D")) +
+          theme_ds() +
+          labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+
+ return(graph)
 }
 
 
@@ -227,17 +242,19 @@ gg_kagi_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 #' add(10, 1)
 
 
-gg_smooth_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_smooth_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
+  data$a <- lubridate::as_date(data$a)
 
-  ggplot(data, aes(x = a, y = b)) + geom_point() +
-  scale_x_date() + geom_smooth() + ggtitle(title) + xlab(xlab) + ylab(ylab)
-
+ graph <- ggplot(data, aes(x = a, y = b)) + geom_point(color = "#009EE3") +
+          scale_x_date() + geom_smooth(color = "#E5007D") + theme_ds() +
+          labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+ return(graph)
 }
 
 #' gg_div_DaNu.
@@ -252,8 +269,15 @@ gg_smooth_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 #' add(1, 1)
 #' add(10, 1)
 
-gg_div_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_div_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xlab %||% nms[1]
+  ylab <- ylab %||% nms[2]
+  data <- f$d
+  data$a <- lubridate::as_date(data$a)
   data$Year <- format(data$a, "%Y")
   data$Month <- format(data$a, "%b")
   data$Day <- format(data$a, "%d")
@@ -262,18 +286,13 @@ gg_div_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 
   data$CommonDate <- as.Date(paste0("2000-",format(data$a, "%j")), "%Y-%j")
 
-  f <- fringe(data)
-  nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
-  data <- f$d
+  graph <- ggplot(data = data, mapping = aes(x = a, y = b, shape = Year, colour = Year)) +
+           geom_point() + scale_color_manual(values = getPalette()) + theme_ds() +
+           facet_grid(facets = Year ~ .) +
+           scale_x_date(labels = function(x) format(x, "%d-%b")) +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
-  ggplot(data = data,
-         mapping = aes(x = a, y = b, shape = Year, colour = Year)) +
-    geom_point() +
-    geom_line() +
-    facet_grid(facets = Year ~ .) +
-    scale_x_date(labels = function(x) format(x, "%d-%b")) + ggtitle(title) + xlab(xlab) + ylab(ylab)
+  return(graph)
 }
 
 
@@ -288,18 +307,21 @@ gg_div_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_bar_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
+  data$a <- lubridate::as_date(data$a)
 
-  ggplot(data, aes(a, b)) +
-  geom_bar(stat="identity", na.rm = TRUE) +
-  scale_x_date(labels = date_format("%b %y")) +  theme_bw() +
-  xlab(xlab) + ylab(ylab) + ggtitle(title)
+  graph <- ggplot(data = data, aes(x = a, y = b)) +
+           geom_bar(stat="identity", na.rm = TRUE, color = "#009EE3")  +
+           scale_x_date(labels = date_format("%b %y")) +  theme_ds() +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+
+  return(graph)
 }
 
 
@@ -314,17 +336,22 @@ gg_bar_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubbles_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_bubbles_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
+  data$a <- lubridate::as_date(data$a)
 
-  ggplot(data, aes(x = a, y = b, size = b) )+
-  geom_point(shape = 21, colour = "#000000", fill = "#40b8d0") + theme(legend.position="none") +
-    xlab(xlab) + ylab(ylab) + ggtitle(title)
+  graph <- ggplot(data, aes(x = a, y = b, size = b) )+
+           geom_point(shape = 21, colour = "#009EE3", fill = "#40b8d0") +
+           theme_ds() +
+           theme(legend.position="none") +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+
+    return(graph)
 }
 
 
@@ -339,17 +366,20 @@ gg_bubbles_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lollipop_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_lollipop_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
+  data$a <- lubridate::as_date(data$a)
 
-  ggplot(data, aes(x = a, y = b)) +
-  geom_segment(aes(xend=a, yend=0)) + geom_point() +
-  xlab(xlab) + ylab(ylab) + ggtitle(title)
+  graph <-  ggplot(data, aes(x = a, y = b)) +
+            geom_segment(aes(xend=a, yend=0), color = "#009EE3") + geom_point(color = "#E5007D") +
+            theme_ds() +
+            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  return(graph)
 }
 
 
@@ -364,17 +394,20 @@ gg_lollipop_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stepped_stacked_area_DaNu. <- function(data, title = "", xlab = NULL, ylab = NULL, ...){
+gg_stepped_stacked_area_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
+  data$a <- lubridate::as_date(data$a)
 
-  ggplot(data) +
-  geom_step(aes(x = seq_along(a), y = b)) + theme_bw() +
-  xlab(xlab) + ylab(ylab) + ggtitle(title)
+  graph <-  ggplot(data) +
+            geom_step(aes(x = seq_along(a), y = b), color = "#009EE3") +
+            theme_ds() +
+            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  return(graph)
 }
 
 

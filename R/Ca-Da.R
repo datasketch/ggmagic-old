@@ -9,23 +9,25 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pointline_hor_CaDa. <- function(data,title = "",xlab = NULL, clab = NULL, ...){
+gg_pointline_hor_CaDa. <- function(data,title = "", subtitle = "", caption = "",
+                                   xlab = NULL, clab = NULL, ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[2]
   clab <- clab %||% nms[1]
   d <- f$d
-g <- ggplot(d, aes(x = as.Date(b), y = 0, colour = a)) +
-  geom_point() +
-  scale_colour_brewer(clab,palette = 'Set1') +
-  ylab(ylab) +
-  xlab(xlab) +
-  ggtitle(title) +
-  theme_minimal() +
-  theme(axis.title.y=element_blank(),
-        axis.text.y=element_blank(),
-        axis.ticks.y=element_blank())
-g
+  d$b <- lubridate::as_date(d$b)
+
+  graph <- ggplot(d, aes(x = b, y = 0, colour = a)) +
+       geom_point() +
+       scale_colour_brewer(clab,palette = 'Set1') +
+       theme_ds()  + scale_color_manual(values = getPalette()) +
+       labs(title = title, subtitle = subtitle, caption = caption, x = xlab)+
+    theme(axis.title.y=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks.y=element_blank())
+
+ return(graph)
 }
 
 #' gg_pointline_ver_CaDa.: title.
@@ -39,24 +41,24 @@ g
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pointline_ver_CaDa. <- function(data,title = "",ylab = NULL, clab = NULL, ...){
+gg_pointline_ver_CaDa. <- function(data,title = "", subtitle = "", caption = "",ylab = NULL, clab = NULL, ...){
+
   f <- fringe(data)
   nms <- getCnames(f)
   clab <- clab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
-  g <- ggplot(data, aes(x = as.Date(b), y = 0, colour = a)) +
-    geom_point() +
-    scale_colour_brewer(clab,palette = 'Set1') +
-    ylab(xlab) +
-    xlab(ylab) +
-    coord_flip() +
-    ggtitle(title) +
-    theme_minimal() +
-    theme(axis.title.x=element_blank(),
+  data$b <- lubridate::as_date(as.numeric(data$b))
+
+  graph <- ggplot(data, aes(x = b, y = 0, colour = a)) +
+       geom_point() +
+       scale_colour_brewer(clab,palette = 'Set1') +
+       coord_flip() +
+       theme_ds() +
+       theme(axis.title.x=element_blank(),
           axis.text.x=element_blank(),
-          axis.ticks.x=element_blank())
-  g
+          axis.ticks.x=element_blank()) + labs(title = title, subtitle = subtitle, caption = caption )
+  graph
 }
 
 
@@ -72,7 +74,7 @@ gg_pointline_ver_CaDa. <- function(data,title = "",ylab = NULL, clab = NULL, ...
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_histogram_CaDa. <- function(data,title = "",xlab = NULL, clab = NULL, ...){
+gg_histogram_CaDa. <- function(data,title = "", subtitle = "", caption = "",xlab = NULL, clab = NULL, ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[2]

@@ -5,8 +5,8 @@
 \title{gg_facet_area_hor_CaNu.
 Facet Horizontal Area}
 \usage{
-gg_facet_area_hor_CaNu.(data, titleLabel = "", xLabel = "Index",
-  yLabel = NULL, ...)
+gg_facet_area_hor_CaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = "Index", yLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,10 +5,10 @@
 \title{gg_bubble_depto_CaGe.
 Points inside Colombia's mpios map}
 \usage{
-gg_bubble_depto_CaGe.(data, titleLabel = "", depto_ = "05",
-  leg_pos = "right", fillLabel = NULL, text = FALSE, text_size = 2.5,
-  prop_text = 0.1, color_map = "gray", color_frontier = "white",
-  scale_point = 0.25, alpha = 0.5, ...)
+gg_bubble_depto_CaGe.(data, titleLabel = "", subtitle = "", caption = "",
+  depto_ = "05", leg_pos = "right", fillLabel = NULL, text = FALSE,
+  text_size = 2.5, prop_text = 0.1, color_map = "gray",
+  color_frontier = "white", scale_point = 0.25, alpha = 0.5, ...)
 }
 \arguments{
 \item{x}{A category.}

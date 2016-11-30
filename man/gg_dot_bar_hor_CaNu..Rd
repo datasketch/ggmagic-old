@@ -5,8 +5,9 @@
 \title{gg_dot_bar_hor_CaNu.
 Horizontal Dot Bar}
 \usage{
-gg_dot_bar_hor_CaNu.(data, titleLabel = "", xLabel = NULL,
-  yLabel = "Count", fillLabel = NULL, leg_pos = "right", ...)
+gg_dot_bar_hor_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
+  ...)
 }
 \arguments{
 \item{x}{A number.}

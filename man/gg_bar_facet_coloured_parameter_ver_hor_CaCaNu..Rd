@@ -6,8 +6,8 @@
 Facet Horizontal coloured by parameter Bars}
 \usage{
 gg_bar_facet_coloured_parameter_ver_hor_CaCaNu.(data, titleLabel = "",
-  xLabel = NULL, yLabel = NULL, parameter1 = NULL, parameter2 = NULL,
-  leg_pos = "right", ...)
+  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+  parameter1 = NULL, parameter2 = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

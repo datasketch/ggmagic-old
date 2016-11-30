@@ -3,11 +3,11 @@
 \name{gg_lines_hor_CaYeNu.}
 \alias{gg_lines_hor_CaYeNu.}
 \title{gg_lines_hor_CaYeNu.: title.
-Barras stacked
+Lines
 Tiene múltiples líneas}
 \usage{
-gg_lines_hor_CaYeNu.(data, title = "", xlab = NULL, ylab = NULL,
-  leg_pos = "right", ...)
+gg_lines_hor_CaYeNu.(data, title = "", subtitle = "", caption = "",
+  xlab = NULL, ylab = NULL, leg_pos = "right", angle = 90, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -19,7 +19,7 @@ The sum of \code{x} and \code{y}.
 }
 \description{
 gg_lines_hor_CaYeNu.: title.
-Barras stacked
+Lines
 Tiene múltiples líneas
 }
 \section{ftypes}{

@@ -5,8 +5,9 @@
 \title{gg_bar_single_stacked_ver_CaNu.
 Single Vertical Stacked Bar}
 \usage{
-gg_bar_single_stacked_ver_CaNu.(data, titleLabel = "", yLabel = "Frequency",
-  fillLabel = "Types", leg_pos = "right", width = 0.3, ...)
+gg_bar_single_stacked_ver_CaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", yLabel = "Frequency", fillLabel = "Types",
+  leg_pos = "right", width = 0.3, ...)
 }
 \arguments{
 \item{x}{A number.}

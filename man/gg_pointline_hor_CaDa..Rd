@@ -5,7 +5,8 @@
 \title{gg_pointline_hor_CaDa.: title.
 pointlines}
 \usage{
-gg_pointline_hor_CaDa.(data, title = "", xlab = NULL, clab = NULL, ...)
+gg_pointline_hor_CaDa.(data, title = "", subtitle = "", caption = "",
+  xlab = NULL, clab = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

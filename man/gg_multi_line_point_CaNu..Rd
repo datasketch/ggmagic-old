@@ -5,8 +5,9 @@
 \title{gg_multi_line_point_CaNu.
 Grouped Line Color Point}
 \usage{
-gg_multi_line_point_CaNu.(data, titleLabel = "", xLabel = "Index",
-  yLabel = NULL, fillLabel = NULL, leg_pos = "right", type = 1, ...)
+gg_multi_line_point_CaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = "Index", yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", type = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

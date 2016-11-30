@@ -6,7 +6,8 @@
 Pie}
 \usage{
 gg_pie_Ca.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, leg_pos = "right", ...)
+  fillLabel = NULL, text = TRUE, type = "percent", size_text = 4,
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,8 +5,8 @@
 \title{gg_bar_circular_CaNu.
 Circular Bar}
 \usage{
-gg_bar_circular_CaNu.(data, titleLabel = "", fillLabel = NULL,
-  leg_pos = "right", width = 0.85, ...)
+gg_bar_circular_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  fillLabel = NULL, leg_pos = "right", width = 0.85, ...)
 }
 \arguments{
 \item{x}{A number.}
