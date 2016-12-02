@@ -225,7 +225,7 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "", subtitle = "", capt
 
 #' gg_bubble_co_Ge.
 #' Points inside Colombia's deptos map
-#' @name gg_bubble_co_Gdata_centroids <- suppressMessages(read_csv(system.file("geo/centroids_mpios_depto_co.csv", package = "ggmagic"), col_names = TRUE))e.
+#' @name gg_bubble_co_Ge.
 #' @param x A category.
 #' @param y A number.
 #' @export

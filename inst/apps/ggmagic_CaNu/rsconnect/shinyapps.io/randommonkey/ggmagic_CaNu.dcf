@@ -1,9 +1,10 @@
 name: ggmagic_CaNu
+title:
 account: randommonkey
 server: shinyapps.io
 appId: 134856
-bundleId: 602616
+bundleId: 633497
 url: https://randommonkey.shinyapps.io/ggmagic_CaNu/
-when: 1478020168.00758
+when: 1480693728.18434
 asMultiple: FALSE
 asStatic: FALSE

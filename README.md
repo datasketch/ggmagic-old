@@ -4,7 +4,7 @@
 
 ```
 devtools::install_github("randommonkey/ggmagic",
-                         auth_token = "8e53626df4df618eeeeb771deaa8b46a32648b89")
+                         auth_token = "da101e3b96074141cf46f07a32e075bd20771875")
 ```
 
 ## Dependencies
