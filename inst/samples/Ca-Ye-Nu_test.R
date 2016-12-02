@@ -3,7 +3,7 @@
 library(devtools)
 load_all()
 document()
-install()
+#install()
 
 
 data <- sampleData("Ca-Ye-Nu")
@@ -14,7 +14,16 @@ gg_bar_stk_hor_CaYeNu.(data)
 gg_bar_grp_ver_CaYeNu.(data)
 gg_bar_grp_hor_CaYeNu.(data)
 
+<<<<<<< HEAD
 gg_lines_hor_CaYeNu.(data,angle = 360)
+=======
+
+data <- data.frame(hechos = c("secuestro","secuestro", "secuestro", "delito", "delito", "ex", "ex"),
+                   year = c(2006,2007,2015,2007,2015,2007,2015),
+                   pop = c(432,230, 123, 7139, 21597, 1082, 5480))
+gg_lines_hor_CaYeNu.(data)
+
+>>>>>>> 05c86c83e88cec11891651df01c6d76b6f2d48c6
 gg_circle_CaYeNu.(data)
 gg_steam_CaYeNu.(data, leg_pos = "bottom")
 

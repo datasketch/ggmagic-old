@@ -111,7 +111,11 @@ gg_bar_stk_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_lines_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL,
+<<<<<<< HEAD
                                  ylab = NULL, leg_pos = "right", angle = 360, ...){
+=======
+                                 ylab = NULL, leg_pos = "right", angle = 45, ...){
+>>>>>>> 05c86c83e88cec11891651df01c6d76b6f2d48c6
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[2]
