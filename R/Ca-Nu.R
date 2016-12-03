@@ -1339,7 +1339,7 @@ gg_multi_line_point_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
 
   graph <- ggplot(data, aes(x=xorder, y=b)) + geom_point(aes(color = a), shape = type) + geom_line(aes(color = a))
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab, fill = flabel)
-  graph <- graph + theme_minimal()
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
   return(graph)
 }
@@ -1377,7 +1377,7 @@ gg_multi_line_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
 
   graph <- ggplot(data, aes(x=xorder, y=b)) + geom_line(aes(color = a))
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab, fill = flabel)
-  graph <- graph + theme_minimal()
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
   return(graph)
 }
