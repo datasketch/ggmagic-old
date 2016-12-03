@@ -37,6 +37,8 @@ gg_bar_unstacked_hor_CaCaNu.(dataCaCaNu)
 # Line
 horizontal_linegraphCCN(dataCaCaNu)
 vertical_linegraphCCN(dataCaCaNu)
+d <- data.frame(type = c("hola", "hola", "casa", "casa"), x = c("12", "16", "12", "16"), y = c(15,57,124,44))
+gg_multi_line_point_CaCaNu.(d, xLabel = "DEf")
 
 # Stacked Bar
 gg_bar_stacked_hor_CaCaNu.(dataCaCaNu)
