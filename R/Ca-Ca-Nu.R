@@ -966,9 +966,9 @@ gg_multi_line_point_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
   return(graph)
 }
 
-#' gg_multi_line_CaNu.
+#' gg_multi_line_CaCaNu.
 #' Grouped Line Coloured
-#' @name gg_multi_line_CaNu.
+#' @name gg_multi_line_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -977,7 +977,7 @@ gg_multi_line_point_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_multi_line_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+gg_multi_line_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                                 fillLabel = NULL, leg_pos="right", type = 1, ...){
 
   f <- fringe(data)

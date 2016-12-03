@@ -35,4 +35,5 @@ gg_area_stacked_hor_CaDaNu.(dfData)
 gg_area_stacked_100_ver_CaDaNu.(dfData)
 gg_area_stacked_100_hor_CaDaNu.(dfData)
 
-
+gg_multi_line_CaDaNu.(dataCaDaNu)
+gg_multi_line_point_CaDaNu.(dataCaDaNu)

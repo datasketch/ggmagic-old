@@ -45,7 +45,7 @@ gg_horizon_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLab
 #' add(1, 1)
 #' add(10, 1)
 gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel =  NULL, ...){
+                             yLabel =  NULL, angle_x = 45, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -54,8 +54,9 @@ gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xL
   data <- f$d
   data$a <- lubridate::as_date(data$a)
   graph <- ggplot_waterfall(data,'a','b') + theme_ds() + theme(legend.position="none") +
-           scale_color_manual(breaks = c("+",  "-", ""), values = c("#E5007D", "#009EE3", "black")) +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+           scale_color_manual(breaks = c("+",  "-", ""), values = getPalette()) +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   return(graph)
 }
@@ -81,8 +82,44 @@ gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab =
   data <- f$d
   data$a <- lubridate::as_date(data$a)
   graph <- ggplot(data, aes(x = a, y = b, group=1)) +
-           geom_line(stat = "identity", color = "#009EE3") +  theme_ds() +
+           geom_line(stat = "identity", aes(color = ""), show.legend = FALSE) +  theme_ds() +
+    scale_color_manual(values =  getPalette()) +
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  return(graph)
+}
+
+#' gg_lines_DaNu.
+#' Lines
+#' @name gg_lines_DaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Da-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_lines_points_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL,
+                                  ylab = NULL, type = 1, hline = NULL, angle_x = 45,
+                                  size_text = 8, ...){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xlab %||% nms[1]
+  ylab <- ylab %||% nms[2]
+  data <- f$d
+  data$a <- lubridate::as_date(data$a)
+  graph <- ggplot(data, aes(x = a, y = b, group=1)) +
+    geom_line(stat = "identity", aes(color = ""), show.legend = FALSE) +  theme_ds() +
+    geom_point(aes(color = ""), shape = type, show.legend = FALSE) +
+    scale_color_manual(values =  getPalette()) +
+    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, size = size_text, hjust = 1))
+
+  if(!is.null(hline)){
+    graph <- graph + geom_hline(aes(yintercept = hline), linetype="dotted")
+  }
+
   return(graph)
 }
 
@@ -210,7 +247,9 @@ gg_area_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL,
+                          ylab = NULL, hline = NULL, angle_x = 45,
+                          size_text = 8,...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -223,7 +262,12 @@ gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
           geom_line(aes(color=ifelse(c(diff(b),NA) > 0, "Gain", "Loss"), group=NA)) +
           scale_color_manual(guide="none",values=c(Gain="#009EE3", Loss="#E5007D")) +
           theme_ds() +
-          labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+          labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+   theme(axis.text.x = element_text(angle = angle_x, size = size_text, hjust = 1))
+
+   if(!is.null(hline)){
+     graph <- graph + geom_hline(aes(yintercept = hline), linetype="dotted")
+   }
 
  return(graph)
 }

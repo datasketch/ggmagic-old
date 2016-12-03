@@ -2,28 +2,46 @@
 % Please edit documentation in R/Da-Nu_funs.R
 \name{gg_lines_DaNu.}
 \alias{gg_lines_DaNu.}
+\alias{gg_lines_points_DaNu.}
 \title{gg_lines_DaNu.
 Lines}
 \usage{
 gg_lines_DaNu.(data, title = "", subtitle = "", caption = "",
   xlab = NULL, ylab = NULL, ...)
+
+gg_lines_points_DaNu.(data, title = "", subtitle = "", caption = "",
+  xlab = NULL, ylab = NULL, type = 1, hline = NULL, angle_x = 45,
+  size_text = 8, ...)
 }
 \arguments{
+\item{x}{A number.}
+
+\item{y}{A number.}
+
 \item{x}{A number.}
 
 \item{y}{A number.}
 }
 \value{
 The sum of \code{x} and \code{y}.
+
+The sum of \code{x} and \code{y}.
 }
 \description{
+gg_lines_DaNu.
+Lines
+
 gg_lines_DaNu.
 Lines
 }
 \section{ftypes}{
  Da-Nu
+
+ Da-Nu
 }
 \examples{
+add(1, 1)
+add(10, 1)
 add(1, 1)
 add(10, 1)
 }
