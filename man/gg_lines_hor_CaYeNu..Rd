@@ -7,7 +7,8 @@ Lines
 Tiene múltiples líneas}
 \usage{
 gg_lines_hor_CaYeNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, leg_pos = "right", angle = 45, ...)
+  xlab = NULL, ylab = NULL, leg_pos = "right", angle = 0, by = NULL,
+  ...)
 }
 \arguments{
 \item{x}{A number.}

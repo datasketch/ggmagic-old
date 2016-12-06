@@ -111,25 +111,24 @@ gg_bar_stk_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_lines_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL,
-<<<<<<< HEAD
-                                 ylab = NULL, leg_pos = "right", angle = 360, ...){
-=======
-                                 ylab = NULL, leg_pos = "right", angle = 45, ...){
->>>>>>> 05c86c83e88cec11891651df01c6d76b6f2d48c6
+                              ylab = NULL, leg_pos = "right", angle = 0, by = NULL, ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xlab %||% nms[2]
   ylab <- ylab %||% nms[3]
   data <- f$d
 
-  graph <- ggplot(data, aes(x=b,y=c,group=a,colour=a)) +
+  nuestroBy <- ifelse(length(unique(data$b )) <= 7, length(unique(data$b)), 5)
+  by <- by %||% nuestroBy
+
+  graph <- ggplot(data, aes(x = b ,y=c,group=a,colour=a)) +
            geom_line(stat = "identity") + theme_ds() +
            scale_y_continuous(labels = comma) +
+           scale_x_continuous(breaks = round(seq(min(data$b),max(data$b), length.out = by))) +
            scale_color_manual(values = getPalette())  +
            theme(legend.position = leg_pos) +
            theme(axis.text.x = element_text(angle = angle, hjust = 1)) +
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
-
   return(graph)
 }
 

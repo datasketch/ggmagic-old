@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_treemap_x_CaNu.}
 \alias{gg_treemap_x_CaNu.}
-\title{gg_treemap_x_CaNu.
+\title{gg_dataCamap_x_CaNu.
 Treemap fill by first Ca}
 \usage{
 gg_treemap_x_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_treemap_x_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_treemap_x_CaNu.
+gg_dataCamap_x_CaNu.
 Treemap fill by first Ca
 }
 \section{ftypes}{

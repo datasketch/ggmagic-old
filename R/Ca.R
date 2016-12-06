@@ -914,7 +914,7 @@ gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", f
 #' add(10, 1)
 gg_bubble_Ca2. <- function(data, titleLabel = "", subtitle = "", caption = "",  sep = 3, lim_inf =-40,
                              lim_sup = 40, fillLabel = NULL, ...){
-  data <- dataCa
+
   f <- fringe(data)
   nms <- getCnames(f)
   flabel <- fillLabel %||% nms[1]

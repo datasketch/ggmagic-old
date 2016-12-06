@@ -1943,7 +1943,7 @@ gg_steam_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
   return(graph)
 }
 
-#' gg_treemap_x_CaNu.
+#' gg_dataCamap_x_CaNu.
 #' Treemap fill by first Ca
 #' @name gg_treemap_x_CaNu.
 #' @param x A number.
@@ -1957,7 +1957,7 @@ gg_steam_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 gg_treemap_x_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
-  nm <- getCnames(f)
+  nms <- getCnames(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
