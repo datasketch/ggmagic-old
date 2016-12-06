@@ -37,3 +37,9 @@ gg_area_stacked_100_hor_CaDaNu.(dfData)
 
 gg_multi_line_CaDaNu.(dataCaDaNu)
 gg_multi_line_point_CaDaNu.(dataCaDaNu)
+
+
+data <- data.frame(aafr = c("perro", "perro", "gato", "gato"),
+                   frgr = as.Date(c("2016-05-03", "2016-05-04", "2016-05-03", "2016-05-04")),
+                   rsg = c(1:4))
+gg_bar_stacked_ver_CaDaNu.(data, angle_x = 0, hline = c(2,3,4))

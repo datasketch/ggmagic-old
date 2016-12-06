@@ -117,7 +117,8 @@ gg_lines_points_DaNu. <- function(data, title = "", subtitle = "", caption = "",
     theme(axis.text.x = element_text(angle = angle_x, size = size_text, hjust = 1))
 
   if(!is.null(hline)){
-    graph <- graph + geom_hline(aes(yintercept = hline), linetype="dotted")
+    graph <- graph + geom_hline(data = data.frame(valores = hline),
+                                aes(yintercept = valores), linetype="dotted")
   }
 
   return(graph)
@@ -266,7 +267,8 @@ gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
    theme(axis.text.x = element_text(angle = angle_x, size = size_text, hjust = 1))
 
    if(!is.null(hline)){
-     graph <- graph + geom_hline(aes(yintercept = hline), linetype="dotted")
+     graph <- graph + geom_hline(data = data.frame(valores = hline),
+                                 aes(yintercept = valores), linetype="dotted")
    }
 
  return(graph)
