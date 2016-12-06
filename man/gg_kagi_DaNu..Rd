@@ -6,7 +6,8 @@
 Kagi}
 \usage{
 gg_kagi_DaNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, ...)
+  xlab = NULL, ylab = NULL, hline = NULL, angle_x = 45, size_text = 8,
+  ...)
 }
 \arguments{
 \item{x}{A number.}

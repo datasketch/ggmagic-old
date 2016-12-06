@@ -120,7 +120,7 @@ gg_gauge_CaNu.(dataCaNu)
 gg_gauge_dial_Ca.(dataCaNu)
 
 #Grouped Line Point
-gg_multi_line_point_CaNu.(dataCaNu)
+gg_multi_line_point_CaNu.(dataCaNu, type = 4)
 gg_multi_line_CaNu.(dataCaNu)
 
 # Facet Line

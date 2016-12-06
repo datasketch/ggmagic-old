@@ -15,6 +15,7 @@ data <- data.frame(a=datesA, b=cumsum(rnorm(length(datesA))))
 gg_horizon_DaNu.(data)
 
 gg_lines_DaNu.(data)
+gg_lines_points_DaNu.(data, hline = 20)
 
 gg_scatter_DaNu.(data)
 

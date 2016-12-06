@@ -175,7 +175,105 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
   return(graph)
 }
 
+#' gg_multi_line_point_CaDaNu.
+#' Grouped Line Color Point
+#' @name gg_multi_line_point_CaDaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                        fillLabel = NULL, leg_pos="right", type = 1,
+                                        size_text = 8, angle_x = 45, ...){
 
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data$b <- lubridate::as_date(data$b)
+
+  graph <- ggplot(data, aes(x = b, y = c, group = a)) + geom_point(aes(color = a), shape = type) + geom_line(aes(color = a))
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) + scale_x_date() +
+    theme(axis.text.x = element_text(size = size_text, angle = angle_x, hjust = 1))
+
+  return(graph)
+}
+
+#' gg_multi_line_CaDaNu.
+#' Grouped Line Coloured
+#' @name gg_multi_line_CaDaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_multi_line_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                  fillLabel = NULL, leg_pos="right", type = 1,
+                                  size_text = 8, angle_x = 45, ...){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
+  flabel <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data$b <- lubridate::as_date(data$b)
+
+  graph <- ggplot(data, aes(x = b, y = c, group = a))  + geom_line(aes(color = a))
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
+    scale_x_date() + theme(axis.text.x = element_text(size = size_text, angle = angle_x, hjust = 1))
+
+  return(graph)
+}
+
+#' gg_bar_stacked_ver_CaDaNu.
+#' vertical stacked bar graph
+#' @name gg_bar_stacked_ver_CaDaNu.
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca,Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                       yLabel = NULL, leg_pos = "right", angle_x = 45,
+                                       size_text = 10, hline = NULL, ...){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[3]
+  data <- f$d
+
+  data$b <- lubridate::as_date(data$b)
+
+  graph <- ggplot(data, aes(x = b, y = c, fill = a, group = b)) + geom_bar(stat="identity", position = "stack")
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(size = size_text, angle = angle_x, hjust = 1)) +
+    scale_x_date()
+
+  if(!is.null(hline)){
+    graph <- graph + geom_hline(data = data.frame(valores = hline),
+                                aes(yintercept = valores), linetype="dotted")
+  }
+
+  return(graph)
+}
 
 #gg_scatter_trend_hor_CaDaNu.
 
