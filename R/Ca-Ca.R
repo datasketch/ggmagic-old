@@ -5,7 +5,7 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -19,29 +19,33 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "", subtitle = "", caption = "",
   data <- f$d
 
   data_graph <- data %>%
-    dplyr::group_by(a, b) %>%
-    dplyr::summarise(Count = n()) %>%
-    dplyr::arrange(desc(Count))
-  graph <- ggplot(data_graph, aes(x = a, y = b, size = Count, color = ""))
-  graph <- graph + geom_point()
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    theme_ds() + scale_color_manual(values = getPalette()) + guides(size = FALSE, colour = FALSE)
+                dplyr::group_by(a, b) %>%
+                dplyr::summarise(Count = n()) %>%
+                dplyr::arrange(desc(Count))
+
+  graph <- ggplot(data_graph, aes(x = a, y = b, size = Count, color = "")) +
+             geom_point()
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+           theme_ds() +
+           scale_color_manual(values = getPalette()) +
+           guides(size = FALSE, colour = FALSE)
 
   return(graph)
 }
 
-#' gg_coloured_bubble_CaCa.
+#' gg_bubble_coloured_CaCa.
 #' Coloured Bubble
-#' @name gg_coloured_bubble_CaCa.
+#' @name gg_bubble_coloured_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_bubble_CaCa.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bubble_coloured_CaCa.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                       yLabel = NULL, ...){
 
   f <- fringe(data)
@@ -51,30 +55,33 @@ gg_coloured_bubble_CaCa.  <- function(data, titleLabel = "", subtitle = "", capt
   data <- f$d
 
   data_graph <- data %>%
-    dplyr::group_by(a, b) %>%
-    dplyr::summarise(Count = n()) %>%
-    dplyr::arrange(desc(Count))
-  graph <- ggplot(data_graph, aes(x = a, y = b, size = Count))
-  graph <- graph + geom_point(aes(color = a))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    theme_ds() + scale_color_manual(values = getPalette()) + guides(colour = FALSE, size = FALSE)
+                dplyr::group_by(a, b) %>%
+                dplyr::summarise(Count = n()) %>%
+                dplyr::arrange(desc(Count))
+
+  graph <- ggplot(data_graph, aes(x = a, y = b, size = Count)) +
+           geom_point(aes(color = a))
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+           theme_ds() +
+           scale_color_manual(values = getPalette()) +
+           guides(colour = FALSE, size = FALSE)
 
   return(graph)
 }
 
-#' gg_facet_dot_bar_ver_CaCa.
+#' gg_dot_bar_ver_facet_CaCa.
 #' Facet Vertical Dot Bar
-#' @name gg_facet_dot_bar_ver_CaCa.
+#' @name gg_dot_bar_ver_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_bar_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_dot_bar_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                        yLabel = NULL, ncol = 1, fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
@@ -85,11 +92,11 @@ gg_facet_dot_bar_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", cap
   data <- f$d
 
   data_graph <- data %>%
-    dplyr::group_by(a) %>%
-    dplyr::summarise(count = n())
+                dplyr::group_by(a) %>%
+                dplyr::summarise(count = n())
 
   data_graph <- data_graph %>%
-    mutate(order = c(1:nrow(data_graph)))
+                mutate(order = c(1:nrow(data_graph)))
 
   graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
                   aes(x = order, fill = factor(a))) + geom_dotplot(method="histodot") +
@@ -103,129 +110,143 @@ gg_facet_dot_bar_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", cap
   return(graph)
 }
 
-#' gg_facet_dot_bar_hor_CaCa.
+#' gg_dot_bar_hor_facet_CaCa.
 #' Facet Horizontal Dot Bar
-#' @name gg_facet_dot_bar_hor_CaCa.
+#' @name gg_dot_bar_hor_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_bar_hor_CaCa. <- function(data, titleLabel = "", subtitle ="", caption = "", xLabel = NULL,
+gg_dot_bar_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle ="", caption = "", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
 
-  graph <- gg_facet_dot_bar_ver_CaCa.(data, titleLabel, subtitle, caption,  xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_dot_bar_ver_facet_CaCa.(data, titleLabel, subtitle, caption,  xLabel, yLabel, fillLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_pie_CaCa.
+#' gg_pie_facet_CaCa.
 #' Facet Pie
-#' @name gg_facet_pie_CaCa.
+#' @name gg_pie_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_pie_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_pie_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
+
   graph <- ggplot(data=data, aes(x = factor(1), fill = a)) +
-    geom_bar(width = 1) + coord_polar(theta = "y")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = flabel) +
-    theme(legend.position=leg_pos) + guides(text = FALSE)
-  graph <- graph + theme_ds_clean() + scale_fill_manual(values = getPalette())
+             geom_bar(width = 1) + coord_polar(theta = "y")
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = flabel) +
+           theme(legend.position=leg_pos) +
+           guides(text = FALSE)
+  graph <- graph +
+           theme_ds_clean() +
+           scale_fill_manual(values = getPalette())
   graph <- graph + facet_grid(.~b)
 
   return(graph)
 }
 
 #Width debe de ser un parámetro.  0 < width < 1.
-#' gg_facet_donut_CaCa.
+#' gg_donut_facet_CaCa.
 #' Facet Donut
-#' @name gg_facet_donut_CaCa.
+#' @name gg_donut_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_donut_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_donut_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                  width = 0.3, leg_pos="right", ...){
 
   f <- fringe(data)
   data <- f$d
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = factor(a))) +
-    geom_bar(width = width) + coord_polar(theta = "y")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
-    theme(legend.position=leg_pos) + guides(text = FALSE)
-  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
+             geom_bar(width = width) +
+             coord_polar(theta = "y")
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
+           theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph +
+           theme_ds() +
+           theme_ds_clean() +
+           scale_fill_manual(values = getPalette())
   graph <- graph + facet_grid(.~b)
 
   return(graph)
 }
 
-#' gg_facet_bullseye_CaCa.
+#' gg_bullseye_facet_CaCa.
 #' Facet Bullseye
-#' @name gg_facet_bullseye_CaCa.
+#' @name gg_bullseye_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_bullseye_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", leg_pos="right", ...){
+gg_bullseye_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", leg_pos="right", ...){
 
   f <- fringe(data)
   data <- f$d
 
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = a)) +
-    geom_bar(width = 1) + coord_polar(theta = "x")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
-    theme(legend.position=leg_pos) + guides(text = FALSE)
-  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
+             geom_bar(width = 1) + coord_polar(theta = "x")
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
+           theme(legend.position=leg_pos) + guides(text = FALSE)
+  graph <- graph +
+           theme_ds() +
+           theme_ds_clean() +
+           scale_fill_manual(values = getPalette())
   graph <- graph + facet_grid(.~b)
 
   return(graph)
 }
 
-#' gg_bar_facet_coloured_x_ver_CaCa.
+#' gg_bar_coloured_x_ver_facet_CaCa.
 #' Facet Vertical coloured bars
-#' @name gg_bar_facet_coloured_x_ver_CaCa.
+#' @name gg_bar_coloured_x_ver_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_x_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_coloured_x_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                     yLabel = 'Count', leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data = data, aes(x = a, fill = factor(a))) + geom_bar()
 
+  graph <- ggplot(data = data, aes(x = a, fill = factor(a))) + geom_bar()
   graph <- graph +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
            theme(legend.position=leg_pos) + guides(text = FALSE)
@@ -234,42 +255,43 @@ gg_bar_facet_coloured_x_ver_CaCa. <- function(data, titleLabel = "", subtitle = 
            scale_fill_manual(values = getPalette()) +
            theme(axis.text.x = element_text(angle = 45, hjust = 1))
   graph <- graph + facet_grid(.~b)
+
   return(graph)
 }
 
-#' gg_bar_facet_coloured_x_hor_CaCa.
+#' gg_bar_coloured_x_hor_facet_CaCa.
 #' Facet Horizontal coloured Bars
-#' @name gg_bar_facet_coloured_x_hor_CaCa.
+#' @name gg_bar_coloured_x_hor_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_x_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_coloured_x_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                     yLabel = 'Count', leg_pos = "right", ...){
 
-  graph <- gg_bar_facet_coloured_x_ver_CaCa.(data, titleLabel, subtitle, caption, xLabel,
+  graph <- gg_bar_coloured_x_ver_facet_CaCa.(data, titleLabel, subtitle, caption, xLabel,
                                    yLabel, leg_pos)
 
   graph <- graph + coord_flip()
   return(graph)
 }
 
-#' gg_bar_facet_coloured_y_ver_CaCa.
+#' gg_bar_coloured_y_ver_facet_CaCa.
 #' Facet Vertical coloured bars
-#' @name gg_bar_facet_coloured_y_ver_CaCa.
+#' @name gg_bar_coloured_y_ver_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_y_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_coloured_y_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                               yLabel = 'Count', leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
@@ -284,39 +306,39 @@ gg_bar_facet_coloured_y_ver_CaCa. <- function(data, titleLabel = "", subtitle = 
   return(graph)
 }
 
-#' gg_bar_facet_coloured_y_hor_CaCa.
+#' gg_bar_coloured_y_hor_facet_CaCa.
 #' Facet Horizontal coloured Bars
-#' @name gg_bar_facet_coloured_y_hor_CaCa.
+#' @name gg_bar_coloured_y_hor_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_y_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_coloured_y_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                               yLabel = 'Count', leg_pos = "right", ...){
 
-  graph <- gg_bar_facet_coloured_y_ver_CaCa.(data, titleLabel, subtitle, caption, xLabel,
+  graph <- gg_bar_coloured_y_ver_facet_CaCa.(data, titleLabel, subtitle, caption, xLabel,
                                              yLabel, leg_pos)
 
   graph <- graph + coord_flip()
   return(graph)
 }
 
-#' gg_bar_facet_coloured_parameter_ver_CaCa.
+#' gg_bar_coloured_parameter_ver_facet_CaCa.
 #' Facet Vertical coloured by parameter bars
-#' @name gg_bar_facet_coloured_parameter_ver_CaCa.
+#' @name gg_bar_coloured_parameter_ver_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_parameter_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_coloured_parameter_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                                       xLabel = NULL, yLabel = 'Count',
                                                       parameter1 = NULL, parameter2 = NULL,
                                                       leg_pos = "right", ...){
@@ -326,43 +348,50 @@ gg_bar_facet_coloured_parameter_ver_CaCa. <- function(data, titleLabel = "", sub
   p_a <-  parameter1 %||% sample(unique(data[,nms[1]]), length(unique(data[,nms[2]])))
   p_b <-  parameter2 %||% sample(unique(data[,nms[2]]), length(unique(data[,nms[2]])))
   data <- f$d
-  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(count = n())
+  data_graph <- data %>%
+                dplyr::group_by(a, b) %>%
+                dplyr::summarise(count = n())
 
   list_df <- apply(cbind(p_a, p_b), 1, function(x){
-    df <- data_graph%>% mutate(color = ifelse(a==x[1] & b==x[2], TRUE, FALSE))
-    df[df$color,]
-  })
+                                       df <- data_graph %>%
+                                             mutate(color = ifelse(a==x[1] & b==x[2], TRUE, FALSE))
+                                       df[df$color,]
+              })
   df <- bind_rows(list_df)
   data_graph <- left_join(data_graph, df, by = c("a", "b", "count"))
   data_graph[is.na(data_graph)] <- FALSE
 
   graph <- ggplot(data_graph, aes(a, weight = count)) +
-    geom_bar(position ="dodge", aes(fill =  color %in% TRUE))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
-    theme(legend.position=leg_pos) + guides(fill = FALSE)
-  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+             geom_bar(position ="dodge", aes(fill =  color %in% TRUE))
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+           theme(legend.position=leg_pos) + guides(fill = FALSE)
+  graph <- graph +
+           theme_ds() +
+           scale_fill_manual(values = getPalette()) +
+           theme(axis.text.x = element_text(angle = 45, hjust = 1))
   graph <- graph + facet_grid(.~b)
+
   return(graph)
 }
 
-#' gg_bar_facet_coloured_parameter_hor_CaCa.
+#' gg_bar_coloured_parameter_hor_facet_CaCa.
 #' Facet Horizontal coloured by parameter Bars
-#' @name gg_bar_facet_coloured_parameter_hor_CaCa.
+#' @name gg_bar_coloured_parameter_hor_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_coloured_parameter_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_coloured_parameter_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                                       xLabel = NULL, yLabel = 'Count',
                                                       parameter1 = NULL, parameter2 = NULL,
                                                       leg_pos = "right", ...){
 
-  graph <- gg_bar_facet_coloured_parameter_ver_CaCa.(data, titleLabel, subtitle, caption, xLabel,
+  graph <- gg_bar_coloured_parameter_ver_facet_CaCa.(data, titleLabel, subtitle, caption, xLabel,
                                              yLabel, parameter1, parameter2, leg_pos)
 
   graph <- graph + coord_flip()
@@ -376,7 +405,7 @@ gg_bar_facet_coloured_parameter_hor_CaCa. <- function(data, titleLabel = "", sub
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -402,7 +431,7 @@ gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capti
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -422,7 +451,7 @@ gg_bar_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle ="", captio
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -450,7 +479,7 @@ gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -471,7 +500,7 @@ gg_bar_ordered_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -500,7 +529,7 @@ gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", c
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -521,7 +550,7 @@ gg_stacked_dot_bar_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -552,7 +581,7 @@ gg_bar_unstacked_coloured_hor_CaCa. <- function(data, titleLabel = "", subtitle 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -565,18 +594,18 @@ gg_bar_unstacked_coloured_ver_CaCa. <- function(data, titleLabel = "", subtitle 
   return(graph)
 }
 
-#' gg_facet_line_hor_CaCa.
+#' gg_line_hor_facet_CaCa.
 #' Horizontal Line
-#' @name gg_facet_line_hor_CaCa.
+#' @name gg_line_hor_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                  yLabel = "Count", ...){
 
   f <- fringe(data)
@@ -598,38 +627,38 @@ gg_facet_line_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
   return(graph)
 }
 
-#' gg_facet_line_ver_CaCa.
+#' gg_line_ver_facet_CaCa.
 #' Vertical Line
-#' @name gg_facet_line_ver_CaCa.
+#' @name gg_line_ver_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = "Count", ...){
 
-  graph <- gg_facet_line_hor_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel)
+  graph <- gg_line_hor_facet_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel)
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_line_point_hor_CaCa.
+#' gg_line_point_hor_facet_CaCa.
 #' Horizontal Line Point
-#' @name gg_facet_line_point_hor_CaCa.
+#' @name gg_line_point_hor_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_point_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_point_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                     yLabel = "Count", ...){
 
   f <- fringe(data)
@@ -638,33 +667,37 @@ gg_facet_line_point_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", 
   data <- f$d
 
   data_graph <- data %>%
-    dplyr::group_by(a, b) %>%
-    dplyr::summarise(count = n()) %>%
-    dplyr::arrange(desc(count))
+                dplyr::group_by(a, b) %>%
+                dplyr::summarise(count = n()) %>%
+                dplyr::arrange(desc(count))
 
   graph <- ggplot(data = data_graph, aes(x = a, y = count, group=b, colour = "")) + geom_line() +
-    geom_point() + facet_grid(. ~b)
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + guides(color = FALSE)
-  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
+             geom_point() + facet_grid(. ~b)
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+           guides(color = FALSE)
+  graph <- graph +
+           theme_ds() +
+           scale_color_manual(values = getPalette())
 
   return(graph)
 }
 
-#' gg_facet_line_point_ver_CaCa.
+#' gg_line_point_ver_facet_CaCa.
 #' Vertical Line Point
-#' @name gg_facet_line_point_ver_CaCa.
+#' @name gg_line_point_ver_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_point_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_point_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                     yLabel = "Count", ...){
 
-  graph <- gg_facet_line_point_hor_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel)
+  graph <- gg_line_point_hor_facet_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -677,7 +710,7 @@ gg_facet_line_point_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -705,7 +738,7 @@ gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -726,7 +759,7 @@ gg_bar_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", c
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -759,7 +792,7 @@ gg_area_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", capt
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -779,7 +812,7 @@ gg_area_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capt
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -812,7 +845,7 @@ gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -832,7 +865,7 @@ gg_area_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -874,7 +907,7 @@ gg_marimekko_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -885,18 +918,18 @@ gg_marimekko_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption
   return(graph)
 }
 
-#' gg_bar_stacked_polar_CaCa.
+#' gg_bar_polar_stacked_CaCa.
 #' Stacked Polar bar
-#' @name gg_bar_stacked_polar_CaCa.
+#' @name gg_bar_polar_stacked_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_polar_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_polar_stacked_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                      yLabel = NULL, text = TRUE, type = 'percent', size_text = 3, leg_pos = "right", l_ncol = 1, ...){
 
   f <- fringe(data)
@@ -921,21 +954,22 @@ gg_bar_stacked_polar_CaCa. <- function(data, titleLabel = "", subtitle = "", cap
                  axis.ticks.y = element_blank(),
                  axis.text.y = element_blank(),
                  axis.title.y = element_blank())
+  return(graph)
 
 }
 
-#' gg_bar_stacked_polar_100_CaCa.
+#' gg_bar_polar_stacked_100_CaCa.
 #' Stacked Polar  100pct
-#' @name gg_bar_stacked_polar_100_CaCa.
+#' @name gg_bar_polar_stacked_100_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_polar_100_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_polar_stacked_100_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                            yLabel = NULL, text = TRUE, type = 'percent', size_text = 2,
                                            leg_pos = "right", width = 1, l_ncol = 1,  ...){
 
@@ -954,7 +988,7 @@ gg_bar_stacked_polar_100_CaCa. <- function(data, titleLabel = "", subtitle = "",
 
 
   graph <- ggplot(data_graph, aes(a, fill = b, weight = count)) +
-    geom_bar(width = 1, position = "fill")  + coord_polar()
+             geom_bar(width = 1, position = "fill")  + coord_polar()
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
   graph <- graph + theme(legend.position=leg_pos) + guides(fill=guide_legend(ncol=l_ncol)) + theme_ds()
   graph <- graph +
@@ -979,35 +1013,38 @@ gg_bar_stacked_polar_100_CaCa. <- function(data, titleLabel = "", subtitle = "",
 
 
 
-#' gg_bar_facet_circular_CaCa.
+#' gg_bar_circular_facet_CaCa.
 #' Circular Bar
-#' @name gg_bar_facet_circular_CaCa.
+#' @name gg_bar_circular_facet_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_circular_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_circular_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                         leg_pos="right", width = 0.85, ...){
 
   f <- fringe(data)
   data <- f$d
 
   data_graph <- data %>%
-    dplyr::group_by(a, b) %>%
-    dplyr::summarise(count = n()) %>%
-    dplyr::arrange(desc(count))
+                dplyr::group_by(a, b) %>%
+                dplyr::summarise(count = n()) %>%
+                dplyr::arrange(desc(count))
 
   graph <- ggplot(data_graph, aes(x = a, y = count , fill = a )) +
-    geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
-
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "")
-  graph <- graph + theme(legend.position=leg_pos)
-  graph <- graph + theme_ds() + theme_ds_clean() +
-    scale_fill_manual(values = getPalette())
+             geom_bar(width = width, stat="identity") +
+             coord_polar(theta = "y")
+graph <- graph +
+         labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "")
+  graph <- graph +
+           theme(legend.position=leg_pos) +
+           theme_ds() +
+           theme_ds_clean() +
+           scale_fill_manual(values = getPalette())
   graph <- graph + theme(legend.position=leg_pos) + facet_grid(. ~b)
 
   return(graph)
@@ -1020,7 +1057,7 @@ gg_bar_facet_circular_CaCa. <- function(data, titleLabel = "", subtitle = "", ca
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -1030,9 +1067,9 @@ gg_treemap_x_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
   data <- f$d
 
   data_graph <- data %>%
-    dplyr::group_by(a, b) %>%
-    dplyr::summarise(count = n()) %>%
-    dplyr::arrange(desc(count))
+                dplyr::group_by(a, b) %>%
+                dplyr::summarise(count = n()) %>%
+                dplyr::arrange(desc(count))
 
   data_graph$a <- as.factor(data_graph$a)
   data_graph$b <- as.factor(data_graph$b)
@@ -1055,7 +1092,7 @@ gg_treemap_x_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca,Ca-Nu, Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -1065,9 +1102,9 @@ gg_treemap_y_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
   data <- f$d
 
   data_graph <- data %>%
-    dplyr::group_by(a, b) %>%
-    dplyr::summarise(count = n()) %>%
-    dplyr::arrange(desc(count))
+                dplyr::group_by(a, b) %>%
+                dplyr::summarise(count = n()) %>%
+                dplyr::arrange(desc(count))
 
   data_graph$a <- as.factor(data_graph$a)
   data_graph$b <- as.factor(data_graph$b)

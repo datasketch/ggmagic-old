@@ -22,7 +22,7 @@ gg_bar_unstacked_coloured_hor_CaCa.
 Unstacked Coloured horizontal Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca,Ca-Nu, Ca-Ca
 }
 \examples{
 add(1, 1)

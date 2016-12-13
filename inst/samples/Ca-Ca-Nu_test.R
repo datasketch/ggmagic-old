@@ -5,7 +5,6 @@ document()
 install()
 library(ggmagic)
 
-
 catA <- rep("Callejero", round(runif(1, 10, 20), digits = 0))
 catB <- rep("De raza", round(runif(1, 10, 20), digits = 0))
 catC <- rep("Mixto", round(runif(1, 10, 20), digits = 0))
@@ -22,8 +21,8 @@ dataCaCaNu[] <- sapply(dataCaCaNu, as.character)
 dataCaCaNu$c <- runif(nrow(dataCaCaNu), min = 0, max = 50)
 
 # Coloured Bubble
-gg_coloured_x_bubble_CaCaNu.(dataCaCaNu)
-gg_coloured_y_bubble_CaCaNu.(dataCaCaNu)
+gg_bubble_coloured_x_CaCaNu.(dataCaCaNu)
+gg_bubble_coloured_y_CaCaNu.(dataCaCaNu)
 
 gg_pyramid_CaCaNu.(dataCaCaNu)
 
@@ -35,8 +34,8 @@ gg_bar_unstacked_ver_CaCaNu.(dataCaCaNu)
 gg_bar_unstacked_hor_CaCaNu.(dataCaCaNu)
 
 # Line
-horizontal_linegraphCCN(dataCaCaNu)
-vertical_linegraphCCN(dataCaCaNu)
+gg_line_hor_facet_CaCaNu.(dataCaCaNu)
+gg_line_ver_facet_CaCaNu.(dataCaCaNu)
 d <- data.frame(type = c("hola", "hola", "casa", "casa"), x = c("12", "16", "12", "16"), y = c(15,57,124,44))
 gg_multi_line_point_CaCaNu.(d, xLabel = "DEf")
 
@@ -57,16 +56,16 @@ gg_area_stacked_100_hor_CaCaNu.(dataCaCaNu)
 gg_area_stacked_100_ver_CaCaNu.(dataCaCaNu)
 
 # Facet Circular
-gg_bar_facet_circular_CaCaNu.(dataCaCaNu)
+gg_bar_circular_facet_CaCaNu.(dataCaCaNu)
 
 # Facet Pie
-gg_facet_pie_CaCaNu.(dataCaCaNu)
+gg_pie_facet_CaCaNu.(dataCaCaNu)
 
 # Facet Donut
-gg_facet_donut_CaCaNu.(dataCaCaNu)
+gg_donut_facet_CaCaNu.(dataCaCaNu)
 
 # Facet Bullseye
-gg_facet_bullseye_CaCaNu.(dataCaCaNu)
+gg_bullseye_facet_CaCaNu.(dataCaCaNu)
 
 # Stacked Polar Bar
 gg_bar_stacked_polar_CaCaNu.(dataCaCaNu)
@@ -75,18 +74,18 @@ gg_bar_stacked_polar_CaCaNu.(dataCaCaNu)
 gg_bar_stacked_polar_100_CaCaNu.(dataCaCaNu)
 
 # Facet Coloured Bars
-gg_bar_facet_coloured_x_ver_CaCaNu.(dataCaCaNu)
-gg_bar_facet_coloured_x_hor_CaCaNu.(dataCaCaNu)
-gg_bar_facet_coloured_y_ver_CaCaNu.(dataCaCaNu)
-gg_bar_facet_coloured_y_hor_CaCaNu.(dataCaCaNu)
-gg_bar_facet_coloured_z_ver_CaCaNu.(dataCaCaNu)
-gg_bar_facet_coloured_z_hor_CaCaNu.(dataCaCaNu)
+gg_bar_coloured_ver_x_facet_CaCaNu.(dataCaCaNu)
+gg_bar_coloured_hor_x_facet_CaCaNu.(dataCaCaNu)
+gg_bar_coloured_ver_y_facet_CaCaNu.(dataCaCaNu)
+gg_bar_coloured_hor_y_facet_CaCaNu.(dataCaCaNu)
+gg_bar_coloured_ver_z_facet_CaCaNu.(dataCaCaNu)
+gg_bar_coloured_hor_z_facet_CaCaNu.(dataCaCaNu)
 
 # Facet Coloured parameter Bar
-gg_bar_facet_coloured_parameter_ver_ver_CaCaNu.(dataCaCaNu,
+gg_bar_coloured_parameter_ver_ver_facet_CaCaNu.(dataCaCaNu,
                                           parameter1 = c("Callejero"),
                                           parameter2 = c("A"))
-gg_bar_facet_coloured_parameter_ver_hor_CaCaNu.(dataCaCaNu,
+gg_bar_coloured_parameter_ver_hor_facet_CaCaNu.(dataCaCaNu,
                                           parameter1 = c("Callejero", "De raza", "Mixto"),
                                           parameter2 = c("A","B","C"))
 

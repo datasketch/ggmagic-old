@@ -21,7 +21,7 @@ gg_marimekko_hor_CaCa.
 Horizontal Marimekko
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca,Ca-Nu, Ca-Ca
 }
 \examples{
 add(1, 1)

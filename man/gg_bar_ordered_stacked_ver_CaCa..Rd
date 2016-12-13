@@ -22,7 +22,7 @@ gg_bar_ordered_stacked_ver_CaCa.
 Ordered Stacked Vertical Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca,Ca-Nu, Ca-Ca
 }
 \examples{
 add(1, 1)

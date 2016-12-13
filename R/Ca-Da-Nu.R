@@ -5,7 +5,7 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -38,7 +38,7 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -72,7 +72,7 @@ gg_steam_CaDaNu. <- function(data, titleLabel = "", subtitle  = "", caption = ""
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -106,7 +106,7 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -127,7 +127,7 @@ gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -161,7 +161,7 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -182,7 +182,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -199,10 +199,16 @@ gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
 
   data$b <- lubridate::as_date(data$b)
 
-  graph <- ggplot(data, aes(x = b, y = c, group = a)) + geom_point(aes(color = a), shape = type) + geom_line(aes(color = a))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
-  graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) + scale_x_date() +
-    theme(axis.text.x = element_text(size = size_text, angle = angle_x, hjust = 1))
+  graph <- ggplot(data, aes(x = b, y = c, group = a)) +
+             geom_point(aes(color = a), shape = type) +
+             geom_line(aes(color = a))
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
+  graph <- graph +
+           theme_ds() +
+           scale_color_manual(values = getPalette()) +
+           scale_x_date() +
+           theme(axis.text.x = element_text(size = size_text, angle = angle_x, hjust = 1))
 
   return(graph)
 }
@@ -214,7 +220,7 @@ gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -246,7 +252,7 @@ gg_multi_line_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption 
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
