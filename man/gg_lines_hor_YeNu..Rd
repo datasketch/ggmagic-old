@@ -3,7 +3,7 @@
 \name{gg_lines_hor_YeNu.}
 \alias{gg_lines_hor_YeNu.}
 \title{gg_lines_hor_YeNu.: title.
-Barras stacked
+Horizontal Lines
 Tiene múltiples líneas}
 \usage{
 gg_lines_hor_YeNu.(data, title = "", subtitle = "", caption = "",
@@ -19,11 +19,11 @@ The sum of \code{x} and \code{y}.
 }
 \description{
 gg_lines_hor_YeNu.: title.
-Barras stacked
+Horizontal Lines
 Tiene múltiples líneas
 }
 \section{ftypes}{
- Ca-Ye-Nu,Ca-Ca-Nu
+ Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
 }
 \examples{
 add(1, 1)

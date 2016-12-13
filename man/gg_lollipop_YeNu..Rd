@@ -3,8 +3,8 @@
 \name{gg_lollipop_YeNu.}
 \alias{gg_lollipop_YeNu.}
 \title{gg_lollipop_YeNu.
-lollipop
-segment and point}
+lollipop. segment and point
+gg_lollipop_YeNu.}
 \usage{
 gg_lollipop_YeNu.(data, title = "", subtitle = "", caption = "",
   xlab = NULL, ylab = NULL, size = 7, ...)
@@ -19,11 +19,11 @@ The sum of \code{x} and \code{y}.
 }
 \description{
 gg_lollipop_YeNu.
-lollipop
-segment and point
+lollipop. segment and point
+gg_lollipop_YeNu.
 }
 \section{ftypes}{
- Ca-Ye-Nu,Ca-Ca-Nu
+ Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
 }
 \examples{
 add(1, 1)

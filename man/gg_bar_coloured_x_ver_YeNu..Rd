@@ -3,7 +3,7 @@
 \name{gg_bar_coloured_x_ver_YeNu.}
 \alias{gg_bar_coloured_x_ver_YeNu.}
 \title{gg_bar_coloured_x_ver_YeNu.
-vertical bar}
+vertical coloured bar}
 \usage{
 gg_bar_coloured_x_ver_YeNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, text = TRUE, type = "percent",
@@ -20,10 +20,10 @@ The sum of \code{x} and \code{y}.
 }
 \description{
 gg_bar_coloured_x_ver_YeNu.
-vertical bar
+vertical coloured bar
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ye-Nu
+ Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
 }
 \examples{
 add(1, 1)
