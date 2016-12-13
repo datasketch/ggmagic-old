@@ -7,6 +7,16 @@ install()
 library(ggmagic)
 
 
+#####
+
+
+
+
+
+
+
+######
+
 d <- sampleData("Ca-Ye-Nu",nrow = 11)
 gg_lines_hor_CaYeNu.(d)
 

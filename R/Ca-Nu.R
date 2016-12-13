@@ -506,9 +506,9 @@ gg_facet_dist_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
   return(graph)
 }
 
-#' gg_facet_hist_ver_CaNu.
+#' gg_facet_hist_mean_ver_CaNu.
 #' Facet Vertical Histogram + Mean
-#' @name gg_facet_hist_ver_CaNu.
+#' @name gg_facet_hist_mean_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -599,9 +599,9 @@ gg_facet_hist_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
   return(graph)
 }
 
-#' gg_facet_dist_hist_hor_CaNu.
+#' gg_facet_dist_hist_ver_CaNu.
 #' Facet Vertical Histogram + Dist
-#' @name gg_facet_dist_hist_hor_CaNu.
+#' @name gg_facet_dist_hist_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -625,34 +625,34 @@ gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", c
   return(graph)
 }
 
-#' gg_facet_dist_hist_ver_CaNu.
-#' Facet Vertical Histogram + Dist
-#' @name gg_facet_dist_hist_ver_CaNu.
-#' @param x A number.
-#' @param y A number.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                         fillLabel = NULL, leg_pos="right", ...){
-  f <- fringe(data)
-  nms <- getCnames(f)
-  xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
-  data <- f$d
-  graph <- ggplot(data, aes(x=b)) + geom_histogram(aes(y=..density..)) +
-    geom_density(alpha=0.5, col="red")
-  graph <- graph + geom_vline(aes(xintercept=mean(a)),
-                              color="red", linetype="dashed", size=1)
-
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
-  graph <- graph + theme_minimal() + facet_grid(. ~a)
-
-  return(graph)
-}
+# #' gg_facet_dist_hist_ver_CaNu.
+# #' Facet Vertical Histogram + Dist
+# #' @name gg_facet_dist_hist_ver_CaNu.
+# #' @param x A number.
+# #' @param y A number.
+# #' @export
+# #' @return The sum of \code{x} and \code{y}.
+# #' @section ftypes: Ca,Ca-Nu
+# #' @examples
+# #' add(1, 1)
+# #' add(10, 1)
+# gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
+#                                          fillLabel = NULL, leg_pos="right", ...){
+#   f <- fringe(data)
+#   nms <- getCnames(f)
+#   xlab <- xLabel %||% nms[2]
+#   flabel <- fillLabel %||% nms[1]
+#   data <- f$d
+#   graph <- ggplot(data, aes(x=b)) + geom_histogram(aes(y=..density..)) +
+#     geom_density(alpha=0.5, col="red")
+#   graph <- graph + geom_vline(aes(xintercept=mean(a)),
+#                               color="red", linetype="dashed", size=1)
+#
+#   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
+#   graph <- graph + theme_minimal() + facet_grid(. ~a)
+#
+#   return(graph)
+# }
 
 #' gg_facet_dist_hist_hor_CaNu.
 #' Facet Horizontal Histogram + Dist

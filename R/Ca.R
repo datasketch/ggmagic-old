@@ -73,7 +73,7 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 
 #' gg_bar_coloured_hor_Ca.
 #' Horizontal coloured Bars
-#' @name gg_bar_coloured_ver_Ca.
+#' @name gg_bar_coloured_hor_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export

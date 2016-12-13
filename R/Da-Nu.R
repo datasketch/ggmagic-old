@@ -88,9 +88,9 @@ gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab =
   return(graph)
 }
 
-#' gg_lines_DaNu.
+#' gg_lines_points_DaNu.
 #' Lines
-#' @name gg_lines_DaNu.
+#' @name gg_lines_points_DaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -373,7 +373,7 @@ gg_bar_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = N
 
 #' gg_bubbles_DaNu.
 #' bubbles
-#' @name gg_bar_DaNu.
+#' @name gg_bubbles_DaNu.
 #' @param x A data.
 #' @param y A number.
 #' @export
@@ -403,7 +403,7 @@ gg_bubbles_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab
 
 #' gg_lollipop_DaNu.
 #' lollipop
-#' @name gg_bar_DaNu.
+#' @name gg_lollipop_DaNu.
 #' @param x A data.
 #' @param y A number.
 #' @export
@@ -431,7 +431,7 @@ gg_lollipop_DaNu. <- function(data, title = "", subtitle = "", caption = "", xla
 
 #' gg_stepped_stacked_area_DaNu.
 #' stepped stacked area.
-#' @name gg_bar_DaNu.
+#' @name gg_stepped_stacked_area_DaNu.
 #' @param x A data.
 #' @param y A number.
 #' @export
