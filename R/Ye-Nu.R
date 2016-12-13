@@ -64,7 +64,7 @@ gg_lollipop_YeNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Ye-Nu, Nu-Nu, Da-Nu, Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -161,3 +161,37 @@ gg_area_YeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
   return(graph)
 }
 
+#' gg_horizon_YeNu.
+#' Horizon
+#' @name gg_horizon_YeNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Nu, Ye-Nu, Da-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_horizon_YeNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+                           yLabel =  NULL, leg_pos = "right",reverse = FALSE, ...){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  ylab <- yLabel %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  data <- f$d
+
+  graph <- ggplot_horizon(data, 'a', 'b')
+  graph <- graph + theme_ds() +
+    labs(tittle = title, subtitle = subtitle, caption =caption, x = xlab, y = ylab)
+
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
+
+  return(graph)
+}

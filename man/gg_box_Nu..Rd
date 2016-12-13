@@ -6,7 +6,7 @@
 Box plot}
 \usage{
 gg_box_Nu.(data, title = "", subtitle = "", caption = "", yLabel = NULL,
-  ...)
+  xLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -21,7 +21,7 @@ gg_box_Nu.
 Box plot
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Nu, Nu
 }
 \examples{
 add(1, 1)

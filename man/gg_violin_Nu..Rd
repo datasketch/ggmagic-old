@@ -6,7 +6,7 @@
 Violin}
 \usage{
 gg_violin_Nu.(data, title = "", subtitle = "", caption = "",
-  yLabel = NULL, ...)
+  yLabel = NULL, xLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -21,7 +21,7 @@ gg_violin_Nu.
 Violin
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Nu, Nu
 }
 \examples{
 add(1, 1)

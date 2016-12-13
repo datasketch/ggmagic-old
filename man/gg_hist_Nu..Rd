@@ -3,10 +3,10 @@
 \name{gg_hist_Nu.}
 \alias{gg_hist_Nu.}
 \title{gg_hist_Nu.
-Histograms}
+Histogram}
 \usage{
 gg_hist_Nu.(data, title = "", subtitle = "", caption = "", xLabel = "",
-  yLabel = NULL, ...)
+  yLabel = NULL, size = 1, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -18,10 +18,10 @@ The sum of \code{x} and \code{y}.
 }
 \description{
 gg_hist_Nu.
-Histograms
+Histogram
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Nu, Nu
 }
 \examples{
 add(1, 1)
