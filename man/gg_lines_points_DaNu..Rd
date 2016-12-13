@@ -6,8 +6,8 @@
 Lines}
 \usage{
 gg_lines_points_DaNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, type = 1, hline = NULL, angle_x = 45,
-  size_text = 8, ...)
+  xLabel = NULL, yLabel = NULL, type = 1, hline = NULL, angle_x = 0,
+  ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -22,7 +22,7 @@ gg_lines_points_DaNu.
 Lines
 }
 \section{ftypes}{
- Da-Nu
+ Nu, Ye-Nu, Da-Nu, Nu-Nu
 }
 \examples{
 add(1, 1)

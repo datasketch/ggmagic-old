@@ -5,8 +5,8 @@
 \title{gg_box_DaNu.
 Scatter}
 \usage{
-gg_box_DaNu.(data, title = "", subtitle = "", caption = "", xlab = NULL,
-  ylab = NULL, ...)
+gg_box_DaNu.(data, title = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -21,7 +21,7 @@ gg_box_DaNu.
 Scatter
 }
 \section{ftypes}{
- Da-Nu
+ Nu, Ye-Nu, Da-Nu, Nu-Nu
 }
 \examples{
 add(1, 1)

@@ -6,7 +6,7 @@
 Waterfall}
 \usage{
 gg_waterfall_DaNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, angle_x = 45, ...)
+  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -21,7 +21,7 @@ gg_waterfall_DaNu.
 Waterfall
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Nu, Ye-Nu, Da-Nu, Nu-Nu
 }
 \examples{
 add(1, 1)

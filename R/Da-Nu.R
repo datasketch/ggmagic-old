@@ -5,13 +5,14 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 
 gg_horizon_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel =  NULL, leg_pos = "right", reverse = FALSE, ...){
+                             yLabel =  NULL, leg_pos = "right", reverse = FALSE,
+                             angle_x = 0,...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -21,7 +22,8 @@ gg_horizon_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLab
   data$a <- lubridate::as_date(data$a)
   graph <- ggplot_horizon(data, 'a', 'b')
   graph <- graph + theme_ds() +
-    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -40,12 +42,12 @@ gg_horizon_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLab
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel =  NULL, angle_x = 45, ...){
+                             yLabel =  NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -69,22 +71,24 @@ gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xL
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+                           xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
   graph <- ggplot(data, aes(x = a, y = b, group=1)) +
            geom_line(stat = "identity", aes(color = ""), show.legend = FALSE) +  theme_ds() +
     scale_color_manual(values =  getPalette()) +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   return(graph)
 }
 
@@ -95,18 +99,17 @@ gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab =
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_points_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL,
-                                  ylab = NULL, type = 1, hline = NULL, angle_x = 45,
-                                  size_text = 8, ...){
+gg_lines_points_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+                                  yLabel = NULL, type = 1, hline = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
   graph <- ggplot(data, aes(x = a, y = b, group=1)) +
@@ -114,7 +117,7 @@ gg_lines_points_DaNu. <- function(data, title = "", subtitle = "", caption = "",
     geom_point(aes(color = ""), shape = type, show.legend = FALSE) +
     scale_color_manual(values =  getPalette()) +
     labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    theme(axis.text.x = element_text(angle = angle_x, size = size_text, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(!is.null(hline)){
     graph <- graph + geom_hline(data = data.frame(valores = hline),
@@ -124,30 +127,32 @@ gg_lines_points_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   return(graph)
 }
 
-#' gg_scatter_DaNu.
-#' Scatter
-#' @name gg_scatter_DaNu.
+#' gg_point_DaNu.
+#' Point scatter plot
+#' @name gg_point_DaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_scatter_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_point_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+                           xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data, aes(x = a, y = b)) +
-           geom_point(color = "#009EE3") + theme_ds() +
-           scale_y_continuous(labels = comma) +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+           geom_point(aes(color = ""), show.legend = FALSE) + theme_ds() +
+           scale_y_continuous(labels = comma) + scale_color_manual(values = getPalette()) +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
 
   return(graph)
@@ -160,24 +165,25 @@ gg_scatter_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_box_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_box_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+                         xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data) + geom_boxplot(aes(y = b,x = reorder(format(a,'%B'), a), fill=format(a,'%Y'))) +
-           theme_ds() + theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-           scale_fill_manual(values = getPalette()) +
+           theme_ds() + scale_fill_manual(values = getPalette()) +
            scale_y_continuous(labels = comma) +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
    return(graph)
 }
@@ -189,21 +195,22 @@ gg_box_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = N
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_violin_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_violin_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+                            xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data) + geom_violin(aes(y = b,x = reorder(format(a,'%B'), a), fill=format(a,'%Y'))) +
-           theme_ds() + theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+           theme_ds() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
            scale_fill_manual(values = getPalette()) +
            scale_y_continuous(labels = comma) +
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
@@ -217,23 +224,26 @@ gg_violin_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_area_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+                          xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data, aes(x = a, y = b, group=1)) +
-           geom_area(fill = "#009EE3") + theme_ds() +
+           geom_area(aes(fill = ""), show.legend = FALSE) + theme_ds() +
            scale_y_continuous(labels = comma) +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+
   return(graph)
 }
 
@@ -244,13 +254,12 @@ gg_area_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL,
-                          ylab = NULL, hline = NULL, angle_x = 45,
-                          size_text = 8,...){
+                          ylab = NULL, hline = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -260,11 +269,11 @@ gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
   data$a <- lubridate::as_date(data$a)
 
  graph <- ggplot(data, aes(x = a, y = b)) +
-          geom_line(aes(color=ifelse(c(diff(b),NA) > 0, "Gain", "Loss"), group=NA)) +
-          scale_color_manual(guide="none",values=c(Gain="#009EE3", Loss="#E5007D")) +
+          geom_line(aes(color=ifelse(c(diff(b), NA) > 0, "Gain", "Loss"), group = NA)) +
+          scale_color_manual(guide="none",values = getPalette()) +
           theme_ds() +
           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-   theme(axis.text.x = element_text(angle = angle_x, size = size_text, hjust = 1))
+   theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
    if(!is.null(hline)){
      graph <- graph + geom_hline(data = data.frame(valores = hline),
@@ -282,46 +291,47 @@ gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
-gg_smooth_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_smooth_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+                            xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
 
- graph <- ggplot(data, aes(x = a, y = b)) + geom_point(color = "#009EE3") +
-          scale_x_date() + geom_smooth(color = "#E5007D") + theme_ds() +
-          labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+ graph <- ggplot(data, aes(x = a, y = b)) + geom_point(aes(color = ""), show.legend = FALSE) +
+          scale_x_date() + geom_smooth(aes(color = "*"), show.legend = FALSE) + theme_ds() +
+          labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+   scale_color_manual(values = getPalette()) +
+   theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
  return(graph)
 }
 
-#' gg_div_DaNu.
-#' div
-#' @name gg_div_DaNu.
+#' gg_points_div_year_DaNu.
+#' Points facet by years
+#' @name gg_points_div_year_DaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Da-Nu, Ye-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-gg_div_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+                                     xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
   data$Year <- format(data$a, "%Y")
@@ -336,11 +346,50 @@ gg_div_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = N
            geom_point() + scale_color_manual(values = getPalette()) + theme_ds() +
            facet_grid(facets = Year ~ .) +
            scale_x_date(labels = function(x) format(x, "%d-%b")) +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   return(graph)
 }
 
+#' gg_line_points_facet_DaNu.
+#' Line Points facet by years
+#' @name gg_line_points_facet_DaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Da-Nu, Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_line_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+                                  xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
+
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
+  data$a <- lubridate::as_date(data$a)
+  data$Year <- format(data$a, "%Y")
+  data$Month <- format(data$a, "%b")
+  data$Day <- format(data$a, "%d")
+
+  data$MonthDay <- format(data$a, "%d-%b")
+
+  data$CommonDate <- as.Date(paste0("2000-",format(data$a, "%j")), "%Y-%j")
+
+  graph <- ggplot(data = data, mapping = aes(x = a, y = b, shape = Year, colour = Year)) +
+    geom_point() + geom_line() + scale_color_manual(values = getPalette()) + theme_ds() +
+    facet_grid(facets = Year ~ .) +
+    scale_x_date(labels = function(x) format(x, "%d-%b")) +
+    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+
+  return(graph)
+}
 
 #' gg_bar_DaNu.
 #' bar
@@ -349,23 +398,26 @@ gg_div_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = N
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Ca-Nu, Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_bar_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+                         xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data = data, aes(x = a, y = b)) +
-           geom_bar(stat="identity", na.rm = TRUE, color = "#009EE3")  +
+           geom_bar(stat="identity", na.rm = TRUE, aes(color = ""), show.legend = FALSE)  +
            scale_x_date(labels = date_format("%b %y")) +  theme_ds() +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    scale_color_manual(values = getPalette()) +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   return(graph)
 }
@@ -378,24 +430,26 @@ gg_bar_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = N
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Ca-Nu, Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubbles_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_bubbles_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+                             xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data, aes(x = a, y = b, size = b) )+
-           geom_point(shape = 21, colour = "#009EE3", fill = "#40b8d0") +
-           theme_ds() +
+           geom_point(shape = 21, aes(fill = ""), show.legend = FALSE) +
+           theme_ds() + scale_fill_manual(values = getPalette()) +
            theme(legend.position="none") +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
     return(graph)
 }
@@ -408,23 +462,25 @@ gg_bubbles_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lollipop_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_lollipop_DaNu. <- function(data, title = "", subtitle = "",
+                              caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
 
   graph <-  ggplot(data, aes(x = a, y = b)) +
-            geom_segment(aes(xend=a, yend=0), color = "#009EE3") + geom_point(color = "#E5007D") +
-            theme_ds() +
-            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+            geom_segment(aes(xend=a, yend=0)) + geom_point(aes(color = ""), show.legend = FALSE) +
+            theme_ds() + scale_color_manual(values = getPalette())
+            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   return(graph)
 }
 
@@ -440,19 +496,21 @@ gg_lollipop_DaNu. <- function(data, title = "", subtitle = "", caption = "", xla
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stepped_stacked_area_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_area_stepped_stacked_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+                                          xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   data$a <- lubridate::as_date(data$a)
 
   graph <-  ggplot(data) +
-            geom_step(aes(x = seq_along(a), y = b), color = "#009EE3") +
-            theme_ds() +
-            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+            geom_step(aes(x = seq_along(a), y = b, color = ""), show.legend = FALSE) +
+            theme_ds() + scale_color_manual(values = getPalette()) +
+            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   return(graph)
 }
 

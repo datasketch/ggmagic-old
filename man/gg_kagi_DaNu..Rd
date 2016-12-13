@@ -6,8 +6,7 @@
 Kagi}
 \usage{
 gg_kagi_DaNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, hline = NULL, angle_x = 45, size_text = 8,
-  ...)
+  xlab = NULL, ylab = NULL, hline = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -22,7 +21,7 @@ gg_kagi_DaNu.
 Kagi
 }
 \section{ftypes}{
- Da-Nu
+ Nu, Ye-Nu, Da-Nu, Nu-Nu
 }
 \examples{
 add(1, 1)

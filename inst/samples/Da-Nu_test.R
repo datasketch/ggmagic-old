@@ -17,9 +17,9 @@ gg_horizon_DaNu.(data)
 gg_lines_DaNu.(data)
 gg_lines_points_DaNu.(data, hline = 20)
 
-gg_scatter_DaNu.(data)
+gg_point_DaNu.(data)
 
-gg_box_DaNu.(data)
+gg_box_DaNu.(data, angle_x = 45)
 
 gg_violin_DaNu.(data)
 
@@ -29,7 +29,8 @@ gg_kagi_DaNu.(data)
 
 gg_smooth_DaNu.(data)
 
-gg_div_DaNu.(data)
+gg_points_facet_DaNu.(data)
+gg_line_points_facet_DaNu.(data)
 
 gg_bar_DaNu.(data)
 
@@ -37,7 +38,7 @@ gg_bubbles_DaNu.(data)
 
 gg_lollipop_DaNu.(data)
 
-gg_stepped_stacked_area_DaNu.(data)
+gg_area_stepped_stacked_DaNu.(data)
 
 gg_waterfall_DaNu.(data)
 
