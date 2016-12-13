@@ -23,7 +23,7 @@ gg_bar_coloured_parameter_ver_Ca.
 Vertical coloured by parameter bars
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

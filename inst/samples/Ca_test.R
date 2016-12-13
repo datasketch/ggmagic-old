@@ -62,8 +62,8 @@ gg_bubble_Ca.(d)
 gg_bubble_Ca.(dataCa)
 
 # Coloured bubble
-gg_coloured_bubble_Ca.(d)
-gg_coloured_bubble_Ca.(dataCa)
+gg_bubble_coloured_Ca.(d)
+gg_bubble_coloured_Ca.(dataCa)
 
 # Polar Bar
 gg_bar_polar_Ca.(dataCa, width = 1)

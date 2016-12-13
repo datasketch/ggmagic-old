@@ -6,7 +6,7 @@
 Bullseye}
 \usage{
 gg_bullseye_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, leg_pos = "right", ...)
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -21,7 +21,7 @@ gg_bullseye_CaNu.
 Bullseye
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

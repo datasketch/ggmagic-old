@@ -7,8 +7,8 @@ Lines
 Tiene múltiples líneas}
 \usage{
 gg_lines_hor_CaYeNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, leg_pos = "right", angle = 0, by = NULL,
-  ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle = 0,
+  by = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -24,7 +24,7 @@ Lines
 Tiene múltiples líneas
 }
 \section{ftypes}{
- Ca-Ye-Nu,Ca-Ca-Nu
+ Ca-Ye-Nu, Ca-Ca-Nu, Ca-Da-Nu
 }
 \examples{
 add(1, 1)

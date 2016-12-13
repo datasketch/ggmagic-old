@@ -21,7 +21,7 @@ gg_bar_polar_Ca.
 Polar Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

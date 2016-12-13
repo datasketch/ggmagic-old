@@ -6,7 +6,7 @@
 Polar Bar}
 \usage{
 gg_bar_polar_CaNu.(data, width = 0.95, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, leg_pos = "right", ...)
+  caption = "", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -21,7 +21,7 @@ gg_bar_polar_CaNu.
 Polar Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

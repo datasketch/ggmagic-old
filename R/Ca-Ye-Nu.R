@@ -6,17 +6,17 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ye-Nu, Ca-Ca-Nu, Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_grp_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xlab = NULL, ylab = NULL,
-                                   leg_pos = "right", ...){
+gg_bar_grp_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
+                                   xLabel = NULL, yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   data <- f$d
-  xlab <- xlab %||% nms[2]
-  ylab <- ylab %||% nms[3]
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
   graph <- ggplot(data, aes(x = b, y = c, group = a, fill = a)) +
     geom_bar( position = "dodge", stat="identity") +
     scale_y_continuous(labels = comma) +
@@ -35,14 +35,14 @@ gg_bar_grp_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ye-Nu, Ca-Ca-Nu, Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_grp_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xlab = NULL, ylab = NULL,
+gg_bar_grp_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                                    leg_pos = "right", ...){
 
-  graph <- gg_bar_grp_ver_CaYeNu.(data, title, subtitle, caption, xlab, ylab, leg_pos) + coord_flip()
+  graph <- gg_bar_grp_ver_CaYeNu.(data, title, subtitle, caption, xLabel, yLabel, leg_pos) + coord_flip()
 
   return(graph)
 }
@@ -57,18 +57,18 @@ gg_bar_grp_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ye-Nu, Ca-Ca-Nu, Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stk_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xlab = NULL, ylab = NULL,
-                                   leg_pos = "right", ...){
+gg_bar_stk_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xLabel = NULL,
+                                   yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[2]
-  ylab <- ylab %||% nms[3]
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
   data <- f$d
-  graph <- ggplot(data, aes(x=a,y=c,group=factor(b),fill=factor(b))) +
+  graph <- ggplot(data, aes(x = a, y = c, group = factor(b), fill = factor(b))) +
     geom_bar(stat = "identity") +
     scale_y_continuous(labels = comma) +
     coord_flip() + theme_ds() + scale_fill_manual(values = getPalette()) +
@@ -86,14 +86,15 @@ gg_bar_stk_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ye-Nu, Ca-Ca-Nu, Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stk_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xlab = NULL, ylab = NULL,
+gg_bar_stk_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
+                                   xLabel = NULL, yLabel = NULL,
                                    leg_pos = "right", ...){
 
-  graph <- gg_bar_stk_hor_CaYeNu.(data, title, subtitle, caption, xlab, ylab, leg_pos) + coord_flip()
+  graph <- gg_bar_stk_hor_CaYeNu.(data, title, subtitle, caption, xLabel, yLabel, leg_pos) + coord_flip()
 
   return(graph)
 }
@@ -106,16 +107,16 @@ gg_bar_stk_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ye-Nu, Ca-Ca-Nu, Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL,
-                              ylab = NULL, leg_pos = "right", angle = 0, by = NULL, ...){
+gg_lines_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+                              yLabel = NULL, leg_pos = "right", angle = 0, by = NULL, ...){
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[2]
-  ylab <- ylab %||% nms[3]
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
   data <- f$d
 
   nuestroBy <- ifelse(length(unique(data$b )) <= 7, length(unique(data$b)), 5)
@@ -141,23 +142,24 @@ gg_lines_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ye-Nu, Ca-Ca-Nu, Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_circle_CaYeNu. <- function(data, title = "", subtitle = "", caption = "",xlab = NULL, ylab = NULL,
+gg_circle_CaYeNu. <- function(data, title = "", subtitle = "", caption = "",
+                              xLabel = NULL, yLabel = NULL,
                               leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  xlab <- xlab %||% nms[2]
-  ylab <- ylab %||% nms[3]
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
   data <- f$d
 
 
   graph <- ggplot(data, aes(x = b, y = a)) +
-        geom_point(aes(size = c, colour = "")) +
-        theme_ds() + scale_color_manual(values = getPalette()) + guides(size = FALSE) +
+        geom_point(aes(size = c, colour = ""), show.legend = FALSE) +
+        theme_ds() + scale_color_manual(values = getPalette()) +
     theme(legend.position = leg_pos) +
     labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
@@ -173,7 +175,7 @@ gg_circle_CaYeNu. <- function(data, title = "", subtitle = "", caption = "",xlab
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ye-Nu, Ca-Ca-Nu, Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -209,7 +211,7 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Nu-Nu
+#' @section ftypes: Ca-Ye-Nu, Ca-Nu-Nu, Ca-Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

@@ -6,7 +6,7 @@
 Circular Bar}
 \usage{
 gg_bar_circular_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, leg_pos = "right", width = 0.85, ...)
+  leg_pos = "right", width = 0.85, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -21,7 +21,7 @@ gg_bar_circular_CaNu.
 Circular Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

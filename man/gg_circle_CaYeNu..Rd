@@ -7,7 +7,7 @@ circle
 ciculos}
 \usage{
 gg_circle_CaYeNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, leg_pos = "right", ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -23,7 +23,7 @@ circle
 ciculos
 }
 \section{ftypes}{
- Ca-Ye-Nu,Ca-Ca-Nu
+ Ca-Ye-Nu, Ca-Ca-Nu, Ca-Da-Nu
 }
 \examples{
 add(1, 1)

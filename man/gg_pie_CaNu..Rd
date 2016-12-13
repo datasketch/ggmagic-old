@@ -6,8 +6,7 @@
 Pie}
 \usage{
 gg_pie_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, text = TRUE, type = "percent", size_text = 3,
-  leg_pos = "right", ...)
+  text = TRUE, type = "percent", size_text = 3, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -22,7 +21,7 @@ gg_pie_CaNu.
 Pie
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

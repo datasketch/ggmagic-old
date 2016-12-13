@@ -6,8 +6,7 @@
 Single Vertical Stacked Bar}
 \usage{
 gg_bar_single_stacked_ver_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", yLabel = "Frequency", fillLabel = "Types",
-  leg_pos = "right", width = 0.3, ...)
+  caption = "", yLabel = "Count", leg_pos = "right", width = 0.3, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -22,7 +21,7 @@ gg_bar_single_stacked_ver_CaNu.
 Single Vertical Stacked Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

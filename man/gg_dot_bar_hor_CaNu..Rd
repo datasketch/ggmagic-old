@@ -6,8 +6,7 @@
 Horizontal Dot Bar}
 \usage{
 gg_dot_bar_hor_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
-  ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -22,7 +21,7 @@ gg_dot_bar_hor_CaNu.
 Horizontal Dot Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

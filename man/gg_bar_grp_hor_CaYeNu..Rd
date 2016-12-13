@@ -7,7 +7,7 @@ Barras stacked
 Tiene múltiples líneas}
 \usage{
 gg_bar_grp_hor_CaYeNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, leg_pos = "right", ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -23,7 +23,7 @@ Barras stacked
 Tiene múltiples líneas
 }
 \section{ftypes}{
- Ca-Ye-Nu,Ca-Ca-Nu
+ Ca-Ye-Nu, Ca-Ca-Nu, Ca-Da-Nu
 }
 \examples{
 add(1, 1)

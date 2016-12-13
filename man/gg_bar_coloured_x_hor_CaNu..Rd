@@ -7,8 +7,7 @@ horizontal bar}
 \usage{
 gg_bar_coloured_x_hor_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, text = TRUE, type = "percent",
-  size_text = 3, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
-  ...)
+  size_text = 3, yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}
@@ -23,7 +22,7 @@ gg_bar_coloured_x_hor_CaNu.
 horizontal bar
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

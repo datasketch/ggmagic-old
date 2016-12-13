@@ -6,7 +6,7 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -22,8 +22,7 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
   parts <- as.vector(data_graph$count)
   graph <- waffle(parts / square_size, rows = rows_number, colors=getPalette()) + theme_ds() +
                   theme(legend.position = leg_pos) + theme_ds_clean() +
-                  labs(title = titleLabel, subtitle = subtitle, caption = caption
-    )
+                  labs(title = titleLabel, subtitle = subtitle, caption = caption)
   return(graph)
 }
 
@@ -34,7 +33,7 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -78,7 +77,7 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -100,7 +99,7 @@ gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -172,7 +171,7 @@ gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", subtitle = 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -213,7 +212,7 @@ gg_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -236,7 +235,7 @@ gg_bar_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -279,7 +278,7 @@ gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -302,7 +301,7 @@ gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -343,7 +342,7 @@ gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -385,7 +384,7 @@ gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fil
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -422,7 +421,7 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -444,7 +443,7 @@ gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'C
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -477,7 +476,7 @@ gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -497,7 +496,7 @@ gg_line_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -517,7 +516,7 @@ gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -537,7 +536,7 @@ gg_line_point_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -596,7 +595,7 @@ gg_gauge_Ca. <- function(data, titleLabel = '', subtitle = '', caption = '', nco
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -651,7 +650,7 @@ gg_gauge_dial_Ca. <- function(data, ...){
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -685,7 +684,7 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -705,7 +704,7 @@ gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "", subtitle = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -722,7 +721,7 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
     dplyr::arrange(desc(count))
 
   graph <- ggplot(data_graph, aes(x = a, y = 0, size = count, color = ""))
-  graph <- graph + geom_point()
+  graph <- graph + geom_point(show.legend = FALSE)
   graph <- graph + labs(title = titleLabel, x = xlab, y = "", subtitle = subtitle, caption = caption) +
     scale_color_manual(values = getPalette())
 
@@ -735,18 +734,18 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
   return(graph)
 }
 
-#' gg_coloured_bubble_Ca.
+#' gg_bubble_coloured_Ca.
 #' Coloured Bubble
-#' @name gg_coloured_bubble_Ca.
+#' @name gg_bubble_coloured_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, fillLabel = NULL, ...){
+gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, fillLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -760,7 +759,7 @@ gg_coloured_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", captio
     dplyr::arrange(desc(count))
 
   graph <- ggplot(data_graph, aes(x = a, y = 0, size = count))
-  graph <- graph + geom_point(aes(color = a))
+  graph <- graph + geom_point(aes(color = a), show.legend = FALSE)
   graph <- graph + labs(title = titleLabel, x = xlab, y = "", fill = flab, subtitle = subtitle, caption = caption)
 
   graph <- graph + scale_color_manual(values = getPalette())
@@ -781,7 +780,7 @@ gg_coloured_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", captio
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -814,7 +813,7 @@ gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "", subtitle = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -843,7 +842,7 @@ gg_bullseye_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -877,7 +876,7 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

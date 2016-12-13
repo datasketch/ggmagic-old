@@ -13,11 +13,11 @@ names(dataCaNu)[1] <- "GSRG"
 dataCaNu$GSRG <- as.character(dataCaNu$GSRG)
 dataCaNu$SRHTD <- runif(nrow(dataCaNu), min = 0, max = 100)
 
-dataCaNu <- rename(dataCaNu, c('GSRG' = 'a', 'SRHTD' = 'b'))
+names(dataCaNu) <- c('GSRG', 'SRHTD')
 
 d <- sampleData("Ca-Nu", 1000)
-gg_bubble_CaNu2.(d)
-gg_bullseye_CaNu.(d)
+gg_bubble_CaNu2.(dataCaNu)
+gg_bullseye_CaNu.(dataCaNu)
 data_graph <- d %>% dplyr::group_by(a) %>%
   dplyr::summarise(count = sum(b)) %>% dplyr::arrange(desc(count))
 
@@ -33,7 +33,7 @@ gg_bubble_CaNu.(dataCaNu)
 gg_bubble_CaNu2.(dataCaNu)
 
 # Coloured Bubble
-gg_coloured_bubble_CaNu.(dataCaNu)
+gg_bubble_coloured_CaNu.(dataCaNu)
 
 # Coloured Bar
 gg_bar_coloured_x_ver_CaNu.(dataCaNu)
@@ -63,43 +63,45 @@ gg_bar_polar_CaNu.(dataCaNu, width = 1)
 gg_bar_circular_CaNu.(dataCaNu)
 
 #Stacked histogram
-gg_stacked_hist_ver_CaNu.(dataCaNu)
+gg_hist_stacked_ver_CaNu.(dataCaNu)
 
 
 #multiple density, single plot
-gg_coloured_multi_density_dist_CaNu.(dataCaNu)
+gg_density_multi_dist_coloured_CaNu.(dataCaNu)
 gg_area_multi_density_dist_CaNu.(dataCaNu)
 
 
 #Facet Density
-gg_facet_dist_ver_CaNu.(dataCaNu)
-gg_facet_dist_hor_CaNu.(dataCaNu)
+gg_dist_ver_facet_CaNu.(dataCaNu)
+gg_dist_hor_facet_CaNu.(dataCaNu)
 
 #Facet Histogram + Combinations
-gg_facet_hist_hor_CaNu.(dataCaNu)
-gg_facet_hist_ver_CaNu.(dataCaNu)
-gg_facet_hist_mean_hor_CaNu.(dataCaNu)
-gg_facet_hist_mean_ver_CaNu.(dataCaNu)
-gg_facet_dist_hist_hor_CaNu.(dataCaNu)
-gg_facet_dist_hist_ver_CaNu.(dataCaNu)
-gg_facet_dist_hist_mean_hor_CaNu.(dataCaNu)
-gg_facet_dist_hist_mean_hor_CaNu.(dataCaNu)
-gg_facet_dot_dist_ver_CaNu.(dataCaNu)
-gg_facet_dot_dist_hor_CaNu.(dataCaNu)
-gg_facet_dot_hist_ver_CaNu.(dataCaNu)
-gg_facet_dot_hist_hor_CaNu.(dataCaNu)
-gg_facet_dot_hist_mean_ver_CaNu.(dataCaNu)
-gg_facet_dot_hist_mean_hor_CaNu.(dataCaNu)
-gg_facet_dot_dist_hist_ver_CaNu.(dataCaNu)
-gg_facet_dot_dist_hist_hor_CaNu.(dataCaNu)
-gg_facet_dot_dist_hist_mean_ver_CaNu.(dataCaNu)
-gg_facet_dot_dist_hist_mean_ver_CaNu.(dataCaNu)
+gg_hist_hor_facet_CaNu.(dataCaNu)
+gg_hist_ver_facet_CaNu.(dataCaNu)
+gg_hist_hor_mean_facet_CaNu.(dataCaNu)
+gg_hist_ver_mean_facet_CaNu.(dataCaNu)
+gg_dist_hist_hor_facet_CaNu.(dataCaNu)
+gg_dist_hist_ver_facet_CaNu.(dataCaNu)
+gg_dist_hist_hor_mean_facet_CaNu.(dataCaNu)
+gg_dist_hist_ver_mean_facet_CaNu.(dataCaNu)
+gg_dot_dist_ver_facet_CaNu.(dataCaNu)
+gg_dot_dist_hor_facet_CaNu.(dataCaNu)
+gg_dot_hist_ver_facet_CaNu.(dataCaNu)
+gg_dot_hist_hor_facet_CaNu.(dataCaNu)
+gg_dot_hist_ver_mean_facet_CaNu.(dataCaNu)
+gg_dot_hist_hor_mean_facet_CaNu.(dataCaNu)
+gg_dot_dist_hist_ver_facet_CaNu.(dataCaNu)
+gg_dot_dist_hist_hor_facet_CaNu.(dataCaNu)
+gg_dot_dist_hist_ver_mean_facet_CaNu.(dataCaNu)
+gg_dot_dist_hist_hor_mean_facet_CaNu.(dataCaNu)
 
 # Point
-gg_facet_point_CaNu.(dataCaNu)
-gg_grouped_point_CaNu.(dataCaNu)
-gg_facet_point_trend_line_CaNu.(dataCaNu)
-gg_facet_trend_ribbon_CaNu.(dataCaNu)
+gg_point_facet_CaNu.(dataCaNu)
+gg_line_point_facet_CaNu.(dataCaNu)
+gg_line_facet_CaNu.(dataCaNu)
+gg_point_grouped_CaNu.(dataCaNu)
+gg_point_trend_line_facet_CaNu.(dataCaNu)
+gg_trend_ribbon_facet_CaNu.(dataCaNu)
 
 # Donut
 gg_donut_CaNu.(dataCaNu)
@@ -117,27 +119,23 @@ gg_bar_single_stacked_hor_CaNu.(dataCaNu)
 
 # Gauge
 gg_gauge_CaNu.(dataCaNu)
-gg_gauge_dial_Ca.(dataCaNu)
+gg_gauge_dial_CaNu.(dataCaNu)
 
 #Grouped Line Point
-gg_multi_line_point_CaNu.(dataCaNu, type = 4)
-gg_multi_line_CaNu.(dataCaNu)
+gg_line_point_multi_CaNu.(dataCaNu, type = 4)
+gg_line_multi_CaNu.(dataCaNu)
 
 # Facet Line
-gg_facet_line_point_CaNu.(dataCaNu)
-gg_facet_line_CaNu.(dataCaNu)
+gg_line_point_facet_CaNu.(dataCaNu)
+gg_line_facet_CaNu.(dataCaNu)
 
 # Area
-gg_facet_area_hor_CaNu.(dataCaNu)
-gg_facet_area_ver_CaNu.(dataCaNu)
+gg_area_ver_facet_CaNu.(dataCaNu)
+gg_area_hor_facet_CaNu.(dataCaNu)
 gg_area_stacked_100_ver_CaNu.(dataCaNu)
 gg_area_stacked_100_hor_CaNu.(dataCaNu)
 gg_area_stacked_hor_CaNu.(dataCaNu)
 gg_area_stacked_ver_CaNu.(dataCaNu)
-
-
-# Facet Horizon
-gg_facet_horizon_CaNu.(dataCaNu)
 
 # stream
 gg_steam_CaNu.(dataCaNu)
@@ -154,13 +152,17 @@ gg_slope_CaNu.(data, size_point = 1)
 
 #boxplots
 
-gg_boxplot_CaNu.(dataCaNu, voltear = FALSE)
+gg_boxplot_CaNu.(dataCaNu)
+gg_boxplot_flip_CaNu.(dataCaNu)
 
+gg_boxplot_dot_CaNu.(dataCaNu)
+gg_boxplot_dot_flip_CaNu.(dataCaNu)
 
 #violin plots
 
-gg_violin_mult_CaNu.(dataCaNu, voltear = FALSE)
-
+gg_violin_mult_CaNu.(dataCaNu)
+gg_violin_mult_flip_CaNu.(dataCaNu)
 
 #violin plots + obs. dots
 gg_violin_dot_mult_CaNu.(dataCaNu)
+gg_violin_dot_mult_flip_CaNu.(dataCaNu)

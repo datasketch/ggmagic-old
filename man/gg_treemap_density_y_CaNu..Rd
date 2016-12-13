@@ -6,7 +6,7 @@
 Treemap Density by Nu}
 \usage{
 gg_treemap_density_y_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", reverse = FALSE, fillLabel = NULL, ...)
+  caption = "", reverse = FALSE, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -21,7 +21,7 @@ gg_treemap_density_y_CaNu.
 Treemap Density by Nu
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

@@ -6,8 +6,7 @@
 Violin}
 \usage{
 gg_violin_mult_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, voltear = TRUE,
-  leg_pos = "right", ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -22,7 +21,7 @@ gg_violin_mult_CaNu.
 Violin
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

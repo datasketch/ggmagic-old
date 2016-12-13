@@ -22,7 +22,7 @@ gg_bar_coloured_parameter_hor_CaNu.
 Horizontal coloured by parameter Bars
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

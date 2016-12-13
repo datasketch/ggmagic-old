@@ -6,8 +6,7 @@
 Vertical Dot Bar}
 \usage{
 gg_dot_bar_ver_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
-  ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -22,7 +21,7 @@ gg_dot_bar_ver_CaNu.
 Vertical Dot Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

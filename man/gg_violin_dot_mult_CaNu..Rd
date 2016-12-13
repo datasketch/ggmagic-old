@@ -3,11 +3,10 @@
 \name{gg_violin_dot_mult_CaNu.}
 \alias{gg_violin_dot_mult_CaNu.}
 \title{gg_violin_dot_mult_CaNu.
-Violin}
+Violin + dot jitter}
 \usage{
 gg_violin_dot_mult_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  voltear = TRUE, leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -19,10 +18,10 @@ The sum of \code{x} and \code{y}.
 }
 \description{
 gg_violin_dot_mult_CaNu.
-Violin
+Violin + dot jitter
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

@@ -5,17 +5,15 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                          text = TRUE, type = 'percent', size_text = 3,
                          leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>% dplyr::group_by(a) %>%
@@ -26,7 +24,7 @@ gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fil
   graph <- ggplot(data=data_graph, aes(x = factor(1), weight = count, fill = a)) +
     geom_bar(width = 1) + coord_polar(theta = "y")
 
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = flabel)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "")
   graph <- graph + theme(legend.position=leg_pos) + guides(text = FALSE)
   graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
 
@@ -49,18 +47,17 @@ gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fil
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', size_text = 3,
-                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
+                                       yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
-  flab <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -69,7 +66,7 @@ gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
     dplyr::mutate(percent = 100 * round(count/sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = count, fill = factor(a))) + geom_bar(stat = "identity") +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flab) +  theme_ds() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +  theme_ds() +
     theme(legend.position=leg_pos) + scale_fill_manual(values = getPalette()) + guides(fill = FALSE)
 
 
@@ -92,17 +89,16 @@ gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, text = TRUE, type = 'percent', size_text = 3,
-                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
+                                       yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
-  flab <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -111,7 +107,7 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
     dplyr::mutate(percent = 100 * round(count/sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = count, fill = factor(a))) + geom_bar(stat = "identity") +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flab) +  theme_ds() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +  theme_ds() +
     theme(legend.position=leg_pos) + scale_fill_manual(values = getPalette()) + guides(fill = FALSE) + coord_flip()
 
 
@@ -126,8 +122,6 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
   }
 }
 
-
-
 #' gg_bar_coloured_y_ver_CaNu.
 #' vertical bar
 #' @name gg_bar_coloured_y_ver_CaNu.
@@ -135,13 +129,13 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, reverse = FALSE,
                                        text = TRUE, type = 'percent', size_text = 3,
-                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
+                                       yLabel = NULL, leg_pos = "right", ...){
 
 
 
@@ -149,7 +143,6 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
-  flab <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -158,7 +151,7 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
     dplyr::mutate(percent = 100 * round(suma/sum(suma), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = suma, fill = suma)) + geom_bar(stat = "identity") +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flab) + theme_ds() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds() +
     theme(legend.position=leg_pos)
 
   if(reverse){
@@ -187,17 +180,17 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_y_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                        reverse = FALSE, text = TRUE, type = 'percent', size_text = 3,
-                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
+                                       yLabel = NULL, leg_pos = "right", ...){
 
   graph <- gg_bar_coloured_y_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel,
                                        reverse, text, type, size_text,
-                                       yLabel, fillLabel, leg_pos)
+                                       yLabel, leg_pos)
   graph + coord_flip()
 }
 
@@ -208,7 +201,7 @@ gg_bar_coloured_y_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -236,7 +229,7 @@ gg_bar_coloured_parameter_ver_CaNu. <- function(data, titleLabel = "", subtitle 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -257,7 +250,7 @@ gg_bar_coloured_parameter_hor_CaNu. <- function(data, titleLabel = "", subtitle 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -269,7 +262,7 @@ gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "",
   data <- f$d
 
   graph <- ggplot(data, aes(x = a, y = 0, size = b, color = ""))
-  graph <- graph + geom_point()
+  graph <- graph + geom_point(show.legend = FALSE)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = "") +
     scale_color_manual(values = getPalette())
 
@@ -282,18 +275,18 @@ gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "",
   return(graph)
 }
 
-#' gg_coloured_bubble_CaNu.
+#' gg_bubble_coloured_CaNu.
 #' Coloured Bubble
-#' @name gg_coloured_bubble_CaNu.
+#' @name gg_bubble_coloured_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, ...){
+gg_bubble_coloured_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -322,18 +315,16 @@ gg_coloured_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", capt
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_polar_CaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "", caption = "",
-                               fillLabel = NULL, leg_pos= "right", ...){
+gg_bar_polar_CaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "",
+                               caption = "", leg_pos= "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data = data, aes(x = a, weight = b, fill = a)) + geom_bar(width = width) +
-    coord_polar() + labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = fillLabel, x = "", y = "") +
+    coord_polar() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
     theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
 
   return(graph)
@@ -347,16 +338,14 @@ gg_bar_polar_CaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_circular_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_bar_circular_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                   leg_pos="right", width = 0.85, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>% dplyr::group_by(a) %>%
@@ -366,64 +355,62 @@ gg_bar_circular_CaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   graph <- ggplot(data_graph, aes(x = reorder(a,count), y = count , fill = a )) +
     geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
 
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = flabel) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
     theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
 
   return(graph)
 }
 
 
-#' gg_stacked_hist_ver_CaNu.
+#' gg_hist_stacked_ver_CaNu.
 #' Stacked Vertical Histogram
-#' @name gg_stacked_hist_ver_CaNu.
+#' @name gg_hist_stacked_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_stacked_hist_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                      fillLabel = NULL, leg_pos="right", ...){
+gg_hist_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                      yLabel = 'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   graph <- ggplot(data, aes(b))
   graph <- graph + geom_histogram(aes(fill = a), binwidth = 10) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel) +
-    theme_minimal() + theme(legend.position=leg_pos)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+    theme_ds() + theme(legend.position=leg_pos) + scale_fill_manual(values = getPalette())
   return(graph)
 }
 
-#' gg_coloured_multi_density_dist_CaNu.
+#' gg_density_multi_dist_coloured_CaNu.
 #' Coloured Density Distribution
-#' @name gg_coloured_multi_density_dist_CaNu.
+#' @name gg_density_multi_dist_coloured_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_coloured_multi_density_dist_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                                 fillLabel = NULL, leg_pos="right", ...){
+gg_density_multi_dist_coloured_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                                 xLabel = NULL, yLabel = 'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   graph <- ggplot(data, aes(b))
   graph <- graph + geom_density(aes(colour = a)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel) +
-    theme_minimal() + theme(legend.position=leg_pos)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+    theme_ds() + theme(legend.position=leg_pos) + scale_color_manual(values = getPalette())
 
   return(graph)
 }
@@ -435,480 +422,457 @@ gg_coloured_multi_density_dist_CaNu. <- function(data, titleLabel = "", subtitle
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                             fillLabel = NULL, leg_pos="right", ...){
+gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                             yLabel = 'Count', leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   graph <- ggplot(data, aes(b))
   graph <- graph + geom_density(aes(fill = a)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
     theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(legend.position=leg_pos)
 
   return(graph)
 }
 
-#' gg_facet_dist_ver_CaNu.
+#' gg_dist_ver_facet_CaNu.
 #' Facet Vertical Dist
-#' @name gg_facet_dist_ver_CaNu.
+#' @name gg_dist_ver_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                    fillLabel = NULL, leg_pos="right", ...){
+gg_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                    yLabel = 'Count', leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   graph <- ggplot(data, aes(b))
-  graph <- graph + geom_density(aes(colour = a)) + theme(legend.position=leg_pos) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
-  graph <- graph + facet_grid(. ~a)
+  graph <- graph + geom_density(aes(colour = a), show.legend = FALSE) + theme(legend.position=leg_pos) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds()
+  graph <- graph + facet_grid(. ~a) + scale_color_manual(values = getPalette())
 
   return(graph)
 }
 
-#' gg_facet_dist_hor_CaNu.
+#' gg_dist_hor_facet_CaNu.
 #' Facet Horizontal Dist
-#' @name gg_facet_dist_hor_CaNu.
+#' @name gg_dist_hor_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                    fillLabel = NULL, leg_pos="right", ...){
+gg_dist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                    yLabel = 'Count', leg_pos="right", ...){
 
-  graph <- gg_facet_dist_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_dist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_hist_mean_ver_CaNu.
+#' gg_hist_mean_ver_facet_CaNu.
 #' Facet Vertical Histogram + Mean
-#' @name gg_facet_hist_mean_ver_CaNu.
+#' @name gg_hist_mean_ver_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_hist_mean_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                         yLabel = "Count", fillLabel = NULL, leg_pos='right', ...){
+gg_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                         yLabel = "Count", leg_pos='right', ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data, aes(x = b)) + geom_histogram() + theme(legend.position=leg_pos) +
-    facet_grid(. ~a) + geom_vline(aes(xintercept = mean(b)), linetype = "dashed", size = 1, colour = "red")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) +
+    theme(legend.position=leg_pos) + facet_grid(. ~a) +
+    geom_vline(aes(xintercept = mean(b), color = ""), linetype = "dotted", size = 1, show.legend = FALSE)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds() +
+    scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette()[2])
 
   return(graph)
 }
 
-#' gg_facet_hist_mean_hor_CaNu.
+#' gg_hist_hor_mean_facet_CaNu.
 #' Facet Horizontal Histogram + Mean
-#' @name gg_facet_hist_mean_hor_CaNu.
+#' @name gg_hist_hor_mean_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_hist_mean_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                         fillLabel = NULL, leg_pos="right", ...){
+gg_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                         yLabel = 'Count', leg_pos="right", ...){
 
-  graph <- gg_facet_hist_mean_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_hist_ver_CaNu.
+#' gg_hist_ver_facet_CaNu.
 #' Facet Vertical Histogram
-#' @name gg_facet_hist_ver_CaNu.
+#' @name gg_hist_ver_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_hist_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = "Count", fillLabel = NULL, leg_pos='right', ...){
+gg_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                    yLabel = "Count", leg_pos='right', ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data, aes(x = b)) + geom_histogram() + theme(legend.position=leg_pos) +
-    facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) +
+    theme(legend.position=leg_pos) + facet_grid(. ~a) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds() +
+    scale_fill_manual(values = getPalette())
 
   return(graph)
 }
 
-#' gg_facet_hist_hor_CaNu.
+#' gg_hist_hor_facet_CaNu.
 #' Facet Horizontal Histogram
-#' @name gg_facet_hist_hor_CaNu.
+#' @name gg_hist_hor_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_hist_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                    fillLabel = NULL, leg_pos="right", ...){
+gg_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                    yLabel = 'Count', leg_pos="right", ...){
 
-  graph <- gg_facet_hist_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_hist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_dist_hist_ver_CaNu.
+#' gg_dist_hist_ver_facet_CaNu.
 #' Facet Vertical Histogram + Dist
-#' @name gg_facet_dist_hist_ver_CaNu.
+#' @name gg_dist_hist_ver_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                         fillLabel = NULL, leg_pos="right", ...){
+gg_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                         yLabel = 'Count', leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density..)) + geom_density(col="red") +
-    theme(legend.position=leg_pos) + theme_minimal()
-  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel)
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
+    geom_density(aes(color = ""), show.legend = FALSE) +
+    theme(legend.position=leg_pos) + theme_ds() +
+    scale_color_manual(values = getPalette()) + scale_fill_manual(values = getPalette())
+  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
 
   return(graph)
 }
 
-# #' gg_facet_dist_hist_ver_CaNu.
-# #' Facet Vertical Histogram + Dist
-# #' @name gg_facet_dist_hist_ver_CaNu.
-# #' @param x A number.
-# #' @param y A number.
-# #' @export
-# #' @return The sum of \code{x} and \code{y}.
-# #' @section ftypes: Ca,Ca-Nu
-# #' @examples
-# #' add(1, 1)
-# #' add(10, 1)
-# gg_facet_dist_hist_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-#                                          fillLabel = NULL, leg_pos="right", ...){
-#   f <- fringe(data)
-#   nms <- getCnames(f)
-#   xlab <- xLabel %||% nms[2]
-#   flabel <- fillLabel %||% nms[1]
-#   data <- f$d
-#   graph <- ggplot(data, aes(x=b)) + geom_histogram(aes(y=..density..)) +
-#     geom_density(alpha=0.5, col="red")
-#   graph <- graph + geom_vline(aes(xintercept=mean(a)),
-#                               color="red", linetype="dashed", size=1)
-#
-#   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
-#   graph <- graph + theme_minimal() + facet_grid(. ~a)
-#
-#   return(graph)
-# }
-
-#' gg_facet_dist_hist_hor_CaNu.
+#' gg_dist_hist_hor_facet_CaNu.
 #' Facet Horizontal Histogram + Dist
-#' @name gg_facet_dist_hist_hor_CaNu.
+#' @name gg_dist_hist_hor_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_hist_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                         fillLabel = NULL, leg_pos="right", ...){
+gg_dist_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                         yLabel = 'Count', leg_pos="right", ...){
 
-  graph <- gg_facet_dist_hist_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_dist_hist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_dist_hist_mean_ver_CaNu.
+#' gg_dist_hist_ver_mean_facet_CaNu.
 #' Facet Vertical Histogram + Dist + Mean
-#' @name gg_facet_dist_hist_mean_ver_CaNu.
+#' @name gg_dist_hist_ver_mean_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                              fillLabel = NULL, leg_pos="right", ...){
+gg_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                              yLabel = 'Count', leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density..)) + geom_density(col="blue") +
-    geom_vline(aes(xintercept = mean(b)), linetype = "dashed", size = 1, colour = "red") +
-    theme(legend.position=leg_pos) + theme_minimal()
-  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel)
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
+    geom_density(aes(color = ""), show.legend = FALSE) +
+    geom_vline(aes(xintercept = mean(b), color = "*"), linetype = "dotted", size = 1, show.legend = FALSE) +
+    theme(legend.position=leg_pos) + theme_ds() +
+    scale_color_manual(values = getPalette()) + scale_fill_manual(values = getPalette())
+  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
 
   return(graph)
 }
 
-#' gg_facet_dist_hist_mean_hor_CaNu.
+#' gg_dist_hist_hor_mean_facet_CaNu.
 #' Facet Horizontal Histogram + Dist + Mean
-#' @name gg_facet_dist_hist_mean_hor_CaNu.
+#' @name gg_dist_hist_hor_mean_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                              fillLabel = NULL, leg_pos="right", ...){
+gg_dist_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                              yLabel = 'Count', leg_pos="right", ...){
 
-  graph <- gg_facet_dist_hist_mean_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_dist_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
 
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_dot_dist_ver_CaNu.
+#' gg_dot_dist_ver_facet_CaNu.
 #' Facet Vertical Dot Dist
-#' @name gg_facet_dot_dist_ver_CaNu.
+#' @name gg_dot_dist_ver_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                        fillLabel = NULL, leg_pos="right", ...){
+gg_dot_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                        yLabel = 'Count', leg_pos="right", size = 3, alpha = 0.3, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   graph <- ggplot(data, aes(b))
-  graph <- graph + geom_density(aes(colour = a)) + geom_point(aes(y=0),size = 5,alpha = 0.3, color = "#D55E00") +
-    theme(legend.position=leg_pos) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
+  graph <- graph + geom_density(aes(colour = a), show.legend = FALSE) +
+    geom_point(aes(y = 0), color = "#D55E00", size = size, alpha = alpha, show.legend = FALSE) +
+    theme(legend.position = leg_pos) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds() +
+    scale_color_manual(values = getPalette())
   graph <- graph + facet_grid(. ~a)
 
   return(graph)
 }
 
-#' gg_facet_dot_dist_hor_CaNu.
+#' gg_dot_dist_hor_facet_CaNu.
 #' Facet Horizontal Dot Dist
-#' @name gg_facet_dot_dist_hor_CaNu.
+#' @name gg_dot_dist_hor_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                        fillLabel = NULL, leg_pos="right", ...){
+gg_dot_dist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                        yLabel = 'Count', leg_pos="right", size = 3, alpha = 0.3, ...){
 
-  graph <- gg_facet_dot_dist_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_dot_dist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, size, alpha)
 
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_dot_hist_ver_CaNu.
+#' gg_dot_hist_ver_facet_CaNu.
 #' Facet Vertical Dot Histogram
-#' @name gg_facet_dot_hist_ver_CaNu.
+#' @name gg_dot_hist_ver_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_hist_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = "Count", fillLabel = NULL, leg_pos='right', ...){
+gg_dot_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                        yLabel = "Count", leg_pos='right', size = 3, alpha = 0.3,...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data, aes(x = b)) + geom_histogram() + geom_point(aes(y=0),size = 5,alpha = 0.3, color = "#D55E00") +
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) +
+    geom_point(aes(y=0),size = size,alpha = alpha, color = "#D55E00") +
     theme(legend.position=leg_pos) + facet_grid(. ~a) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
+    scale_fill_manual(values = getPalette()) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds()
 
   return(graph)
 }
 
-#' gg_facet_dot_hist_hor_CaNu.
+#' gg_dot_hist_hor_facet_CaNu.
 #' Facet Horizontal Histogram + Dot
-#' @name gg_facet_dot_hist_hor_CaNu.
+#' @name gg_dot_hist_hor_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_hist_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                        fillLabel = NULL, leg_pos="right", ...){
+gg_dot_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                        yLabel = 'Count', leg_pos="right", size = 3, alpha = 0.3, ...){
 
-  graph <- gg_facet_dot_hist_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_dot_hist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, size, alpha)
 
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_dot_hist_mean_ver_CaNu.
+#' gg_dot_hist_ver_mean_facet_CaNu.
 #' Facet Vertical Histogram + Mean + Dot
-#' @name gg_facet_dot_hist_mean_ver_CaNu.
+#' @name gg_dot_hist_ver_mean_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_hist_mean_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                             yLabel = "Count", fillLabel = NULL, leg_pos='right', ...){
+gg_dot_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                             yLabel = "Count", leg_pos='right', size = 3, alpha = 0.3, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data, aes(x = b)) + geom_histogram() + theme(legend.position=leg_pos) +
-    facet_grid(. ~a) + geom_vline(aes(xintercept = mean(b)), linetype = "dashed", size = 1, colour = "red") +
-    geom_point(aes(y=0),size = 5,alpha = 0.3, color = "#D55E00")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel) + theme_minimal()
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) +
+    theme(legend.position=leg_pos) + facet_grid(. ~a) +
+    geom_vline(aes(xintercept = mean(b), color = ""), linetype = "dotted", size = 1, show.legend = FALSE) +
+    geom_point(aes(y = 0), size = size, alpha = alpha, color = "#D55E00")
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds() +
+    scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette()[2])
 
   return(graph)
 }
 
-#' gg_facet_dot_hist_mean_hor_CaNu.
+#' gg_dot_hist_hor_mean_facet_CaNu.
 #' Facet Horizontal Histogram + Mean + Dot
-#' @name gg_facet_dot_hist_mean_hor_CaNu.
+#' @name gg_dot_hist_hor_mean_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_hist_mean_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                             fillLabel = NULL, leg_pos="right", ...){
+gg_dot_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                             yLabel = 'Count', leg_pos="right",  size = 3, alpha = 0.3, ...){
 
-  graph <- gg_facet_dot_hist_mean_ver_CaNu.(data, titleLabel,subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_dot_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, size, alpha)
 
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_dot_dist_hist_ver_CaNu.
+#' gg_dot_dist_hist_ver_facet_CaNu.
 #' Facet Vertical Histogram + Dist + Dot
-#' @name gg_facet_dot_dist_hist_ver_CaNu.
+#' @name gg_dot_dist_hist_ver_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_hist_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                             fillLabel = NULL, leg_pos="right", ...){
+gg_dot_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                             yLabel = 'Count', leg_pos="right", size = 3, alpha = 0.3, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density..)) + geom_density(col="red") +
-    geom_point(aes(y=0),size = 5,alpha = 0.3, color = "#D55E00") +
-    theme(legend.position=leg_pos) + theme_minimal()
-  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel)
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
+    geom_density(aes(color=""), show.legend = FALSE) +
+    geom_point(aes(y = 0), size = size, alpha = alpha, color = "#D55E00") +
+    theme(legend.position=leg_pos) + theme_ds() +
+    scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette())
+  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
 
   return(graph)
 }
 
-#' gg_facet_dot_dist_hist_hor_CaNu.
+#' gg_dot_dist_hist_hor_facet_CaNu.
 #' Facet Horizontal Histogram + Dist + Dot
-#' @name gg_facet_dot_dist_hist_hor_CaNu.
+#' @name gg_dot_dist_hist_hor_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_hist_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                             fillLabel = NULL, leg_pos="right", ...){
+gg_dot_dist_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                             yLabel = 'Count', leg_pos="right", size = 3, alpha = 0.3, ...){
 
-  graph <- gg_facet_dot_dist_hist_ver_CaNu.(data, titleLabel,subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_dot_dist_hist_ver_facet_CaNu.(data, titleLabel,subtitle, caption, xLabel, yLabel, leg_pos, size, alpha)
 
   graph <- graph + coord_flip()
 
@@ -916,73 +880,71 @@ gg_facet_dot_dist_hist_hor_CaNu. <- function(data, titleLabel = "", subtitle = "
 }
 
 
-#' gg_facet_dot_dist_hist_mean_ver_CaNu.
+#' gg_dot_dist_hist_ver_mean_facet_CaNu.
 #' Facet Vertical Histogram + Dist + Mean + Dot
-#' @name gg_facet_dot_dist_hist_mean_ver_CaNu.
+#' @name gg_dot_dist_hist_ver_mean_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_hist_mean_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                                  fillLabel = NULL, leg_pos="right", ...){
+gg_dot_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
+                                                  leg_pos="right", size = 3, alpha = 0.3, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   xlab <- xLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density..)) + geom_density(col="blue") +
-    geom_vline(aes(xintercept = mean(b)), linetype = "dashed", size = 1, colour = "red") +
-    geom_point(aes(y=0),size = 5,alpha = 0.3, color = "#D55E00") +
-    theme(legend.position=leg_pos) + theme_minimal()
-  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel, fill = flabel)
+  graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
+    geom_density(aes(color = ""), show.legend = FALSE) +
+    geom_vline(aes(xintercept = mean(b), colour = "*"), linetype = "dotted", size = 1, show.legend = FALSE) +
+    geom_point(aes(y=0),size = size, alpha = alpha, color = "#D55E00") +
+    theme(legend.position=leg_pos) + theme_ds() + scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette())
+  graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
 
   return(graph)
 }
 
-#' gg_facet_dot_dist_hist_mean_hor_CaNu.
+#' gg_dot_dist_hist_hor_mean_facet_CaNu.
 #' Facet Horizontal Histogram + Dist + Mean + Dot
-#' @name gg_facet_dot_dist_hist_mean_hor_CaNu.
+#' @name gg_dot_dist_hist_hor_mean_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_dot_dist_hist_mean_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                                  fillLabel = NULL, leg_pos="right", ...){
+gg_dot_dist_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count', leg_pos="right", size = 3, alpha = 0.3, ...){
 
-  graph <- gg_facet_dot_dist_hist_mean_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_dot_dist_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, size, alpha)
 
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_facet_point_CaNu.
+#' gg_point_facet_CaNu.
 #' Facet Point
-#' @name gg_facet_point_CaNu.
+#' @name gg_point_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_point_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL,
-                                 fillLabel = NULL, type = 1, ...){
+gg_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
+                                 yLabel = NULL, type = 1, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_count <- data %>%
@@ -996,31 +958,31 @@ gg_facet_point_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 
   data$xorder <- count
 
-  graph <- ggplot(data, aes(x=xorder, y=b)) + geom_point(shape = type)
+  graph <- ggplot(data, aes(x=xorder, y=b)) + geom_point(shape = type, aes(color = ""), show.legend = FALSE) +
+    scale_color_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_minimal() + facet_grid(. ~a)
+  graph <- graph + theme_ds() + facet_grid(. ~a)
 
   return(graph)
 }
 
-#' gg_facet_line_point_CaNu.
+#' gg_line_point_facet_CaNu.
 #' Facet Line Point
-#' @name gg_facet_line_point_CaNu.
+#' @name gg_line_point_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_point_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL,
-                                      fillLabel = NULL, type = 1, ...){
+gg_line_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
+                                      yLabel = NULL, type = 1, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_count <- data %>%
@@ -1034,31 +996,32 @@ gg_facet_line_point_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
 
   data$xorder <- count
 
-  graph <- ggplot(data, aes(x=xorder, y=b)) + geom_point(shape = type) + geom_line()
+  graph <- ggplot(data, aes(x = xorder, y = b)) + geom_point(shape = type, aes(color = ""), show.legend = FALSE) +
+    geom_line(aes(color = ""), show.legend = FALSE) +
+    scale_color_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_minimal() + facet_grid(. ~a)
+  graph <- graph + theme_ds() + facet_grid(. ~a)
 
   return(graph)
 }
 
-#' gg_facet_line_CaNu.
+#' gg_line_facet_CaNu.
 #' Facet Line
-#' @name gg_facet_line_CaNu.
+#' @name gg_line_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_line_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL,
-                                fillLabel = NULL, type = 1, ...){
+gg_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
+                                yLabel = NULL, type = 1, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_count <- data %>%
@@ -1072,25 +1035,26 @@ gg_facet_line_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
 
   data$xorder <- count
 
-  graph <- ggplot(data, aes(x=xorder, y=b)) + geom_line()
+  graph <- ggplot(data, aes(x=xorder, y=b)) + geom_line(aes(color = ""), show.legend = FALSE) +
+    scale_color_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_minimal() + facet_grid(. ~a)
+  graph <- graph + theme_ds() + facet_grid(. ~a)
 
   return(graph)
 }
 
-#' gg_facet_area_ver_CaNu.
+#' gg_area_ver_facet_CaNu.
 #' Facet Vertical Area
-#' @name gg_facet_area_ver_CaNu.
+#' @name gg_area_ver_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_area_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Index",
+gg_area_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Index",
                                     yLabel = NULL, ...){
 
   f <- fringe(data)
@@ -1109,29 +1073,30 @@ gg_facet_area_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 
   data$xorder <- count
 
-  graph <- ggplot(data = data, aes(x=xorder, y=b, group=a)) + geom_area()
+  graph <- ggplot(data = data, aes(x=xorder, y=b, group=a)) + geom_area(aes(fill = ""), show.legend = FALSE) +
+    scale_fill_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_minimal() + facet_grid(. ~a)
+  graph <- graph + theme_ds() + facet_grid(. ~a)
 
   return(graph)
 }
 
 
-#' gg_facet_area_hor_CaNu.
+#' gg_area_hor_facet_CaNu.
 #' Facet Horizontal Area
-#' @name gg_facet_area_hor_CaNu.
+#' @name gg_area_hor_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_area_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Index",
+gg_area_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Index",
                                     yLabel = NULL, ...){
 
-  graph <- gg_facet_area_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel)
+  graph <- gg_area_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -1144,7 +1109,7 @@ gg_facet_area_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -1188,16 +1153,14 @@ gg_area_stacked_100_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_100_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
-                                          yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "right", ...){
+                                          yLabel = NULL, leg_pos = "right", ...){
 
-  graph <- gg_area_stacked_100_ver_CaNu.(data, titleLabel,subtitle, caption, xLabel, yLabel, fillLabel,
-                                         leg_pos)
+  graph <- gg_area_stacked_100_ver_CaNu.(data, titleLabel,subtitle, caption, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -1210,7 +1173,7 @@ gg_area_stacked_100_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -1253,39 +1216,36 @@ gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
-                                      yLabel = NULL, fillLabel = NULL,
-                                      leg_pos = "right", ...){
+                                      yLabel = NULL, leg_pos = "right", ...){
 
-  graph <- gg_area_stacked_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel = NULL,
-                                     leg_pos)
+  graph <- gg_area_stacked_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_grouped_point_CaNu.
+#' gg_point_grouped_CaNu.
 #' Grouped Color Point
-#' @name gg_grouped_point_CaNu.
+#' @name gg_point_grouped_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_grouped_point_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL,
-                                   fillLabel = NULL, leg_pos="right", type = 1, ...){
+gg_point_grouped_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
+                                   yLabel = NULL, leg_pos="right", type = 1, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_count <- data %>%
@@ -1299,31 +1259,31 @@ gg_grouped_point_CaNu. <- function(data, titleLabel = "", subtitle = "", caption
 
   data$xorder <- count
 
-  graph <- ggplot(data, aes(x=xorder, y=b)) + geom_point(aes(color = a), shape = type)
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab, fill = flabel)
-  graph <- graph + theme_minimal()
+  graph <- ggplot(data, aes(x=xorder, y=b)) + geom_point(aes(color = a), shape = type) +
+    scale_color_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
+  graph <- graph + theme_ds()
 
   return(graph)
 }
 
-#' gg_multi_line_point_CaNu.
+#' gg_line_point_multi_CaNu.
 #' Grouped Line Color Point
-#' @name gg_multi_line_point_CaNu.
+#' @name gg_line_point_multi_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_multi_line_point_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL,
-                                      fillLabel = NULL, leg_pos="right", type = 1, ...){
+gg_line_point_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL,
+                                      leg_pos="right", type = 1, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_count <- data %>%
@@ -1338,30 +1298,28 @@ gg_multi_line_point_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   data$xorder <- count
 
   graph <- ggplot(data, aes(x=xorder, y=b)) + geom_point(aes(color = a), shape = type) + geom_line(aes(color = a))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab, fill = flabel)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
   return(graph)
 }
 
-#' gg_multi_line_CaNu.
+#' gg_line_multi_CaNu.
 #' Grouped Line Coloured
-#' @name gg_multi_line_CaNu.
+#' @name gg_line_multi_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_multi_line_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL,
-                                fillLabel = NULL, leg_pos="right", type = 1, ...){
+gg_line_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL, leg_pos="right", type = 1, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_count <- data %>%
@@ -1376,30 +1334,29 @@ gg_multi_line_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
   data$xorder <- count
 
   graph <- ggplot(data, aes(x=xorder, y=b)) + geom_line(aes(color = a))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab, fill = flabel)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
   return(graph)
 }
 
-#' gg_facet_point_trend_line_CaNu.
+#' gg_point_trend_line_facet_CaNu.
 #' Facet Trend Line
-#' @name gg_facet_point_trend_line_CaNu.
+#' @name gg_point_trend_line_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_facet_point_trend_line_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL,
-                                            fillLabel = NULL, type = 1, ...){
+gg_point_trend_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
+                                            yLabel = NULL, type = 1, alpha = 0.3, se = FALSE, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_count <- data %>%
@@ -1413,35 +1370,35 @@ gg_facet_point_trend_line_CaNu. <- function(data, titleLabel = "", subtitle = ""
 
   data$xorder <- count
 
-  graph <- ggplot(data, aes(x = xorder, y = b)) + geom_point(shape = type) +
-    geom_smooth(method=lm, se=FALSE,colour="red", fill = "red", alpha = 0.05)
+  graph <- ggplot(data, aes(x = xorder, y = b)) + geom_point(shape = type, aes(color = ""), show.legend = FALSE) +
+    geom_smooth(method=lm, se=se, aes(colour = "*", fill = "*"), alpha = alpha, show.legend = FALSE) +
+    scale_color_manual(values = getPalette()) + scale_fill_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_minimal() + facet_grid(. ~a)
+  graph <- graph + theme_ds() + facet_grid(. ~a)
 
   return(graph)
 }
 
 
 
-#' gg_facet_trend_ribbon_CaNu.
+#' gg_trend_ribbon_facet_CaNu.
 #' Facet Trend ribbon
-#' @name gg_facet_trend_ribbon_CaNu.
+#' @name gg_trend_ribbon_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 
-gg_facet_trend_ribbon_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL,
-                                        fillLabel = NULL, type = 1, ...){
+gg_trend_ribbon_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
+                                        yLabel = NULL, type = 1, alpha = 0.3, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_count <- data %>%
@@ -1455,8 +1412,9 @@ gg_facet_trend_ribbon_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 
   data$xorder <- count
 
-  graph <- ggplot(data, aes(x = xorder, y = b)) + geom_point(shape = type) +
-    geom_smooth(colour="red", fill = "red", alpha = 0.05)
+  graph <- ggplot(data, aes(x = xorder, y = b)) + geom_point(aes(color = ""), shape = type, show.legend = FALSE) +
+    geom_smooth(aes(colour="*", fill = "*"), alpha = alpha, show.legend = FALSE) +
+    scale_color_manual(values = getPalette()) + scale_fill_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_minimal() + facet_grid(. ~a)
 
@@ -1472,17 +1430,15 @@ gg_facet_trend_ribbon_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 
-gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
-                           width = 0.3, leg_pos="right", ...){
+gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", width = 0.3, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -1494,7 +1450,7 @@ gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", f
   graph <- ggplot(data=data_graph, aes(x = factor(1), fill = a, weight = count)) +
     geom_bar(width = width) + coord_polar(theta = "y") +
     geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = flabel) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
     scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
@@ -1511,17 +1467,16 @@ gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", f
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_bar_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "",
-                                xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos="right", ...){
+                                xLabel = NULL, yLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -1534,7 +1489,7 @@ gg_dot_bar_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = 
   graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
                   aes(x = order, fill = factor(a))) + geom_dotplot(method="histodot")
 
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel,  fill = flabel, subtitle = subtitle, caption = caption)
+  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, subtitle = subtitle, caption = caption)
   graph <- graph + scale_y_continuous(breaks = NULL) +
            theme(legend.position=leg_pos) + theme_ds() +
            scale_fill_manual(values = getPalette())
@@ -1549,14 +1504,14 @@ gg_dot_bar_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                 fillLabel = NULL, leg_pos = "right", ...){
+gg_dot_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                 yLabel = NULL, leg_pos = "right", ...){
 
-  graph <- gg_dot_bar_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_dot_bar_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -1570,16 +1525,14 @@ gg_dot_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bullseye_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_bullseye_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                               leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>% dplyr::group_by(a) %>%
@@ -1587,7 +1540,7 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = ""
   graph <- ggplot(data = data_graph,
                   aes(x = factor(1), fill = a, y = reorder(a, count))) +
     geom_bar(stat = "identity", width = 1) + coord_polar(theta = "x")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = flabel) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
     scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
@@ -1602,16 +1555,14 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = "Count",
-                                            fillLabel = "Types", leg_pos="right", width = 0.3, ...){
+gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                            yLabel = "Count", leg_pos="right", width = 0.3, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -1623,7 +1574,7 @@ gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = ""
   graph <- ggplot(data=data_graph, aes(x = factor(1), fill = a, weight = count)) +
     geom_bar(width = width) +
     geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = flabel) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
     scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
@@ -1638,14 +1589,14 @@ gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = ""
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_single_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = "Frequency",
-                                            fillLabel = "Types", leg_pos="right", width = 0.3, ...){
+gg_bar_single_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                            yLabel = "Count", leg_pos="right", width = 0.3, ...){
 
-  graph <- gg_bar_single_stacked_hor_CaNu.(data, titleLabel, subtitle, caption, yLabel, fillLabel, leg_pos, width)
+  graph <- gg_bar_single_stacked_hor_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos, width)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -1659,7 +1610,7 @@ gg_bar_single_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = ""
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -1710,18 +1661,18 @@ gg_gauge_CaNu. <- function(data, ...){
   grid.draw(arrangeGrob(grobs = graphList,ncol=2))
 }
 
-#' gg_gauge_dial_Ca.
+#' gg_gauge_dial_CaNu.
 #' Gauge
-#' @name gg_gauge_dial_Ca.
+#' @name gg_gauge_dial_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_gauge_dial_Ca. <- function(data, ...){
+gg_gauge_dial_CaNu. <- function(data, ...){
 
   gg.gauge <- function(pos, breaks=c(0,50,100)) {
     require(ggplot2)
@@ -1773,26 +1724,90 @@ gg_gauge_dial_Ca. <- function(data, ...){
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_boxplot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                             fillLabel = NULL, voltear = TRUE, leg_pos = 'right', ...){
+gg_boxplot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                             yLabel = NULL, leg_pos = 'right', ...){
 
 
   f <- fringe(data)
   nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) + geom_boxplot() + theme(legend.position=leg_pos)
-  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel, fill = fillLabel)
-  if(voltear){
-    graph <- graph + coord_flip()
+  graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) +
+    geom_boxplot(show.legend = FALSE) + theme(legend.position=leg_pos)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
 
-  }
+  return(graph)
+}
+
+#' gg_boxplot_flip_CaNu.
+#' Boxplot flipped
+#' @name gg_boxplot_flip_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca, Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_boxplot_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                             yLabel = NULL, leg_pos = 'right', ...){
+
+
+  graph <- gg_boxplot_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos)
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_boxplot_dot_CaNu.
+#' Boxplot + dot jitter
+#' @name gg_boxplot_dot_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca, Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_boxplot_dot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                             yLabel = NULL, leg_pos = 'right', ...){
+
+
+  f <- fringe(data)
+  data <- f$d
+
+  graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) + geom_jitter(color = "#D55E00", show.legend = FALSE) +
+    geom_boxplot(show.legend = FALSE) + theme(legend.position=leg_pos)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
+
+  return(graph)
+}
+
+#' gg_boxplot_dot_flip_CaNu.
+#' Boxplot + dot jitter flipped
+#' @name gg_boxplot_dot_flip_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca, Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_boxplot_dot_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                  yLabel = NULL, leg_pos = 'right', ...){
+
+
+  graph <- gg_boxplot_dot_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos)
+  graph <- graph + coord_flip()
 
   return(graph)
 }
@@ -1804,55 +1819,87 @@ gg_boxplot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_violin_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                 fillLabel = NULL, voltear = TRUE, leg_pos = 'right', ...){
+gg_violin_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                 yLabel = NULL, leg_pos = 'right', ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) + geom_violin() + theme(legend.position=leg_pos)
-  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel, fill = fillLabel)
+  graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) +
+    geom_violin(show.legend = FALSE) + theme(legend.position=leg_pos)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
 
-  if(voltear){
-    graph <- graph + coord_flip()
-    }
+  return(graph)
+}
+
+#' gg_violin_mult_flip_CaNu.
+#' Violin multi flipped
+#' @name gg_violin_mult_flip_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca, Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_violin_mult_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                 yLabel = NULL, leg_pos = 'right', ...){
+
+  graph <- gg_violin_mult_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos)
+  graph <- graph + coord_flip()
+
   return(graph)
 }
 
 #' gg_violin_dot_mult_CaNu.
-#' Violin
+#' Violin + dot jitter
 #' @name gg_violin_dot_mult_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_violin_dot_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                              fillLabel = NULL, voltear = TRUE, leg_pos = 'right', ...){
+gg_violin_dot_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                     yLabel = NULL, leg_pos = 'right', ...){
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) + geom_jitter() + geom_violin()
-  graph <- graph + guides(fill = FALSE)
+  graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) +
+    geom_jitter(color = "#D55E00", show.legend = FALSE) + geom_violin(show.legend = FALSE)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel, fill = fillLabel)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
 
-  if(voltear){
-    graph <- graph + coord_flip()
- }
   return(graph)
+}
+
+#' gg_violin_dot_mult_flip_CaNu.
+#' Violin + dot jitter flipped
+#' @name gg_violin_dot_mult_flip_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca, Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_violin_dot_mult_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                     yLabel = NULL, leg_pos = 'right', ...){
+
+  graph <- gg_violin_dot_mult_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos)
+  graph <- graph + coord_flip()
+
+  return(graph)
+
 }
 
 #' gg_bar_ordered_ver_CaNu.
@@ -1862,7 +1909,7 @@ gg_violin_dot_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -1894,7 +1941,7 @@ gg_bar_ordered_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -1914,17 +1961,16 @@ gg_bar_ordered_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_steam_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                           yLabel =  NULL, fillLabel = NULL, leg_pos = "right", ...){
+                           yLabel =  NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[2]
-  flab <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -1936,29 +1982,27 @@ gg_steam_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 
   graph <- ggplot(data_graph, aes(x = xorder, y = b, group = a, fill = a)) +
     stat_steamgraph() +
-    labs(tittle = titleLabel, x = xLabel, y = ylab, fill = flab) +
+    labs(tittle = titleLabel, x = xLabel, y = ylab) +
     scale_fill_manual(values = getPalette()) + theme_ds()
   graph <- graph + theme(legend.position=leg_pos)
 
   return(graph)
 }
 
-#' gg_dataCamap_x_CaNu.
+#' gg_treemap_x_CaNu.
 #' Treemap fill by first Ca
 #' @name gg_treemap_x_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_x_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
+gg_treemap_x_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -1982,16 +2026,14 @@ gg_treemap_x_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", reverse = FALSE,
-                                       fillLabel = NULL, ...){
+gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", subtitle = "",
+                                       caption = "", reverse = FALSE, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data_graph <- data %>%
@@ -2025,7 +2067,7 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca, Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

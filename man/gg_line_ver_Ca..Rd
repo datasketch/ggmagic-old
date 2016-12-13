@@ -21,7 +21,7 @@ gg_line_ver_Ca.
 Vertical Line
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)

@@ -6,8 +6,7 @@
 Filled Density Distribution}
 \usage{
 gg_area_multi_density_dist_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", fillLabel = NULL,
-  leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -22,7 +21,7 @@ gg_area_multi_density_dist_CaNu.
 Filled Density Distribution
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca, Ca-Nu
 }
 \examples{
 add(1, 1)
