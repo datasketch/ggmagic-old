@@ -22,7 +22,7 @@ gg_area_stacked_100_hor_CaCa.
 Stacked horizontal Area 100pct
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca,Ca-Nu, Ca-Ca
 }
 \examples{
 add(1, 1)

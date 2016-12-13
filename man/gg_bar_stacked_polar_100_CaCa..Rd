@@ -23,7 +23,7 @@ gg_bar_stacked_polar_100_CaCa.
 Stacked Polar  100pct
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca,Ca-Nu, Ca-Ca
 }
 \examples{
 add(1, 1)

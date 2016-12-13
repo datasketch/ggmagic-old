@@ -16,8 +16,9 @@ gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   f <- fringe(data)
   data <- f$d
 
-  data_graph <- data %>% dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum(b)) %>%
+  data_graph <- data %>%
+                dplyr::group_by(a) %>%
+           dplyr::summarise(count = sum(b)) %>%
     dplyr::mutate(pos = cumsum(count) - count/2,
                   percent = 100 * round(count/sum(count), 4))
 

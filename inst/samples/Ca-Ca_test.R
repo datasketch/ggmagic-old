@@ -22,32 +22,32 @@ dataCaCa[] <- sapply(dataCaCa, as.character)
 gg_bubble_CaCa.(dataCaCa)
 
 # Coloured Bubble
-gg_coloured_bubble_CaCa.(dataCaCa)
+gg_bubble_coloured_CaCa.(dataCaCa)
 
 # Facet Dot Bar
-gg_facet_dot_bar_ver_CaCa.(dataCaCa)
-gg_facet_dot_bar_hor_CaCa.(dataCaCa)
+gg_dot_bar_ver_facet_CaCa.(dataCaCa)
+gg_dot_bar_hor_facet_CaCa.(dataCaCa)
 
 # Facet Pie
-gg_facet_pie_CaCa.(dataCaCa)
+gg_pie_facet_CaCa.(dataCaCa)
 
 # Facet Donut
-gg_facet_donut_CaCa.(dataCaCa)
+gg_donut_facet_CaCa.(dataCaCa)
 
 # Facet Bullseye
-gg_facet_bullseye_CaCa.(dataCaCa)
+gg_bullseye_facet_CaCa.(dataCaCa)
 
 # Facet coloured Bar
-gg_bar_facet_coloured_x_ver_CaCa.(dataCaCa)
-gg_bar_facet_coloured_x_hor_CaCa.(dataCaCa)
-gg_bar_facet_coloured_y_ver_CaCa.(dataCaCa)
-gg_bar_facet_coloured_y_hor_CaCa.(dataCaCa)
+gg_bar_coloured_x_ver_facet_CaCa.(dataCaCa)
+gg_bar_coloured_x_hor_facet_CaCa.(dataCaCa)
+gg_bar_coloured_y_ver_facet_CaCa.(dataCaCa)
+gg_bar_coloured_y_hor_facet_CaCa.(dataCaCa)
 
 # Facet coloured by parameter
-gg_bar_facet_coloured_parameter_ver_CaCa.(dataCaCa,
+gg_bar_coloured_parameter_ver_facet_CaCa.(dataCaCa,
                                           parameter1 = c("Callejero"),
                                           parameter2 = c("A"))
-gg_bar_facet_coloured_parameter_hor_CaCa.(dataCaCa,
+gg_bar_coloured_parameter_hor_facet_CaCa.(dataCaCa,
                                           parameter1 = c("Callejero", "De raza", "Mixto"),
                                           parameter2 = c("A","B","C"))
 
@@ -73,12 +73,12 @@ d2 <- data.frame(a=sample(letters[1:7],100,replace=TRUE),
                 b=sample(letters[8:13],100,replace=TRUE))
 
 # Facet Line
-gg_facet_line_hor_CaCa.(d2)
-gg_facet_line_ver_CaCa.(d2)
+gg_line_hor_facet_CaCa.(d2)
+gg_line_ver_facet_CaCa.(d2)
 
 # Facet Line Point
-gg_facet_line_point_hor_CaCa.(d2)
-gg_facet_line_point_ver_CaCa.(d2)
+gg_line_point_hor_facet_CaCa.(d2)
+gg_line_point_hor_facet_CaCa.(d2)
 
 # 100% Stacked Bar
 gg_bar_stacked_100_ver_CaCa.(dataCaCa)
@@ -97,13 +97,13 @@ gg_marimekko_ver_CaCa.(dataCaCa)
 gg_marimekko_hor_CaCa.(dataCaCa)
 
 # Polar Stacked Bar
-gg_bar_stacked_polar_CaCa.(dataCaCa)
+gg_bar_polar_stacked_CaCa.(dataCaCa)
 
 # Polar Stacked 100% Bar
-gg_bar_stacked_polar_100_CaCa.(dataCaCa)
+gg_bar_polar_stacked_100_CaCa.(dataCaCa)
 
 # Circular Bar
-gg_bar_facet_circular_CaCa.(dataCaCa)
+gg_bar_circular_facet_CaCa.(dataCaCa)
 
 # Treemap
 gg_treemap_x_CaCa.(dataCaCa)
