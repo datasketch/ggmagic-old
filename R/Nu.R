@@ -5,7 +5,7 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

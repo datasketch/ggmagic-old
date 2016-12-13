@@ -21,7 +21,7 @@ gg_horizon_YeNu.
 Horizon
 }
 \section{ftypes}{
- Nu, Ye-Nu, Da-Nu
+ Nu, Ye-Nu, Da-Nu, Nu-Nu
 }
 \examples{
 add(1, 1)

@@ -18,7 +18,7 @@ gg_lines_hor_YeNu. <- function(data, title = "", subtitle = "", caption = "",
   ylab <- ylab %||% nms[2]
   data <- f$d
   ggplot(data, aes(x= a,y=b,group=1)) +
-    geom_line(stat = "identity",colour = "#009EE3") +
+    geom_line(stat = "identity", colour = "#009EE3") +
     theme_ds() +
     scale_y_continuous(labels = comma) +
     scale_x_continuous(limits=c(min(data$a),max(data$a))) +
@@ -168,7 +168,7 @@ gg_area_YeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
