@@ -6,7 +6,7 @@
 smooth}
 \usage{
 gg_smooth_DaNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, ...)
+  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -21,7 +21,7 @@ gg_smooth_DaNu.
 smooth
 }
 \section{ftypes}{
- Da-Nu
+ Nu, Ye-Nu, Da-Nu, Nu-Nu
 }
 \examples{
 add(1, 1)

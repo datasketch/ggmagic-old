@@ -5,7 +5,7 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -41,7 +41,7 @@ gg_horizon_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ye-Nu, Nu-Nu, Da-Nu, Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -55,7 +55,7 @@ gg_waterfall_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 
   data_graph <- data %>% mutate(xorder = 1:nrow(.))
   graph <- ggplot_waterfall(data_graph, 'xorder', 'a') +
-           scale_color_manual(breaks = c("+","-", ""), values = c("#009EE3", "#E5007D", "black")) +
+           scale_color_manual(breaks = c("+","-", ""), values = getPalette()) +
            theme_ds() + theme(legend.position="none") +
            labs(tittle = title, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
 
@@ -66,28 +66,30 @@ gg_waterfall_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 
 
 #' gg_hist_Nu.
-#' Histograms
+#' Histogram
 #' @name gg_hist_Nu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Nu, Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = "",
-                        yLabel = NULL, ...){
+                        yLabel = NULL, size = 1, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, aes(x=a)) + geom_histogram(fill= "#009EE3", color = "white")
+  graph <- ggplot(data, aes(x=a)) + geom_histogram(aes(fill= ""), show.legend = FALSE)
 
-  graph <- graph + geom_vline(aes(xintercept=mean(a)),
-                              color="#E5007D", linetype="dashed", size=1)
+  graph <- graph + geom_vline(aes(xintercept=mean(a), color = ""), linetype="dotted",
+                              size = size, show.legend = FALSE) +
+    scale_color_manual(values = getPalette()[2]) + scale_fill_manual(values = getPalette())
+
 
   graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
   graph <- graph + theme_ds()
@@ -103,22 +105,23 @@ gg_hist_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Nu, Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_dens_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel = NULL,  alfa = 0.5, ...){
+                             yLabel = NULL,  alfa = 0.5, size = 1, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, aes(x=a)) + geom_histogram(aes(y=..density..), fill = "#009EE3", color = "white") +
-            geom_density(alpha=alfa, col="#E5007D")
-  graph <- graph + geom_vline(aes(xintercept=mean(a)),
-                              color="#E5007D", linetype="dashed", size=1)
+  graph <- ggplot(data, aes(x=a)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
+            geom_density(alpha=alfa, aes(color = ""), show.legend = FALSE)
+  graph <- graph + geom_vline(aes(xintercept=mean(a), color = ""),
+                              linetype = "dotted", size = size, show.legend = FALSE) +
+    scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette()[2])
 
   graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
   graph <- graph + theme_ds()
@@ -134,7 +137,7 @@ gg_hist_dens_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Nu, Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -146,9 +149,10 @@ gg_cumm_dist_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, aes(a)) + geom_step(aes(y=..y..),stat="ecdf", color = "#009EE3")
+  graph <- ggplot(data, aes(a)) + geom_step(aes(y=..y.., color = ""), stat="ecdf", show.legend = FALSE) +
+    scale_color_manual(values = getPalette())
 
-  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
+  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds()
 
   return(graph)
@@ -162,11 +166,11 @@ gg_cumm_dist_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Nu, Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_flip_cumm_dist_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+gg_cumm_dist_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                                  yLabel = NULL, ...){
 
   graph <- gg_cumm_dist_Nu.(data, title, subtitle, caption, xLabel, yLabel)
@@ -175,101 +179,104 @@ gg_flip_cumm_dist_Nu. <- function(data, title = "", subtitle = "", caption = "",
   return(graph)
 }
 
-#' gg_line_Nu.
-#' Line plot
-#' @name gg_line_Nu.
+#' gg_line_point_Nu.
+#' Line wiht point plot
+#' @name gg_line_point_Nu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Nu, Nu-Nu, Ye-Nu, Da-Nu, Ca-Nu, Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_point_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                        yLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[1]
+  xlab <- xLabel %||% "Index"
   data <- f$d
 
 
   data_graph <- data %>%
                 dplyr::mutate(order = 1:nrow(data))
 
-  graph <- ggplot(data_graph, aes(x=order, y=a)) + geom_line(color = "#009EE3") + geom_point(color = "#E5007D")
-  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
-  graph <- graph + theme_ds()
+  graph <- ggplot(data_graph, aes(x=order, y=a)) + geom_line(aes(color = ""), show.legend = FALSE) +
+    geom_point(aes(color = ""), show.legend = FALSE)
+  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
   return(graph)
 }
 
 
-#' gg_flip_line_Nu.
-#' Line plot
-#' @name gg_flip_line_Nu.
+#' gg_line_point_flip_Nu.
+#' Line with point plot
+#' @name gg_line_point_flip_Nu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Nu, Nu-Nu, Ye-Nu, Da-Nu, Ca-Nu, Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_flip_line_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_point_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                             yLabel = NULL, ...){
 
-  graph <- gg_line_Nu.(data, title, subtitle, caption, xLabel, yLabel)
+  graph <- gg_line_point_Nu.(data, title, subtitle, caption, xLabel, yLabel)
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_scatter_Nu.
-#' Line plot
-#' @name gg_scatter_Nu.
+#' gg_point_Nu.
+#' Scatter plot
+#' @name gg_point_Nu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Nu, Nu-Nu, Ye-Nu, Da-Nu, Ca-Nu, Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_scatter_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+gg_point_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                           yLabel = NULL, type = 0, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[1]
+  xlab <- xLabel %||% "Index"
   data <- f$d
 
   data_graph <- data %>%
                 dplyr::mutate(order = 1:nrow(data))
 
-  graph <- ggplot(data_graph, aes(x=order, y=a)) + geom_point(shape = type, color = "#009EE3")
-  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
-  graph <- graph + theme_ds()
+  graph <- ggplot(data_graph, aes(x=order, y=a)) + geom_point(shape = type, aes(color = ""))
+  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
   return(graph)
 }
 
-#' gg_flip_scatter_Nu.
+#' gg_point_flip_Nu.
 #' Line plot
-#' @name gg_flip_scatter_Nu.
+#' @name gg_point_flip_Nu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Nu, Nu-Nu, Ye-Nu, Da-Nu, Ca-Nu, Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_flip_scatter_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+gg_point_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                                yLabel = NULL, type = 0, ...){
 
-  graph <- gg_scatter_Nu.(data, title, subtitle, caption, xLabel, yLabel, type)
+  graph <- gg_point_Nu.(data, title, subtitle, caption, xLabel, yLabel, type)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -283,7 +290,7 @@ gg_flip_scatter_Nu. <- function(data, title = "", subtitle = "", caption = "", x
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Nu, Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -295,9 +302,9 @@ gg_density_hist_Nu. <- function(data, title = "", subtitle = "", caption = "", x
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, aes(x=a)) + geom_density(fill = "#009EE3")
-  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
-  graph <- graph + theme_ds()
+  graph <- ggplot(data, aes(x=a)) + geom_density(aes(fill = ""), show.legend = FALSE)
+  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
 
   return(graph)
 }
@@ -309,28 +316,29 @@ gg_density_hist_Nu. <- function(data, title = "", subtitle = "", caption = "", x
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Nu, Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_box_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel = NULL, ...){
+gg_box_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel = NULL,
+                       xLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, aes(x=factor(""), y=a)) + geom_boxplot(color = "#009EE3")
-  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = "", y = yLabel)
-  graph <- graph + theme_ds()
+  graph <- ggplot(data, aes(x=factor(""), y=a)) + geom_boxplot(aes(color = ""), show.legend = FALSE)
+  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
   return(graph)
 }
 
 
-#' gg_flip_box_Nu.
-#' Box plot
-#' @name gg_flip_box_Nu.
+#' gg_box_flip_Nu.
+#' Box plot flipped
+#' @name gg_box_flip_Nu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -339,10 +347,10 @@ gg_box_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel = N
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_flip_box_Nu. <- function(data, title = "", subtitle = "", caption = "",
-                         yLabel = NULL, ...){
+gg_box_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel = NULL,
+                            xLabel = NULL, ...){
 
-  graph <- gg_box_Nu.(data, title, subtitle, caption, yLabel)
+  graph <- gg_box_Nu.(data, title, subtitle, caption, yLabel, xLabel)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -357,12 +365,13 @@ gg_flip_box_Nu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Nu, Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 
-gg_violin_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel = NULL, ...){
+gg_violin_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel = NULL,
+                          xLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
@@ -372,72 +381,75 @@ gg_violin_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel 
   data_graph <- data %>%
               dplyr::mutate(order = rep(1, nrow(data)))
 
-  graph <- ggplot(data_graph, aes(factor(order), a)) + geom_violin(color = "#009EE3")
-  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = "", y = yLabel)
-  graph <- graph + theme_ds()
+  graph <- ggplot(data_graph, aes(factor(""), a)) + geom_violin(aes(color = ""), show.legend = FALSE)
+  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
   return(graph)
 }
 
-#' gg_flip_violin_Nu.
-#' Violin
-#' @name gg_flip_violin_Nu.
+#' gg_violin_flip_Nu.
+#' Violin flipped
+#' @name gg_violin_flip_Nu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Nu, Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_flip_violin_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel = NULL, ...){
+gg_violin_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel = NULL,
+                                xLabel = NULL, ...){
 
-  graph <- gg_violin_Nu.(data, title, subtitle, caption, yLabel)
+  graph <- gg_violin_Nu.(data, title, subtitle, caption, yLabel, xLabel)
   graph <- graph + coord_flip()
 
   return(graph)
 }
 
-#' gg_dot_Nu.
-#' Violin
-#' @name gg_dot_Nu.
+#' gg_dot_bar_Nu.
+#' Dot bar
+#' @name gg_dot_bar_Nu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Nu, Nu, Nu-Nu, Da-Nu, Ye-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL, ...){
+gg_dot_bar_Nu. <- function(data, title = "", subtitle = "", caption = "",
+                           xLabel = NULL, yLabel = NULL, ...){
 
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[1]
+  xlab <- xLabel %||% "Index"
   data <- f$d
 
-  graph <- ggplot(data, aes(a)) + geom_dotplot(fill = "#009EE3")
-  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
-  graph <- graph + theme_ds()
+  graph <- ggplot(data, aes(a)) + geom_dotplot(aes(fill = ""), show.legend = FALSE)
+  graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
 
   return(graph)
 }
 
-#' gg_flip_dot_Nu.
-#' Violin
-#' @name gg_flip_dot_Nu.
+#' gg_dot_bar_flip_Nu.
+#' Dot bar flipped
+#' @name gg_dot_bar_flip_Nu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Nu, Nu, Nu-Nu, Da-Nu, Ye-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_flip_dot_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
-                           yLabel = NULL, ...){
+gg_dot_bar_flip_Nu. <- function(data, title = "", subtitle = "", caption = "",
+                                xLabel = NULL, yLabel = NULL, ...){
 
-  graph <- gg_dot_Nu.(data, title, subtitle, caption, xLabel, yLabel)
+  graph <- gg_dot_bar_Nu.(data, title, subtitle, caption, xLabel, yLabel)
   graph <- graph + coord_flip()
 
   return(graph)

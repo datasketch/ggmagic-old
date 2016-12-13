@@ -6,7 +6,8 @@
 Horizon}
 \usage{
 gg_horizon_DaNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", reverse = FALSE, ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", reverse = FALSE,
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -21,7 +22,7 @@ gg_horizon_DaNu.
 Horizon
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Nu, Ye-Nu, Da-Nu, Nu-Nu
 }
 \examples{
 add(1, 1)

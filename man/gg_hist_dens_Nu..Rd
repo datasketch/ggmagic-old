@@ -6,7 +6,7 @@
 Histograms with density}
 \usage{
 gg_hist_dens_Nu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, alfa = 0.5, ...)
+  xLabel = NULL, yLabel = NULL, alfa = 0.5, size = 1, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -21,7 +21,7 @@ gg_hist_dens_Nu.
 Histograms with density
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Nu, Nu
 }
 \examples{
 add(1, 1)

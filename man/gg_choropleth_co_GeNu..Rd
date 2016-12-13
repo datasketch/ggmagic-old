@@ -23,7 +23,7 @@ gg_choropleth_co_GeNu.
 Choropleth of Colombia's deptos
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ge-Nu
 }
 \examples{
 add(1, 1)

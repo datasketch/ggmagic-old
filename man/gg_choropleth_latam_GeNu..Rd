@@ -22,7 +22,7 @@ gg_choropleth_latam_GeNu.
 Choropleth of Latam
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ge-Nu
 }
 \examples{
 add(1, 1)

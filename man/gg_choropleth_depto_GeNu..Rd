@@ -23,7 +23,7 @@ gg_choropleth_depto_GeNu.
 Choropleth by filtering deptos
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ge-Nu
 }
 \examples{
 add(1, 1)

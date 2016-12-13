@@ -21,7 +21,7 @@ gg_cumm_dist_Nu.
 Cumulative distribution function
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Nu, Nu
 }
 \examples{
 add(1, 1)

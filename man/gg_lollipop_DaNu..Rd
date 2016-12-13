@@ -6,7 +6,7 @@
 lollipop}
 \usage{
 gg_lollipop_DaNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, ...)
+  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A data.}
@@ -21,7 +21,7 @@ gg_lollipop_DaNu.
 lollipop
 }
 \section{ftypes}{
- Da-Nu
+ Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
 }
 \examples{
 add(1, 1)

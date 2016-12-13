@@ -23,7 +23,7 @@ gg_bubble_latam_GeNu.
 Points inside Latam map
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Ge, Ge, Ge-Nu
 }
 \examples{
 add(1, 1)

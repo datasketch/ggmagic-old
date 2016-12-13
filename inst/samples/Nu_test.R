@@ -1,5 +1,6 @@
 
 load_all()
+document()
 
 dataNu <- data.frame(num = rnorm(150))
 
@@ -14,23 +15,23 @@ gg_hist_Nu.(dataNu)
 gg_hist_dens_Nu.(dataNu)
 gg_cumm_dist_Nu.(dataNu)
 
-gg_flip_cumm_dist_Nu.(dataNu)
+gg_cumm_dist_flip_Nu.(dataNu)
 
-gg_line_Nu.(dataNu)
-gg_flip_line_Nu.(dataNu)
+gg_line_point_Nu.(dataNu)
+gg_line_point_flip_Nu.(dataNu)
 
-gg_scatter_Nu.(dataNu, type=2)
-gg_flip_scatter_Nu.(dataNu)
+gg_point_Nu.(dataNu, type=2)
+gg_point_flip_Nu.(dataNu)
 
 gg_density_hist_Nu.(dataNu)
 gg_box_Nu.(dataNu)
-gg_flip_box_Nu.(dataNu)
+gg_box_flip_Nu.(dataNu)
 
 gg_violin_Nu.(dataNu)
-gg_flip_violin_Nu.(dataNu)
+gg_violin_flip_Nu.(dataNu)
 
-gg_dot_Nu.(dataNu)
-gg_flip_dot_Nu.(dataNu)
+gg_dot_bar_Nu.(dataNu)
+gg_dot_bar_flip_Nu.(dataNu)
 
 
 
