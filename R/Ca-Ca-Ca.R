@@ -6,7 +6,7 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -41,7 +41,7 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -75,7 +75,7 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -110,7 +110,7 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

@@ -5,7 +5,7 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -37,7 +37,7 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -69,7 +69,7 @@ gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -98,7 +98,7 @@ gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -130,7 +130,7 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -163,7 +163,7 @@ gg_bar_coloured_ver_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -183,7 +183,7 @@ gg_bar_coloured_hor_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -215,7 +215,7 @@ gg_bar_coloured_ver_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -235,7 +235,7 @@ gg_bar_coloured_hor_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -276,7 +276,7 @@ gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -296,7 +296,7 @@ gg_bar_coloured_hor_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -343,7 +343,7 @@ gg_bar_coloured_parameter_ver_ver_facet_CaCaNu. <- function(data, titleLabel = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -367,7 +367,7 @@ gg_bar_coloured_parameter_ver_hor_facet_CaCaNu. <- function(data, titleLabel = "
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -391,7 +391,7 @@ gg_bar_unstacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -426,7 +426,7 @@ gg_bar_unstacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -461,7 +461,7 @@ gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -494,7 +494,7 @@ gg_donut_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -525,7 +525,7 @@ gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -557,7 +557,7 @@ gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "", su
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -585,7 +585,7 @@ gg_bar_stacked_polar_100_CaCaNu. <- function(data, width = 0.95, titleLabel = ""
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -619,7 +619,7 @@ gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -640,7 +640,7 @@ gg_line_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu, Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -666,7 +666,7 @@ gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -687,7 +687,7 @@ gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -715,7 +715,7 @@ gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -736,7 +736,7 @@ gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -774,7 +774,7 @@ gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -795,7 +795,7 @@ gg_area_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -836,7 +836,7 @@ gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -857,7 +857,7 @@ gg_area_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -892,7 +892,7 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -928,7 +928,7 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -974,7 +974,7 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -1011,7 +1011,7 @@ gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -1039,7 +1039,7 @@ gg_multi_line_point_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

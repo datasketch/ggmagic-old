@@ -6,7 +6,9 @@ document()
 #install()
 
 
-data <- sampleData("Ca-Ye-Nu")
+data <- sampleData("Ca-Da-Nu")
+
+
 
 gg_bar_stk_ver_CaYeNu.(data)
 gg_bar_stk_hor_CaYeNu.(data)

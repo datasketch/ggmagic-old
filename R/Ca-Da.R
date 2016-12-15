@@ -5,7 +5,7 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Da
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -37,7 +37,7 @@ gg_pointline_hor_CaDa. <- function(data,title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Da
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -70,7 +70,7 @@ gg_pointline_ver_CaDa. <- function(data,title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Da
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
