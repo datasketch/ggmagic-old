@@ -21,7 +21,7 @@ gg_kagi_DaNu.
 Kagi
 }
 \section{ftypes}{
- Nu, Ye-Nu, Da-Nu, Nu-Nu
+ Da-Nu
 }
 \examples{
 add(1, 1)

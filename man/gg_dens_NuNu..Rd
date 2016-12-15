@@ -21,7 +21,7 @@ gg_dens_NuNu.
 Density in 2D
 }
 \section{ftypes}{
- Ye-Nu, Nu-Nu, Da-Nu
+ Nu-Nu
 }
 \examples{
 add(1, 1)

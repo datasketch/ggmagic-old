@@ -22,7 +22,7 @@ gg_dot_dist_ver_facet_CaNu.
 Facet Vertical Dot Dist
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

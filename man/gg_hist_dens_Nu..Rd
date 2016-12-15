@@ -21,7 +21,7 @@ gg_hist_dens_Nu.
 Histograms with density
 }
 \section{ftypes}{
- Ca-Nu, Nu
+ Nu
 }
 \examples{
 add(1, 1)

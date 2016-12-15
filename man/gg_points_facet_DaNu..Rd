@@ -21,7 +21,7 @@ gg_points_facet_DaNu.
 Points facet by years
 }
 \section{ftypes}{
- Da-Nu, Ye-Nu
+ Da-Nu
 }
 \examples{
 add(1, 1)

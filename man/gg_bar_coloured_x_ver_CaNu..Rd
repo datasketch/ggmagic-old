@@ -22,7 +22,7 @@ gg_bar_coloured_x_ver_CaNu.
 vertical bar
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

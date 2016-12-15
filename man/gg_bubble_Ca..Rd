@@ -21,7 +21,7 @@ gg_bubble_Ca.
 Bubble
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca
 }
 \examples{
 add(1, 1)

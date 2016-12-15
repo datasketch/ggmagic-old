@@ -21,7 +21,7 @@ gg_dens_flip_NuNu.
 Density 2D flipped
 }
 \section{ftypes}{
- Ye-Nu, Nu-Nu, Da-Nu
+ Nu-Nu
 }
 \examples{
 add(1, 1)

@@ -21,7 +21,7 @@ gg_bubbles_DaNu.
 bubbles
 }
 \section{ftypes}{
- Nu, Ye-Nu, Da-Nu, Ca-Nu, Ca
+ Da-Nu
 }
 \examples{
 add(1, 1)

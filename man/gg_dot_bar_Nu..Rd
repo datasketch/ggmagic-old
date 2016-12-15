@@ -21,7 +21,7 @@ gg_dot_bar_Nu.
 Dot bar
 }
 \section{ftypes}{
- Ca-Nu, Nu, Nu-Nu, Da-Nu, Ye-Nu
+ Nu
 }
 \examples{
 add(1, 1)

@@ -21,7 +21,7 @@ gg_bar_ordered_hor_CaNu.
 Ordered horizontal Bars
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

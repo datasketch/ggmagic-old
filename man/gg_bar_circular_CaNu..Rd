@@ -21,7 +21,7 @@ gg_bar_circular_CaNu.
 Circular Bar
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

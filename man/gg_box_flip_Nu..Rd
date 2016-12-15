@@ -21,7 +21,7 @@ gg_box_flip_Nu.
 Box plot flipped
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Nu
 }
 \examples{
 add(1, 1)

@@ -21,7 +21,7 @@ gg_treemap_x_CaNu.
 Treemap fill by first Ca
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

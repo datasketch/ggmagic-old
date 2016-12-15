@@ -21,7 +21,7 @@ gg_hist_stacked_ver_CaNu.
 Stacked Vertical Histogram
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

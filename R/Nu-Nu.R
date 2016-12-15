@@ -5,7 +5,7 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -39,7 +39,7 @@ gg_horizon_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -68,7 +68,7 @@ gg_waterfall_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -105,7 +105,7 @@ gg_dens_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -126,7 +126,7 @@ gg_dens_flip_NuNu. <- function(data, title = "", subtitle = "", caption = "", xL
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -161,7 +161,7 @@ gg_hist_NuNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -181,7 +181,7 @@ gg_hist_flip_NuNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu-Nu, Nu-Nu, Nu-Nu-Nu
+#' @section ftypes: Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -214,7 +214,7 @@ gg_line_multi_NuNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -242,7 +242,7 @@ return(graph)
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

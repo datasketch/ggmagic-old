@@ -21,7 +21,7 @@ gg_hist_ver_facet_CaNu.
 Facet Vertical Histogram
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

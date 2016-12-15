@@ -23,7 +23,7 @@ gg_slope_CaYeNu.
 Slope
 }
 \section{ftypes}{
- Ca-Ye-Nu, Ca-Nu-Nu, Ca-Da-Nu
+ Ca-Ye-Nu
 }
 \examples{
 add(1, 1)

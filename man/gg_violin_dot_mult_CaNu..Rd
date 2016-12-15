@@ -21,7 +21,7 @@ gg_violin_dot_mult_CaNu.
 Violin + dot jitter
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

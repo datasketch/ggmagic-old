@@ -21,7 +21,7 @@ gg_boxplot_CaNu.
 Boxplot
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

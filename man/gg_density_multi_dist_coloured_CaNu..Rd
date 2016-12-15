@@ -21,7 +21,7 @@ gg_density_multi_dist_coloured_CaNu.
 Coloured Density Distribution
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

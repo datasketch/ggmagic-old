@@ -21,7 +21,7 @@ gg_area_multi_density_dist_CaNu.
 Filled Density Distribution
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

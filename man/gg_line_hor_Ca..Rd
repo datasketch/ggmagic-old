@@ -21,7 +21,7 @@ gg_line_hor_Ca.
 Horizontal Line
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca
 }
 \examples{
 add(1, 1)

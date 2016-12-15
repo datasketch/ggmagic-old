@@ -230,7 +230,7 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ge, Ge, Ge-Nu
+#' @section ftypes: Ge
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -296,7 +296,7 @@ gg_bubble_co_Ge. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca,Ca-Nu
+#' @section ftypes: Ge
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -339,7 +339,7 @@ gg_bubble_latam_Ge. <- function(data, titleLabel = "", subtitle = "", caption = 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ge, Ge, Ge-Nu
+#' @section ftypes: Ge
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -405,7 +405,7 @@ gg_bubble_depto_Ge. <- function(data, titleLabel = "", subtitle = "", caption = 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ge, Ge, Ge-Nu
+#' @section ftypes: Ge-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -468,7 +468,7 @@ gg_bubble_co_GeNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ge, Ge, Ge-Nu
+#' @section ftypes: Ge-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -507,7 +507,7 @@ gg_bubble_latam_GeNu. <- function(data, titleLabel = "", subtitle = "", caption 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ge, Ge, Ge-Nu
+#' @section ftypes: Ge-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -572,7 +572,7 @@ gg_bubble_depto_GeNu. <- function(data, titleLabel = "", subtitle = "", caption 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ge, Ge, Ge-Nu
+#' @section ftypes: Ca-Ge
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -614,7 +614,7 @@ gg_bubble_co_CaGe. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ge, Ge, Ge-Nu
+#' @section ftypes: Ca-Ge
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

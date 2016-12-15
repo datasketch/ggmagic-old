@@ -21,7 +21,7 @@ gg_area_hor_facet_CaNu.
 Facet Horizontal Area
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

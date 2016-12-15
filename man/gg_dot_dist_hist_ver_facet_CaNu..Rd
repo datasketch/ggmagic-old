@@ -22,7 +22,7 @@ gg_dot_dist_hist_ver_facet_CaNu.
 Facet Vertical Histogram + Dist + Dot
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

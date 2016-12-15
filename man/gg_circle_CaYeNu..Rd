@@ -23,7 +23,7 @@ circle
 ciculos
 }
 \section{ftypes}{
- Ca-Ye-Nu, Ca-Ca-Nu, Ca-Da-Nu
+ Ca-Ye-Nu
 }
 \examples{
 add(1, 1)

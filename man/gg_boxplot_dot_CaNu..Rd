@@ -21,7 +21,7 @@ gg_boxplot_dot_CaNu.
 Boxplot + dot jitter
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)
