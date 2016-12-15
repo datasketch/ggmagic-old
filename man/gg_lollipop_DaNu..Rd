@@ -21,7 +21,7 @@ gg_lollipop_DaNu.
 lollipop
 }
 \section{ftypes}{
- Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+ Da-Nu
 }
 \examples{
 add(1, 1)

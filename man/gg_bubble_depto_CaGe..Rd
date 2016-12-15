@@ -23,7 +23,7 @@ gg_bubble_depto_CaGe.
 Points inside Colombia's mpios map
 }
 \section{ftypes}{
- Ca-Ge, Ge, Ge-Nu
+ Ca-Ge
 }
 \examples{
 add(1, 1)

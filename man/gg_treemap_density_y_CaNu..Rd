@@ -21,7 +21,7 @@ gg_treemap_density_y_CaNu.
 Treemap Density by Nu
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

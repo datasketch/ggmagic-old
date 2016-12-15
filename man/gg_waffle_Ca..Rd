@@ -21,7 +21,7 @@ gg_waffle_Ca.: title.
 Waffle
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca
 }
 \examples{
 add(1, 1)

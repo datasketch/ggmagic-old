@@ -22,7 +22,7 @@ gg_point_trend_line_facet_CaNu.
 Facet Trend Line
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

@@ -22,7 +22,7 @@ gg_trend_ribbon_facet_CaNu.
 Facet Trend ribbon
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

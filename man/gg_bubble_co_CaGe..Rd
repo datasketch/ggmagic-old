@@ -22,7 +22,7 @@ gg_bubble_co_CaGe.
 Points inside Colombia's deptos map
 }
 \section{ftypes}{
- Ca-Ge, Ge, Ge-Nu
+ Ca-Ge
 }
 \examples{
 add(1, 1)

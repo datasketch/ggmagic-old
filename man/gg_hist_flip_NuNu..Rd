@@ -21,7 +21,7 @@ gg_hist_flip_NuNu.
 Histogram 2d flipped
 }
 \section{ftypes}{
- Ye-Nu, Nu-Nu, Da-Nu
+ Nu-Nu
 }
 \examples{
 add(1, 1)

@@ -21,7 +21,7 @@ gg_violin_mult_flip_CaNu.
 Violin multi flipped
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

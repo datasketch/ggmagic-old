@@ -20,7 +20,7 @@ gg_gauge_dial_CaNu.
 Gauge
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

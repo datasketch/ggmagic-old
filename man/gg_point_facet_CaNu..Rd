@@ -21,7 +21,7 @@ gg_point_facet_CaNu.
 Facet Point
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

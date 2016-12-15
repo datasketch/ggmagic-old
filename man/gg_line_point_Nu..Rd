@@ -21,7 +21,7 @@ gg_line_point_Nu.
 Line wiht point plot
 }
 \section{ftypes}{
- Nu, Nu-Nu, Ye-Nu, Da-Nu, Ca-Nu, Ca
+ Nu
 }
 \examples{
 add(1, 1)

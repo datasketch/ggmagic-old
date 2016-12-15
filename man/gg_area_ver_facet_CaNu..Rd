@@ -21,7 +21,7 @@ gg_area_ver_facet_CaNu.
 Facet Vertical Area
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

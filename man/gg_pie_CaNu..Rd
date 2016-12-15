@@ -21,7 +21,7 @@ gg_pie_CaNu.
 Pie
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

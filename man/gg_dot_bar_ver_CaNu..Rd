@@ -21,7 +21,7 @@ gg_dot_bar_ver_CaNu.
 Vertical Dot Bar
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

@@ -21,7 +21,7 @@ gg_point_NuNu.
 Scatter plot
 }
 \section{ftypes}{
- Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+ Nu-Nu
 }
 \examples{
 add(1, 1)

@@ -5,7 +5,7 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -42,7 +42,7 @@ gg_horizon_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLab
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -71,7 +71,7 @@ gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xL
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -99,7 +99,7 @@ gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -134,7 +134,7 @@ gg_lines_points_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -165,7 +165,7 @@ gg_point_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -195,7 +195,7 @@ gg_box_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -224,7 +224,7 @@ gg_violin_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -254,7 +254,7 @@ gg_area_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -291,7 +291,7 @@ gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -320,7 +320,7 @@ gg_smooth_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu, Ye-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -359,7 +359,7 @@ gg_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu, Ye-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -398,7 +398,7 @@ gg_line_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Ca-Nu, Ca
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -430,7 +430,7 @@ gg_bar_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Ca-Nu, Ca
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -462,7 +462,7 @@ gg_bubbles_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

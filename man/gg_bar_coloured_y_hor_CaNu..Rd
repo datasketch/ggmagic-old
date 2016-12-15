@@ -23,7 +23,7 @@ gg_bar_coloured_y_hor_CaNu.
 horizontal bar
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

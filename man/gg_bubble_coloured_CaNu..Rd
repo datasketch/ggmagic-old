@@ -21,7 +21,7 @@ gg_bubble_coloured_CaNu.
 Coloured Bubble
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

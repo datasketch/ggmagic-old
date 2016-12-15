@@ -21,7 +21,7 @@ gg_dot_bar_hor_CaNu.
 Horizontal Dot Bar
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

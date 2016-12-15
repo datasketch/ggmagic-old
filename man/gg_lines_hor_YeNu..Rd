@@ -23,7 +23,7 @@ Horizontal Lines
 Tiene múltiples líneas
 }
 \section{ftypes}{
- Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+ Ye-Nu
 }
 \examples{
 add(1, 1)

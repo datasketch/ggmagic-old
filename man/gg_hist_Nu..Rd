@@ -21,7 +21,7 @@ gg_hist_Nu.
 Histogram
 }
 \section{ftypes}{
- Ca-Nu, Nu
+ Nu
 }
 \examples{
 add(1, 1)

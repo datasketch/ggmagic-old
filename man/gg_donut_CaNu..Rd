@@ -21,7 +21,7 @@ gg_donut_CaNu.
 dount
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

@@ -21,7 +21,7 @@ gg_bar_DaNu.
 bar
 }
 \section{ftypes}{
- Nu, Ye-Nu, Da-Nu, Ca-Nu, Ca
+ Da-Nu
 }
 \examples{
 add(1, 1)

@@ -21,7 +21,7 @@ gg_bullseye_CaNu.
 Bullseye
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)

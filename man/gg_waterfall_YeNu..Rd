@@ -21,7 +21,7 @@ gg_waterfall_YeNu.
 Waterfall
 }
 \section{ftypes}{
- Ye-Nu, Nu-Nu, Da-Nu, Nu
+ Ye-Nu
 }
 \examples{
 add(1, 1)

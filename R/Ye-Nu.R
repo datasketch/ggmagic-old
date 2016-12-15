@@ -6,7 +6,7 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Ye-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -33,7 +33,7 @@ gg_lines_hor_YeNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Ye-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -64,7 +64,7 @@ gg_lollipop_YeNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu, Nu-Nu, Da-Nu, Nu
+#' @section ftypes: Ye-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -93,7 +93,7 @@ gg_waterfall_YeNu. <- function(data, title = "", subtitle = "", caption = "", xL
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Ye-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -140,7 +140,7 @@ gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu, Ye-Nu, Nu-Nu, Da-Nu
+#' @section ftypes: Ye-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -168,7 +168,7 @@ gg_area_YeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu, Ye-Nu, Da-Nu, Nu-Nu
+#' @section ftypes: Ye-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

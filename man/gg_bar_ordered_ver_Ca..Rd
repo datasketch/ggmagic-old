@@ -22,7 +22,7 @@ gg_bar_ordered_ver_Ca.
 Ordered vertical Bars
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca
 }
 \examples{
 add(1, 1)

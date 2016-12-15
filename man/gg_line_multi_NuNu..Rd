@@ -21,7 +21,7 @@ gg_line_multi_NuNu.
 Line for each Nu
 }
 \section{ftypes}{
- Ca-Nu-Nu, Nu-Nu, Nu-Nu-Nu
+ Nu-Nu
 }
 \examples{
 add(1, 1)

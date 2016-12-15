@@ -21,7 +21,7 @@ gg_hist_hor_mean_facet_CaNu.
 Facet Horizontal Histogram + Mean
 }
 \section{ftypes}{
- Ca, Ca-Nu
+ Ca-Nu
 }
 \examples{
 add(1, 1)
