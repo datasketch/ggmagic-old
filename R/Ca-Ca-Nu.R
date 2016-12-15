@@ -289,9 +289,9 @@ gg_bar_coloured_hor_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   return(graph)
 }
 
-#' gg_bar_coloured_parameter_ver_ver_facet_CaCaNu.
+#' gg_bar_coloured_parameter_ver_facet_CaCaNu.
 #' Facet Vertical coloured by parameter bars
-#' @name gg_bar_coloured_parameter_ver_ver_facet_CaCaNu.
+#' @name gg_bar_coloured_parameter_ver_facet_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -300,7 +300,7 @@ gg_bar_coloured_hor_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_parameter_ver_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_coloured_parameter_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                                       xLabel = NULL, yLabel = NULL,
                                                       parameter1 = NULL, parameter2 = NULL,
                                                       leg_pos = "right", ...){
@@ -336,9 +336,9 @@ gg_bar_coloured_parameter_ver_ver_facet_CaCaNu. <- function(data, titleLabel = "
   return(graph)
 }
 
-#' gg_bar_coloured_parameter_ver_hor_facet_CaCaNu.
+#' gg_bar_coloured_parameter_hor_facet_CaCaNu.
 #' Facet Horizontal coloured by parameter Bars
-#' @name gg_bar_coloured_parameter_ver_hor_facet_CaCaNu.
+#' @name gg_bar_coloured_parameter_hor_facet_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -347,12 +347,12 @@ gg_bar_coloured_parameter_ver_ver_facet_CaCaNu. <- function(data, titleLabel = "
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_parameter_ver_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_coloured_parameter_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                                       xLabel = NULL, yLabel = NULL,
                                                       parameter1 = NULL, parameter2 = NULL,
                                                       leg_pos = "right", ...){
 
-  graph <- gg_bar_coloured_parameter_ver_ver_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel,
+  graph <- gg_bar_coloured_parameter_ver_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel,
                                                      yLabel, parameter1, parameter2, leg_pos)
 
   graph <- graph + coord_flip()
@@ -418,6 +418,65 @@ gg_bar_unstacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 
   return(graph)
 }
+
+#' gg_bar_facet_ver_CaCaNu.
+#' Facet vertical bargraph
+#' @name gg_bar_facet_ver_CaCaNu.
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_facet_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                         yLabel = NULL, leg_pos = "right", angle_x = 45, ...){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[3]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(count=sum(c)) %>%
+    tidyr::spread(b, count) %>%
+    tidyr::gather(b, count, -a)
+
+  graph <- ggplot(data_graph, aes(a, weight=count)) +
+    geom_bar(position = "dodge", aes(fill = ""), show.legend = FALSE)
+  graph <- graph +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(legend.position=leg_pos) + guides(text = FALSE) + facet_grid(. ~a)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+
+  return(graph)
+}
+
+
+#' gg_bar_facet_hor_CaCaNu.
+#' Horizontal bar graph
+#' @name gg_bar_facet_hor_CaCaNu.
+#' @param x A category.
+#' @param y A category.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_facet_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                     yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+
+  graph <- gg_bar_facet_ver_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x)
+
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
 
 #' gg_pie_facet_CaCaNu.
 #' Facet Pie

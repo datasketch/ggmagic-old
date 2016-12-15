@@ -33,6 +33,9 @@ gg_bubble_CaCaNu.(dataCaCaNu)
 gg_bar_unstacked_ver_CaCaNu.(dataCaCaNu)
 gg_bar_unstacked_hor_CaCaNu.(dataCaCaNu)
 
+gg_bar_facet_ver_CaCaNu.(dataCaCaNu)
+gg_bar_facet_hor_CaCaNu.(dataCaCaNu)
+
 # Line
 gg_line_hor_facet_CaCaNu.(dataCaCaNu)
 gg_line_ver_facet_CaCaNu.(dataCaCaNu)
@@ -82,10 +85,10 @@ gg_bar_coloured_ver_z_facet_CaCaNu.(dataCaCaNu)
 gg_bar_coloured_hor_z_facet_CaCaNu.(dataCaCaNu)
 
 # Facet Coloured parameter Bar
-gg_bar_coloured_parameter_ver_ver_facet_CaCaNu.(dataCaCaNu,
+gg_bar_coloured_parameter_ver_facet_CaCaNu.(dataCaCaNu,
                                           parameter1 = c("Callejero"),
                                           parameter2 = c("A"))
-gg_bar_coloured_parameter_ver_hor_facet_CaCaNu.(dataCaCaNu,
+gg_bar_coloured_parameter_hor_facet_CaCaNu.(dataCaCaNu,
                                           parameter1 = c("Callejero", "De raza", "Mixto"),
                                           parameter2 = c("A","B","C"))
 

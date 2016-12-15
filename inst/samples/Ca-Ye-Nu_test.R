@@ -6,7 +6,7 @@ document()
 #install()
 
 
-data <- sampleData("Ca-Da-Nu")
+data <- sampleData("Ca-Ye-Nu")
 
 
 
@@ -17,8 +17,8 @@ gg_bar_grp_ver_CaYeNu.(data)
 gg_bar_grp_hor_CaYeNu.(data)
 
 
-gg_lines_hor_CaYeNu.(data,angle = 360)
-
+gg_lines_hor_CaYeNu.(data)
+gg_lines_points_hor_CaYeNu.(data)
 
 data <- data.frame(hechos = c("secuestro","secuestro", "secuestro", "delito", "delito", "ex", "ex"),
                    year = c(2006,2007,2015,2007,2015,2007,2015),

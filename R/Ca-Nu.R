@@ -17,8 +17,8 @@ gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   data <- f$d
 
   data_graph <- data %>%
-                dplyr::group_by(a) %>%
-           dplyr::summarise(count = sum(b)) %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = sum(b)) %>%
     dplyr::mutate(pos = cumsum(count) - count/2,
                   percent = 100 * round(count/sum(count), 4))
 
@@ -1492,8 +1492,8 @@ gg_dot_bar_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = 
 
   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, subtitle = subtitle, caption = caption)
   graph <- graph + scale_y_continuous(breaks = NULL) +
-           theme(legend.position=leg_pos) + theme_ds() +
-           scale_fill_manual(values = getPalette())
+    theme(legend.position=leg_pos) + theme_ds() +
+    scale_fill_manual(values = getPalette())
 
   return(graph)
 }
@@ -1757,7 +1757,7 @@ gg_boxplot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_boxplot_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel = NULL, leg_pos = 'right', ...){
+                                  yLabel = NULL, leg_pos = 'right', ...){
 
 
   graph <- gg_boxplot_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos)
@@ -1778,7 +1778,7 @@ gg_boxplot_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption 
 #' add(1, 1)
 #' add(10, 1)
 gg_boxplot_dot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel = NULL, leg_pos = 'right', ...){
+                                 yLabel = NULL, leg_pos = 'right', ...){
 
 
   f <- fringe(data)
@@ -1804,7 +1804,7 @@ gg_boxplot_dot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 #' add(1, 1)
 #' add(10, 1)
 gg_boxplot_dot_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                  yLabel = NULL, leg_pos = 'right', ...){
+                                      yLabel = NULL, leg_pos = 'right', ...){
 
 
   graph <- gg_boxplot_dot_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos)
@@ -1850,7 +1850,7 @@ gg_violin_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 #' add(1, 1)
 #' add(10, 1)
 gg_violin_mult_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                 yLabel = NULL, leg_pos = 'right', ...){
+                                      yLabel = NULL, leg_pos = 'right', ...){
 
   graph <- gg_violin_mult_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos)
   graph <- graph + coord_flip()
@@ -1894,7 +1894,7 @@ gg_violin_dot_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' add(1, 1)
 #' add(10, 1)
 gg_violin_dot_mult_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                     yLabel = NULL, leg_pos = 'right', ...){
+                                          yLabel = NULL, leg_pos = 'right', ...){
 
   graph <- gg_violin_dot_mult_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos)
   graph <- graph + coord_flip()
@@ -1950,6 +1950,71 @@ gg_bar_ordered_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
                                      yLabel =  NULL, leg_pos = "right", ...){
 
   graph <- gg_bar_ordered_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
+
+#' gg_bar_ver_CaNu.
+#' Vertical Bars
+#' @name gg_bar_ver_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                             yLabel =  NULL, leg_pos = "right", text = TRUE, type = "count",
+                             size_text = 5, ...){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
+
+  data_graph <- data %>% dplyr::group_by(a) %>%
+    dplyr::summarise(count = sum(b)) %>%
+    dplyr::mutate(pos = count - count/10,
+                  percent = 100 * round(count / sum(count), 4))
+
+  graph <- ggplot(data_graph, aes(x = a, y = count, fill = "")) +
+    geom_bar(stat = "identity")
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    scale_fill_manual(values = getPalette()) + theme_ds() + guides(fill = FALSE)
+  graph <- graph + theme(legend.position=leg_pos)
+
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)), size = size_text))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")), size = size_text))
+    }else{
+      graph
+    }
+  }
+
+  return(graph)
+}
+
+#' gg_bar_hor_CaNu.
+#' Horizontal Bars
+#' @name gg_bar_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                             yLabel =  NULL, leg_pos = "right", text = TRUE, type = "count",
+                             size_text = 5,...){
+
+  graph <- gg_bar_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, text, type, size_text)
   graph <- graph + coord_flip()
 
   return(graph)

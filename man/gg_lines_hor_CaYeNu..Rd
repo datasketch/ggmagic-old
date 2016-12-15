@@ -2,6 +2,7 @@
 % Please edit documentation in R/Ca-Ye-Nu.R
 \name{gg_lines_hor_CaYeNu.}
 \alias{gg_lines_hor_CaYeNu.}
+\alias{gg_lines_points_hor_CaYeNu.}
 \title{gg_lines_hor_CaYeNu.: title.
 Lines
 Tiene múltiples líneas}
@@ -9,24 +10,42 @@ Tiene múltiples líneas}
 gg_lines_hor_CaYeNu.(data, title = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, leg_pos = "right", angle = 0,
   by = NULL, ...)
+
+gg_lines_points_hor_CaYeNu.(data, title = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle = 0,
+  by = NULL, type = 1, ...)
 }
 \arguments{
+\item{x}{A number.}
+
+\item{y}{A number.}
+
 \item{x}{A number.}
 
 \item{y}{A number.}
 }
 \value{
 The sum of \code{x} and \code{y}.
+
+The sum of \code{x} and \code{y}.
 }
 \description{
+gg_lines_hor_CaYeNu.: title.
+Lines
+Tiene múltiples líneas
+
 gg_lines_hor_CaYeNu.: title.
 Lines
 Tiene múltiples líneas
 }
 \section{ftypes}{
  Ca-Ye-Nu
+
+ Ca-Ye-Nu
 }
 \examples{
+add(1, 1)
+add(10, 1)
 add(1, 1)
 add(10, 1)
 }

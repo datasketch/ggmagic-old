@@ -16,6 +16,9 @@ gg_waterfall_YeNu.(data)
 
 gg_bar_coloured_x_ver_YeNu.(data)
 
+gg_bar_ver_YeNu.(data)
+gg_bar_hor_YeNu.(data)
+
 gg_area_YeNu.(data)
 
 gg_horizon_YeNu.(data)

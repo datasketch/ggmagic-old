@@ -14,10 +14,14 @@ gg_bar_grp_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
                                    xLabel = NULL, yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getCnames(f)
-  data <- f$d
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
-  graph <- ggplot(data, aes(x = b, y = c, group = a, fill = a)) +
+  data <- f$d
+
+  data_graph <- data %>%
+    tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
+
+  graph <- ggplot(data_graph, aes(x = as.factor(a), y = c, group = b, fill = as.factor(b))) +
     geom_bar( position = "dodge", stat="identity") +
     scale_y_continuous(labels = comma) +
     theme_ds() + scale_fill_manual(values = getPalette()) +
@@ -130,6 +134,40 @@ gg_lines_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", 
            theme(legend.position = leg_pos) +
            theme(axis.text.x = element_text(angle = angle, hjust = 1)) +
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  return(graph)
+}
+
+#' gg_lines_hor_CaYeNu.: title.
+#' Lines
+#' Tiene múltiples líneas
+#' @name gg_lines_hor_CaYeNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_lines_points_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+                                 yLabel = NULL, leg_pos = "right", angle = 0, by = NULL, type = 1, ...){
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[3]
+  data <- f$d
+
+  nuestroBy <- ifelse(length(unique(data$b )) <= 7, length(unique(data$b)), 5)
+  by <- by %||% nuestroBy
+
+  graph <- ggplot(data, aes(x = b ,y=c,group=a,colour=a)) +
+    geom_line(stat = "identity") + geom_point(shape = type) + theme_ds() +
+    scale_y_continuous(labels = comma) +
+    scale_x_continuous(breaks = round(seq(min(data$b),max(data$b), length.out = by))) +
+    scale_color_manual(values = getPalette())  +
+    theme(legend.position = leg_pos) +
+    theme(axis.text.x = element_text(angle = angle, hjust = 1)) +
+    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   return(graph)
 }
 

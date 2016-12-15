@@ -132,6 +132,70 @@ gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
 
 }
 
+#' gg_bar_ver_YeNu.
+#' vertical bar
+#' @name gg_bar_ver_YeNu.
+#' @param x A category.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', size_text = 3,
+                                       yLabel = NULL, leg_pos = "right", ...){
+
+  f <- fringe(data)
+  nms <- getCnames(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
+
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = sum(b)) %>%
+    dplyr::mutate(percent = 100 * round(count/sum(count), 4))
+
+  graph <- ggplot(data_graph, aes(x = a, y = count)) + geom_bar(aes(fill = ""), show.legend = FALSE, stat = "identity") +
+    theme_ds() +
+    scale_fill_manual(values = getPalette()) +
+    theme(legend.position=leg_pos) +
+    guides(fill = FALSE) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+
+
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(aes(x = a, y = count + 0.05, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(aes(x = a, y = count + 0.05, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0))
+    }else{
+      graph
+    }
+  }
+
+}
+
+#' gg_bar_hor_YeNu.
+#' horizontal bar
+#' @name gg_bar_hor_YeNu.
+#' @param x A category.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', size_text = 3,
+                            yLabel = NULL, leg_pos = "right", ...){
+
+  graph <- gg_bar_ver_YeNu.(data, titleLabel, subtitle, caption, xLabel, text, type, size_text, yLabel, leg_pos)
+  graph <- graph + coord_flip()
+
+  return(graph)
+}
 
 #' gg_area_YeNu.:
 #' Area
