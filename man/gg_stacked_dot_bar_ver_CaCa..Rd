@@ -21,7 +21,7 @@ gg_stacked_dot_bar_ver_CaCa.
 Stacked vertical dot Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca
+ Ca-Ca
 }
 \examples{
 add(1, 1)

@@ -21,7 +21,7 @@ gg_bar_coloured_ver_x_facet_CaCaNu.
 vertical bar
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca-Nu
+ Ca-Ca-Nu
 }
 \examples{
 add(1, 1)

@@ -21,7 +21,7 @@ gg_bar_stacked_polar_CaCaNu.
 Stacked Polar Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Ca-Nu
 }
 \examples{
 add(1, 1)

@@ -21,7 +21,7 @@ gg_histogram_CaDa.: title.
 histogram
 }
 \section{ftypes}{
- Ca-Ye-Nu,Ca-Ca-Nu
+ Ca-Da
 }
 \examples{
 add(1, 1)

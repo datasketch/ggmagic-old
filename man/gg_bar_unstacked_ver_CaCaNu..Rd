@@ -21,7 +21,7 @@ gg_bar_unstacked_ver_CaCaNu.
 vertical unstacked bargraph
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca-Nu
+ Ca-Ca-Nu
 }
 \examples{
 add(1, 1)

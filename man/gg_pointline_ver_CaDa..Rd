@@ -21,7 +21,7 @@ gg_pointline_ver_CaDa.: title.
 pointlines
 }
 \section{ftypes}{
- Ca-Ye-Nu,Ca-Ca-Nu
+ Ca-Da
 }
 \examples{
 add(1, 1)

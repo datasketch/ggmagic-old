@@ -22,7 +22,7 @@ gg_bar_coloured_parameter_hor_facet_CaCa.
 Facet Horizontal coloured by parameter Bars
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca
+ Ca-Ca
 }
 \examples{
 add(1, 1)

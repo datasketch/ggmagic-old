@@ -57,11 +57,7 @@ gg_bar_grp_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-<<<<<<< HEAD
 #' @section ftypes: Ca-Ye-Nu, Ca-Ca-Nu
-=======
-#' @section ftypes: Ca-Ye-Nu
->>>>>>> a72a784a620f0a690fb19c59fc1d39dae7dcf605
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -90,11 +86,7 @@ gg_bar_stk_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-<<<<<<< HEAD
 #' @section ftypes: Ca-Ye-Nu, Ca-Ca-Nu
-=======
-#' @section ftypes: Ca-Ye-Nu
->>>>>>> a72a784a620f0a690fb19c59fc1d39dae7dcf605
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

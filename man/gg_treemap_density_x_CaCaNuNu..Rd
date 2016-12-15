@@ -21,7 +21,7 @@ gg_treemap_density_x_CaCaNuNu.
 Treemap Fill by second Nu
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Ca-Nu-Nu
 }
 \examples{
 add(1, 1)

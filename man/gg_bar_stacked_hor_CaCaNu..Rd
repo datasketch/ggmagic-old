@@ -21,7 +21,7 @@ gg_bar_stacked_hor_CaCaNu.
 horizontal stacked bar graph
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Ca-Nu
 }
 \examples{
 add(1, 1)

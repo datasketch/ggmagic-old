@@ -21,7 +21,7 @@ gg_bullseye_facet_CaCaNu.
 Facet Bullseye
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca-Nu
+ Ca-Ca-Nu
 }
 \examples{
 add(1, 1)

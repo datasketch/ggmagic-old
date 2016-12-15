@@ -21,7 +21,7 @@ gg_donut_facet_CaCaNu.
 Facet Donut
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca-Nu
+ Ca-Ca-Nu
 }
 \examples{
 add(1, 1)

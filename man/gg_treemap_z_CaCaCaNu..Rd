@@ -21,7 +21,7 @@ gg_treemap_z_CaCaCaNu.
 Treemap fill third Ca
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Ca-Ca-Nu
 }
 \examples{
 add(1, 1)

@@ -22,7 +22,7 @@ gg_dot_bar_hor_facet_CaCa.
 Facet Horizontal Dot Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca
+ Ca-Ca
 }
 \examples{
 add(1, 1)

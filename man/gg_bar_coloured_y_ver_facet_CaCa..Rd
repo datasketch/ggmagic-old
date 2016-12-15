@@ -21,7 +21,7 @@ gg_bar_coloured_y_ver_facet_CaCa.
 Facet Vertical coloured bars
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca
+ Ca-Ca
 }
 \examples{
 add(1, 1)

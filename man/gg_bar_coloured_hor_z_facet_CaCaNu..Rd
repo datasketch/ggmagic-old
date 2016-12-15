@@ -22,7 +22,7 @@ gg_bar_coloured_hor_z_facet_CaCaNu.
 Facet Coloured horizontal bar
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Ca-Nu
 }
 \examples{
 add(1, 1)

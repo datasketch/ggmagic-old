@@ -22,7 +22,7 @@ gg_dot_bar_ver_facet_CaCa.
 Facet Vertical Dot Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca
+ Ca-Ca
 }
 \examples{
 add(1, 1)

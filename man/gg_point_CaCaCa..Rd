@@ -22,7 +22,7 @@ gg_point_CaCaCa.
 Coloured Point
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Ca-Ca
 }
 \examples{
 add(1, 1)

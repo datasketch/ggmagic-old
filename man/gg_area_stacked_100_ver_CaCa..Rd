@@ -22,7 +22,7 @@ gg_area_stacked_100_ver_CaCa.
 Stacked vertical Area 100pct
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca
+ Ca-Ca
 }
 \examples{
 add(1, 1)

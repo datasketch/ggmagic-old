@@ -22,7 +22,7 @@ gg_bar_coloured_parameter_ver_facet_CaCa.
 Facet Vertical coloured by parameter bars
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca
+ Ca-Ca
 }
 \examples{
 add(1, 1)

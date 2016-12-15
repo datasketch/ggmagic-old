@@ -21,7 +21,7 @@ gg_line_hor_facet_CaCa.
 Horizontal Line
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca
+ Ca-Ca
 }
 \examples{
 add(1, 1)

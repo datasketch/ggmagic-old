@@ -21,7 +21,7 @@ gg_pyramid_CaCaNu.
 pyramid
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Ca-Nu
 }
 \examples{
 add(1, 1)

@@ -22,7 +22,7 @@ gg_multi_line_CaCaNu.
 Grouped Line Coloured
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Ca-Nu
 }
 \examples{
 add(1, 1)

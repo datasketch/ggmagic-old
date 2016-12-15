@@ -21,7 +21,7 @@ gg_pie_facet_CaCa.
 Facet Pie
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca
+ Ca-Ca
 }
 \examples{
 add(1, 1)

@@ -21,7 +21,7 @@ gg_bar_circular_facet_CaCa.
 Circular Bar
 }
 \section{ftypes}{
- Ca,Ca-Nu, Ca-Ca
+ Ca-Ca
 }
 \examples{
 add(1, 1)
