@@ -21,7 +21,7 @@ gg_scatter_hor_CaDaNu.: title.
 pointlines
 }
 \section{ftypes}{
- Ca-Ye-Nu,Ca-Ca-Nu
+ Ca-Da-Nu
 }
 \examples{
 add(1, 1)

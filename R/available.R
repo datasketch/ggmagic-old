@@ -24,19 +24,18 @@ ggList <- function(type = NULL,wrongNames = FALSE){
 #' @export
 ggFtype <- function(gg = NULL){
   db <- Rd_db("ggmagic")
-  names(db)
   db <- db[grepl("\\.\\.Rd$",names(db))]
   names(db) <- gsub(".Rd","",names(db))
   i <<- 1
   f <- function(dbi) {
     message(i, dbi[[1]][[1]])
+    #dbi <- db[[i-1]]
     i <<-  i + 1
-    #dbi <- db[[i]]
     ftype <- as.character(dbi[[8]][[2]][[2]])
     str(ftype)
     strsplit(gsub(" |\n","",ftype),",")[[1]]
   }
-  results <- lapply(db,f)
+  results <- purrr::map(db,f)
   names(results) <- gsub(".Rd","",names(results))
 
   #meta <- map(db, tools:::.Rd_get_section, "section")

@@ -313,9 +313,9 @@ gg_smooth_DaNu. <- function(data, title = "", subtitle = "", caption = "",
  return(graph)
 }
 
-#' gg_points_div_year_DaNu.
+#' gg_points_facet_DaNu.
 #' Points facet by years
-#' @name gg_points_div_year_DaNu.
+#' @name gg_points_facet_DaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -485,9 +485,9 @@ gg_lollipop_DaNu. <- function(data, title = "", subtitle = "",
 }
 
 
-#' gg_stepped_stacked_area_DaNu.
+#' gg_area_stepped_stacked_DaNu.
 #' stepped stacked area.
-#' @name gg_stepped_stacked_area_DaNu.
+#' @name gg_area_stepped_stacked_DaNu.
 #' @param x A data.
 #' @param y A number.
 #' @export

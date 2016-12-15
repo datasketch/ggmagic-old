@@ -22,7 +22,7 @@ gg_area_stacked_hor_CaDaNu.
 Stacked Horizontal Area
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Da-Nu
 }
 \examples{
 add(1, 1)

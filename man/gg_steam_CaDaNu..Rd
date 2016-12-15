@@ -22,7 +22,7 @@ gg_steam_CaDaNu.
 Steam
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Da-Nu
 }
 \examples{
 add(1, 1)

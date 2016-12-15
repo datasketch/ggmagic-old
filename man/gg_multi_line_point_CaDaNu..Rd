@@ -22,7 +22,7 @@ gg_multi_line_point_CaDaNu.
 Grouped Line Color Point
 }
 \section{ftypes}{
- Ca,Ca-Nu
+ Ca-Da-Nu
 }
 \examples{
 add(1, 1)

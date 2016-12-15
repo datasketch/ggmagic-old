@@ -492,9 +492,9 @@ gg_dist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
   return(graph)
 }
 
-#' gg_hist_mean_ver_facet_CaNu.
+#' gg_hist_ver_mean_facet_CaNu.
 #' Facet Vertical Histogram + Mean
-#' @name gg_hist_mean_ver_facet_CaNu.
+#' @name gg_hist_ver_mean_facet_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export

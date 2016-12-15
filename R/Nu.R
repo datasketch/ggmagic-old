@@ -130,9 +130,9 @@ gg_hist_dens_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 
 }
 
-#' gg_cumm_dist_Nu.
+#' gg_dist_cum_Nu.
 #' Cumulative distribution function
-#' @name gg_cumm_dist_Nu.
+#' @name gg_dist_cum_Nu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -141,14 +141,12 @@ gg_hist_dens_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_cumm_dist_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+gg_dist_cum_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                             yLabel = NULL, ...){
-
   f <- fringe(data)
   nms <- getCnames(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
-
   graph <- ggplot(data, aes(a)) + geom_step(aes(y=..y.., color = ""), stat="ecdf", show.legend = FALSE) +
     scale_color_manual(values = getPalette())
 
@@ -159,25 +157,6 @@ gg_cumm_dist_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 
 }
 
-#' gg_flip_cumm_dist_Nu.
-#' Cumulative distribution function
-#' @name gg_flip_cumm_dist_Nu.
-#' @param x A number.
-#' @param y A number.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu, Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_cumm_dist_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
-                                 yLabel = NULL, ...){
-
-  graph <- gg_cumm_dist_Nu.(data, title, subtitle, caption, xLabel, yLabel)
-  graph <- graph + coord_flip()
-
-  return(graph)
-}
 
 #' gg_line_point_Nu.
 #' Line wiht point plot
