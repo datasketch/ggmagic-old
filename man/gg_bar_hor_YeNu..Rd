@@ -6,7 +6,7 @@
 horizontal bar}
 \usage{
 gg_bar_hor_YeNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, text = TRUE, type = "percent", size_text = 3,
+  xLabel = NULL, text = TRUE, type = "percent", text_size = 3,
   yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{

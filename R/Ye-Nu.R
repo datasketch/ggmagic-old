@@ -13,7 +13,7 @@
 gg_lines_hor_YeNu. <- function(data, title = "", subtitle = "", caption = "",
                                xlab = NULL, ylab = NULL,...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
@@ -42,7 +42,7 @@ gg_lollipop_YeNu. <- function(data, title = "", subtitle = "", caption = "",
                               xlab = NULL, ylab = NULL, size = 7,...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
@@ -72,7 +72,7 @@ gg_waterfall_YeNu. <- function(data, title = "", subtitle = "", caption = "", xL
                                yLabel =  NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
@@ -97,11 +97,11 @@ gg_waterfall_YeNu. <- function(data, title = "", subtitle = "", caption = "", xL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', size_text = 3,
+gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', text_size = 3,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   flab <- fillLabel %||% nms[1]
@@ -121,10 +121,10 @@ gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
 
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = count + 0.05, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0))
+    return(graph + geom_text(aes(x = a, y = count + 0.05, label = round(count,2)), size = text_size, position = position_dodge(0.9), vjust = 0))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = count + 0.05, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0))
+      return(graph + geom_text(aes(x = a, y = count + 0.05, label = paste(percent, "%", sep = "")), size = text_size, position = position_dodge(0.9), vjust = 0))
     }else{
       graph
     }
@@ -143,11 +143,11 @@ gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', size_text = 3,
+gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', text_size = 3,
                                        yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -166,10 +166,10 @@ gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
 
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = count + 0.05, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0))
+    return(graph + geom_text(aes(x = a, y = count + 0.05, label = round(count,2)), size = text_size, position = position_dodge(0.9), vjust = 0))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = count + 0.05, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0))
+      return(graph + geom_text(aes(x = a, y = count + 0.05, label = paste(percent, "%", sep = "")), size = text_size, position = position_dodge(0.9), vjust = 0))
     }else{
       graph
     }
@@ -188,10 +188,10 @@ gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', size_text = 3,
+gg_bar_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', text_size = 3,
                             yLabel = NULL, leg_pos = "right", ...){
 
-  graph <- gg_bar_ver_YeNu.(data, titleLabel, subtitle, caption, xLabel, text, type, size_text, yLabel, leg_pos)
+  graph <- gg_bar_ver_YeNu.(data, titleLabel, subtitle, caption, xLabel, text, type, text_size, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -211,7 +211,7 @@ gg_bar_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
 gg_area_YeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
@@ -240,7 +240,7 @@ gg_horizon_YeNu. <- function(data, title = "", subtitle = "", caption = "", xLab
                            yLabel =  NULL, leg_pos = "right",reverse = FALSE, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d

@@ -39,10 +39,10 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
 #' add(10, 1)
 gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                     xLabel = NULL, yLabel = 'Count', fillLabel = NULL,
-                                    text = TRUE, type = 'percent', size_text = 3, pos = 0.5,
+                                    text = TRUE, type = 'percent', text_size = 3, pos = 0.5,
                                     leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -59,10 +59,10 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", captio
            labs(title = titleLabel, x= xlab, y = yLabel, subtitle = subtitle, caption = caption)
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = text_size, position = position_dodge(0.9), vjust = 0.5))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = text_size, position = position_dodge(0.9), vjust = 0.5))
     }else{
       graph
     }
@@ -83,10 +83,10 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(10, 1)
 gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                     xLabel = NULL, yLabel = 'Count', fillLabel = NULL,
-                                    text = TRUE, type = 'percent', size_text = 3, pos = 1, leg_pos = "right", ...){
+                                    text = TRUE, type = 'percent', text_size = 3, pos = 1, leg_pos = "right", ...){
 
   graph <- gg_bar_coloured_ver_Ca.(data, titleLabel, subtitle, caption, xLabel,
-                                   yLabel, fillLabel, text, type, size_text, pos, leg_pos) +  coord_flip()
+                                   yLabel, fillLabel, text, type, text_size, pos, leg_pos) +  coord_flip()
   return(graph)
 
 
@@ -105,12 +105,12 @@ gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(10, 1)
 gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                               xLabel = NULL, yLabel = 'Count', parameter = NULL,
-                                              text = TRUE, type = 'percent', size_text = 3, pos = 0.5,
+                                              text = TRUE, type = 'percent', text_size = 3, pos = 0.5,
                                               leg_pos = "right", ...){
 
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   p <-  parameter %||% sample(unique(data[,nms[1]]), 1)
   data <- f$d
@@ -129,10 +129,10 @@ gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = 
 
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = text_size, position = position_dodge(0.9), vjust = 0.5))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = text_size, position = position_dodge(0.9), vjust = 0.5))
     }else{
       graph
     }
@@ -153,11 +153,11 @@ gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = 
 #' add(10, 1)
 gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                               xLabel = NULL, yLabel = 'Count', parameter = NULL,
-                                              text = TRUE, type = 'percent', size_text = 3, pos = 1,
+                                              text = TRUE, type = 'percent', text_size = 3, pos = 1,
                                               leg_pos = "right", ...){
 
   graph <- gg_bar_coloured_parameter_ver_Ca.(data, titleLabel, subtitle, caption, xLabel, yLabel,
-                                             parameter, text, type, size_text, pos,leg_pos) +
+                                             parameter, text, type, text_size, pos,leg_pos) +
            labs(subtitle = subtitle, caption = caption)
 
   graph <- graph + coord_flip()
@@ -176,10 +176,10 @@ gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", subtitle = 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                           text = TRUE, type = 'percent', size_text = 3, pos = 0.5,
+                           text = TRUE, type = 'percent', text_size = 3, pos = 0.5,
                            leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -195,10 +195,10 @@ gg_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
            scale_fill_manual(values = getPalette())
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = text_size, position = position_dodge(0.9), vjust = 0.5))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = text_size, position = position_dodge(0.9), vjust = 0.5))
     }else{
       graph
     }
@@ -217,13 +217,13 @@ gg_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                           text = TRUE, type = 'percent', size_text = 3, pos = 50,
+                           text = TRUE, type = 'percent', text_size = 3, pos = 50,
                            leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   graph <- gg_bar_ver_Ca.(data, titleLabel, subtitle, caption, xLabel, yLabel, text, type,
-                          size_text, pos, leg_pos)
+                          text_size, pos, leg_pos)
   graph <- graph + coord_flip()
   return(graph)
 }
@@ -240,11 +240,11 @@ gg_bar_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                   yLabel = NULL,text = TRUE, type = 'percent', size_text = 3, pos = 0.5,
+                                   yLabel = NULL,text = TRUE, type = 'percent', text_size = 3, pos = 0.5,
                                    leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -261,10 +261,10 @@ gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption
            theme_ds() + scale_fill_manual(values = getPalette()) + guides(fill = FALSE)
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+    return(graph + geom_text(aes(x = a, y = count + pos, label = round(count,2)), size = text_size, position = position_dodge(0.9), vjust = 0.5))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0.5))
+      return(graph + geom_text(aes(x = a, y = count + pos, label = paste(percent, "%", sep = "")), size = text_size, position = position_dodge(0.9), vjust = 0.5))
     }else{
       graph
     }
@@ -283,10 +283,10 @@ gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                   yLabel = NULL, text = TRUE, type = 'percent', size_text = 3, pos = 0.5,
+                                   yLabel = NULL, text = TRUE, type = 'percent', text_size = 3, pos = 0.5,
                                    leg_pos = "right", ...){
 
-  graph <- gg_bar_ordered_ver_Ca.(data, titleLabel, subtitle, caption, xLabel, yLabel, text, type, size_text,
+  graph <- gg_bar_ordered_ver_Ca.(data, titleLabel, subtitle, caption, xLabel, yLabel, text, type, text_size,
                                   pos, leg_pos)
 
   graph <- graph + coord_flip()
@@ -306,10 +306,10 @@ gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption
 #' add(1, 1)
 #' add(10, 1)
 gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                       fillLabel = NULL, text = TRUE, type = 'percent',size_text = 4 ,leg_pos="right", ...){
+                       fillLabel = NULL, text = TRUE, type = 'percent',text_size = 4 ,leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -324,10 +324,10 @@ gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph <- graph  + theme_ds_clean() + scale_fill_manual(values = getPalette())
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(y = pos, label = round(count,2)), size = size_text))
+    return(graph + geom_text(aes(y = pos, label = round(count,2)), size = text_size))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(y = pos, label = paste(percent, "%", sep = "")), size = size_text))
+      return(graph + geom_text(aes(y = pos, label = paste(percent, "%", sep = "")), size = text_size))
     }else{
       graph
     }
@@ -347,10 +347,10 @@ gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
-                         width = 0.3, text = TRUE, type = 'percent',size_text = 4, leg_pos="right", ...){
+                         width = 0.3, text = TRUE, type = 'percent',text_size = 4, leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -367,10 +367,10 @@ gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fil
            theme_ds_clean() + scale_fill_manual(values = getPalette())
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(y = pos, label = round(count,2)), size = size_text))
+    return(graph + geom_text(aes(y = pos, label = round(count,2)), size = text_size))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(y = pos, label = paste(percent, "%", sep = "")), size = size_text))
+      return(graph + geom_text(aes(y = pos, label = paste(percent, "%", sep = "")), size = text_size))
     }else{
       graph
     }
@@ -392,7 +392,7 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
                                yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   flabel <- fillLabel %||% nms[1]
   data <- f$d
@@ -451,7 +451,7 @@ gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
                             caption = "", yLabel = 'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -658,7 +658,7 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", 
                                           fillLabel = NULL, leg_pos="right", width = 0.3, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -711,7 +711,7 @@ gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "", subtitle = "", 
 gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -748,7 +748,7 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
 gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, fillLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   flab <- fillLabel %||% nms[1]
   data <- f$d
@@ -788,7 +788,7 @@ gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "", subtitle = "",
                              fillLabel = NULL, leg_pos= "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -821,7 +821,7 @@ gg_bullseye_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", 
                           leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -850,7 +850,7 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = 
                                 leg_pos="right", width = 0.85, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -883,7 +883,7 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = 
 gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -915,7 +915,7 @@ gg_bubble_Ca2. <- function(data, titleLabel = "", subtitle = "", caption = "",  
                              lim_sup = 40, fillLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 

@@ -6,7 +6,7 @@
 Slope}
 \usage{
 gg_slope_CaYeNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", size_text = 6,
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", text_size = 6,
   size_vjust = 1.5, overlap = TRUE, size_hjust = 0.5, size_point = 3,
   size_line = 1, ...)
 }

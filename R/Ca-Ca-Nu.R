@@ -13,7 +13,7 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "
                              yLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -77,7 +77,7 @@ gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", 
                                       yLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -106,7 +106,7 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
                                           yLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -138,7 +138,7 @@ gg_bar_coloured_ver_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
                                        yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -191,7 +191,7 @@ gg_bar_coloured_ver_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
                                                 yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -243,7 +243,7 @@ gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
                                                 yLabel = NULL, reverse = FALSE, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -305,7 +305,7 @@ gg_bar_coloured_parameter_ver_facet_CaCaNu. <- function(data, titleLabel = "", s
                                                       parameter1 = NULL, parameter2 = NULL,
                                                       leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   p_a <-  parameter1 %||% sample(unique(data[,nms[1]]), length(unique(data[,nms[2]])))
@@ -398,7 +398,7 @@ gg_bar_unstacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 gg_bar_unstacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                           yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -433,7 +433,7 @@ gg_bar_unstacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 gg_bar_facet_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                          yLabel = NULL, leg_pos = "right", angle_x = 45, ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -591,7 +591,7 @@ gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "", caption = "",
                                          leg_pos= "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   data <- f$d
 
   graph <- ggplot(data = data, aes(x = a, weight = c, fill = b)) +
@@ -623,7 +623,7 @@ gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "", su
 gg_bar_stacked_polar_100_CaCaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "", caption = "",
                                          fillLabel = NULL, leg_pos= "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -651,7 +651,7 @@ gg_bar_stacked_polar_100_CaCaNu. <- function(data, width = 0.95, titleLabel = ""
 gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Types",
                                    yLabel = "Frequency", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -706,7 +706,7 @@ gg_line_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                         yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -753,7 +753,7 @@ gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                        yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -803,7 +803,7 @@ gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
                                       yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -862,7 +862,7 @@ gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
                                         yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -958,7 +958,7 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -995,7 +995,7 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
                                          fillLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -1042,7 +1042,7 @@ gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
                                leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[3]
   data <- f$d
@@ -1078,7 +1078,7 @@ gg_multi_line_point_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
                                       fillLabel = NULL, leg_pos="right", type = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   flabel <- fillLabel %||% nms[1]
@@ -1106,7 +1106,7 @@ gg_multi_line_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption 
                                 fillLabel = NULL, leg_pos="right", type = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   flabel <- fillLabel %||% nms[1]

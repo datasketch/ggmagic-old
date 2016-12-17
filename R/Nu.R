@@ -13,7 +13,7 @@ gg_horizon_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel
                                    yLabel =  NULL, leg_pos = "right",reverse = FALSE, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -49,7 +49,7 @@ gg_waterfall_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
                                yLabel =  NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -80,7 +80,7 @@ gg_hist_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = 
                         yLabel = NULL, size = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -113,7 +113,7 @@ gg_hist_dens_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
                              yLabel = NULL,  alfa = 0.5, size = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -144,7 +144,7 @@ gg_hist_dens_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 gg_dist_cum_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                             yLabel = NULL, ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data, aes(a)) + geom_step(aes(y=..y.., color = ""), stat="ecdf", show.legend = FALSE) +
@@ -173,7 +173,7 @@ gg_line_point_Nu. <- function(data, title = "", subtitle = "", caption = "", xLa
                        yLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   xlab <- xLabel %||% "Index"
   data <- f$d
@@ -226,7 +226,7 @@ gg_point_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel =
                           yLabel = NULL, type = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   xlab <- xLabel %||% "Index"
   data <- f$d
@@ -277,7 +277,7 @@ gg_density_hist_Nu. <- function(data, title = "", subtitle = "", caption = "", x
                                yLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -303,7 +303,7 @@ gg_box_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel = N
                        xLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -353,7 +353,7 @@ gg_violin_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel 
                           xLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -402,7 +402,7 @@ gg_dot_bar_Nu. <- function(data, title = "", subtitle = "", caption = "",
                            xLabel = NULL, yLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   xlab <- xLabel %||% "Index"
   data <- f$d

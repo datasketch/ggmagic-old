@@ -15,7 +15,7 @@ gg_horizon_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLab
                              angle_x = 0,...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
@@ -50,7 +50,7 @@ gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xL
                              yLabel =  NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
@@ -79,7 +79,7 @@ gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "",
                            xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -107,7 +107,7 @@ gg_lines_points_DaNu. <- function(data, title = "", subtitle = "", caption = "",
                                   yLabel = NULL, type = 1, hline = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -142,7 +142,7 @@ gg_point_DaNu. <- function(data, title = "", subtitle = "", caption = "",
                            xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -173,7 +173,7 @@ gg_box_DaNu. <- function(data, title = "", subtitle = "", caption = "",
                          xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -203,7 +203,7 @@ gg_violin_DaNu. <- function(data, title = "", subtitle = "", caption = "",
                             xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -232,7 +232,7 @@ gg_area_DaNu. <- function(data, title = "", subtitle = "", caption = "",
                           xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -262,7 +262,7 @@ gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
                           ylab = NULL, hline = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
@@ -299,7 +299,7 @@ gg_smooth_DaNu. <- function(data, title = "", subtitle = "", caption = "",
                             xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -329,7 +329,7 @@ gg_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -368,7 +368,7 @@ gg_line_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption 
 
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -406,7 +406,7 @@ gg_bar_DaNu. <- function(data, title = "", subtitle = "", caption = "",
                          xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -438,7 +438,7 @@ gg_bubbles_DaNu. <- function(data, title = "", subtitle = "", caption = "",
                              xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -470,7 +470,7 @@ gg_lollipop_DaNu. <- function(data, title = "", subtitle = "",
                               caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -500,7 +500,7 @@ gg_area_stepped_stacked_DaNu. <- function(data, title = "", subtitle = "", capti
                                           xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d

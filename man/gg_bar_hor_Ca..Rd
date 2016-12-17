@@ -7,7 +7,7 @@ Horizontal Bars}
 \usage{
 gg_bar_hor_Ca.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, text = TRUE, type = "percent",
-  size_text = 3, pos = 50, leg_pos = "right", ...)
+  text_size = 3, pos = 50, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

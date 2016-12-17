@@ -13,7 +13,7 @@
 gg_bar_grp_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
                                    xLabel = NULL, yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -68,7 +68,7 @@ gg_bar_grp_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 gg_bar_stk_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xLabel = NULL,
                                    yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -118,7 +118,7 @@ gg_bar_stk_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 gg_lines_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                               yLabel = NULL, leg_pos = "right", angle = 0, by = NULL, ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -152,7 +152,7 @@ gg_lines_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", 
 gg_lines_points_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                                  yLabel = NULL, leg_pos = "right", angle = 0, by = NULL, type = 1, ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -189,7 +189,7 @@ gg_circle_CaYeNu. <- function(data, title = "", subtitle = "", caption = "",
                               leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -221,7 +221,7 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "
                               yLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -254,12 +254,12 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_slope_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                              leg_pos="right", size_text = 6, size_vjust = 1.5, overlap = TRUE,
+                              leg_pos="right", text_size = 6, size_vjust = 1.5, overlap = TRUE,
                               size_hjust = 0.5, size_point = 3, size_line = 1,...){
 
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -268,7 +268,7 @@ gg_slope_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "
 
   graph <- ggplot(data) +
     geom_text(aes(x = as.factor(b), y = min(c) - mean(c), label = b),
-              size = size_text, show.legend = FALSE, check_overlap = TRUE) +
+              size = text_size, show.legend = FALSE, check_overlap = TRUE) +
     geom_line(aes(x = as.factor(b), y = c, group = a, color = a), size = size_line) +
     geom_point(aes(x = as.factor(b), y = c, group = a, color = a), size = size_point) +
     theme_ds() + theme_ds_clean() +

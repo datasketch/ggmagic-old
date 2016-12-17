@@ -7,7 +7,7 @@ Horizontal coloured by parameter Bars}
 \usage{
 gg_bar_coloured_parameter_hor_Ca.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = "Count", parameter = NULL,
-  text = TRUE, type = "percent", size_text = 3, pos = 1,
+  text = TRUE, type = "percent", text_size = 3, pos = 1,
   leg_pos = "right", ...)
 }
 \arguments{

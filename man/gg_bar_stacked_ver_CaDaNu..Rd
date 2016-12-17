@@ -7,7 +7,7 @@ vertical stacked bar graph}
 \usage{
 gg_bar_stacked_ver_CaDaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 45, size_text = 10, hline = NULL, ...)
+  angle_x = 45, text_size = 10, hline = NULL, ...)
 }
 \arguments{
 \item{x}{A category.}

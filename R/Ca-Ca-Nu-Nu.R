@@ -14,7 +14,7 @@ gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
                                            fillLabel = NULL, reverse = FALSE, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -53,7 +53,7 @@ gg_treemap_density_y_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
                                            fillLabel = NULL,reverse = FALSE, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 

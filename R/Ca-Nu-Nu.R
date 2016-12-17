@@ -13,7 +13,7 @@ gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                               yLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -50,7 +50,7 @@ gg_lines_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                              yLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -80,7 +80,7 @@ gg_point_lines_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption
                              yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -111,7 +111,7 @@ gg_point_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                              yLabel = NULL, leg_pos="right",
                              shape_point = 1, ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -139,7 +139,7 @@ gg_point_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 gg_circle_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel = NULL, leg_pos="right", size = 10, ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d

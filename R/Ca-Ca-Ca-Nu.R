@@ -13,7 +13,7 @@
 gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -47,7 +47,7 @@ gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[2]
   data <- f$d
 
@@ -81,7 +81,7 @@ gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[3]
   data <- f$d
 

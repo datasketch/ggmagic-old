@@ -7,7 +7,7 @@ vertical bar}
 \usage{
 gg_bar_coloured_x_ver_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, text = TRUE, type = "percent",
-  size_text = 3, yLabel = NULL, leg_pos = "right", ...)
+  text_size = 3, yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A category.}

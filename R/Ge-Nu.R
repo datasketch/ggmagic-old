@@ -15,7 +15,7 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "", subtitle = "", caption
                                    color_map = "gray", color_frontier = "white", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flab <- fillLabel %||% nms[2]
   data <- f$d
 
@@ -98,7 +98,7 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "", subtitle = "", capt
                                       color_map = "gray", color_frontier = "white", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flab <- fillLabel %||% nms[2]
   data <- f$d
 
@@ -181,7 +181,7 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "", subtitle = "", capt
                                    color_map = "gray", color_frontier = "white", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flab <- fillLabel %||% nms[2]
   data <- f$d
 
@@ -240,7 +240,7 @@ gg_bubble_co_Ge. <- function(data, titleLabel = "", subtitle = "", caption = "",
                              alpha = 0.5, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flab <- fillLabel %||% nms[3]
   data <- f$d
 
@@ -306,7 +306,7 @@ gg_bubble_latam_Ge. <- function(data, titleLabel = "", subtitle = "", caption = 
                                 alpha = 0.5, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flab <- fillLabel %||% nms[3]
   data <- f$d
 
@@ -349,7 +349,7 @@ gg_bubble_depto_Ge. <- function(data, titleLabel = "", subtitle = "", caption = 
                                 alpha = 0.5, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flab <- fillLabel %||% nms[2]
   data <- f$d
 
@@ -415,7 +415,7 @@ gg_bubble_co_GeNu. <- function(data, titleLabel = "", subtitle = "", caption = "
                                alpha = 0.5, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flab <- fillLabel %||% nms[3]
   data <- f$d
 
@@ -478,7 +478,7 @@ gg_bubble_latam_GeNu. <- function(data, titleLabel = "", subtitle = "", caption 
                                alpha = 0.5, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flab <- fillLabel %||% nms[3]
   data <- f$d
 
@@ -517,7 +517,7 @@ gg_bubble_depto_GeNu. <- function(data, titleLabel = "", subtitle = "", caption 
                                 alpha = 0.5, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flab <- fillLabel %||% nms[2]
   data <- f$d
 
@@ -581,7 +581,7 @@ gg_bubble_co_CaGe. <- function(data, titleLabel = "", subtitle = "", caption = "
                                color_frontier = "white", scale_point = 0.25, alpha = 0.5, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flab <- fillLabel %||% nms[3]
   data <- f$d
 
@@ -624,7 +624,7 @@ gg_bubble_depto_CaGe. <- function(data, titleLabel = "", subtitle = "", caption 
                                 alpha = 0.5, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flab <- fillLabel %||% nms[2]
   data <- f$d
 

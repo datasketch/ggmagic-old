@@ -12,7 +12,7 @@
 gg_pointline_hor_CaDa. <- function(data,title = "", subtitle = "", caption = "",
                                    xlab = NULL, clab = NULL, ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xlab %||% nms[2]
   clab <- clab %||% nms[1]
   d <- f$d
@@ -44,7 +44,7 @@ gg_pointline_hor_CaDa. <- function(data,title = "", subtitle = "", caption = "",
 gg_pointline_ver_CaDa. <- function(data,title = "", subtitle = "", caption = "",ylab = NULL, clab = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   clab <- clab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
@@ -76,7 +76,7 @@ gg_pointline_ver_CaDa. <- function(data,title = "", subtitle = "", caption = "",
 #' add(10, 1)
 gg_histogram_CaDa. <- function(data,title = "", subtitle = "", caption = "",xlab = NULL, clab = NULL, ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xlab %||% nms[2]
   ylab <- "count"
   clab <- clab %||% nms[1]

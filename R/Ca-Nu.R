@@ -10,7 +10,7 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                         text = TRUE, type = 'percent', size_text = 3,
+                         text = TRUE, type = 'percent', text_size = 3,
                          leg_pos="right", ...){
 
   f <- fringe(data)
@@ -31,10 +31,10 @@ gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)), size = size_text))
+    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)), size = text_size))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")), size = size_text))
+      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")), size = text_size))
     }else{
       graph
     }
@@ -52,11 +52,11 @@ gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', size_text = 3,
+gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', text_size = 3,
                                        yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -72,10 +72,10 @@ gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = count + 0.05, label = round(count,2)), size = size_text, position = position_dodge(0.9), vjust = 0))
+    return(graph + geom_text(aes(x = a, y = count + 0.05, label = round(count,2)), size = text_size, position = position_dodge(0.9), vjust = 0))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = count + 0.05, label = paste(percent, "%", sep = "")), size = size_text, position = position_dodge(0.9), vjust = 0))
+      return(graph + geom_text(aes(x = a, y = count + 0.05, label = paste(percent, "%", sep = "")), size = text_size, position = position_dodge(0.9), vjust = 0))
     }else{
       graph
     }
@@ -94,10 +94,10 @@ gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, text = TRUE, type = 'percent', size_text = 3,
+gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, text = TRUE, type = 'percent', text_size = 3,
                                        yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -113,10 +113,10 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = count, label = round(count,2)), size = size_text))
+    return(graph + geom_text(aes(x = a, y = count, label = round(count,2)), size = text_size))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = count, label = paste(percent, "%", sep = "")), size = size_text))
+      return(graph + geom_text(aes(x = a, y = count, label = paste(percent, "%", sep = "")), size = text_size))
     }else{
       graph
     }
@@ -135,13 +135,13 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, reverse = FALSE,
-                                       text = TRUE, type = 'percent', size_text = 3,
+                                       text = TRUE, type = 'percent', text_size = 3,
                                        yLabel = NULL, leg_pos = "right", ...){
 
 
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -164,10 +164,10 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
   }
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = suma, label = round(suma,2)), size = size_text))
+    return(graph + geom_text(aes(x = a, y = suma, label = round(suma,2)), size = text_size))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = suma, label = paste(percent, "%", sep = "")), size = size_text))
+      return(graph + geom_text(aes(x = a, y = suma, label = paste(percent, "%", sep = "")), size = text_size))
     }else{
       graph
     }
@@ -186,11 +186,11 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_y_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                       reverse = FALSE, text = TRUE, type = 'percent', size_text = 3,
+                                       reverse = FALSE, text = TRUE, type = 'percent', text_size = 3,
                                        yLabel = NULL, leg_pos = "right", ...){
 
   graph <- gg_bar_coloured_y_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel,
-                                       reverse, text, type, size_text,
+                                       reverse, text, type, text_size,
                                        yLabel, leg_pos)
   graph + coord_flip()
 }
@@ -210,7 +210,7 @@ gg_bar_coloured_parameter_ver_CaNu. <- function(data, titleLabel = "", subtitle 
                                                 yLabel = NULL, parameter = NULL,
                                                 leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   p <-  parameter %||% sample(unique(data[,nms[1]]), 1)
@@ -258,7 +258,7 @@ gg_bar_coloured_parameter_hor_CaNu. <- function(data, titleLabel = "", subtitle 
 gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -290,7 +290,7 @@ gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "",
 gg_bubble_coloured_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -378,7 +378,7 @@ gg_hist_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
                                       yLabel = 'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
 
@@ -404,7 +404,7 @@ gg_density_multi_dist_coloured_CaNu. <- function(data, titleLabel = "", subtitle
                                                  xLabel = NULL, yLabel = 'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
 
@@ -431,7 +431,7 @@ gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "", subtitle = "
                                              yLabel = 'Count', leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
 
@@ -459,7 +459,7 @@ gg_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
                                     yLabel = 'Count', leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
 
@@ -507,7 +507,7 @@ gg_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
                                          yLabel = "Count", leg_pos='right', ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) +
@@ -555,7 +555,7 @@ gg_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
                                     yLabel = "Count", leg_pos='right', ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) +
@@ -602,7 +602,7 @@ gg_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
                                          yLabel = 'Count', leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
@@ -650,7 +650,7 @@ gg_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = 
                                               yLabel = 'Count', leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
@@ -699,7 +699,7 @@ gg_dot_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
                                         yLabel = 'Count', leg_pos="right", size = 3, alpha = 0.3, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
 
@@ -749,7 +749,7 @@ gg_dot_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
                                         yLabel = "Count", leg_pos='right', size = 3, alpha = 0.3,...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) +
@@ -797,7 +797,7 @@ gg_dot_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
                                              yLabel = "Count", leg_pos='right', size = 3, alpha = 0.3, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) +
@@ -846,7 +846,7 @@ gg_dot_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
                                              yLabel = 'Count', leg_pos="right", size = 3, alpha = 0.3, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
@@ -896,7 +896,7 @@ gg_dot_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitl
                                                   leg_pos="right", size = 3, alpha = 0.3, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   data <- f$d
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
@@ -944,7 +944,7 @@ gg_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
                                  yLabel = NULL, type = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -982,7 +982,7 @@ gg_line_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
                                       yLabel = NULL, type = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -1021,7 +1021,7 @@ gg_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
                                 yLabel = NULL, type = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -1059,7 +1059,7 @@ gg_area_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
                                     yLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -1118,7 +1118,7 @@ gg_area_stacked_100_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", 
                                           yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -1182,7 +1182,7 @@ gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
                                       yLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -1245,7 +1245,7 @@ gg_point_grouped_CaNu. <- function(data, titleLabel = "", subtitle = "", caption
                                    yLabel = NULL, leg_pos="right", type = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -1283,7 +1283,7 @@ gg_line_point_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
                                       leg_pos="right", type = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -1319,7 +1319,7 @@ gg_line_point_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
 gg_line_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL, leg_pos="right", type = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -1356,7 +1356,7 @@ gg_point_trend_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = ""
                                             yLabel = NULL, type = 1, alpha = 0.3, se = FALSE, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -1398,7 +1398,7 @@ gg_trend_ribbon_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
                                         yLabel = NULL, type = 1, alpha = 0.3, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -1439,7 +1439,7 @@ gg_trend_ribbon_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", width = 0.3, leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   data <- f$d
 
   data_graph <- data %>%
@@ -1476,7 +1476,7 @@ gg_dot_bar_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = 
                                 xLabel = NULL, yLabel = NULL, leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -1734,7 +1734,7 @@ gg_boxplot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   data <- f$d
 
   graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) +
@@ -1917,7 +1917,7 @@ gg_violin_dot_mult_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", 
 gg_bar_ordered_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                      yLabel =  NULL, leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -1968,15 +1968,15 @@ gg_bar_ordered_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' add(10, 1)
 gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel =  NULL, leg_pos = "right", text = TRUE, type = "count",
-                             size_text = 5, ...){
+                             text_size = 5, aggregation = "mean",...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
   data_graph <- data %>% dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum(b)) %>%
+    dplyr::summarise(count = agg(aggregation,b)) %>%
     dplyr::mutate(pos = count - count/10,
                   percent = 100 * round(count / sum(count), 4))
 
@@ -1987,10 +1987,12 @@ gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph <- graph + theme(legend.position=leg_pos)
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)), size = size_text))
+    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)),
+                             size = text_size, color = "white"))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")), size = size_text))
+      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")),
+                               size = text_size, color = "white"))
     }else{
       graph
     }
@@ -2012,9 +2014,10 @@ gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(10, 1)
 gg_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel =  NULL, leg_pos = "right", text = TRUE, type = "count",
-                             size_text = 5,...){
+                             text_size = 5,aggregation = "sum",...){
 
-  graph <- gg_bar_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, text, type, size_text)
+  graph <- gg_bar_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel,
+                            leg_pos, text, type, text_size, aggregation)
   graph <- graph + coord_flip()
 
   return(graph)
@@ -2035,7 +2038,7 @@ gg_steam_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
                            yLabel =  NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -2142,7 +2145,7 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "", subtitle = "", caption = "",
                              lim_sup = 80, xLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -2200,11 +2203,11 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_slope_CaNu. <-  function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                            leg_pos="right", overlap = TRUE, size_text = 6,
+                            leg_pos="right", overlap = TRUE, text_size = 6,
                             size_point = 3, size_line = 1,...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -2216,7 +2219,7 @@ gg_slope_CaNu. <-  function(data, titleLabel = "", subtitle = "", caption = "", 
     geom_point(aes(x = as.factor(xorder), y = b, group = a, color = a), size = size_point)+
     theme_ds_clean() +  labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     geom_text(aes(x = as.factor(xorder), y = min(b) - mean(b), label = xorder),
-              size = size_text, show.legend = FALSE, check_overlap = TRUE) +
+              size = text_size, show.legend = FALSE, check_overlap = TRUE) +
     annotate("text", x = filter(data_graph,xorder == 1)$xorder-.15, y = filter(data_graph,xorder == 1)$b,
              label = filter(data_graph,xorder == 1)$b, check_overlap = overlap) +
     annotate("text", x = filter(data_graph,xorder == 2)$xorder+.15, y = filter(data_graph,xorder == 2)$b,

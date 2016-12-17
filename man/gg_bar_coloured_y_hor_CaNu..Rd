@@ -7,7 +7,7 @@ horizontal bar}
 \usage{
 gg_bar_coloured_y_hor_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, reverse = FALSE, text = TRUE,
-  type = "percent", size_text = 3, yLabel = NULL, leg_pos = "right",
+  type = "percent", text_size = 3, yLabel = NULL, leg_pos = "right",
   ...)
 }
 \arguments{

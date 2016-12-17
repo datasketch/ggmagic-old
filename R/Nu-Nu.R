@@ -13,7 +13,7 @@ gg_horizon_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                            yLabel =  NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
@@ -47,7 +47,7 @@ gg_waterfall_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
                              yLabel =  NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
@@ -76,7 +76,7 @@ gg_dens_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel 
                             yLabel=NULL, reverse = FALSE, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
@@ -134,7 +134,7 @@ gg_hist_NuNu. <- function(data, title = "", subtitle = "", caption = "",
                             xLabel = NULL, yLabel = NULL, reverse = FALSE, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
@@ -189,7 +189,7 @@ gg_line_multi_NuNu. <- function(data, title = "", subtitle = "", caption = "",
                                 xLabel = NULL, yLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
@@ -222,7 +222,7 @@ gg_point_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel
                                yLabel = NULL, shape = 1,...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
@@ -250,7 +250,7 @@ gg_line_point_NuNu. <- function(data, title = "", subtitle = "", caption = "", x
                            yLabel = NULL, shape = 1, size = 3,...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d

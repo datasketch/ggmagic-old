@@ -13,7 +13,7 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "", subtitle = "", caption = "",
                              yLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -49,7 +49,7 @@ gg_bubble_coloured_CaCa.  <- function(data, titleLabel = "", subtitle = "", capt
                                       yLabel = NULL, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
@@ -85,7 +85,7 @@ gg_dot_bar_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", cap
                                        yLabel = NULL, ncol = 1, fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   flabel <- fillLabel %||% nms[1]
@@ -146,7 +146,7 @@ gg_pie_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
                                leg_pos="right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -242,7 +242,7 @@ gg_bullseye_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
 gg_bar_coloured_x_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                     yLabel = 'Count', leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -294,7 +294,7 @@ gg_bar_coloured_x_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
 gg_bar_coloured_y_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                               yLabel = 'Count', leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data = data, aes(x = a, fill = factor(b))) + geom_bar()
@@ -343,7 +343,7 @@ gg_bar_coloured_parameter_ver_facet_CaCa. <- function(data, titleLabel = "", sub
                                                       parameter1 = NULL, parameter2 = NULL,
                                                       leg_pos = "right", ...){
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   p_a <-  parameter1 %||% sample(unique(data[,nms[1]]), length(unique(data[,nms[2]])))
   p_b <-  parameter2 %||% sample(unique(data[,nms[2]]), length(unique(data[,nms[2]])))
@@ -413,7 +413,7 @@ gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capti
                                 yLabel = 'Count', leg_pos = "right", l_ncol = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data, aes(a, fill=b)) + geom_bar()
@@ -459,7 +459,7 @@ gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle = "
                                       yLabel =  'Count', leg_pos = "right", l_ncol = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data, aes(x=reorder(data$b, rep(1, length(data$b)), sum), fill = a)) +
@@ -508,7 +508,7 @@ gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", c
                                          yLabel = 'Count', leg_pos = "right", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
   graph <- ggplot(data = data, aes(a, fill = factor(b))) +
@@ -558,7 +558,7 @@ gg_bar_unstacked_coloured_hor_CaCa. <- function(data, titleLabel = "", subtitle 
                                           yLabel = "Count", leg_pos = "right", l_ncol = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -609,7 +609,7 @@ gg_line_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
                                  yLabel = "Count", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -662,7 +662,7 @@ gg_line_point_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", 
                                     yLabel = "Count", ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -718,7 +718,7 @@ gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
                                         yLabel = 'Percent', leg_pos = "right", l_ncol = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -767,7 +767,7 @@ gg_area_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", capt
                                        yLabel = 'Count', leg_pos = "right", l_ncol = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -820,7 +820,7 @@ gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", 
                                       yLabel = NULL, leg_pos = "right", l_ncol = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -930,10 +930,10 @@ gg_marimekko_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_polar_stacked_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                     yLabel = NULL, text = TRUE, type = 'percent', size_text = 3, leg_pos = "right", l_ncol = 1, ...){
+                                     yLabel = NULL, text = TRUE, type = 'percent', text_size = 3, leg_pos = "right", l_ncol = 1, ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -970,11 +970,11 @@ gg_bar_polar_stacked_CaCa. <- function(data, titleLabel = "", subtitle = "", cap
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_polar_stacked_100_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                           yLabel = NULL, text = TRUE, type = 'percent', size_text = 2,
+                                           yLabel = NULL, text = TRUE, type = 'percent', text_size = 2,
                                            leg_pos = "right", width = 1, l_ncol = 1,  ...){
 
   f <- fringe(data)
-  nms <- getCnames(f)
+  nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
@@ -1001,10 +1001,10 @@ gg_bar_polar_stacked_100_CaCa. <- function(data, titleLabel = "", subtitle = "",
 
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(y = pos, label = count), size = size_text))
+    return(graph + geom_text(aes(y = pos, label = count), size = text_size))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(y = pos, label = paste(percent, "%", sep = "")), size = size_text))
+      return(graph + geom_text(aes(y = pos, label = paste(percent, "%", sep = "")), size = text_size))
     }else{
       graph
     }

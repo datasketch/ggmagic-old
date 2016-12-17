@@ -7,7 +7,7 @@ Grouped Line Color Point}
 \usage{
 gg_multi_line_point_CaDaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "right", type = 1, size_text = 8, angle_x = 45, ...)
+  leg_pos = "right", type = 1, text_size = 8, angle_x = 45, ...)
 }
 \arguments{
 \item{x}{A number.}

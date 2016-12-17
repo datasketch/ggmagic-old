@@ -6,7 +6,7 @@
 Pie}
 \usage{
 gg_pie_Ca.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, text = TRUE, type = "percent", size_text = 4,
+  fillLabel = NULL, text = TRUE, type = "percent", text_size = 4,
   leg_pos = "right", ...)
 }
 \arguments{

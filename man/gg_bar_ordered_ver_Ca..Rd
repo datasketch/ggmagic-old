@@ -7,7 +7,7 @@ Ordered vertical Bars}
 \usage{
 gg_bar_ordered_ver_Ca.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, text = TRUE, type = "percent",
-  size_text = 3, pos = 0.5, leg_pos = "right", ...)
+  text_size = 3, pos = 0.5, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
