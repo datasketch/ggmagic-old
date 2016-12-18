@@ -31,7 +31,7 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
     labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = flabel) +
      scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_treemap_y_CaCaCa.
@@ -65,7 +65,7 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
                      group.label.colour = "black", label.colour = "black") + #guides(fill=FALSE) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = flabel) +
     scale_fill_manual(values = getPalette())
-  return(graph)
+  graph
 }
 
 #' gg_treemap_z_CaCaCa.
@@ -100,7 +100,7 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
     labs(title = titleLabel, subtitle = subtitle, caption = caption) +
     scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_point_CaCaCa.
@@ -130,5 +130,5 @@ gg_point_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
     theme(legend.title=element_blank()) + scale_x_discrete(labels = scales::comma) +
     theme_ds() + scale_color_manual(values = getPalette()) +   theme(axis.text.x = element_text(angle = angle, hjust = 1))
 
-  return(graph)
+  graph
 }

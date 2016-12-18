@@ -23,7 +23,7 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
   graph <- waffle(parts / square_size, rows = rows_number, colors=getPalette()) + theme_ds() +
                   theme(legend.position = leg_pos) + theme_ds_clean() +
                   labs(title = titleLabel, subtitle = subtitle, caption = caption)
-  return(graph)
+  graph
 }
 
 #' gg_bar_coloured_ver_Ca.
@@ -161,7 +161,7 @@ gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", subtitle = 
            labs(subtitle = subtitle, caption = caption)
 
   graph <- graph + coord_flip()
-  return(graph)
+  graph
 }
 
 #' gg_bar_ver_Ca.
@@ -225,7 +225,7 @@ gg_bar_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
   graph <- gg_bar_ver_Ca.(data, titleLabel, subtitle, caption, xLabel, yLabel, text, type,
                           text_size, pos, leg_pos)
   graph <- graph + coord_flip()
-  return(graph)
+  graph
 }
 
 #' gg_bar_ordered_ver_Ca.
@@ -291,7 +291,7 @@ gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_pie_Ca.
@@ -411,7 +411,7 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
            theme(legend.position=leg_pos) + theme_ds() +
            scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_bar_hor_Ca.
@@ -433,7 +433,7 @@ gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'C
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_line_hor_Ca.
@@ -466,7 +466,7 @@ gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
   graph <- graph + theme_minimal() + theme(legend.position=leg_pos) + theme_ds() +
     scale_color_manual(values = getPalette()) + guides(colour = FALSE)
 
-  return(graph)
+  graph
 }
 
 #' gg_line_ver_Ca.
@@ -486,7 +486,7 @@ gg_line_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
   graph <- gg_line_hor_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip() + labs(subtitle = subtitle, caption = caption)
 
-  return(graph)
+  graph
 }
 
 #' gg_line_point_hor_Ca.
@@ -506,7 +506,7 @@ gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
   graph <- gg_line_hor_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + geom_point()+ labs(subtitle = subtitle, caption = caption)
 
-  return(graph)
+  graph
 }
 
 #' gg_line_point_ver_Ca.
@@ -526,7 +526,7 @@ gg_line_point_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
   graph <- gg_line_ver_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
   graph <- graph + geom_point()+ labs(subtitle = subtitle, caption = caption)
 
-  return(graph)
+  graph
 }
 
 #' gg_gauge_Ca.
@@ -674,7 +674,7 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", 
   graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
   graph <- graph + theme(legend.position=leg_pos)
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_single_stacked_ver_Ca.
@@ -694,7 +694,7 @@ gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "", subtitle = "", 
   graph <- gg_bar_single_stacked_hor_Ca.(data, titleLabel, fillLabel, leg_pos, width)
   graph <- graph + coord_flip() + labs(subtitle = subtitle, caption = caption)
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_Ca.
@@ -731,7 +731,7 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
       axis.ticks.y=element_blank(),
       panel.grid.major=element_blank())
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_coloured_Ca.
@@ -770,7 +770,7 @@ gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", captio
           axis.ticks.y=element_blank(),
           panel.grid.major=element_blank())
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_polar_Ca.
@@ -803,7 +803,7 @@ gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "", subtitle = "",
   graph <- graph + scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
-  return(graph)
+  graph
 }
 
 #' gg_bullseye_Ca.
@@ -832,7 +832,7 @@ gg_bullseye_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", 
   graph <- graph + scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_circular_Ca.
@@ -866,7 +866,7 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = 
   graph <- graph + scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
-  return(graph)
+  graph
 }
 
 #' gg_treemap_Ca.
@@ -898,7 +898,7 @@ gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", f
                      group.label.colour = "black") + guides(fill=FALSE) +
     scale_fill_manual(values = getPalette()) + labs(title = titleLabel, subtitle = subtitle, caption =  caption)
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_Ca2.

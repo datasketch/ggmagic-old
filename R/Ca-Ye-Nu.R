@@ -1,7 +1,10 @@
-#' gg_bar_grp_ver_CaYeNu.: title.
+
+
+
+#' gg_bar_facet_ver_CaYeNu.: title.
 #' Barras stacked
 #' Tiene múltiples líneas
-#' @name gg_bar_grp_ver_CaYeNu.
+#' @name gg_bar_facet_ver_CaYeNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -10,7 +13,37 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_grp_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
+gg_bar_facet_ver_CaYeNu. <- gg_bar_facet_ver_CaCaNu.
+
+
+#' gg_bar_facet_hor_CaYeNu.: title.
+#' Barras stacked
+#' Tiene múltiples líneas
+#' @name gg_bar_facet_hor_CaYeNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_facet_hor_CaYeNu. <- gg_bar_facet_hor_CaCaNu.
+
+
+#' gg_bar_grouped_ver_CaYeNu.: title.
+#' Barras stacked
+#' Tiene múltiples líneas
+#' @name gg_bar_grouped_ver_CaYeNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_grouped_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
                                    xLabel = NULL, yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getClabels(f)
@@ -28,13 +61,13 @@ gg_bar_grp_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
     theme(legend.position = leg_pos) +
     labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
-  return(graph)
+  graph
 }
 
-#' gg_bar_grp_hor_CaYeNu.: title.
+#' gg_bar_grouped_hor_CaYeNu.: title.
 #' Barras stacked
 #' Tiene múltiples líneas
-#' @name gg_bar_grp_hor_CaYeNu.
+#' @name gg_bar_grouped_hor_CaYeNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -43,20 +76,20 @@ gg_bar_grp_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_grp_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+gg_bar_grouped_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                                    leg_pos = "right", ...){
 
-  graph <- gg_bar_grp_ver_CaYeNu.(data, title, subtitle, caption, xLabel, yLabel, leg_pos) + coord_flip()
+  graph <- gg_bar_grouped_ver_CaYeNu.(data, title, subtitle, caption, xLabel, yLabel, leg_pos) + coord_flip()
 
-  return(graph)
+  graph
 }
 
 
 
-#' gg_bar_stk_hor_CaYeNu.: title.
+#' gg_bar_stacked_ver_CaYeNu.: title.
 #' Barras stacked
 #' Tiene múltiples líneas
-#' @name gg_bar_stk_hor_CaYeNu.
+#' @name gg_bar_stacked_ver_CaYeNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -65,7 +98,7 @@ gg_bar_grp_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stk_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xLabel = NULL,
+gg_bar_stacked_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "", xLabel = NULL,
                                    yLabel = NULL, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getClabels(f)
@@ -74,18 +107,18 @@ gg_bar_stk_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
   data <- f$d
   graph <- ggplot(data, aes(x = a, y = c, group = factor(b), fill = factor(b))) +
     geom_bar(stat = "identity") +
-    scale_y_continuous(labels = comma) +
-    coord_flip() + theme_ds() + scale_fill_manual(values = getPalette()) +
+    scale_y_continuous(labels = comma)+
+    theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(legend.position = leg_pos) +
     labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph
 
-  return(graph)
 }
 
-#' gg_bar_stk_ver_CaYeNu.: title.
+#' gg_bar_stacked_hor_CaYeNu.: title.
 #' Barras stacked
 #' Tiene múltiples líneas
-#' @name gg_bar_stk_ver_CaYeNu.
+#' @name gg_bar_stacked_hor_CaYeNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -94,14 +127,18 @@ gg_bar_stk_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stk_ver_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
+gg_bar_stacked_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
                                    xLabel = NULL, yLabel = NULL,
                                    leg_pos = "right", ...){
 
-  graph <- gg_bar_stk_hor_CaYeNu.(data, title, subtitle, caption, xLabel, yLabel, leg_pos) + coord_flip()
-
-  return(graph)
+  graph <- gg_bar_stacked_ver_CaYeNu.(data, title, subtitle, caption,
+                                      xLabel, yLabel, leg_pos)
+  graph + coord_flip()
 }
+
+
+
+
 
 #' gg_lines_hor_CaYeNu.: title.
 #' Lines
@@ -134,7 +171,7 @@ gg_lines_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", 
            theme(legend.position = leg_pos) +
            theme(axis.text.x = element_text(angle = angle, hjust = 1)) +
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
-  return(graph)
+  graph
 }
 
 #' gg_lines_hor_CaYeNu.: title.
@@ -168,7 +205,7 @@ gg_lines_points_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption
     theme(legend.position = leg_pos) +
     theme(axis.text.x = element_text(angle = angle, hjust = 1)) +
     labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
-  return(graph)
+  graph
 }
 
 
@@ -201,7 +238,7 @@ gg_circle_CaYeNu. <- function(data, title = "", subtitle = "", caption = "",
     theme(legend.position = leg_pos) +
     labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
-  return(graph)
+  graph
 }
 
 
@@ -239,7 +276,7 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "
     theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)  +
     theme(legend.position = leg_pos)
 
-  return(graph)
+  graph
 }
 
 #' gg_slope_CaYeNu.

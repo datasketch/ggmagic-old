@@ -220,7 +220,7 @@ gg_bar_coloured_parameter_ver_CaNu. <- function(data, titleLabel = "", subtitle 
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph + guides(fill = FALSE) + theme(legend.position = leg_pos) +
     theme_ds() + scale_fill_manual(values = getPalette())
-  return(graph)
+  graph
 }
 
 #' gg_bar_coloured_parameter_hor_CaNu.
@@ -241,7 +241,7 @@ gg_bar_coloured_parameter_hor_CaNu. <- function(data, titleLabel = "", subtitle 
   graph <- gg_bar_coloured_parameter_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel,
                                                yLabel, parameter, leg_pos = "right")
   graph <- graph + coord_flip()
-  return(graph)
+  graph
 }
 
 #' gg_bubble_CaNu.
@@ -273,7 +273,7 @@ gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "",
           axis.ticks.y=element_blank(),
           panel.grid.major=element_blank())
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_coloured_CaNu.
@@ -306,7 +306,7 @@ gg_bubble_coloured_CaNu.  <- function(data, titleLabel = "", subtitle = "", capt
           axis.ticks.y=element_blank(),
           panel.grid.major=element_blank())
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_polar_CaNu.
@@ -328,7 +328,7 @@ gg_bar_polar_CaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "
     coord_polar() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
     theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 
@@ -359,7 +359,7 @@ gg_bar_circular_CaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
     theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 
@@ -386,7 +386,7 @@ gg_hist_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph <- graph + geom_histogram(aes(fill = a), binwidth = 10) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
     theme_ds() + theme(legend.position=leg_pos) + scale_fill_manual(values = getPalette())
-  return(graph)
+  graph
 }
 
 #' gg_density_multi_dist_coloured_CaNu.
@@ -413,7 +413,7 @@ gg_density_multi_dist_coloured_CaNu. <- function(data, titleLabel = "", subtitle
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
     theme_ds() + theme(legend.position=leg_pos) + scale_color_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_area_multi_density_dist_CaNu.
@@ -441,7 +441,7 @@ gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "", subtitle = "
     theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(legend.position=leg_pos)
 
-  return(graph)
+  graph
 }
 
 #' gg_dist_ver_facet_CaNu.
@@ -468,7 +468,7 @@ gg_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds()
   graph <- graph + facet_grid(. ~a) + scale_color_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_dist_hor_facet_CaNu.
@@ -489,7 +489,7 @@ gg_dist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_hist_ver_mean_facet_CaNu.
@@ -516,7 +516,7 @@ gg_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds() +
     scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette()[2])
 
-  return(graph)
+  graph
 }
 
 #' gg_hist_hor_mean_facet_CaNu.
@@ -537,7 +537,7 @@ gg_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_hist_ver_facet_CaNu.
@@ -563,7 +563,7 @@ gg_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds() +
     scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_hist_hor_facet_CaNu.
@@ -584,7 +584,7 @@ gg_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_dist_hist_ver_facet_CaNu.
@@ -611,7 +611,7 @@ gg_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
     scale_color_manual(values = getPalette()) + scale_fill_manual(values = getPalette())
   graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
 
-  return(graph)
+  graph
 }
 
 #' gg_dist_hist_hor_facet_CaNu.
@@ -632,7 +632,7 @@ gg_dist_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_dist_hist_ver_mean_facet_CaNu.
@@ -660,7 +660,7 @@ gg_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = 
     scale_color_manual(values = getPalette()) + scale_fill_manual(values = getPalette())
   graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
 
-  return(graph)
+  graph
 }
 
 #' gg_dist_hist_hor_mean_facet_CaNu.
@@ -681,7 +681,7 @@ gg_dist_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = 
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_dist_ver_facet_CaNu.
@@ -710,7 +710,7 @@ gg_dot_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
     scale_color_manual(values = getPalette())
   graph <- graph + facet_grid(. ~a)
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_dist_hor_facet_CaNu.
@@ -731,7 +731,7 @@ gg_dot_dist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_hist_ver_facet_CaNu.
@@ -758,7 +758,7 @@ gg_dot_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
     scale_fill_manual(values = getPalette()) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds()
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_hist_hor_facet_CaNu.
@@ -779,7 +779,7 @@ gg_dot_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_hist_ver_mean_facet_CaNu.
@@ -807,7 +807,7 @@ gg_dot_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds() +
     scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette()[2])
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_hist_hor_mean_facet_CaNu.
@@ -828,7 +828,7 @@ gg_dot_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_dist_hist_ver_facet_CaNu.
@@ -856,7 +856,7 @@ gg_dot_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
     scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette())
   graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_dist_hist_hor_facet_CaNu.
@@ -877,7 +877,7 @@ gg_dot_dist_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 
@@ -906,7 +906,7 @@ gg_dot_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitl
     theme(legend.position=leg_pos) + theme_ds() + scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette())
   graph <- graph + facet_grid(. ~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_dist_hist_hor_mean_facet_CaNu.
@@ -926,7 +926,7 @@ gg_dot_dist_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitl
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_point_facet_CaNu.
@@ -964,7 +964,7 @@ gg_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + facet_grid(. ~a)
 
-  return(graph)
+  graph
 }
 
 #' gg_line_point_facet_CaNu.
@@ -1003,7 +1003,7 @@ gg_line_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + facet_grid(. ~a)
 
-  return(graph)
+  graph
 }
 
 #' gg_line_facet_CaNu.
@@ -1041,7 +1041,7 @@ gg_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + facet_grid(. ~a)
 
-  return(graph)
+  graph
 }
 
 #' gg_area_ver_facet_CaNu.
@@ -1079,7 +1079,7 @@ gg_area_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + facet_grid(. ~a)
 
-  return(graph)
+  graph
 }
 
 
@@ -1100,7 +1100,7 @@ gg_area_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
   graph <- gg_area_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_100_ver_CaNu.
@@ -1144,7 +1144,7 @@ gg_area_stacked_100_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", 
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
     scale_y_continuous(labels = percent)
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_100_hor_CaNu.
@@ -1164,7 +1164,7 @@ gg_area_stacked_100_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", 
   graph <- gg_area_stacked_100_ver_CaNu.(data, titleLabel,subtitle, caption, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_ver_CaNu.
@@ -1207,7 +1207,7 @@ gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
     geom_area(aes(fill = a), position = "stack")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_hor_CaNu.
@@ -1227,7 +1227,7 @@ gg_area_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph <- gg_area_stacked_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_point_grouped_CaNu.
@@ -1265,7 +1265,7 @@ gg_point_grouped_CaNu. <- function(data, titleLabel = "", subtitle = "", caption
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds()
 
-  return(graph)
+  graph
 }
 
 #' gg_line_point_multi_CaNu.
@@ -1302,7 +1302,7 @@ gg_line_point_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_line_multi_CaNu.
@@ -1338,7 +1338,7 @@ gg_line_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_point_trend_line_facet_CaNu.
@@ -1377,7 +1377,7 @@ gg_point_trend_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = ""
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + facet_grid(. ~a)
 
-  return(graph)
+  graph
 }
 
 
@@ -1419,7 +1419,7 @@ gg_trend_ribbon_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_minimal() + facet_grid(. ~a)
 
-  return(graph)
+  graph
 }
 
 #Width debe de ser un parámetro.  0 < width < 1.
@@ -1455,7 +1455,7 @@ gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", w
     scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
-  return(graph)
+  graph
 }
 
 
@@ -1495,7 +1495,7 @@ gg_dot_bar_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = 
     theme(legend.position=leg_pos) + theme_ds() +
     scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_bar_hor_CaNu.
@@ -1515,7 +1515,7 @@ gg_dot_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   graph <- gg_dot_bar_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 
@@ -1545,7 +1545,7 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = ""
     scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
-  return(graph)
+  graph
 }
 
 
@@ -1579,7 +1579,7 @@ gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = ""
     scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
-  return(graph)
+  graph
 }
 
 
@@ -1600,7 +1600,7 @@ gg_bar_single_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = ""
   graph <- gg_bar_single_stacked_hor_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos, width)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 
@@ -1742,7 +1742,7 @@ gg_boxplot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
 
-  return(graph)
+  graph
 }
 
 #' gg_boxplot_flip_CaNu.
@@ -1763,7 +1763,7 @@ gg_boxplot_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   graph <- gg_boxplot_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_boxplot_dot_CaNu.
@@ -1789,7 +1789,7 @@ gg_boxplot_dot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
 
-  return(graph)
+  graph
 }
 
 #' gg_boxplot_dot_flip_CaNu.
@@ -1810,7 +1810,7 @@ gg_boxplot_dot_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph <- gg_boxplot_dot_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_violin_mult_CaNu.
@@ -1835,7 +1835,7 @@ gg_violin_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
 
-  return(graph)
+  graph
 }
 
 #' gg_violin_mult_flip_CaNu.
@@ -1855,7 +1855,7 @@ gg_violin_mult_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph <- gg_violin_mult_CaNu.(data, titleLabel, subtitle, caption, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_violin_dot_mult_CaNu.
@@ -1879,7 +1879,7 @@ gg_violin_dot_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
 
-  return(graph)
+  graph
 }
 
 #' gg_violin_dot_mult_flip_CaNu.
@@ -1932,7 +1932,7 @@ gg_bar_ordered_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
     scale_fill_manual(values = getPalette()) + theme_ds() + guides(fill = FALSE)
   graph <- graph + theme(legend.position=leg_pos)
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_ordered_hor_CaNu.
@@ -1952,7 +1952,7 @@ gg_bar_ordered_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
   graph <- gg_bar_ordered_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_ver_CaNu.
@@ -1998,7 +1998,7 @@ gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
     }
   }
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_hor_CaNu.
@@ -2020,7 +2020,7 @@ gg_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                             leg_pos, text, type, text_size, aggregation)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_steam_CaNu.
@@ -2055,7 +2055,7 @@ gg_steam_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
     scale_fill_manual(values = getPalette()) + theme_ds()
   graph <- graph + theme(legend.position=leg_pos)
 
-  return(graph)
+  graph
 }
 
 #' gg_treemap_x_CaNu.
@@ -2085,7 +2085,7 @@ gg_treemap_x_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
                      group.label.colour = "black") + guides(fill=FALSE) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_treemap_density_y_CaNu.
@@ -2124,7 +2124,7 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", subtitle = "",
                                          high = getPalette(type = "sequential")[2])
   }
 
-  return(graph)
+  graph
 }
 
 

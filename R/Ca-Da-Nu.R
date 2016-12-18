@@ -62,7 +62,7 @@ gg_steam_CaDaNu. <- function(data, titleLabel = "", subtitle  = "", caption = ""
            stat_steamgraph() + theme_ds() +
            labs(tittle = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flab) +
            scale_fill_manual(values = getPalette()) +  theme(axis.text.x = element_text(angle = angle, hjust = 1))
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_ver_CaDaNu.
@@ -96,7 +96,7 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
                   aes(x=b, y=c, group=a)) + geom_area(aes(fill = a), position = "stack")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab, fill = flabel)
   graph <- graph + theme_ds() + theme(legend.position=leg_pos) + scale_fill_manual(values = getPalette())
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_hor_CaDaNu.
@@ -117,7 +117,7 @@ gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph <- gg_area_stacked_ver_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_100_ver_CaDaNu.
@@ -151,7 +151,7 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
                   aes(x=b, y=c, group=a)) + geom_area(aes(fill = a), position = "fill")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption =  caption, x = xLabel, y = ylab, fill = flabel)
   graph <- graph + theme_ds() + theme(legend.position=leg_pos) + scale_fill_manual(values = getPalette())
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_100_hor_CaDaNu.
@@ -172,7 +172,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
   graph <- gg_area_stacked_100_ver_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_multi_line_point_CaDaNu.
@@ -210,7 +210,7 @@ gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
            scale_x_date() +
            theme(axis.text.x = element_text(size = text_size, angle = angle_x, hjust = 1))
 
-  return(graph)
+  graph
 }
 
 #' gg_multi_line_CaDaNu.
@@ -242,7 +242,7 @@ gg_multi_line_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
     scale_x_date() + theme(axis.text.x = element_text(size = text_size, angle = angle_x, hjust = 1))
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_stacked_ver_CaDaNu.
@@ -278,7 +278,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
                                 aes(yintercept = valores), linetype="dotted")
   }
 
-  return(graph)
+  graph
 }
 
 #gg_scatter_trend_hor_CaDaNu.
@@ -364,7 +364,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #   return(graph)
 # }
 #
-# vertical_unstacked_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
+# vertical_grouped_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
 #                                            yLabel = "Frequency", fillLabel = "Types",
 #                                            leg_pos = "top", ...){
 #
@@ -375,10 +375,10 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #   return(graph)
 # }
 #
-# horizontal_unstacked_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
+# horizontal_grouped_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
 #                                              yLabel = "Frequency", fillLabel = "Types",
 #                                              leg_pos = "top", ...){
-#   graph <- vertical_unstacked_bargraphCCN(data, titleLabel, xLabel, yLabel,
+#   graph <- vertical_grouped_bargraphCCN(data, titleLabel, xLabel, yLabel,
 #                                           fillLabel, leg_pos)
 #
 #   graph <- graph + coord_flip()

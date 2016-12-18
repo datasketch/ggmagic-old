@@ -28,12 +28,12 @@ horizontal_area_bargraphCC.Rd
 horizontal_bargraphCCN.Rd
 horizontal_dotgraphCCN.Rd
 horizontal_linegraphCCN.Rd
-horizontal_unstacked_bargraphCCN.Rd
+horizontal_grouped_bargraphCCN.Rd
 ordered_horizontal_bargraphCCN.Rd
 ordered_vertical_bargraphCCN.Rd
 vertical_bargraphCCN.Rd
 vertical_dotgraphCCN.Rd
 vertical_linegraphCCN.Rd
-vertical_unstacked_bargraphCCN.Rd
+vertical_grouped_bargraphCCN.Rd
 
 

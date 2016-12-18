@@ -54,7 +54,7 @@ gg_lollipop_YeNu. <- function(data, title = "", subtitle = "", caption = "",
     labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     scale_color_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_waterfall_YeNu.
@@ -82,7 +82,7 @@ gg_waterfall_YeNu. <- function(data, title = "", subtitle = "", caption = "", xL
            scale_x_continuous(limits=c(min(data$a),max(data$a))) +
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
-  return(graph)
+  graph
 }
 
 
@@ -194,7 +194,7 @@ gg_bar_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
   graph <- gg_bar_ver_YeNu.(data, titleLabel, subtitle, caption, xLabel, text, type, text_size, yLabel, leg_pos)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_area_YeNu.:
@@ -222,7 +222,7 @@ gg_area_YeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
            scale_x_continuous(limits = c(min(data$a), max(data$a))) +
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
-  return(graph)
+  graph
 }
 
 #' gg_horizon_YeNu.
@@ -257,5 +257,5 @@ gg_horizon_YeNu. <- function(data, title = "", subtitle = "", caption = "", xLab
                                          high = getPalette(type = "sequential")[2])
   }
 
-  return(graph)
+  graph
 }

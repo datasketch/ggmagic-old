@@ -29,7 +29,7 @@ gg_horizon_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                          high = getPalette(type = "sequential")[2])
   }
 
-  return(graph)
+  graph
 }
 
 #' gg_waterfall_NuNu.
@@ -57,7 +57,7 @@ gg_waterfall_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
     theme_ds()  + theme(legend.position="none")+
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
-  return(graph)
+  graph
 }
 
 
@@ -115,7 +115,7 @@ gg_dens_flip_NuNu. <- function(data, title = "", subtitle = "", caption = "", xL
   graph <- gg_dens_NuNu.(data, title, subtitle, caption, xLabel, yLabel, reverse)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 
@@ -151,7 +151,7 @@ gg_hist_NuNu. <- function(data, title = "", subtitle = "", caption = "",
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
                                          high = getPalette(type = "sequential")[2])
   }
-  return(graph)
+  graph
 }
 
 #' gg_hist_flip_NuNu.
@@ -171,7 +171,7 @@ gg_hist_flip_NuNu. <- function(data, title = "", subtitle = "", caption = "",
   graph <- gg_hist_NuNu.(data, title, subtitle, caption, xLabel, yLabel, reverse)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_line_multi_NuNu.

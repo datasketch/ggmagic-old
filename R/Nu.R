@@ -31,7 +31,7 @@ gg_horizon_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel
                                          high = getPalette(type = "sequential")[2])
   }
 
-  return(graph)
+  graph
 }
 
 #' gg_waterfall_Nu.
@@ -61,7 +61,7 @@ gg_waterfall_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 
 
 
-  return(graph)
+  graph
 }
 
 
@@ -187,7 +187,7 @@ gg_line_point_Nu. <- function(data, title = "", subtitle = "", caption = "", xLa
   graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 
@@ -208,7 +208,7 @@ gg_line_point_flip_Nu. <- function(data, title = "", subtitle = "", caption = ""
   graph <- gg_line_point_Nu.(data, title, subtitle, caption, xLabel, yLabel)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_point_Nu.
@@ -238,7 +238,7 @@ gg_point_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel =
   graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_point_flip_Nu.
@@ -258,7 +258,7 @@ gg_point_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", xLa
   graph <- gg_point_Nu.(data, title, subtitle, caption, xLabel, yLabel, type)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 
@@ -285,7 +285,7 @@ gg_density_hist_Nu. <- function(data, title = "", subtitle = "", caption = "", x
   graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_box_Nu.
@@ -311,7 +311,7 @@ gg_box_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel = N
   graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 
@@ -332,7 +332,7 @@ gg_box_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabe
   graph <- gg_box_Nu.(data, title, subtitle, caption, yLabel, xLabel)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 # Gauge media, moda (discutir con JP)
@@ -364,7 +364,7 @@ gg_violin_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel 
   graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_violin_flip_Nu.
@@ -384,7 +384,7 @@ gg_violin_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", yL
   graph <- gg_violin_Nu.(data, title, subtitle, caption, yLabel, xLabel)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_bar_Nu.
@@ -411,7 +411,7 @@ gg_dot_bar_Nu. <- function(data, title = "", subtitle = "", caption = "",
   graph <- graph + labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_bar_flip_Nu.
@@ -431,5 +431,5 @@ gg_dot_bar_flip_Nu. <- function(data, title = "", subtitle = "", caption = "",
   graph <- gg_dot_bar_Nu.(data, title, subtitle, caption, xLabel, yLabel)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }

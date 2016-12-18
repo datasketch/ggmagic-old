@@ -32,7 +32,7 @@ gg_horizon_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLab
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
                                          high = getPalette(type = "sequential")[2])
   }
-  return(graph)
+  graph
 }
 
 #' gg_waterfall_DaNu.
@@ -60,7 +60,7 @@ gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xL
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
-  return(graph)
+  graph
 }
 
 
@@ -89,7 +89,7 @@ gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "",
     scale_color_manual(values =  getPalette()) +
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  return(graph)
+  graph
 }
 
 #' gg_lines_points_DaNu.
@@ -124,7 +124,7 @@ gg_lines_points_DaNu. <- function(data, title = "", subtitle = "", caption = "",
                                 aes(yintercept = valores), linetype="dotted")
   }
 
-  return(graph)
+  graph
 }
 
 #' gg_point_DaNu.
@@ -155,7 +155,7 @@ gg_point_DaNu. <- function(data, title = "", subtitle = "", caption = "",
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
 
-  return(graph)
+  graph
 }
 
 #' gg_box_DaNu.
@@ -185,7 +185,7 @@ gg_box_DaNu. <- function(data, title = "", subtitle = "", caption = "",
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
-   return(graph)
+   graph
 }
 
 #' gg_violin_DaNu.
@@ -214,7 +214,7 @@ gg_violin_DaNu. <- function(data, title = "", subtitle = "", caption = "",
            scale_fill_manual(values = getPalette()) +
            scale_y_continuous(labels = comma) +
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
-  return(graph)
+  graph
 }
 
 #' gg_area_DaNu. :
@@ -244,7 +244,7 @@ gg_area_DaNu. <- function(data, title = "", subtitle = "", caption = "",
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
-  return(graph)
+  graph
 }
 
 #' gg_kagi_DaNu.
@@ -349,7 +349,7 @@ gg_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption = "",
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
-  return(graph)
+  graph
 }
 
 #' gg_line_points_facet_DaNu.
@@ -388,7 +388,7 @@ gg_line_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption 
     labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_DaNu.
@@ -419,7 +419,7 @@ gg_bar_DaNu. <- function(data, title = "", subtitle = "", caption = "",
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
-  return(graph)
+  graph
 }
 
 
@@ -451,7 +451,7 @@ gg_bubbles_DaNu. <- function(data, title = "", subtitle = "", caption = "",
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
-    return(graph)
+    graph
 }
 
 
@@ -481,7 +481,7 @@ gg_lollipop_DaNu. <- function(data, title = "", subtitle = "",
             theme_ds() + scale_color_manual(values = getPalette())
             labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  return(graph)
+  graph
 }
 
 
@@ -511,7 +511,7 @@ gg_area_stepped_stacked_DaNu. <- function(data, title = "", subtitle = "", capti
             theme_ds() + scale_color_manual(values = getPalette()) +
             labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  return(graph)
+  graph
 }
 
 

@@ -6,6 +6,8 @@ agg <- function(aggregation,...){
     f <- sum(..., na.rm = TRUE)
   if(aggregation == "mean")
     f <- mean(...,na.rm = TRUE)
+  if(aggregation == "median")
+    f <- median(...,na.rm = TRUE)
   f
 }
 

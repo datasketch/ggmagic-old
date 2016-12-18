@@ -79,7 +79,7 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "", subtitle = "", caption
 
   options(warn=0)
 
-  return(graph)
+  graph
 }
 
 #' gg_choropleth_depto_GeNu.
@@ -162,7 +162,7 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "", subtitle = "", capt
 
   options(warn=0)
 
-  return(graph)
+  graph
 }
 
 #' gg_choropleth_latam_GeNu.
@@ -220,7 +220,7 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "", subtitle = "", capt
 
   options(warn=0)
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_co_Ge.
@@ -286,7 +286,7 @@ gg_bubble_co_Ge. <- function(data, titleLabel = "", subtitle = "", caption = "",
   }
   options(warn=0)
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_latam_Ge.
@@ -329,7 +329,7 @@ gg_bubble_latam_Ge. <- function(data, titleLabel = "", subtitle = "", caption = 
     theme(legend.position=leg_pos)
   options(warn=0)
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_depto_Ge.
@@ -395,7 +395,7 @@ gg_bubble_depto_Ge. <- function(data, titleLabel = "", subtitle = "", caption = 
   }
   options(warn=0)
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_co_GeNu.
@@ -458,7 +458,7 @@ gg_bubble_co_GeNu. <- function(data, titleLabel = "", subtitle = "", caption = "
   }
   options(warn=0)
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_latam_GeNu.
@@ -497,7 +497,7 @@ gg_bubble_latam_GeNu. <- function(data, titleLabel = "", subtitle = "", caption 
     theme(legend.position=leg_pos)
   options(warn=0)
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_depto_GeNu.
@@ -562,7 +562,7 @@ gg_bubble_depto_GeNu. <- function(data, titleLabel = "", subtitle = "", caption 
 
   options(warn=0)
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_co_CaGe.
@@ -604,7 +604,7 @@ gg_bubble_co_CaGe. <- function(data, titleLabel = "", subtitle = "", caption = "
     theme(legend.position=leg_pos)
   options(warn=0)
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_depto_CaGe.
@@ -673,5 +673,5 @@ gg_bubble_depto_CaGe. <- function(data, titleLabel = "", subtitle = "", caption 
   }
   options(warn=0)
 
-  return(graph)
+  graph
 }

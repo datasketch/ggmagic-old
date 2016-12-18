@@ -3,18 +3,23 @@
 library(devtools)
 load_all()
 document()
-#install()
+install()
 
 
-data <- sampleData("Ca-Ye-Nu")
+data <- sampleData("Ca-Ye-Nu", nrow = 5, gt0 = TRUE)
+
+# Bars
 
 
+gg_bar_facet_ver_CaYeNu.(data)
+gg_bar_facet_hor_CaYeNu.(data)
 
-gg_bar_stk_ver_CaYeNu.(data)
-gg_bar_stk_hor_CaYeNu.(data)
+gg_bar_stacked_ver_CaYeNu.(data)
+gg_bar_stacked_hor_CaYeNu.(data)
 
-gg_bar_grp_ver_CaYeNu.(data)
-gg_bar_grp_hor_CaYeNu.(data)
+gg_bar_grouped_ver_CaYeNu.(data)
+gg_bar_grouped_hor_CaYeNu.(data)
+
 
 
 gg_lines_hor_CaYeNu.(data)

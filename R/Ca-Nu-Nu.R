@@ -32,7 +32,7 @@ gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
     scale_fill_manual(values = getPalette()) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
-  return(graph)
+  graph
 }
 
 #' gg_lines_CaNuNu.
@@ -121,7 +121,7 @@ gg_point_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
     scale_color_manual(values = getPalette()) + theme_ds() +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
-  return(graph)
+  graph
 }
 
 #' gg_circle_CaNuNu.

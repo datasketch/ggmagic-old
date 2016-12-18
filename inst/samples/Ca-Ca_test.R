@@ -66,8 +66,8 @@ gg_stacked_dot_bar_hor_CaCa.(dataCaCa)
 gg_stacked_dot_bar_ver_CaCa.(dataCaCa, subtitle = 'ssd', caption = 'sdfs')
 
 # Unstacked Coloured Bar
-gg_bar_unstacked_coloured_hor_CaCa.(dataCaCa)
-gg_bar_unstacked_coloured_ver_CaCa.(dataCaCa)
+gg_bar_grouped_coloured_hor_CaCa.(dataCaCa)
+gg_bar_grouped_coloured_ver_CaCa.(dataCaCa)
 
 d2 <- data.frame(a=sample(letters[1:7],100,replace=TRUE),
                 b=sample(letters[8:13],100,replace=TRUE))

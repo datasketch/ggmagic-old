@@ -31,7 +31,7 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "", subtitle = "", caption = "",
            scale_color_manual(values = getPalette()) +
            guides(size = FALSE, colour = FALSE)
 
-  return(graph)
+  graph
 }
 
 #' gg_bubble_coloured_CaCa.
@@ -67,7 +67,7 @@ gg_bubble_coloured_CaCa.  <- function(data, titleLabel = "", subtitle = "", capt
            scale_color_manual(values = getPalette()) +
            guides(colour = FALSE, size = FALSE)
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_bar_ver_facet_CaCa.
@@ -107,7 +107,7 @@ gg_dot_bar_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", cap
            theme(legend.position=leg_pos) + facet_grid(. ~b)
 
 
-  return(graph)
+  graph
 }
 
 #' gg_dot_bar_hor_facet_CaCa.
@@ -128,7 +128,7 @@ gg_dot_bar_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle ="", capt
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_pie_facet_CaCa.
@@ -161,7 +161,7 @@ gg_pie_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
            scale_fill_manual(values = getPalette())
   graph <- graph + facet_grid(.~b)
 
-  return(graph)
+  graph
 }
 
 #Width debe de ser un parámetro.  0 < width < 1.
@@ -194,7 +194,7 @@ gg_donut_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption =
            scale_fill_manual(values = getPalette())
   graph <- graph + facet_grid(.~b)
 
-  return(graph)
+  graph
 }
 
 #' gg_bullseye_facet_CaCa.
@@ -225,7 +225,7 @@ gg_bullseye_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
            scale_fill_manual(values = getPalette())
   graph <- graph + facet_grid(.~b)
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_coloured_x_ver_facet_CaCa.
@@ -256,7 +256,7 @@ gg_bar_coloured_x_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
            theme(axis.text.x = element_text(angle = 45, hjust = 1))
   graph <- graph + facet_grid(.~b)
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_coloured_x_hor_facet_CaCa.
@@ -277,7 +277,7 @@ gg_bar_coloured_x_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
                                    yLabel, leg_pos)
 
   graph <- graph + coord_flip()
-  return(graph)
+  graph
 }
 
 #' gg_bar_coloured_y_ver_facet_CaCa.
@@ -303,7 +303,7 @@ gg_bar_coloured_y_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
   graph <- graph + facet_grid(.~b)
-  return(graph)
+  graph
 }
 
 #' gg_bar_coloured_y_hor_facet_CaCa.
@@ -324,7 +324,7 @@ gg_bar_coloured_y_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
                                              yLabel, leg_pos)
 
   graph <- graph + coord_flip()
-  return(graph)
+  graph
 }
 
 #' gg_bar_coloured_parameter_ver_facet_CaCa.
@@ -372,7 +372,7 @@ gg_bar_coloured_parameter_ver_facet_CaCa. <- function(data, titleLabel = "", sub
            theme(axis.text.x = element_text(angle = 45, hjust = 1))
   graph <- graph + facet_grid(.~b)
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_coloured_parameter_hor_facet_CaCa.
@@ -395,7 +395,7 @@ gg_bar_coloured_parameter_hor_facet_CaCa. <- function(data, titleLabel = "", sub
                                              yLabel, parameter1, parameter2, leg_pos)
 
   graph <- graph + coord_flip()
-  return(graph)
+  graph
 }
 
 #' gg_bar_stacked_ver_CaCa.
@@ -421,7 +421,7 @@ gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capti
     theme(legend.position=leg_pos) + guides(text = FALSE, fill=guide_legend(ncol=l_ncol))
   graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_stacked_hor_CaCa.
@@ -441,7 +441,7 @@ gg_bar_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle ="", captio
   graph <- gg_bar_stacked_ver_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos,l_ncol)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_ordered_stacked_hor_CaCa.
@@ -469,7 +469,7 @@ gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle = "
     theme(legend.position=leg_pos) + guides(text = FALSE, fill=guide_legend(ncol=l_ncol))
   graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_ordered_stacked_ver_CaCa.
@@ -490,7 +490,7 @@ gg_bar_ordered_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_stacked_dot_bar_hor_CaCa.
@@ -519,7 +519,7 @@ gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", c
   graph <- graph + theme_ds() + scale_y_continuous(breaks = NULL) +
             theme(legend.position=leg_pos)
 
-  return(graph)
+  graph
 }
 
 #' gg_stacked_dot_bar_ver_CaCa.
@@ -540,12 +540,12 @@ gg_stacked_dot_bar_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
-#' gg_bar_unstacked_coloured_hor_CaCa.
+#' gg_bar_grouped_coloured_hor_CaCa.
 #' Unstacked Coloured horizontal Bar
-#' @name gg_bar_unstacked_coloured_hor_CaCa.
+#' @name gg_bar_grouped_coloured_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -554,7 +554,7 @@ gg_stacked_dot_bar_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_unstacked_coloured_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_grouped_coloured_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                           yLabel = "Count", leg_pos = "right", l_ncol = 1, ...){
 
   f <- fringe(data)
@@ -571,12 +571,12 @@ gg_bar_unstacked_coloured_hor_CaCa. <- function(data, titleLabel = "", subtitle 
   graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
 
 
-  return(graph)
+  graph
 }
 
-#' gg_bar_unstacked_coloured_ver_CaCa.
+#' gg_bar_grouped_coloured_ver_CaCa.
 #' Unstacked Coloured vertical Bar
-#' @name gg_bar_unstacked_coloured_ver_CaCa.
+#' @name gg_bar_grouped_coloured_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -585,13 +585,13 @@ gg_bar_unstacked_coloured_hor_CaCa. <- function(data, titleLabel = "", subtitle 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_unstacked_coloured_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_grouped_coloured_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                         yLabel = "Count", leg_pos = "right", l_ncol = 1, ...){
-  graph <- gg_bar_unstacked_coloured_hor_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos,l_ncol)
+  graph <- gg_bar_grouped_coloured_hor_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos,l_ncol)
 
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_line_hor_facet_CaCa.
@@ -624,7 +624,7 @@ gg_line_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
 
 
-  return(graph)
+  graph
 }
 
 #' gg_line_ver_facet_CaCa.
@@ -644,7 +644,7 @@ gg_line_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
   graph <- gg_line_hor_facet_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_line_point_hor_facet_CaCa.
@@ -680,7 +680,7 @@ gg_line_point_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", 
            theme_ds() +
            scale_color_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_line_point_ver_facet_CaCa.
@@ -700,7 +700,7 @@ gg_line_point_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", 
   graph <- gg_line_point_hor_facet_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_stacked_100_ver_CaCa.
@@ -728,7 +728,7 @@ gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
            theme_ds() + scale_fill_manual(values = getPalette()) +
            scale_y_continuous(labels = percent)
 
-  return(graph)
+  graph
 }
 
 #' gg_bar_stacked_100_hor_CaCa.
@@ -749,7 +749,7 @@ gg_bar_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", c
   graph <- gg_bar_stacked_100_ver_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, l_ncol)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_hor_CaCa.
@@ -782,7 +782,7 @@ gg_area_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", capt
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
 
 
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_ver_CaCa.
@@ -802,7 +802,7 @@ gg_area_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capt
   graph <- gg_area_stacked_hor_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, l_ncol)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_100_hor_CaCa.
@@ -835,7 +835,7 @@ gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", 
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
           scale_y_continuous(labels = percent)
 
-  return(graph)
+  graph
 }
 
 #' gg_area_stacked_100_ver_CaCa.
@@ -855,7 +855,7 @@ gg_area_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", 
   graph <- gg_area_stacked_100_hor_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, l_ncol)
   graph <- graph + coord_flip()
 
-  return(graph)
+  graph
 }
 
 #' gg_marimekko_ver_CaCa.
@@ -897,7 +897,7 @@ gg_marimekko_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption
   graph <- graph + theme(legend.position=leg_pos) + guides(fill=guide_legend(ncol=l_ncol))
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
 
-  return(graph)
+  graph
 }
 
 #' gg_marimekko_hor_CaCa.
@@ -915,7 +915,7 @@ gg_marimekko_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption
                                    yLabel = NULL, leg_pos = "right", l_ncol = 1, ...){
   graph <- gg_marimekko_ver_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos,l_ncol)
   graph <- graph + coord_flip()
-  return(graph)
+  graph
 }
 
 #' gg_bar_polar_stacked_CaCa.
@@ -1047,7 +1047,7 @@ graph <- graph +
            scale_fill_manual(values = getPalette())
   graph <- graph + theme(legend.position=leg_pos) + facet_grid(. ~b)
 
-  return(graph)
+  graph
 }
 
 #' gg_treemap_x_CaCa.
@@ -1082,7 +1082,7 @@ gg_treemap_x_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
     labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
     theme_ds() + theme_ds_clean()
 
-  return(graph)
+  graph
 }
 
 #' gg_treemap_y_CaCa.
@@ -1117,5 +1117,5 @@ gg_treemap_y_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
     labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
     theme_ds() + theme_ds_clean()
 
-  return(graph)
+  graph
 }

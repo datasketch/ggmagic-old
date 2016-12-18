@@ -35,7 +35,7 @@ gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
   }
 
 
-  return(graph)
+  graph
 }
 
 #' gg_treemap_density_y_CaCaNuNu.
@@ -71,5 +71,5 @@ gg_treemap_density_y_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
                                          high = getPalette(type = "sequential")[2])
   }
-  return(graph)
+  graph
 }

@@ -49,10 +49,10 @@ theme_ds <- function(){
     swatch = c("#111111","#65ADC2","#233B43","#E84646","#C29365","#362C21","#316675","#168E7F","#109B37"),
     gradient = list(low = "#65ADC2", high = "#362C21")
   )
-  spacing <- 1.6
+  spacing <- 0.5
   line_colour <- "#1d1d1d"
   text_colour <- "#555555"
-  text_size <- 20
+  text_size <- 12
   line_weight <- 0.5
   x_title_spacing <- function(spacing)
     max(-1.2, -(spacing / 1.25) + 0.5)

@@ -30,7 +30,7 @@ gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
                      group.label.colour = "black", label.colour = "black") + #guides(fill=FALSE) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = flabel)
 
-  return(graph)
+  graph
 }
 
 #' gg_treemap_y_CaCaCaNu.
@@ -64,7 +64,7 @@ gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
                      group.label.colour = "black", label.colour = "black") + #guides(fill=FALSE) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = flabel)
 
-  return(graph)
+  graph
 }
 
 #' gg_treemap_z_CaCaCaNu.
@@ -98,5 +98,5 @@ gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
                      group.label.colour = "black", label.colour = "black") +
     labs(title = titleLabel, subtitle = subtitle, caption = caption)
 
-  return(graph)
+  graph
 }
