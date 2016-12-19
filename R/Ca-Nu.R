@@ -1417,7 +1417,7 @@ gg_trend_ribbon_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
     geom_smooth(aes(colour="*", fill = "*"), alpha = alpha, show.legend = FALSE) +
     scale_color_manual(values = getPalette()) + scale_fill_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_minimal() + facet_grid(. ~a)
+  graph <- graph + theme_ds() + facet_grid(. ~a)
 
   graph
 }

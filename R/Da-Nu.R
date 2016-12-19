@@ -19,7 +19,6 @@ gg_horizon_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLab
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
   graph <- ggplot_horizon(data, 'a', 'b')
   graph <- graph + theme_ds() +
     labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
@@ -54,7 +53,6 @@ gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xL
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
   graph <- ggplot_waterfall(data,'a','b') + theme_ds() + theme(legend.position="none") +
            scale_color_manual(breaks = c("+",  "-", ""), values = getPalette()) +
            labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
@@ -83,7 +81,6 @@ gg_line_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
   graph <- ggplot(data, aes(x = a, y = b, group=1)) +
            geom_line(stat = "identity", aes(color = ""), show.legend = FALSE) +  theme_ds() +
     scale_color_manual(values =  getPalette()) +
@@ -111,7 +108,6 @@ gg_line_points_DaNu. <- function(data, title = "", subtitle = "", caption = "", 
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
   graph <- ggplot(data, aes(x = a, y = b, group=1)) +
     geom_line(stat = "identity", aes(color = ""), show.legend = FALSE) +  theme_ds() +
     geom_point(aes(color = ""), shape = type, show.legend = FALSE) +
@@ -146,7 +142,6 @@ gg_point_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data, aes(x = a, y = b)) +
            geom_point(aes(color = ""), show.legend = FALSE) + theme_ds() +
@@ -177,7 +172,6 @@ gg_box_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data) + geom_boxplot(aes(y = b,x = reorder(format(a,'%B'), a), fill=format(a,'%Y'))) +
            theme_ds() + scale_fill_manual(values = getPalette()) +
@@ -207,7 +201,6 @@ gg_violin_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data) + geom_violin(aes(y = b,x = reorder(format(a,'%B'), a), fill=format(a,'%Y'))) +
            theme_ds() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
@@ -236,7 +229,6 @@ gg_area_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data, aes(x = a, y = b, group=1)) +
            geom_area(aes(fill = ""), show.legend = FALSE) + theme_ds() +
@@ -266,7 +258,6 @@ gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
   xlab <- xlab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
 
  graph <- ggplot(data, aes(x = a, y = b)) +
           geom_line(aes(color=ifelse(c(diff(b), NA) > 0, "Gain", "Loss"), group = NA)) +
@@ -303,7 +294,6 @@ gg_smooth_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
 
  graph <- ggplot(data, aes(x = a, y = b)) + geom_point(aes(color = ""), show.legend = FALSE) +
           scale_x_date() + geom_smooth(aes(color = "*"), show.legend = FALSE) + theme_ds() +
@@ -333,7 +323,6 @@ gg_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
   data$Year <- format(data$a, "%Y")
   data$Month <- format(data$a, "%b")
   data$Day <- format(data$a, "%d")
@@ -372,7 +361,6 @@ gg_line_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption 
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
   data$Year <- format(data$a, "%Y")
   data$Month <- format(data$a, "%b")
   data$Day <- format(data$a, "%d")
@@ -410,7 +398,6 @@ gg_bar_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data = data, aes(x = a, y = b)) +
            geom_bar(stat="identity", na.rm = TRUE, aes(color = ""), show.legend = FALSE)  +
@@ -442,7 +429,6 @@ gg_bubbles_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
 
   graph <- ggplot(data, aes(x = a, y = b, size = b) )+
            geom_point(shape = 21, aes(fill = ""), show.legend = FALSE) +
@@ -474,7 +460,6 @@ gg_lollipop_DaNu. <- function(data, title = "", subtitle = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
 
   graph <-  ggplot(data, aes(x = a, y = b)) +
             geom_segment(aes(xend=a, yend=0)) + geom_point(aes(color = ""), show.legend = FALSE) +
@@ -504,7 +489,6 @@ gg_area_stepped_stacked_DaNu. <- function(data, title = "", subtitle = "", capti
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
-  data$a <- lubridate::as_date(data$a)
 
   graph <-  ggplot(data) +
             geom_step(aes(x = seq_along(a), y = b, color = ""), show.legend = FALSE) +

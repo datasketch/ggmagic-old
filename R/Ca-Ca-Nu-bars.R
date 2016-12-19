@@ -598,7 +598,7 @@ gg_bar_coloured_parameter_ver_facet_CaCaNu. <- function(data, titleLabel = "", s
     guides(fill=FALSE) +
     scale_fill_manual(values = getPalette())
   graph <- graph +
-    theme_minimal() +
+    theme_ds() +
     theme(legend.position=leg_pos) +
     facet_grid(.~b)
 

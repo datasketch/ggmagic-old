@@ -16,7 +16,6 @@ gg_pointline_hor_CaDa. <- function(data,title = "", subtitle = "", caption = "",
   xlab <- xlab %||% nms[2]
   clab <- clab %||% nms[1]
   d <- f$d
-  d$b <- lubridate::as_date(d$b)
 
   graph <- ggplot(d, aes(x = b, y = 0, colour = a)) +
        geom_point() +
@@ -48,7 +47,6 @@ gg_pointline_ver_CaDa. <- function(data,title = "", subtitle = "", caption = "",
   clab <- clab %||% nms[1]
   ylab <- ylab %||% nms[2]
   data <- f$d
-  data$b <- lubridate::as_date(as.numeric(data$b))
 
   graph <- ggplot(data, aes(x = b, y = 0, colour = a)) +
        geom_point() +
@@ -88,7 +86,7 @@ gg_histogram_CaDa. <- function(data,title = "", subtitle = "", caption = "",xlab
     ylab(ylab) +
     scale_fill_brewer(clab,palette = 'Set1') +
     ggtitle(title) +
-    theme_minimal()
+    theme_ds()
   g
 }
 

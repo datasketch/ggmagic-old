@@ -21,7 +21,6 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "",
   ylab <- ylab %||% nms[3]
   clab <- clab %||% nms[1]
   d <- f$d
-  d$b <- lubridate::as_date(d$b)
 
   graph <- ggplot(d, aes(x = as.Date(b, origin = data[1,2]), y = c, colour = a)) +
            geom_point() +
@@ -56,7 +55,6 @@ gg_steam_CaDaNu. <- function(data, titleLabel = "", subtitle  = "", caption = ""
   data_graph <- data %>% dplyr::arrange(b) %>%
     tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
   data_graph[is.na(data_graph)] <- 0
-  data_graph$b <- lubridate::as_date(as.numeric(data_graph$b))
 
   graph <- ggplot(data_graph, aes(x = b, y = c, group = a, fill = a)) +
            stat_steamgraph() + theme_ds() +
@@ -90,7 +88,6 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   data_graph <- data %>%
     tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
   data_graph[is.na(data_graph)] <- 0
-  data_graph$b <- lubridate::as_date(as.numeric(data_graph$b))
 
   graph <- ggplot(data = data_graph,
                   aes(x=b, y=c, group=a)) + geom_area(aes(fill = a), position = "stack")
@@ -145,7 +142,6 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
   data_graph <- data %>%
     tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
   data_graph[is.na(data_graph)] <- 0
-  data_graph$b <- lubridate::as_date(as.numeric(data_graph$b))
 
   graph <- ggplot(data = data_graph,
                   aes(x=b, y=c, group=a)) + geom_area(aes(fill = a), position = "fill")
@@ -197,8 +193,6 @@ gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data$b <- lubridate::as_date(data$b)
-
   graph <- ggplot(data, aes(x = b, y = c, group = a)) +
              geom_point(aes(color = a), shape = type) +
              geom_line(aes(color = a))
@@ -235,8 +229,6 @@ gg_multi_line_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data$b <- lubridate::as_date(data$b)
-
   graph <- ggplot(data, aes(x = b, y = c, group = a))  + geom_line(aes(color = a))
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
@@ -264,8 +256,6 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
-
-  data$b <- lubridate::as_date(data$b)
 
   graph <- ggplot(data, aes(x = b, y = c, fill = a, group = b)) + geom_bar(stat="identity", position = "stack")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
@@ -303,7 +293,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #
 #   graph <- ggplot(data, aes(a, fill=b, weights = c)) + geom_bar()
 #   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
-#   graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+#   graph <- graph + theme_ds() + theme(legend.position=leg_pos)
 #
 #   return(graph)
 # }
@@ -316,7 +306,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #     geom_bar()
 #
 #   graph <- graph + labs(title = titleLabel, x = yLabel, y = xLabel,  fill = fillLabel)
-#   graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+#   graph <- graph + theme_ds() + theme(legend.position=leg_pos)
 #
 #   return(graph)
 # }
@@ -348,7 +338,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #     geom_dotplot(stackgroups = TRUE, binpositions = "all")
 #
 #   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel,  fill = fillLabel)
-#   graph <- graph + theme_minimal() + scale_y_continuous(breaks = NULL) +
+#   graph <- graph + theme_ds() + scale_y_continuous(breaks = NULL) +
 #     theme(legend.position=leg_pos)
 #
 #   return(graph)
@@ -370,7 +360,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #
 #   graph <- ggplot(data, aes(a, weights = c)) + geom_bar(aes(fill=data$b), position = "dodge")
 #   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
-#   graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+#   graph <- graph + theme_ds() + theme(legend.position=leg_pos)
 #
 #   return(graph)
 # }
@@ -399,7 +389,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #     geom_point() + facet_grid(. ~b)
 #   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel)
 #
-#   graph <- graph + theme_minimal()
+#   graph <- graph + theme_ds()
 #
 #   return(graph)
 # }
@@ -419,7 +409,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #
 #   graph <- ggplot(data, aes(a, fill=b, weights = c)) + geom_bar(position = "fill")
 #   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
-#   graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+#   graph <- graph + theme_ds() + theme(legend.position=leg_pos)
 #
 #   return(graph)
 # }
@@ -447,7 +437,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #   graph <- ggplot(data = data_graph,
 #                   aes(x=a, y=sum, group=b)) + geom_area(aes(fill = b), position = "stack")
 #   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
-#   graph <- graph + theme_minimal() + theme(legend.position=leg_pos)
+#   graph <- graph + theme_ds() + theme(legend.position=leg_pos)
 #
 #   return(graph)
 # }
