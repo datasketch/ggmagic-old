@@ -1,7 +1,7 @@
-#' gg_lines_hor_YeNu.: title.
+#' gg_line_hor_YeNu.: title.
 #' Horizontal Lines
 #' Tiene múltiples líneas
-#' @name gg_lines_hor_YeNu.
+#' @name gg_line_hor_YeNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -10,7 +10,7 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_hor_YeNu. <- function(data, title = "", subtitle = "", caption = "",
+gg_line_hor_YeNu. <- function(data, title = "", subtitle = "", caption = "",
                                xlab = NULL, ylab = NULL,...){
   f <- fringe(data)
   nms <- getClabels(f)

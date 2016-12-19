@@ -7,7 +7,7 @@ Vertical Bars}
 \usage{
 gg_bar_ver_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, leg_pos = "right", text = TRUE,
-  type = "count", text_size = 5, aggregation = "mean", ...)
+  type = "count", text_size = 3, aggregation = "mean", ...)
 }
 \arguments{
 \item{x}{A number.}

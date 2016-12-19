@@ -64,9 +64,9 @@ gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xL
 }
 
 
-#' gg_lines_DaNu.
+#' gg_line_DaNu.
 #' Lines
-#' @name gg_lines_DaNu.
+#' @name gg_line_DaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -75,7 +75,7 @@ gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "",
+gg_line_DaNu. <- function(data, title = "", subtitle = "", caption = "",
                            xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -92,9 +92,9 @@ gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_lines_points_DaNu.
+#' gg_line_points_DaNu.
 #' Lines
-#' @name gg_lines_points_DaNu.
+#' @name gg_line_points_DaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -103,7 +103,7 @@ gg_lines_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lines_points_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_points_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                                   yLabel = NULL, type = 1, hline = NULL, angle_x = 0, ...){
 
   f <- fringe(data)

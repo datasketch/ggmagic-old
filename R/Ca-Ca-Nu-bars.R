@@ -1,9 +1,4 @@
 
-
-
-
-
-
 #' gg_bar_grouped_ver_CaCaNu.
 #' vertical unstacked bargraph
 #' @name gg_bar_grouped_ver_CaCaNu.
@@ -64,6 +59,42 @@ gg_bar_grouped_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 
 }
 
+#' gg_bar_grouped2_ver_CaCaNu.: title.
+#' Barras grouped
+#' Tiene múltiples líneas
+#' @name gg_bar_grouped2_ver_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+#'
+gg_bar_grouped2_ver_CaCaNu. <- function(data,...){
+  data <- fringe(data)
+  gg_bar_grouped_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
+}
+
+#' gg_bar_grouped2_hor_CaCaNu.: title.
+#' Barras grouped
+#' Tiene múltiples líneas
+#' @name gg_bar_grouped2_hor_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_grouped2_hor_CaCaNu. <- function(data, ...){
+  graph <- gg_bar_grouped2_ver_CaCaNu.(data,...) +
+    coord_flip()
+  graph
+}
+
 
 #' gg_bar_stacked_ver_CaCaNu.
 #' vertical stacked bar graph
@@ -111,13 +142,50 @@ gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                        yLabel = NULL, leg_pos = "right",
                                        aggregation = "mean", ...){
-
-
   graph <- gg_bar_stacked_ver_CaCaNu.(data, titleLabel, subtitle, caption,
                                       xLabel, yLabel, leg_pos,
                                       aggregation = aggregation)
   graph + coord_flip()
 }
+
+
+#' gg_bar_stacked2_ver_CaCaNu.: title.
+#' Barras grouped
+#' Tiene múltiples líneas
+#' @name gg_bar_stacked2_ver_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+#'
+gg_bar_stacked2_ver_CaCaNu. <- function(data,...){
+  data <- fringe(data)
+  gg_bar_stacked_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
+}
+
+#' gg_bar_stacked2_hor_CaCaNu.: title.
+#' Barras grouped
+#' Tiene múltiples líneas
+#' @name gg_bar_stacked2_hor_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_stacked2_hor_CaCaNu. <- function(data, ...){
+  graph <- gg_bar_stacked2_ver_CaCaNu.(data,...) +
+    coord_flip()
+  graph
+}
+
+
 
 #' gg_bar_stacked_100_ver_CaCaNu.
 #' 100 vertical stacked bar graph
@@ -177,6 +245,44 @@ gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
 
   graph
 }
+
+#' gg_bar_stacked2_100_ver_CaCaNu.: title.
+#' Barras grouped
+#' Tiene múltiples líneas
+#' @name gg_bar_stacked2_100_ver_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+#'
+gg_bar_stacked2_100_ver_CaCaNu. <- function(data,...){
+  data <- fringe(data)
+  gg_bar_stacked_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
+}
+
+#' gg_bar_stacked2_100_hor_CaCaNu.: title.
+#' Barras grouped
+#' Tiene múltiples líneas
+#' @name gg_bar_stacked2_100_hor_CaCaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Ye-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_stacked2_100_hor_CaCaNu. <- function(data, ...){
+  graph <- gg_bar_stacked2_100_ver_CaCaNu.(data,...) +
+    coord_flip()
+  graph
+}
+
+
 
 
 #' gg_bar_facet_ver_CaCaNu.

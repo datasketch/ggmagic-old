@@ -14,8 +14,8 @@ data <- data.frame(a=datesA, b=cumsum(rnorm(length(datesA))))
 #devtools::install_github("jpmarindiaz/datafringe")
 gg_horizon_DaNu.(data)
 
-gg_lines_DaNu.(data)
-gg_lines_points_DaNu.(data, hline = 20)
+gg_line_DaNu.(data)
+gg_line_points_DaNu.(data, hline = 20)
 
 gg_point_DaNu.(data)
 

@@ -6,30 +6,37 @@ document()
 install()
 
 
-data <- sampleData("Ca-Ye-Nu", nrow = 5, gt0 = TRUE)
+data <- sampleData("Ca-Ye-Nu", nrow = 10, gt0 = TRUE)
 
 # Bars
-
-
-gg_bar_facet_ver_CaYeNu.(data)
-gg_bar_facet_hor_CaYeNu.(data)
-
-gg_bar_stacked_ver_CaYeNu.(data)
-gg_bar_stacked_hor_CaYeNu.(data)
 
 gg_bar_grouped_ver_CaYeNu.(data)
 gg_bar_grouped_hor_CaYeNu.(data)
 
+gg_bar_grouped2_ver_CaYeNu.(data)
+gg_bar_grouped2_hor_CaYeNu.(data)
+
+gg_bar_facet_ver_CaYeNu.(data)
+gg_bar_facet_hor_CaYeNu.(data)
+
+gg_bar_stacked_100_ver_CaYeNu.(data)
+gg_bar_stacked_100_hor_CaYeNu.(data)
+
+gg_bar_stacked_ver_CaYeNu.(data)
+gg_bar_stacked_hor_CaYeNu.(data)
 
 
-gg_lines_hor_CaYeNu.(data)
-gg_lines_points_hor_CaYeNu.(data)
 
-data <- data.frame(hechos = c("secuestro","secuestro", "secuestro", "delito", "delito", "ex", "ex"),
-                   year = c(2006,2007,2015,2007,2015,2007,2015),
-                   pop = c(432,230, 123, 7139, 21597, 1082, 5480))
-gg_lines_hor_CaYeNu.(data)
 
+# Lines
+data <- sampleData("Ca-Ye-Nu", nrow = 20, gt0 = TRUE)
+gg_line_hor_CaYeNu.(data)
+gg_line_hor_CaYeNu.(data, symbol = 1)
+
+
+
+
+# Circle
 
 gg_circle_CaYeNu.(data)
 gg_steam_CaYeNu.(data, leg_pos = "bottom")

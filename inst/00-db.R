@@ -18,7 +18,7 @@ library(ggmagic)
 ######
 
 d <- sampleData("Ca-Ye-Nu",nrow = 11)
-gg_lines_hor_CaYeNu.(d)
+gg_line_hor_CaYeNu.(d)
 
 ##
 d <- sampleData("Ye",nrow = 11)
@@ -26,7 +26,7 @@ d$a <- as.factor(d$a)
 gg_pie_Ca.(d)
 
 d <- sampleData("Ye-Nu")
-gg_lines_hor_YeNu.(d)
+gg_line_hor_YeNu.(d)
 gg_lollipop_YeNu.(d)
 
 

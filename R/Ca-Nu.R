@@ -1968,7 +1968,7 @@ gg_bar_ordered_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' add(10, 1)
 gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel =  NULL, leg_pos = "right", text = TRUE, type = "count",
-                             text_size = 5, aggregation = "mean",...){
+                             text_size = 3, aggregation = "mean",...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -2014,7 +2014,7 @@ gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(10, 1)
 gg_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel =  NULL, leg_pos = "right", text = TRUE, type = "count",
-                             text_size = 5,aggregation = "sum",...){
+                             text_size = 3,aggregation = "sum",...){
 
   graph <- gg_bar_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel,
                             leg_pos, text, type, text_size, aggregation)

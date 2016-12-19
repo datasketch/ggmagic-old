@@ -15,13 +15,23 @@ gg_bar_grouped_ver_CaCaNu.(data, aggregation = "sum")
 gg_bar_grouped_ver_CaCaNu.(data, aggregation = "mean")
 gg_bar_grouped_hor_CaCaNu.(data)
 
+gg_bar_grouped2_ver_CaCaNu.(data)
+gg_bar_grouped2_hor_CaCaNu.(data)
+
 ## Stacked Bar
 gg_bar_stacked_ver_CaCaNu.(data)
 gg_bar_stacked_hor_CaCaNu.(data)
 
+gg_bar_stacked2_ver_CaCaNu.(data)
+gg_bar_stacked2_hor_CaCaNu.(data)
+
+
 # Stacked Bar 100%
 gg_bar_stacked_100_hor_CaCaNu.(data)
 gg_bar_stacked_100_ver_CaCaNu.(data)
+
+gg_bar_stacked2_100_hor_CaCaNu.(data)
+gg_bar_stacked2_100_ver_CaCaNu.(data)
 
 ## Facet
 data <- sampleData("Ca-Ca-Nu", nrow = 15)
