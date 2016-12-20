@@ -204,6 +204,7 @@ gg_line_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", x
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
+  if(nrow(data)==0) return()
 
   nuestroBy <- ifelse(length(unique(data$b )) <= 7, length(unique(data$b)), 5)
   by <- by %||% nuestroBy
