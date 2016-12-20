@@ -16,12 +16,17 @@
 #' add(10, 1)
 gg_line_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                                 yLabel = NULL, leg_pos = "right", angle = 0, nbreaks = NULL,
-                                symbol = NULL, ...){
+                                symbol = NULL,
+                                aggregation = "mean", ...){
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% nms[2]
+  xLabel <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
+
+  data <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c=agg(aggregation,c))
 
   xValues <- as.numeric(data$b)
   defaultNBreaks <- ifelse(length(unique(xValues )) <= 7, length(unique(xValues)), 5)
@@ -40,7 +45,7 @@ gg_line_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", x
     scale_color_manual(values = getPalette())  +
     theme(legend.position = leg_pos) +
     theme(axis.text.x = element_text(angle = angle, hjust = 1)) +
-    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
   graph
 }
 

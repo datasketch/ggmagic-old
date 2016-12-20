@@ -8,11 +8,11 @@ Tiene múltiples líneas}
 \usage{
 gg_line_hor_CaYeNu.(data, title = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, leg_pos = "right", angle = 0,
-  nbreaks = NULL, symbol = NULL, ...)
+  nbreaks = NULL, symbol = NULL, aggregation = "mean", ...)
 
 gg_line_hor_CaYeNu.(data, title = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, leg_pos = "right", angle = 0,
-  nbreaks = NULL, symbol = NULL, ...)
+  nbreaks = NULL, symbol = NULL, aggregation = "mean", ...)
 }
 \arguments{
 \item{x}{A number.}
