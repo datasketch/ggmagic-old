@@ -29,7 +29,8 @@ gg_line_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", x
     dplyr::summarise(c=agg(aggregation,c))
 
   xValues <- as.numeric(data$b)
-  defaultNBreaks <- ifelse(length(unique(xValues )) <= 7, length(unique(xValues)), 5)
+  xValues <- xValues[!is.na(xValues)]
+  defaultNBreaks <- ifelse(length(unique(xValues)) <= 7, length(unique(xValues)), 5)
   nbreaks <- nbreaks %||% defaultNBreaks
 
   customBreaks <- round(seq(min(xValues),max(xValues), length.out = nbreaks))

@@ -27,8 +27,8 @@ gg_bar_stacked2_hor_CaCaNu.(data)
 
 
 # Stacked Bar 100%
-gg_bar_stacked_100_hor_CaCaNu.(data)
 gg_bar_stacked_100_ver_CaCaNu.(data)
+gg_bar_stacked_100_hor_CaCaNu.(data)
 
 gg_bar_stacked2_100_hor_CaCaNu.(data)
 gg_bar_stacked2_100_ver_CaCaNu.(data)
