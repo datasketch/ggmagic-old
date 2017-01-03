@@ -13,14 +13,14 @@
 gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "", xlab = NULL,
                                    ylab=NULL, clab = NULL, angle = 45, ...){
 
- data <- data %>% dplyr::arrange(date)
-
- f <- fringe(data)
+  f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xlab %||% nms[2]
   ylab <- ylab %||% nms[3]
   clab <- clab %||% nms[1]
   d <- f$d
+
+  d <- d %>% dplyr::arrange(b)
 
   graph <- ggplot(d, aes(x = as.Date(b, origin = data[1,2]), y = c, colour = a)) +
            geom_point() +
@@ -41,27 +41,37 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_steam_CaDaNu. <- function(data, titleLabel = "", subtitle  = "", caption = "", xLabel = NULL,
-                            yLabel =  NULL, fillLabel = NULL, leg_pos = "right", angle = 45, ...){
+
+gg_steam_CaDaNu. <- function (data, title = "", subtitle = "", caption = "",
+                              xLabel = NULL, yLabel = NULL, leg_pos = "right", ...){
+
 
   f <- fringe(data)
   nms <- getClabels(f)
-  ylab <- yLabel %||% nms[3]
   xlab <- xLabel %||% nms[2]
-  flab <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% nms[3]
   data <- f$d
+  data$b <- lubridate::as_date(data$b)
 
+  data_graph <- data %>%
+                tidyr::drop_na(a,b) %>%
+                dplyr::group_by(a) %>%
+                tidyr::spread(b, c) %>%
+                tidyr::gather(b, c, -a)
 
-  data_graph <- data %>% dplyr::arrange(b) %>%
-    tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
   data_graph[is.na(data_graph)] <- 0
 
-  graph <- ggplot(data_graph, aes(x = b, y = c, group = a, fill = a)) +
-           stat_steamgraph() + theme_ds() +
-           labs(tittle = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flab) +
-           scale_fill_manual(values = getPalette()) +  theme(axis.text.x = element_text(angle = angle, hjust = 1))
+  graph <- ggplot(data_graph, aes(x = as.Date(b, origin = data[1,2]), y = c, group = a, fill = a)) +
+           stat_steamgraph() +
+           theme(axis.text.x = element_text(angle = 45,hjust = 1)) +
+           scale_fill_manual(values = getPalette()) +
+           theme_ds() +
+           labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+           theme(legend.position = leg_pos)
   graph
 }
+
+
 
 #' gg_area_stacked_ver_CaDaNu.
 #' Stacked Vertical Area
@@ -84,15 +94,23 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   ylab <- yLabel %||% nms[3]
   flabel <- fillLabel %||% nms[1]
   data <- f$d
+  data$b <- lubridate::as_date(data$b)
 
   data_graph <- data %>%
-    tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
+                tidyr::drop_na(a,b) %>%
+                tidyr::spread(b, c) %>%
+                tidyr::gather(b, c, -a)
+
   data_graph[is.na(data_graph)] <- 0
 
-  graph <- ggplot(data = data_graph,
-                  aes(x=b, y=c, group=a)) + geom_area(aes(fill = a), position = "stack")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab, fill = flabel)
-  graph <- graph + theme_ds() + theme(legend.position=leg_pos) + scale_fill_manual(values = getPalette())
+  graph <- ggplot(data = data_graph, aes(x = as.Date(b, origin = data[1,2]), y = c, group = a)) +
+           geom_area(aes(fill = a), position = "stack")
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab, fill = flabel)
+  graph <- graph +
+           theme_ds() +
+           theme(legend.position=leg_pos) +
+           scale_fill_manual(values = getPalette())
   graph
 }
 
@@ -138,15 +156,23 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
   ylab <- yLabel %||% nms[3]
   flabel <- fillLabel %||% nms[1]
   data <- f$d
+  data$b <- lubridate::as_date(data$b)
 
   data_graph <- data %>%
-    tidyr::spread(b, c) %>% tidyr::gather(b, c, -a)
+                tidyr::drop_na(a,b) %>%
+                tidyr::spread(b, c) %>%
+                tidyr::gather(b, c, -a)
+
   data_graph[is.na(data_graph)] <- 0
 
-  graph <- ggplot(data = data_graph,
-                  aes(x=b, y=c, group=a)) + geom_area(aes(fill = a), position = "fill")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption =  caption, x = xLabel, y = ylab, fill = flabel)
-  graph <- graph + theme_ds() + theme(legend.position=leg_pos) + scale_fill_manual(values = getPalette())
+  graph <- ggplot(data = data_graph, aes(x = as.Date(b, origin = data[1,2]), y = c, group = a)) +
+           geom_area(aes(fill = a), position = "fill")
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption =  caption, x = xLabel, y = ylab, fill = flabel)
+  graph <- graph +
+           theme_ds() +
+           theme(legend.position=leg_pos) +
+           scale_fill_manual(values = getPalette())
   graph
 }
 
@@ -256,12 +282,21 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
+  data$b <- lubridate::as_date(data$b)
 
-  graph <- ggplot(data, aes(x = b, y = c, fill = a, group = b)) + geom_bar(stat="identity", position = "stack")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
-  graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(size = text_size, angle = angle_x, hjust = 1)) +
-    scale_x_date()
+  data <- data %>%
+          tidyr::drop_na(a,b)
+
+  graph <- ggplot(data, aes(x = as.Date(b, origin = data[1,2]), y = c, fill = a, group = b)) +
+           geom_bar(stat="identity", position = "stack")
+
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph +
+           theme_ds() +
+           scale_fill_manual(values = getPalette()) +
+           theme(axis.text.x = element_text(size = text_size, angle = angle_x, hjust = 1)) +
+           scale_x_date()
 
   if(!is.null(hline)){
     graph <- graph + geom_hline(data = data.frame(valores = hline),
