@@ -22,8 +22,11 @@ gg_bubble_coloured_CaNu.(data)
 
 # Bars
 gg_bar_ver_CaNu.(data, aggregation = "sum")
+gg_bar_ver_CaNu.(data, aggregation = "sum", title = "HOLA",xLabel = "YEAH")
+
 gg_bar_ver_CaNu.(data, aggregation = "mean")
 gg_bar_hor_CaNu.(data, aggregation = "mean")
+gg_bar_hor_CaNu.(data, aggregation = "mean", title = "XXX", yLabel ="Y rules")
 gg_bar_hor_CaNu.(data, aggregation = "sum")
 
 

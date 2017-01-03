@@ -10,15 +10,16 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                       yLabel = NULL, leg_pos = "right",
+gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                       xLabel = NULL, yLabel = NULL,
+                                       leg_pos = "right",
                                        aggregation = "mean", ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
-
+  data <- data %>% filter(!is.na(a),!is.na(b))
   data <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c=agg(aggregation,c)) %>%
@@ -115,6 +116,7 @@ gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
+  data <- data %>% filter(!is.na(a),!is.na(b))
 
   data <- data %>%
     dplyr::group_by(a, b) %>%
@@ -206,12 +208,14 @@ gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
+  data <- data %>% filter(!is.na(a),!is.na(b))
 
   data <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c=agg(aggregation,c)) %>%
     tidyr::spread(b, c, fill = 0) %>%
     tidyr::gather(b, c, -a)
+  data <- data %>% filter(!is.na(a),!is.na(b))
 
   graph <- ggplot(data, aes(a, y = c, fill=b)) +
     geom_bar(stat="identity", position = "fill")

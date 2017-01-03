@@ -2016,8 +2016,11 @@ gg_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                              yLabel =  NULL, leg_pos = "right", text = TRUE, type = "count",
                              text_size = 3,aggregation = "sum",...){
 
-  graph <- gg_bar_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel,
-                            leg_pos, text, type, text_size, aggregation)
+  graph <- gg_bar_ver_CaNu.(data, titleLabel = titleLabel, subtitle = subtitle,
+                            caption = caption,
+                            xLabel = yLabel, yLabel = xLabel,
+                            leg_pos = leg_pos, text = text, type = type,
+                            text_size, aggregation = aggregation)
   graph <- graph + coord_flip()
 
   graph
