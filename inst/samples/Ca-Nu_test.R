@@ -31,15 +31,15 @@ gg_bar_hor_CaNu.(data, aggregation = "sum")
 
 
 # Coloured Bar
-gg_bar_coloured_x_ver_CaNu.(data)
-gg_bar_coloured_x_hor_CaNu.(dataata, type = 'count')
-gg_bar_coloured_y_ver_CaNu.(dataata, reverse = TRUE, type = 'count')
-gg_bar_coloured_y_hor_CaNu.(data)
+gg_bar_coloured_x_ver_CaNu.(data, line_mean = TRUE, text = TRUE)
+gg_bar_coloured_x_hor_CaNu.(data, line_mean = TRUE, type = 'count')
+gg_bar_coloured_y_ver_CaNu.(data, reverse = TRUE, line_mean = TRUE, type = 'count')
+gg_bar_coloured_y_hor_CaNu.(data, line_mean = TRUE)
 
 
 # Coloured Parameter Bar
 gg_bar_coloured_parameter_ver_CaNu.(data)
-gg_bar_coloured_parameter_hor_CaNu.(dataata, parameter = "Callejero")
+gg_bar_coloured_parameter_hor_CaNu.(data, parameter = "FormE")
 
 #Ordered Bar
 gg_bar_ordered_ver_CaNu.(data)
