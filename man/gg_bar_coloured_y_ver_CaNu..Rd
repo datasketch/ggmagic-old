@@ -6,9 +6,9 @@
 vertical bar}
 \usage{
 gg_bar_coloured_y_ver_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, reverse = FALSE, text = TRUE,
-  type = "percent", text_size = 3, yLabel = NULL, leg_pos = "right",
-  ...)
+  caption = "", xLabel = NULL, yLabel = NULL, reverse = FALSE,
+  line_mean = FALSE, text = TRUE, type = "percent", text_size = 3,
+  leg_pos = "right", aggregation = "sum", angle = 0, ...)
 }
 \arguments{
 \item{x}{A category.}

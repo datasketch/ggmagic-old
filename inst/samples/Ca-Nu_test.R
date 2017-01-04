@@ -2,12 +2,13 @@ library(devtools)
 document()
 install()
 
+
 load_all()
 
 data <- sampleData("Ca-Nu", 1000)
 
 # Pie
-gg_pie_CaNu.(data, type = 'count')
+gg_pie_CaNu.(data, type = 'count', aggregation = "sum")
 
 # Bullseye
 gg_bullseye_CaNu.(data)
@@ -21,32 +22,33 @@ gg_bubble_coloured_CaNu.(data)
 
 
 # Bars
-gg_bar_ver_CaNu.(data, aggregation = "sum")
-gg_bar_ver_CaNu.(data, aggregation = "sum", title = "HOLA",xLabel = "YEAH")
+gg_bar_ver_CaNu.(data, aggregation = "sum", line_mean = TRUE)
+gg_bar_ver_CaNu.(data, aggregation = "sum", title = "HOLA",xLabel = "YEAH", line_mean = TRUE)
 
-gg_bar_ver_CaNu.(data, aggregation = "mean")
+gg_bar_ver_CaNu.(data, aggregation = "mean", angle = 45)
 gg_bar_hor_CaNu.(data, aggregation = "mean")
-gg_bar_hor_CaNu.(data, aggregation = "mean", title = "XXX", yLabel ="Y rules")
+gg_bar_hor_CaNu.(data, aggregation = "sum", title = "XXX", yLabel ="Y rules", line_mean = TRUE)
 gg_bar_hor_CaNu.(data, aggregation = "sum")
 
 
 # Coloured Bar
-gg_bar_coloured_x_ver_CaNu.(data, line_mean = TRUE, text = TRUE)
+gg_bar_coloured_x_ver_CaNu.(data, line_mean = TRUE, text = TRUE, aggregation = 'sum')
 gg_bar_coloured_x_hor_CaNu.(data, line_mean = TRUE, type = 'count')
 gg_bar_coloured_y_ver_CaNu.(data, reverse = TRUE, line_mean = TRUE, type = 'count')
 gg_bar_coloured_y_hor_CaNu.(data, line_mean = TRUE)
 
 
 # Coloured Parameter Bar
-gg_bar_coloured_parameter_ver_CaNu.(data)
-gg_bar_coloured_parameter_hor_CaNu.(data, parameter = "FormE")
+gg_bar_coloured_parameter_ver_CaNu.(data, order = TRUE, parameter = 'max')
+gg_bar_coloured_parameter_ver_CaNu.(data, parameter = 'TypeA')
+gg_bar_coloured_parameter_hor_CaNu.(data, order = TRUE, parameter = 'TypeD', line_mean = TRUE, aggregation = 'sum')
 
 #Ordered Bar
 gg_bar_ordered_ver_CaNu.(data)
 gg_bar_ordered_hor_CaNu.(data)
 
 # Polar Bar
-gg_bar_polar_CaNu.(dataata, width = 1)
+gg_bar_polar_CaNu.(data, width = 1)
 
 # Circular Bar
 gg_bar_circular_CaNu.(data)
@@ -111,7 +113,7 @@ gg_gauge_CaNu.(data)
 gg_gauge_dial_CaNu.(data)
 
 #Grouped Line Point
-gg_line_point_multi_CaNu.(dataata, type = 4)
+gg_line_point_multi_CaNu.(data, type = 4)
 gg_line_multi_CaNu.(data)
 
 # Facet Line

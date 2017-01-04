@@ -6,8 +6,10 @@
 Horizontal coloured by parameter Bars}
 \usage{
 gg_bar_coloured_parameter_hor_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, parameter = NULL,
-  leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = NULL, order = FALSE,
+  parameter = NULL, line_mean = FALSE, text = TRUE, type = "count",
+  text_size = 3, leg_pos = "right", aggregation = "mean", angle = 0,
+  ...)
 }
 \arguments{
 \item{x}{A number.}

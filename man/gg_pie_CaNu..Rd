@@ -6,7 +6,8 @@
 Pie}
 \usage{
 gg_pie_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  text = TRUE, type = "percent", text_size = 3, leg_pos = "right", ...)
+  text = TRUE, type = "percent", text_size = 3, leg_pos = "right",
+  aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -24,7 +25,7 @@ Pie
  Ca-Nu
 }
 \examples{
-add(1, 1)
+add(1, 1)z
 add(10, 1)
 }
 

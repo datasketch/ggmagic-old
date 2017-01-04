@@ -7,11 +7,11 @@
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Ca-Nu
 #' @examples
-#' add(1, 1)
+#' add(1, 1)z
 #' add(10, 1)
 gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                          text = TRUE, type = 'percent', text_size = 3,
-                         leg_pos="right", ...){
+                         leg_pos="right",aggregation = "sum", ...){
 
   f <- fringe(data)
   data <- f$d
@@ -19,7 +19,7 @@ gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   data_graph <- data %>%
                 tidyr::drop_na(a) %>%
                 dplyr::group_by(a) %>%
-                dplyr::summarise(count = sum(b, na.rm = TRUE)) %>%
+                dplyr::summarise(count = agg(aggregation,b)) %>%
                 dplyr::mutate(pos = cumsum(count) - count/2,
                               percent = 100 * round(count/sum(count), 4))
 
@@ -55,7 +55,7 @@ gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL, line_mean = FALSE, text = TRUE,
-                                       type = 'percent', text_size = 3, leg_pos = "right", ...){
+                                       type = 'percent', text_size = 3, leg_pos = "right", aggregation = "sum", angle = 0, ...){
 
 
   f <- fringe(data)
@@ -67,7 +67,7 @@ gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
   data_graph <- data %>%
                 tidyr::drop_na(a) %>%
                 dplyr::group_by(a) %>%
-                dplyr::summarise(count = sum(b, na.rm = TRUE)) %>%
+                dplyr::summarise(count = agg(aggregation,b)) %>%
                 dplyr::mutate(percent = 100 * round(count/sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = count, fill = factor(a))) +
@@ -76,7 +76,8 @@ gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
            theme_ds() +
            theme(legend.position=leg_pos) +
            scale_fill_manual(values = getPalette()) +
-           guides(fill = FALSE)
+           guides(fill = FALSE) +
+           theme(axis.text.x = element_text(angle = angle, hjust = 1))
 
   if(line_mean){
     graph <- graph + geom_hline(aes(yintercept= mean(data_graph$count)), linetype="dashed")
@@ -109,10 +110,11 @@ gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL, line_mean = FALSE, text = TRUE,
-                                      type = 'percent', text_size = 3, leg_pos = "right", ...){
+                                      type = 'percent', text_size = 3, leg_pos = "right", aggregation = "sum", angle = 0, ...){
 
 
-  graph <- gg_bar_coloured_x_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, line_mean, text, type, text_size, leg_pos) + coord_flip()
+  graph <- gg_bar_coloured_x_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, line_mean, text, type, text_size, leg_pos, aggregation, angle) +
+           coord_flip()
   graph
 }
 
@@ -130,10 +132,9 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                                        reverse = FALSE, line_mean = FALSE,
                                        text = TRUE, type = 'percent', text_size = 3,
-                                       leg_pos = "right", ...){
+                                       leg_pos = "right", aggregation = "sum", angle = 0, ...){
 
 
-  data <- sampleData('Ca-Nu')
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -142,18 +143,19 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 
   data_graph <- data %>%
                 dplyr::group_by(a) %>%
-                dplyr::summarise(suma=sum(b, na.rm = TRUE)) %>%
-                dplyr::mutate(percent = 100 * round(suma/sum(suma), 4))
+                dplyr::summarise(count = agg(aggregation,b)) %>%
+                dplyr::mutate(percent = 100 * round(count/sum(count), 4))
 
-  graph <- ggplot(data_graph, aes(x = a, y = suma, fill = suma)) +
+  graph <- ggplot(data_graph, aes(x = a, y = count, fill = count)) +
            geom_bar(stat = "identity") +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
            theme_ds() +
-           theme(legend.position=leg_pos)
+           theme(legend.position=leg_pos) +
+           theme(axis.text.x = element_text(angle = angle, hjust = 1))
 
 
   if(line_mean){
-    graph <- graph + geom_hline(aes(yintercept= mean(data_graph$suma)), linetype="dashed")
+    graph <- graph + geom_hline(aes(yintercept= mean(data_graph$count)), linetype="dashed")
   }else{
     graph <- graph
   }
@@ -168,10 +170,10 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = suma, label = round(suma,2)), size = text_size))
+    return(graph + geom_text(aes(x = a, y = count, label = round(count,2)), size = text_size))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = suma, label = paste(percent, "%", sep = "")), size = text_size))
+      return(graph + geom_text(aes(x = a, y = count, label = paste(percent, "%", sep = "")), size = text_size))
     }else{
       graph
     }
@@ -192,11 +194,11 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 gg_bar_coloured_y_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                                        reverse = FALSE,line_mean = FALSE,
                                        text = TRUE, type = 'percent', text_size = 3,
-                                       leg_pos = "right", ...){
+                                       leg_pos = "right", aggregation = "sum", angle = 0, ...){
 
   graph <- gg_bar_coloured_y_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel,
                                        reverse, line_mean, text, type, text_size,
-                                       leg_pos)
+                                       leg_pos, aggregation,angle)
   graph + coord_flip()
 }
 
@@ -212,8 +214,8 @@ gg_bar_coloured_y_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_parameter_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, parameter = NULL,line_mean = FALSE,
-                                                leg_pos = "right", ...){
+                                                yLabel = NULL, order = FALSE, parameter = NULL,line_mean = FALSE, text = TRUE, type = 'count',
+                                                text_size = 3, leg_pos = "right", aggregation = "mean", angle = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -221,14 +223,40 @@ gg_bar_coloured_parameter_ver_CaNu. <- function(data, titleLabel = "", subtitle 
   p <-  parameter %||% sample(unique(data[,nms[1]]), 1)
   data <- f$d
 
-  graph <- ggplot(data, aes(x = a, y = b)) +
-           geom_bar(stat="identity", aes(fill = a %in% p ))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  data_graph <- data %>%
+                dplyr::group_by(a) %>%
+                dplyr::summarise(count = agg(aggregation,b)) %>%
+                dplyr::mutate(pos = count - count/10,
+                              percent = 100 * round(count / sum(count), 4))
+
+  if(order){
+    graph <- ggplot(data_graph, aes( x = reorder(a, count), y = count))
+  }else{
+    graph <- ggplot(data_graph, aes( x = a, y = count))
+  }
+
+
+  if(p == 'max'){
+    p <- data_graph$a[which.max(data_graph$count)]
+    graph <- graph + geom_bar(stat="identity", aes(fill = a %in% p ))
+  }else{
+    if(p == 'min'){
+      p <- data_graph$a[which.min(data_graph$count)]
+      graph <- graph + geom_bar(stat="identity", aes(fill = a %in% p ))
+    }else{
+      graph <- graph + geom_bar(stat="identity", aes(fill = a %in% p ))
+    }
+  }
+
+
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph +
            guides(fill = FALSE) +
            theme(legend.position = leg_pos) +
            theme_ds() +
-           scale_fill_manual(values = getPalette())
+           scale_fill_manual(values = getPalette()) +
+           theme(axis.text.x = element_text(angle = angle, hjust = 1))
 
   if(line_mean){
     graph <- graph + geom_hline(aes(yintercept= mean(data_graph$count)), linetype="dashed")
@@ -236,8 +264,17 @@ gg_bar_coloured_parameter_ver_CaNu. <- function(data, titleLabel = "", subtitle 
     graph <- graph
   }
 
-return(graph)
-
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)),
+                             size = text_size, color = "white"))
+    }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")),
+                               size = text_size, color = "white"))
+    }else{
+      graph
+    }
+  }
 }
 
 #' gg_bar_coloured_parameter_hor_CaNu.
@@ -252,11 +289,11 @@ return(graph)
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_parameter_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, parameter = NULL,
-                                                leg_pos = "right", ...){
+                                               yLabel = NULL, order = FALSE, parameter = NULL,line_mean = FALSE, text = TRUE, type = 'count',
+                                               text_size = 3, leg_pos = "right", aggregation = "mean", angle = 0, ...){
 
   graph <- gg_bar_coloured_parameter_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel,
-                                               yLabel, parameter, leg_pos = "right")
+                                               yLabel,order, parameter, line_mean, text, type, text_size, leg_pos = "right", aggregation, angle)
   graph <- graph + coord_flip()
   graph
 }
@@ -361,14 +398,15 @@ gg_bar_polar_CaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_circular_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                  leg_pos="right", width = 0.85, ...){
+                                  leg_pos="right", width = 0.85, aggregation = 'sum',  ...){
 
   f <- fringe(data)
   data <- f$d
 
-  data_graph <- data %>% dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum(b)) %>%
-    dplyr::arrange(count)
+  data_graph <- data %>%
+                dplyr::group_by(a) %>%
+                dplyr::summarise(count = agg(aggregation,b))  %>%
+                dplyr::arrange(count)
 
   graph <- ggplot(data_graph, aes(x = reorder(a,count), y = count , fill = a )) +
     geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
@@ -454,9 +492,10 @@ gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "", subtitle = "
 
   graph <- ggplot(data, aes(b))
   graph <- graph + geom_density(aes(fill = a)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
-    theme_ds() + scale_fill_manual(values = getPalette()) +
-    theme(legend.position=leg_pos)
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+           theme_ds() +
+           scale_fill_manual(values = getPalette()) +
+           theme(legend.position=leg_pos)
 
   graph
 }
@@ -1453,28 +1492,30 @@ gg_trend_ribbon_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 
-gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", width = 0.3, leg_pos="right", ...){
+gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                           width = 0.3, leg_pos="right", aggregation = 'sum', ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   data <- f$d
 
   data_graph <- data %>%
-    dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum(b)) %>%
-    dplyr::mutate(pos = cumsum(count) - count/2,
-                  percent = 100 * round(count/sum(count), 4))
+                dplyr::group_by(a) %>%
+                dplyr::summarise(count = agg(aggregation,b))  %>%
+                dplyr::mutate(pos = cumsum(count) - count/2,
+                       percent = 100 * round(count/sum(count), 4))
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), fill = a, weight = count)) +
-    geom_bar(width = width) + coord_polar(theta = "y") +
-    geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
-    scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
-  graph <- graph + theme(legend.position=leg_pos)
+           geom_bar(width = width) + coord_polar(theta = "y")
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
+           scale_fill_manual(values = getPalette()) +
+           theme_ds() +
+           theme_ds_clean()
+  graph <- graph + theme(legend.position = leg_pos)
 
   graph
 }
-
 
 
 
@@ -1578,16 +1619,16 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                            yLabel = "Count", leg_pos="right", width = 0.3, ...){
+                                            yLabel = "Count", leg_pos="right", width = 0.3, aggregation = 'sum', ...){
 
   f <- fringe(data)
   data <- f$d
 
   data_graph <- data %>%
-    dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum(b)) %>%
-    dplyr::mutate(pos = cumsum(count) - count/2,
-                  percent = 100 * round(count/sum(count), 4))
+                dplyr::group_by(a) %>%
+                dplyr::summarise(count = agg(aggregation,b)) %>%
+                dplyr::mutate(pos = cumsum(count) - (count/2),
+                              percent = 100 * round(count/sum(count), 4))
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), fill = a, weight = count)) +
     geom_bar(width = width) +
@@ -1667,7 +1708,7 @@ gg_gauge_CaNu. <- function(data, ...){
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(sum = sum(b)) %>%
+    dplyr::summarise(sum = sum(b, na.rm = TRUE)) %>%
     dplyr::arrange(desc(sum)) %>%
     dplyr::mutate(order = 1:nrow(.), prop = sum/sum(sum))
 
@@ -1721,7 +1762,7 @@ gg_gauge_dial_CaNu. <- function(data, ...){
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(sum = sum(b)) %>%
+    dplyr::summarise(sum = sum(b, na.rm = TRUE)) %>%
     dplyr::arrange(desc(sum)) %>%
     dplyr::mutate(order = 1:nrow(.), prop = sum/sum(sum))
 
@@ -1940,7 +1981,7 @@ gg_bar_ordered_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
   data <- f$d
 
   data_graph <- data %>% dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum(b)) %>%
+    dplyr::summarise(count = sum(b, na.rm = TRUE)) %>%
     dplyr::arrange(desc(count))
 
   graph <- ggplot(data_graph, aes(x = reorder(a, count), y = count, fill = "")) +
@@ -1984,8 +2025,8 @@ gg_bar_ordered_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel =  NULL, leg_pos = "right", text = TRUE, type = "count",
-                             text_size = 3, aggregation = "mean",...){
+                             yLabel =  NULL, line_mean = FALSE, leg_pos = "right", text = TRUE, type = "count",
+                             text_size = 3, aggregation = "mean",angle = 0,...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -1998,10 +2039,19 @@ gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                   percent = 100 * round(count / sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = count, fill = "")) +
-    geom_bar(stat = "identity")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    scale_fill_manual(values = getPalette()) + theme_ds() + guides(fill = FALSE)
-  graph <- graph + theme(legend.position=leg_pos)
+           geom_bar(stat = "identity")
+  graph <- graph +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+           scale_fill_manual(values = getPalette()) + theme_ds() + guides(fill = FALSE)
+  graph <- graph +
+           theme(legend.position=leg_pos) +
+           theme(axis.text.x = element_text(angle = angle, hjust = 1))
+
+  if(line_mean){
+    graph <- graph + geom_hline(aes(yintercept= mean(data_graph$count)), linetype="dashed")
+  }else{
+    graph <- graph
+  }
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)),
@@ -2030,14 +2080,14 @@ gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel =  NULL, leg_pos = "right", text = TRUE, type = "count",
-                             text_size = 3,aggregation = "sum",...){
+                             yLabel =  NULL,line_mean = FALSE, leg_pos = "right", text = TRUE, type = "count",
+                             text_size = 3,aggregation = "sum", angle = 0, ...){
 
   graph <- gg_bar_ver_CaNu.(data, titleLabel = titleLabel, subtitle = subtitle,
                             caption = caption,
-                            xLabel = yLabel, yLabel = xLabel,
+                            xLabel = yLabel, yLabel = xLabel, line_mean = line_mean,
                             leg_pos = leg_pos, text = text, type = type,
-                            text_size, aggregation = aggregation)
+                            text_size, aggregation = aggregation, angle = angle)
   graph <- graph + coord_flip()
 
   graph
