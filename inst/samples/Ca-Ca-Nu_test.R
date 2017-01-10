@@ -130,3 +130,19 @@ data[] <- sapply(data, as.character)
 data$c <- runif(nrow(data), min = 0, max = 50)
 gg_pyramid_CaCaNu.(data)
 
+
+
+# sunburst
+
+firsnev <- c(rep('colombia',5), rep('usa',5))
+twonev <- c(rep('amarillo',4), 'azul', rep('azul', 3), rep('rojo',2 ))
+vals <- runif(10, min = 100, max = 500)
+
+set.seed(1)
+data <- data.frame(firsnev, twonev, vals)
+data$firsnev <- as.factor(data$firsnev)
+data$twonev <- as.factor(data$twonev)
+
+gg_sunburst_CaCaNu.(data)
+
+

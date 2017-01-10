@@ -6,7 +6,8 @@
 Single Horizontal Stacked Bar}
 \usage{
 gg_bar_single_stacked_hor_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", yLabel = "Count", leg_pos = "right", width = 0.3, ...)
+  caption = "", yLabel = "Count", leg_pos = "right", width = 0.3,
+  aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -6,7 +6,7 @@
 dount}
 \usage{
 gg_donut_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  width = 0.3, leg_pos = "right", ...)
+  width = 0.3, leg_pos = "right", aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}
