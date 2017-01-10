@@ -653,11 +653,12 @@ gg_sunburst_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
   #segundo nivel
 
   cols_col <- data %>%
-    dplyr::group_by(b) %>%
+    dplyr::group_by(a,b) %>%
     dplyr::summarise(total1 = sum(c))
 
 
   part2 <- cols_col %>%
+    ungroup(a,b) %>%
     mutate(running = cumsum(total1), pos = running - total1/2) %>%
     group_by(1:n()) %>%
     mutate(angle = pred_ang((running - total1/2)/total1))
