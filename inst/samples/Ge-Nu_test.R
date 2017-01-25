@@ -16,6 +16,8 @@ gg_choropleth_co_GeNu.(dataGeNu, color_map = "gold", text_size = 2.5,
 gg_choropleth_co_GeNu.(dataGeNu, color_map = "gold", text_size = 2.5,
                        text = TRUE, prop_text = c("Valle del Cauca", "Nariño", "Amazonas"))
 
+depto_ <- c("99")
+gg_sketchmap_depto_GeNu.(depto_)
 
 depto_ <- c("05")
 mpios <- c("05002", "05004", "05021", "05030", "05031", "05034", "05036", "05038", "05040", "05044", "05045", "05051", "05055", "05059",

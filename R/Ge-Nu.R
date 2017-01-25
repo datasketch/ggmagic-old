@@ -82,6 +82,38 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "", subtitle = "", caption
   graph
 }
 
+
+#' gg_sketchmap_depto_GeNu.
+#' Sketch map departments
+#' @name gg_sketchmap_depto_GeNu.
+#' @param x A category.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ge-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_sketchmap_depto_GeNu. <- function(depto_ = depto_, color_map = "gold", color_frontier = "black"){
+
+  options(warn = -1)
+  data_mpios <- suppressMessages(read_csv(system.file("geo/mpios_depto_co.csv",
+                                                      package = "ggmagic"), col_names = TRUE))
+
+
+  data_mpios <- data_mpios %>% filter(depto == depto_)
+  graph <- ggplot() +
+    geom_map(data = data_mpios, map = data_mpios,
+             aes(map_id = id, x = long, y = lat, group = group), fill = color_map,
+             color = color_frontier, size = 0.25) +
+    coord_map() +
+    expand_limits(x = data_mpios$long, y = data_mpios$lat) +
+    theme_ds_clean()
+  graph
+
+}
+
+
 #' gg_choropleth_depto_GeNu.
 #' Choropleth by filtering deptos
 #' @name gg_choropleth_depto_GeNu.
