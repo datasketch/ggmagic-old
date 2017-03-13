@@ -22,10 +22,10 @@ Barras grouped
 Tiene múltiples líneas
 }
 \section{ftypes}{
- Ca-Ye-Nu
+ Ca-Ca-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

@@ -21,10 +21,10 @@ gg_radar_CaNuP.
 point
 }
 \section{ftypes}{
- Ca-Nu-Nu
+ Ca-NuP
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

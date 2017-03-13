@@ -23,8 +23,8 @@ Treemap Fill by second Nu
 \section{ftypes}{
  Ca-Ca-Nu-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

@@ -60,33 +60,30 @@ gg_bar_grouped_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 
 }
 
-#' gg_bar_grouped2_ver_CaCaNu.: title.
+#' gg_bar_grouped2_ver_CaCaNu.
 #' Barras grouped
-#' Tiene múltiples líneas
 #' @name gg_bar_grouped2_ver_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-#'
 gg_bar_grouped2_ver_CaCaNu. <- function(data,...){
   data <- fringe(data)
   gg_bar_grouped_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' gg_bar_grouped2_hor_CaCaNu.: title.
+#' gg_bar_grouped2_hor_CaCaNu.
 #' Barras grouped
-#' Tiene múltiples líneas
 #' @name gg_bar_grouped2_hor_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -151,19 +148,17 @@ gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 }
 
 
-#' gg_bar_stacked2_ver_CaCaNu.: title.
+#' gg_bar_stacked2_ver_CaCaNu.
 #' Barras grouped
-#' Tiene múltiples líneas
 #' @name gg_bar_stacked2_ver_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-#'
 gg_bar_stacked2_ver_CaCaNu. <- function(data,...){
   data <- fringe(data)
   gg_bar_stacked_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
@@ -177,7 +172,7 @@ gg_bar_stacked2_ver_CaCaNu. <- function(data,...){
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -186,8 +181,6 @@ gg_bar_stacked2_hor_CaCaNu. <- function(data, ...){
     coord_flip()
   graph
 }
-
-
 
 #' gg_bar_stacked_100_ver_CaCaNu.
 #' 100 vertical stacked bar graph
@@ -250,33 +243,30 @@ gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
   graph
 }
 
-#' gg_bar_stacked2_100_ver_CaCaNu.: title.
+#' gg_bar_stacked2_100_ver_CaCaNu.
 #' Barras grouped
-#' Tiene múltiples líneas
 #' @name gg_bar_stacked2_100_ver_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-#'
 gg_bar_stacked2_100_ver_CaCaNu. <- function(data,...){
   data <- fringe(data)
   gg_bar_stacked_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' gg_bar_stacked2_100_hor_CaCaNu.: title.
+#' gg_bar_stacked2_100_hor_CaCaNu.
 #' Barras grouped
-#' Tiene múltiples líneas
 #' @name gg_bar_stacked2_100_hor_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -285,9 +275,6 @@ gg_bar_stacked2_100_hor_CaCaNu. <- function(data, ...){
     coord_flip()
   graph
 }
-
-
-
 
 #' gg_bar_facet_ver_CaCaNu.
 #' Facet vertical bargraph
@@ -392,10 +379,6 @@ gg_bar_facet_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capti
   graph
 }
 
-
-
-
-
 #' gg_bar_coloured_ver_x_facet_CaCaNu.
 #' vertical bar
 #' @name gg_bar_coloured_ver_x_facet_CaCaNu.
@@ -488,7 +471,7 @@ gg_bar_coloured_ver_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -632,14 +615,6 @@ gg_bar_coloured_parameter_hor_facet_CaCaNu. <- function(data, titleLabel = "", s
   graph
 }
 
-
-
-
-
-
-
-
-
 #' gg_bar_circular_facet_CaCaNu.
 #' Circular Bar
 #' @name gg_bar_circular_facet_CaCaNu.
@@ -647,7 +622,7 @@ gg_bar_coloured_parameter_hor_facet_CaCaNu. <- function(data, titleLabel = "", s
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -671,8 +646,6 @@ gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", 
 
   graph
 }
-
-
 
 #' gg_bar_stacked_polar_CaCaNu.
 #' Stacked Polar Bar

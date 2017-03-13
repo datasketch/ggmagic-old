@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Da.R
 \name{gg_histogram_CaDa.}
 \alias{gg_histogram_CaDa.}
-\title{gg_histogram_CaDa.: title.
+\title{gg_histogram_CaDa.
 histogram}
 \usage{
 gg_histogram_CaDa.(data, title = "", subtitle = "", caption = "",
@@ -17,14 +17,14 @@ gg_histogram_CaDa.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_histogram_CaDa.: title.
+gg_histogram_CaDa.
 histogram
 }
 \section{ftypes}{
  Ca-Da
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

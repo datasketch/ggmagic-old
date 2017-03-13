@@ -24,8 +24,8 @@ Facet Vertical coloured by parameter bars
 \section{ftypes}{
  Ca-Ca
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

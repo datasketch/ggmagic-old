@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_area_DaNu.}
 \alias{gg_area_DaNu.}
-\title{gg_area_DaNu. :
+\title{gg_area_DaNu.
 Area}
 \usage{
 gg_area_DaNu.(data, title = "", subtitle = "", caption = "",
@@ -17,14 +17,14 @@ gg_area_DaNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_area_DaNu. :
+gg_area_DaNu.
 Area
 }
 \section{ftypes}{
  Da-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

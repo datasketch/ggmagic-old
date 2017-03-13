@@ -21,10 +21,10 @@ gg_bubble_coloured_y_CaCaNu.
 Coloured Bubble second Ca
 }
 \section{ftypes}{
- Ca-Ca-Nu,Ca-Ca-Nu
+ Ca-Ca-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

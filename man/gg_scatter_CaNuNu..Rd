@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu-Nu.R
 \name{gg_scatter_CaNuNu.}
 \alias{gg_scatter_CaNuNu.}
-\title{gg_scatter_CaNuNu.: title.
+\title{gg_scatter_CaNuNu.
 pointlines}
 \usage{
 gg_scatter_CaNuNu.(data, title = "", subtitle = "", caption = "",
@@ -18,14 +18,14 @@ gg_scatter_CaNuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_scatter_CaNuNu.: title.
+gg_scatter_CaNuNu.
 pointlines
 }
 \section{ftypes}{
- Ca-Da-Nu
+ Ca-Nu-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

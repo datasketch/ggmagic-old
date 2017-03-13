@@ -21,10 +21,10 @@ gg_line_ver_facet_CaCaNu.
 vertical linegraph
 }
 \section{ftypes}{
- Ca-Ca-Nu,Ca-Ca-Nu
+ Ca-Ca-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

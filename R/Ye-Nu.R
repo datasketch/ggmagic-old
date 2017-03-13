@@ -1,6 +1,5 @@
-#' gg_line_hor_YeNu.: title.
+#' gg_line_hor_YeNu.
 #' Horizontal Lines
-#' Tiene múltiples líneas
 #' @name gg_line_hor_YeNu.
 #' @param x A number.
 #' @param y A number.
@@ -37,7 +36,6 @@ gg_line_hor_YeNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_lollipop_YeNu. <- function(data, title = "", subtitle = "", caption = "",
                               xlab = NULL, ylab = NULL, size = 7,...){
 

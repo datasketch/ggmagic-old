@@ -129,9 +129,6 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "
   graph
 }
 
-
-
-
 #' gg_bubble_coloured_x_CaCaNu.
 #' Coloured Bubble first Ca
 #' @name gg_bubble_coloured_x_CaCaNu.
@@ -139,7 +136,7 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -168,7 +165,7 @@ gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", 
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -192,10 +189,6 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 
   graph
 }
-
-
-
-
 
 #' gg_line_hor_facet_CaCaNu.
 #' horizontal linegraph
@@ -238,7 +231,7 @@ gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

@@ -1,15 +1,14 @@
-#' gg_scatter_CaNuNu.: title.
+#' gg_scatter_CaNuNu.
 #' pointlines
 #' @name gg_scatter_CaNuNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Ca-Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_scatter_CaNuNu. <- function(data,title = "", subtitle = "", caption = "",
                                xLabel = NULL,
                                yLabel=NULL, cLabel = NULL, angle = 45,
@@ -40,14 +39,14 @@ gg_scatter_CaNuNu. <- function(data,title = "", subtitle = "", caption = "",
 }
 
 
-#' gg_scatter_trend_CaNuNu.: title.
+#' gg_scatter_trend_CaNuNu.
 #' pointlines
 #' @name gg_scatter_trend_CaNuNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Ca-Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -231,7 +230,6 @@ gg_point_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-#'
 gg_circle_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                               yLabel = NULL, leg_pos="right", size = 10, ...){
   f <- fringe(data)

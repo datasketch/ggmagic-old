@@ -22,10 +22,10 @@ gg_bar_stacked_100_hor_CaCaCaNu.
 Stacked
 }
 \section{ftypes}{
- Ca-Ca-Ca-Nu, Ca-Ca-Ye-Nu
+ Ca-Ca-Ca-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

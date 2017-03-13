@@ -109,12 +109,10 @@ gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca-Nu, Ca-Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
 gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                              fillLabel = NULL, xlab = NULL, ylab = NULL,leg_pos = 'right', ...){
 
@@ -151,9 +149,6 @@ gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
   graph
 }
 
-
-
-
 #' gg_sunburst_CaCaCaNu.
 #' sunburst
 #' @name gg_sunburst_CaCaCaNu.
@@ -161,7 +156,7 @@ gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -259,3 +254,4 @@ gg_sunburst_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   coord_polar('y') +  theme_ds_clean() + guides(fill = FALSE)
 
 }
+

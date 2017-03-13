@@ -20,10 +20,10 @@ gg_bar_stacked_100_ver_CaYeNu.
 100 horizontal stacked bar graph
 }
 \section{ftypes}{
- Ca-Ca-Nu
+ Ca-Ye-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

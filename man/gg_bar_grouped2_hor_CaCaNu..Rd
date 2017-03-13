@@ -2,9 +2,8 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_grouped2_hor_CaCaNu.}
 \alias{gg_bar_grouped2_hor_CaCaNu.}
-\title{gg_bar_grouped2_hor_CaCaNu.: title.
-Barras grouped
-Tiene múltiples líneas}
+\title{gg_bar_grouped2_hor_CaCaNu.
+Barras grouped}
 \usage{
 gg_bar_grouped2_hor_CaCaNu.(data, ...)
 }
@@ -17,15 +16,14 @@ gg_bar_grouped2_hor_CaCaNu.(data, ...)
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_grouped2_hor_CaCaNu.: title.
+gg_bar_grouped2_hor_CaCaNu.
 Barras grouped
-Tiene múltiples líneas
 }
 \section{ftypes}{
- Ca-Ye-Nu
+ Ca-Ca-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

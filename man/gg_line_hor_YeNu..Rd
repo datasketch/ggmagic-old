@@ -2,9 +2,8 @@
 % Please edit documentation in R/Ye-Nu.R
 \name{gg_line_hor_YeNu.}
 \alias{gg_line_hor_YeNu.}
-\title{gg_line_hor_YeNu.: title.
-Horizontal Lines
-Tiene múltiples líneas}
+\title{gg_line_hor_YeNu.
+Horizontal Lines}
 \usage{
 gg_line_hor_YeNu.(data, title = "", subtitle = "", caption = "",
   xlab = NULL, ylab = NULL, ...)
@@ -18,15 +17,14 @@ gg_line_hor_YeNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_hor_YeNu.: title.
+gg_line_hor_YeNu.
 Horizontal Lines
-Tiene múltiples líneas
 }
 \section{ftypes}{
  Ye-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

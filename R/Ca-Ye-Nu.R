@@ -1,9 +1,5 @@
 
-
-
-
-#' gg_line_hor_CaYeNu.: title.
-#' Lines
+#' gg_line_hor_CaYeNu.
 #' Tiene múltiples líneas
 #' @name gg_line_hor_CaYeNu.
 #' @param x A number.
@@ -51,8 +47,7 @@ gg_line_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", x
 }
 
 
-#' gg_circle_CaYeNu.: title.
-#' circle
+#' gg_circle_CaYeNu.
 #' ciculos
 #' @name gg_circle_CaYeNu.
 #' @param x A number.

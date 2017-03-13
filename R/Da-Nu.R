@@ -9,7 +9,6 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_horizon_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel =  NULL, leg_pos = "right", reverse = FALSE,
                              angle_x = 0,...){
@@ -210,7 +209,7 @@ gg_violin_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_area_DaNu. :
+#' gg_area_DaNu.
 #' Area
 #' @name gg_area_DaNu.
 #' @param x A number.

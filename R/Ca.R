@@ -1,5 +1,5 @@
 
-#' gg_waffle_Ca.: title.
+#' gg_waffle_Ca.
 #' Waffle
 #' @name gg_waffle_Ca.
 #' @param x A number.

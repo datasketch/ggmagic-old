@@ -21,10 +21,10 @@ gg_bar_circular_facet_CaCaNu.
 Circular Bar
 }
 \section{ftypes}{
- Ca-Ca-Nu,Ca-Ca-Nu
+ Ca-Ca-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

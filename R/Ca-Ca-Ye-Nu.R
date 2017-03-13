@@ -5,12 +5,10 @@
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca-Nu, Ca-Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Ye-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
 gg_bar_stacked_100_hor_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                              fillLabel = NULL, xlab = NULL, ylab = NULL,leg_pos = 'right', ...){
 
@@ -46,3 +44,4 @@ gg_bar_stacked_100_hor_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "
 
   graph
 }
+

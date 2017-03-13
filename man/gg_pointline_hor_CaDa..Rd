@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Da.R
 \name{gg_pointline_hor_CaDa.}
 \alias{gg_pointline_hor_CaDa.}
-\title{gg_pointline_hor_CaDa.: title.
+\title{gg_pointline_hor_CaDa.
 pointlines}
 \usage{
 gg_pointline_hor_CaDa.(data, title = "", subtitle = "", caption = "",
@@ -17,14 +17,14 @@ gg_pointline_hor_CaDa.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_pointline_hor_CaDa.: title.
+gg_pointline_hor_CaDa.
 pointlines
 }
 \section{ftypes}{
  Ca-Da
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

@@ -23,8 +23,8 @@ Treemap fill third Ca
 \section{ftypes}{
  Ca-Ca-Ca-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

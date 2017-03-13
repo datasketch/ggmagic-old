@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_waffle_Ca.}
 \alias{gg_waffle_Ca.}
-\title{gg_waffle_Ca.: title.
+\title{gg_waffle_Ca.
 Waffle}
 \usage{
 gg_waffle_Ca.(data, square_size = 1, rows_number = 5, titleLabel = "",
@@ -17,14 +17,14 @@ gg_waffle_Ca.(data, square_size = 1, rows_number = 5, titleLabel = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_waffle_Ca.: title.
+gg_waffle_Ca.
 Waffle
 }
 \section{ftypes}{
  Ca
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

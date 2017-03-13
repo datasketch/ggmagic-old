@@ -25,8 +25,8 @@ Points inside Colombia's deptos map
 \section{ftypes}{
  Ge-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-
