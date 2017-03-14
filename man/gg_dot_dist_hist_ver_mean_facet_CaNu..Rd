@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_dot_dist_hist_ver_mean_facet_CaNu.}
 \alias{gg_dot_dist_hist_ver_mean_facet_CaNu.}
-\title{gg_dot_dist_hist_ver_mean_facet_CaNu.
+\title{Vertical density dot + histogram + distribution + mean facet
 Facet Vertical Histogram + Dist + Mean + Dot}
 \usage{
 gg_dot_dist_hist_ver_mean_facet_CaNu.(data, titleLabel = "", subtitle = "",
@@ -18,7 +18,7 @@ gg_dot_dist_hist_ver_mean_facet_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_dot_dist_hist_ver_mean_facet_CaNu.
+Vertical density dot + histogram + distribution + mean facet
 Facet Vertical Histogram + Dist + Mean + Dot
 }
 \section{ftypes}{

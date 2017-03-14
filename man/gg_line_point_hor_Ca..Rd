@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_line_point_hor_Ca.}
 \alias{gg_line_point_hor_Ca.}
-\title{gg_line_point_hor_Ca.
+\title{Horizontal line + point
 Horizontal Line Point}
 \usage{
 gg_line_point_hor_Ca.(data, titleLabel = "", xLabel = NULL, subtitle = "",
@@ -17,7 +17,7 @@ gg_line_point_hor_Ca.(data, titleLabel = "", xLabel = NULL, subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_point_hor_Ca.
+Horizontal line + point
 Horizontal Line Point
 }
 \section{ftypes}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_line_point_facet_CaNu.}
 \alias{gg_line_point_facet_CaNu.}
-\title{gg_line_point_facet_CaNu.
+\title{Line + point facet
 Facet Line Point}
 \usage{
 gg_line_point_facet_CaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_line_point_facet_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_point_facet_CaNu.
+Line + point facet
 Facet Line Point
 }
 \section{ftypes}{

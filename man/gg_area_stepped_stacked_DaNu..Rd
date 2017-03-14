@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_area_stepped_stacked_DaNu.}
 \alias{gg_area_stepped_stacked_DaNu.}
-\title{gg_area_stepped_stacked_DaNu.
+\title{Stepped stacked area
 stepped stacked area.}
 \usage{
 gg_area_stepped_stacked_DaNu.(data, title = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_area_stepped_stacked_DaNu.(data, title = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_area_stepped_stacked_DaNu.
+Stepped stacked area
 stepped stacked area.
 }
 \section{ftypes}{

@@ -1,4 +1,4 @@
-#' gg_bar_stacked_100_hor_CaCaYeNu.
+#' Horizontal 100% stacked bar
 #' Stacked
 #' @name gg_bar_stacked_100_hor_CaCaYeNu.
 #' @param x A number.

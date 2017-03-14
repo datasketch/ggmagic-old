@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ye-Nu.R
 \name{gg_bar_hor_YeNu.}
 \alias{gg_bar_hor_YeNu.}
-\title{gg_bar_hor_YeNu.
+\title{Horizontal bar
 horizontal bar}
 \usage{
 gg_bar_hor_YeNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -18,7 +18,7 @@ gg_bar_hor_YeNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_hor_YeNu.
+Horizontal bar
 horizontal bar
 }
 \section{ftypes}{

@@ -1,4 +1,4 @@
-#' gg_scatter_hor_CaDaNu.
+#' Horizontal scatter
 #' pointlines
 #' @name gg_scatter_hor_CaDaNu.
 #' @param x A number.
@@ -29,7 +29,7 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_steam_CaDaNu.
+#' Steam
 #' Steam
 #' @name gg_steam_CaDaNu.
 #' @param x A number.
@@ -71,7 +71,7 @@ gg_steam_CaDaNu. <- function (data, title = "", subtitle = "", caption = "",
 
 
 
-#' gg_area_stacked_ver_CaDaNu.
+#' Vertical stacked area
 #' Stacked Vertical Area
 #' @name gg_area_stacked_ver_CaDaNu.
 #' @param x A number.
@@ -112,7 +112,7 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_area_stacked_hor_CaDaNu.
+#' Horizontal stacked area
 #' Stacked Horizontal Area
 #' @name gg_area_stacked_hor_CaDaNu.
 #' @param x A number.
@@ -133,7 +133,7 @@ gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_area_stacked_100_ver_CaDaNu.
+#' Vertical 100% stacked area
 #' Stacked Vertical Area 100
 #' @name gg_area_stacked_100_ver_CaDaNu.
 #' @param x A number.
@@ -174,7 +174,7 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
   graph
 }
 
-#' gg_area_stacked_100_hor_CaDaNu.
+#' Horizontal 100% stacked area
 #' Stacked Horizontal Area 100
 #' @name gg_area_stacked_100_hor_CaDaNu.
 #' @param x A number.
@@ -195,7 +195,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
   graph
 }
 
-#' gg_multi_line_point_CaDaNu.
+#' Grouped line + point
 #' Grouped Line Color Point
 #' @name gg_multi_line_point_CaDaNu.
 #' @param x A number.
@@ -231,7 +231,7 @@ gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_multi_line_CaDaNu.
+#' Grouped line
 #' Grouped Line Coloured
 #' @name gg_multi_line_CaDaNu.
 #' @param x A number.
@@ -261,7 +261,7 @@ gg_multi_line_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   graph
 }
 
-#' gg_bar_stacked_ver_CaDaNu.
+#' Vertical stacked bar
 #' vertical stacked bar graph
 #' @name gg_bar_stacked_ver_CaDaNu.
 #' @param x A category.

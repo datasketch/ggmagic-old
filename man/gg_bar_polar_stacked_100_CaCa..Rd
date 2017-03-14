@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_bar_polar_stacked_100_CaCa.}
 \alias{gg_bar_polar_stacked_100_CaCa.}
-\title{gg_bar_polar_stacked_100_CaCa.
+\title{Polar 100% stacked bar
 Stacked Polar  100pct}
 \usage{
 gg_bar_polar_stacked_100_CaCa.(data, titleLabel = "", subtitle = "",
@@ -19,7 +19,7 @@ gg_bar_polar_stacked_100_CaCa.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_polar_stacked_100_CaCa.
+Polar 100% stacked bar
 Stacked Polar  100pct
 }
 \section{ftypes}{

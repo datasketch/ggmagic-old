@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu-Nu.R
 \name{gg_hist_NuNu.}
 \alias{gg_hist_NuNu.}
-\title{gg_hist_NuNu.
+\title{Vertical histogram
 Histogram 2D}
 \usage{
 gg_hist_NuNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_hist_NuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_hist_NuNu.
+Vertical histogram
 Histogram 2D
 }
 \section{ftypes}{

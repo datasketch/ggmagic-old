@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_bubbles_DaNu.}
 \alias{gg_bubbles_DaNu.}
-\title{gg_bubbles_DaNu.
+\title{Bubbles
 bubbles}
 \usage{
 gg_bubbles_DaNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_bubbles_DaNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bubbles_DaNu.
+Bubbles
 bubbles
 }
 \section{ftypes}{

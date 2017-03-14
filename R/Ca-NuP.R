@@ -1,6 +1,6 @@
 
 
-#' gg_radar_CaNuP.
+#' Radar
 #' point
 #' @name gg_radar_CaNuP.
 #' @param x A category.

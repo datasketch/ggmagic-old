@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_line_point_ver_facet_CaCa.}
 \alias{gg_line_point_ver_facet_CaCa.}
-\title{gg_line_point_ver_facet_CaCa.
+\title{Vertical line + point facet
 Vertical Line Point}
 \usage{
 gg_line_point_ver_facet_CaCa.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_line_point_ver_facet_CaCa.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_point_ver_facet_CaCa.
+Vertical line + point facet
 Vertical Line Point
 }
 \section{ftypes}{

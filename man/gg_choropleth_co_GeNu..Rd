@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ge-Nu.R
 \name{gg_choropleth_co_GeNu.}
 \alias{gg_choropleth_co_GeNu.}
-\title{gg_choropleth_co_GeNu.
+\title{Choropleth of Colombia's deptos
 Choropleth of Colombia's deptos}
 \usage{
 gg_choropleth_co_GeNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -19,7 +19,7 @@ gg_choropleth_co_GeNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_choropleth_co_GeNu.
+Choropleth of Colombia's deptos
 Choropleth of Colombia's deptos
 }
 \section{ftypes}{

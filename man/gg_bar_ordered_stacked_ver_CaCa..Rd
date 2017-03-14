@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_bar_ordered_stacked_ver_CaCa.}
 \alias{gg_bar_ordered_stacked_ver_CaCa.}
-\title{gg_bar_ordered_stacked_ver_CaCa.
+\title{Ordered vertical stacked bar
 Ordered Stacked Vertical Bar}
 \usage{
 gg_bar_ordered_stacked_ver_CaCa.(data, titleLabel = "", subtitle = "",
@@ -18,7 +18,7 @@ gg_bar_ordered_stacked_ver_CaCa.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_ordered_stacked_ver_CaCa.
+Ordered vertical stacked bar
 Ordered Stacked Vertical Bar
 }
 \section{ftypes}{

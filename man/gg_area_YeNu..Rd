@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ye-Nu.R
 \name{gg_area_YeNu.}
 \alias{gg_area_YeNu.}
-\title{gg_area_YeNu.:
+\title{Vertical area
 Area}
 \usage{
 gg_area_YeNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_area_YeNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_area_YeNu.:
+Vertical area
 Area
 }
 \section{ftypes}{

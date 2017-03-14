@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_treemap_density_y_CaNu.}
 \alias{gg_treemap_density_y_CaNu.}
-\title{gg_treemap_density_y_CaNu.
+\title{Treemap density by first numeric variable
 Treemap Density by Nu}
 \usage{
 gg_treemap_density_y_CaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_treemap_density_y_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_treemap_density_y_CaNu.
+Treemap density by first numeric variable
 Treemap Density by Nu
 }
 \section{ftypes}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_line_hor_facet_CaCaNu.}
 \alias{gg_line_hor_facet_CaCaNu.}
-\title{gg_line_hor_facet_CaCaNu.
+\title{Horizontal line facet
 horizontal linegraph}
 \usage{
 gg_line_hor_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_line_hor_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_hor_facet_CaCaNu.
+Horizontal line facet
 horizontal linegraph
 }
 \section{ftypes}{

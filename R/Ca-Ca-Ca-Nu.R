@@ -1,5 +1,5 @@
 
-#' gg_treemap_x_CaCaCaNu.
+#' Treemap coloured by first variable
 #' Treemap fill first Ca
 #' @name gg_treemap_x_CaCaCaNu.
 #' @param x A number.
@@ -33,7 +33,7 @@ gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
   graph
 }
 
-#' gg_treemap_y_CaCaCaNu.
+#' Treemap coloured by second variable
 #' Treemap fill second Ca
 #' @name gg_treemap_y_CaCaCaNu.
 #' @param x A number.
@@ -67,7 +67,7 @@ gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
   graph
 }
 
-#' gg_treemap_z_CaCaCaNu.
+#' Treemap coloured by third variable
 #' Treemap fill third Ca
 #' @name gg_treemap_z_CaCaCaNu.
 #' @param x A number.
@@ -102,7 +102,7 @@ gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 }
 
 
-#' gg_bar_stacked_100_hor_CaCaCaNu.
+#' Horizontal 100% stacked bar
 #' Stacked
 #' @name gg_bar_stacked_100_hor_CaCaCaNu.
 #' @param x A number.
@@ -149,7 +149,7 @@ gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
   graph
 }
 
-#' gg_sunburst_CaCaCaNu.
+#' Sunburst
 #' sunburst
 #' @name gg_sunburst_CaCaCaNu.
 #' @param x A number.

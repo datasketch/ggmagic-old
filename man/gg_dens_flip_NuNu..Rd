@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu-Nu.R
 \name{gg_dens_flip_NuNu.}
 \alias{gg_dens_flip_NuNu.}
-\title{gg_dens_flip_NuNu.
+\title{Vertical density
 Density 2D flipped}
 \usage{
 gg_dens_flip_NuNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_dens_flip_NuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_dens_flip_NuNu.
+Vertical density
 Density 2D flipped
 }
 \section{ftypes}{

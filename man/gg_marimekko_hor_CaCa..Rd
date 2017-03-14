@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_marimekko_hor_CaCa.}
 \alias{gg_marimekko_hor_CaCa.}
-\title{gg_marimekko_hor_CaCa.
+\title{Horizontal marimekko
 Horizontal Marimekko}
 \usage{
 gg_marimekko_hor_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_marimekko_hor_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_marimekko_hor_CaCa.
+Horizontal marimekko
 Horizontal Marimekko
 }
 \section{ftypes}{

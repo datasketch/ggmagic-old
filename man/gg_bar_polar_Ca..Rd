@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_bar_polar_Ca.}
 \alias{gg_bar_polar_Ca.}
-\title{gg_bar_polar_Ca.
+\title{Polar bar
 Polar Bar}
 \usage{
 gg_bar_polar_Ca.(data, width = 0.95, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_bar_polar_Ca.(data, width = 0.95, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_polar_Ca.
+Polar bar
 Polar Bar
 }
 \section{ftypes}{

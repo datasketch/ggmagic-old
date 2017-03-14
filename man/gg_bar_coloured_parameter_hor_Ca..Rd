@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_bar_coloured_parameter_hor_Ca.}
 \alias{gg_bar_coloured_parameter_hor_Ca.}
-\title{gg_bar_coloured_parameter_hor_Ca.
+\title{Horizontal bar highlighting some parameter
 Horizontal coloured by parameter Bars}
 \usage{
 gg_bar_coloured_parameter_hor_Ca.(data, titleLabel = "", subtitle = "",
@@ -19,7 +19,7 @@ gg_bar_coloured_parameter_hor_Ca.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_parameter_hor_Ca.
+Horizontal bar highlighting some parameter
 Horizontal coloured by parameter Bars
 }
 \section{ftypes}{

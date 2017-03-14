@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bar_coloured_y_ver_CaNu.}
 \alias{gg_bar_coloured_y_ver_CaNu.}
-\title{gg_bar_coloured_y_ver_CaNu.
+\title{Vertical bar density by first numeric variable
 vertical bar}
 \usage{
 gg_bar_coloured_y_ver_CaNu.(data, titleLabel = "", subtitle = "",
@@ -19,7 +19,7 @@ gg_bar_coloured_y_ver_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_y_ver_CaNu.
+Vertical bar density by first numeric variable
 vertical bar
 }
 \section{ftypes}{

@@ -1,4 +1,4 @@
-#' gg_horizon_NuNu.
+#' Horizon
 #' Horizon
 #' @name gg_horizon_NuNu.
 #' @param x A number.
@@ -32,7 +32,7 @@ gg_horizon_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_waterfall_NuNu.
+#' Waterfall
 #' Waterfall
 #' @name gg_waterfall_NuNu.
 #' @param x A number.
@@ -61,7 +61,7 @@ gg_waterfall_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 }
 
 
-#' gg_dens_NuNu.
+#' Horizontal density
 #' Density in 2D
 #' @name gg_dens_NuNu.
 #' @param x A number.
@@ -98,7 +98,7 @@ gg_dens_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel 
 }
 
 
-#' gg_dens_flip_NuNu.
+#' Vertical density
 #' Density 2D flipped
 #' @name gg_dens_flip_NuNu.
 #' @param x A number.
@@ -119,7 +119,7 @@ gg_dens_flip_NuNu. <- function(data, title = "", subtitle = "", caption = "", xL
 }
 
 
-#' gg_hist_NuNu.
+#' Vertical histogram
 #' Histogram 2D
 #' @name gg_hist_NuNu.
 #' @param x A number.
@@ -154,7 +154,7 @@ gg_hist_NuNu. <- function(data, title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_hist_flip_NuNu.
+#' Horizontal histogram
 #' Histogram 2d flipped
 #' @name gg_hist_flip_NuNu.
 #' @param x A number.
@@ -174,7 +174,7 @@ gg_hist_flip_NuNu. <- function(data, title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_line_multi_NuNu.
+#' Line for each numeric variable
 #' Line for each Nu
 #' @name gg_line_multi_NuNu.
 #' @param x A number.
@@ -207,7 +207,7 @@ gg_line_multi_NuNu. <- function(data, title = "", subtitle = "", caption = "",
 }
 
 
-#' gg_point_NuNu.
+#' Scatter
 #' Scatter plot
 #' @name gg_point_NuNu.
 #' @param x A number.
@@ -235,7 +235,7 @@ return(graph)
 
 }
 
-#' gg_line_point_NuNu.
+#' Line + point
 #' Line point plot
 #' @name gg_line_point_NuNu.
 #' @param x A number.

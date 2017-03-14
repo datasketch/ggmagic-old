@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_bubble_Ca2.}
 \alias{gg_bubble_Ca2.}
-\title{gg_bubble_Ca2.
+\title{Bubble
 bubbles}
 \usage{
 gg_bubble_Ca2.(data, titleLabel = "", subtitle = "", caption = "",
@@ -15,7 +15,7 @@ gg_bubble_Ca2.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bubble_Ca2.
+Bubble
 bubbles
 }
 \section{ftypes}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Ye-Nu.R
 \name{gg_bar_stacked_100_hor_CaCaYeNu.}
 \alias{gg_bar_stacked_100_hor_CaCaYeNu.}
-\title{gg_bar_stacked_100_hor_CaCaYeNu.
+\title{Horizontal 100% stacked bar
 Stacked}
 \usage{
 gg_bar_stacked_100_hor_CaCaYeNu.(data, titleLabel = "", subtitle = "",
@@ -18,7 +18,7 @@ gg_bar_stacked_100_hor_CaCaYeNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_stacked_100_hor_CaCaYeNu.
+Horizontal 100% stacked bar
 Stacked
 }
 \section{ftypes}{

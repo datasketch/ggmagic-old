@@ -1,4 +1,4 @@
-#' gg_horizon_DaNu.
+#' Horizon
 #' Horizon
 #' @name gg_horizon_DaNu.
 #' @param x A number.
@@ -33,7 +33,7 @@ gg_horizon_DaNu. <- function(data, title = "", subtitle = "", caption = "", xLab
   graph
 }
 
-#' gg_waterfall_DaNu.
+#' Waterfall
 #' Waterfall
 #' @name gg_waterfall_DaNu.
 #' @param x A number.
@@ -61,7 +61,7 @@ gg_waterfall_DaNu. <- function(data, title = "", subtitle = "", caption = "", xL
 }
 
 
-#' gg_line_DaNu.
+#' Line
 #' Lines
 #' @name gg_line_DaNu.
 #' @param x A number.
@@ -88,7 +88,7 @@ gg_line_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_line_points_DaNu.
+#' Line + point
 #' Lines
 #' @name gg_line_points_DaNu.
 #' @param x A number.
@@ -122,7 +122,7 @@ gg_line_points_DaNu. <- function(data, title = "", subtitle = "", caption = "", 
   graph
 }
 
-#' gg_point_DaNu.
+#' Scatter
 #' Point scatter plot
 #' @name gg_point_DaNu.
 #' @param x A number.
@@ -152,7 +152,7 @@ gg_point_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_box_DaNu.
+#' Boxplot
 #' Scatter
 #' @name gg_box_DaNu.
 #' @param x A number.
@@ -181,7 +181,7 @@ gg_box_DaNu. <- function(data, title = "", subtitle = "", caption = "",
    graph
 }
 
-#' gg_violin_DaNu.
+#' Violin
 #' Violin
 #' @name gg_violin_DaNu.
 #' @param x A number.
@@ -209,7 +209,7 @@ gg_violin_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_area_DaNu.
+#' Area
 #' Area
 #' @name gg_area_DaNu.
 #' @param x A number.
@@ -238,7 +238,7 @@ gg_area_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_kagi_DaNu.
+#' Kagi
 #' Kagi
 #' @name gg_kagi_DaNu.
 #' @param x A number.
@@ -274,7 +274,7 @@ gg_kagi_DaNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
 }
 
 
-#' gg_smooth_DaNu.
+#' Smooth
 #' smooth
 #' @name gg_smooth_DaNu.
 #' @param x A number.
@@ -302,7 +302,7 @@ gg_smooth_DaNu. <- function(data, title = "", subtitle = "", caption = "",
  return(graph)
 }
 
-#' gg_points_facet_DaNu.
+#' Points facet by years
 #' Points facet by years
 #' @name gg_points_facet_DaNu.
 #' @param x A number.
@@ -340,7 +340,7 @@ gg_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_line_points_facet_DaNu.
+#' Line + point facet by years
 #' Line Points facet by years
 #' @name gg_line_points_facet_DaNu.
 #' @param x A number.
@@ -378,7 +378,7 @@ gg_line_points_facet_DaNu. <- function(data, title = "", subtitle = "", caption 
   graph
 }
 
-#' gg_bar_DaNu.
+#' Bar
 #' bar
 #' @name gg_bar_DaNu.
 #' @param x A data.
@@ -409,7 +409,7 @@ gg_bar_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 }
 
 
-#' gg_bubbles_DaNu.
+#' Bubbles
 #' bubbles
 #' @name gg_bubbles_DaNu.
 #' @param x A data.
@@ -440,7 +440,7 @@ gg_bubbles_DaNu. <- function(data, title = "", subtitle = "", caption = "",
 }
 
 
-#' gg_lollipop_DaNu.
+#' Lollipop
 #' lollipop
 #' @name gg_lollipop_DaNu.
 #' @param x A data.
@@ -469,7 +469,7 @@ gg_lollipop_DaNu. <- function(data, title = "", subtitle = "",
 }
 
 
-#' gg_area_stepped_stacked_DaNu.
+#' Stepped stacked area
 #' stepped stacked area.
 #' @name gg_area_stepped_stacked_DaNu.
 #' @param x A data.

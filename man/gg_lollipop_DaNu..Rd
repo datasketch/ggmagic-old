@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_lollipop_DaNu.}
 \alias{gg_lollipop_DaNu.}
-\title{gg_lollipop_DaNu.
+\title{Lollipop
 lollipop}
 \usage{
 gg_lollipop_DaNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_lollipop_DaNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_lollipop_DaNu.
+Lollipop
 lollipop
 }
 \section{ftypes}{

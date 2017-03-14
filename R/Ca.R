@@ -1,5 +1,5 @@
 
-#' gg_waffle_Ca.
+#' Waffle
 #' Waffle
 #' @name gg_waffle_Ca.
 #' @param x A number.
@@ -26,7 +26,7 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
   graph
 }
 
-#' gg_bar_coloured_ver_Ca.
+#' Vertical coloured bar
 #' Vertical coloured bars
 #' @name gg_bar_coloured_ver_Ca.
 #' @param x A number.
@@ -70,7 +70,7 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 }
 
 
-#' gg_bar_coloured_hor_Ca.
+#' Horizontal coloured bar
 #' Horizontal coloured Bars
 #' @name gg_bar_coloured_hor_Ca.
 #' @param x A number.
@@ -92,7 +92,7 @@ gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 
 }
 
-#' gg_bar_coloured_parameter_ver_Ca.
+#' Vertical bar highlighting some parameter
 #' Vertical coloured by parameter bars
 #' @name gg_bar_coloured_parameter_ver_Ca.
 #' @param x A number.
@@ -140,7 +140,7 @@ gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = 
 
 }
 
-#' gg_bar_coloured_parameter_hor_Ca.
+#' Horizontal bar highlighting some parameter
 #' Horizontal coloured by parameter Bars
 #' @name gg_bar_coloured_parameter_hor_Ca.
 #' @param x A number.
@@ -164,7 +164,7 @@ gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", subtitle = 
   graph
 }
 
-#' gg_bar_ver_Ca.
+#' Vertical bar
 #' Vertical bars
 #' @name gg_bar_ver_Ca.
 #' @param x A number.
@@ -205,7 +205,7 @@ gg_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
   }
 }
 
-#' gg_bar_hor_Ca.
+#' Horizontal bar
 #' Horizontal Bars
 #' @name gg_bar_hor_Ca.
 #' @param x A number.
@@ -228,7 +228,7 @@ gg_bar_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
   graph
 }
 
-#' gg_bar_ordered_ver_Ca.
+#' Ordered vertical bar
 #' Ordered vertical Bars
 #' @name gg_bar_ordered_ver_Ca.
 #' @param x A number.
@@ -271,7 +271,7 @@ gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption
   }
 }
 
-#' gg_bar_ordered_hor_Ca.
+#' Ordered horizontal bar
 #' Ordered horizontal Bars
 #' @name gg_bar_ordered_hor_Ca.
 #' @param x A number.
@@ -294,7 +294,7 @@ gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption
   graph
 }
 
-#' gg_pie_Ca.
+#' Pie
 #' Pie
 #' @name gg_pie_Ca.
 #' @param x A number.
@@ -335,7 +335,7 @@ gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
 }
 
 #Width debe de ser un parámetro.  0 < width < 1.
-#' gg_donut_Ca.
+#' Donut
 #' Donut
 #' @name gg_donut_Ca.
 #' @param x A number.
@@ -377,7 +377,7 @@ gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fil
   }
 }
 
-#' gg_dot_bar_ver_Ca.
+#' Vertical dot bar
 #' Vertical Dot Bar
 #' @name gg_dot_bar_ver_Ca.
 #' @param x A number.
@@ -414,7 +414,7 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
   graph
 }
 
-#' gg_dot_bar_hor_Ca.
+#' Horizontal dot bar
 #' Horizontal Dot Bar
 #' @name gg_dot_bar_hor_Ca.
 #' @param x A number.
@@ -436,7 +436,7 @@ gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'C
   graph
 }
 
-#' gg_line_hor_Ca.
+#' Horizontal line
 #' Horizontal Line
 #' @name gg_line_hor_Ca.
 #' @param x A number.
@@ -469,7 +469,7 @@ gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
   graph
 }
 
-#' gg_line_ver_Ca.
+#' Vertical line
 #' Vertical Line
 #' @name gg_line_ver_Ca.
 #' @param x A number.
@@ -489,7 +489,7 @@ gg_line_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
   graph
 }
 
-#' gg_line_point_hor_Ca.
+#' Horizontal line + point
 #' Horizontal Line Point
 #' @name gg_line_point_hor_Ca.
 #' @param x A number.
@@ -509,7 +509,7 @@ gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
   graph
 }
 
-#' gg_line_point_ver_Ca.
+#' Vertical line + point
 #' Vertical Line Point
 #' @name gg_line_point_ver_Ca.
 #' @param x A number.
@@ -529,7 +529,7 @@ gg_line_point_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
   graph
 }
 
-#' gg_gauge_Ca.
+#' Gauge
 #' Gauge
 #' @name gg_gauge_Ca.
 #' @param x A number.
@@ -588,7 +588,7 @@ gg_gauge_Ca. <- function(data, titleLabel = '', subtitle = '', caption = '', nco
   grid.draw(arrangeGrob(grobs = graphList,ncol= ncol))
 }
 
-#' gg_gauge_dial_Ca.
+#' Gauge dial
 #' Gauge
 #' @name gg_gauge_dial_Ca.
 #' @param x A number.
@@ -643,7 +643,7 @@ gg_gauge_dial_Ca. <- function(data, ...){
   grid.draw(arrangeGrob(grobs = graphList,ncol=2))
 }
 
-#' gg_bar_single_stacked_hor_Ca.
+#' Horizontal stacked bar
 #' Single Horizontal Stacked Bar
 #' @name gg_bar_single_stacked_hor_Ca.
 #' @param x A number.
@@ -677,7 +677,7 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' gg_bar_single_stacked_ver_Ca.
+#' Vertical stacked bar
 #' Single Vertical Stacked Bar
 #' @name gg_bar_single_stacked_ver_Ca.
 #' @param x A number.
@@ -697,7 +697,7 @@ gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' gg_bubble_Ca.
+#' Bubble
 #' Bubble
 #' @name gg_bubble_Ca.
 #' @param x A number.
@@ -734,7 +734,7 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
   graph
 }
 
-#' gg_bubble_coloured_Ca.
+#' Bubble coloured
 #' Coloured Bubble
 #' @name gg_bubble_coloured_Ca.
 #' @param x A number.
@@ -773,7 +773,7 @@ gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", captio
   graph
 }
 
-#' gg_bar_polar_Ca.
+#' Polar bar
 #' Polar Bar
 #' @name gg_bar_polar_Ca.
 #' @param x A number.
@@ -806,7 +806,7 @@ gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "", subtitle = "",
   graph
 }
 
-#' gg_bullseye_Ca.
+#' Bullseye
 #' Bullseye
 #' @name gg_bullseye_Ca.
 #' @param x A number.
@@ -835,7 +835,7 @@ gg_bullseye_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", 
   graph
 }
 
-#' gg_bar_circular_Ca.
+#' Circular bar
 #' Circular Bar
 #' @name gg_bar_circular_Ca.
 #' @param x A number.
@@ -869,7 +869,7 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = 
   graph
 }
 
-#' gg_treemap_Ca.
+#' Treemap coloured by first variable
 #' Treemap fill by first Ca
 #' @name gg_treemap_Ca.
 #' @param x A number.
@@ -901,7 +901,7 @@ gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", f
   graph
 }
 
-#' gg_bubble_Ca2.
+#' Bubble
 #' bubbles
 #' @name gg_bubble_Ca2.
 #' @param x A category.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu.R
 \name{gg_horizon_Nu.}
 \alias{gg_horizon_Nu.}
-\title{gg_horizon_Nu.
+\title{Horizon
 Horizon}
 \usage{
 gg_horizon_Nu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_horizon_Nu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_horizon_Nu.
+Horizon
 Horizon
 }
 \section{ftypes}{

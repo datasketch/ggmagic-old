@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ge-Nu.R
 \name{gg_bubble_co_CaGe.}
 \alias{gg_bubble_co_CaGe.}
-\title{gg_bubble_co_CaGe.
+\title{Points inside Colombia's deptos map
 Points inside Colombia's deptos map}
 \usage{
 gg_bubble_co_CaGe.(data, titleLabel = "", subtitle = "", caption = "",
@@ -18,7 +18,7 @@ gg_bubble_co_CaGe.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bubble_co_CaGe.
+Points inside Colombia's deptos map
 Points inside Colombia's deptos map
 }
 \section{ftypes}{

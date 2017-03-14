@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_treemap_x_CaCa.}
 \alias{gg_treemap_x_CaCa.}
-\title{gg_treemap_x_CaCa.
+\title{Treemap coloured by first variable
 Treemap fill first Ca}
 \usage{
 gg_treemap_x_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_treemap_x_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_treemap_x_CaCa.
+Treemap coloured by first variable
 Treemap fill first Ca
 }
 \section{ftypes}{

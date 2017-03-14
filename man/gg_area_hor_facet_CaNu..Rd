@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_area_hor_facet_CaNu.}
 \alias{gg_area_hor_facet_CaNu.}
-\title{gg_area_hor_facet_CaNu.
+\title{Horizontal area facet
 Facet Horizontal Area}
 \usage{
 gg_area_hor_facet_CaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_area_hor_facet_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_area_hor_facet_CaNu.
+Horizontal area facet
 Facet Horizontal Area
 }
 \section{ftypes}{

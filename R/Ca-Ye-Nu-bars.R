@@ -1,4 +1,4 @@
-#' gg_bar_facet_ver_CaYeNu
+#' Vertical stacked bar facet
 #' Barras stacked
 #' @name gg_bar_facet_ver_CaYeNu.
 #' @param x A number.
@@ -15,7 +15,7 @@ gg_bar_facet_ver_CaYeNu. <- function(data,...){
 }
 
 
-#' gg_bar_facet_hor_CaYeNu.
+#' Horizontal stacked bar facet
 #' Barras stacked
 #' @name gg_bar_facet_hor_CaYeNu.
 #' @param x A number.
@@ -31,7 +31,7 @@ gg_bar_facet_hor_CaYeNu. <- function(data,...){
   gg_bar_facet_hor_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' gg_bar_grouped_ver_CaYeNu.
+#' Vertical grouped bar by first variable
 #' Barras stacked
 #' @name gg_bar_grouped_ver_CaYeNu.
 #' @param x A number.
@@ -48,7 +48,7 @@ gg_bar_grouped_ver_CaYeNu. <- function(data,...){
   gg_bar_grouped_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' gg_bar_grouped_hor_CaYeNu.
+#' Horizontal grouped bar by first variable
 #' Barras stacked
 #' @name gg_bar_grouped_hor_CaYeNu.
 #' @param x A number.
@@ -66,7 +66,7 @@ gg_bar_grouped_hor_CaYeNu. <- function(data,...){
 }
 
 
-#' gg_bar_grouped2_ver_CaYeNu.
+#' Vertical grouped bar by second variable
 #' Barras stacked
 #' @name gg_bar_grouped2_ver_CaYeNu.
 #' @param x A number.
@@ -83,7 +83,7 @@ gg_bar_grouped2_ver_CaYeNu. <- function(data,...){
   gg_bar_grouped_ver_CaCaNu.(data,...)
 }
 
-#' gg_bar_grouped2_hor_CaYeNu.
+#' Horizontal grouped bar by second variable
 #' Barras stacked
 #' @name gg_bar_grouped2_hor_CaYeNu.
 #' @param x A number.
@@ -101,8 +101,7 @@ gg_bar_grouped2_hor_CaYeNu. <- function(data, ...){
 }
 
 
-
-#' gg_bar_stacked_ver_CaYeNu.
+#' Vertical stacked bar by second variable
 #' Barras stacked
 #' @name gg_bar_stacked_ver_CaYeNu.
 #' @param x A number.
@@ -119,7 +118,7 @@ gg_bar_stacked_ver_CaYeNu. <- function(data,...){
 }
 
 
-#' gg_bar_stacked_hor_CaYeNu.
+#' Horizontal stacked bar by second variable
 #' Barras stacked
 #' @name gg_bar_stacked_hor_CaYeNu.
 #' @param x A number.
@@ -137,7 +136,7 @@ gg_bar_stacked_hor_CaYeNu. <- function(data, ...){
 }
 
 
-#' gg_bar_stacked_100_ver_CaYeNu.
+#' Horizontal 100% stacked bar by second variable
 #' 100 horizontal stacked bar graph
 #' @name gg_bar_stacked_100_ver_CaYeNu.
 #' @param x A category.
@@ -154,7 +153,7 @@ gg_bar_stacked_100_ver_CaYeNu. <- function(data,...){
 }
 
 
-#' gg_bar_stacked_100_hor_CaYeNu.
+#' Vertical 100% stacked bar by second variable
 #' Barras stacked
 #' @name gg_bar_stacked_100_hor_CaYeNu.
 #' @param x A number.

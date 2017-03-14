@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ye-Nu.R
 \name{gg_line_hor_CaYeNu.}
 \alias{gg_line_hor_CaYeNu.}
-\title{gg_line_hor_CaYeNu.
+\title{Horizontal line
 Tiene múltiples líneas}
 \usage{
 gg_line_hor_CaYeNu.(data, title = "", subtitle = "", caption = "",
@@ -18,7 +18,7 @@ gg_line_hor_CaYeNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_hor_CaYeNu.
+Horizontal line
 Tiene múltiples líneas
 }
 \section{ftypes}{

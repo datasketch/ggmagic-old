@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_bubble_CaCaNu.}
 \alias{gg_bubble_CaCaNu.}
-\title{gg_bubble_CaCaNu.
+\title{Bubble
 Bubble}
 \usage{
 gg_bubble_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_bubble_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bubble_CaCaNu.
+Bubble
 Bubble
 }
 \section{ftypes}{

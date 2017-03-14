@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_bar_single_stacked_hor_Ca.}
 \alias{gg_bar_single_stacked_hor_Ca.}
-\title{gg_bar_single_stacked_hor_Ca.
+\title{Horizontal stacked bar
 Single Horizontal Stacked Bar}
 \usage{
 gg_bar_single_stacked_hor_Ca.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_bar_single_stacked_hor_Ca.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_single_stacked_hor_Ca.
+Horizontal stacked bar
 Single Horizontal Stacked Bar
 }
 \section{ftypes}{

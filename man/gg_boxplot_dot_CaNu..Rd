@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_boxplot_dot_CaNu.}
 \alias{gg_boxplot_dot_CaNu.}
-\title{gg_boxplot_dot_CaNu.
+\title{Vertical boxplot + scatter
 Boxplot + dot jitter}
 \usage{
 gg_boxplot_dot_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_boxplot_dot_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_boxplot_dot_CaNu.
+Vertical boxplot + scatter
 Boxplot + dot jitter
 }
 \section{ftypes}{

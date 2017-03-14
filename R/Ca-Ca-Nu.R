@@ -1,4 +1,4 @@
-#' gg_pie_facet_CaCaNu.
+#' Pie facet
 #' Facet Pie
 #' @name gg_pie_facet_CaCaNu.
 #' @param x A number.
@@ -33,7 +33,7 @@ gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 
 #Width debe de ser un parámetro.  0 < width < 1.
 
-#' gg_donut_facet_CaCaNu.
+#' Donut facet
 #' Facet Donut
 #' @name gg_donut_facet_CaCaNu.
 #' @param x A number.
@@ -66,7 +66,7 @@ gg_donut_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
   graph
 }
 
-#' gg_bullseye_facet_CaCaNu.
+#' Bullseye facet
 #' Facet Bullseye
 #' @name gg_bullseye_facet_CaCaNu.
 #' @param x A number.
@@ -99,7 +99,7 @@ gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 
 
 
-#' gg_bubble_CaCaNu.
+#' Bubble
 #' Bubble
 #' @name gg_bubble_CaCaNu.
 #' @param x A number.
@@ -129,7 +129,7 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "
   graph
 }
 
-#' gg_bubble_coloured_x_CaCaNu.
+#' Bubble coloured by first variable
 #' Coloured Bubble first Ca
 #' @name gg_bubble_coloured_x_CaCaNu.
 #' @param x A number.
@@ -158,7 +158,7 @@ gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' gg_bubble_coloured_y_CaCaNu.
+#' Bubble coloured by second variable
 #' Coloured Bubble second Ca
 #' @name gg_bubble_coloured_y_CaCaNu.
 #' @param x A number.
@@ -190,7 +190,7 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
   graph
 }
 
-#' gg_line_hor_facet_CaCaNu.
+#' Horizontal line facet
 #' horizontal linegraph
 #' @name gg_line_hor_facet_CaCaNu.
 #' @param x A category.
@@ -224,7 +224,7 @@ gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_line_ver_facet_CaCaNu.
+#' Vertical line facet
 #' vertical linegraph
 #' @name gg_line_ver_facet_CaCaNu.
 #' @param x A category.
@@ -245,7 +245,7 @@ gg_line_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 }
 
 
-#' gg_area_stacked_hor_CaCaNu.
+#' Horizontal stacked area
 #' Stacked horizontal Area
 #' @name gg_area_stacked_hor_CaCaNu.
 #' @param x A number.
@@ -286,7 +286,7 @@ gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 
 
 
-#' gg_area_stacked_ver_CaCaNu.
+#' Vertical stacked area
 #' Stacked area
 #' @name gg_area_stacked_ver_CaCaNu.
 #' @param x A category.
@@ -307,7 +307,7 @@ gg_area_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_area_stacked_100_hor_CaCaNu.
+#' Horizontal 100% stacked area
 #' Stacked horizontal Area 100
 #' @name gg_area_stacked_100_hor_CaCaNu.
 #' @param x A number.
@@ -348,7 +348,7 @@ gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
   graph
 }
 
-#' gg_area_stacked_100_ver_CaCaNu.
+#' Vertical 100% stacked area
 #' Stacked area 100
 #' @name gg_area_stacked_100_ver_CaCaNu.
 #' @param x A category.
@@ -369,7 +369,7 @@ gg_area_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
   graph
 }
 
-#' gg_treemap_x_CaCaNu.
+#' Treemap coloured by first variable
 #' Treemap Fill by first Ca
 #' @name gg_treemap_x_CaCaNu.
 #' @param x A number.
@@ -404,7 +404,7 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   graph
 }
 
-#' gg_treemap_y_CaCaNu.
+#' Treemap coloured by second variable
 #' Treemap Fill by second Ca
 #' @name gg_treemap_y_CaCaNu.
 #' @param x A number.
@@ -440,7 +440,7 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   graph
 }
 
-#' gg_treemap_density_z_CaCaNu.
+#' Treemap density by numeric variable
 #' Treemap Density by Nu
 #' @name gg_treemap_density_z_CaCaNu.
 #' @param x A number.
@@ -486,7 +486,7 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 
 
 
-#' gg_pyramid_CaCaNu.
+#' Pyramid
 #' pyramid
 #' @name gg_pyramid_CaCaNu.
 #' @param x A category.
@@ -523,7 +523,7 @@ gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
   graph
 }
 
-#' gg_multi_line_point_CaCaNu.
+#' Grouped line + points by first variable
 #' Grouped Line Color Point
 #' @name gg_multi_line_point_CaCaNu.
 #' @param x A number.
@@ -551,7 +551,7 @@ gg_multi_line_point_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_multi_line_CaCaNu.
+#' Grouped line by first variable
 #' Grouped Line Coloured
 #' @name gg_multi_line_CaCaNu.
 #' @param x A number.
@@ -580,7 +580,7 @@ gg_multi_line_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption 
 }
 
 
-#' gg_sunburst_CaCaNu.
+#' Sunburst
 #' sunburst
 #' @name gg_sunburst_CaCaNu.
 #' @param x A number.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_donut_Ca.}
 \alias{gg_donut_Ca.}
-\title{gg_donut_Ca.
+\title{Donut
 Donut}
 \usage{
 gg_donut_Ca.(data, titleLabel = "", subtitle = "", caption = "",
@@ -18,7 +18,7 @@ gg_donut_Ca.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_donut_Ca.
+Donut
 Donut
 }
 \section{ftypes}{

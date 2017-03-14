@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu.R
 \name{gg_hist_Nu.}
 \alias{gg_hist_Nu.}
-\title{gg_hist_Nu.
+\title{Histogram
 Histogram}
 \usage{
 gg_hist_Nu.(data, title = "", subtitle = "", caption = "", xLabel = "",
@@ -17,7 +17,7 @@ gg_hist_Nu.(data, title = "", subtitle = "", caption = "", xLabel = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_hist_Nu.
+Histogram
 Histogram
 }
 \section{ftypes}{

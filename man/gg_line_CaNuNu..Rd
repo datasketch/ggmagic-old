@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu-Nu.R
 \name{gg_line_CaNuNu.}
 \alias{gg_line_CaNuNu.}
-\title{gg_line_CaNuNu.
+\title{Line
 lines}
 \usage{
 gg_line_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_line_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_CaNuNu.
+Line
 lines
 }
 \section{ftypes}{

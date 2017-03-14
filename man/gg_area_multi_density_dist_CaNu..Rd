@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_area_multi_density_dist_CaNu.}
 \alias{gg_area_multi_density_dist_CaNu.}
-\title{gg_area_multi_density_dist_CaNu.
+\title{Filled density distribution
 Filled Density Distribution}
 \usage{
 gg_area_multi_density_dist_CaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_area_multi_density_dist_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_area_multi_density_dist_CaNu.
+Filled density distribution
 Filled Density Distribution
 }
 \section{ftypes}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ye-Nu.R
 \name{gg_slope_CaYeNu.}
 \alias{gg_slope_CaYeNu.}
-\title{gg_slope_CaYeNu.
+\title{Slope
 Slope}
 \usage{
 gg_slope_CaYeNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -19,7 +19,7 @@ gg_slope_CaYeNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_slope_CaYeNu.
+Slope
 Slope
 }
 \section{ftypes}{

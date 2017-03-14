@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu-Nu.R
 \name{gg_circle_CaNuNu.}
 \alias{gg_circle_CaNuNu.}
-\title{gg_circle_CaNuNu.
+\title{Point
 Point}
 \usage{
 gg_circle_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_circle_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_circle_CaNuNu.
+Point
 Point
 }
 \section{ftypes}{

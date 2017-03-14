@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_coloured_hor_z_facet_CaCaNu.}
 \alias{gg_bar_coloured_hor_z_facet_CaCaNu.}
-\title{gg_bar_coloured_hor_z_facet_CaCaNu.
+\title{Horizontal facet bar coloured by third variable
 Facet Coloured horizontal bar}
 \usage{
 gg_bar_coloured_hor_z_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
@@ -18,7 +18,7 @@ gg_bar_coloured_hor_z_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_hor_z_facet_CaCaNu.
+Horizontal facet bar coloured by third variable
 Facet Coloured horizontal bar
 }
 \section{ftypes}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Ca.R
 \name{gg_point_CaCaCa.}
 \alias{gg_point_CaCaCa.}
-\title{gg_point_CaCaCa.
+\title{Scatter
 Coloured Point}
 \usage{
 gg_point_CaCaCa.(data, titleLabel = "", subtitle = "", caption = "",
@@ -18,7 +18,7 @@ gg_point_CaCaCa.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_point_CaCaCa.
+Scatter
 Coloured Point
 }
 \section{ftypes}{

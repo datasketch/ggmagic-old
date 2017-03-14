@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_area_stacked_ver_CaCaNu.}
 \alias{gg_area_stacked_ver_CaCaNu.}
-\title{gg_area_stacked_ver_CaCaNu.
+\title{Vertical stacked area
 Stacked area}
 \usage{
 gg_area_stacked_ver_CaCaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_area_stacked_ver_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_area_stacked_ver_CaCaNu.
+Vertical stacked area
 Stacked area
 }
 \section{ftypes}{

@@ -1,4 +1,4 @@
-#' gg_pie_CaNu.
+#' Pie
 #' Pie
 #' @name gg_pie_CaNu.
 #' @param x A number.
@@ -43,7 +43,7 @@ gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   }
 }
 
-#' gg_bar_coloured_x_ver_CaNu.
+#' Vertical bar coloured by first variable
 #' vertical bar
 #' @name gg_bar_coloured_x_ver_CaNu.
 #' @param x A category.
@@ -98,7 +98,7 @@ gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 
 }
 
-#' gg_bar_coloured_x_hor_CaNu.
+#' Horizontal bar coloured by first variable
 #' horizontal bar
 #' @name gg_bar_coloured_x_hor_CaNu.
 #' @param x A category.
@@ -118,7 +118,7 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
   graph
 }
 
-#' gg_bar_coloured_y_ver_CaNu.
+#' Vertical bar density by first numeric variable
 #' vertical bar
 #' @name gg_bar_coloured_y_ver_CaNu.
 #' @param x A category.
@@ -180,7 +180,7 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
   }
 }
 
-#' gg_bar_coloured_y_hor_CaNu.
+#' Horizontal bar density by first numeric variable
 #' horizontal bar
 #' @name gg_bar_coloured_y_hor_CaNu.
 #' @param x A category.
@@ -202,7 +202,7 @@ gg_bar_coloured_y_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
   graph + coord_flip()
 }
 
-#' gg_bar_coloured_parameter_ver_CaNu.
+#' Vertical bar highlighting some parameter
 #' Vertical coloured by parameter bars
 #' @name gg_bar_coloured_parameter_ver_CaNu.
 #' @param x A number.
@@ -277,7 +277,7 @@ gg_bar_coloured_parameter_ver_CaNu. <- function(data, titleLabel = "", subtitle 
   }
 }
 
-#' gg_bar_coloured_parameter_hor_CaNu.
+#' Horizontal bar highlighting some parameter
 #' Horizontal coloured by parameter Bars
 #' @name gg_bar_coloured_parameter_hor_CaNu.
 #' @param x A number.
@@ -298,7 +298,7 @@ gg_bar_coloured_parameter_hor_CaNu. <- function(data, titleLabel = "", subtitle 
   graph
 }
 
-#' gg_bubble_CaNu.
+#' Bubble
 #' Bubble
 #' @name gg_bubble_CaNu.
 #' @param x A number.
@@ -330,7 +330,7 @@ gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_bubble_coloured_CaNu.
+#' Bubble coloured by first variable
 #' Coloured Bubble
 #' @name gg_bubble_coloured_CaNu.
 #' @param x A number.
@@ -363,7 +363,7 @@ gg_bubble_coloured_CaNu.  <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_bar_polar_CaNu.
+#' Polar bar
 #' Polar Bar
 #' @name gg_bar_polar_CaNu.
 #' @param x A number.
@@ -386,7 +386,7 @@ gg_bar_polar_CaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "
 }
 
 
-#' gg_bar_circular_CaNu.
+#' Circular bar
 #' Circular Bar
 #' @name gg_bar_circular_CaNu.
 #' @param x A number.
@@ -418,7 +418,7 @@ gg_bar_circular_CaNu. <- function(data, titleLabel = "", subtitle = "", caption 
 }
 
 
-#' gg_hist_stacked_ver_CaNu.
+#' Vertical stacked histogram
 #' Stacked Vertical Histogram
 #' @name gg_hist_stacked_ver_CaNu.
 #' @param x A number.
@@ -444,7 +444,7 @@ gg_hist_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_density_multi_dist_coloured_CaNu.
+#' Density distribution
 #' Coloured Density Distribution
 #' @name gg_density_multi_dist_coloured_CaNu.
 #' @param x A number.
@@ -471,7 +471,7 @@ gg_density_multi_dist_coloured_CaNu. <- function(data, titleLabel = "", subtitle
   graph
 }
 
-#' gg_area_multi_density_dist_CaNu.
+#' Filled density distribution
 #' Filled Density Distribution
 #' @name gg_area_multi_density_dist_CaNu.
 #' @param x A number.
@@ -500,7 +500,7 @@ gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "", subtitle = "
   graph
 }
 
-#' gg_dist_ver_facet_CaNu.
+#' Vertical distribution facet
 #' Facet Vertical Dist
 #' @name gg_dist_ver_facet_CaNu.
 #' @param x A number.
@@ -527,7 +527,7 @@ gg_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
   graph
 }
 
-#' gg_dist_hor_facet_CaNu.
+#' Horizontal distribution facet
 #' Facet Horizontal Dist
 #' @name gg_dist_hor_facet_CaNu.
 #' @param x A number.
@@ -548,7 +548,7 @@ gg_dist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
   graph
 }
 
-#' gg_hist_ver_mean_facet_CaNu.
+#' Vertical histogram + mean facet
 #' Facet Vertical Histogram + Mean
 #' @name gg_hist_ver_mean_facet_CaNu.
 #' @param x A number.
@@ -575,7 +575,7 @@ gg_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
   graph
 }
 
-#' gg_hist_hor_mean_facet_CaNu.
+#' Horizontal histogram + mean facet
 #' Facet Horizontal Histogram + Mean
 #' @name gg_hist_hor_mean_facet_CaNu.
 #' @param x A number.
@@ -596,7 +596,7 @@ gg_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
   graph
 }
 
-#' gg_hist_ver_facet_CaNu.
+#' Vertical histogram facet
 #' Facet Vertical Histogram
 #' @name gg_hist_ver_facet_CaNu.
 #' @param x A number.
@@ -622,7 +622,7 @@ gg_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
   graph
 }
 
-#' gg_hist_hor_facet_CaNu.
+#' Horizontal histogram facet
 #' Facet Horizontal Histogram
 #' @name gg_hist_hor_facet_CaNu.
 #' @param x A number.
@@ -643,7 +643,7 @@ gg_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
   graph
 }
 
-#' gg_dist_hist_ver_facet_CaNu.
+#' Vertical histogram + distribution facet
 #' Facet Vertical Histogram + Dist
 #' @name gg_dist_hist_ver_facet_CaNu.
 #' @param x A number.
@@ -670,7 +670,7 @@ gg_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
   graph
 }
 
-#' gg_dist_hist_hor_facet_CaNu.
+#' Horizontal histogram + distribution facet
 #' Facet Horizontal Histogram + Dist
 #' @name gg_dist_hist_hor_facet_CaNu.
 #' @param x A number.
@@ -691,7 +691,7 @@ gg_dist_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
   graph
 }
 
-#' gg_dist_hist_ver_mean_facet_CaNu.
+#' Vertical histogram + distribution + mean facet
 #' Facet Vertical Histogram + Dist + Mean
 #' @name gg_dist_hist_ver_mean_facet_CaNu.
 #' @param x A number.
@@ -719,7 +719,7 @@ gg_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = 
   graph
 }
 
-#' gg_dist_hist_hor_mean_facet_CaNu.
+#' Horizontal histogram + distribution + mean facet
 #' Facet Horizontal Histogram + Dist + Mean
 #' @name gg_dist_hist_hor_mean_facet_CaNu.
 #' @param x A number.
@@ -740,7 +740,7 @@ gg_dist_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = 
   graph
 }
 
-#' gg_dot_dist_ver_facet_CaNu.
+#' Vertical density dot + distribution facet
 #' Facet Vertical Dot Dist
 #' @name gg_dot_dist_ver_facet_CaNu.
 #' @param x A number.
@@ -769,7 +769,7 @@ gg_dot_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_dot_dist_hor_facet_CaNu.
+#' Horizontal density dot + distribution facet
 #' Facet Horizontal Dot Dist
 #' @name gg_dot_dist_hor_facet_CaNu.
 #' @param x A number.
@@ -790,7 +790,7 @@ gg_dot_dist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_dot_hist_ver_facet_CaNu.
+#' Vertical density dot + histogram facet
 #' Facet Vertical Dot Histogram
 #' @name gg_dot_hist_ver_facet_CaNu.
 #' @param x A number.
@@ -817,7 +817,7 @@ gg_dot_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_dot_hist_hor_facet_CaNu.
+#' Horizontal density dot + histogram facet
 #' Facet Horizontal Histogram + Dot
 #' @name gg_dot_hist_hor_facet_CaNu.
 #' @param x A number.
@@ -838,7 +838,7 @@ gg_dot_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_dot_hist_ver_mean_facet_CaNu.
+#' Vertical density dot + histogram + mean facet
 #' Facet Vertical Histogram + Mean + Dot
 #' @name gg_dot_hist_ver_mean_facet_CaNu.
 #' @param x A number.
@@ -866,7 +866,7 @@ gg_dot_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
   graph
 }
 
-#' gg_dot_hist_hor_mean_facet_CaNu.
+#' Horizontal density dot + histogram + mean facet
 #' Facet Horizontal Histogram + Mean + Dot
 #' @name gg_dot_hist_hor_mean_facet_CaNu.
 #' @param x A number.
@@ -887,7 +887,7 @@ gg_dot_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
   graph
 }
 
-#' gg_dot_dist_hist_ver_facet_CaNu.
+#' Vertical density dot + histogram + distribution facet
 #' Facet Vertical Histogram + Dist + Dot
 #' @name gg_dot_dist_hist_ver_facet_CaNu.
 #' @param x A number.
@@ -915,7 +915,7 @@ gg_dot_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
   graph
 }
 
-#' gg_dot_dist_hist_hor_facet_CaNu.
+#' Horizontal density dot + histogram + distribution facet
 #' Facet Horizontal Histogram + Dist + Dot
 #' @name gg_dot_dist_hist_hor_facet_CaNu.
 #' @param x A number.
@@ -937,7 +937,7 @@ gg_dot_dist_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
 }
 
 
-#' gg_dot_dist_hist_ver_mean_facet_CaNu.
+#' Vertical density dot + histogram + distribution + mean facet
 #' Facet Vertical Histogram + Dist + Mean + Dot
 #' @name gg_dot_dist_hist_ver_mean_facet_CaNu.
 #' @param x A number.
@@ -965,7 +965,7 @@ gg_dot_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitl
   graph
 }
 
-#' gg_dot_dist_hist_hor_mean_facet_CaNu.
+#' Horizontal density dot + histogram + distribution + mean facet
 #' Facet Horizontal Histogram + Dist + Mean + Dot
 #' @name gg_dot_dist_hist_hor_mean_facet_CaNu.
 #' @param x A number.
@@ -985,7 +985,7 @@ gg_dot_dist_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitl
   graph
 }
 
-#' gg_point_facet_CaNu.
+#' Scatter facet
 #' Facet Point
 #' @name gg_point_facet_CaNu.
 #' @param x A number.
@@ -1023,7 +1023,7 @@ gg_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   graph
 }
 
-#' gg_line_point_facet_CaNu.
+#' Line + point facet
 #' Facet Line Point
 #' @name gg_line_point_facet_CaNu.
 #' @param x A number.
@@ -1062,7 +1062,7 @@ gg_line_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_line_facet_CaNu.
+#' Line facet
 #' Facet Line
 #' @name gg_line_facet_CaNu.
 #' @param x A number.
@@ -1100,7 +1100,7 @@ gg_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
   graph
 }
 
-#' gg_area_ver_facet_CaNu.
+#' Vertical area facet
 #' Facet Vertical Area
 #' @name gg_area_ver_facet_CaNu.
 #' @param x A number.
@@ -1139,7 +1139,7 @@ gg_area_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 }
 
 
-#' gg_area_hor_facet_CaNu.
+#' Horizontal area facet
 #' Facet Horizontal Area
 #' @name gg_area_hor_facet_CaNu.
 #' @param x A number.
@@ -1159,7 +1159,7 @@ gg_area_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
   graph
 }
 
-#' gg_area_stacked_100_ver_CaNu.
+#' Vertical 100% stacked area
 #' Stacked Vertical Area 100
 #' @name gg_area_stacked_100_ver_CaNu.
 #' @param x A number.
@@ -1203,7 +1203,7 @@ gg_area_stacked_100_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' gg_area_stacked_100_hor_CaNu.
+#' Horizontal 100% stacked area
 #' Stacked Horizontal Area 100
 #' @name gg_area_stacked_100_hor_CaNu.
 #' @param x A number.
@@ -1223,7 +1223,7 @@ gg_area_stacked_100_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' gg_area_stacked_ver_CaNu.
+#' Vertical stacked area
 #' Stacked Vertical Area
 #' @name gg_area_stacked_ver_CaNu.
 #' @param x A number.
@@ -1266,7 +1266,7 @@ gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_area_stacked_hor_CaNu.
+#' Horizontal stacked area
 #' Stacked Horizontal Area
 #' @name gg_area_stacked_hor_CaNu.
 #' @param x A number.
@@ -1286,7 +1286,7 @@ gg_area_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_point_grouped_CaNu.
+#' Grouped scatter
 #' Grouped Color Point
 #' @name gg_point_grouped_CaNu.
 #' @param x A number.
@@ -1324,7 +1324,7 @@ gg_point_grouped_CaNu. <- function(data, titleLabel = "", subtitle = "", caption
   graph
 }
 
-#' gg_line_point_multi_CaNu.
+#' Grouped line + point
 #' Grouped Line Color Point
 #' @name gg_line_point_multi_CaNu.
 #' @param x A number.
@@ -1361,7 +1361,7 @@ gg_line_point_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_line_multi_CaNu.
+#' Grouped line
 #' Grouped Line Coloured
 #' @name gg_line_multi_CaNu.
 #' @param x A number.
@@ -1397,7 +1397,7 @@ gg_line_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
   graph
 }
 
-#' gg_point_trend_line_facet_CaNu.
+#' Trend line facet
 #' Facet Trend Line
 #' @name gg_point_trend_line_facet_CaNu.
 #' @param x A number.
@@ -1438,7 +1438,7 @@ gg_point_trend_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = ""
 
 
 
-#' gg_trend_ribbon_facet_CaNu.
+#' Trend ribbon facet
 #' Facet Trend ribbon
 #' @name gg_trend_ribbon_facet_CaNu.
 #' @param x A number.
@@ -1480,7 +1480,7 @@ gg_trend_ribbon_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 
 #Width debe de ser un parámetro.  0 < width < 1.
 
-#' gg_donut_CaNu.
+#' Donut
 #' dount
 #' @name gg_donut_CaNu.
 #' @param x A number.
@@ -1519,7 +1519,7 @@ gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 
 
-#' gg_dot_bar_ver_CaNu.
+#' Vertical dot bar
 #' Vertical Dot Bar
 #' @name gg_dot_bar_ver_CaNu.
 #' @param x A number.
@@ -1556,7 +1556,7 @@ gg_dot_bar_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = 
   graph
 }
 
-#' gg_dot_bar_hor_CaNu.
+#' Horizontal dot bar
 #' Horizontal Dot Bar
 #' @name gg_dot_bar_hor_CaNu.
 #' @param x A number.
@@ -1577,7 +1577,7 @@ gg_dot_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 }
 
 
-#' gg_bullseye_CaNu.
+#' Bullseye
 #' Bullseye
 #' @name gg_bullseye_CaNu.
 #' @param x A number.
@@ -1607,7 +1607,7 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 }
 
 
-#' gg_bar_single_stacked_hor_CaNu.
+#' Horizontal stacked bar
 #' Single Horizontal Stacked Bar
 #' @name gg_bar_single_stacked_hor_CaNu.
 #' @param x A number.
@@ -1641,7 +1641,7 @@ gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = ""
 }
 
 
-#' gg_bar_single_stacked_ver_CaNu.
+#' Vertical stacked bar
 #' Single Vertical Stacked Bar
 #' @name gg_bar_single_stacked_ver_CaNu.
 #' @param x A number.
@@ -1662,7 +1662,7 @@ gg_bar_single_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = ""
 }
 
 
-#' gg_gauge_CaNu.
+#' Gauge
 #' Gauge
 #' @name gg_gauge_CaNu.
 #' @param x A number.
@@ -1720,7 +1720,7 @@ gg_gauge_CaNu. <- function(data, ...){
   grid.draw(arrangeGrob(grobs = graphList,ncol=2))
 }
 
-#' gg_gauge_dial_CaNu.
+#' Dial gauge
 #' Gauge
 #' @name gg_gauge_dial_CaNu.
 #' @param x A number.
@@ -1776,7 +1776,7 @@ gg_gauge_dial_CaNu. <- function(data, ...){
 }
 
 
-#' gg_boxplot_CaNu.
+#' Horizontal boxplot
 #' Boxplot
 #' @name gg_boxplot_CaNu.
 #' @param x A number.
@@ -1803,7 +1803,7 @@ gg_boxplot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_boxplot_flip_CaNu.
+#' Vertical boxplot
 #' Boxplot flipped
 #' @name gg_boxplot_flip_CaNu.
 #' @param x A number.
@@ -1824,7 +1824,7 @@ gg_boxplot_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   graph
 }
 
-#' gg_boxplot_dot_CaNu.
+#' Vertical boxplot + scatter
 #' Boxplot + dot jitter
 #' @name gg_boxplot_dot_CaNu.
 #' @param x A number.
@@ -1850,7 +1850,7 @@ gg_boxplot_dot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   graph
 }
 
-#' gg_boxplot_dot_flip_CaNu.
+#' Horizontal boxplot + scatter
 #' Boxplot + dot jitter flipped
 #' @name gg_boxplot_dot_flip_CaNu.
 #' @param x A number.
@@ -1871,7 +1871,7 @@ gg_boxplot_dot_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_violin_mult_CaNu.
+#' Vertical violin
 #' Violin
 #' @name gg_violin_mult_CaNu.
 #' @param x A number.
@@ -1896,7 +1896,7 @@ gg_violin_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   graph
 }
 
-#' gg_violin_mult_flip_CaNu.
+#' Horizontal violin
 #' Violin multi flipped
 #' @name gg_violin_mult_flip_CaNu.
 #' @param x A number.
@@ -1916,7 +1916,7 @@ gg_violin_mult_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_violin_dot_mult_CaNu.
+#' Vertical violin + scatter
 #' Violin + dot jitter
 #' @name gg_violin_dot_mult_CaNu.
 #' @param x A number.
@@ -1940,7 +1940,7 @@ gg_violin_dot_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
   graph
 }
 
-#' gg_violin_dot_mult_flip_CaNu.
+#' Horizontal violin + scatter
 #' Violin + dot jitter flipped
 #' @name gg_violin_dot_mult_flip_CaNu.
 #' @param x A number.
@@ -1961,7 +1961,7 @@ gg_violin_dot_mult_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", 
 
 }
 
-#' gg_bar_ordered_ver_CaNu.
+#' Ordered vertical bar
 #' Ordered vertical Bars
 #' @name gg_bar_ordered_ver_CaNu.
 #' @param x A number.
@@ -1993,7 +1993,7 @@ gg_bar_ordered_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
   graph
 }
 
-#' gg_bar_ordered_hor_CaNu.
+#' Ordered horizontal bar
 #' Ordered horizontal Bars
 #' @name gg_bar_ordered_hor_CaNu.
 #' @param x A number.
@@ -2013,7 +2013,7 @@ gg_bar_ordered_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
   graph
 }
 
-#' gg_bar_ver_CaNu.
+#' Vertical bar
 #' Vertical Bars
 #' @name gg_bar_ver_CaNu.
 #' @param x A number.
@@ -2068,7 +2068,7 @@ gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_bar_hor_CaNu.
+#' Horizontal bar
 #' Horizontal Bars
 #' @name gg_bar_hor_CaNu.
 #' @param x A number.
@@ -2093,7 +2093,7 @@ gg_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_steam_CaNu.
+#' Steam
 #' Steam
 #' @name gg_steam_CaNu.
 #' @param x A number.
@@ -2128,7 +2128,7 @@ gg_steam_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
   graph
 }
 
-#' gg_treemap_x_CaNu.
+#' Treemap coloured by first variable
 #' Treemap fill by first Ca
 #' @name gg_treemap_x_CaNu.
 #' @param x A number.
@@ -2158,7 +2158,7 @@ gg_treemap_x_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
   graph
 }
 
-#' gg_treemap_density_y_CaNu.
+#' Treemap density by first numeric variable
 #' Treemap Density by Nu
 #' @name gg_treemap_density_y_CaNu.
 #' @param x A number.
@@ -2199,7 +2199,7 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", subtitle = "",
 
 
 
-#' gg_bubble_CaNu2.
+#' Bubbles
 #' Bubbles
 #' @name gg_bubble_CaNu2.
 #' @param x A number.
@@ -2261,7 +2261,7 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 }
 
-#' gg_slope_CaNu.
+#' Slope
 #' Slope
 #' @name gg_slope_CaNu.
 #' @param x A number.

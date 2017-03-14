@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu-Nu.R
 \name{gg_scatter_trend_CaNuNu.}
 \alias{gg_scatter_trend_CaNuNu.}
-\title{gg_scatter_trend_CaNuNu.
+\title{Scatter + trend
 pointlines}
 \usage{
 gg_scatter_trend_CaNuNu.(data, title = "", subtitle = "", caption = "",
@@ -19,7 +19,7 @@ gg_scatter_trend_CaNuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_scatter_trend_CaNuNu.
+Scatter + trend
 pointlines
 }
 \section{ftypes}{

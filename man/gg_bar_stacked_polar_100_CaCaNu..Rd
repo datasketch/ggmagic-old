@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_stacked_polar_100_CaCaNu.}
 \alias{gg_bar_stacked_polar_100_CaCaNu.}
-\title{gg_bar_stacked_polar_100_CaCaNu.
+\title{Stacked 100% polar bar
 Stacked Polar Bar 100}
 \usage{
 gg_bar_stacked_polar_100_CaCaNu.(data, width = 0.95, titleLabel = "",
@@ -17,7 +17,7 @@ gg_bar_stacked_polar_100_CaCaNu.(data, width = 0.95, titleLabel = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_stacked_polar_100_CaCaNu.
+Stacked 100% polar bar
 Stacked Polar Bar 100
 }
 \section{ftypes}{

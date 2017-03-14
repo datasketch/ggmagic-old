@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_treemap_y_CaCa.}
 \alias{gg_treemap_y_CaCa.}
-\title{gg_treemap_y_CaCa.
+\title{Treemap coloured by second variable
 Treemap fill second Ca}
 \usage{
 gg_treemap_y_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_treemap_y_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_treemap_y_CaCa.
+Treemap coloured by second variable
 Treemap fill second Ca
 }
 \section{ftypes}{

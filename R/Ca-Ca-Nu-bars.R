@@ -1,5 +1,5 @@
 
-#' gg_bar_grouped_ver_CaCaNu.
+#' Vertical grouped bar
 #' vertical unstacked bargraph
 #' @name gg_bar_grouped_ver_CaCaNu.
 #' @param x A category.
@@ -37,7 +37,7 @@ gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
   graph
 }
 
-#' gg_bar_grouped_hor_CaCaNu.
+#' Horizontal grouped bar
 #' horizontal bar graph
 #' @name gg_bar_grouped_hor_CaCaNu.
 #' @param x A category.
@@ -60,7 +60,7 @@ gg_bar_grouped_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 
 }
 
-#' gg_bar_grouped2_ver_CaCaNu.
+#' Vertical grouped bar
 #' Barras grouped
 #' @name gg_bar_grouped2_ver_CaCaNu.
 #' @param x A number.
@@ -76,7 +76,7 @@ gg_bar_grouped2_ver_CaCaNu. <- function(data,...){
   gg_bar_grouped_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' gg_bar_grouped2_hor_CaCaNu.
+#' Horizontal grouped bar
 #' Barras grouped
 #' @name gg_bar_grouped2_hor_CaCaNu.
 #' @param x A number.
@@ -94,7 +94,7 @@ gg_bar_grouped2_hor_CaCaNu. <- function(data, ...){
 }
 
 
-#' gg_bar_stacked_ver_CaCaNu.
+#' Vertical stacked bar by first variable
 #' vertical stacked bar graph
 #' @name gg_bar_stacked_ver_CaCaNu.
 #' @param x A category.
@@ -127,7 +127,7 @@ gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
   graph
 }
 
-#' gg_bar_stacked_hor_CaCaNu.
+#' Horizontal stacked bar by first variable
 #' horizontal stacked bar graph
 #' @name gg_bar_stacked_hor_CaCaNu.
 #' @param x A category.
@@ -148,7 +148,7 @@ gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 }
 
 
-#' gg_bar_stacked2_ver_CaCaNu.
+#' Vertical stacked bar by second variable
 #' Barras grouped
 #' @name gg_bar_stacked2_ver_CaCaNu.
 #' @param x A number.
@@ -164,7 +164,7 @@ gg_bar_stacked2_ver_CaCaNu. <- function(data,...){
   gg_bar_stacked_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' gg_bar_stacked2_hor_CaCaNu.: title.
+#' Horizontal stacked bar by second variable
 #' Barras grouped
 #' Tiene múltiples líneas
 #' @name gg_bar_stacked2_hor_CaCaNu.
@@ -182,7 +182,7 @@ gg_bar_stacked2_hor_CaCaNu. <- function(data, ...){
   graph
 }
 
-#' gg_bar_stacked_100_ver_CaCaNu.
+#' Vertical 100% stacked bar by first variable
 #' 100 vertical stacked bar graph
 #' @name gg_bar_stacked_100_ver_CaCaNu.
 #' @param x A category.
@@ -219,7 +219,7 @@ gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
   graph
 }
 
-#' gg_bar_stacked_100_hor_CaCaNu.
+#' Horizontal 100% stacked bar by first variable
 #' 100 horizontal stacked bar graph
 #' @name gg_bar_stacked_100_hor_CaCaNu.
 #' @param x A category.
@@ -243,7 +243,7 @@ gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
   graph
 }
 
-#' gg_bar_stacked2_100_ver_CaCaNu.
+#' Vertical 100% stacked bar by second variable
 #' Barras grouped
 #' @name gg_bar_stacked2_100_ver_CaCaNu.
 #' @param x A number.
@@ -259,7 +259,7 @@ gg_bar_stacked2_100_ver_CaCaNu. <- function(data,...){
   gg_bar_stacked_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' gg_bar_stacked2_100_hor_CaCaNu.
+#' Horizontal 100% stacked bar by second variable
 #' Barras grouped
 #' @name gg_bar_stacked2_100_hor_CaCaNu.
 #' @param x A number.
@@ -276,7 +276,7 @@ gg_bar_stacked2_100_hor_CaCaNu. <- function(data, ...){
   graph
 }
 
-#' gg_bar_facet_ver_CaCaNu.
+#' Vertical facet bar
 #' Facet vertical bargraph
 #' @name gg_bar_facet_ver_CaCaNu.
 #' @param x A category.
@@ -327,7 +327,7 @@ gg_bar_facet_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capti
 }
 
 
-#' gg_bar_facet_hor_CaCaNu.
+#' Horizontal facet bar
 #' Horizontal bar graph
 #' @name gg_bar_facet_hor_CaCaNu.
 #' @param x A category.
@@ -379,7 +379,7 @@ gg_bar_facet_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capti
   graph
 }
 
-#' gg_bar_coloured_ver_x_facet_CaCaNu.
+#' Vertical facet bar coloured by first variable
 #' vertical bar
 #' @name gg_bar_coloured_ver_x_facet_CaCaNu.
 #' @param x A category.
@@ -412,7 +412,7 @@ gg_bar_coloured_ver_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 }
 
 
-#' gg_bar_coloured_hor_x_facet_CaCaNu.
+#' Horizontal facet bar  coloured by first variable
 #' horizontal bar
 #' @name gg_bar_coloured_hor_x_facet_CaCaNu.
 #' @param x A category.
@@ -432,7 +432,7 @@ gg_bar_coloured_hor_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   graph
 }
 
-#' gg_bar_coloured_ver_y_facet_CaCaNu.
+#' Vertical facet bar coloured by second variable
 #' vertical bar
 #' @name gg_bar_coloured_ver_y_facet_CaCaNu.
 #' @param x A category.
@@ -464,7 +464,7 @@ gg_bar_coloured_ver_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 }
 
 
-#' gg_bar_coloured_hor_y_facet_CaCaNu.
+#' Horizontal facet bar coloured by second variable
 #' horizontal bar
 #' @name gg_bar_coloured_hor_y_facet_CaCaNu.
 #' @param x A category.
@@ -484,7 +484,7 @@ gg_bar_coloured_hor_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   graph
 }
 
-#' gg_bar_coloured_ver_z_facet_CaCaNu.
+#' Vertical facet bar coloured by third variable
 #' Facet coloured vertical bar
 #' @name gg_bar_coloured_ver_z_facet_CaCaNu.
 #' @param x A category.
@@ -525,7 +525,7 @@ gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   graph
 }
 
-#' gg_bar_coloured_hor_z_facet_CaCaNu.
+#' Horizontal facet bar coloured by third variable
 #' Facet Coloured horizontal bar
 #' @name gg_bar_coloured_hor_z_facet_CaCaNu.
 #' @param x A category.
@@ -545,7 +545,7 @@ gg_bar_coloured_hor_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   graph
 }
 
-#' gg_bar_coloured_parameter_ver_facet_CaCaNu.
+#' Vertical facet bar coloured highliting some parameter
 #' Facet Vertical coloured by parameter bars
 #' @name gg_bar_coloured_parameter_ver_facet_CaCaNu.
 #' @param x A number.
@@ -592,7 +592,7 @@ gg_bar_coloured_parameter_ver_facet_CaCaNu. <- function(data, titleLabel = "", s
   graph
 }
 
-#' gg_bar_coloured_parameter_hor_facet_CaCaNu.
+#' Horizontal facet bar coloured highliting some parameter
 #' Facet Horizontal coloured by parameter Bars
 #' @name gg_bar_coloured_parameter_hor_facet_CaCaNu.
 #' @param x A number.
@@ -615,7 +615,7 @@ gg_bar_coloured_parameter_hor_facet_CaCaNu. <- function(data, titleLabel = "", s
   graph
 }
 
-#' gg_bar_circular_facet_CaCaNu.
+#' Circular bar
 #' Circular Bar
 #' @name gg_bar_circular_facet_CaCaNu.
 #' @param x A number.
@@ -647,7 +647,7 @@ gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' gg_bar_stacked_polar_CaCaNu.
+#' Stacked polar bar
 #' Stacked Polar Bar
 #' @name gg_bar_stacked_polar_CaCaNu.
 #' @param x A number.
@@ -679,7 +679,7 @@ gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "", su
   graph
 }
 
-#' gg_bar_stacked_polar_100_CaCaNu.
+#' Stacked 100% polar bar
 #' Stacked Polar Bar 100
 #' @name gg_bar_stacked_polar_100_CaCaNu.
 #' @param x A number.

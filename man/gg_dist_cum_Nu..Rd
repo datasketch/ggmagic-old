@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu.R
 \name{gg_dist_cum_Nu.}
 \alias{gg_dist_cum_Nu.}
-\title{gg_dist_cum_Nu.
+\title{Cumulative distribution function
 Cumulative distribution function}
 \usage{
 gg_dist_cum_Nu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_dist_cum_Nu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_dist_cum_Nu.
+Cumulative distribution function
 Cumulative distribution function
 }
 \section{ftypes}{

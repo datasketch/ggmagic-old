@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_facet_ver_CaCaNu.}
 \alias{gg_bar_facet_ver_CaCaNu.}
-\title{gg_bar_facet_ver_CaCaNu.
+\title{Vertical facet bar
 Facet vertical bargraph}
 \usage{
 gg_bar_facet_ver_CaCaNu.(data, titleLabel = "", subtitle = "",
@@ -19,7 +19,7 @@ gg_bar_facet_ver_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_facet_ver_CaCaNu.
+Vertical facet bar
 Facet vertical bargraph
 }
 \section{ftypes}{

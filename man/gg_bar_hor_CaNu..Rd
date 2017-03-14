@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bar_hor_CaNu.}
 \alias{gg_bar_hor_CaNu.}
-\title{gg_bar_hor_CaNu.
+\title{Horizontal bar
 Horizontal Bars}
 \usage{
 gg_bar_hor_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -19,7 +19,7 @@ gg_bar_hor_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_hor_CaNu.
+Horizontal bar
 Horizontal Bars
 }
 \section{ftypes}{

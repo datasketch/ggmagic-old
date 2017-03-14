@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bar_ordered_hor_CaNu.}
 \alias{gg_bar_ordered_hor_CaNu.}
-\title{gg_bar_ordered_hor_CaNu.
+\title{Ordered horizontal bar
 Ordered horizontal Bars}
 \usage{
 gg_bar_ordered_hor_CaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_bar_ordered_hor_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_ordered_hor_CaNu.
+Ordered horizontal bar
 Ordered horizontal Bars
 }
 \section{ftypes}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_hist_hor_facet_CaNu.}
 \alias{gg_hist_hor_facet_CaNu.}
-\title{gg_hist_hor_facet_CaNu.
+\title{Horizontal histogram facet
 Facet Horizontal Histogram}
 \usage{
 gg_hist_hor_facet_CaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_hist_hor_facet_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_hist_hor_facet_CaNu.
+Horizontal histogram facet
 Facet Horizontal Histogram
 }
 \section{ftypes}{

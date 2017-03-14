@@ -58,6 +58,31 @@ ggFtype <- function(gg = NULL){
   results
 }
 
+#' @export
+ggNames <- function(gg = NULL){
+  db <- tools::Rd_db("ggmagic")
+  db <- db[grepl("\\.\\.Rd$",names(db))]
+  names(db) <- gsub(".Rd","",names(db))
+  i <<- 1
+  f <- function(dbi) {
+    # dbi <- db[[i-1]]
+    i <<-  i + 1
+    x <- as.character(dbi)
+    xx <- x[which(x == "\\title"):which(x == "\\name")]
+    xxx <- xx[which(xx == "{"):which(xx == "}")]
+    xxx <- xxx[xxx != "\n" & xxx != "{" & xxx != "}"]
+    xxx <- xxx[-length(xxx)]
+    xxx <- gsub("\n", "", xxx)
+    xxx <- xxx[!duplicated(xxx)]
+    ftype <- as.character(paste(xxx, collapse = ""))
+  }
+  results <- purrr::map(db,f)
+  names(results) <- gsub(".Rd","",names(results))
+
+  if(!is.null(gg)) return(results[[gg]])
+  results
+}
+
 
 # cleanFtypeDoc <- function(ftype){
 #   sectionName <- as.character(ftype[[1]][[1]])

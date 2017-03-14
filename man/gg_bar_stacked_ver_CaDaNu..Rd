@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Da-Nu.R
 \name{gg_bar_stacked_ver_CaDaNu.}
 \alias{gg_bar_stacked_ver_CaDaNu.}
-\title{gg_bar_stacked_ver_CaDaNu.
+\title{Vertical stacked bar
 vertical stacked bar graph}
 \usage{
 gg_bar_stacked_ver_CaDaNu.(data, titleLabel = "", subtitle = "",
@@ -18,7 +18,7 @@ gg_bar_stacked_ver_CaDaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_stacked_ver_CaDaNu.
+Vertical stacked bar
 vertical stacked bar graph
 }
 \section{ftypes}{

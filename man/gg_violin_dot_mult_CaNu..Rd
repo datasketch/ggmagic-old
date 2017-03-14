@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_violin_dot_mult_CaNu.}
 \alias{gg_violin_dot_mult_CaNu.}
-\title{gg_violin_dot_mult_CaNu.
+\title{Vertical violin + scatter
 Violin + dot jitter}
 \usage{
 gg_violin_dot_mult_CaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_violin_dot_mult_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_violin_dot_mult_CaNu.
+Vertical violin + scatter
 Violin + dot jitter
 }
 \section{ftypes}{

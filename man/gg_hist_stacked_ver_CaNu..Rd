@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_hist_stacked_ver_CaNu.}
 \alias{gg_hist_stacked_ver_CaNu.}
-\title{gg_hist_stacked_ver_CaNu.
+\title{Vertical stacked histogram
 Stacked Vertical Histogram}
 \usage{
 gg_hist_stacked_ver_CaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_hist_stacked_ver_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_hist_stacked_ver_CaNu.
+Vertical stacked histogram
 Stacked Vertical Histogram
 }
 \section{ftypes}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_trend_ribbon_facet_CaNu.}
 \alias{gg_trend_ribbon_facet_CaNu.}
-\title{gg_trend_ribbon_facet_CaNu.
+\title{Trend ribbon facet
 Facet Trend ribbon}
 \usage{
 gg_trend_ribbon_facet_CaNu.(data, titleLabel = "", subtitle = "",
@@ -18,7 +18,7 @@ gg_trend_ribbon_facet_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_trend_ribbon_facet_CaNu.
+Trend ribbon facet
 Facet Trend ribbon
 }
 \section{ftypes}{

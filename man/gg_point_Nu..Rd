@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu.R
 \name{gg_point_Nu.}
 \alias{gg_point_Nu.}
-\title{gg_point_Nu.
+\title{Vertical scatter
 Scatter plot}
 \usage{
 gg_point_Nu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_point_Nu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_point_Nu.
+Vertical scatter
 Scatter plot
 }
 \section{ftypes}{

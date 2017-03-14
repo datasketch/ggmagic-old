@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_boxplot_flip_CaNu.}
 \alias{gg_boxplot_flip_CaNu.}
-\title{gg_boxplot_flip_CaNu.
+\title{Vertical boxplot
 Boxplot flipped}
 \usage{
 gg_boxplot_flip_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_boxplot_flip_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_boxplot_flip_CaNu.
+Vertical boxplot
 Boxplot flipped
 }
 \section{ftypes}{

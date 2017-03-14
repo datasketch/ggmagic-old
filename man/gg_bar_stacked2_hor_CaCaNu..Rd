@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_stacked2_hor_CaCaNu.}
 \alias{gg_bar_stacked2_hor_CaCaNu.}
-\title{gg_bar_stacked2_hor_CaCaNu.: title.
+\title{Horizontal stacked bar by second variable
 Barras grouped
 Tiene múltiples líneas}
 \usage{
@@ -17,7 +17,7 @@ gg_bar_stacked2_hor_CaCaNu.(data, ...)
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_stacked2_hor_CaCaNu.: title.
+Horizontal stacked bar by second variable
 Barras grouped
 Tiene múltiples líneas
 }

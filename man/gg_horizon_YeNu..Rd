@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ye-Nu.R
 \name{gg_horizon_YeNu.}
 \alias{gg_horizon_YeNu.}
-\title{gg_horizon_YeNu.
+\title{Horizon
 Horizon}
 \usage{
 gg_horizon_YeNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_horizon_YeNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_horizon_YeNu.
+Horizon
 Horizon
 }
 \section{ftypes}{

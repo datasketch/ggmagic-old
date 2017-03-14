@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_multi_line_point_CaCaNu.}
 \alias{gg_multi_line_point_CaCaNu.}
-\title{gg_multi_line_point_CaCaNu.
+\title{Grouped line + points by first variable
 Grouped Line Color Point}
 \usage{
 gg_multi_line_point_CaCaNu.(data, titleLabel = "", subtitle = "",
@@ -18,7 +18,7 @@ gg_multi_line_point_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_multi_line_point_CaCaNu.
+Grouped line + points by first variable
 Grouped Line Color Point
 }
 \section{ftypes}{

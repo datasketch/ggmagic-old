@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bubble_coloured_CaNu.}
 \alias{gg_bubble_coloured_CaNu.}
-\title{gg_bubble_coloured_CaNu.
+\title{Bubble coloured by first variable
 Coloured Bubble}
 \usage{
 gg_bubble_coloured_CaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_bubble_coloured_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bubble_coloured_CaNu.
+Bubble coloured by first variable
 Coloured Bubble
 }
 \section{ftypes}{

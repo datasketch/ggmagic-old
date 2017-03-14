@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_horizon_DaNu.}
 \alias{gg_horizon_DaNu.}
-\title{gg_horizon_DaNu.
+\title{Horizon
 Horizon}
 \usage{
 gg_horizon_DaNu.(data, title = "", subtitle = "", caption = "",
@@ -18,7 +18,7 @@ gg_horizon_DaNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_horizon_DaNu.
+Horizon
 Horizon
 }
 \section{ftypes}{

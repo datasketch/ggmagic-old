@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ye-Nu.R
 \name{gg_line_hor_YeNu.}
 \alias{gg_line_hor_YeNu.}
-\title{gg_line_hor_YeNu.
+\title{Horizontal line
 Horizontal Lines}
 \usage{
 gg_line_hor_YeNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_line_hor_YeNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_hor_YeNu.
+Horizontal line
 Horizontal Lines
 }
 \section{ftypes}{

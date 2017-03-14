@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ye-Nu.R
 \name{gg_steam_CaYeNu.}
 \alias{gg_steam_CaYeNu.}
-\title{gg_steam_CaYeNu.
+\title{Steam
 Steam}
 \usage{
 gg_steam_CaYeNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_steam_CaYeNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_steam_CaYeNu.
+Steam
 Steam
 }
 \section{ftypes}{

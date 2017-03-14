@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ye-Nu-bars.R
 \name{gg_bar_facet_hor_CaYeNu.}
 \alias{gg_bar_facet_hor_CaYeNu.}
-\title{gg_bar_facet_hor_CaYeNu.
+\title{Horizontal stacked bar facet
 Barras stacked}
 \usage{
 gg_bar_facet_hor_CaYeNu.(data, ...)
@@ -16,7 +16,7 @@ gg_bar_facet_hor_CaYeNu.(data, ...)
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_facet_hor_CaYeNu.
+Horizontal stacked bar facet
 Barras stacked
 }
 \section{ftypes}{

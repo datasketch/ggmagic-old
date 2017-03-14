@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_donut_facet_CaCa.}
 \alias{gg_donut_facet_CaCa.}
-\title{gg_donut_facet_CaCa.
+\title{Donut facet
 Facet Donut}
 \usage{
 gg_donut_facet_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_donut_facet_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_donut_facet_CaCa.
+Donut facet
 Facet Donut
 }
 \section{ftypes}{

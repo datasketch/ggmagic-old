@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu.R
 \name{gg_line_point_Nu.}
 \alias{gg_line_point_Nu.}
-\title{gg_line_point_Nu.
+\title{Vertical line + point
 Line wiht point plot}
 \usage{
 gg_line_point_Nu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_line_point_Nu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_point_Nu.
+Vertical line + point
 Line wiht point plot
 }
 \section{ftypes}{

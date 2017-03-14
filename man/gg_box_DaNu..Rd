@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_box_DaNu.}
 \alias{gg_box_DaNu.}
-\title{gg_box_DaNu.
+\title{Boxplot
 Scatter}
 \usage{
 gg_box_DaNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_box_DaNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_box_DaNu.
+Boxplot
 Scatter
 }
 \section{ftypes}{

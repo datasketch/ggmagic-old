@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_dist_hor_facet_CaNu.}
 \alias{gg_dist_hor_facet_CaNu.}
-\title{gg_dist_hor_facet_CaNu.
+\title{Horizontal distribution facet
 Facet Horizontal Dist}
 \usage{
 gg_dist_hor_facet_CaNu.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_dist_hor_facet_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_dist_hor_facet_CaNu.
+Horizontal distribution facet
 Facet Horizontal Dist
 }
 \section{ftypes}{

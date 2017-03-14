@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_dot_bar_hor_Ca.}
 \alias{gg_dot_bar_hor_Ca.}
-\title{gg_dot_bar_hor_Ca.
+\title{Horizontal dot bar
 Horizontal Dot Bar}
 \usage{
 gg_dot_bar_hor_Ca.(data, titleLabel = "", xLabel = NULL, yLabel = "Count",
@@ -17,7 +17,7 @@ gg_dot_bar_hor_Ca.(data, titleLabel = "", xLabel = NULL, yLabel = "Count",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_dot_bar_hor_Ca.
+Horizontal dot bar
 Horizontal Dot Bar
 }
 \section{ftypes}{

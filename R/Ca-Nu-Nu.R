@@ -1,4 +1,4 @@
-#' gg_scatter_CaNuNu.
+#' Scatter
 #' pointlines
 #' @name gg_scatter_CaNuNu.
 #' @param x A number.
@@ -39,7 +39,7 @@ gg_scatter_CaNuNu. <- function(data,title = "", subtitle = "", caption = "",
 }
 
 
-#' gg_scatter_trend_CaNuNu.
+#' Scatter + trend
 #' pointlines
 #' @name gg_scatter_trend_CaNuNu.
 #' @param x A number.
@@ -93,7 +93,7 @@ gg_scatter_trend_CaNuNu. <- function(data,title = "", subtitle = "", caption = "
 
 
 
-#' gg_steam_CaNuNu.
+#' Steam
 #' Steamgraph
 #' @name gg_steam_CaNuNu.
 #' @param x A category.
@@ -130,7 +130,7 @@ gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_line_CaNuNu.
+#' Line
 #' lines
 #' @name gg_line_CaNuNu.
 #' @param x A category.
@@ -160,7 +160,7 @@ gg_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 
 }
 
-#' gg_point_line_CaNuNu.
+#' Line + point
 #' Point Lines
 #' @name gg_point_line_CaNuNu.
 #' @param x A category.
@@ -191,7 +191,7 @@ gg_point_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption 
 
 }
 
-#' gg_point_CaNuNu.
+#' Scatter
 #' point
 #' @name gg_point_CaNuNu.
 #' @param x A category.
@@ -219,7 +219,7 @@ gg_point_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_circle_CaNuNu.
+#' Point
 #' Point
 #' @name gg_circle_CaNuNu.
 #' @param x A category.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_pyramid_CaCaNu.}
 \alias{gg_pyramid_CaCaNu.}
-\title{gg_pyramid_CaCaNu.
+\title{Pyramid
 pyramid}
 \usage{
 gg_pyramid_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_pyramid_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_pyramid_CaCaNu.
+Pyramid
 pyramid
 }
 \section{ftypes}{
