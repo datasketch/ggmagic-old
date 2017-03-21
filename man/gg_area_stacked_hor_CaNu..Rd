@@ -6,7 +6,8 @@
 Stacked Horizontal Area}
 \usage{
 gg_area_stacked_hor_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = "Index", yLabel = NULL, leg_pos = "right", ...)
+  caption = "", xLabel = "Index", yLabel = NULL, leg_pos = "right",
+  text = TRUE, color_text = "black", type = "count", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

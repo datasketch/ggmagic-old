@@ -7,8 +7,8 @@ Horizontal bar graph}
 \usage{
 gg_bar_facet_hor_CaCaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 0, aggregation = "mean", fillMissing = TRUE,
-  fillMissingValue = 0, groupLabelPosition = "right", ...)
+  angle_x = 0, aggregation = "sum", text = TRUE, color_text = "black",
+  type = "count", ...)
 }
 \arguments{
 \item{x}{A category.}

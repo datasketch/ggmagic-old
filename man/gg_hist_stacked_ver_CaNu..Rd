@@ -6,7 +6,8 @@
 Stacked Vertical Histogram}
 \usage{
 gg_hist_stacked_ver_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

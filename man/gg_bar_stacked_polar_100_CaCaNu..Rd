@@ -6,7 +6,9 @@
 Stacked Polar Bar 100}
 \usage{
 gg_bar_stacked_polar_100_CaCaNu.(data, width = 0.95, titleLabel = "",
-  subtitle = "", caption = "", fillLabel = NULL, leg_pos = "right", ...)
+  subtitle = "", caption = "", fillLabel = NULL, leg_pos = "right",
+  aggregation = "sum", text = TRUE, color_text = "black",
+  type = "count", ...)
 }
 \arguments{
 \item{x}{A number.}

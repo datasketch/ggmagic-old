@@ -6,7 +6,9 @@
 Coloured Bubble}
 \usage{
 gg_bubble_coloured_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, ...)
+  caption = "", xLabel = NULL, text = TRUE, type = "count",
+  color_text = "black", leg_pos = "right", aggregation = "sum",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

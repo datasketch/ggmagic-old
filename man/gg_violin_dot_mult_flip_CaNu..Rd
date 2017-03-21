@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_violin_dot_mult_flip_CaNu.}
 \alias{gg_violin_dot_mult_flip_CaNu.}
-\title{Horizontal violin + scatter
+\title{Horizontal violin + jitter
 Violin + dot jitter flipped}
 \usage{
 gg_violin_dot_mult_flip_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_violin_dot_mult_flip_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Horizontal violin + scatter
+Horizontal violin + jitter
 Violin + dot jitter flipped
 }
 \section{ftypes}{

@@ -6,7 +6,7 @@
 pyramid}
 \usage{
 gg_pyramid_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A category.}

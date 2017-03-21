@@ -8,8 +8,8 @@ Horizontal coloured by parameter Bars}
 gg_bar_coloured_parameter_hor_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, order = FALSE,
   parameter = NULL, line_mean = FALSE, text = TRUE, type = "count",
-  text_size = 3, leg_pos = "right", aggregation = "mean", angle = 0,
-  ...)
+  color_text = "black", leg_pos = "right", aggregation = "sum",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

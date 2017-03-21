@@ -6,7 +6,8 @@
 Stacked Vertical Area 100}
 \usage{
 gg_area_stacked_100_ver_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = "Index", yLabel = NULL, leg_pos = "right", ...)
+  caption = "", xLabel = "Index", yLabel = NULL, leg_pos = "right",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

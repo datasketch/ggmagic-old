@@ -6,7 +6,8 @@
 Grouped Color Point}
 \usage{
 gg_point_grouped_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = "Index", yLabel = NULL, leg_pos = "right", type = 1, ...)
+  xLabel = "Index", yLabel = NULL, leg_pos = "right", shape_type = 19,
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

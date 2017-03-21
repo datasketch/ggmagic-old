@@ -7,7 +7,7 @@ Grouped Line Coloured}
 \usage{
 gg_multi_line_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
-  type = 1, ...)
+  ...)
 }
 \arguments{
 \item{x}{A number.}

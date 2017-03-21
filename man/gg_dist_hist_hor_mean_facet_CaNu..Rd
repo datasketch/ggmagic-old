@@ -6,7 +6,8 @@
 Facet Horizontal Histogram + Dist + Mean}
 \usage{
 gg_dist_hist_hor_mean_facet_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

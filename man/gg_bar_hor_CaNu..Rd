@@ -7,8 +7,8 @@ Horizontal Bars}
 \usage{
 gg_bar_hor_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, line_mean = FALSE, leg_pos = "right",
-  text = TRUE, type = "count", text_size = 3, aggregation = "sum",
-  angle = 0, ...)
+  text = TRUE, type = "count", color_text = "black",
+  aggregation = "sum", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

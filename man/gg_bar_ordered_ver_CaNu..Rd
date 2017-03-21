@@ -6,7 +6,9 @@
 Ordered vertical Bars}
 \usage{
 gg_bar_ordered_ver_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
+  text = TRUE, type = "count", color_text = "black",
+  aggregation = "sum", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

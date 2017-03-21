@@ -7,7 +7,8 @@ horizontal stacked bar graph}
 \usage{
 gg_bar_stacked_hor_CaCaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  aggregation = "mean", ...)
+  aggregation = "sum", text = TRUE, type = "count",
+  color_text = "black", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A category.}

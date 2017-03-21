@@ -6,7 +6,8 @@
 Bubble}
 \usage{
 gg_bubble_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, ...)
+  xLabel = NULL, yLabel = NULL, aggregation = "sum", angle_x = 0,
+  text = TRUE, color_text = "black", type = "count", ...)
 }
 \arguments{
 \item{x}{A number.}

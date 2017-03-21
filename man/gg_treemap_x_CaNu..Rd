@@ -6,7 +6,7 @@
 Treemap fill by first Ca}
 \usage{
 gg_treemap_x_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  ...)
+  text = TRUE, color_text = "black", aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}

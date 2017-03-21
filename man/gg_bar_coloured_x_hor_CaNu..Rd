@@ -7,8 +7,8 @@ horizontal bar}
 \usage{
 gg_bar_coloured_x_hor_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, line_mean = FALSE,
-  text = TRUE, type = "percent", text_size = 3, leg_pos = "right",
-  aggregation = "sum", angle = 0, ...)
+  text = TRUE, type = "count", leg_pos = "right", aggregation = "sum",
+  angle_x = 0, color_text = "black", ...)
 }
 \arguments{
 \item{x}{A category.}

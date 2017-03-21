@@ -6,7 +6,8 @@
 sunburst}
 \usage{
 gg_sunburst_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, ...)
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, aggregation = "sum",
+  ...)
 }
 \arguments{
 \item{x}{A number.}

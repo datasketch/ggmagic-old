@@ -6,7 +6,8 @@
 vertical linegraph}
 \usage{
 gg_line_ver_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = "Types", yLabel = "Frequency", ...)
+  caption = "", xLabel = "Types", yLabel = "Frequency",
+  aggregation = "sum", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A category.}

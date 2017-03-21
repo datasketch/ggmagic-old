@@ -6,7 +6,8 @@
 Treemap Density by Nu}
 \usage{
 gg_treemap_density_z_CaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", reverse = FALSE, fillLabel = NULL, ...)
+  caption = "", reverse = FALSE, fillLabel = NULL, text = TRUE,
+  color_text = "black", aggregation = "sum", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

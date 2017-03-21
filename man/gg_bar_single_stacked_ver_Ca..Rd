@@ -6,7 +6,8 @@
 Single Vertical Stacked Bar}
 \usage{
 gg_bar_single_stacked_ver_Ca.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, leg_pos = "right", width = 0.3, ...)
+  caption = "", fillLabel = NULL, leg_pos = "right", width = 0.3,
+  text = TRUE, type = "count", color_text = "black", ...)
 }
 \arguments{
 \item{x}{A number.}

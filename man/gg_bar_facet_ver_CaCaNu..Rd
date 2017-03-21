@@ -7,8 +7,8 @@ Facet vertical bargraph}
 \usage{
 gg_bar_facet_ver_CaCaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 45, aggregation = "mean", fillMissing = TRUE,
-  fillMissingValue = 0, groupLabelPosition = "top", ...)
+  angle_x = 0, aggregation = "sum", text = TRUE, color_text = "black",
+  type = "count", ...)
 }
 \arguments{
 \item{x}{A category.}

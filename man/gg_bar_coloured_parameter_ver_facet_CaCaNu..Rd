@@ -7,7 +7,8 @@ Facet Vertical coloured by parameter bars}
 \usage{
 gg_bar_coloured_parameter_ver_facet_CaCaNu.(data, titleLabel = "",
   subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-  parameter1 = NULL, parameter2 = NULL, leg_pos = "right", ...)
+  parameter1 = NULL, parameter2 = NULL, leg_pos = "right", angle_x = 0,
+  ...)
 }
 \arguments{
 \item{x}{A number.}
