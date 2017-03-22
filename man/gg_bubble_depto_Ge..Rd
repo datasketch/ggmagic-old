@@ -25,8 +25,8 @@ Points inside Colombia's mpios map
 \section{ftypes}{
  Ge
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

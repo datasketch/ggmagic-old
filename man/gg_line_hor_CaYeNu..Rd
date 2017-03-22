@@ -2,6 +2,7 @@
 % Please edit documentation in R/Ca-Ye-Nu-bars.R, R/Ca-Ye-Nu.R
 \name{gg_line_hor_CaYeNu.}
 \alias{gg_line_hor_CaYeNu.}
+\alias{gg_line_hor_CaYeNu.}
 \title{gg_line_hor_CaYeNu.: title.
 Lines
 Tiene múltiples líneas}
@@ -42,10 +43,10 @@ Tiene múltiples líneas
 
  Ca-Ye-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 add(1, 1)
 add(10, 1)
 }
-

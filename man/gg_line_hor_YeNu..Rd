@@ -25,8 +25,8 @@ Tiene múltiples líneas
 \section{ftypes}{
  Ye-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

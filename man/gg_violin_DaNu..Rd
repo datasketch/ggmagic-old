@@ -23,8 +23,8 @@ Violin
 \section{ftypes}{
  Da-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

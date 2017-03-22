@@ -25,8 +25,8 @@ Points inside Latam map
 \section{ftypes}{
  Ge
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

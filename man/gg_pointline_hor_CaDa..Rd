@@ -23,8 +23,8 @@ pointlines
 \section{ftypes}{
  Ca-Da
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

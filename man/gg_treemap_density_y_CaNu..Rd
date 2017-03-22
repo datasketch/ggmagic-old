@@ -23,8 +23,8 @@ Treemap Density by Nu
 \section{ftypes}{
  Ca-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

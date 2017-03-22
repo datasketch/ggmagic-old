@@ -24,8 +24,8 @@ Pie
 \section{ftypes}{
  Ca-Nu
 }
+
 \examples{
 add(1, 1)z
 add(10, 1)
 }
-

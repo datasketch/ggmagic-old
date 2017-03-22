@@ -24,8 +24,8 @@ Stacked horizontal Area 100pct
 \section{ftypes}{
  Ca-Ca
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-

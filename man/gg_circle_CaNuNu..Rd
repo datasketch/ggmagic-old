@@ -23,9 +23,9 @@ Point
 \section{ftypes}{
  Ca-Nu-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 
 }
-

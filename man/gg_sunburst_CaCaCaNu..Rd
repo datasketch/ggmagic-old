@@ -23,8 +23,8 @@ sunburst
 \section{ftypes}{
  Ca-Ca-Nu
 }
+
 \examples{
 add(1, 1)
 add(10, 1)
 }
-
