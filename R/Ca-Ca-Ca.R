@@ -10,7 +10,9 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
+gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+                                 text = "TRUE", color_text = "black",
+                                 leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -26,10 +28,17 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
   data_graph$b <- as.factor(data_graph$b)
   data_graph$c <- as.factor(data_graph$c)
 
-  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "b", label = 'c'),
-                     group.label.colour = "black", label.colour = "black") + #guides(fill=FALSE) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = flabel) +
-     scale_fill_manual(values = getPalette())
+  if(text == TRUE){
+
+    graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "b",
+                                  label = "c"), group.labels = TRUE, group.label.colour = color_text, group.label.size = 15,
+                       group.label.min.size = 10, label.colour = color_text, label.size = 10, label.min.size = 5)  #guides(fill = FALSE) +
+  }else{
+    graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "b",
+                                  label = "c"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
+  }
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
+    theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
 
   graph
 }
@@ -45,7 +54,9 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
+gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+                                 text = "TRUE", color_text = "black",
+                                 leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -61,10 +72,18 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
   data_graph$b <- as.factor(data_graph$b)
   data_graph$c <- as.factor(data_graph$c)
 
-  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a", label = "c"),
-                     group.label.colour = "black", label.colour = "black") + #guides(fill=FALSE) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = flabel) +
-    scale_fill_manual(values = getPalette())
+  if(text == TRUE){
+
+    graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a",
+                                  label = "c"), group.labels = TRUE, group.label.colour = color_text, group.label.size = 15,
+                       group.label.min.size = 10, label.colour = color_text, label.size = 10, label.min.size = 5)  #guides(fill = FALSE) +
+  }else{
+    graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a",
+                                  label = "c"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
+  }
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
+    theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
+
   graph
 }
 
@@ -79,7 +98,9 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, ...){
+gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+                                 text = "TRUE", color_text = "black",
+                                 leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -95,10 +116,17 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
   data_graph$b <- as.factor(data_graph$b)
   data_graph$c <- as.factor(data_graph$c)
 
-  graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'c', group = "a", label = "b"),
-                     group.label.colour = "black", label.colour = "black") +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption) +
-    scale_fill_manual(values = getPalette())
+  if(text == TRUE){
+
+    graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'c', group = "a",
+                                  label = "b"), group.labels = TRUE, group.label.colour = color_text, group.label.size = 15,
+                       group.label.min.size = 10, label.colour = color_text, label.size = 10, label.min.size = 5)  #guides(fill = FALSE) +
+  }else{
+    graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'c', group = "a",
+                                  label = "b"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
+  }
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
+    theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
 
   graph
 }
@@ -115,7 +143,7 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 #' add(1, 1)
 #' add(10, 1)
 gg_point_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                             fillLabel = NULL, size = 3, angle = 45, ...){
+                             fillLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -125,10 +153,10 @@ gg_point_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
   data <- f$d
 
   graph <- ggplot(data, aes(x = factor(a), y = factor(b), color=factor(c))) +
-    geom_point(size=size) +
+    geom_point(shape = shape_type) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_minimal() +
     theme(legend.title=element_blank()) + scale_x_discrete(labels = scales::comma) +
-    theme_ds() + scale_color_manual(values = getPalette()) +   theme(axis.text.x = element_text(angle = angle, hjust = 1))
+    theme_ds() + scale_color_manual(values = getPalette()) +   theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }

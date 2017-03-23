@@ -28,7 +28,6 @@ gg_horizon_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
                                          high = getPalette(type = "sequential")[2])
   }
-
   graph
 }
 
@@ -56,12 +55,11 @@ gg_waterfall_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
     scale_color_manual(breaks = c("+", "-", ""), values = getPalette()) +
     theme_ds()  + theme(legend.position="none")+
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
-
   graph
 }
 
 
-#' Horizontal density
+#' Horizontal density 2D bin
 #' Density in 2D
 #' @name gg_dens_NuNu.
 #' @param x A number.
@@ -72,7 +70,7 @@ gg_waterfall_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dens_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+gg_dens_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                             yLabel=NULL, reverse = FALSE, ...){
 
   f <- fringe(data)
@@ -84,7 +82,7 @@ gg_dens_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel 
   graph <- ggplot(data, aes(x = a, y = b)) +
            stat_density2d(geom = "tile", aes(fill = ..density..), contour = FALSE) +
            theme_ds() +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -94,11 +92,10 @@ gg_dens_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel 
                                          high = getPalette(type = "sequential")[2])
   }
   return(graph)
-
 }
 
 
-#' Vertical density
+#' Vertical density 2D bin
 #' Density 2D flipped
 #' @name gg_dens_flip_NuNu.
 #' @param x A number.
@@ -109,12 +106,11 @@ gg_dens_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dens_flip_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
+gg_dens_flip_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                yLabel=NULL, reverse = FALSE, ...){
 
-  graph <- gg_dens_NuNu.(data, title, subtitle, caption, xLabel, yLabel, reverse)
+  graph <- gg_dens_NuNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, ...)
   graph <- graph + coord_flip()
-
   graph
 }
 
@@ -130,7 +126,7 @@ gg_dens_flip_NuNu. <- function(data, title = "", subtitle = "", caption = "", xL
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_hist_NuNu. <- function(data, title = "", subtitle = "", caption = "",
+gg_hist_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                             xLabel = NULL, yLabel = NULL, reverse = FALSE, ...){
 
   f <- fringe(data)
@@ -142,7 +138,7 @@ gg_hist_NuNu. <- function(data, title = "", subtitle = "", caption = "",
   binNumber <- floor(sqrt(nrow(data)))
   graph <- ggplot(data, aes(x = a, y = b)) + stat_bin2d(bins = binNumber) +
            theme_ds() +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -165,12 +161,11 @@ gg_hist_NuNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_hist_flip_NuNu. <- function(data, title = "", subtitle = "", caption = "",
+gg_hist_flip_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                xLabel = NULL, yLabel = NULL, reverse = FALSE, ...){
 
-  graph <- gg_hist_NuNu.(data, title, subtitle, caption, xLabel, yLabel, reverse)
+  graph <- gg_hist_NuNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, ...)
   graph <- graph + coord_flip()
-
   graph
 }
 
@@ -185,7 +180,7 @@ gg_hist_flip_NuNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_multi_NuNu. <- function(data, title = "", subtitle = "", caption = "",
+gg_line_multi_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                 xLabel = NULL, yLabel = NULL, ...){
 
   f <- fringe(data)
@@ -199,11 +194,11 @@ gg_line_multi_NuNu. <- function(data, title = "", subtitle = "", caption = "",
 
   graph <- ggplot(data_graph, aes(x = xorder, y = value, group = type, colour = type)) +
            geom_line() + theme_ds() +
-           scale_color_manual(values = getPalette())
-  graph <- graph  + labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
-
+           scale_color_manual(values = getPalette(),
+                              breaks = unique(data_graph$type),
+                              labels = nms)
+  graph <- graph  + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   return(graph)
-
 }
 
 
@@ -218,8 +213,8 @@ gg_line_multi_NuNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_point_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel = NULL, shape = 1,...){
+gg_point_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                               yLabel = NULL, shape_type = 19,...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -228,8 +223,8 @@ gg_point_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel
   data <- f$d
 
 graph <- ggplot(data = data, aes(x = a, y = b)) +
-         geom_point(shape = shape, aes(color = ''), show.legend = FALSE) + theme_ds() +
-         labs(title = title, subtitle = subtitle, caption = caption, y = ylab, x = xlab) +
+         geom_point(shape = shape_type, aes(color = ''), show.legend = FALSE) + theme_ds() +
+         labs(title = titleLabel, subtitle = subtitle, caption = caption, y = ylab, x = xlab) +
   scale_color_manual(values = getPalette())
 return(graph)
 
@@ -246,8 +241,8 @@ return(graph)
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_point_NuNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
-                           yLabel = NULL, shape = 1, size = 3,...){
+gg_line_point_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                           yLabel = NULL, shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -256,9 +251,9 @@ gg_line_point_NuNu. <- function(data, title = "", subtitle = "", caption = "", x
   data <- f$d
 
   graph <- ggplot(data = data, aes(x = a, y = b)) +
-    geom_point(shape = shape, aes(color = ''), show.legend = FALSE, size = size) +
-    geom_line(aes(color = ''), show.legend = FALSE, size = size) + theme_ds() +
-    labs(title = title, subtitle = subtitle, caption = caption, y = ylab, x = xlab) +
+    geom_point(shape = shape_type, aes(color = ''), show.legend = FALSE) +
+    geom_line(aes(color = ''), show.legend = FALSE) + theme_ds() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, y = ylab, x = xlab) +
     scale_color_manual(values = getPalette())
   return(graph)
 

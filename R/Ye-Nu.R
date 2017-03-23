@@ -9,19 +9,20 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_hor_YeNu. <- function(data, title = "", subtitle = "", caption = "",
-                               xlab = NULL, ylab = NULL,...){
+gg_line_hor_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                               xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
   ggplot(data, aes(x= a,y=b,group=1)) +
     geom_line(stat = "identity", colour = "#009EE3") +
     theme_ds() +
     scale_y_continuous(labels = comma) +
     scale_x_continuous(limits=c(min(data$a),max(data$a))) +
-    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 }
 
 #' Lollipop
@@ -36,21 +37,21 @@ gg_line_hor_YeNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lollipop_YeNu. <- function(data, title = "", subtitle = "", caption = "",
-                              xlab = NULL, ylab = NULL, size = 7,...){
+gg_lollipop_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                              xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
 
   graph <- ggplot(data, aes(x = a, y = b)) +
-    geom_segment(aes(xend=a, yend=0)) + geom_point(aes(color = ""), size = size) +
+    geom_segment(aes(xend=a, yend=0)) + geom_point(aes(color = ""), show.legend = FALSE, shape = shape_type) +
     theme_ds() +
-    scale_x_continuous(limits=c(min(data$a),max(data$a))) +
-    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    scale_color_manual(values = getPalette())
+    scale_color_manual(values = getPalette()) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -66,8 +67,8 @@ gg_lollipop_YeNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_waterfall_YeNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel =  NULL, ...){
+gg_waterfall_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                               yLabel =  NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -78,7 +79,8 @@ gg_waterfall_YeNu. <- function(data, title = "", subtitle = "", caption = "", xL
   graph <- ggplot_waterfall(data,'a','b') + theme_ds() + theme(legend.position="none") +
            scale_color_manual(breaks = c("+",  "-", ""), values = getPalette()) +
            scale_x_continuous(limits=c(min(data$a),max(data$a))) +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -96,7 +98,7 @@ gg_waterfall_YeNu. <- function(data, title = "", subtitle = "", caption = "", xL
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', text_size = 3,
-                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", ...){
+                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -107,7 +109,7 @@ gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum(b)) %>%
+    dplyr::summarise(count = agg(aggregation, b)) %>%
     dplyr::mutate(percent = 100 * round(count/sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = count, fill = factor(a))) + geom_bar(stat = "identity") +
@@ -115,7 +117,8 @@ gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
            scale_fill_manual(values = getPalette()) +
            theme(legend.position=leg_pos) +
            guides(fill = FALSE) +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flab)
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
 
   if(text == TRUE & type == 'count'){
@@ -141,8 +144,8 @@ gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', text_size = 3,
-                                       yLabel = NULL, leg_pos = "right", ...){
+gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'count', color_text = "black",
+                                       yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -152,22 +155,24 @@ gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(count = sum(b)) %>%
-    dplyr::mutate(percent = 100 * round(count/sum(count), 4))
+    dplyr::summarise(count = agg(aggregation, b)) %>%
+    dplyr::mutate(pos = count*9/10,
+                  percent = 100 * round(count/sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = count)) + geom_bar(aes(fill = ""), show.legend = FALSE, stat = "identity") +
     theme_ds() +
     scale_fill_manual(values = getPalette()) +
     theme(legend.position=leg_pos) +
     guides(fill = FALSE) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(aes(x = a, y = count + 0.05, label = round(count,2)), size = text_size, position = position_dodge(0.9), vjust = 0))
+    return(graph + geom_text(aes(x = a, y = pos, label = round(count,2)), color = color_text, position = position_dodge(0.9), vjust = 0))
   }else{
     if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(aes(x = a, y = count + 0.05, label = paste(percent, "%", sep = "")), size = text_size, position = position_dodge(0.9), vjust = 0))
+      return(graph + geom_text(aes(x = a, y = pos, label = paste(percent, "%", sep = "")), color = color_text, position = position_dodge(0.9), vjust = 0))
     }else{
       graph
     }
@@ -186,10 +191,10 @@ gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', text_size = 3,
-                            yLabel = NULL, leg_pos = "right", ...){
+gg_bar_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, text = TRUE, type = 'count', color_text = "black",
+                            yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_bar_ver_YeNu.(data, titleLabel, subtitle, caption, xLabel, text, type, text_size, yLabel, leg_pos)
+  graph <- gg_bar_ver_YeNu.(data, titleLabel, subtitle, caption, xLabel, text, type, color_text, yLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -206,19 +211,19 @@ gg_bar_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_YeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = NULL, ylab = NULL, ...){
+gg_area_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xlab %||% nms[1]
-  ylab <- ylab %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
 
-  graph <- ggplot(data, aes(x = a, y = b, group=1)) +
+  graph <- ggplot(data, aes(x = as.character(a), y = b, group=1)) +
            geom_area(aes(fill = ""), show.legend = FALSE) +
     scale_fill_manual(values = getPalette()) + theme_ds() +
-           scale_x_continuous(limits = c(min(data$a), max(data$a))) +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -234,8 +239,8 @@ gg_area_YeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_horizon_YeNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
-                           yLabel =  NULL, leg_pos = "right",reverse = FALSE, ...){
+gg_horizon_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                           yLabel =  NULL, leg_pos = "right",reverse = FALSE, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -245,7 +250,8 @@ gg_horizon_YeNu. <- function(data, title = "", subtitle = "", caption = "", xLab
 
   graph <- ggplot_horizon(data, 'a', 'b')
   graph <- graph + theme_ds() +
-    labs(tittle = title, subtitle = subtitle, caption =caption, x = xlab, y = ylab)
+    labs(tittle = titleLabel, subtitle = subtitle, caption =caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],

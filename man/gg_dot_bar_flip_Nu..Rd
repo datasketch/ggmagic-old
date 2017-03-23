@@ -5,7 +5,7 @@
 \title{Vertical dot bar
 Dot bar flipped}
 \usage{
-gg_dot_bar_flip_Nu.(data, title = "", subtitle = "", caption = "",
+gg_dot_bar_flip_Nu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, ...)
 }
 \arguments{

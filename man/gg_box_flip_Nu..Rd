@@ -5,7 +5,7 @@
 \title{Horizontal boxplot
 Box plot flipped}
 \usage{
-gg_box_flip_Nu.(data, title = "", subtitle = "", caption = "",
+gg_box_flip_Nu.(data, titleLabel = "", subtitle = "", caption = "",
   yLabel = NULL, xLabel = NULL, ...)
 }
 \arguments{

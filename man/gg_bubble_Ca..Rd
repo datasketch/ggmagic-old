@@ -6,7 +6,7 @@
 Bubble}
 \usage{
 gg_bubble_Ca.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, ...)
+  xLabel = NULL, shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

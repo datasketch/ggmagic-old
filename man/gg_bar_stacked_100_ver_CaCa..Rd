@@ -7,7 +7,7 @@ Stacked 100pct vertical Bar}
 \usage{
 gg_bar_stacked_100_ver_CaCa.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = "Percent", leg_pos = "right",
-  l_ncol = 1, ...)
+  text = TRUE, type = "count", color_text = "black", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

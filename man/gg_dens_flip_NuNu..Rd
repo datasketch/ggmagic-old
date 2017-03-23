@@ -2,10 +2,10 @@
 % Please edit documentation in R/Nu-Nu.R
 \name{gg_dens_flip_NuNu.}
 \alias{gg_dens_flip_NuNu.}
-\title{Vertical density
+\title{Vertical density 2D bin
 Density 2D flipped}
 \usage{
-gg_dens_flip_NuNu.(data, title = "", subtitle = "", caption = "",
+gg_dens_flip_NuNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, reverse = FALSE, ...)
 }
 \arguments{
@@ -17,7 +17,7 @@ gg_dens_flip_NuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Vertical density
+Vertical density 2D bin
 Density 2D flipped
 }
 \section{ftypes}{

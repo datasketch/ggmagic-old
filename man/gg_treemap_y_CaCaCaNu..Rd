@@ -6,7 +6,8 @@
 Treemap fill second Ca}
 \usage{
 gg_treemap_y_CaCaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, ...)
+  fillLabel = NULL, aggregation = "sum", text = "TRUE",
+  color_text = "black", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -6,7 +6,7 @@
 Coloured Bubble}
 \usage{
 gg_bubble_coloured_Ca.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, fillLabel = NULL, ...)
+  xLabel = NULL, fillLabel = NULL, shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

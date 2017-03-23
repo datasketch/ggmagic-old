@@ -9,8 +9,8 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "", xlab = NULL,
-                                   ylab=NULL, clab = NULL, angle = 45, ...){
+gg_scatter_hor_CaDaNu. <- function(data,titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                   yLabel =NULL, clab = NULL, angle_x = 0, shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -22,10 +22,10 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "",
   d <- d %>% dplyr::arrange(b)
 
   graph <- ggplot(d, aes(x = as.Date(b, origin = data[1,2]), y = c, colour = a)) +
-           geom_point() +
+           geom_point(shape = shape_type) +
            scale_color_manual(values = getPalette()) +
-           theme_ds() + labs(title = title, subtitle = subtitle, caption = caption, x= xlab, y = ylab) +
-           theme(axis.text.x = element_text(angle = angle, hjust = 1))
+           theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x= xlab, y = ylab) +
+           theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   graph
 }
 
@@ -40,8 +40,8 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_steam_CaDaNu. <- function (data, title = "", subtitle = "", caption = "",
-                              xLabel = NULL, yLabel = NULL, leg_pos = "right", ...){
+gg_steam_CaDaNu. <- function (data, titleLabel = "", subtitle = "", caption = "",
+                              xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
 
   f <- fringe(data)
@@ -61,10 +61,10 @@ gg_steam_CaDaNu. <- function (data, title = "", subtitle = "", caption = "",
 
   graph <- ggplot(data_graph, aes(x = as.Date(b, origin = data[1,2]), y = c, group = a, fill = a)) +
            stat_steamgraph() +
-           theme(axis.text.x = element_text(angle = 45,hjust = 1)) +
+           theme(axis.text.x = element_text(angle = angle_x,hjust = 1)) +
            scale_fill_manual(values = getPalette()) +
            theme_ds() +
-           labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
            theme(legend.position = leg_pos)
   graph
 }
@@ -84,7 +84,7 @@ gg_steam_CaDaNu. <- function (data, title = "", subtitle = "", caption = "",
 #' add(10, 1)
 gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL,
-                                            leg_pos = "top", ...){
+                                            leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -108,6 +108,7 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph <- graph +
            theme_ds() +
            theme(legend.position=leg_pos) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
            scale_fill_manual(values = getPalette())
   graph
 }
@@ -125,9 +126,9 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(10, 1)
 gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                         yLabel = NULL, fillLabel = NULL,
-                                        leg_pos = "top", ...){
+                                        leg_pos = "right", angle_x = 0,...){
 
-  graph <- gg_area_stacked_ver_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_area_stacked_ver_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -146,7 +147,7 @@ gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(10, 1)
 gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                           yLabel = NULL, fillLabel = NULL,
-                                          leg_pos = "top", ...){
+                                          leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -166,10 +167,12 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
   graph <- ggplot(data = data_graph, aes(x = as.Date(b, origin = data[1,2]), y = c, group = a)) +
            geom_area(aes(fill = a), position = "fill")
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption =  caption, x = xLabel, y = ylab, fill = flabel)
+           labs(title = titleLabel, subtitle = subtitle, caption =  caption, x = xlab, y = ylab, fill = flabel)
   graph <- graph +
            theme_ds() +
            theme(legend.position=leg_pos) +
+    scale_y_continuous(labels = percent) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
            scale_fill_manual(values = getPalette())
   graph
 }
@@ -187,9 +190,9 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
 #' add(10, 1)
 gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL,
-                                            leg_pos = "top", ...){
+                                            leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_area_stacked_100_ver_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos)
+  graph <- gg_area_stacked_100_ver_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -207,8 +210,8 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
 #' add(1, 1)
 #' add(10, 1)
 gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                        fillLabel = NULL, leg_pos="right", type = 1,
-                                        text_size = 8, angle_x = 45, ...){
+                                        fillLabel = NULL, leg_pos="right", shape_type = 19,
+                                        angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -218,7 +221,7 @@ gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   data <- f$d
 
   graph <- ggplot(data, aes(x = b, y = c, group = a)) +
-             geom_point(aes(color = a), shape = type) +
+             geom_point(aes(color = a), shape = shape_type) +
              geom_line(aes(color = a))
   graph <- graph +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
@@ -226,7 +229,7 @@ gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
            theme_ds() +
            scale_color_manual(values = getPalette()) +
            scale_x_date() +
-           theme(axis.text.x = element_text(size = text_size, angle = angle_x, hjust = 1))
+           theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -243,8 +246,8 @@ gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_multi_line_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                  fillLabel = NULL, leg_pos="right", type = 1,
-                                  text_size = 8, angle_x = 45, ...){
+                                  fillLabel = NULL, leg_pos="right", shape_type = 19,
+                                  angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -256,7 +259,7 @@ gg_multi_line_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   graph <- ggplot(data, aes(x = b, y = c, group = a))  + geom_line(aes(color = a))
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
-    scale_x_date() + theme(axis.text.x = element_text(size = text_size, angle = angle_x, hjust = 1))
+    scale_x_date() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
 
   graph
 }
@@ -273,8 +276,8 @@ gg_multi_line_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                       yLabel = NULL, leg_pos = "right", angle_x = 45,
-                                       text_size = 10, hline = NULL, ...){
+                                       yLabel = NULL, leg_pos = "right", angle_x = 0,
+                                       hline = NULL, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -293,7 +296,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
   graph <- graph +
            theme_ds() +
            scale_fill_manual(values = getPalette()) +
-           theme(axis.text.x = element_text(size = text_size, angle = angle_x, hjust = 1)) +
+           theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
            scale_x_date()
 
   if(!is.null(hline)){

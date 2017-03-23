@@ -507,10 +507,11 @@ gg_line_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
-                                  caption = "", yLabel = 'Count', leg_pos = "right", ...){
+                                  caption = "", yLabel = 'Count', leg_pos = "right",
+                                  shape_type = 19, ...){
 
   graph <- gg_line_hor_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
-  graph <- graph + geom_point() + labs(subtitle = subtitle, caption = caption)
+  graph <- graph + geom_point(shape_type) + labs(subtitle = subtitle, caption = caption)
 
   graph
 }
@@ -527,10 +528,11 @@ gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
-                                  caption = "", yLabel = 'Count', leg_pos = "right", ...){
+                                  caption = "", yLabel = 'Count', leg_pos = "right",
+                                  shape_type = 19, ...){
 
   graph <- gg_line_ver_Ca.(data, titleLabel, xLabel, yLabel, leg_pos)
-  graph <- graph + geom_point() + labs(subtitle = subtitle, caption = caption)
+  graph <- graph + geom_point(shape = shape_type) + labs(subtitle = subtitle, caption = caption)
 
   graph
 }
@@ -727,7 +729,8 @@ gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "", subtitle = "", 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, ...){
+gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                           shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -740,7 +743,7 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
     dplyr::arrange(desc(count))
 
   graph <- ggplot(data_graph, aes(x = a, y = 0, size = count, color = ""))
-  graph <- graph + geom_point(show.legend = FALSE)
+  graph <- graph + geom_point(show.legend = FALSE, shape = shape_type)
   graph <- graph + labs(title = titleLabel, x = xlab, y = "", subtitle = subtitle, caption = caption) +
     scale_color_manual(values = getPalette())
 
@@ -764,7 +767,7 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, fillLabel = NULL, ...){
+gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, fillLabel = NULL, shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -778,7 +781,7 @@ gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", captio
     dplyr::arrange(desc(count))
 
   graph <- ggplot(data_graph, aes(x = a, y = 0, size = count))
-  graph <- graph + geom_point(aes(color = a), show.legend = FALSE)
+  graph <- graph + geom_point(aes(color = a), show.legend = FALSE, shape = shape_type)
   graph <- graph + labs(title = titleLabel, x = xlab, y = "", fill = flab, subtitle = subtitle, caption = caption)
 
   graph <- graph + scale_color_manual(values = getPalette())
@@ -929,7 +932,7 @@ gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", f
   if(text == TRUE){
 
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a"),
-                       group.label.colour = color_text, group.label.size = 30, group.label.min.size = 10)
+                       group.label.colour = color_text, group.label.size = 20, group.label.min.size = 10)
 
   }else{
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a"), group.labels = FALSE)

@@ -3,14 +3,14 @@
 \name{gg_scatter_CaNuNu.}
 \alias{gg_scatter_CaNuNu.}
 \title{Scatter
-pointlines}
+Point}
 \usage{
-gg_scatter_CaNuNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, cLabel = NULL, angle = 45,
-  aggregation = "mean", pointLabels = TRUE, ...)
+gg_scatter_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", shape_type = 19,
+  angle_x = 0, ...)
 }
 \arguments{
-\item{x}{A number.}
+\item{x}{A category.}
 
 \item{y}{A number.}
 }
@@ -19,7 +19,7 @@ The sum of \code{x} and \code{y}.
 }
 \description{
 Scatter
-pointlines
+Point
 }
 \section{ftypes}{
  Ca-Nu-Nu

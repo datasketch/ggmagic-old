@@ -5,8 +5,8 @@
 \title{Steam
 Steam}
 \usage{
-gg_steam_CaDaNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
+gg_steam_CaDaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

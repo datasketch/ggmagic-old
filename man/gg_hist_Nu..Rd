@@ -5,8 +5,8 @@
 \title{Histogram
 Histogram}
 \usage{
-gg_hist_Nu.(data, title = "", subtitle = "", caption = "", xLabel = "",
-  yLabel = NULL, size = 1, ...)
+gg_hist_Nu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = "", yLabel = NULL, ...)
 }
 \arguments{
 \item{x}{A number.}

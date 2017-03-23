@@ -1,5 +1,3 @@
-
-
 #' Radar
 #' point
 #' @name gg_radar_CaNuP.
@@ -24,12 +22,17 @@ gg_radar_CaNuP. <- function(data, titleLabel = "", subtitle = "", caption = "",
   data <- data %>% group_by(group) %>%
     dplyr::summarise_each(funs(agg(aggregation,.)))
 
-  if(rescale){
-    data <- data %>%
-      mutate_each(funs(rescale), -1)
-  }
+  # if(rescale){
+  #   data <- data %>%
+  #     mutate_each(funs(rescale), -1)
+  # }
+
+  data <- data %>%
+        mutate_each(funs(rescale), -1)
+
   graph <- ggradar(data) +
-    scale_color_manual(values = getPalette()) + theme_ds_clean() +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption)
+    scale_color_manual(values = getPalette()) + theme_ds() + theme_ds_clean() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption) +
+    theme(legend.position=leg_pos)
   graph
 }

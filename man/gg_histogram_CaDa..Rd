@@ -5,8 +5,8 @@
 \title{Histogram
 histogram}
 \usage{
-gg_histogram_CaDa.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, clab = NULL, ...)
+gg_histogram_CaDa.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

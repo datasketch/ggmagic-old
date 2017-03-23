@@ -54,7 +54,6 @@ gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
       graph
     }
   }
-
   graph
 }
 
@@ -163,7 +162,8 @@ gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' add(10, 1)
 gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                yLabel = NULL, aggregation = "sum", angle_x = 0,
-                               text = TRUE, color_text = "black", type = "count", ...){
+                               text = TRUE, color_text = "black", type = "count",
+                               shape = shape_type, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -178,7 +178,7 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "
                   percent = 100 * round(count / sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = b, size = count))
-  graph <- graph + geom_point(aes(colour = ""))
+  graph <- graph + geom_point(aes(colour = ""), shape = shape_type)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph  + theme(legend.position="none") +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
@@ -212,7 +212,8 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(10, 1)
 gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                           yLabel = NULL, aggregation = "sum", angle_x = 0,
-                                          text = TRUE, color_text = "black", type = "count", ...){
+                                          text = TRUE, color_text = "black", type = "count",
+                                          shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -227,7 +228,7 @@ gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", 
                   percent = 100 * round(count / sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = b, size = count))
-  graph <- graph + geom_point(aes(color = a)) +
+  graph <- graph + geom_point(aes(color = a), shape = shape_type) +
     scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
@@ -260,7 +261,8 @@ gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", 
 #' add(10, 1)
 gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                          yLabel = NULL,  aggregation = "sum", angle_x = 0,
-                                         text = TRUE, color_text = "black", type = "count", ...){
+                                         text = TRUE, color_text = "black", type = "count",
+                                         shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -275,7 +277,7 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
                   percent = 100 * round(count / sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = b, size = count)) +
-    geom_point(aes(color = b)) +
+    geom_point(aes(color = b), shape = shape_type) +
     scale_color_manual(values = getPalette())
   graph <- graph +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
@@ -310,7 +312,8 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Types",
-                                      yLabel = "Frequency", aggregation = "sum", angle_x = 0,...){
+                                      yLabel = "Frequency", aggregation = "sum", angle_x = 0,
+                                      shape_type = 19, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -324,7 +327,7 @@ gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 
   graph <- ggplot(data = data_graph, aes(x = a, y = sum, group=b)) +
     geom_line() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    geom_point() + facet_wrap(~b)
+    geom_point(shape = shape_type) + facet_wrap(~b)
   graph <- graph +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds()
@@ -506,8 +509,8 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   if(text == TRUE){
 
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a",
-                                  label = "b"), group.labels = FALSE, group.label.colour = color_text, group.label.size = 30,
-                       group.label.min.size = 10, label.colour = color_text, label.size = 20, label.min.size = 5)  #guides(fill = FALSE) +
+                                  label = "b"), group.labels = FALSE, group.label.colour = color_text, group.label.size = 20,
+                       group.label.min.size = 15, label.colour = color_text, label.size = 10, label.min.size = 5)  #guides(fill = FALSE) +
   }else{
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a",
                                   label = "b"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
@@ -549,8 +552,8 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   if(text == TRUE){
 
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a",
-                                  label = "a"), group.labels = TRUE, group.label.colour = color_text, group.label.size = 30,
-                       group.label.min.size = 10, label.size = 0)  #guides(fill = FALSE) +
+                                  label = "a"), group.labels = FALSE, group.label.colour = color_text, group.label.size = 20,
+                       group.label.min.size = 15, label.colour = color_text, label.size = 10, label.min.size = 5)  #guides(fill = FALSE) +
   }else{
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a",
                                   label = "a"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
@@ -593,8 +596,8 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
   if(text == TRUE){
 
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'count', group = "a",
-                                  label = "b"), group.labels = FALSE, group.label.colour = color_text, group.label.size = 30,
-                       group.label.min.size = 10, label.colour = color_text, label.size = 20, label.min.size = 5)  #guides(fill = FALSE) +
+                                  label = "b"), group.labels = TRUE, group.label.colour = color_text, group.label.size = 20,
+                       group.label.min.size = 15, label.colour = color_text, label.size = 10, label.min.size = 5)  #guides(fill = FALSE) +
   }else{
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'count', group = "a",
                                   label = "b"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +

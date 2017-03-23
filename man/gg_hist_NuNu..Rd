@@ -5,7 +5,7 @@
 \title{Vertical histogram
 Histogram 2D}
 \usage{
-gg_hist_NuNu.(data, title = "", subtitle = "", caption = "",
+gg_hist_NuNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, reverse = FALSE, ...)
 }
 \arguments{

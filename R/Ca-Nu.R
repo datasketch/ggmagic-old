@@ -305,7 +305,8 @@ gg_bar_coloured_parameter_hor_CaNu. <- function(data, titleLabel = "", subtitle 
 #' add(10, 1)
 gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "",
                              xLabel = NULL, text = TRUE, type = 'count',
-                             color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0,...){
+                             color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0,
+                             shape_type = 19,...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -319,7 +320,7 @@ gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "",
                   percent = 100 * round(count / sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = 0, size = count, color = ""))
-  graph <- graph + geom_point(show.legend = FALSE)
+  graph <- graph + geom_point(show.legend = FALSE, shape = shape_type)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = "") +
     scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
@@ -357,7 +358,8 @@ gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(10, 1)
 gg_bubble_coloured_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                       text = TRUE, type = 'count',
-                                      color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0,...){
+                                      color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0,
+                                      shape_type = 19,...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -370,7 +372,7 @@ gg_bubble_coloured_CaNu.  <- function(data, titleLabel = "", subtitle = "", capt
                   percent = 100 * round(count / sum(count), 4))
 
   graph <- ggplot(data = data_graph, aes(x = a, y = 0, size = count))
-  graph <- graph + geom_point(aes(color = a))
+  graph <- graph + geom_point(aes(color = a), shape = shape_type)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = "")
 
   graph <- graph + scale_color_manual(values = getPalette()) +

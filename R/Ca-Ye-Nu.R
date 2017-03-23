@@ -10,10 +10,10 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", xLabel = NULL,
-                                yLabel = NULL, leg_pos = "right", angle = 0, nbreaks = NULL,
-                                symbol = NULL,
-                                aggregation = "mean", ...){
+gg_line_hor_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                yLabel = NULL, leg_pos = "right", angle_x = 0, nbreaks = NULL,
+                                shape_type = 19,
+                                aggregation = "sum", ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xLabel <- xLabel %||% nms[2]
@@ -33,21 +33,20 @@ gg_line_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", x
 
   graph <- ggplot(data, aes(x = b ,y=c,group=a,colour=a)) +
     geom_line(stat = "identity")
-  if(!is.null(symbol))
-    graph <- graph + geom_point(shape = symbol)
+  graph <- graph + geom_point(shape = shape_type)
   graph <- graph + theme_ds() +
     scale_shape(solid = TRUE) +
     scale_y_continuous(labels = comma) +
     scale_x_discrete(breaks = customBreaks) +
     scale_color_manual(values = getPalette())  +
     theme(legend.position = leg_pos) +
-    theme(axis.text.x = element_text(angle = angle, hjust = 1)) +
-    labs(title = title, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
   graph
 }
 
 
-#' Point
+#' Scatter
 #' ciculos
 #' @name gg_circle_CaYeNu.
 #' @param x A number.
@@ -58,9 +57,9 @@ gg_line_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", x
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_circle_CaYeNu. <- function(data, title = "", subtitle = "", caption = "",
+gg_circle_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                               xLabel = NULL, yLabel = NULL,
-                              leg_pos = "right", ...){
+                              leg_pos = "right", shape_type = 19, angle_x = 0,  ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -70,10 +69,11 @@ gg_circle_CaYeNu. <- function(data, title = "", subtitle = "", caption = "",
 
 
   graph <- ggplot(data, aes(x = b, y = a)) +
-    geom_point(aes(size = c, colour = ""), show.legend = FALSE) +
+    geom_point(aes(size = c, colour = ""), show.legend = FALSE, shape = shape_type) +
     theme_ds() + scale_color_manual(values = getPalette()) +
     theme(legend.position = leg_pos) +
-    labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -92,7 +92,7 @@ gg_circle_CaYeNu. <- function(data, title = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "", xLabel = NULL,
-                              yLabel = NULL, leg_pos="right", ...){
+                              yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -111,7 +111,8 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     scale_fill_manual(values = getPalette()) +
     theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)  +
-    theme(legend.position = leg_pos)
+    theme(legend.position = leg_pos) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }

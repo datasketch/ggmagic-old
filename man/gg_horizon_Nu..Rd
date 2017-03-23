@@ -5,7 +5,7 @@
 \title{Horizon
 Horizon}
 \usage{
-gg_horizon_Nu.(data, title = "", subtitle = "", caption = "",
+gg_horizon_Nu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, leg_pos = "right", reverse = FALSE, ...)
 }
 \arguments{

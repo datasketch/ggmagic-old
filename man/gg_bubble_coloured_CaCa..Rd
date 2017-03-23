@@ -2,11 +2,14 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_bubble_coloured_CaCa.}
 \alias{gg_bubble_coloured_CaCa.}
+\alias{gg_bubble_coloured_x_CaCa.}
 \title{Bubble coloured by first variable
 Coloured Bubble}
 \usage{
-gg_bubble_coloured_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, ...)
+gg_bubble_coloured_x_CaCa.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, text = TRUE,
+  color_text = "black", type = "count", angle_x = 0, shape_type = 19,
+  ...)
 }
 \arguments{
 \item{x}{A number.}

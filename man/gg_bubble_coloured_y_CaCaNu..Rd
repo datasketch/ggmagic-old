@@ -7,7 +7,8 @@ Coloured Bubble second Ca}
 \usage{
 gg_bubble_coloured_y_CaCaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, aggregation = "sum",
-  angle_x = 0, text = TRUE, color_text = "black", type = "count", ...)
+  angle_x = 0, text = TRUE, color_text = "black", type = "count",
+  shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

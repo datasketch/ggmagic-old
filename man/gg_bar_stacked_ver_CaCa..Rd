@@ -7,7 +7,7 @@ Stacked vertical Bar}
 \usage{
 gg_bar_stacked_ver_CaCa.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
-  l_ncol = 1, ...)
+  text = TRUE, type = "count", color_text = "black", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

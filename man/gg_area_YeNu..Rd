@@ -5,8 +5,8 @@
 \title{Vertical area
 Area}
 \usage{
-gg_area_YeNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, ...)
+gg_area_YeNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

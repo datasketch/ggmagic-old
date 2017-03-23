@@ -5,7 +5,7 @@
 \title{Horizontal histogram
 Histogram 2d flipped}
 \usage{
-gg_hist_flip_NuNu.(data, title = "", subtitle = "", caption = "",
+gg_hist_flip_NuNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, reverse = FALSE, ...)
 }
 \arguments{

@@ -6,7 +6,8 @@
 Bubble}
 \usage{
 gg_bubble_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, ...)
+  xLabel = NULL, yLabel = NULL, text = TRUE, color_text = "black",
+  type = "count", angle_x = 0, shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

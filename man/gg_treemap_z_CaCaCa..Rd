@@ -6,7 +6,8 @@
 Treemap fill third Ca}
 \usage{
 gg_treemap_z_CaCaCa.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, ...)
+  fillLabel = NULL, text = "TRUE", color_text = "black",
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

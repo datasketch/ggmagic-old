@@ -5,7 +5,7 @@
 \title{Horizontal violin
 Violin}
 \usage{
-gg_violin_Nu.(data, title = "", subtitle = "", caption = "",
+gg_violin_Nu.(data, titleLabel = "", subtitle = "", caption = "",
   yLabel = NULL, xLabel = NULL, ...)
 }
 \arguments{

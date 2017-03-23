@@ -2,16 +2,15 @@
 % Please edit documentation in R/Ca-Nu-Nu.R
 \name{gg_scatter_trend_CaNuNu.}
 \alias{gg_scatter_trend_CaNuNu.}
-\title{Scatter + trend
-pointlines}
+\title{Scatter + Trend
+Point}
 \usage{
-gg_scatter_trend_CaNuNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, cLabel = NULL, angle = 45,
-  aggregation = "mean", pointLabels = FALSE, vjust = 0, hjust = 0,
-  se = FALSE, ...)
+gg_scatter_trend_CaNuNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
+  shape_type = 19, angle_x = 0, ...)
 }
 \arguments{
-\item{x}{A number.}
+\item{x}{A category.}
 
 \item{y}{A number.}
 }
@@ -19,8 +18,8 @@ gg_scatter_trend_CaNuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Scatter + trend
-pointlines
+Scatter + Trend
+Point
 }
 \section{ftypes}{
  Ca-Nu-Nu

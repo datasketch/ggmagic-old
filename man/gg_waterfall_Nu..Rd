@@ -5,7 +5,7 @@
 \title{Waterfall
 Waterfall}
 \usage{
-gg_waterfall_Nu.(data, title = "", subtitle = "", caption = "",
+gg_waterfall_Nu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, ...)
 }
 \arguments{

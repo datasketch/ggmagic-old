@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Ye-Nu.R
 \name{gg_circle_CaYeNu.}
 \alias{gg_circle_CaYeNu.}
-\title{Point
+\title{Scatter
 ciculos}
 \usage{
-gg_circle_CaYeNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
+gg_circle_CaYeNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", shape_type = 19,
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_circle_CaYeNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Point
+Scatter
 ciculos
 }
 \section{ftypes}{

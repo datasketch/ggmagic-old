@@ -5,8 +5,8 @@
 \title{Horizontal line + point
 Line with point plot}
 \usage{
-gg_line_point_flip_Nu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, ...)
+gg_line_point_flip_Nu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

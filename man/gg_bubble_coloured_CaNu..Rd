@@ -8,7 +8,7 @@ Coloured Bubble}
 gg_bubble_coloured_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, text = TRUE, type = "count",
   color_text = "black", leg_pos = "right", aggregation = "sum",
-  angle_x = 0, ...)
+  angle_x = 0, shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

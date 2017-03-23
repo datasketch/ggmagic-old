@@ -5,8 +5,8 @@
 \title{Histogram + density
 Histograms with density}
 \usage{
-gg_hist_dens_Nu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, alfa = 0.5, size = 1, ...)
+gg_hist_dens_Nu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, alfa = 0.5, ...)
 }
 \arguments{
 \item{x}{A number.}

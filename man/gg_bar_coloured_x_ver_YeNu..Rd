@@ -8,7 +8,7 @@ vertical coloured bar}
 gg_bar_coloured_x_ver_YeNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, text = TRUE, type = "percent",
   text_size = 3, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
-  ...)
+  aggregation = "sum", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A category.}

@@ -5,7 +5,7 @@
 \title{Waterfall
 Waterfall}
 \usage{
-gg_waterfall_DaNu.(data, title = "", subtitle = "", caption = "",
+gg_waterfall_DaNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{

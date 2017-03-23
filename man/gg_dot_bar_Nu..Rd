@@ -5,7 +5,7 @@
 \title{Vertical dot bar
 Dot bar}
 \usage{
-gg_dot_bar_Nu.(data, title = "", subtitle = "", caption = "",
+gg_dot_bar_Nu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, ...)
 }
 \arguments{

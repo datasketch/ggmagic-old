@@ -7,7 +7,7 @@ horizontal linegraph}
 \usage{
 gg_line_hor_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = "Types", yLabel = "Frequency",
-  aggregation = "sum", angle_x = 0, ...)
+  aggregation = "sum", angle_x = 0, shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A category.}

@@ -6,7 +6,7 @@
 Horizontal Line}
 \usage{
 gg_line_hor_facet_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", ...)
+  caption = "", xLabel = NULL, yLabel = "Count", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

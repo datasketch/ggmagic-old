@@ -7,7 +7,7 @@ Facet Horizontal Dot Bar}
 \usage{
 gg_dot_bar_hor_facet_CaCa.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "right", ...)
+  leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

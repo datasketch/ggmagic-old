@@ -7,7 +7,7 @@ Stacked Horizontal Area 100}
 \usage{
 gg_area_stacked_100_hor_CaDaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "top", ...)
+  leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
