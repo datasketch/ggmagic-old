@@ -19,6 +19,8 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "", subtitle = "", caption = "",
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b))
   data_graph <- data %>%
                 dplyr::group_by(a, b) %>%
                 dplyr::summarise(count = n()) %>%
@@ -69,6 +71,9 @@ gg_bubble_coloured_x_CaCa.  <- function(data, titleLabel = "", subtitle = "", ca
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b))
+
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(count = n()) %>%
@@ -118,6 +123,9 @@ gg_bubble_coloured_y_CaCa.  <- function(data, titleLabel = "", subtitle = "", ca
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -230,12 +238,16 @@ gg_pie_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data_graph <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a), b = ifelse(is.na(b), "NA", b)) %>%
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b))
+
+  data_graph <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c = n()) %>%
-    arrange(desc(a)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(c)) %>%
     dplyr::mutate(pos = cumsum(c) - c/2,
-                  percent = 100 * round(c / sum(c), 4))
+                  percent = 100 * round(c / total, 4))
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), weight = c,  fill = a)) +
              geom_bar(width = 1) + coord_polar(theta = "y")
@@ -279,12 +291,16 @@ gg_donut_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption =
   f <- fringe(data)
   data <- f$d
 
-  data_graph <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a), b = ifelse(is.na(b), "NA", b)) %>%
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b))
+
+  data_graph <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c = n()) %>%
-    arrange(desc(a)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(c)) %>%
     dplyr::mutate(pos = cumsum(c) - c/2,
-                  percent = 100 * round(c / sum(c), 4))
+                  percent = 100 * round(c / total, 4))
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), weight = c, fill = a)) +
              geom_bar(width = width) +
@@ -328,6 +344,9 @@ gg_bullseye_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
   f <- fringe(data)
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b))
+
   graph <- ggplot(data=data, aes(x = factor(1), fill = a)) +
              geom_bar(width = 1) + coord_polar(theta = "x")
   graph <- graph +
@@ -362,10 +381,15 @@ gg_bar_coloured_x_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b))
+
   data_graph <- data %>% dplyr::group_by(a, b) %>%
     dplyr::summarise(c = n()) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(c)) %>%
     dplyr::mutate(pos = c*9/10,
-                  percent = 100 * round(c / sum(c), 4))
+                  percent = 100 * round(c / total, 4))
 
   graph <- ggplot(data = data_graph, aes(x = a, y = c, fill = a)) + geom_bar(stat = "identity")
   graph <- graph +
@@ -433,10 +457,15 @@ gg_bar_coloured_y_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b))
+
   data_graph <- data %>% dplyr::group_by(a, b) %>%
     dplyr::summarise(c = n()) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(c)) %>%
     dplyr::mutate(pos = c*9/10,
-                  percent = 100 * round(c / sum(c), 4))
+                  percent = 100 * round(c / total, 4))
 
   graph <- ggplot(data = data_graph, aes(x = a, y = c, fill = b)) + geom_bar(stat = "identity")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +

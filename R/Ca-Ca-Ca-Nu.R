@@ -153,8 +153,6 @@ gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data <- data %>% filter(d >= 0)
-
   data_graph <- data %>% dplyr::group_by(a, b, c) %>%
     dplyr::summarise(count = agg(aggregation, d)) %>%
     dplyr::group_by(b, c) %>%
@@ -220,8 +218,6 @@ gg_bar_stacked_100_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data <- data %>% filter(d >= 0)
-
   data_graph <- data %>% dplyr::group_by(a, b, c) %>%
     dplyr::summarise(count = agg(aggregation, d)) %>%
     dplyr::group_by(b, c) %>%
@@ -285,8 +281,6 @@ gg_bar_stacked_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", c
   nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
-
-  data <- data %>% filter(d >= 0)
 
   data_graph <- data %>% dplyr::group_by(a, b, c) %>%
     dplyr::summarise(count = agg(aggregation, d)) %>%
