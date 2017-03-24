@@ -6,7 +6,7 @@
 Vertical Line}
 \usage{
 gg_line_ver_Ca.(data, titleLabel = "", xLabel = NULL, subtitle = "",
-  caption = "", yLabel = "Count", leg_pos = "right", ...)
+  caption = "", yLabel = "Count", leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

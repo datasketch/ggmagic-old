@@ -8,7 +8,7 @@ Horizontal coloured by parameter Bars}
 gg_bar_coloured_parameter_hor_Ca.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = "Count", parameter = NULL,
   text = TRUE, type = "count", color_text = "black", leg_pos = "right",
-  ...)
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -7,7 +7,7 @@ Vertical Line Point}
 \usage{
 gg_line_point_ver_Ca.(data, titleLabel = "", xLabel = NULL, subtitle = "",
   caption = "", yLabel = "Count", leg_pos = "right", shape_type = 19,
-  ...)
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
