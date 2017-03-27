@@ -17,6 +17,9 @@ gg_pointline_hor_CaDa. <- function(data, titleLabel = "", subtitle = "", caption
   ylab <- yLabel %||% nms[1]
   d <- f$d
 
+  d <- d %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(d, aes(x = b, y = a, colour = a)) +
        geom_point(shape = shape_type) +
        theme_ds() + scale_color_manual(values = getPalette()) +
@@ -63,18 +66,23 @@ gg_pointline_ver_CaDa. <- function(data, titleLabel = "", subtitle = "", caption
 #' add(1, 1)
 #' add(10, 1)
 gg_histogram_CaDa. <- function(data, titleLabel = "", subtitle = "", caption = "",xLabel = NULL,
-                               yLabel = NULL, angle_x = 0, ...){
+                               yLabel = NULL, angle_x = 0, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% "count"
   d <- f$d
+
+  d <- d %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   g <- ggplot(d, aes(x=as.Date(b), fill= a)) +
     stat_bin(binwidth=1, position="identity") +
     #scale_x_date(breaks=date_breaks(width="1 month")) +
     scale_fill_manual(values = getPalette()) +
+    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    theme(legend.position=leg_pos)
   g
 }
 

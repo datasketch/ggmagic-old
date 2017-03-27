@@ -18,6 +18,10 @@ gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c), !is.na(d))
+
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(count = agg(aggregation, c)) %>%
@@ -73,6 +77,10 @@ gg_treemap_density_y_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
   nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c), !is.na(d))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%

@@ -18,10 +18,16 @@ gg_horizon_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
   graph <- ggplot_horizon(data, 'a', 'b')
-  graph <- graph + theme_ds() +
+  graph <- graph +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme_ds() +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -52,8 +58,13 @@ gg_waterfall_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
   ylab <- yLabel %||% nms[2]
   xlab <- xLabel %||% nms[1]
   data <- f$d
-  graph <- ggplot_waterfall(data,'a','b') + theme_ds() + theme(legend.position="none") +
+
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
+  graph <- ggplot_waterfall(data,'a','b') + theme(legend.position="none") +
            scale_color_manual(breaks = c("+",  "-", ""), values = getPalette()) +
+    theme_ds() +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
@@ -80,10 +91,15 @@ gg_line_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
   graph <- ggplot(data, aes(x = a, y = b, group=1)) +
-           geom_line(stat = "identity", aes(color = ""), show.legend = FALSE) +  theme_ds() +
+           geom_line(stat = "identity", aes(color = ""), show.legend = FALSE) +
     scale_color_manual(values =  getPalette()) +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme_ds() +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   graph
 }
@@ -107,10 +123,15 @@ gg_line_points_DaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
   graph <- ggplot(data, aes(x = a, y = b, group=1)) +
-    geom_line(stat = "identity", aes(color = ""), show.legend = FALSE) +  theme_ds() +
+    geom_line(stat = "identity", aes(color = ""), show.legend = FALSE) +
     geom_point(aes(color = ""), shape = shape_type, show.legend = FALSE) +
     scale_color_manual(values =  getPalette()) +
+    theme_ds() +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
@@ -142,9 +163,13 @@ gg_point_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
   graph <- ggplot(data, aes(x = a, y = b)) +
-           geom_point(aes(color = ""), show.legend = FALSE, shape = shape_type) + theme_ds() +
+           geom_point(aes(color = ""), show.legend = FALSE, shape = shape_type) +
            scale_y_continuous(labels = comma) + scale_color_manual(values = getPalette()) +
+    theme_ds() +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
@@ -172,9 +197,13 @@ gg_box_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
   graph <- ggplot(data) + geom_boxplot(aes(y = b,x = reorder(format(a,'%B'), a), fill=format(a,'%Y'))) +
-           theme_ds() + scale_fill_manual(values = getPalette()) +
+           scale_fill_manual(values = getPalette()) +
            scale_y_continuous(labels = comma) +
+    theme_ds() +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
@@ -201,10 +230,14 @@ gg_violin_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
   graph <- ggplot(data) + geom_violin(aes(y = b,x = reorder(format(a,'%B'), a), fill=format(a,'%Y'))) +
-           theme_ds() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+           theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
            scale_fill_manual(values = getPalette()) +
            scale_y_continuous(labels = comma) +
+    theme_ds() +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph
 }
@@ -229,10 +262,14 @@ gg_area_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
   graph <- ggplot(data, aes(x = a, y = b, group=1)) +
-           geom_area(aes(fill = ""), show.legend = FALSE) + theme_ds() +
+           geom_area(aes(fill = ""), show.legend = FALSE) +
     scale_fill_manual(values = getPalette()) +
            scale_y_continuous(labels = comma) +
+    theme_ds() +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
@@ -259,10 +296,13 @@ gg_kagi_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xL
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
  graph <- ggplot(data, aes(x = a, y = b)) +
           geom_line(aes(color=ifelse(c(diff(b), NA) > 0, "Gain", "Loss"), group = NA)) +
           scale_color_manual(guide="none",values = getPalette()) +
-          theme_ds() +
+   theme_ds() +
           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
@@ -295,6 +335,9 @@ gg_smooth_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
  graph <- ggplot(data, aes(x = a, y = b)) + geom_point(aes(color = ""), show.legend = FALSE, shape = shape_type) +
           scale_x_date() + geom_smooth(aes(color = "*"), show.legend = FALSE) + theme_ds() +
           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
@@ -323,6 +366,10 @@ gg_points_facet_DaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
   data$Year <- format(data$a, "%Y")
   data$Month <- format(data$a, "%b")
   data$Day <- format(data$a, "%d")
@@ -332,8 +379,9 @@ gg_points_facet_DaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   #data$CommonDate <- as.Date(paste0("2000-",format(data$a, "%j")), "%Y-%j")
 
   graph <- ggplot(data = data, mapping = aes(x = a, y = b, colour = Year)) +
-           geom_point(shape = shape_type, show.legend = FALSE) + scale_color_manual(values = getPalette()) + theme_ds() +
+           geom_point(shape = shape_type, show.legend = FALSE) + scale_color_manual(values = getPalette()) +
            facet_wrap(~Year, scales = "free") +
+    theme_ds() +
            #scale_x_date(labels = function(x) format(x, "%d-%b")) +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
@@ -361,6 +409,10 @@ gg_line_points_facet_DaNu. <- function(data, titleLabel = "", subtitle = "", cap
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
   data$Year <- format(data$a, "%Y")
   data$Month <- format(data$a, "%b")
   data$Day <- format(data$a, "%d")
@@ -372,6 +424,7 @@ gg_line_points_facet_DaNu. <- function(data, titleLabel = "", subtitle = "", cap
   graph <- ggplot(data = data, mapping = aes(x = a, y = b, shape = Year, colour = Year)) +
     geom_line(show.legend = FALSE) + geom_point(shape = shape_type, show.legend = FALSE) + scale_color_manual(values = getPalette()) + theme_ds() +
     facet_wrap(~Year, scales = "free") +
+    theme_ds() +
     #scale_x_date(labels = function(x) format(x, "%d-%b")) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
@@ -398,6 +451,9 @@ gg_bar_ver_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
 
   graph <- ggplot(data = data, aes(x = a, y = b)) +
            geom_bar(stat="identity", aes(fill = ""), show.legend = FALSE)  +
@@ -451,9 +507,13 @@ gg_bubbles_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
   graph <- ggplot(data, aes(x = a, y = b, size = b) )+
-           geom_point(shape = shape_type, aes(fill = ""), show.legend = FALSE) +
-           theme_ds() + scale_fill_manual(values = getPalette()) +
+           geom_point(shape = shape_type, aes(color = ""), show.legend = FALSE) +
+    scale_color_manual(values = getPalette()) +
+           theme_ds() +
            theme(legend.position="none") +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
@@ -461,6 +521,49 @@ gg_bubbles_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
     graph
 }
 
+#' Bubbles density by first numeric variable
+#' bubbles
+#' @name gg_bubbles_density_x_DaNu.
+#' @param x A data.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Da-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bubbles_density_x_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                             xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19,
+                             leg_pos = "right", reverse = FALSE, ...){
+
+  f <- fringe(data)
+  nms <- getClabels(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
+
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
+  graph <- ggplot(data, aes(x = a, y = b, size = b) )+
+    geom_point(shape = shape_type, aes(color = b))
+
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
+
+  graph <- graph +
+    theme_ds() + guides(size = FALSE) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
+
+  graph
+}
 
 #' Lollipop
 #' lollipop
@@ -483,6 +586,9 @@ gg_lollipop_DaNu. <- function(data, titleLabel = "", subtitle = "",
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
   graph <-  ggplot(data, aes(x = a, y = b)) +
             geom_segment(aes(xend=a, yend=0)) + geom_point(aes(color = ""), show.legend = FALSE, shape = shape_type) +
             theme_ds() + scale_color_manual(values = getPalette()) +
@@ -494,7 +600,7 @@ gg_lollipop_DaNu. <- function(data, titleLabel = "", subtitle = "",
 
 #' Stepped area
 #' stepped stacked area.
-#' @name gg_area_stepped_stacked_DaNu.
+#' @name gg_area_stepped_DaNu.
 #' @param x A data.
 #' @param y A number.
 #' @export
@@ -511,6 +617,9 @@ gg_area_stepped_DaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
 
   graph <-  ggplot(data) +
             geom_step(aes(x = a, y = b, color = ""), show.legend = FALSE) +

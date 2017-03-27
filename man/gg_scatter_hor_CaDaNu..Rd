@@ -7,7 +7,7 @@ pointlines}
 \usage{
 gg_scatter_hor_CaDaNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, clab = NULL, angle_x = 0,
-  shape_type = 19, ...)
+  shape_type = 19, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

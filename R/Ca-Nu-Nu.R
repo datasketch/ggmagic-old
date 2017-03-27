@@ -22,6 +22,9 @@ gg_scatter_agg_CaNuNu. <- function(data,titleLabel = "", subtitle = "", caption 
   cLabel <- cLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b), !is.na(c))
+
   data <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(b=agg(aggregation,b),c=agg(aggregation,c))
@@ -31,7 +34,8 @@ gg_scatter_agg_CaNuNu. <- function(data,titleLabel = "", subtitle = "", caption 
   graph <- graph + scale_color_manual(values = getPalette()) +
     theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption,
                       x= xLabel, y = yLabel, colour = cLabel) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
   graph
 }
 
@@ -51,7 +55,7 @@ gg_scatter_agg_trend_CaNuNu. <- function(data,titleLabel = "", subtitle = "", ca
                                      xLabel = NULL,
                                      yLabel=NULL, cLabel = NULL, angle_x = 0,
                                      aggregation = "sum",
-                                     se = FALSE, shape_type = 19,
+                                     se = FALSE, shape_type = 19, leg_pos = "right",
                                      ...){
 
   f <- fringe(data)
@@ -60,6 +64,9 @@ gg_scatter_agg_trend_CaNuNu. <- function(data,titleLabel = "", subtitle = "", ca
   yLabel <- yLabel %||% nms[3]
   cLabel <- cLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b), !is.na(c))
 
   data <- data %>%
     dplyr::group_by(a) %>%
@@ -80,7 +87,8 @@ gg_scatter_agg_trend_CaNuNu. <- function(data,titleLabel = "", subtitle = "", ca
     scale_color_manual(values = getPalette()) + guides(color = FALSE) +
     theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption,
                       x= xLabel, y = yLabel, colour = cLabel) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
   graph
 }
 
@@ -104,6 +112,9 @@ gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   ylab <- yLabel %||% nms[3]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b), !is.na(c))
+
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c = agg(aggregation, c)) %>%
@@ -115,9 +126,10 @@ gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
   graph <- ggplot(data_graph, aes(x = b, y = c, group = a, fill = a)) +
     stat_steamgraph() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    theme(legend.position=leg_pos) + theme_ds() +
+    theme_ds() +
     scale_fill_manual(values = getPalette()) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -142,12 +154,15 @@ gg_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
   ylab <- yLabel %||% nms[3]
   data <- f$d
 
-  data$a <- as.factor(data$a)
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b), !is.na(c))
+
   graph <- ggplot(data) +  geom_line(aes(x = b, y = c, group = a, colour = a))  +
     theme(legend.position = leg_pos) +
     scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(legend.position=leg_pos)
 
   return(graph)
 
@@ -173,13 +188,16 @@ gg_point_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption 
   ylab <- yLabel %||% nms[3]
   data <- f$d
 
-  data$a <- as.factor(data$a)
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b), !is.na(c))
+
   graph <- ggplot(data) +  geom_line(aes(x = b, y = c, group = a, colour = a))  +
     geom_point(aes(x = b, y = c, group = a, colour = a), shape = shape_type) +
     theme(legend.position = leg_pos) +
     scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(legend.position=leg_pos)
 
   return(graph)
 }
@@ -203,13 +221,17 @@ gg_scatter_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
   ylab <- yLabel %||% nms[3]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b), !is.na(c))
+
   graph <- ggplot(data, aes(x = b , y = c, fill = a, color  = a))  +
     geom_point(shape = shape_type) +
     scale_color_manual(values = getPalette()) +
     theme(legend.position=leg_pos) +
     theme_ds() +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(legend.position=leg_pos)
 
   return(graph)
 }
@@ -232,6 +254,9 @@ gg_scatter_trend_CaNuNu. <- function(data, titleLabel = "", subtitle = "", capti
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b), !is.na(c))
 
   graph <- ggplot(data, aes(x = b , y = c, fill = a, color  = a))  +
     geom_point(shape = shape_type)

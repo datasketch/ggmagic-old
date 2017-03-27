@@ -19,6 +19,10 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b),
+                                 c = ifelse(is.na(c), "NA", c))
+
   data_graph <- data %>%
     dplyr::group_by(a, b, c) %>%
     dplyr::summarise(count = n()) %>%
@@ -62,6 +66,10 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
   nms <- getClabels(f)
   flabel <- fillLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b),
+                                 c = ifelse(is.na(c), "NA", c))
 
   data_graph <- data %>%
     dplyr::group_by(a, b, c) %>%
@@ -107,6 +115,10 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
   flabel <- fillLabel %||% nms[3]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b),
+                                 c = ifelse(is.na(c), "NA", c))
+
   data_graph <- data %>%
     dplyr::group_by(a, b, c) %>%
     dplyr::summarise(count = n()) %>%
@@ -143,7 +155,7 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 #' add(1, 1)
 #' add(10, 1)
 gg_point_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                             fillLabel = NULL, angle_x = 0, shape_type = 19, ...){
+                             fillLabel = NULL, angle_x = 0, shape_type = 19, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -152,11 +164,17 @@ gg_point_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
   flabel <- fillLabel %||% nms[3]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b),
+                                 c = ifelse(is.na(c), "NA", c))
+
   graph <- ggplot(data, aes(x = factor(a), y = factor(b), color=factor(c))) +
     geom_point(shape = shape_type) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_minimal() +
-    theme(legend.title=element_blank()) + scale_x_discrete(labels = scales::comma) +
-    theme_ds() + scale_color_manual(values = getPalette()) +   theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds() +
+    scale_x_discrete(labels = scales::comma) +
+    scale_color_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   graph
 }

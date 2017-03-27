@@ -7,7 +7,7 @@ Circular Bar}
 \usage{
 gg_bar_circular_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
   caption = "", leg_pos = "right", aggregation = "sum", width = 0.85,
-  ...)
+  text = TRUE, type = "count", color_text = "black", ...)
 }
 \arguments{
 \item{x}{A number.}

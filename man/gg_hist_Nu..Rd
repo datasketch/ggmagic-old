@@ -6,7 +6,7 @@
 Histogram}
 \usage{
 gg_hist_Nu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = "", yLabel = NULL, ...)
+  xLabel = "", yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

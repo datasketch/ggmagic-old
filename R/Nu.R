@@ -10,18 +10,21 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_horizon_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                   yLabel =  NULL, leg_pos = "right",reverse = FALSE, ...){
+                           yLabel =  NULL, leg_pos = "right", reverse = FALSE, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::filter(!is.na(a))
+
   data_graph <- data %>% mutate(xorder = 1:nrow(.))
 
   graph <- ggplot_horizon(data_graph, 'xorder', 'a')
   graph <- graph + theme_ds() +
-    labs(title = titleLabel, subtitle = subtitle, caption =caption, x = xLabel, y = ylab)
+    labs(title = titleLabel, subtitle = subtitle, caption =caption, x = xLabel, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -46,18 +49,21 @@ gg_horizon_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 #' add(1, 1)
 #' add(10, 1)
 gg_waterfall_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel =  NULL, ...){
+                             yLabel =  NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::filter(!is.na(a))
+
   data_graph <- data %>% mutate(xorder = 1:nrow(.))
   graph <- ggplot_waterfall(data_graph, 'xorder', 'a') +
-           scale_color_manual(breaks = c("+","-", ""), values = getPalette()) +
-           theme_ds() + theme(legend.position="none") +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
+    scale_color_manual(breaks = c("+","-", ""), values = getPalette()) +
+    theme_ds() + theme(legend.position="none") +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
 
 
@@ -77,12 +83,14 @@ gg_waterfall_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "",
-                        yLabel = NULL, ...){
+                        yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::filter(!is.na(a))
 
   graph <- ggplot(data, aes(x=a)) + geom_histogram(aes(fill= ""), show.legend = FALSE)
 
@@ -91,8 +99,9 @@ gg_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLab
     scale_color_manual(values = getPalette()[2]) + scale_fill_manual(values = getPalette())
 
 
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
   graph <- graph + theme_ds()
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   return(graph)
 
@@ -110,21 +119,24 @@ gg_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLab
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_dens_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel = NULL,  alfa = 0.5, ...){
+                             yLabel = NULL,  alfa = 0.5, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::filter(!is.na(a))
+
   graph <- ggplot(data, aes(x=a)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
-            geom_density(alpha=alfa, aes(color = ""), show.legend = FALSE)
+    geom_density(alpha=alfa, aes(color = ""), show.legend = FALSE)
   graph <- graph + geom_vline(aes(xintercept=mean(a), color = ""),
                               linetype = "dotted", show.legend = FALSE) +
     scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette()[2])
 
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
   graph <- graph + theme_ds()
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   return(graph)
 
@@ -142,16 +154,20 @@ gg_hist_dens_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_cum_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                            yLabel = NULL, ...){
+                            yLabel = NULL, angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::filter(!is.na(a))
+
   graph <- ggplot(data, aes(a)) + geom_step(aes(y=..y.., color = ""), stat="ecdf", show.legend = FALSE) +
     scale_color_manual(values = getPalette())
 
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds()
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   return(graph)
 
@@ -170,7 +186,7 @@ gg_dist_cum_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                       yLabel = NULL, shape_type = 19, ...){
+                              yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -178,14 +194,16 @@ gg_line_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = ""
   xlab <- xLabel %||% "Index"
   data <- f$d
 
+  data <- data %>% dplyr::filter(!is.na(a))
 
   data_graph <- data %>%
-                dplyr::mutate(order = 1:nrow(data))
+    dplyr::mutate(order = 1:nrow(data))
 
   graph <- ggplot(data_graph, aes(x=order, y=a)) + geom_line(aes(color = ""), show.legend = FALSE) +
     geom_point(aes(color = ""), shape = shape_type, show.legend = FALSE)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
-  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -203,9 +221,9 @@ gg_line_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                            yLabel = NULL, shape_type = 19, ...){
+                                   yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
-  graph <- gg_line_point_Nu.(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, ...)
+  graph <- gg_line_point_Nu.(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, angle_x = 0, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -223,7 +241,7 @@ gg_line_point_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption
 #' add(1, 1)
 #' add(10, 1)
 gg_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                          yLabel = NULL, shape_type = 19, ...){
+                         yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -231,12 +249,15 @@ gg_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLa
   xlab <- xLabel %||% "Index"
   data <- f$d
 
+  data <- data %>% dplyr::filter(!is.na(a))
+
   data_graph <- data %>%
-                dplyr::mutate(order = 1:nrow(data))
+    dplyr::mutate(order = 1:nrow(data))
 
   graph <- ggplot(data_graph, aes(x=order, y=a)) + geom_point(shape = shape_type, aes(color = ""))
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
-  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -253,9 +274,9 @@ gg_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLa
 #' add(1, 1)
 #' add(10, 1)
 gg_point_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel = NULL, shape_type = 19, ...){
+                              yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
-  graph <- gg_point_Nu.(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, ...)
+  graph <- gg_point_Nu.(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, angle_x = 0, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -274,16 +295,19 @@ gg_point_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 #' add(1, 1)
 #' add(10, 1)
 gg_density_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel = NULL, ...){
+                                yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::filter(!is.na(a))
+
   graph <- ggplot(data, aes(x=a)) + geom_density(aes(fill = ""), show.legend = FALSE)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -300,16 +324,19 @@ gg_density_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = 
 #' add(1, 1)
 #' add(10, 1)
 gg_box_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
-                       xLabel = NULL, ...){
+                       xLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::filter(!is.na(a))
+
   graph <- ggplot(data, aes(x=factor(""), y=a)) + geom_boxplot(aes(fill = ""), show.legend = FALSE)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -327,9 +354,9 @@ gg_box_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabe
 #' add(1, 1)
 #' add(10, 1)
 gg_box_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
-                            xLabel = NULL, ...){
+                            xLabel = NULL, angle_x = 0, ...){
 
-  graph <- gg_box_Nu.(data, titleLabel, subtitle, caption, yLabel, xLabel)
+  graph <- gg_box_Nu.(data, titleLabel, subtitle, caption, yLabel, xLabel, angle_x = 0, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -350,19 +377,22 @@ gg_box_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 #' add(10, 1)
 
 gg_violin_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
-                          xLabel = NULL, ...){
+                          xLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::filter(!is.na(a))
+
   data_graph <- data %>%
-              dplyr::mutate(order = rep(1, nrow(data)))
+    dplyr::mutate(order = rep(1, nrow(data)))
 
   graph <- ggplot(data_graph, aes(factor(""), a)) + geom_violin(aes(fill = ""), show.legend = FALSE)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -379,9 +409,9 @@ gg_violin_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yL
 #' add(1, 1)
 #' add(10, 1)
 gg_violin_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
-                                xLabel = NULL, ...){
+                               xLabel = NULL, angle_x = 0, ...){
 
-  graph <- gg_violin_Nu.(data, titleLabel, subtitle, caption, yLabel, xLabel, ...)
+  graph <- gg_violin_Nu.(data, titleLabel, subtitle, caption, yLabel, xLabel, angle_x = 0, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -399,7 +429,7 @@ gg_violin_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_bar_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                           xLabel = NULL, yLabel = NULL, ...){
+                           xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -407,9 +437,12 @@ gg_dot_bar_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   xlab <- xLabel %||% "Index"
   data <- f$d
 
+  data <- data %>% dplyr::filter(!is.na(a))
+
   graph <- ggplot(data, aes(a)) + geom_dotplot(aes(fill = ""), show.legend = FALSE)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
-  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -426,9 +459,9 @@ gg_dot_bar_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_bar_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                xLabel = NULL, yLabel = NULL, ...){
+                                xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
-  graph <- gg_dot_bar_Nu.(data, titleLabel, subtitle, caption, xLabel, yLabel)
+  graph <- gg_dot_bar_Nu.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph

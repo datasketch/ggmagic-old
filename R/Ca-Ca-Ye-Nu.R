@@ -19,7 +19,9 @@ gg_bar_stacked_100_hor_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data <- data %>% filter(d >= 0)
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c), !is.na(d))
 
   data_graph <- data %>% dplyr::group_by(a, b, c) %>%
     dplyr::summarise(count = agg(aggregation, d)) %>%
@@ -86,7 +88,9 @@ gg_bar_stacked_100_ver_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data <- data %>% filter(d >= 0)
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c), !is.na(d))
 
   data_graph <- data %>% dplyr::group_by(a, b, c) %>%
     dplyr::summarise(count = agg(aggregation, d)) %>%
@@ -152,7 +156,9 @@ gg_bar_stacked_ver_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "", c
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data <- data %>% filter(d >= 0)
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c), !is.na(d))
 
   data_graph <- data %>% dplyr::group_by(a, b, c) %>%
     dplyr::summarise(count = agg(aggregation, d)) %>%

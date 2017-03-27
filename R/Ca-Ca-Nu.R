@@ -148,6 +148,10 @@ gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
   f <- fringe(data)
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
   graph <- ggplot(data=data, aes(x = factor(1), fill = a, weight = c)) +
     geom_bar(width = 1) +
     coord_polar(theta = "x")
@@ -156,7 +160,6 @@ gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph <- graph +
     theme_ds() +
     theme_ds_clean() +
-    theme(legend.position=leg_pos) +
     scale_fill_manual(values = getPalette())
   graph <- graph + theme(legend.position=leg_pos) + facet_wrap(~b)
 
@@ -185,6 +188,10 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(count = agg(aggregation, c)) %>%
@@ -197,7 +204,7 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "
   graph <- graph  + theme(legend.position="none") +
     theme_ds() + scale_color_manual(values = getPalette()) +
     guides(size = FALSE, colour = FALSE) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = b, label = round(count,2)),
@@ -234,6 +241,10 @@ gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", 
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -284,6 +295,10 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(count = agg(aggregation, c)) %>%
@@ -333,6 +348,10 @@ gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -520,6 +539,10 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   f <- fringe(data)
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(count = agg(aggregation, c))
@@ -564,6 +587,10 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(count = agg(aggregation, c)) %>%
@@ -606,6 +633,10 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
   nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -709,9 +740,14 @@ gg_multi_line_point_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
   graph <- ggplot(data, aes(x = as.factor(b), y = c, group = a)) + geom_point(aes(color = a), shape = shape_type) + geom_line(aes(color = a))
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
+    theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
@@ -738,9 +774,14 @@ gg_multi_line_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
   graph <- ggplot(data, aes(x = as.factor(b), y = c, group = a))  + geom_line(aes(color = a))
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
+    theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
@@ -768,6 +809,10 @@ gg_sunburst_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
   ylab <- yLabel %||% nms[3]
   flabel <- fillLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   #angulos
 

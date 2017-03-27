@@ -6,7 +6,8 @@
 Horizon}
 \usage{
 gg_horizon_NuNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, reverse = FALSE, yLabel = NULL, leg_pos = "right", ...)
+  xLabel = NULL, reverse = FALSE, yLabel = NULL, leg_pos = "right",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

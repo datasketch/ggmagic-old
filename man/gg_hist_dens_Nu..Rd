@@ -6,7 +6,7 @@
 Histograms with density}
 \usage{
 gg_hist_dens_Nu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, alfa = 0.5, ...)
+  xLabel = NULL, yLabel = NULL, alfa = 0.5, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

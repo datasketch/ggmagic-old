@@ -13,6 +13,9 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
                           subtitle = "", caption = "", leg_pos = "right", ...){
   f <- fringe(data)
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
@@ -45,11 +48,16 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", captio
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data_graph <- data %>%
                 dplyr::group_by(a) %>%
                 dplyr::summarise(count = n()) %>%
                 dplyr::mutate(percent = 100 * round(count/sum(count), 4),
-                              pos = count*9/10)
+                              pos = count*9/10) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data = data_graph, aes(y = count , x = a, fill = factor(a))) + geom_bar(stat = 'identity')
   graph <- graph +
@@ -117,11 +125,16 @@ gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = 
   #p <-  parameter %||% sample(unique(data[,nms[1]]), 1)
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data_graph <- data %>%
                 dplyr::group_by(a) %>%
                 dplyr::summarise(count = n()) %>%
                 dplyr::mutate(percent = 100 * round(count/sum(count), 4),
-                              pos = count*9/10)
+                              pos = count*9/10) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   p <- parameter %||% (data_graph %>% filter(count == max(count)))$a
 
@@ -188,11 +201,16 @@ gg_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data_graph <- data %>%
                 dplyr::group_by(a) %>%
                 dplyr::summarise(count = n()) %>%
                 dplyr::mutate(percent = 100 * round(count/sum(count), 4),
-                              pos = count*9/10)
+                              pos = count*9/10) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data = data_graph , aes(y = count ,x = factor(a), fill = "")) + geom_bar(stat ='identity') +
            labs(title = titleLabel, x = xlab, y = yLabel, subtitle = subtitle, caption = caption)
@@ -253,11 +271,16 @@ gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data_graph <- data %>%
                 dplyr::group_by(a) %>%
                 dplyr::summarise(count = n()) %>%
                 dplyr::mutate(percent = 100 * round(count/sum(count), 4),
-                              pos = count*9/10)
+                              pos = count*9/10) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data_graph, aes(x = reorder(a, count), y = count, fill = "")) +
            geom_bar(stat = "identity")
@@ -320,12 +343,17 @@ gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data_graph <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
+  data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
     dplyr::arrange(desc(a)) %>%
     dplyr::mutate(pos = cumsum(count) - count/2,
-                  percent = 100 * round(count/sum(count), 4))
+                  percent = 100 * round(count/sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), y = count, fill = a)) +
            geom_bar(stat = "identity", width = 1) + coord_polar(theta = "y")
@@ -364,12 +392,17 @@ gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fil
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data_graph <- data %>% mutate(a = ifelse(is.na(a), "NA", a)) %>%
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
+  data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
     dplyr::arrange(desc(a)) %>%
     dplyr::mutate(pos = cumsum(count) - count/2,
-                  percent = 100 * round(count/sum(count), 4))
+                  percent = 100 * round(count/sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), y = count, fill = a)) +
            geom_bar(stat = "identity", width = width) + coord_polar(theta = "y")
@@ -408,6 +441,8 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
   xlab <- xLabel %||% nms[1]
   flabel <- fillLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
 
   data_graph <- data %>%
                 dplyr::group_by(a) %>%
@@ -468,6 +503,8 @@ gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
@@ -522,6 +559,8 @@ gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
@@ -603,6 +642,8 @@ gg_gauge_Ca. <- function(data, titleLabel = '', subtitle = '', caption = '', nco
   f <- fringe(data)
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
@@ -658,6 +699,8 @@ gg_gauge_dial_Ca. <- function(data, ...){
   f <- fringe(data)
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
@@ -693,12 +736,17 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", 
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data_graph <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
+  data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
     dplyr::arrange(desc(a)) %>%
     dplyr::mutate(pos = cumsum(count) - count/2,
-                  percent = 100 * round(count/sum(count), 4))
+                  percent = 100 * round(count/sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data = data_graph, aes(x = factor(1), y = count, fill = a)) +
     geom_bar(stat = "identity", width = width)
@@ -753,17 +801,25 @@ gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "", subtitle = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                           shape_type = 19, angle_x = 0, ...){
+                           shape_type = 19, angle_x = 0, text = TRUE, type = 'count',
+                           color_text = "black",  ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
-    dplyr::arrange(desc(count))
+    dplyr::arrange(desc(count)) %>%
+    dplyr::mutate(pos = count*9/10,
+                  percent = 100 * round(count / sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data_graph, aes(x = a, y = 0, size = count, color = ""))
   graph <- graph + geom_point(show.legend = FALSE, shape = shape_type)
@@ -777,6 +833,17 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
       axis.ticks.y=element_blank(),
       panel.grid.major=element_blank())
 
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data_graph, aes(y = 0, label = round(count,2)),
+                             check_overlap = TRUE, color = color_text, vjust = -1.3))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data_graph, aes(y = 0, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text, vjust = -1.3))
+    }else{
+      graph
+    }
+  }
   graph
 }
 
@@ -792,7 +859,8 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    fillLabel = NULL, shape_type = 19, angle_x = 0, ...){
+                                    fillLabel = NULL, shape_type = 19, angle_x = 0,  text = TRUE, type = 'count',
+                                    color_text = "black",  ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -800,10 +868,17 @@ gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", captio
   flab <- fillLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
-    dplyr::arrange(desc(count))
+    dplyr::arrange(desc(count)) %>%
+    dplyr::mutate(pos = count*9/10,
+                  percent = 100 * round(count / sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data_graph, aes(x = a, y = 0, size = count))
   graph <- graph + geom_point(aes(color = a), show.legend = FALSE, shape = shape_type)
@@ -818,6 +893,17 @@ gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", captio
           axis.ticks.y=element_blank(),
           panel.grid.major=element_blank())
 
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data_graph, aes(y = 0, label = round(count,2)),
+                             check_overlap = TRUE, color = color_text, vjust = -1.3))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data_graph, aes(y = 0, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text, vjust = -1.3))
+    }else{
+      graph
+    }
+  }
   graph
 }
 
@@ -840,12 +926,17 @@ gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "", subtitle = "",
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data_graph <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
     dplyr::arrange(desc(count)) %>%
     dplyr::mutate(pos = count*8/10,
-                  percent = 100 * round(count/sum(count), 4))
+                  percent = 100 * round(count/sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data=data_graph, aes(a, fill = a, weight = count)) +
             geom_bar(width = width) + coord_polar()
@@ -915,12 +1006,17 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = 
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data_graph <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
+  data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = n()) %>%
     dplyr::arrange(desc(a)) %>%
     dplyr::mutate(pos = count*9.7/10,
-                  percent = 100 * round(count/sum(count), 4))
+                  percent = 100 * round(count/sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data_graph, aes(x = reorder(a, count), y = count , fill = a )) +
     geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
@@ -959,6 +1055,8 @@ gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", f
   nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
@@ -1001,7 +1099,8 @@ gg_bubble_Ca2. <- function(data, titleLabel = "", subtitle = "", caption = "",  
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  data <- data %>% drop_na(a)
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
+
   data <- data %>% dplyr::group_by(a) %>% dplyr::summarise(b = n())
   data$b <- rescale(data$b, to = c(5,15))
   ncircles <- dim(data)[1]

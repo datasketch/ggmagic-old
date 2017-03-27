@@ -6,7 +6,7 @@
 Density 2D flipped}
 \usage{
 gg_dens_flip_NuNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, reverse = FALSE, ...)
+  xLabel = NULL, yLabel = NULL, reverse = FALSE, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

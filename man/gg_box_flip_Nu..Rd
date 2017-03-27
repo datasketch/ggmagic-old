@@ -6,7 +6,7 @@
 Box plot flipped}
 \usage{
 gg_box_flip_Nu.(data, titleLabel = "", subtitle = "", caption = "",
-  yLabel = NULL, xLabel = NULL, ...)
+  yLabel = NULL, xLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -6,7 +6,7 @@
 Dot bar flipped}
 \usage{
 gg_dot_bar_flip_Nu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, ...)
+  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

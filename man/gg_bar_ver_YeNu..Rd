@@ -7,7 +7,8 @@ vertical bar}
 \usage{
 gg_bar_ver_YeNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, text = TRUE, type = "count", color_text = "black",
-  yLabel = NULL, leg_pos = "right", angle_x = 0, ...)
+  yLabel = NULL, leg_pos = "right", angle_x = 0, aggregation = "sum",
+  ...)
 }
 \arguments{
 \item{x}{A category.}

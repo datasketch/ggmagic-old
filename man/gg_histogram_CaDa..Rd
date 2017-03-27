@@ -6,7 +6,7 @@
 histogram}
 \usage{
 gg_histogram_CaDa.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
+  xLabel = NULL, yLabel = NULL, angle_x = 0, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
