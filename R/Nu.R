@@ -24,7 +24,8 @@ gg_horizon_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
   graph <- ggplot_horizon(data_graph, 'xorder', 'a')
   graph <- graph + theme_ds() +
     labs(title = titleLabel, subtitle = subtitle, caption =caption, x = xLabel, y = ylab) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -254,7 +255,7 @@ gg_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLa
   data_graph <- data %>%
     dplyr::mutate(order = 1:nrow(data))
 
-  graph <- ggplot(data_graph, aes(x=order, y=a)) + geom_point(shape = shape_type, aes(color = ""))
+  graph <- ggplot(data_graph, aes(x=order, y=a)) + geom_point(shape = shape_type, aes(color = ""), show.legend = FALSE)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
@@ -276,7 +277,7 @@ gg_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLa
 gg_point_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                               yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
-  graph <- gg_point_Nu.(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, angle_x = 0, ...)
+  graph <- gg_point_Nu.(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -417,7 +418,7 @@ gg_violin_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "
   graph
 }
 
-#' Vertical dot bar
+#' Vertical histogram dot bar
 #' Dot bar
 #' @name gg_dot_bar_Nu.
 #' @param x A number.
@@ -447,7 +448,7 @@ gg_dot_bar_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' Vertical dot bar
+#' Horizontal histogram dot bar
 #' Dot bar flipped
 #' @name gg_dot_bar_flip_Nu.
 #' @param x A number.

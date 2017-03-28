@@ -10,10 +10,8 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                       xLabel = NULL, yLabel = NULL,
-                                       leg_pos = "right",
-                                       aggregation = "sum", text = TRUE, color_text = "black", type = "count",
-                                       angle_x = 0,...){
+                                       xLabel = NULL, yLabel = NULL, leg_pos = "right", aggregation = "sum",
+                                       text = TRUE, color_text = "black", type = "count", angle_x = 0,...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -386,8 +384,12 @@ gg_bar_facet_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capti
                                  b = ifelse(is.na(b), "NA", b)) %>%
     dplyr::filter(!is.na(c))
 
-  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(suma = agg(aggregation, c)) %>%
-    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/sum(suma), 4)) %>%
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(suma = agg(aggregation, c)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(suma)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/total, 4)) %>%
     dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
                   percent = ifelse(percent == 0, NA, percent),
                   suma = ifelse(suma == 0, NA, suma))
@@ -465,18 +467,22 @@ gg_bar_coloured_ver_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
                                  b = ifelse(is.na(b), "NA", b)) %>%
     dplyr::filter(!is.na(c))
 
-  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(suma = agg(aggregation, c)) %>%
-    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/sum(suma), 4)) %>%
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(suma = agg(aggregation, c)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(suma)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/total, 4)) %>%
     dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
                   percent = ifelse(percent == 0, NA, percent),
-                  c = ifelse(c == 0, NA, c))
+                  suma = ifelse(suma == 0, NA, suma))
 
-  graph <- ggplot(data_graph, aes(x = a, y = suma, fill = factor(b))) +
+  graph <- ggplot(data_graph, aes(x = a, y = suma, fill = a)) +
     geom_bar(stat = "identity") +
     scale_fill_manual(values = getPalette()) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme_ds() +
-    theme(legend.position=leg_pos) +
+    theme(legend.position = "none") +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     facet_wrap(~b)
 
@@ -542,17 +548,21 @@ gg_bar_coloured_ver_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
                                  b = ifelse(is.na(b), "NA", b)) %>%
     dplyr::filter(!is.na(c))
 
-  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(suma = agg(aggregation, c)) %>%
-    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/sum(suma), 4)) %>%
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(suma = agg(aggregation, c)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(suma)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/total, 4)) %>%
     dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
                   percent = ifelse(percent == 0, NA, percent),
-                  suma = ifelse(suma == 0, NA, sum))
+                  suma = ifelse(suma == 0, NA, suma))
 
-  graph <- ggplot(data_graph, aes(x = a, y = suma, fill = factor(b))) +
+  graph <- ggplot(data_graph, aes(x = a, y = suma, fill = b)) +
     geom_bar(stat = "identity") +
     scale_fill_manual(values = getPalette()) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds() +
-    theme(legend.position=leg_pos) +
+    theme(legend.position="none") +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     facet_wrap(~b)
 
@@ -619,8 +629,12 @@ gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
                                  b = ifelse(is.na(b), "NA", b)) %>%
     dplyr::filter(!is.na(c))
 
-  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(suma = agg(aggregation, c)) %>%
-    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/sum(suma), 4)) %>%
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(suma = agg(aggregation, c)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(suma)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/total, 4)) %>%
     dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
                   percent = ifelse(percent == 0, NA, percent),
                   suma = ifelse(suma == 0, NA, suma))
@@ -713,8 +727,12 @@ gg_bar_coloured_parameter_ver_facet_CaCaNu. <- function(data, titleLabel = "", s
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c = agg(aggregation, c)) %>%
-    dplyr::mutate(pos = c*9/10,
-                  percent = 100 * round(c / sum(c), 4)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(c)) %>%
+    dplyr::mutate(pos = c*9/10, percent = 100 * round(c/total, 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  c = ifelse(c == 0, NA, c)) %>%
     dplyr::left_join(., parameters, by = c("a", "b", "c")) %>%
     dplyr::mutate(color = ifelse(is.na(color), FALSE, color),
                   percent = ifelse(percent == 0, NA, percent),
@@ -795,8 +813,10 @@ gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", 
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c = agg(aggregation, c)) %>%
     dplyr::arrange(desc(c)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(c)) %>%
     dplyr::mutate(pos = c*9.7/10,
-                  percent = 100 * round(c/sum(c), 4),
+                  percent = 100 * round(c/total, 4),
                   c = ifelse(c == 0, NA, c))
 
   graph <- ggplot(data, aes(x = a, y = c , fill = a )) +
@@ -812,7 +832,7 @@ gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", 
   graph <- graph + theme(legend.position=leg_pos) + facet_wrap(~b)
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(data = data, aes(y = pos, label = round(count,2)),
+    return(graph + geom_text(data = data, aes(y = pos, label = round(c,2)),
                              check_overlap = TRUE, color = color_text))
   }else{
     if(text == TRUE & type == 'percent'){

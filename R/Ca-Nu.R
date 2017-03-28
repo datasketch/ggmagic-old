@@ -1392,7 +1392,7 @@ gg_area_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 
   f <- fringe(data)
   nms <- getClabels(f)
-  ylab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%

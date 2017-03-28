@@ -31,6 +31,26 @@ gg_scatter_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption
   graph
 }
 
+#' Vertical scatter
+#' pointlines
+#' @name gg_scatter_ver_CaDaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Da-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_scatter_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                   yLabel = NULL, clab = NULL, angle_x = 0, shape_type = 19, leg_pos = "right", ...){
+
+  graph <- gg_scatter_hor_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, clab, angle_x, shape_type, leg_pos, ...)
+  graph <- graph + coord_flip()
+
+  graph
+}
+
 #' Steam
 #' Steam
 #' @name gg_steam_CaDaNu.

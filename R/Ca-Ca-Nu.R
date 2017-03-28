@@ -248,11 +248,15 @@ gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", 
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
-    dplyr::summarise(count = agg(aggregation, c)) %>%
-    dplyr::mutate(pos = count*9/10,
-                  percent = 100 * round(count / sum(count), 4))
+    dplyr::summarise(suma = agg(aggregation, c)) %>%
+    dplyr::group_by(a) %>%
+    dplyr::mutate(total = sum(suma)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/total, 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  suma = ifelse(suma == 0, NA, suma))
 
-  graph <- ggplot(data_graph, aes(x = a, y = b, size = count))
+  graph <- ggplot(data_graph, aes(x = a, y = b, size = suma))
   graph <- graph + geom_point(aes(color = a), shape = shape_type) +
     scale_color_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
@@ -260,7 +264,7 @@ gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", 
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(data = data_graph, aes(y = b, label = round(count,2)),
+    return(graph + geom_text(data = data_graph, aes(y = b, label = round(suma,2)),
                              check_overlap = TRUE, color = color_text, vjust = -0.5))
   }else{
     if(text == TRUE & type == 'percent'){
@@ -301,11 +305,15 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
-    dplyr::summarise(count = agg(aggregation, c)) %>%
-    dplyr::mutate(pos = count*9/10,
-                  percent = 100 * round(count / sum(count), 4))
+    dplyr::summarise(suma = agg(aggregation, c)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(suma)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/total, 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  suma = ifelse(suma == 0, NA, suma))
 
-  graph <- ggplot(data_graph, aes(x = a, y = b, size = count)) +
+  graph <- ggplot(data_graph, aes(x = a, y = b, size = suma)) +
     geom_point(aes(color = b), shape = shape_type) +
     scale_color_manual(values = getPalette())
   graph <- graph +
@@ -316,7 +324,7 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(data = data_graph, aes(y = b, label = round(count,2)),
+    return(graph + geom_text(data = data_graph, aes(y = b, label = round(suma,2)),
                              check_overlap = TRUE, color = color_text, vjust = -0.5))
   }else{
     if(text == TRUE & type == 'percent'){
@@ -358,9 +366,10 @@ gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
     dplyr::summarise(sum = agg(aggregation, c)) %>%
     dplyr::arrange(desc(sum))
 
-  graph <- ggplot(data = data_graph, aes(x = a, y = sum, group=b)) +
-    geom_line() +
-    geom_point(shape = shape_type) + facet_wrap(~b)
+  graph <- ggplot(data = data_graph, aes(x = a, y = sum, group=b, colour = "")) +
+    geom_line(show.legend = FALSE) +
+    geom_point(shape = shape_type, show.legend = FALSE) + scale_color_manual(values = getPalette()) +
+      facet_wrap(~b)
   graph <- graph +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
   graph <- graph + theme_ds() +
@@ -688,9 +697,9 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel = NULL,
-                               leg_pos = "right", angle_x = 0, ...){
+gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, aggregation = "sum",
+                               yLabel = NULL, leg_pos = "right", angle_x = 0, text = TRUE, type = "count",
+                               color_text = "black", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -702,16 +711,46 @@ gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
                                  b = ifelse(is.na(b), "NA", b)) %>%
     dplyr::filter(!is.na(c))
 
-  data$c <- ifelse(data$a %in% unique(data$a)[1], -data$c, data$c)
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(suma = agg(aggregation, c)) %>%
+    dplyr::group_by(a) %>%
+    dplyr::mutate(total = sum(suma)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/total, 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  suma = ifelse(suma == 0, NA, suma)) %>%
+    dplyr::filter(a %in% unique(.$a)[1:2])
 
-  graph <- ggplot(data, aes(x = b, y = c, fill = a)) +
-    geom_bar(data = subset(data, a %in% unique(data$a)[1]), stat = "identity") +
-    geom_bar(data = subset(data, a %in% unique(data$a)[2]), stat = "identity", position = "identity") +
-    scale_y_continuous(labels = abs) +
-    theme_ds() +
+  data_graph$suma <- ifelse(data_graph$a %in% unique(data_graph$a)[1], -data_graph$suma, data_graph$suma)
+  data_graph$pos <- ifelse(data_graph$a %in% unique(data_graph$a)[1], -data_graph$pos, data_graph$pos)
+
+  graph <- ggplot(data_graph, aes(x = b, y = suma, fill = a)) +
+    geom_bar(data = subset(data_graph, a %in% unique(data_graph$a)[1]), stat = "identity")
+
+  if(text == TRUE & type == 'count'){
+    graph <- graph + geom_text(data = subset(data_graph, a %in% unique(data_graph$a)[1]), aes(y = pos, label = abs(round(suma,2))),
+                                 check_overlap = TRUE, color = color_text)
+  }else if(text == TRUE & type == 'percent'){
+    graph <- graph + geom_text(data = subset(data_graph, a %in% unique(data_graph$a)[1]), aes(y = pos, label = paste(percent, "%", sep = "")),
+                                 check_overlap = TRUE, color = color_text)
+  }
+
+  graph <- graph +
+    geom_bar(data = subset(data_graph, a %in% unique(data_graph$a)[2]), stat = "identity", position = "identity")
+
+  if(text == TRUE & type == 'count'){
+    graph <- graph + geom_text(data = subset(data_graph, a %in% unique(data_graph$a)[2]), aes(y = pos, label = abs(round(suma,2))),
+                               check_overlap = TRUE, color = color_text, position = "identity")
+  }else if(text == TRUE & type == 'percent'){
+    graph <- graph + geom_text(data = subset(data_graph, a %in% unique(data_graph$a)[2]), aes(y = pos, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text, position = "identity")
+  }
+
+  graph <- graph + theme_ds() +
     scale_fill_manual(values=getPalette()) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
-    scale_y_continuous(labels = comma) +
+    scale_y_continuous(labels = abs) +
     theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     coord_flip()

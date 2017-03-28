@@ -22,7 +22,8 @@ gg_horizon_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
   graph <- ggplot_horizon(data, 'a', 'b') + theme_ds() +
     labs(title = titleLabel, subtitle, caption, x = xlab, y = ylab) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position = leg_pos)
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -77,7 +78,7 @@ gg_waterfall_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_dens_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                          yLabel=NULL, reverse = FALSE, angle_x = 0, ...){
+                          yLabel=NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -91,7 +92,8 @@ gg_dens_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xL
     stat_density2d(geom = "tile", aes(fill = ..density..), contour = FALSE) +
     theme_ds() +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position = leg_pos)
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -116,9 +118,9 @@ gg_dens_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xL
 #' add(1, 1)
 #' add(10, 1)
 gg_dens_flip_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel=NULL, reverse = FALSE, angle_x = 0, ...){
+                               yLabel=NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
 
-  graph <- gg_dens_NuNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, angle_x = 0, ...)
+  graph <- gg_dens_NuNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, angle_x = 0, leg_pos, ...)
   graph <- graph + coord_flip()
   graph
 }
@@ -136,7 +138,7 @@ gg_dens_flip_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                          xLabel = NULL, yLabel = NULL, reverse = FALSE, angle_x = 0, ...){
+                          xLabel = NULL, yLabel = NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -150,7 +152,8 @@ gg_hist_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph <- ggplot(data, aes(x = a, y = b)) + stat_bin2d(bins = binNumber) +
     theme_ds() +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position = leg_pos)
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -174,9 +177,9 @@ gg_hist_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_flip_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                               xLabel = NULL, yLabel = NULL, reverse = FALSE, angle_x = 0, ...){
+                               xLabel = NULL, yLabel = NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
 
-  graph <- gg_hist_NuNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, angle_x, ...)
+  graph <- gg_hist_NuNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, angle_x, leg_pos, ...)
   graph <- graph + coord_flip()
   graph
 }

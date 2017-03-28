@@ -23,8 +23,13 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
 
   parts <- as.vector(data_graph$count)
   graph <- waffle(parts / square_size, rows = rows_number, colors=getPalette()) + theme_ds() +
-                  theme_ds_clean() + theme(legend.position = leg_pos) +
+                  theme_ds_clean()  +
                   labs(title = titleLabel, subtitle = subtitle, caption = caption)
+
+  graph <- graph + scale_fill_manual(values = getPalette(),
+                                     breaks = LETTERS[1:length(unique(data_graph$a))],
+                                     labels = unique(data_graph$a)) + theme(legend.position = leg_pos)
+
   graph
 }
 
@@ -824,14 +829,14 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
   graph <- ggplot(data_graph, aes(x = a, y = 0, size = count, color = ""))
   graph <- graph + geom_point(show.legend = FALSE, shape = shape_type)
   graph <- graph + labs(title = titleLabel, x = xlab, y = "", subtitle = subtitle, caption = caption) +
-    scale_color_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    scale_color_manual(values = getPalette())
 
   graph <- graph + theme_ds() + theme(legend.position="none") +
     theme(axis.line=element_blank(),
       axis.text.y=element_blank(),
       axis.ticks.y=element_blank(),
-      panel.grid.major=element_blank())
+      panel.grid.major=element_blank()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = 0, label = round(count,2)),
@@ -884,14 +889,14 @@ gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", captio
   graph <- graph + geom_point(aes(color = a), show.legend = FALSE, shape = shape_type)
   graph <- graph + labs(title = titleLabel, x = xlab, y = "", fill = flab, subtitle = subtitle, caption = caption)
 
-  graph <- graph + scale_color_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+  graph <- graph + scale_color_manual(values = getPalette())
 
   graph <- graph + theme_ds() + theme(legend.position="none") +
     theme(axis.line=element_blank(),
           axis.text.y=element_blank(),
           axis.ticks.y=element_blank(),
-          panel.grid.major=element_blank())
+          panel.grid.major=element_blank()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = 0, label = round(count,2)),

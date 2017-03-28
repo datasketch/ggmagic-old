@@ -10,10 +10,8 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_scatter_agg_CaNuNu. <- function(data,titleLabel = "", subtitle = "", caption = "",
-                               xLabel = NULL,
-                               yLabel=NULL, cLabel = NULL, angle_x = 0,
-                               aggregation = "sum", shape_type = 19,
-                               ...){
+                               xLabel = NULL, yLabel=NULL, cLabel = NULL, angle_x = 0,
+                               aggregation = "sum", shape_type = 19, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -52,11 +50,8 @@ gg_scatter_agg_CaNuNu. <- function(data,titleLabel = "", subtitle = "", caption 
 #' add(1, 1)
 #' add(10, 1)
 gg_scatter_agg_trend_CaNuNu. <- function(data,titleLabel = "", subtitle = "", caption = "",
-                                     xLabel = NULL,
-                                     yLabel=NULL, cLabel = NULL, angle_x = 0,
-                                     aggregation = "sum",
-                                     se = FALSE, shape_type = 19, leg_pos = "right",
-                                     ...){
+                                     xLabel = NULL, yLabel=NULL, cLabel = NULL, angle_x = 0,
+                                     aggregation = "sum", se = FALSE, shape_type = 19, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -75,7 +70,7 @@ gg_scatter_agg_trend_CaNuNu. <- function(data,titleLabel = "", subtitle = "", ca
   formula <- y ~ poly(x, 1, raw = TRUE)
 
   graph <- ggplot(data, aes(x = b, y = c)) +
-    geom_point(aes(color = a), shape = shape_type) + geom_text(aes(label = a, color = a), vjust = 1.2)
+    geom_point(aes(color = a), shape = shape_type) #+ geom_text(aes(label = a, color = a), vjust = 1.2)
   graph <- graph + geom_smooth(method = "lm",
                                formula = formula, color = getPalette()[1],
                                se = se) +
@@ -84,7 +79,7 @@ gg_scatter_agg_trend_CaNuNu. <- function(data,titleLabel = "", subtitle = "", ca
                  formula = formula, parse = TRUE)
 
   graph <- graph +
-    scale_color_manual(values = getPalette()) + guides(color = FALSE) +
+    scale_color_manual(values = getPalette()) + #guides(color = FALSE) +
     theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption,
                       x= xLabel, y = yLabel, colour = cLabel) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
@@ -125,8 +120,8 @@ gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   data_graph$c <- as.numeric(data_graph$c)
 
   graph <- ggplot(data_graph, aes(x = b, y = c, group = a, fill = a)) +
-    stat_steamgraph() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    theme_ds() +
+    stat_steamgraph() + theme_ds() +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     scale_fill_manual(values = getPalette()) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(legend.position=leg_pos)
@@ -157,11 +152,10 @@ gg_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
     dplyr::filter(!is.na(b), !is.na(c))
 
-  graph <- ggplot(data) +  geom_line(aes(x = b, y = c, group = a, colour = a))  +
-    theme(legend.position = leg_pos) +
+  graph <- ggplot(data) +  geom_line(aes(x = b, y = c, group = a, colour = a))  + theme_ds() +
     scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(legend.position=leg_pos)
 
   return(graph)
@@ -192,11 +186,10 @@ gg_point_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption 
     dplyr::filter(!is.na(b), !is.na(c))
 
   graph <- ggplot(data) +  geom_line(aes(x = b, y = c, group = a, colour = a))  +
-    geom_point(aes(x = b, y = c, group = a, colour = a), shape = shape_type) +
-    theme(legend.position = leg_pos) +
+    geom_point(aes(x = b, y = c, group = a, colour = a), shape = shape_type) + theme_ds() +
     scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(legend.position=leg_pos)
 
   return(graph)

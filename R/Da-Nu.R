@@ -62,9 +62,10 @@ gg_waterfall_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
   data <- data %>%
     dplyr::filter(!is.na(a), !is.na(b))
 
-  graph <- ggplot_waterfall(data,'a','b') + theme(legend.position="none") +
-           scale_color_manual(breaks = c("+",  "-", ""), values = getPalette()) +
+  graph <- ggplot_waterfall(data,'a','b') +
+           scale_color_manual(values = getPalette()) +
     theme_ds() +
+    theme(legend.position="none") +
            labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 

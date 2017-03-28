@@ -23,9 +23,9 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "", subtitle = "", caption = "",
                                  b = ifelse(is.na(b), "NA", b))
 
   data_graph <- data %>%
-                dplyr::group_by(a, b) %>%
-                dplyr::summarise(count = n()) %>%
-                dplyr::arrange(desc(count)) %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(count = n()) %>%
+    dplyr::arrange(desc(count)) %>%
     dplyr::mutate(pos = count*9/10,
                   percent = 100 * round(count / sum(count), 4))  %>%
     dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
@@ -33,12 +33,12 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "", subtitle = "", caption = "",
                   count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data_graph, aes(x = a, y = b, size = count, color = "")) +
-             geom_point(shape = shape_type)
+    geom_point(shape = shape_type)
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-           theme_ds() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-           scale_color_manual(values = getPalette()) +
-           guides(size = FALSE, colour = FALSE)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme_ds() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    scale_color_manual(values = getPalette()) +
+    guides(size = FALSE, colour = FALSE)
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = b, label = round(count,2)),
@@ -66,8 +66,8 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_coloured_x_CaCa.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = NULL, text = TRUE, color_text = "black", type = "count",
-                                      angle_x = 0, shape_type = 19, ...){
+                                        yLabel = NULL, text = TRUE, color_text = "black", type = "count",
+                                        angle_x = 0, shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -89,12 +89,12 @@ gg_bubble_coloured_x_CaCa.  <- function(data, titleLabel = "", subtitle = "", ca
                   count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data_graph, aes(x = a, y = b, size = count)) +
-           geom_point(aes(color = a), shape = shape_type)
+    geom_point(aes(color = a), shape = shape_type)
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-           theme_ds() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-           scale_color_manual(values = getPalette()) +
-           guides(colour = FALSE, size = FALSE)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme_ds() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    scale_color_manual(values = getPalette()) +
+    guides(colour = FALSE, size = FALSE)
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = b, label = round(count,2)),
@@ -192,17 +192,17 @@ gg_dot_bar_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", cap
                                  b = ifelse(is.na(b), "NA", b))
 
   data_graph <- data %>%
-                dplyr::group_by(a) %>%
-                dplyr::summarise(count = n())
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = n())
 
   data_graph <- data_graph %>%
-                mutate(order = c(1:nrow(data_graph)))
+    mutate(order = c(1:nrow(data_graph)))
 
   graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
                   aes(x = order, fill = factor(a))) + geom_dotplot(method="histodot") +
-           scale_fill_manual(values = getPalette())
+    scale_fill_manual(values = getPalette())
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab,  fill = flabel)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab,  fill = flabel)
   graph <- graph + theme_ds() + scale_y_continuous(breaks = NULL) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     theme(legend.position=leg_pos) + facet_wrap(~b)
@@ -266,14 +266,14 @@ gg_pie_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
                   c = ifelse(c == 0, NA, c))
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), weight = c,  fill = a)) +
-             geom_bar(width = 1) + coord_polar(theta = "y")
+    geom_bar(width = 1) + coord_polar(theta = "y")
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = flabel) +
-           guides(text = FALSE)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = flabel) +
+    guides(text = FALSE)
   graph <- graph +
-           theme_ds_clean() +
+    theme_ds_clean() +
     theme(legend.position=leg_pos) +
-           scale_fill_manual(values = getPalette())
+    scale_fill_manual(values = getPalette())
   graph <- graph + facet_wrap(~b)
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = c, label = round(c,2)),
@@ -322,16 +322,16 @@ gg_donut_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption =
                   c = ifelse(c == 0, NA, c))
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), weight = c, fill = a)) +
-             geom_bar(width = width) +
-             coord_polar(theta = "y")
+    geom_bar(width = width) +
+    coord_polar(theta = "y")
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
-           guides(text = FALSE)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
+    guides(text = FALSE)
   graph <- graph +
-           theme_ds() +
-           theme_ds_clean() +
+    theme_ds() +
+    theme_ds_clean() +
     theme(legend.position=leg_pos) +
-           scale_fill_manual(values = getPalette())
+    scale_fill_manual(values = getPalette())
   graph <- graph + facet_wrap(~b)
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = c, label = round(c,2)),
@@ -367,15 +367,15 @@ gg_bullseye_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
                                  b = ifelse(is.na(b), "NA", b))
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = a)) +
-             geom_bar(width = 1) + coord_polar(theta = "x")
+    geom_bar(width = 1) + coord_polar(theta = "x")
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
-           guides(text = FALSE)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
+    guides(text = FALSE)
   graph <- graph +
-           theme_ds() +
-           theme_ds_clean() +
+    theme_ds() +
+    theme_ds_clean() +
     theme(legend.position=leg_pos) +
-           scale_fill_manual(values = getPalette())
+    scale_fill_manual(values = getPalette())
   graph <- graph + facet_wrap(~b)
 
   graph
@@ -393,8 +393,8 @@ gg_bullseye_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = 'Count', leg_pos = "right", angle_x = 0,
-                                    text = TRUE, type = 'count', color_text = "black", ...){
+                                              yLabel = 'Count', leg_pos = "right", angle_x = 0,
+                                              text = TRUE, type = 'count', color_text = "black", ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -415,13 +415,13 @@ gg_bar_coloured_x_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
 
   graph <- ggplot(data = data_graph, aes(x = a, y = c, fill = a)) + geom_bar(stat = "identity")
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
-           guides(text = FALSE)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+    guides(text = FALSE)
   graph <- graph +
-           theme_ds() +
-           scale_fill_manual(values = getPalette()) +
+    theme_ds() +
+    scale_fill_manual(values = getPalette()) +
     theme(legend.position=leg_pos) +
-           theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   graph <- graph + facet_wrap(~b)
 
   if(text == TRUE & type == 'count'){
@@ -450,11 +450,11 @@ gg_bar_coloured_x_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = 'Count', leg_pos = "right", angle_x = 0,
-                                    text = TRUE, type = 'count', color_text = "black", ...){
+                                              yLabel = 'Count', leg_pos = "right", angle_x = 0,
+                                              text = TRUE, type = 'count', color_text = "black", ...){
 
   graph <- gg_bar_coloured_x_ver_facet_CaCa.(data, titleLabel, subtitle, caption, xLabel,
-                                   yLabel, leg_pos, angle_x, text, type, color_text, ...)
+                                             yLabel, leg_pos, angle_x, text, type, color_text, ...)
 
   graph <- graph + coord_flip()
   graph
@@ -555,6 +555,7 @@ gg_bar_coloured_parameter_ver_facet_CaCa. <- function(data, titleLabel = "", sub
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -617,7 +618,7 @@ gg_bar_coloured_parameter_hor_facet_CaCa. <- function(data, titleLabel = "", sub
                                                       text = TRUE, type = "count", color_text = "black", ...){
 
   graph <- gg_bar_coloured_parameter_ver_facet_CaCa.(data, titleLabel, subtitle, caption, xLabel,
-                                             yLabel, parameter1, parameter2, leg_pos, angle_x, text, type, color_text, ...)
+                                                     yLabel, parameter1, parameter2, leg_pos, angle_x, text, type, color_text, ...)
 
   graph <- graph + coord_flip()
   graph
@@ -635,8 +636,8 @@ gg_bar_coloured_parameter_hor_facet_CaCa. <- function(data, titleLabel = "", sub
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                yLabel = 'Count', leg_pos = "right", text = TRUE, type = "count", color_text = "black",
-                                angle_x = 0,...){
+                                     yLabel = 'Count', leg_pos = "right", text = TRUE, type = "count", color_text = "black",
+                                     angle_x = 0,...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -659,18 +660,14 @@ gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capti
     tidyr::gather(b, c, -a) %>%
     dplyr::left_join(., data_graph, by = c("a", "b", "c")) %>%
     dplyr::mutate(c = ifelse(c == 0, NA, c),
-                  percent = ifelse(percent == 0, NA, percent)) %>%
-    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
-                  percent = ifelse(percent == 0, NA, percent),
-                  c = ifelse(c == 0, NA, c))
+                  percent = ifelse(percent == 0, NA, percent))
 
-  data_graph[is.na(data_graph)] <- 0
   graph <- ggplot(data_graph, aes(x = reorder(a, c), y = c, fill=b)) + geom_bar(stat = "identity", position = "stack")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     guides(text = FALSE)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
-    theme(legend.position=leg_pos)
+    theme(legend.position=leg_pos) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data, aes(y = c, label = round(c,2)),
@@ -698,8 +695,8 @@ gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capti
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle ="", caption = "", xLabel = NULL,
-                                  yLabel = 'Count', leg_pos = "right", text = TRUE, type = "count", color_text = "black",
-                                  angle_x = 0,...){
+                                     yLabel = 'Count', leg_pos = "right", text = TRUE, type = "count", color_text = "black",
+                                     angle_x = 0,...){
 
   graph <- gg_bar_stacked_ver_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, text, type, color_text, angle_x, ...)
   graph <- graph + coord_flip()
@@ -719,8 +716,8 @@ gg_bar_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle ="", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel =  'Count', leg_pos = "right", text = TRUE, type = "count", color_text = "black",
-                                      angle_x = 0,...){
+                                             yLabel =  'Count', leg_pos = "right", text = TRUE, type = "count", color_text = "black",
+                                             angle_x = 0,...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -784,8 +781,8 @@ gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle = "
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ordered_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                            yLabel =  'Count', leg_pos = "right", text = TRUE, type = "count", color_text = "black",
-                                            angle_x = 0,...){
+                                             yLabel =  'Count', leg_pos = "right", text = TRUE, type = "count", color_text = "black",
+                                             angle_x = 0,...){
 
   graph <- gg_bar_ordered_stacked_hor_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, text, type, color_text, angle_x)
 
@@ -817,13 +814,13 @@ gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", c
                                  b = ifelse(is.na(b), "NA", b))
 
   graph <- ggplot(data = data, aes(a, fill = factor(b))) +
-                  geom_dotplot(stackgroups = TRUE, binpositions = "all") +
-           scale_fill_manual(values = getPalette()) +
+    geom_dotplot(stackgroups = TRUE, binpositions = "all") +
+    scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
   graph <- graph + theme_ds() + scale_y_continuous(breaks = NULL) +
-            theme(legend.position=leg_pos)
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -861,8 +858,8 @@ gg_stacked_dot_bar_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_grouped_coloured_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                          yLabel = "Count", leg_pos = "right", text = TRUE, type = "count", color_text = "black",
-                                          angle_x = 0,...){
+                                              yLabel = "Count", leg_pos = "right", text = TRUE, type = "count", color_text = "black",
+                                              angle_x = 0,...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -891,7 +888,7 @@ gg_bar_grouped_coloured_hor_CaCa. <- function(data, titleLabel = "", subtitle = 
 
   graph <- ggplot(data, aes(a, weight=count, fill=b)) + geom_bar(position = "dodge")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
-           guides(text = FALSE)
+    guides(text = FALSE)
   graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     theme(legend.position=leg_pos)
@@ -922,8 +919,8 @@ gg_bar_grouped_coloured_hor_CaCa. <- function(data, titleLabel = "", subtitle = 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_grouped_coloured_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = "Count", leg_pos = "right",text = TRUE, type = "count", color_text = "black",
-                                        angle_x = 0,...){
+                                              yLabel = "Count", leg_pos = "right",text = TRUE, type = "count", color_text = "black",
+                                              angle_x = 0,...){
   graph <- gg_bar_grouped_coloured_hor_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos,
                                              text, type, color_text, angle_x, ... )
 
@@ -944,7 +941,7 @@ gg_bar_grouped_coloured_ver_CaCa. <- function(data, titleLabel = "", subtitle = 
 #' add(1, 1)
 #' add(10, 1)
 gg_line_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                 yLabel = "Count", angle_x = 0, ...){
+                                    yLabel = "Count", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -960,9 +957,10 @@ gg_line_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
     dplyr::arrange(desc(count))
 
   graph <- ggplot(data = data_graph, aes(x = a, y = count, group=b, colour = "")) + geom_line() +
-    facet_wrap(~b) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    facet_wrap(~b)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + guides(color = FALSE)
-  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
 
   graph
@@ -980,7 +978,7 @@ gg_line_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_line_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                            yLabel = "Count", angle_x = 0, ...){
+                                    yLabel = "Count", angle_x = 0, ...){
 
   graph <- gg_line_hor_facet_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x = 0, ...)
   graph <- graph + coord_flip()
@@ -1000,7 +998,7 @@ gg_line_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = "Count", angle_x = 0, shape_type = 19, ...){
+                                          yLabel = "Count", angle_x = 0, shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1011,18 +1009,18 @@ gg_line_point_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", 
                                  b = ifelse(is.na(b), "NA", b))
 
   data_graph <- data %>%
-                dplyr::group_by(a, b) %>%
-                dplyr::summarise(count = n()) %>%
-                dplyr::arrange(desc(count))
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(count = n()) %>%
+    dplyr::arrange(desc(count))
 
   graph <- ggplot(data = data_graph, aes(x = a, y = count, group=b, colour = "")) + geom_line() +
-             geom_point(shape = shape_type) + facet_wrap(~b) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    geom_point(shape = shape_type) + facet_wrap(~b) + theme_ds() +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
-           guides(color = FALSE)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+    guides(color = FALSE)
   graph <- graph +
-           theme_ds() +
-           scale_color_manual(values = getPalette())
+    scale_color_manual(values = getPalette())
 
   graph
 }
@@ -1039,7 +1037,7 @@ gg_line_point_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = "Count", angle_x = 0, shape_point = 19, ...){
+                                          yLabel = "Count", angle_x = 0, shape_point = 19, ...){
 
   graph <- gg_line_point_hor_facet_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, shape_point, ...)
   graph <- graph + coord_flip()
@@ -1059,12 +1057,13 @@ gg_line_point_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = 'Percent', leg_pos = "right",text = TRUE, type = "count", color_text = "black",
-                                        angle_x = 0,...){
+                                         yLabel = 'Percent', leg_pos = "right",text = TRUE, type = "count", color_text = "black",
+                                         angle_x = 0,...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -1072,9 +1071,7 @@ gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
 
   data_graph <- data %>% dplyr::group_by(a, b) %>%
     dplyr::summarise(c = n()) %>%
-    dplyr::mutate(percent = 100 * round(c / sum(c), 4)) %>%
-    dplyr::mutate(percent = ifelse(percent == 0, NA, percent),
-                  c = ifelse(c == 0, NA, c))
+    dplyr::mutate(percent = 100 * round(c / sum(c), 4))
 
   data <- data %>%
     dplyr::group_by(a, b) %>%
@@ -1089,7 +1086,8 @@ gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
     geom_bar(stat="identity", position = "fill")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette()) +
-    scale_y_continuous(labels = percent) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    scale_y_continuous(labels = percent) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data, aes(y = percent/100, label = round(c,2)),
@@ -1117,7 +1115,7 @@ gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                          yLabel = 'Percent', leg_pos = "right",text = TRUE, type = "count", color_text = "black",
+                                         yLabel = 'Percent', leg_pos = "right",text = TRUE, type = "count", color_text = "black",
                                          angle_x = 0,...){
 
 
@@ -1139,7 +1137,7 @@ gg_bar_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                       yLabel = 'Count', leg_pos = "right", angle_x = 0, ...){
+                                      yLabel = 'Count', leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1196,7 +1194,7 @@ gg_area_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capt
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = NULL, leg_pos = "right", angle_x = 1, ...){
+                                          yLabel = NULL, leg_pos = "right", angle_x = 1, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1212,11 +1210,10 @@ gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", 
   graph <- ggplot(data = data_graph,
                   aes(x=a, y=count, group=b)) + geom_area(aes(fill = b), position = "fill")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
-  graph <- graph +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
-          scale_y_continuous(labels = percent) +
-    theme(legend.position=leg_pos)
+    scale_y_continuous(labels = percent) +
+    theme(legend.position=leg_pos) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -1281,10 +1278,10 @@ gg_marimekko_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption
   graph <- ggplot(alldata, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax)) +
     geom_rect(color="black", aes_string(fill=yvar)) +
     labs(x = xLabel, y = yLabel, title = titleLabel, subtitle = subtitle, caption = caption)
-  graph <- graph +
+  graph <- graph + theme_ds() +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
-    theme(legend.position=leg_pos)
+  graph <- graph + scale_fill_manual(values = getPalette()) +
+    theme(legend.position = leg_pos)
 
   graph
 }
@@ -1319,7 +1316,7 @@ gg_marimekko_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_polar_stacked_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, width = 0.95,
-                                     yLabel = NULL, text = TRUE, type = 'count', color_text = "black", leg_pos = "right", ...){
+                                       yLabel = NULL, text = TRUE, type = 'count', color_text = "black", leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1351,7 +1348,7 @@ gg_bar_polar_stacked_CaCa. <- function(data, titleLabel = "", subtitle = "", cap
     coord_polar()
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
   graph <- graph + theme_ds() + theme_ds_clean() +
-           scale_fill_manual(values = getPalette()) +
+    scale_fill_manual(values = getPalette()) +
     theme(legend.position=leg_pos)
 
   if(text == TRUE & type == 'count'){
@@ -1446,7 +1443,8 @@ gg_bar_polar_stacked_100_CaCa. <- function(data, titleLabel = "", subtitle = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_circular_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                        leg_pos="right", width = 0.85, ...){
+                                        leg_pos="right", width = 0.85,
+                                        text = TRUE, type = "count", color_text = "black", ...){
 
   f <- fringe(data)
   data <- f$d
@@ -1454,23 +1452,39 @@ gg_bar_circular_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", ca
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
                                  b = ifelse(is.na(b), "NA", b))
 
-  data_graph <- data %>%
-                dplyr::group_by(a, b) %>%
-                dplyr::summarise(count = n()) %>%
-                dplyr::arrange(desc(count))
+  data <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(count = n()) %>%
+    dplyr::arrange(desc(count)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(count)) %>%
+    dplyr::mutate(pos = count*9.7/10,
+                  percent = 100 * round(count/total, 4),
+                  count = ifelse(count == 0, NA, count))
 
-  graph <- ggplot(data_graph, aes(x = a, y = count , fill = a )) +
-             geom_bar(width = width, stat="identity") +
-             coord_polar(theta = "y")
-graph <- graph +
-         labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "")
+  graph <- ggplot(data, aes(x = a, y = count , fill = a )) +
+    geom_bar(width = width, stat="identity") +
+    coord_polar(theta = "y")
+
   graph <- graph +
-           theme_ds() +
-           theme_ds_clean() +
-           scale_fill_manual(values = getPalette()) +
-    theme(legend.position=leg_pos)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
+    scale_fill_manual(values = getPalette()) +
+    theme_ds() +
+    theme_ds_clean()
+
   graph <- graph + theme(legend.position=leg_pos) + facet_wrap(~b)
 
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data, aes(y = pos, label = round(count,2)),
+                             check_overlap = TRUE, color = color_text))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data, aes(y = pos, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text))
+    }else{
+      graph
+    }
+  }
   graph
 }
 
@@ -1496,9 +1510,9 @@ gg_treemap_x_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
                                  b = ifelse(is.na(b), "NA", b))
 
   data_graph <- data %>%
-                dplyr::group_by(a, b) %>%
-                dplyr::summarise(count = n()) %>%
-                dplyr::arrange(desc(count))
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(count = n()) %>%
+    dplyr::arrange(desc(count))
 
   data_graph$a <- as.factor(data_graph$a)
   data_graph$b <- as.factor(data_graph$b)
@@ -1540,9 +1554,9 @@ gg_treemap_y_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
                                  b = ifelse(is.na(b), "NA", b))
 
   data_graph <- data %>%
-                dplyr::group_by(a, b) %>%
-                dplyr::summarise(count = n()) %>%
-                dplyr::arrange(desc(count))
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(count = n()) %>%
+    dplyr::arrange(desc(count))
 
   data_graph$a <- as.factor(data_graph$a)
   data_graph$b <- as.factor(data_graph$b)
