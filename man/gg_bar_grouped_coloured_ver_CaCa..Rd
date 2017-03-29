@@ -6,8 +6,9 @@
 Unstacked Coloured vertical Bar}
 \usage{
 gg_bar_grouped_coloured_ver_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  text = TRUE, type = "count", color_text = "black", angle_x = 0, ...)
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", text = TRUE, type = "count", color_text = "black",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

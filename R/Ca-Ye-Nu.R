@@ -18,7 +18,7 @@ gg_line_hor_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = 
   nms <- getClabels(f)
   clab <- fillLabel %||% nms[1]
   xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3])
   data <- f$d
 
   data <- data %>%
@@ -42,7 +42,7 @@ gg_line_hor_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = 
     scale_color_manual(values = getPalette())  +
     theme(legend.position = leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab)
   graph
 }
 

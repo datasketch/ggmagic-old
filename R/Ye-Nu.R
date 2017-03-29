@@ -107,13 +107,12 @@ gg_waterfall_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
-                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
+                                       yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
-  flab <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% paste(aggregation, nms[2], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
@@ -133,7 +132,7 @@ gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
            scale_fill_manual(values = getPalette()) +
            theme(legend.position=leg_pos) +
            guides(fill = FALSE) +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flab) +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
 
@@ -161,9 +160,9 @@ gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
-                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
+                                       yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
-  graph <- gg_bar_coloured_x_ver_YeNu.(data, titleLabel, subtitle, caption, xLabel, text, type, color_text, yLabel, fillLabel, leg_pos, aggregation, angle_x, ...)
+  graph <- gg_bar_coloured_x_ver_YeNu.(data, titleLabel, subtitle, caption, xLabel, text, type, color_text, yLabel, leg_pos, aggregation, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -187,8 +186,8 @@ gg_bar_density_y_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", capt
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
-  flab <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% paste(aggregation, nms[2], sep = " ")
+  clab <- fillLabel %||% paste(aggregation, nms[2], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
@@ -216,7 +215,7 @@ gg_bar_density_y_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", capt
 
   graph <- graph +
     theme(legend.position=leg_pos) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
 
@@ -270,7 +269,7 @@ gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
+  ylab <- yLabel %||% paste(aggregation, nms[2], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%

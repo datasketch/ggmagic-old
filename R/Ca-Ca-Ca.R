@@ -16,7 +16,7 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -41,7 +41,8 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "b",
                                   label = "c"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
   }
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + scale_fill_manual(values = getPalette()) +
+    guides(fill = guide_legend(clab)) +
     theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
 
   graph
@@ -64,7 +65,7 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[2]
+  clab <- fillLabel %||% nms[2]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -89,7 +90,8 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a",
                                   label = "c"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
   }
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + scale_fill_manual(values = getPalette()) +
+    guides(fill = guide_legend(clab)) +
     theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
 
   graph
@@ -112,7 +114,7 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[3]
+  clab <- fillLabel %||% nms[3]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -137,7 +139,8 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'c', group = "a",
                                   label = "b"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
   }
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + scale_fill_manual(values = getPalette()) +
+    guides(fill = guide_legend(clab)) +
     theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
 
   graph
@@ -168,9 +171,9 @@ gg_point_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                  b = ifelse(is.na(b), "NA", b),
                                  c = ifelse(is.na(c), "NA", c))
 
-  graph <- ggplot(data, aes(x = factor(a), y = factor(b), color=factor(c))) +
+  graph <- ggplot(data, aes(x = factor(a), y = factor(b), color = c)) +
     geom_point(shape = shape_type) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) + theme_ds() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab) + theme_ds() +
     scale_x_discrete(labels = scales::comma) +
     scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +

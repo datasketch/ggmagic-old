@@ -9,10 +9,12 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", leg_pos = "right",
+gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, leg_pos = "right",
                                  aggregation = "sum", text = TRUE, type = 'count', color_text = "black", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -41,7 +43,7 @@ gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
     geom_bar(width = 1) +
     coord_polar(theta = "y")
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "")
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab)
   graph <- graph +
     theme_ds() +
     theme_ds_clean() +
@@ -77,11 +79,13 @@ gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_donut_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_donut_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                    width = 0.3, leg_pos = "right",
                                    aggregation = "sum", text = TRUE, type = 'count', color_text = "black", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -110,7 +114,7 @@ gg_donut_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
     geom_bar(width = width) +
     coord_polar(theta = "y")
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab) +
     theme_ds() +
     theme_ds_clean() +
     scale_fill_manual(values = getPalette())
@@ -143,9 +147,12 @@ gg_donut_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", leg_pos = "right", ...){
+gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                      fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -156,7 +163,7 @@ gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
     geom_bar(width = 1) +
     coord_polar(theta = "x")
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "")
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab)
   graph <- graph +
     theme_ds() +
     theme_ds_clean() +
@@ -348,13 +355,13 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Types",
-                                      yLabel = "Frequency", aggregation = "sum", angle_x = 0,
+gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                      yLabel = NULL, aggregation = "sum", angle_x = 0,
                                       shape_type = 19, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -416,7 +423,7 @@ gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -476,12 +483,13 @@ gg_area_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                            yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0,...){
+                                            yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0,...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste("%", aggregation, nms[3], sep = " ")
+  clab <- fillLabel %||% nms[2]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -499,7 +507,7 @@ gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
   graph <- ggplot(data = data_graph, aes(x=a, y=count, group=b)) +
     geom_area(aes(fill = b), position = "fill")
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
   graph <- graph +
     theme_ds() + theme(legend.position=leg_pos) +
     scale_fill_manual(values = getPalette()) +
@@ -521,10 +529,10 @@ gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                            yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
+                                            yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
 
-  graph <- gg_area_stacked_100_hor_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, aggregation, angle_x, ...)
+  graph <- gg_area_stacked_100_hor_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, aggregation, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -546,6 +554,8 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
                                  leg_pos = "right", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -570,8 +580,8 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a",
                                   label = "b"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
   }
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
-    theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + scale_fill_manual(values = getPalette()) +
+    theme_ds() + theme_ds_clean() + guides(fill = guide_legend(clab)) + theme(legend.position = leg_pos)
 
   graph
 }
@@ -593,7 +603,7 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% nms[2]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -618,8 +628,8 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
                                   label = "a"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
   }
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
-    theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + scale_fill_manual(values = getPalette()) +
+    theme_ds() + theme_ds_clean() + guides(fill = guide_legend(clab)) + theme(legend.position = leg_pos)
 
   graph
 }
@@ -640,7 +650,7 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -672,8 +682,8 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
   #                    group.label.size.threshold = 1) +
 
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption) + theme_ds() + theme_ds_clean() +
-    theme(legend.position=leg_pos)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + theme_ds() + theme_ds_clean() +
+    theme(legend.position=leg_pos) + guides(fill = guide_legend(clab))
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -698,13 +708,14 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, aggregation = "sum",
-                               yLabel = NULL, leg_pos = "right", angle_x = 0, text = TRUE, type = "count",
+                               yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, text = TRUE, type = "count",
                                color_text = "black", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   xlab <- xLabel %||% nms[2]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -749,7 +760,7 @@ gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 
   graph <- graph + theme_ds() +
     scale_fill_manual(values=getPalette()) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     scale_y_continuous(labels = abs) +
     theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
@@ -770,12 +781,12 @@ gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_multi_line_point_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                        fillLabel = NULL, leg_pos ="right", shape_type = 19, angle_x = 0, ...){
+                                        fillLabel = NULL, leg_pos ="right", aggregation = "sum", shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   clab <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -783,8 +794,12 @@ gg_multi_line_point_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
                                  b = ifelse(is.na(b), "NA", b)) %>%
     dplyr::filter(!is.na(c))
 
-  graph <- ggplot(data, aes(x = as.factor(b), y = c, group = a)) + geom_point(aes(color = a), shape = shape_type) + geom_line(aes(color = a))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
+  data <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = agg(aggregation, c))
+
+  graph <- ggplot(data, aes(x = b, y = c, group = a)) + geom_point(aes(color = a), shape = shape_type) + geom_line(aes(color = a))
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
     theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
@@ -804,12 +819,12 @@ gg_multi_line_point_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_multi_line_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                  fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                                  fillLabel = NULL, aggregation = "sum", leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   clab <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -817,8 +832,12 @@ gg_multi_line_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption 
                                  b = ifelse(is.na(b), "NA", b)) %>%
     dplyr::filter(!is.na(c))
 
+  data <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = agg(aggregation, c))
+
   graph <- ggplot(data, aes(x = as.factor(b), y = c, group = a))  + geom_line(aes(color = a))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
     theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))

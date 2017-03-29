@@ -6,7 +6,7 @@
 Waffle}
 \usage{
 gg_waffle_Ca.(data, square_size = 1, rows_number = 5, titleLabel = "",
-  subtitle = "", caption = "", leg_pos = "right", ...)
+  fillLabel = NULL, subtitle = "", caption = "", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -6,9 +6,9 @@
 Vertical coloured bars}
 \usage{
 gg_bar_coloured_ver_Ca.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  text = TRUE, type = "count", color_text = "black", leg_pos = "right",
-  angle_x = 0, ...)
+  caption = "", xLabel = NULL, yLabel = NULL, text = TRUE,
+  type = "count", color_text = "black", leg_pos = "right", angle_x = 0,
+  ...)
 }
 \arguments{
 \item{x}{A number.}

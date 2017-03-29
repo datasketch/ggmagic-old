@@ -15,9 +15,10 @@ gg_bar_facet_ver_CaYeNu. <- function(data,...){
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
-    dplyr::filter(!is.na(b), !is.na(c)) %>% select(a = b, b = a, c)
+    dplyr::filter(!is.na(b), !is.na(c)) #%>% select(a = b, b = a, c)
 
-  graph <- gg_bar_facet_ver_CaCaNu.(data, ...)
+  f$d <- data
+  graph <- gg_bar_facet_ver_CaCaNu.(selectFringeCols(f,c(2,1,3)), ...)
   graph
 }
 

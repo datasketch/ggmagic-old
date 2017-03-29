@@ -60,7 +60,7 @@ theme_ds <- function(){
     max(0.8, min(2.4, spacing))
 
   theme(
-    legend.title=element_blank(),
+    #legend.title=element_blank(),
     line = element_line(
       colour = line_colour,
       size = line_weight,

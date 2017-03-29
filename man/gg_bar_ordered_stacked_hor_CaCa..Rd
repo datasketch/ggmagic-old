@@ -2,30 +2,51 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_bar_ordered_stacked_hor_CaCa.}
 \alias{gg_bar_ordered_stacked_hor_CaCa.}
-\title{Ordered horizontal stacked bar
-Ordered Stacked horizontal Bar}
+\alias{gg_bar_ordered_stacked_ver_CaCa.}
+\alias{gg_bar_ordered_stacked_hor_CaCa.}
+\title{Ordered vertical stacked bar
+Ordered Stacked vertical Bar}
 \usage{
+gg_bar_ordered_stacked_ver_CaCa.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", text = TRUE, type = "count", color_text = "black",
+  angle_x = 0, ...)
+
 gg_bar_ordered_stacked_hor_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  text = TRUE, type = "count", color_text = "black", angle_x = 0, ...)
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", text = TRUE, type = "count", color_text = "black",
+  angle_x = 0, ...)
 }
 \arguments{
+\item{x}{A number.}
+
+\item{y}{A number.}
+
 \item{x}{A number.}
 
 \item{y}{A number.}
 }
 \value{
 The sum of \code{x} and \code{y}.
+
+The sum of \code{x} and \code{y}.
 }
 \description{
+Ordered vertical stacked bar
+Ordered Stacked vertical Bar
+
 Ordered horizontal stacked bar
 Ordered Stacked horizontal Bar
 }
 \section{ftypes}{
  Ca-Ca
+
+ Ca-Ca
 }
 
 \examples{
+add(1, 1)
+add(10, 1)
 add(1, 1)
 add(10, 1)
 }

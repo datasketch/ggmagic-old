@@ -16,7 +16,7 @@ gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -42,7 +42,8 @@ gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "b",
                                   label = "c"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
   }
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + scale_fill_manual(values = getPalette()) +
+    guides(fill = guide_legend(clab)) +
     theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
 
   graph
@@ -65,7 +66,7 @@ gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[2]
+  clab <- fillLabel %||% nms[2]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -91,7 +92,8 @@ gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a",
                                   label = "c"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
   }
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + scale_fill_manual(values = getPalette()) +
+    guides(fill = guide_legend(clab)) +
     theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
 
   graph
@@ -114,7 +116,7 @@ gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[3]
+  clab <- fillLabel %||% nms[3]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -141,6 +143,7 @@ gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
                                   label = "b"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
   }
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
+    guides(fill = guide_legend(clab)) +
     theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
 
   graph
@@ -166,8 +169,8 @@ gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% "Porcentaje"
-  flabel <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% paste("%", aggregation, nms[4], sep = " ")
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -202,7 +205,7 @@ gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
     scale_fill_manual(values=getPalette())
 
   graph <-  graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme(legend.position = leg_pos)
 
   if(text == TRUE & type == 'count'){
@@ -238,7 +241,8 @@ gg_bar_stacked_100_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% "Porcentaje"
+  ylab <- yLabel %||% paste("%", aggregation, nms[4], sep = " ")
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -272,7 +276,7 @@ gg_bar_stacked_100_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
     scale_fill_manual(values=getPalette())
 
   graph <-  graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme(legend.position = leg_pos)
 
   if(text == TRUE & type == 'count'){
@@ -308,8 +312,8 @@ gg_bar_stacked_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", c
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% nms[4]
-  flabel <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% paste(aggregation, nms[4], sep = " ")
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -342,7 +346,7 @@ gg_bar_stacked_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", c
     scale_fill_manual(values=getPalette())
 
   graph <-  graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme(legend.position = leg_pos)
 
   if(text == TRUE & type == 'count'){

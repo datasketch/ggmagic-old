@@ -10,14 +10,14 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_scatter_agg_CaNuNu. <- function(data,titleLabel = "", subtitle = "", caption = "",
-                               xLabel = NULL, yLabel = NULL, cLabel = NULL, angle_x = 0,
+                               xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0,
                                aggregation = "sum", shape_type = 19, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% nms[3]
-  clab <- cLabel %||% nms[1]
+  xlab <- xLabel %||% paste(aggregation, nms[2], sep = " ")
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
@@ -50,14 +50,14 @@ gg_scatter_agg_CaNuNu. <- function(data,titleLabel = "", subtitle = "", caption 
 #' add(1, 1)
 #' add(10, 1)
 gg_scatter_agg_trend_CaNuNu. <- function(data,titleLabel = "", subtitle = "", caption = "",
-                                     xLabel = NULL, yLabel=NULL, cLabel = NULL, angle_x = 0,
+                                     xLabel = NULL, yLabel=NULL, fillLabel = NULL, angle_x = 0,
                                      aggregation = "sum", se = FALSE, shape_type = 19, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% nms[3]
-  clab <- cLabel %||% nms[1]
+  xlab <- xLabel %||% paste(aggregation, nms[2], sep = " ")
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
@@ -99,13 +99,13 @@ gg_scatter_agg_trend_CaNuNu. <- function(data,titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel = NULL, leg_pos="right", angle_x = 0, aggregation = "sum", ...){
+                             yLabel = NULL, fillLabel = NULL, leg_pos="right", angle_x = 0, aggregation = "sum", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% nms[3]
-  clab <- cLabel %||% nms[1]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
@@ -124,7 +124,7 @@ gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
     stat_steamgraph() + theme_ds() +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     scale_fill_manual(values = getPalette()) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme(legend.position = leg_pos)
 
   graph
@@ -142,13 +142,13 @@ gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                            yLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                            yLabel = NULL, fillLabel, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
-  clab <- cLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
@@ -157,7 +157,7 @@ gg_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
   graph <- ggplot(data) +  geom_line(aes(x = b, y = c, group = a, colour = a))  + theme_ds() +
     scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab, fill = clab) +
     theme(legend.position = leg_pos)
 
   return(graph)
@@ -176,13 +176,13 @@ gg_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_point_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                  yLabel = NULL, leg_pos = "right", shape_type = 19, angle_x = 0,  ...){
+                                  yLabel = NULL, fillLabel = NULL, leg_pos = "right", shape_type = 19, angle_x = 0,  ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
-  clab <- cLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
@@ -192,7 +192,7 @@ gg_point_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption 
     geom_point(aes(x = b, y = c, group = a, colour = a), shape = shape_type) + theme_ds() +
     scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab, fill = clab) +
     theme(legend.position = leg_pos)
 
   return(graph)
@@ -210,12 +210,12 @@ gg_point_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption 
 #' add(1, 1)
 #' add(10, 1)
 gg_scatter_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                              yLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
+                              yLabel = NULL, fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
-  clab <- cLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
@@ -227,7 +227,7 @@ gg_scatter_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
     theme(legend.position=leg_pos) +
     theme_ds() +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab, color = clab) +
     theme(legend.position = leg_pos)
 
   return(graph)
@@ -245,12 +245,12 @@ gg_scatter_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_scatter_trend_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
+                               yLabel = NULL, fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
-  clab <- cLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
@@ -268,7 +268,7 @@ gg_scatter_trend_CaNuNu. <- function(data, titleLabel = "", subtitle = "", capti
   graph <- graph +
     scale_color_manual(values = getPalette()) +
     theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption,
-                      x = xlab, y = ylab) +
+                      x = xlab, y = ylab, fill = clab, color = clab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     theme(legend.position = leg_pos)
 

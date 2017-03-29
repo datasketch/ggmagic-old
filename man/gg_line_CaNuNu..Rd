@@ -6,7 +6,8 @@
 lines}
 \usage{
 gg_line_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0, ...)
+  xLabel = NULL, yLabel = NULL, fillLabel, leg_pos = "right",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A category.}

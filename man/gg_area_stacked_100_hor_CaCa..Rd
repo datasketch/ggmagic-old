@@ -6,8 +6,8 @@
 Stacked horizontal Area 100pct}
 \usage{
 gg_area_stacked_100_hor_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 1, ...)
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", angle_x = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

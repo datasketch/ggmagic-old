@@ -9,9 +9,11 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "",
+gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "", fillLabel = NULL,
                           subtitle = "", caption = "", leg_pos = "right", ...){
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -24,7 +26,7 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
   parts <- as.vector(data_graph$count)
   graph <- waffle(parts / square_size, rows = rows_number, colors=getPalette()) + theme_ds() +
                   theme_ds_clean()  +
-                  labs(title = titleLabel, subtitle = subtitle, caption = caption)
+                  labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab)
 
   graph <- graph + scale_fill_manual(values = getPalette(),
                                      breaks = LETTERS[1:length(unique(data_graph$a))],
@@ -45,7 +47,7 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                    xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+                                    xLabel = NULL, yLabel = NULL,
                                     text = TRUE, type = 'count', color_text = "black",
                                     leg_pos = "right", angle_x = 0, ...){
   f <- fringe(data)
@@ -97,7 +99,7 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                    xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+                                    xLabel = NULL, yLabel = NULL,
                                     text = TRUE, type = 'count', color_text = "black",
                                     leg_pos = "right", angle_x = 0, ...){
 
@@ -349,7 +351,7 @@ gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -366,7 +368,8 @@ gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), y = count, fill = a)) +
            geom_bar(stat = "identity", width = 1) + coord_polar(theta = "y")
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel,  subtitle = subtitle, caption = caption) + guides(text = FALSE)
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = clab,  subtitle = subtitle, caption = caption) +
+    guides(text = FALSE)
   graph <- graph  + theme_ds_clean() + scale_fill_manual(values = getPalette()) +
     theme(legend.position=leg_pos)
 
@@ -398,7 +401,7 @@ gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fil
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -416,7 +419,7 @@ gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fil
   graph <- ggplot(data=data_graph, aes(x = factor(1), y = count, fill = a)) +
            geom_bar(stat = "identity", width = width) + coord_polar(theta = "y")
   graph <- graph +
-           labs(title = titleLabel, x = "", y = "", fill = flabel, subtitle = subtitle, caption = caption)
+           labs(title = titleLabel, x = "", y = "", fill = clab, subtitle = subtitle, caption = caption)
   graph <- graph + theme_ds_clean() + scale_fill_manual(values = getPalette()) +
     theme(legend.position=leg_pos)
 
@@ -443,13 +446,12 @@ gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fil
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+                               yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% "Conteo"
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -461,8 +463,8 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
                 mutate(order = c(1:nrow(data_graph)))
 
   graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
-                  aes(x = order, fill = factor(a))) + geom_dotplot(method="histodot") +
-           labs(title = titleLabel, x = xlab, y = ylab,  fill = flabel, subtitle = subtitle, caption = caption)
+                  aes(x = a, fill = a)) + geom_dotplot(method="histodot", show.legend = FALSE) +
+           labs(title = titleLabel, x = xlab, y = ylab, subtitle = subtitle, caption = caption)
   graph <- graph +
            scale_y_continuous(breaks = NULL) +
            theme_ds() + theme(legend.position=leg_pos) +
@@ -511,6 +513,7 @@ gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% "Conteo"
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -521,7 +524,7 @@ gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
     dplyr::mutate(order = c(1:nrow(.)))
 
   graph <- ggplot(data = data_graph, aes(x = a, y = count, group=1, colour = "")) + geom_line()
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, subtitle = subtitle, caption = caption)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab, subtitle = subtitle, caption = caption)
 
   graph <- graph + theme_minimal() + theme_ds() + theme(legend.position=leg_pos) +
     scale_color_manual(values = getPalette()) + guides(colour = FALSE) +
@@ -568,6 +571,7 @@ gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %|% "Conteo"
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -578,7 +582,7 @@ gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
     dplyr::mutate(order = c(1:nrow(.)))
 
   graph <- ggplot(data = data_graph, aes(x = a, y = count, group=1, colour = "")) + geom_line() + geom_point(type = shape_type)
-  graph <- graph + labs(title = titleLabel, x = xlab, y = yLabel, subtitle = subtitle, caption = caption)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab, subtitle = subtitle, caption = caption)
 
   graph <- graph + theme_minimal() + theme_ds() + theme(legend.position=leg_pos) +
     scale_color_manual(values = getPalette()) + guides(colour =FALSE) +
@@ -743,7 +747,7 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", 
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -761,7 +765,7 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", 
   graph <- ggplot(data = data_graph, aes(x = factor(1), y = count, fill = a)) +
     geom_bar(stat = "identity", width = width)
 
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = fillLabel, subtitle = subtitle, caption = caption)
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = clab, subtitle = subtitle, caption = caption)
   graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
   graph <- graph + theme(legend.position=leg_pos)
 
@@ -933,7 +937,7 @@ gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "", subtitle = "",
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -950,7 +954,7 @@ gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "", subtitle = "",
 
   graph <- ggplot(data=data_graph, aes(a, fill = a, weight = count)) +
             geom_bar(width = width) + coord_polar()
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel, subtitle = subtitle, caption = caption)
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = clab, subtitle = subtitle, caption = caption)
   graph <- graph + scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
@@ -982,14 +986,14 @@ gg_bullseye_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = a)) +
     geom_bar(width = 1) + coord_polar(theta = "x")
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel, subtitle = subtitle, caption = caption)
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = clab, subtitle = subtitle, caption = caption)
 
   graph <- graph + scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
@@ -1013,7 +1017,7 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = 
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -1031,7 +1035,7 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = 
   graph <- ggplot(data_graph, aes(x = reorder(a, count), y = count , fill = a )) +
     geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
 
-  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = flabel, subtitle = subtitle, caption = caption)
+  graph <- graph + labs(title = titleLabel, x = "", y = "", fill = clab, subtitle = subtitle, caption = caption)
   graph <- graph + scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
@@ -1058,12 +1062,10 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
                            text = TRUE, color_text = "black", ...){
 
   f <- fringe(data)
-  nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))

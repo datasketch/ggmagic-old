@@ -16,7 +16,7 @@ gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   clab <- fillLabel %||% nms[2]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -137,7 +137,7 @@ gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   clab <- fillLabel %||% nms[2]
   data <- f$d
 
@@ -254,7 +254,7 @@ gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste("%", aggregation, nms[3], sep = " ")
   clab <- fillLabel %||% nms[2]
   data <- f$d
 
@@ -377,7 +377,7 @@ gg_bar_facet_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capti
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -460,7 +460,7 @@ gg_bar_coloured_ver_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -541,7 +541,7 @@ gg_bar_coloured_ver_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -622,7 +622,7 @@ gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -712,7 +712,7 @@ gg_bar_coloured_parameter_ver_facet_CaCaNu. <- function(data, titleLabel = "", s
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),

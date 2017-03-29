@@ -16,7 +16,9 @@ gg_bar_stacked_100_hor_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% nms[3]
+  ylab <- yLabel %||% paste("%", aggregation, nms[4], sep = " ")
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -50,7 +52,7 @@ gg_bar_stacked_100_hor_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "
     scale_fill_manual(values=getPalette())
 
   graph <-  graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme(legend.position = leg_pos)
 
   if(text == TRUE & type == 'count'){
@@ -85,7 +87,9 @@ gg_bar_stacked_100_ver_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% nms[3]
+  ylab <- yLabel %||% paste("%", aggregation, nms[4], sep = " ")
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -118,7 +122,7 @@ gg_bar_stacked_100_ver_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "
     scale_fill_manual(values=getPalette())
 
   graph <-  graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme(legend.position = leg_pos)
 
   if(text == TRUE & type == 'count'){
@@ -153,7 +157,9 @@ gg_bar_stacked_ver_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "", c
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[4])
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -185,7 +191,7 @@ gg_bar_stacked_ver_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "", c
     scale_fill_manual(values=getPalette())
 
   graph <-  graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme(legend.position = leg_pos)
 
   if(text == TRUE & type == 'count'){

@@ -6,7 +6,7 @@
 pointlines}
 \usage{
 gg_scatter_agg_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, cLabel = NULL, angle_x = 0,
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0,
   aggregation = "sum", shape_type = 19, leg_pos = "right", ...)
 }
 \arguments{

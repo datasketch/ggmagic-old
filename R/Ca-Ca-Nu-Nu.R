@@ -15,7 +15,7 @@ gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -42,7 +42,8 @@ gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
   }
 
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption) + theme_ds() + theme_ds_clean() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + theme_ds() + theme_ds_clean() +
+    guides(fill = guide_legend(clab)) +
     theme(legend.position=leg_pos)
 
 
@@ -75,7 +76,7 @@ gg_treemap_density_y_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% paste(aggregation, nms[4], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -102,7 +103,8 @@ gg_treemap_density_y_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
   }
 
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption) + theme_ds() + theme_ds_clean() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + theme_ds() + theme_ds_clean() +
+    guides(fill = guide_legend(clab)) +
     theme(legend.position=leg_pos)
 
 

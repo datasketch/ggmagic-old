@@ -6,8 +6,9 @@
 Facet Vertical coloured bars}
 \usage{
 gg_bar_coloured_x_ver_facet_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 0, text = TRUE, type = "count", color_text = "black", ...)
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", angle_x = 0, text = TRUE, type = "count",
+  color_text = "black", ...)
 }
 \arguments{
 \item{x}{A number.}

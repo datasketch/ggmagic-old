@@ -6,8 +6,8 @@
 Grouped Line Coloured}
 \usage{
 gg_multi_line_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
-  angle_x = 0, ...)
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, aggregation = "sum",
+  leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
