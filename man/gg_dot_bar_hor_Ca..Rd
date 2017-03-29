@@ -6,8 +6,7 @@
 Horizontal Dot Bar}
 \usage{
 gg_dot_bar_hor_Ca.(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
-  subtitle = "", caption = "", fillLabel = NULL, leg_pos = "right",
-  angle_x = 0, ...)
+  subtitle = "", caption = "", leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

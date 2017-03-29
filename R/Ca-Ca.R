@@ -716,7 +716,7 @@ gg_bar_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle ="", captio
 
 #' Ordered vertical stacked bar
 #' Ordered Stacked vertical Bar
-#' @name gg_bar_ordered_stacked_hor_CaCa.
+#' @name gg_bar_ordered_stacked_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export

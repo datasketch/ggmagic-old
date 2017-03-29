@@ -104,7 +104,7 @@ gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", captio
                                     leg_pos = "right", angle_x = 0, ...){
 
   graph <- gg_bar_coloured_ver_Ca.(data, titleLabel, subtitle, caption, xLabel,
-                                   yLabel, fillLabel, text, type, color_text, leg_pos, angle_x, ...) +  coord_flip()
+                                   yLabel, text, type, color_text, leg_pos, angle_x, ...) +  coord_flip()
   return(graph)
 
 
@@ -486,10 +486,10 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
-                               subtitle = "", caption = "", fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+                               subtitle = "", caption = "", leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_dot_bar_ver_Ca.(data, titleLabel, xLabel, yLabel,subtitle = subtitle, caption = caption,
-                              fillLabel, leg_pos, angle_x, ...)
+  graph <- gg_dot_bar_ver_Ca.(data, titleLabel, xLabel, yLabel, subtitle = subtitle, caption = caption,
+                              leg_pos, angle_x, ...)
 
   graph <- graph + coord_flip()
 

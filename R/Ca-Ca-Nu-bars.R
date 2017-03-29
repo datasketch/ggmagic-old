@@ -454,12 +454,13 @@ gg_bar_facet_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_ver_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, leg_pos = "right", angle_x = 0,
+                                                yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0,
                                                 aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
@@ -480,9 +481,9 @@ gg_bar_coloured_ver_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   graph <- ggplot(data_graph, aes(x = a, y = suma, fill = a)) +
     geom_bar(stat = "identity") +
     scale_fill_manual(values = getPalette()) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme_ds() +
-    theme(legend.position = "none") +
+    #theme(legend.position = "none") +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     facet_wrap(~b)
 
@@ -513,10 +514,10 @@ gg_bar_coloured_ver_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_hor_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, leg_pos = "right", angle_x = 0,
+                                                yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0,
                                                 aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
-  graph <- gg_bar_coloured_ver_x_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos,
+  graph <- gg_bar_coloured_ver_x_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos,
                                                angle_x, aggregation, text, color_text, type, ...)
   graph <- graph + coord_flip()
 
@@ -535,12 +536,13 @@ gg_bar_coloured_hor_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_ver_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, leg_pos = "right", angle_x = 0,
+                                                yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0,
                                                 aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  clab <- fillLabel %||% nms[2]
   ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
@@ -561,8 +563,8 @@ gg_bar_coloured_ver_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   graph <- ggplot(data_graph, aes(x = a, y = suma, fill = b)) +
     geom_bar(stat = "identity") +
     scale_fill_manual(values = getPalette()) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds() +
-    theme(legend.position="none") +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) + theme_ds() +
+    #theme(legend.position="none") +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     facet_wrap(~b)
 
@@ -594,10 +596,10 @@ gg_bar_coloured_ver_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_hor_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, leg_pos = "right", angle_x = 0,
+                                                yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0,
                                                 aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
-  graph <- gg_bar_coloured_ver_y_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x,
+  graph <- gg_bar_coloured_ver_y_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x,
                                                aggregation, text, color_text, type, ...)
   graph <- graph + coord_flip()
 
@@ -616,13 +618,14 @@ gg_bar_coloured_hor_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, reverse = FALSE, leg_pos = "right", angle_x = 0,
+                                                yLabel = NULL, fillLabel = NULL, reverse = FALSE, leg_pos = "right", angle_x = 0,
                                                 aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
+  clab <- fillLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -641,7 +644,7 @@ gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 
   graph <- ggplot(data_graph, aes(x = a, y = suma, fill = suma)) +
     geom_bar(stat = "identity") + theme_ds() +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
@@ -683,10 +686,10 @@ gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_hor_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, reverse = FALSE, leg_pos = "right", angle_x = 0,
+                                                yLabel = NULL, fillLabel = NULL, reverse = FALSE, leg_pos = "right", angle_x = 0,
                                                 aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
-  graph <- gg_bar_coloured_ver_z_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, leg_pos,
+  graph <- gg_bar_coloured_ver_z_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, reverse, leg_pos,
                                                angle_x, aggregation, text, color_text, type, ...)
   graph <- graph + coord_flip()
 
