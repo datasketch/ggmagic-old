@@ -6,7 +6,7 @@
 Facet Vertical Histogram + Dist}
 \usage{
 gg_dist_hist_ver_facet_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
   angle_x = 0, ...)
 }
 \arguments{

@@ -6,7 +6,7 @@
 Horizontal Line}
 \usage{
 gg_line_hor_Ca.(data, titleLabel = "", xLabel = NULL, subtitle = "",
-  caption = "", yLabel = "Count", leg_pos = "right", angle_x = 0, ...)
+  caption = "", yLabel = NULL, leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

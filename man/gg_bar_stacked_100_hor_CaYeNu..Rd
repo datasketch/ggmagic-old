@@ -5,8 +5,7 @@
 \title{Vertical 100% stacked bar by second variable
 Barras stacked}
 \usage{
-gg_bar_stacked_100_hor_CaYeNu.(data, title = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
+gg_bar_stacked_100_hor_CaYeNu.(data, ...)
 }
 \arguments{
 \item{x}{A number.}

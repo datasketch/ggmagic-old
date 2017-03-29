@@ -11,12 +11,13 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_line_hor_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                yLabel = NULL, leg_pos = "right", angle_x = 0, nbreaks = NULL,
+                                yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, nbreaks = NULL,
                                 shape_type = 19,
                                 aggregation = "sum", ...){
   f <- fringe(data)
   nms <- getClabels(f)
-  xLabel <- xLabel %||% nms[2]
+  clab <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
 
@@ -41,7 +42,7 @@ gg_line_hor_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = 
     scale_color_manual(values = getPalette())  +
     theme(legend.position = leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
   graph
 }
 
@@ -58,13 +59,12 @@ gg_line_hor_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = 
 #' add(1, 1)
 #' add(10, 1)
 gg_circle_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                              xLabel = NULL, yLabel = NULL,
-                              leg_pos = "right", shape_type = 19, angle_x = 0,  ...){
+                              xLabel = NULL, yLabel = NULL, leg_pos = "right", shape_type = 19, angle_x = 0,  ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% nms[1]
   data <- f$d
 
 
@@ -92,10 +92,11 @@ gg_circle_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 #' add(1, 1)
 #' add(10, 1)
 gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "", xLabel = NULL,
-                              yLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                              yLabel = NULL, fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
@@ -110,7 +111,7 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "
     stat_steamgraph() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     scale_fill_manual(values = getPalette()) +
-    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel)  +
+    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)  +
     theme(legend.position = leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 

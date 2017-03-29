@@ -161,7 +161,7 @@ gg_point_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
-  flabel <- fillLabel %||% nms[3]
+  clab <- fillLabel %||% nms[3]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -170,7 +170,7 @@ gg_point_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
   graph <- ggplot(data, aes(x = factor(a), y = factor(b), color=factor(c))) +
     geom_point(shape = shape_type) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) + theme_ds() +
     scale_x_discrete(labels = scales::comma) +
     scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +

@@ -40,9 +40,11 @@ gg_bar_facet_hor_CaYeNu. <- function(data,...){
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
-    dplyr::filter(!is.na(b), !is.na(c)) %>% select(a = b, b = a, c)
+    dplyr::filter(!is.na(b), !is.na(c)) #%>% select(a = b, b = a, c)
 
-  graph <- gg_bar_facet_hor_CaCaNu.(data, ...)
+  f$d <- data
+
+  graph <- gg_bar_facet_hor_CaCaNu.(selectFringeCols(f,c(2,1,3)), ...)
 
   graph
 }
@@ -66,9 +68,11 @@ gg_bar_grouped_ver_CaYeNu. <- function(data,...){
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
-    dplyr::filter(!is.na(b), !is.na(c)) %>% select(a = b, b = a, c)
+    dplyr::filter(!is.na(b), !is.na(c)) #%>% select(a = b, b = a, c)
 
-  graph <- gg_bar_grouped_ver_CaCaNu.(data, ...)
+  f$d <- data
+
+  graph <- gg_bar_grouped_ver_CaCaNu.(selectFringeCols(f,c(2,1,3)), ...)
 
   graph
 }
@@ -104,7 +108,6 @@ gg_bar_grouped_hor_CaYeNu. <- function(data,...){
 #' add(10, 1)
 #'
 gg_bar_grouped2_ver_CaYeNu. <- function(data,...){
-  data <- fringe(data)
   gg_bar_grouped_ver_CaCaNu.(data, ...)
 }
 
@@ -144,9 +147,11 @@ gg_bar_stacked_ver_CaYeNu. <- function(data,...){
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
-    dplyr::filter(!is.na(b), !is.na(c)) %>% select(a = b, b = a, c)
+    dplyr::filter(!is.na(b), !is.na(c)) #%>% select(a = b, b = a, c)
 
-  graph <- gg_bar_stacked_ver_CaCaNu.(data, ...)
+  f$d <- data
+
+  graph <- gg_bar_stacked_ver_CaCaNu.(selectFringeCols(f,c(2,1,3)), ...)
   graph
 }
 
@@ -187,9 +192,10 @@ gg_bar_stacked_100_ver_CaYeNu. <- function(data,...){
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
-    dplyr::filter(!is.na(b), !is.na(c)) %>% select(a = b, b = a, c)
+    dplyr::filter(!is.na(b), !is.na(c)) #%>% select(a = b, b = a, c)
 
-  graph <- gg_bar_stacked_100_ver_CaCaNu.(data, ...)
+  f$d <- data
+  graph <- gg_bar_stacked_100_ver_CaCaNu.(selectFringeCols(f,c(2,1,3)), ...)
   graph
 }
 
@@ -205,11 +211,8 @@ gg_bar_stacked_100_ver_CaYeNu. <- function(data,...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_100_hor_CaYeNu. <- function(data, title = "",subtitle = "", caption = "",
-                                           xLabel = NULL, yLabel = NULL,
-                                           leg_pos = "right", ...){
+gg_bar_stacked_100_hor_CaYeNu. <- function(data, ...){
 
-  graph <- gg_bar_stacked_100_ver_CaYeNu.(data, title, subtitle, caption,
-                                          xLabel, yLabel, leg_pos)
+  graph <- gg_bar_stacked_100_ver_CaYeNu.(data, ...)
   graph + coord_flip()
 }

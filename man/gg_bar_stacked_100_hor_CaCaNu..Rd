@@ -6,9 +6,9 @@
 100 horizontal stacked bar graph}
 \usage{
 gg_bar_stacked_100_hor_CaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  aggregation = "sum", text = TRUE, color_text = "black",
-  type = "count", angle_x = 0, ...)
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", aggregation = "sum", text = TRUE,
+  color_text = "black", type = "count", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A category.}

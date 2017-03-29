@@ -6,7 +6,7 @@
 Stacked horizontal dot Bar}
 \usage{
 gg_stacked_dot_bar_hor_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
   angle_x = 0, ...)
 }
 \arguments{

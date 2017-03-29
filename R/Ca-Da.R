@@ -70,7 +70,7 @@ gg_histogram_CaDa. <- function(data, titleLabel = "", subtitle = "", caption = "
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% "count"
+  ylab <- yLabel %||% "Conteo"
   d <- f$d
 
   d <- d %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%

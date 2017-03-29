@@ -6,7 +6,7 @@
 Coloured Density Distribution}
 \usage{
 gg_density_multi_dist_coloured_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
   angle_x = 0, ...)
 }
 \arguments{

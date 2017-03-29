@@ -5,7 +5,7 @@
 \title{Horizontal dot bar
 Horizontal Dot Bar}
 \usage{
-gg_dot_bar_hor_Ca.(data, titleLabel = "", xLabel = NULL, yLabel = "Count",
+gg_dot_bar_hor_Ca.(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
   subtitle = "", caption = "", fillLabel = NULL, leg_pos = "right",
   angle_x = 0, ...)
 }

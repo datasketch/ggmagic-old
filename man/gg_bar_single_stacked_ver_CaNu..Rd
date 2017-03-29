@@ -6,7 +6,7 @@
 Single Vertical Stacked Bar}
 \usage{
 gg_bar_single_stacked_ver_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", yLabel = "Count", leg_pos = "right", width = 0.3,
+  caption = "", yLabel = NULL, leg_pos = "right", width = 0.3,
   aggregation = "sum", text = TRUE, type = "count",
   color_text = "black", angle_x = 0, ...)
 }

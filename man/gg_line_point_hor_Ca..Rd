@@ -6,7 +6,7 @@
 Horizontal Line Point}
 \usage{
 gg_line_point_hor_Ca.(data, titleLabel = "", xLabel = NULL, subtitle = "",
-  caption = "", yLabel = "Count", leg_pos = "right", shape_type = 19,
+  caption = "", yLabel = NULL, leg_pos = "right", shape_type = 19,
   angle_x = 0, ...)
 }
 \arguments{

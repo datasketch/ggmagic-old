@@ -88,7 +88,7 @@ gg_steam_CaDaNu. <- function (data, titleLabel = "", subtitle = "", caption = ""
            theme_ds() +
            theme(axis.text.x = element_text(angle = angle_x,hjust = 1)) +
            scale_fill_manual(values = getPalette()) +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
            theme(legend.position = leg_pos)
   graph
 }
@@ -130,7 +130,7 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph <- ggplot(data = data_graph, aes(x = as.Date(b, origin = data[1,2]), y = c, group = a)) +
            geom_area(aes(fill = a), position = "stack")
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab, fill = flabel)
+           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
   graph <- graph +
            theme_ds() +
            theme(legend.position=leg_pos) +
@@ -316,7 +316,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
                                        hline = NULL, text = TRUE, type = "count", color_text = "black", ...){
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% nms[1]
+  xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
 
@@ -343,7 +343,7 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
                   c = ifelse(c == 0, NA, c))
 
   graph <- ggplot(data, aes(x = reorder(b, c), y = c, fill = a)) + geom_bar(stat = "identity", position = "stack")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     guides(text = FALSE)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(legend.position=leg_pos) +

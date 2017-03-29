@@ -6,7 +6,7 @@
 Vertical Line Point}
 \usage{
 gg_line_point_ver_facet_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", angle_x = 0,
+  caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0,
   shape_point = 19, ...)
 }
 \arguments{

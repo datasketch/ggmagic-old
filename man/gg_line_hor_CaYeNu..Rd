@@ -6,8 +6,9 @@
 Tiene múltiples líneas}
 \usage{
 gg_line_hor_CaYeNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0,
-  nbreaks = NULL, shape_type = 19, aggregation = "sum", ...)
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
+  angle_x = 0, nbreaks = NULL, shape_type = 19, aggregation = "sum",
+  ...)
 }
 \arguments{
 \item{x}{A number.}

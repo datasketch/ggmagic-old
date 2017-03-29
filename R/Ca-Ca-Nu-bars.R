@@ -9,15 +9,15 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                        xLabel = NULL, yLabel = NULL, leg_pos = "right", aggregation = "sum",
                                        text = TRUE, color_text = "black", type = "count", angle_x = 0,...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  clab <- fillLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
-  data <- data %>% filter(!is.na(a),!is.na(b))
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
                                  b = ifelse(is.na(b), "NA", b)) %>%
@@ -41,7 +41,7 @@ gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
   graph <- ggplot(data, aes(x=a, y=c, fill=b)) +
     geom_bar(stat="identity", position = "dodge")
   graph <- graph +  theme_ds() +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) + guides(text = FALSE)
   graph <- graph + scale_fill_manual(values = getPalette())
@@ -71,13 +71,13 @@ gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_grouped_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_grouped_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                        xLabel = NULL, yLabel = NULL,
                                        leg_pos = "right",
                                        aggregation = "sum", text = TRUE, color_text = "black", type = "count",
                                        angle_x = 0,...){
 
-  graph <- gg_bar_grouped_ver_CaCaNu.(data, titleLabel, subtitle, caption,
+  graph <- gg_bar_grouped_ver_CaCaNu.(data, titleLabel, subtitle, caption, fillLabel,
                                       xLabel, yLabel, leg_pos,
                                       aggregation, text, color_text, type, angle_x, ...)
 
@@ -131,15 +131,15 @@ gg_bar_grouped2_hor_CaCaNu. <- function(data, ...){
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                       yLabel = NULL, leg_pos = "right",
+                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right",
                                        aggregation = "sum", text = TRUE, type = "count", color_text = "black",
                                        angle_x = 0,...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
+  clab <- fillLabel %||% nms[2]
   data <- f$d
-  data <- data %>% filter(!is.na(a),!is.na(b))
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
                                  b = ifelse(is.na(b), "NA", b)) %>%
@@ -161,7 +161,7 @@ gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 
   graph <- ggplot(data, aes(a, y = c, fill=b)) + geom_bar(stat="identity", position = "stack")
   graph <- graph + theme_ds() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
   graph <- graph  + scale_fill_manual(values = getPalette()) +
     theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
@@ -192,11 +192,11 @@ gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                       yLabel = NULL, leg_pos = "right",
+                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right",
                                        aggregation = "sum", text = TRUE, type = "count", color_text = "black",
                                        angle_x = 0, ...){
   graph <- gg_bar_stacked_ver_CaCaNu.(data, titleLabel, subtitle, caption,
-                                      xLabel, yLabel, leg_pos,
+                                      xLabel, yLabel, fillLabel, leg_pos,
                                       aggregation, text, type, color_text, angle_x, ...)
   graph + coord_flip()
 }
@@ -248,15 +248,15 @@ gg_bar_stacked2_hor_CaCaNu. <- function(data, ...){
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                           yLabel = NULL, leg_pos = "right",
+                                           yLabel = NULL, fillLabel = NULL, leg_pos = "right",
                                            aggregation = "sum", text = TRUE, color_text = "black", type = "count",
                                            angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
+  clab <- fillLabel %||% nms[2]
   data <- f$d
-  data <- data %>% filter(!is.na(a),!is.na(b))
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
                                  b = ifelse(is.na(b), "NA", b)) %>%
@@ -281,7 +281,7 @@ gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
 
   graph <- ggplot(data, aes(a, y = c, fill=b)) +
     geom_bar(stat="identity", position = "fill") + theme_ds()
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
   graph <- graph + scale_fill_manual(values = getPalette()) +
     scale_y_continuous(labels = percent) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     theme(legend.position=leg_pos)
@@ -312,13 +312,13 @@ gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                           yLabel = NULL, leg_pos = "right",
+                                           yLabel = NULL, fillLabel = NULL, leg_pos = "right",
                                            aggregation = "sum", text = TRUE, color_text = "black", type = "count",
                                            angle_x = 0, ...){
 
 
   graph <- gg_bar_stacked_100_ver_CaCaNu.(data, titleLabel, subtitle, caption,
-                                          xLabel, yLabel, leg_pos,
+                                          xLabel, yLabel, fillLabel, leg_pos,
                                           aggregation, text, color_text, type, angle_x, ...)
   graph <- graph + coord_flip()
 
@@ -798,11 +798,13 @@ gg_bar_coloured_parameter_hor_facet_CaCaNu. <- function(data, titleLabel = "", s
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                           leg_pos="right", aggregation = "sum", width = 0.85,
                                           text = TRUE, type = "count", color_text = "black", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -824,7 +826,7 @@ gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", 
     coord_polar(theta = "y")
 
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab) +
     scale_fill_manual(values = getPalette()) +
     theme_ds() +
     theme_ds_clean()
@@ -856,11 +858,12 @@ gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "", caption = "",
+gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                          leg_pos= "right", aggregation = "sum", text = TRUE, color_text = "black",
                                          type = "count", ...){
   f <- fringe(data)
   nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -886,12 +889,16 @@ gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "", su
     geom_bar(width = width, position = "stack", stat = "identity") +
     coord_polar()
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "")
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab)
   graph <- graph +
     theme_ds() +
-    theme_ds_clean() +
+    #theme_ds_clean() +
     theme(legend.position=leg_pos) +
-    scale_fill_manual(values = getPalette())
+    scale_fill_manual(values = getPalette()) +
+    theme(axis.line=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks.y=element_blank(),
+          panel.grid.major=element_blank())
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data, aes(y = c, label = round(c,2)),
@@ -924,7 +931,7 @@ gg_bar_stacked_polar_100_CaCaNu. <- function(data, width = 0.95, titleLabel = ""
                                              type = "count", ...){
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -949,10 +956,15 @@ gg_bar_stacked_polar_100_CaCaNu. <- function(data, width = 0.95, titleLabel = ""
   graph <- ggplot(data = data, aes(x = a, y = c, fill = b)) +
     geom_bar(width = width, position = "fill", stat = "identity") +
     coord_polar() + theme_ds() +
-    theme_ds_clean() + scale_fill_manual(values = getPalette()) +
+    #theme_ds_clean() +
+    scale_fill_manual(values = getPalette()) +
     theme(legend.position=leg_pos)
   graph <- graph + theme(legend.position=leg_pos) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab, x = "", y = "") +
+    theme(axis.line=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks.y=element_blank(),
+          panel.grid.major=element_blank())
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data, aes(y = percent/100, label = round(c,2)),

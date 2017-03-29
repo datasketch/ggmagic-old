@@ -6,7 +6,7 @@
 Grouped Line Coloured}
 \usage{
 gg_line_multi_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = "Index", yLabel = NULL, leg_pos = "right", angle_x = 0, ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

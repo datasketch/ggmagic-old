@@ -78,7 +78,7 @@ gg_waterfall_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_dens_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                          yLabel=NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
+                          yLabel = NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -118,9 +118,9 @@ gg_dens_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xL
 #' add(1, 1)
 #' add(10, 1)
 gg_dens_flip_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel=NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
+                               yLabel = NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
 
-  graph <- gg_dens_NuNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, angle_x = 0, leg_pos, ...)
+  graph <- gg_dens_NuNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, angle_x, leg_pos, ...)
   graph <- graph + coord_flip()
   graph
 }

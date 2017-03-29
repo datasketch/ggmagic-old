@@ -6,9 +6,8 @@
 Stacked Polar bar}
 \usage{
 gg_bar_polar_stacked_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, width = 0.95, yLabel = NULL,
-  text = TRUE, type = "count", color_text = "black", leg_pos = "right",
-  ...)
+  caption = "", width = 0.95, fillLabel = NULL, text = TRUE,
+  type = "count", color_text = "black", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

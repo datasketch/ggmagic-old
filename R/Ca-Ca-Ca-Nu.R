@@ -165,6 +165,8 @@ gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% "Porcentaje"
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -200,7 +202,7 @@ gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
     scale_fill_manual(values=getPalette())
 
   graph <-  graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(legend.position = leg_pos)
 
   if(text == TRUE & type == 'count'){
@@ -235,7 +237,8 @@ gg_bar_stacked_100_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% "Porcentaje"
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
@@ -269,7 +272,7 @@ gg_bar_stacked_100_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
     scale_fill_manual(values=getPalette())
 
   graph <-  graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(legend.position = leg_pos)
 
   if(text == TRUE & type == 'count'){
@@ -304,6 +307,8 @@ gg_bar_stacked_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[4]
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -337,7 +342,7 @@ gg_bar_stacked_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", c
     scale_fill_manual(values=getPalette())
 
   graph <-  graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(legend.position = leg_pos)
 
   if(text == TRUE & type == 'count'){

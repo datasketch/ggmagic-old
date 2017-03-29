@@ -45,12 +45,13 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                    xLabel = NULL, yLabel = 'Count', fillLabel = NULL,
+                                    xLabel = NULL, yLabel = NULL, fillLabel = NULL,
                                     text = TRUE, type = 'count', color_text = "black",
                                     leg_pos = "right", angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% "Conteo"
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -70,7 +71,7 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", captio
            theme(legend.position = leg_pos) +
            theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-           labs(title = titleLabel, x= xlab, y = yLabel, subtitle = subtitle, caption = caption)
+           labs(title = titleLabel, x= xlab, y = ylab, subtitle = subtitle, caption = caption)
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(aes(x = a, y = pos, label = round(count,2)), color = color_text, check_overlap = TRUE))
@@ -96,7 +97,7 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                    xLabel = NULL, yLabel = 'Count', fillLabel = NULL,
+                                    xLabel = NULL, yLabel = NULL, fillLabel = NULL,
                                     text = TRUE, type = 'count', color_text = "black",
                                     leg_pos = "right", angle_x = 0, ...){
 
@@ -119,7 +120,7 @@ gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                              xLabel = NULL, yLabel = 'Count', parameter = NULL,
+                                              xLabel = NULL, yLabel = NULL, parameter = NULL,
                                               text = TRUE, type = 'count', color_text = "black",
                                               leg_pos = "right", angle_x = 0, ...){
 
@@ -127,6 +128,7 @@ gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% "Conteo"
   #p <-  parameter %||% sample(unique(data[,nms[1]]), 1)
   data <- f$d
 
@@ -146,7 +148,7 @@ gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = 
   graph <- ggplot(data_graph, aes(x = a, y = count)) +
            geom_bar(stat="identity", aes(fill = a %in% p ))
   graph <- graph +
-           labs(title = titleLabel, x = xlab, y = yLabel, subtitle = subtitle, caption = caption)
+           labs(title = titleLabel, x = xlab, y = ylab, subtitle = subtitle, caption = caption)
   graph <- graph + guides(fill = FALSE) + theme(legend.position = leg_pos) +
            theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
@@ -176,7 +178,7 @@ gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                              xLabel = NULL, yLabel = 'Count', parameter = NULL,
+                                              xLabel = NULL, yLabel = NULL, parameter = NULL,
                                               text = TRUE, type = 'count', color_text = "black",
                                               leg_pos = "right", angle_x = 0, ...){
 
@@ -204,6 +206,7 @@ gg_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% "Conteo"
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -218,7 +221,7 @@ gg_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
                   count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data = data_graph , aes(y = count ,x = factor(a), fill = "")) + geom_bar(stat ='identity') +
-           labs(title = titleLabel, x = xlab, y = yLabel, subtitle = subtitle, caption = caption)
+           labs(title = titleLabel, x = xlab, y = ylab, subtitle = subtitle, caption = caption)
   graph <- graph + theme(legend.position=leg_pos) + guides(fill = FALSE) +
            theme_ds() +
            scale_fill_manual(values = getPalette()) +
@@ -274,6 +277,7 @@ gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% "Conteo"
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a))
@@ -290,7 +294,7 @@ gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption
   graph <- ggplot(data_graph, aes(x = reorder(a, count), y = count, fill = "")) +
            geom_bar(stat = "identity")
   graph <- graph +
-           labs(title = titleLabel, y = yLabel, x = xLabel, subtitle = subtitle, caption = caption) +
+           labs(title = titleLabel, y = ylab, x = xlab, subtitle = subtitle, caption = caption) +
            theme(legend.position=leg_pos) +
            theme_ds() + scale_fill_manual(values = getPalette()) + guides(fill = FALSE) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
@@ -444,6 +448,7 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% "Conteo"
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
@@ -457,7 +462,7 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
 
   graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
                   aes(x = order, fill = factor(a))) + geom_dotplot(method="histodot") +
-           labs(title = titleLabel, x = xLabel, y = yLabel,  fill = flabel, subtitle = subtitle, caption = caption)
+           labs(title = titleLabel, x = xlab, y = ylab,  fill = flabel, subtitle = subtitle, caption = caption)
   graph <- graph +
            scale_y_continuous(breaks = NULL) +
            theme_ds() + theme(legend.position=leg_pos) +
@@ -478,7 +483,7 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'Count',
+gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
                                subtitle = "", caption = "", fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   graph <- gg_dot_bar_ver_Ca.(data, titleLabel, xLabel, yLabel,subtitle = subtitle, caption = caption,
@@ -501,7 +506,7 @@ gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = 'C
 #' add(1, 1)
 #' add(10, 1)
 gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
-                            caption = "", yLabel = 'Count', leg_pos = "right", angle_x = 0, ...){
+                            caption = "", yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -537,7 +542,7 @@ gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_line_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
-                            caption = "", yLabel = 'Count', leg_pos = "right", angle_x = 0, ...){
+                            caption = "", yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   graph <- gg_line_hor_Ca.(data, titleLabel, xLabel, subtitle, caption, yLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
@@ -557,7 +562,7 @@ gg_line_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
-                                  caption = "", yLabel = 'Count', leg_pos = "right",
+                                  caption = "", yLabel = NULL, leg_pos = "right",
                                   shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -594,7 +599,7 @@ gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
-                                  caption = "", yLabel = 'Count', leg_pos = "right",
+                                  caption = "", yLabel = NULL, leg_pos = "right",
                                   shape_type = 19, angle_x = 0, ...){
 
   graph <- gg_line_point_hor_Ca.(data, titleLabel, xLabel, subtitle, caption, yLabel, leg_pos, shape_type, angle_x, ...)

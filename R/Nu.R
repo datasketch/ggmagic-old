@@ -14,6 +14,7 @@ gg_horizon_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -23,7 +24,7 @@ gg_horizon_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 
   graph <- ggplot_horizon(data_graph, 'xorder', 'a')
   graph <- graph + theme_ds() +
-    labs(title = titleLabel, subtitle = subtitle, caption =caption, x = xLabel, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption =caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     theme(legend.position=leg_pos)
 
@@ -54,6 +55,7 @@ gg_waterfall_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -63,7 +65,7 @@ gg_waterfall_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph <- ggplot_waterfall(data_graph, 'xorder', 'a') +
     scale_color_manual(breaks = c("+","-", ""), values = getPalette()) +
     theme_ds() + theme(legend.position="none") +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
 
@@ -83,11 +85,12 @@ gg_waterfall_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "",
+gg_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                         yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -101,7 +104,7 @@ gg_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLab
 
 
   graph <- graph + theme_ds()
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   return(graph)
@@ -124,6 +127,7 @@ gg_hist_dens_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -136,7 +140,7 @@ gg_hist_dens_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
     scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette()[2])
 
   graph <- graph + theme_ds()
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   return(graph)
@@ -159,6 +163,7 @@ gg_dist_cum_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
+  xlab <- xLabel %||% "Índice"
   data <- f$d
 
   data <- data %>% dplyr::filter(!is.na(a))
@@ -167,7 +172,7 @@ gg_dist_cum_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
     scale_color_manual(values = getPalette())
 
   graph <- graph + theme_ds()
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   return(graph)
@@ -300,13 +305,14 @@ gg_density_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = 
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
   data <- data %>% dplyr::filter(!is.na(a))
 
   graph <- ggplot(data, aes(x=a)) + geom_density(aes(fill = ""), show.legend = FALSE)
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
@@ -330,12 +336,13 @@ gg_box_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabe
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
+  xlab <- xLabel %||% "Índice"
   data <- f$d
 
   data <- data %>% dplyr::filter(!is.na(a))
 
   graph <- ggplot(data, aes(x=factor(""), y=a)) + geom_boxplot(aes(fill = ""), show.legend = FALSE)
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
@@ -382,6 +389,7 @@ gg_violin_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yL
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -391,7 +399,7 @@ gg_violin_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yL
     dplyr::mutate(order = rep(1, nrow(data)))
 
   graph <- ggplot(data_graph, aes(factor(""), a)) + geom_violin(aes(fill = ""), show.legend = FALSE)
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 

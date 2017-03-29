@@ -6,9 +6,9 @@
 vertical unstacked bargraph}
 \usage{
 gg_bar_grouped_ver_CaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  aggregation = "sum", text = TRUE, color_text = "black",
-  type = "count", angle_x = 0, ...)
+  caption = "", fillLabel = NULL, xLabel = NULL, yLabel = NULL,
+  leg_pos = "right", aggregation = "sum", text = TRUE,
+  color_text = "black", type = "count", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A category.}
