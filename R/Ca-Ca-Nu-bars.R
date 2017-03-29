@@ -338,7 +338,7 @@ gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
 #' add(10, 1)
 gg_bar_stacked2_100_ver_CaCaNu. <- function(data,...){
   data <- fringe(data)
-  gg_bar_stacked_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
+  gg_bar_stacked_100_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
 #' Horizontal 100% stacked bar by second variable
