@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ye-Nu-bars.R
 \name{gg_bar_stacked_ver_CaYeNu.}
 \alias{gg_bar_stacked_ver_CaYeNu.}
-\title{Vertical stacked bar by second variable
+\title{Vertical stacked bar by first variable
 Barras stacked}
 \usage{
 gg_bar_stacked_ver_CaYeNu.(data, ...)
@@ -16,7 +16,7 @@ gg_bar_stacked_ver_CaYeNu.(data, ...)
 The sum of \code{x} and \code{y}.
 }
 \description{
-Vertical stacked bar by second variable
+Vertical stacked bar by first variable
 Barras stacked
 }
 \section{ftypes}{

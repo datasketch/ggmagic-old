@@ -8,7 +8,7 @@ Single Horizontal Stacked Bar}
 gg_bar_single_stacked_hor_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", fillLabel = NULL, leg_pos = "right", width = 0.3,
   aggregation = "sum", text = TRUE, type = "count",
-  color_text = "black", ...)
+  color_text = "black", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_bar_grouped_coloured_ver_CaCa.}
 \alias{gg_bar_grouped_coloured_ver_CaCa.}
-\title{Vertical grouped bar
+\title{Vertical grouped bar by second variable
 Unstacked Coloured vertical Bar}
 \usage{
 gg_bar_grouped_coloured_ver_CaCa.(data, titleLabel = "", subtitle = "",
@@ -19,7 +19,7 @@ gg_bar_grouped_coloured_ver_CaCa.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Vertical grouped bar
+Vertical grouped bar by second variable
 Unstacked Coloured vertical Bar
 }
 \section{ftypes}{

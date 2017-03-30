@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_grouped_ver_CaCaNu.}
 \alias{gg_bar_grouped_ver_CaCaNu.}
-\title{Vertical grouped bar by first variable
+\title{Vertical grouped bar by second variable
 vertical unstacked bargraph}
 \usage{
 gg_bar_grouped_ver_CaCaNu.(data, titleLabel = "", subtitle = "",
@@ -19,7 +19,7 @@ gg_bar_grouped_ver_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Vertical grouped bar by first variable
+Vertical grouped bar by second variable
 vertical unstacked bargraph
 }
 \section{ftypes}{

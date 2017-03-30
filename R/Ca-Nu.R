@@ -1903,7 +1903,7 @@ gg_dot_bar_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
+  ylab <- yLabel %||% paste(aggregation, nms[2])
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
@@ -1986,9 +1986,9 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 }
 
 
-#' Horizontal stacked bar
-#' Single Horizontal Stacked Bar
-#' @name gg_bar_single_stacked_hor_CaNu.
+#' Vertical stacked bar
+#' Single Vertical Stacked Bar
+#' @name gg_bar_single_stacked_ver_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -1997,7 +1997,7 @@ gg_bullseye_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_single_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                             fillLabel = NULL, leg_pos="right", width = 0.3, aggregation = 'sum',
                                             text = TRUE, type = "count", color_text = "black", ...){
 
@@ -2038,9 +2038,9 @@ gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = ""
 }
 
 
-#' Vertical stacked bar
-#' Single Vertical Stacked Bar
-#' @name gg_bar_single_stacked_ver_CaNu.
+#' Horizontal stacked bar
+#' Single Horizontal Stacked Bar
+#' @name gg_bar_single_stacked_hor_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -2049,11 +2049,11 @@ gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = ""
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_single_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                             fillLabel = NULL, leg_pos="right", width = 0.3, aggregation = 'sum',
                                             text = TRUE, type = "count", color_text = "black", angle_x = 0, ...){
 
-  graph <- gg_bar_single_stacked_hor_CaNu.(data, titleLabel, subtitle, caption,  fillLabel, leg_pos, width, aggregation,
+  graph <- gg_bar_single_stacked_ver_CaNu.(data, titleLabel, subtitle, caption,  fillLabel, leg_pos, width, aggregation,
                                            text, type, color_text, angle_x, ...)
   graph <- graph + coord_flip()
 

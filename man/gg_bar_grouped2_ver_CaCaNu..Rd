@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_grouped2_ver_CaCaNu.}
 \alias{gg_bar_grouped2_ver_CaCaNu.}
-\title{Vertical grouped bar by second variable
+\title{Vertical grouped bar by first variable
 Barras grouped}
 \usage{
 gg_bar_grouped2_ver_CaCaNu.(data, ...)
@@ -16,7 +16,7 @@ gg_bar_grouped2_ver_CaCaNu.(data, ...)
 The sum of \code{x} and \code{y}.
 }
 \description{
-Vertical grouped bar by second variable
+Vertical grouped bar by first variable
 Barras grouped
 }
 \section{ftypes}{

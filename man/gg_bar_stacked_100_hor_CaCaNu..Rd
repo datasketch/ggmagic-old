@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_stacked_100_hor_CaCaNu.}
 \alias{gg_bar_stacked_100_hor_CaCaNu.}
-\title{Horizontal 100% stacked bar by first variable
+\title{Horizontal 100% stacked bar by second variable
 100 horizontal stacked bar graph}
 \usage{
 gg_bar_stacked_100_hor_CaCaNu.(data, titleLabel = "", subtitle = "",
@@ -19,7 +19,7 @@ gg_bar_stacked_100_hor_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Horizontal 100% stacked bar by first variable
+Horizontal 100% stacked bar by second variable
 100 horizontal stacked bar graph
 }
 \section{ftypes}{

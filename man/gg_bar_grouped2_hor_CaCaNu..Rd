@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_grouped2_hor_CaCaNu.}
 \alias{gg_bar_grouped2_hor_CaCaNu.}
-\title{Horizontal grouped bar by second variable
+\title{Horizontal grouped bar by first variable
 Barras grouped}
 \usage{
 gg_bar_grouped2_hor_CaCaNu.(data, ...)
@@ -16,7 +16,7 @@ gg_bar_grouped2_hor_CaCaNu.(data, ...)
 The sum of \code{x} and \code{y}.
 }
 \description{
-Horizontal grouped bar by second variable
+Horizontal grouped bar by first variable
 Barras grouped
 }
 \section{ftypes}{

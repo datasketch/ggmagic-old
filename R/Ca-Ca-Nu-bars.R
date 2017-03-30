@@ -1,4 +1,4 @@
-#' Vertical grouped bar by first variable
+#' Vertical grouped bar by second variable
 #' vertical unstacked bargraph
 #' @name gg_bar_grouped_ver_CaCaNu.
 #' @param x A category.
@@ -60,7 +60,7 @@ gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
   graph
 }
 
-#' Horizontal grouped bar by first variable
+#' Horizontal grouped bar by second variable
 #' horizontal bar graph
 #' @name gg_bar_grouped_hor_CaCaNu.
 #' @param x A category.
@@ -85,7 +85,7 @@ gg_bar_grouped_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 
 }
 
-#' Vertical grouped bar by second variable
+#' Vertical grouped bar by first variable
 #' Barras grouped
 #' @name gg_bar_grouped2_ver_CaCaNu.
 #' @param x A number.
@@ -101,7 +101,7 @@ gg_bar_grouped2_ver_CaCaNu. <- function(data,...){
   gg_bar_grouped_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' Horizontal grouped bar by second variable
+#' Horizontal grouped bar by first variable
 #' Barras grouped
 #' @name gg_bar_grouped2_hor_CaCaNu.
 #' @param x A number.
@@ -119,7 +119,7 @@ gg_bar_grouped2_hor_CaCaNu. <- function(data, ...){
 }
 
 
-#' Vertical stacked bar by first variable
+#' Vertical stacked bar by second variable
 #' vertical stacked bar graph
 #' @name gg_bar_stacked_ver_CaCaNu.
 #' @param x A category.
@@ -180,7 +180,7 @@ gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
   graph
 }
 
-#' Horizontal stacked bar by first variable
+#' Horizontal stacked bar by second variable
 #' horizontal stacked bar graph
 #' @name gg_bar_stacked_hor_CaCaNu.
 #' @param x A category.
@@ -202,7 +202,7 @@ gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 }
 
 
-#' Vertical stacked bar by second variable
+#' Vertical stacked bar by first variable
 #' Barras grouped
 #' @name gg_bar_stacked2_ver_CaCaNu.
 #' @param x A number.
@@ -218,7 +218,7 @@ gg_bar_stacked2_ver_CaCaNu. <- function(data,...){
   gg_bar_stacked_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' Horizontal stacked bar by second variable
+#' Horizontal stacked bar by first variable
 #' Barras grouped
 #' Tiene múltiples líneas
 #' @name gg_bar_stacked2_hor_CaCaNu.
@@ -236,7 +236,7 @@ gg_bar_stacked2_hor_CaCaNu. <- function(data, ...){
   graph
 }
 
-#' Vertical 100% stacked bar by first variable
+#' Vertical 100% stacked bar by second variable
 #' 100 vertical stacked bar graph
 #' @name gg_bar_stacked_100_ver_CaCaNu.
 #' @param x A category.
@@ -300,7 +300,7 @@ gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
   graph
 }
 
-#' Horizontal 100% stacked bar by first variable
+#' Horizontal 100% stacked bar by second variable
 #' 100 horizontal stacked bar graph
 #' @name gg_bar_stacked_100_hor_CaCaNu.
 #' @param x A category.
@@ -325,7 +325,7 @@ gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
   graph
 }
 
-#' Vertical 100% stacked bar by second variable
+#' Vertical 100% stacked bar by first variable
 #' Barras grouped
 #' @name gg_bar_stacked2_100_ver_CaCaNu.
 #' @param x A number.
@@ -341,7 +341,7 @@ gg_bar_stacked2_100_ver_CaCaNu. <- function(data,...){
   gg_bar_stacked_100_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' Horizontal 100% stacked bar by second variable
+#' Horizontal 100% stacked bar by first variable
 #' Barras grouped
 #' @name gg_bar_stacked2_100_hor_CaCaNu.
 #' @param x A number.

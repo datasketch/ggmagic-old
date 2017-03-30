@@ -631,7 +631,7 @@ gg_bar_coloured_parameter_hor_facet_CaCa. <- function(data, titleLabel = "", sub
   graph
 }
 
-#' Vertical stacked bar
+#' Vertical stacked bar by second variable
 #' Stacked vertical Bar
 #' @name gg_bar_stacked_ver_CaCa.
 #' @param x A number.
@@ -692,7 +692,7 @@ gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capti
   graph
 }
 
-#' Horizontal stacked bar
+#' Horizontal stacked bar by second variable
 #' Stacked horizontal Bar
 #' @name gg_bar_stacked_hor_CaCa.
 #' @param x A number.
@@ -714,7 +714,7 @@ gg_bar_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle ="", captio
   graph
 }
 
-#' Ordered vertical stacked bar
+#' Ordered vertical stacked bar by second variable
 #' Ordered Stacked vertical Bar
 #' @name gg_bar_ordered_stacked_ver_CaCa.
 #' @param x A number.
@@ -781,7 +781,7 @@ gg_bar_ordered_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "
   graph
 }
 
-#' Ordered horizontal stacked bar
+#' Ordered horizontal stacked bar by second variable
 #' Ordered Stacked horizontal Bar
 #' @name gg_bar_ordered_stacked_hor_CaCa.
 #' @param x A number.
@@ -861,7 +861,7 @@ gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", c
   graph
 }
 
-#' Vertical grouped bar
+#' Vertical grouped bar by second variable
 #' Unstacked Coloured vertical Bar
 #' @name gg_bar_grouped_coloured_ver_CaCa.
 #' @param x A number.
@@ -924,7 +924,7 @@ gg_bar_grouped_coloured_ver_CaCa. <- function(data, titleLabel = "", subtitle = 
   graph
 }
 
-#' Horizontal grouped bar
+#' Horizontal grouped bar by second variable
 #' Unstacked Coloured horizontal Bar
 #' @name gg_bar_grouped_coloured_hor_CaCa.
 #' @param x A number.
@@ -1065,7 +1065,7 @@ gg_line_point_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' Vertical 100% stacked bar
+#' Vertical 100% stacked bar by second variable
 #' Stacked 100pct vertical Bar
 #' @name gg_bar_stacked_100_ver_CaCa.
 #' @param x A number.
@@ -1124,7 +1124,7 @@ gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
   graph
 }
 
-#' Horizontal 100% stacked bar
+#' Horizontal 100% stacked bar by second variable
 #' Stacked 100pct horizontal Bar
 #' @name gg_bar_stacked_100_hor_CaCa.
 #' @param x A number.

@@ -8,7 +8,7 @@ Single Vertical Stacked Bar}
 gg_bar_single_stacked_ver_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", fillLabel = NULL, leg_pos = "right", width = 0.3,
   aggregation = "sum", text = TRUE, type = "count",
-  color_text = "black", angle_x = 0, ...)
+  color_text = "black", ...)
 }
 \arguments{
 \item{x}{A number.}

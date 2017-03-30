@@ -730,9 +730,9 @@ gg_gauge_dial_Ca. <- function(data, ...){
   grid.draw(arrangeGrob(grobs = graphList,ncol=2))
 }
 
-#' Horizontal stacked bar
-#' Single Horizontal Stacked Bar
-#' @name gg_bar_single_stacked_hor_Ca.
+#' Vertical stacked bar
+#' Single Vertical Stacked Bar
+#' @name gg_bar_single_stacked_ver_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -741,7 +741,7 @@ gg_gauge_dial_Ca. <- function(data, ...){
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                           fillLabel = NULL, leg_pos = "right", width = 0.3,
                                           text = TRUE, type = "count", color_text = "black", ...){
 
@@ -781,9 +781,9 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' Vertical stacked bar
-#' Single Vertical Stacked Bar
-#' @name gg_bar_single_stacked_ver_Ca.
+#' Horizontal stacked bar
+#' Single Horizontal Stacked Bar
+#' @name gg_bar_single_stacked_hor_Ca.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -792,11 +792,11 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                           fillLabel = NULL, leg_pos = "right", width = 0.3,
                                           text = TRUE, type = "count", color_text = "black", ...){
 
-  graph <- gg_bar_single_stacked_hor_Ca.(data, titleLabel, subtitle, caption, fillLabel, leg_pos, width,
+  graph <- gg_bar_single_stacked_ver_Ca.(data, titleLabel, subtitle, caption, fillLabel, leg_pos, width,
                                          text, type, color_text)
   graph <- graph + coord_flip()
 
