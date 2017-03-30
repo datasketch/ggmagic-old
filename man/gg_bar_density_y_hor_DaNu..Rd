@@ -24,7 +24,7 @@ Horizontal bar density by first numeric variable
 Horizontal coloured bar
 }
 \section{ftypes}{
- Ye-Nu
+ Da-Nu
 }
 
 \examples{

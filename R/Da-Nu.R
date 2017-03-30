@@ -699,7 +699,7 @@ gg_bar_density_y_ver_DaNu.<- function(data, titleLabel = "", subtitle = "", capt
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Da-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
