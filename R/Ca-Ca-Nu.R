@@ -406,9 +406,9 @@ gg_line_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 }
 
 
-#' Horizontal stacked area
-#' Stacked horizontal Area
-#' @name gg_area_stacked_hor_CaCaNu.
+#' Vertical stacked area
+#' Stacked vertical Area
+#' @name gg_area_stacked_ver_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -417,7 +417,7 @@ gg_line_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                         yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
   f <- fringe(data)
@@ -450,9 +450,9 @@ gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' Vertical stacked area
+#' Horizontal stacked area
 #' Stacked area
-#' @name gg_area_stacked_ver_CaCaNu.
+#' @name gg_area_stacked_hor_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -461,19 +461,19 @@ gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                         yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0,...){
 
 
-  graph <- gg_area_stacked_hor_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, aggregation, angle_x, ...)
+  graph <- gg_area_stacked_ver_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, aggregation, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
 }
 
-#' Horizontal 100% stacked area
-#' Stacked horizontal Area 100
-#' @name gg_area_stacked_100_hor_CaCaNu.
+#' Vertical 100% stacked area
+#' Stacked vertical Area 100
+#' @name gg_area_stacked_100_ver_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -482,7 +482,7 @@ gg_area_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0,...){
 
   f <- fringe(data)
@@ -517,9 +517,9 @@ gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
   graph
 }
 
-#' Vertical 100% stacked area
+#' Horizontal 100% stacked area
 #' Stacked area 100
-#' @name gg_area_stacked_100_ver_CaCaNu.
+#' @name gg_area_stacked_100_hor_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -528,11 +528,11 @@ gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
 
-  graph <- gg_area_stacked_100_hor_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, aggregation, angle_x, ...)
+  graph <- gg_area_stacked_100_ver_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, aggregation, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph

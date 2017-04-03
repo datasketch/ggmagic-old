@@ -82,8 +82,10 @@ gg_bubble_coloured_x_CaCa.  <- function(data, titleLabel = "", subtitle = "", ca
     dplyr::group_by(a, b) %>%
     dplyr::summarise(count = n()) %>%
     dplyr::arrange(desc(count)) %>%
+    dplyr::group_by(a) %>%
+    dplyr::mutate(total = sum(count)) %>%
     dplyr::mutate(pos = count*9/10,
-                  percent = 100 * round(count / sum(count), 4))  %>%
+                  percent = 100 * round(count / total, 4))  %>%
     dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
                   percent = ifelse(percent == 0, NA, percent),
                   count = ifelse(count == 0, NA, count))
@@ -138,8 +140,10 @@ gg_bubble_coloured_y_CaCa.  <- function(data, titleLabel = "", subtitle = "", ca
     dplyr::group_by(a, b) %>%
     dplyr::summarise(count = n()) %>%
     dplyr::arrange(desc(count)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(count)) %>%
     dplyr::mutate(pos = count*9/10,
-                  percent = 100 * round(count / sum(count), 4))  %>%
+                  percent = 100 * round(count / total, 4))  %>%
     dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
                   percent = ifelse(percent == 0, NA, percent),
                   count = ifelse(count == 0, NA, count))
@@ -1206,9 +1210,9 @@ gg_area_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' Horizontal 100% stacked area
-#' Stacked horizontal Area 100pct
-#' @name gg_area_stacked_100_hor_CaCa.
+#' Vertical 100% stacked area
+#' Stacked vertical Area 100pct
+#' @name gg_area_stacked_100_ver_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -1217,7 +1221,7 @@ gg_area_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capt
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                           yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 1, ...){
 
   f <- fringe(data)
@@ -1244,9 +1248,9 @@ gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' Vertical 100% stacked area
-#' Stacked vertical Area 100pct
-#' @name gg_area_stacked_100_ver_CaCa.
+#' Horizontal 100% stacked area
+#' Stacked horizontal Area 100pct
+#' @name gg_area_stacked_100_hor_CaCa.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -1255,10 +1259,10 @@ gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                           yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_area_stacked_100_hor_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x, ...)
+  graph <- gg_area_stacked_100_ver_CaCa.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph

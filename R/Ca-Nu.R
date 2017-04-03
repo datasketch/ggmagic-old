@@ -667,7 +667,7 @@ gg_density_multi_dist_coloured_CaNu. <- function(data, titleLabel = "", subtitle
 
   graph <- ggplot(data, aes(b))
   graph <- graph + geom_density(aes(colour = a)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab) +
     theme_ds() + theme(legend.position=leg_pos) + scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
@@ -2180,8 +2180,7 @@ gg_gauge_dial_CaNu. <- function(data, ...){
   grid.draw(arrangeGrob(grobs = graphList,ncol=2))
 }
 
-
-#' Horizontal boxplot
+#' Vertical boxplot
 #' Boxplot
 #' @name gg_boxplot_CaNu.
 #' @param x A number.
@@ -2215,7 +2214,7 @@ gg_boxplot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' Vertical boxplot
+#' Horizontal boxplot
 #' Boxplot flipped
 #' @name gg_boxplot_flip_CaNu.
 #' @param x A number.
