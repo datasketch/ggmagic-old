@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ye-Nu.R
 \name{gg_lollipop_YeNu.}
 \alias{gg_lollipop_YeNu.}
-\title{gg_lollipop_YeNu.
+\title{Lollipop
 lollipop. segment and point
 gg_lollipop_YeNu.}
 \usage{
@@ -18,7 +18,7 @@ gg_lollipop_YeNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_lollipop_YeNu.
+Lollipop
 lollipop. segment and point
 gg_lollipop_YeNu.
 }

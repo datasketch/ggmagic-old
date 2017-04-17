@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_point_DaNu.}
 \alias{gg_point_DaNu.}
-\title{gg_point_DaNu.
+\title{Scatter
 Point scatter plot}
 \usage{
 gg_point_DaNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_point_DaNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_point_DaNu.
+Scatter
 Point scatter plot
 }
 \section{ftypes}{

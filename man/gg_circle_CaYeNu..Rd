@@ -2,8 +2,7 @@
 % Please edit documentation in R/Ca-Ye-Nu.R
 \name{gg_circle_CaYeNu.}
 \alias{gg_circle_CaYeNu.}
-\title{gg_circle_CaYeNu.: title.
-circle
+\title{Point
 ciculos}
 \usage{
 gg_circle_CaYeNu.(data, title = "", subtitle = "", caption = "",
@@ -18,8 +17,7 @@ gg_circle_CaYeNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_circle_CaYeNu.: title.
-circle
+Point
 ciculos
 }
 \section{ftypes}{

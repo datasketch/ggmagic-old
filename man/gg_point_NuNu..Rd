@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu-Nu.R
 \name{gg_point_NuNu.}
 \alias{gg_point_NuNu.}
-\title{gg_point_NuNu.
+\title{Scatter
 Scatter plot}
 \usage{
 gg_point_NuNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_point_NuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_point_NuNu.
+Scatter
 Scatter plot
 }
 \section{ftypes}{

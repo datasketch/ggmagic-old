@@ -2,9 +2,8 @@
 % Please edit documentation in R/Ca-Ye-Nu-bars.R
 \name{gg_bar_stacked_100_hor_CaYeNu.}
 \alias{gg_bar_stacked_100_hor_CaYeNu.}
-\title{gg_bar_stacked_100_hor_CaYeNu.: title.
-Barras stacked
-Tiene múltiples líneas}
+\title{Vertical 100% stacked bar by second variable
+Barras stacked}
 \usage{
 gg_bar_stacked_100_hor_CaYeNu.(data, title = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
@@ -18,12 +17,11 @@ gg_bar_stacked_100_hor_CaYeNu.(data, title = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_stacked_100_hor_CaYeNu.: title.
+Vertical 100% stacked bar by second variable
 Barras stacked
-Tiene múltiples líneas
 }
 \section{ftypes}{
- Ca-Ye-Nu, Ca-Ca-Nu
+ Ca-Ye-Nu
 }
 
 \examples{

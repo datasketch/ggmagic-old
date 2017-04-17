@@ -1,6 +1,5 @@
-#' gg_line_hor_YeNu.: title.
+#' Horizontal line
 #' Horizontal Lines
-#' Tiene múltiples líneas
 #' @name gg_line_hor_YeNu.
 #' @param x A number.
 #' @param y A number.
@@ -25,7 +24,7 @@ gg_line_hor_YeNu. <- function(data, title = "", subtitle = "", caption = "",
     labs(title = title, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 }
 
-#' gg_lollipop_YeNu.
+#' Lollipop
 #' lollipop. segment and point
 #' gg_lollipop_YeNu.
 #' @name gg_lollipop_YeNu.
@@ -37,7 +36,6 @@ gg_line_hor_YeNu. <- function(data, title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_lollipop_YeNu. <- function(data, title = "", subtitle = "", caption = "",
                               xlab = NULL, ylab = NULL, size = 7,...){
 
@@ -57,7 +55,7 @@ gg_lollipop_YeNu. <- function(data, title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_waterfall_YeNu.
+#' Waterfall
 #' Waterfall
 #' @name gg_waterfall_YeNu.
 #' @param x A number.
@@ -86,7 +84,7 @@ gg_waterfall_YeNu. <- function(data, title = "", subtitle = "", caption = "", xL
 }
 
 
-#' gg_bar_coloured_x_ver_YeNu.
+#' Vertical bar coloured by first variable
 #' vertical coloured bar
 #' @name gg_bar_coloured_x_ver_YeNu.
 #' @param x A category.
@@ -132,7 +130,7 @@ gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
 
 }
 
-#' gg_bar_ver_YeNu.
+#' Vertical bar
 #' vertical bar
 #' @name gg_bar_ver_YeNu.
 #' @param x A category.
@@ -177,7 +175,7 @@ gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
 
 }
 
-#' gg_bar_hor_YeNu.
+#' Horizontal bar
 #' horizontal bar
 #' @name gg_bar_hor_YeNu.
 #' @param x A category.
@@ -197,7 +195,7 @@ gg_bar_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
   graph
 }
 
-#' gg_area_YeNu.:
+#' Vertical area
 #' Area
 #' @name gg_area_YeNu.
 #' @param x A number.
@@ -225,7 +223,7 @@ gg_area_YeNu. <- function(data, title = "", subtitle = "", caption = "", xlab = 
   graph
 }
 
-#' gg_horizon_YeNu.
+#' Horizon
 #' Horizon
 #' @name gg_horizon_YeNu.
 #' @param x A number.

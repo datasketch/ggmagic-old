@@ -1,5 +1,5 @@
 
-#' gg_treemap_x_CaCaCa.
+#' Treemap coloured by first variable
 #' Treemap fill first Ca
 #' @name gg_treemap_x_CaCaCa.
 #' @param x A number.
@@ -34,7 +34,7 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
   graph
 }
 
-#' gg_treemap_y_CaCaCa.
+#' Treemap coloured by second variable
 #' Treemap fill second Ca
 #' @name gg_treemap_y_CaCaCa.
 #' @param x A number.
@@ -68,7 +68,7 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
   graph
 }
 
-#' gg_treemap_z_CaCaCa.
+#' Treemap coloured by third variable
 #' Treemap fill third Ca
 #' @name gg_treemap_z_CaCaCa.
 #' @param x A number.
@@ -103,7 +103,7 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
   graph
 }
 
-#' gg_point_CaCaCa.
+#' Scatter
 #' Coloured Point
 #' @name gg_point_CaCaCa.
 #' @param x A number.

@@ -2,11 +2,11 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bullseye_CaNu.}
 \alias{gg_bullseye_CaNu.}
-\title{gg_bullseye_CaNu.
+\title{Bullseye
 Bullseye}
 \usage{
 gg_bullseye_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  leg_pos = "right", ...)
+  leg_pos = "right", aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +17,7 @@ gg_bullseye_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bullseye_CaNu.
+Bullseye
 Bullseye
 }
 \section{ftypes}{

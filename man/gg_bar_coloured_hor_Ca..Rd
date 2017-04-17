@@ -2,13 +2,13 @@
 % Please edit documentation in R/Ca.R
 \name{gg_bar_coloured_hor_Ca.}
 \alias{gg_bar_coloured_hor_Ca.}
-\title{gg_bar_coloured_hor_Ca.
+\title{Horizontal coloured bar
 Horizontal coloured Bars}
 \usage{
 gg_bar_coloured_hor_Ca.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = "Count", fillLabel = NULL,
-  text = TRUE, type = "percent", text_size = 3, pos = 1,
-  leg_pos = "right", ...)
+  text = TRUE, type = "count", color_text = "black", leg_pos = "right",
+  ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -19,7 +19,7 @@ gg_bar_coloured_hor_Ca.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_hor_Ca.
+Horizontal coloured bar
 Horizontal coloured Bars
 }
 \section{ftypes}{

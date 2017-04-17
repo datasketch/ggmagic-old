@@ -1,4 +1,4 @@
-#' gg_horizon_Nu.
+#' Horizon
 #' Horizon
 #' @name gg_horizon_Nu.
 #' @param x A number.
@@ -34,7 +34,7 @@ gg_horizon_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel
   graph
 }
 
-#' gg_waterfall_Nu.
+#' Waterfall
 #' Waterfall
 #' @name gg_waterfall_Nu.
 #' @param x A number.
@@ -65,7 +65,7 @@ gg_waterfall_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 }
 
 
-#' gg_hist_Nu.
+#' Histogram
 #' Histogram
 #' @name gg_hist_Nu.
 #' @param x A number.
@@ -98,7 +98,7 @@ gg_hist_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel = 
 
 }
 
-#' gg_hist_dens_Nu.
+#' Histogram + density
 #' Histograms with density
 #' @name gg_hist_dens_Nu.
 #' @param x A number.
@@ -130,7 +130,7 @@ gg_hist_dens_Nu. <- function(data, title = "", subtitle = "", caption = "", xLab
 
 }
 
-#' gg_dist_cum_Nu.
+#' Cumulative distribution function
 #' Cumulative distribution function
 #' @name gg_dist_cum_Nu.
 #' @param x A number.
@@ -158,7 +158,7 @@ gg_dist_cum_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabe
 }
 
 
-#' gg_line_point_Nu.
+#' Vertical line + point
 #' Line wiht point plot
 #' @name gg_line_point_Nu.
 #' @param x A number.
@@ -191,7 +191,7 @@ gg_line_point_Nu. <- function(data, title = "", subtitle = "", caption = "", xLa
 }
 
 
-#' gg_line_point_flip_Nu.
+#' Horizontal line + point
 #' Line with point plot
 #' @name gg_line_point_flip_Nu.
 #' @param x A number.
@@ -211,7 +211,7 @@ gg_line_point_flip_Nu. <- function(data, title = "", subtitle = "", caption = ""
   graph
 }
 
-#' gg_point_Nu.
+#' Vertical scatter
 #' Scatter plot
 #' @name gg_point_Nu.
 #' @param x A number.
@@ -241,7 +241,7 @@ gg_point_Nu. <- function(data, title = "", subtitle = "", caption = "", xLabel =
   graph
 }
 
-#' gg_point_flip_Nu.
+#' Horizontal scatter
 #' Line plot
 #' @name gg_point_flip_Nu.
 #' @param x A number.
@@ -262,7 +262,7 @@ gg_point_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", xLa
 }
 
 
-#' gg_density_hist_Nu.
+#' Histogram + density
 #' density histogram
 #' @name gg_density_hist_Nu.
 #' @param x A number.
@@ -288,7 +288,7 @@ gg_density_hist_Nu. <- function(data, title = "", subtitle = "", caption = "", x
   graph
 }
 
-#' gg_box_Nu.
+#' Vertical boxplot
 #' Box plot
 #' @name gg_box_Nu.
 #' @param x A number.
@@ -315,7 +315,7 @@ gg_box_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel = N
 }
 
 
-#' gg_box_flip_Nu.
+#' Horizontal boxplot
 #' Box plot flipped
 #' @name gg_box_flip_Nu.
 #' @param x A number.
@@ -337,7 +337,7 @@ gg_box_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabe
 
 # Gauge media, moda (discutir con JP)
 
-#' gg_violin_Nu.
+#' Horizontal violin
 #' Violin
 #' @name gg_violin_Nu.
 #' @param x A number.
@@ -367,7 +367,7 @@ gg_violin_Nu. <- function(data, title = "", subtitle = "", caption = "", yLabel 
   graph
 }
 
-#' gg_violin_flip_Nu.
+#' Vertical violin
 #' Violin flipped
 #' @name gg_violin_flip_Nu.
 #' @param x A number.
@@ -387,7 +387,7 @@ gg_violin_flip_Nu. <- function(data, title = "", subtitle = "", caption = "", yL
   graph
 }
 
-#' gg_dot_bar_Nu.
+#' Vertical dot bar
 #' Dot bar
 #' @name gg_dot_bar_Nu.
 #' @param x A number.
@@ -414,7 +414,7 @@ gg_dot_bar_Nu. <- function(data, title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_dot_bar_flip_Nu.
+#' Vertical dot bar
 #' Dot bar flipped
 #' @name gg_dot_bar_flip_Nu.
 #' @param x A number.

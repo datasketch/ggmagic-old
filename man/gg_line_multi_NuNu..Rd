@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu-Nu.R
 \name{gg_line_multi_NuNu.}
 \alias{gg_line_multi_NuNu.}
-\title{gg_line_multi_NuNu.
+\title{Line for each numeric variable
 Line for each Nu}
 \usage{
 gg_line_multi_NuNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_line_multi_NuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_multi_NuNu.
+Line for each numeric variable
 Line for each Nu
 }
 \section{ftypes}{

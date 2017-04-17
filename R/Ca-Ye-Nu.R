@@ -1,9 +1,5 @@
 
-
-
-
-#' gg_line_hor_CaYeNu.: title.
-#' Lines
+#' Horizontal line
 #' Tiene múltiples líneas
 #' @name gg_line_hor_CaYeNu.
 #' @param x A number.
@@ -51,8 +47,7 @@ gg_line_hor_CaYeNu. <- function(data, title = "", subtitle = "", caption = "", x
 }
 
 
-#' gg_circle_CaYeNu.: title.
-#' circle
+#' Point
 #' ciculos
 #' @name gg_circle_CaYeNu.
 #' @param x A number.
@@ -85,7 +80,7 @@ gg_circle_CaYeNu. <- function(data, title = "", subtitle = "", caption = "",
 
 
 
-#' gg_steam_CaYeNu.
+#' Steam
 #' Steam
 #' @name gg_steam_CaYeNu.
 #' @param x A number.
@@ -121,7 +116,7 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "
   graph
 }
 
-#' gg_slope_CaYeNu.
+#' Slope
 #' Slope
 #' @name gg_slope_CaYeNu.
 #' @param x A number.

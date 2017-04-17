@@ -1,4 +1,4 @@
-#' gg_pointline_hor_CaDa.: title.
+#' Horizontal line + point
 #' pointlines
 #' @name gg_pointline_hor_CaDa.
 #' @param x A number.
@@ -29,7 +29,7 @@ gg_pointline_hor_CaDa. <- function(data,title = "", subtitle = "", caption = "",
  return(graph)
 }
 
-#' gg_pointline_ver_CaDa.: title.
+#' Vertical line + point
 #' pointlines
 #' @name gg_pointline_ver_CaDa.
 #' @param x A number.
@@ -61,7 +61,7 @@ gg_pointline_ver_CaDa. <- function(data,title = "", subtitle = "", caption = "",
 
 
 
-#' gg_histogram_CaDa.: title.
+#' Histogram
 #' histogram
 #' @name gg_histogram_CaDa.
 #' @param x A number.

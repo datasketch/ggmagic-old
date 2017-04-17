@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_violin_DaNu.}
 \alias{gg_violin_DaNu.}
-\title{gg_violin_DaNu.
+\title{Violin
 Violin}
 \usage{
 gg_violin_DaNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_violin_DaNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_violin_DaNu.
+Violin
 Violin
 }
 \section{ftypes}{

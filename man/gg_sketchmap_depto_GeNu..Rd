@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ge-Nu.R
 \name{gg_sketchmap_depto_GeNu.}
 \alias{gg_sketchmap_depto_GeNu.}
-\title{gg_sketchmap_depto_GeNu.
+\title{Sketch map departments
 Sketch map departments}
 \usage{
 gg_sketchmap_depto_GeNu.(depto_ = depto_, color_map = "gold",
@@ -17,7 +17,7 @@ gg_sketchmap_depto_GeNu.(depto_ = depto_, color_map = "gold",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_sketchmap_depto_GeNu.
+Sketch map departments
 Sketch map departments
 }
 \section{ftypes}{

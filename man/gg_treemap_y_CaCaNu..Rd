@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_treemap_y_CaCaNu.}
 \alias{gg_treemap_y_CaCaNu.}
-\title{gg_treemap_y_CaCaNu.
+\title{Treemap coloured by second variable
 Treemap Fill by second Ca}
 \usage{
 gg_treemap_y_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, ...)
+  fillLabel = NULL, aggregation = "sum", text = TRUE,
+  color_text = "black", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_treemap_y_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_treemap_y_CaCaNu.
+Treemap coloured by second variable
 Treemap Fill by second Ca
 }
 \section{ftypes}{

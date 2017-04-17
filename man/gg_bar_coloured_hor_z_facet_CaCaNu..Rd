@@ -2,12 +2,13 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_coloured_hor_z_facet_CaCaNu.}
 \alias{gg_bar_coloured_hor_z_facet_CaCaNu.}
-\title{gg_bar_coloured_hor_z_facet_CaCaNu.
+\title{Horizontal facet bar density by first numeric variable
 Facet Coloured horizontal bar}
 \usage{
 gg_bar_coloured_hor_z_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, reverse = FALSE,
-  leg_pos = "right", ...)
+  leg_pos = "right", angle_x = 0, aggregation = "sum", text = TRUE,
+  color_text = "black", type = "count", ...)
 }
 \arguments{
 \item{x}{A category.}
@@ -18,7 +19,7 @@ gg_bar_coloured_hor_z_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_hor_z_facet_CaCaNu.
+Horizontal facet bar density by first numeric variable
 Facet Coloured horizontal bar
 }
 \section{ftypes}{

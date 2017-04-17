@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bubble_CaNu2.}
 \alias{gg_bubble_CaNu2.}
-\title{gg_bubble_CaNu2.
+\title{Bubbles
 Bubbles}
 \usage{
 gg_bubble_CaNu2.(data, titleLabel = "", subtitle = "", caption = "",
-  sep = 3, lim_inf = -80, lim_sup = 80, xLabel = NULL, ...)
+  sep = 3, lim_inf = -80, lim_sup = 80, xLabel = NULL,
+  aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_bubble_CaNu2.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bubble_CaNu2.
+Bubbles
 Bubbles
 }
 \section{ftypes}{

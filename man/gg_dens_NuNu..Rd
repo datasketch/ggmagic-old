@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu-Nu.R
 \name{gg_dens_NuNu.}
 \alias{gg_dens_NuNu.}
-\title{gg_dens_NuNu.
+\title{Horizontal density
 Density in 2D}
 \usage{
 gg_dens_NuNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_dens_NuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_dens_NuNu.
+Horizontal density
 Density in 2D
 }
 \section{ftypes}{

@@ -2,12 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_line_point_multi_CaNu.}
 \alias{gg_line_point_multi_CaNu.}
-\title{gg_line_point_multi_CaNu.
+\title{Grouped line + point
 Grouped Line Color Point}
 \usage{
 gg_line_point_multi_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = "Index", yLabel = NULL, leg_pos = "right",
-  type = 1, ...)
+  shape_type = 19, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -18,7 +18,7 @@ gg_line_point_multi_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_point_multi_CaNu.
+Grouped line + point
 Grouped Line Color Point
 }
 \section{ftypes}{

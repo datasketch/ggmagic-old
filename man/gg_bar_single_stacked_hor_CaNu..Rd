@@ -2,12 +2,13 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bar_single_stacked_hor_CaNu.}
 \alias{gg_bar_single_stacked_hor_CaNu.}
-\title{gg_bar_single_stacked_hor_CaNu.
+\title{Horizontal stacked bar
 Single Horizontal Stacked Bar}
 \usage{
 gg_bar_single_stacked_hor_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", yLabel = "Count", leg_pos = "right", width = 0.3,
-  aggregation = "sum", ...)
+  aggregation = "sum", text = TRUE, type = "count",
+  color_text = "black", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -18,7 +19,7 @@ gg_bar_single_stacked_hor_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_single_stacked_hor_CaNu.
+Horizontal stacked bar
 Single Horizontal Stacked Bar
 }
 \section{ftypes}{

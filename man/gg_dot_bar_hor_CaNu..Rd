@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_dot_bar_hor_CaNu.}
 \alias{gg_dot_bar_hor_CaNu.}
-\title{gg_dot_bar_hor_CaNu.
+\title{Horizontal dot bar
 Horizontal Dot Bar}
 \usage{
 gg_dot_bar_hor_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0,
+  aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_dot_bar_hor_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_dot_bar_hor_CaNu.
+Horizontal dot bar
 Horizontal Dot Bar
 }
 \section{ftypes}{

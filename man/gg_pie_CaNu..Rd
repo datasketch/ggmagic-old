@@ -2,11 +2,11 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_pie_CaNu.}
 \alias{gg_pie_CaNu.}
-\title{gg_pie_CaNu.
+\title{Pie
 Pie}
 \usage{
 gg_pie_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  text = TRUE, type = "percent", text_size = 3, leg_pos = "right",
+  text = TRUE, type = "count", color_text = "black", leg_pos = "right",
   aggregation = "sum", ...)
 }
 \arguments{
@@ -18,7 +18,7 @@ gg_pie_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_pie_CaNu.
+Pie
 Pie
 }
 \section{ftypes}{
@@ -26,6 +26,6 @@ Pie
 }
 
 \examples{
-add(1, 1)z
+add(1, 1)
 add(10, 1)
 }

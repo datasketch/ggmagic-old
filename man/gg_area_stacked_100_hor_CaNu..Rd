@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_area_stacked_100_hor_CaNu.}
 \alias{gg_area_stacked_100_hor_CaNu.}
-\title{gg_area_stacked_100_hor_CaNu.
+\title{Horizontal 100% stacked area
 Stacked Horizontal Area 100}
 \usage{
 gg_area_stacked_100_hor_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = "Index", yLabel = NULL, leg_pos = "right", ...)
+  caption = "", xLabel = "Index", yLabel = NULL, leg_pos = "right",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_area_stacked_100_hor_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_area_stacked_100_hor_CaNu.
+Horizontal 100% stacked area
 Stacked Horizontal Area 100
 }
 \section{ftypes}{

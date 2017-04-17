@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_line_points_facet_DaNu.}
 \alias{gg_line_points_facet_DaNu.}
-\title{gg_line_points_facet_DaNu.
+\title{Line + point facet by years
 Line Points facet by years}
 \usage{
 gg_line_points_facet_DaNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_line_points_facet_DaNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_points_facet_DaNu.
+Line + point facet by years
 Line Points facet by years
 }
 \section{ftypes}{

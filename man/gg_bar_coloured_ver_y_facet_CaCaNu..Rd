@@ -2,11 +2,13 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_coloured_ver_y_facet_CaCaNu.}
 \alias{gg_bar_coloured_ver_y_facet_CaCaNu.}
-\title{gg_bar_coloured_ver_y_facet_CaCaNu.
+\title{Vertical facet bar coloured by second variable
 vertical bar}
 \usage{
 gg_bar_coloured_ver_y_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
+  angle_x = 0, aggregation = "sum", text = TRUE, color_text = "black",
+  type = "count", ...)
 }
 \arguments{
 \item{x}{A category.}
@@ -17,7 +19,7 @@ gg_bar_coloured_ver_y_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_ver_y_facet_CaCaNu.
+Vertical facet bar coloured by second variable
 vertical bar
 }
 \section{ftypes}{

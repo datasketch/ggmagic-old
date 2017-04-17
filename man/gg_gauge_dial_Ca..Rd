@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_gauge_dial_Ca.}
 \alias{gg_gauge_dial_Ca.}
-\title{gg_gauge_dial_Ca.
+\title{Dial gauge
 Gauge}
 \usage{
 gg_gauge_dial_Ca.(data, ...)
@@ -16,7 +16,7 @@ gg_gauge_dial_Ca.(data, ...)
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_gauge_dial_Ca.
+Dial gauge
 Gauge
 }
 \section{ftypes}{

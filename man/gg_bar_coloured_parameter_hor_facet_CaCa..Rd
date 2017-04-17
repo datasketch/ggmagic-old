@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_bar_coloured_parameter_hor_facet_CaCa.}
 \alias{gg_bar_coloured_parameter_hor_facet_CaCa.}
-\title{gg_bar_coloured_parameter_hor_facet_CaCa.
+\title{Horizontal bar facet highlighting some parameter
 Facet Horizontal coloured by parameter Bars}
 \usage{
 gg_bar_coloured_parameter_hor_facet_CaCa.(data, titleLabel = "",
@@ -18,7 +18,7 @@ gg_bar_coloured_parameter_hor_facet_CaCa.(data, titleLabel = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_parameter_hor_facet_CaCa.
+Horizontal bar facet highlighting some parameter
 Facet Horizontal coloured by parameter Bars
 }
 \section{ftypes}{

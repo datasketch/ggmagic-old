@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_gauge_Ca.}
 \alias{gg_gauge_Ca.}
-\title{gg_gauge_Ca.
+\title{Gauge
 Gauge}
 \usage{
 gg_gauge_Ca.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_gauge_Ca.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_gauge_Ca.
+Gauge
 Gauge
 }
 \section{ftypes}{

@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_density_multi_dist_coloured_CaNu.}
 \alias{gg_density_multi_dist_coloured_CaNu.}
-\title{gg_density_multi_dist_coloured_CaNu.
+\title{Density distribution
 Coloured Density Distribution}
 \usage{
 gg_density_multi_dist_coloured_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_density_multi_dist_coloured_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_density_multi_dist_coloured_CaNu.
+Density distribution
 Coloured Density Distribution
 }
 \section{ftypes}{

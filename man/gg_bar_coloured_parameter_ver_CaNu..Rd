@@ -2,14 +2,14 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bar_coloured_parameter_ver_CaNu.}
 \alias{gg_bar_coloured_parameter_ver_CaNu.}
-\title{gg_bar_coloured_parameter_ver_CaNu.
+\title{Vertical bar highlighting some parameter
 Vertical coloured by parameter bars}
 \usage{
 gg_bar_coloured_parameter_ver_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, order = FALSE,
   parameter = NULL, line_mean = FALSE, text = TRUE, type = "count",
-  text_size = 3, leg_pos = "right", aggregation = "mean", angle = 0,
-  ...)
+  color_text = "black", leg_pos = "right", aggregation = "sum",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -20,7 +20,7 @@ gg_bar_coloured_parameter_ver_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_parameter_ver_CaNu.
+Vertical bar highlighting some parameter
 Vertical coloured by parameter bars
 }
 \section{ftypes}{

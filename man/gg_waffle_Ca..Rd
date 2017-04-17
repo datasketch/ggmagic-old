@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_waffle_Ca.}
 \alias{gg_waffle_Ca.}
-\title{gg_waffle_Ca.: title.
+\title{Waffle
 Waffle}
 \usage{
 gg_waffle_Ca.(data, square_size = 1, rows_number = 5, titleLabel = "",
@@ -17,7 +17,7 @@ gg_waffle_Ca.(data, square_size = 1, rows_number = 5, titleLabel = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_waffle_Ca.: title.
+Waffle
 Waffle
 }
 \section{ftypes}{

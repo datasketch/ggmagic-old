@@ -2,12 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_dot_dist_ver_facet_CaNu.}
 \alias{gg_dot_dist_ver_facet_CaNu.}
-\title{gg_dot_dist_ver_facet_CaNu.
+\title{Vertical density dot + distribution facet
 Facet Vertical Dot Dist}
 \usage{
 gg_dot_dist_ver_facet_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
-  size = 3, alpha = 0.3, ...)
+  alpha = 0.3, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -18,7 +18,7 @@ gg_dot_dist_ver_facet_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_dot_dist_ver_facet_CaNu.
+Vertical density dot + distribution facet
 Facet Vertical Dot Dist
 }
 \section{ftypes}{

@@ -2,12 +2,12 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_multi_line_CaCaNu.}
 \alias{gg_multi_line_CaCaNu.}
-\title{gg_multi_line_CaCaNu.
+\title{Grouped line by first variable
 Grouped Line Coloured}
 \usage{
 gg_multi_line_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
-  type = 1, ...)
+  ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -18,7 +18,7 @@ gg_multi_line_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_multi_line_CaCaNu.
+Grouped line by first variable
 Grouped Line Coloured
 }
 \section{ftypes}{

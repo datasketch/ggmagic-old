@@ -2,13 +2,13 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bar_coloured_x_hor_CaNu.}
 \alias{gg_bar_coloured_x_hor_CaNu.}
-\title{gg_bar_coloured_x_hor_CaNu.
+\title{Horizontal bar coloured by first variable
 horizontal bar}
 \usage{
 gg_bar_coloured_x_hor_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, line_mean = FALSE,
-  text = TRUE, type = "percent", text_size = 3, leg_pos = "right",
-  aggregation = "sum", angle = 0, ...)
+  text = TRUE, type = "count", leg_pos = "right", aggregation = "sum",
+  angle_x = 0, color_text = "black", ...)
 }
 \arguments{
 \item{x}{A category.}
@@ -19,7 +19,7 @@ gg_bar_coloured_x_hor_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_x_hor_CaNu.
+Horizontal bar coloured by first variable
 horizontal bar
 }
 \section{ftypes}{

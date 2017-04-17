@@ -11,7 +11,7 @@ ggWhich <- function(d){
 #' @export
 ggList <- function(type = NULL,wrongNames = FALSE){
   #http://stackoverflow.com/questions/7495685/how-to-access-the-help-documentation-rd-source-files-in-r
-  db <- Rd_db("ggmagic")
+  db <- tools::Rd_db("ggmagic")
   meta <- unname(map_chr(db, tools:::.Rd_get_name))
   meta <- meta[!grepl("gg_test_docs",meta)]
   if(wrongNames) return(keep(meta, ~ !grepl("^gg_.*\\.$",.)))
@@ -23,16 +23,20 @@ ggList <- function(type = NULL,wrongNames = FALSE){
 
 #' @export
 ggFtype <- function(gg = NULL){
-  db <- Rd_db("ggmagic")
+  db <- tools::Rd_db("ggmagic")
   db <- db[grepl("\\.\\.Rd$",names(db))]
   names(db) <- gsub(".Rd","",names(db))
   i <<- 1
   f <- function(dbi) {
-    message(i, dbi[[1]][[1]])
-    #dbi <- db[[i-1]]
+    # dbi <- db[[i-1]]
     i <<-  i + 1
-    ftype <- as.character(dbi[[8]][[2]][[2]])
-    str(ftype)
+    x <- as.character(dbi)
+    xx <- x[which(x == "ftypes"):which(x == "\\examples")]
+    xxx <- xx[which(xx == "\n"):which(xx == "\\examples")]
+    xxx <- xxx[xxx != "\n" & xxx != "}" & xxx != "\\examples"]
+    xxx <- gsub(" |\n", "", xxx)
+    xxx <- xxx[!duplicated(xxx)]
+    ftype <- as.character(paste(xxx, collapse = ", "))
     strsplit(gsub(" |\n","",ftype),",")[[1]]
   }
   results <- purrr::map(db,f)
@@ -50,6 +54,31 @@ ggFtype <- function(gg = NULL){
   # names(errors) <- gsub(".Rd","",names(errors))
   #if(!is_empty(errors))
   #  stop("Something wrong with ftypes for:\n",paste(names(errors),collapse = "\n  "))
+  if(!is.null(gg)) return(results[[gg]])
+  results
+}
+
+#' @export
+ggNames <- function(gg = NULL){
+  db <- tools::Rd_db("ggmagic")
+  db <- db[grepl("\\.\\.Rd$",names(db))]
+  names(db) <- gsub(".Rd","",names(db))
+  i <<- 1
+  f <- function(dbi) {
+    # dbi <- db[[i-1]]
+    i <<-  i + 1
+    x <- as.character(dbi)
+    xx <- x[which(x == "\\title"):which(x == "\\name")]
+    xxx <- xx[which(xx == "{"):which(xx == "}")]
+    xxx <- xxx[xxx != "\n" & xxx != "{" & xxx != "}"]
+    xxx <- xxx[-length(xxx)]
+    xxx <- gsub("\n", "", xxx)
+    xxx <- xxx[!duplicated(xxx)]
+    ftype <- as.character(paste(xxx, collapse = ""))
+  }
+  results <- purrr::map(db,f)
+  names(results) <- gsub(".Rd","",names(results))
+
   if(!is.null(gg)) return(results[[gg]])
   results
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu-Nu.R
 \name{gg_hist_flip_NuNu.}
 \alias{gg_hist_flip_NuNu.}
-\title{gg_hist_flip_NuNu.
+\title{Horizontal histogram
 Histogram 2d flipped}
 \usage{
 gg_hist_flip_NuNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_hist_flip_NuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_hist_flip_NuNu.
+Horizontal histogram
 Histogram 2d flipped
 }
 \section{ftypes}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_bullseye_facet_CaCa.}
 \alias{gg_bullseye_facet_CaCa.}
-\title{gg_bullseye_facet_CaCa.
+\title{Bullseye facet
 Facet Bullseye}
 \usage{
 gg_bullseye_facet_CaCa.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_bullseye_facet_CaCa.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bullseye_facet_CaCa.
+Bullseye facet
 Facet Bullseye
 }
 \section{ftypes}{

@@ -2,13 +2,13 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bar_coloured_y_hor_CaNu.}
 \alias{gg_bar_coloured_y_hor_CaNu.}
-\title{gg_bar_coloured_y_hor_CaNu.
+\title{Horizontal bar density by first numeric variable
 horizontal bar}
 \usage{
 gg_bar_coloured_y_hor_CaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, reverse = FALSE,
-  line_mean = FALSE, text = TRUE, type = "percent", text_size = 3,
-  leg_pos = "right", aggregation = "sum", angle = 0, ...)
+  line_mean = FALSE, text = TRUE, type = "count", color_text = "black",
+  leg_pos = "right", aggregation = "sum", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A category.}
@@ -19,7 +19,7 @@ gg_bar_coloured_y_hor_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_y_hor_CaNu.
+Horizontal bar density by first numeric variable
 horizontal bar
 }
 \section{ftypes}{

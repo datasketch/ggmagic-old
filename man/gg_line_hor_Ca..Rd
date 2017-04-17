@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_line_hor_Ca.}
 \alias{gg_line_hor_Ca.}
-\title{gg_line_hor_Ca.
+\title{Horizontal line
 Horizontal Line}
 \usage{
 gg_line_hor_Ca.(data, titleLabel = "", xLabel = NULL, subtitle = "",
@@ -17,7 +17,7 @@ gg_line_hor_Ca.(data, titleLabel = "", xLabel = NULL, subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_hor_Ca.
+Horizontal line
 Horizontal Line
 }
 \section{ftypes}{

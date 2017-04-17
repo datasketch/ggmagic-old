@@ -1,5 +1,4 @@
-
-#' gg_bar_grouped_ver_CaCaNu.
+#' Vertical grouped bar by first variable
 #' vertical unstacked bargraph
 #' @name gg_bar_grouped_ver_CaCaNu.
 #' @param x A category.
@@ -13,31 +12,52 @@
 gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                        xLabel = NULL, yLabel = NULL,
                                        leg_pos = "right",
-                                       aggregation = "mean", ...){
+                                       aggregation = "sum", text = TRUE, color_text = "black", type = "count",
+                                       angle_x = 0,...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[3]
   data <- f$d
   data <- data %>% filter(!is.na(a),!is.na(b))
+
+  data_graph <- data %>% dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = agg(aggregation, c)) %>%
+    dplyr::mutate(pos = c*9/10,
+                  percent = 100 * round(c / sum(c), 4))
+
   data <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c=agg(aggregation,c)) %>%
     tidyr::spread(b, c, fill = 0) %>%
-    tidyr::gather(b, c, -a)
+    tidyr::gather(b, c, -a) %>%
+    dplyr::left_join(., data_graph, by = c("a", "b", "c")) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent))
 
-
-  graph <- ggplot(data, aes(a, weight=c, fill=b)) +
-    geom_bar(position = "dodge")
+  graph <- ggplot(data, aes(x=a, y=c, fill=b)) +
+    geom_bar(stat="identity", position = "dodge")
   graph <- graph +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    theme(legend.position=leg_pos) + guides(text = FALSE)
+    theme(legend.position=leg_pos) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) + guides(text = FALSE)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
 
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data, aes(y = pos, label = round(c,2)),
+                             check_overlap = TRUE, color = color_text, position = position_dodge(width=1)))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text, position = position_dodge(width=1)))
+    }else{
+      graph
+    }
+  }
   graph
 }
 
-#' gg_bar_grouped_hor_CaCaNu.
+#' Horizontal grouped bar by first variable
 #' horizontal bar graph
 #' @name gg_bar_grouped_hor_CaCaNu.
 #' @param x A category.
@@ -48,45 +68,44 @@ gg_bar_grouped_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_grouped_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                       yLabel = NULL, leg_pos = "right",
-                                       aggregation = "mean",...){
+gg_bar_grouped_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                       xLabel = NULL, yLabel = NULL,
+                                       leg_pos = "right",
+                                       aggregation = "sum", text = TRUE, color_text = "black", type = "count",
+                                       angle_x = 0,...){
 
   graph <- gg_bar_grouped_ver_CaCaNu.(data, titleLabel, subtitle, caption,
                                       xLabel, yLabel, leg_pos,
-                                      aggregation = aggregation)
+                                      aggregation, text, color_text, type, angle_x)
 
   graph + coord_flip()
 
 }
 
-#' gg_bar_grouped2_ver_CaCaNu.: title.
+#' Vertical grouped bar by second variable
 #' Barras grouped
-#' Tiene múltiples líneas
 #' @name gg_bar_grouped2_ver_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-#'
 gg_bar_grouped2_ver_CaCaNu. <- function(data,...){
   data <- fringe(data)
   gg_bar_grouped_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' gg_bar_grouped2_hor_CaCaNu.: title.
+#' Horizontal grouped bar by second variable
 #' Barras grouped
-#' Tiene múltiples líneas
 #' @name gg_bar_grouped2_hor_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -97,7 +116,7 @@ gg_bar_grouped2_hor_CaCaNu. <- function(data, ...){
 }
 
 
-#' gg_bar_stacked_ver_CaCaNu.
+#' Vertical stacked bar by first variable
 #' vertical stacked bar graph
 #' @name gg_bar_stacked_ver_CaCaNu.
 #' @param x A category.
@@ -110,7 +129,8 @@ gg_bar_grouped2_hor_CaCaNu. <- function(data, ...){
 #' add(10, 1)
 gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                        yLabel = NULL, leg_pos = "right",
-                                       aggregation = "mean", ...){
+                                       aggregation = "sum", text = TRUE, type = "count", color_text = "black",
+                                       angle_x = 0,...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -118,19 +138,38 @@ gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
   data <- f$d
   data <- data %>% filter(!is.na(a),!is.na(b))
 
+  data_graph <- data %>% dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = agg(aggregation, c)) %>%
+    dplyr::mutate(percent = 100 * round(c / sum(c), 4))
+
   data <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c=agg(aggregation,c)) %>%
     tidyr::spread(b, c, fill = 0) %>%
-    tidyr::gather(b, c, -a)
+    tidyr::gather(b, c, -a) %>%
+    dplyr::left_join(., data_graph, by = c("a", "b", "c")) %>%
+    dplyr::mutate(c = ifelse(c == 0, NA, c),
+                  percent = ifelse(percent == 0, NA, percent))
 
   graph <- ggplot(data, aes(a, y = c, fill=b)) + geom_bar(stat="identity", position = "stack")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette())
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data, aes(y = c, label = round(c,2)),
+                             check_overlap = TRUE, color = color_text, position = position_stack(vjust = 0.5)))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data, aes(y = c, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text, position = position_stack(vjust = 0.5)))
+    }else{
+      graph
+    }
+  }
   graph
 }
 
-#' gg_bar_stacked_hor_CaCaNu.
+#' Horizontal stacked bar by first variable
 #' horizontal stacked bar graph
 #' @name gg_bar_stacked_hor_CaCaNu.
 #' @param x A category.
@@ -143,33 +182,32 @@ gg_bar_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", cap
 #' add(10, 1)
 gg_bar_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                        yLabel = NULL, leg_pos = "right",
-                                       aggregation = "mean", ...){
+                                       aggregation = "sum", text = TRUE, type = "count", color_text = "black",
+                                       angle_x = 0, ...){
   graph <- gg_bar_stacked_ver_CaCaNu.(data, titleLabel, subtitle, caption,
                                       xLabel, yLabel, leg_pos,
-                                      aggregation = aggregation)
+                                      aggregation, text, type, color_text, angle_x)
   graph + coord_flip()
 }
 
 
-#' gg_bar_stacked2_ver_CaCaNu.: title.
+#' Vertical stacked bar by second variable
 #' Barras grouped
-#' Tiene múltiples líneas
 #' @name gg_bar_stacked2_ver_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-#'
 gg_bar_stacked2_ver_CaCaNu. <- function(data,...){
   data <- fringe(data)
   gg_bar_stacked_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' gg_bar_stacked2_hor_CaCaNu.: title.
+#' Horizontal stacked bar by second variable
 #' Barras grouped
 #' Tiene múltiples líneas
 #' @name gg_bar_stacked2_hor_CaCaNu.
@@ -177,7 +215,7 @@ gg_bar_stacked2_ver_CaCaNu. <- function(data,...){
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -187,9 +225,7 @@ gg_bar_stacked2_hor_CaCaNu. <- function(data, ...){
   graph
 }
 
-
-
-#' gg_bar_stacked_100_ver_CaCaNu.
+#' Vertical 100% stacked bar by first variable
 #' 100 vertical stacked bar graph
 #' @name gg_bar_stacked_100_ver_CaCaNu.
 #' @param x A category.
@@ -202,7 +238,8 @@ gg_bar_stacked2_hor_CaCaNu. <- function(data, ...){
 #' add(10, 1)
 gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                            yLabel = NULL, leg_pos = "right",
-                                           aggregation = "mean", ...){
+                                           aggregation = "sum", text = TRUE, color_text = "black", type = "count",
+                                           angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -210,23 +247,43 @@ gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
   data <- f$d
   data <- data %>% filter(!is.na(a),!is.na(b))
 
+  data_graph <- data %>% dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = agg(aggregation, c)) %>%
+    dplyr::mutate(pos = c*9/10,
+                  percent = 100 * round(c / sum(c), 4))
+
   data <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c=agg(aggregation,c)) %>%
     tidyr::spread(b, c, fill = 0) %>%
-    tidyr::gather(b, c, -a)
+    tidyr::gather(b, c, -a) %>%
+    dplyr::left_join(., data_graph, by = c("a", "b", "c")) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent))
+
   data <- data %>% filter(!is.na(a),!is.na(b))
 
   graph <- ggplot(data, aes(a, y = c, fill=b)) +
     geom_bar(stat="identity", position = "fill")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph + theme_ds()  + scale_fill_manual(values = getPalette()) +
-    scale_y_continuous(labels = percent)
+    scale_y_continuous(labels = percent) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data, aes(y = percent/100, label = round(c,2)),
+                             check_overlap = TRUE, color = color_text, position = position_stack(vjust = 0.5)))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data, aes(y = percent/100, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text, position = position_stack(vjust = 0.5)))
+    }else{
+      graph
+    }
+  }
   graph
 }
 
-#' gg_bar_stacked_100_hor_CaCaNu.
+#' Horizontal 100% stacked bar by first variable
 #' 100 horizontal stacked bar graph
 #' @name gg_bar_stacked_100_hor_CaCaNu.
 #' @param x A category.
@@ -239,44 +296,42 @@ gg_bar_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "",
 #' add(10, 1)
 gg_bar_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                            yLabel = NULL, leg_pos = "right",
-                                           aggregation = "mean", ...){
+                                           aggregation = "sum", text = TRUE, color_text = "black", type = "count",
+                                           angle_x = 0, ...){
 
 
   graph <- gg_bar_stacked_100_ver_CaCaNu.(data, titleLabel, subtitle, caption,
                                           xLabel, yLabel, leg_pos,
-                                          aggregation = aggregation)
+                                          aggregation, text, color_text, type, angle_x)
   graph <- graph + coord_flip()
 
   graph
 }
 
-#' gg_bar_stacked2_100_ver_CaCaNu.: title.
+#' Vertical 100% stacked bar by second variable
 #' Barras grouped
-#' Tiene múltiples líneas
 #' @name gg_bar_stacked2_100_ver_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-#'
 gg_bar_stacked2_100_ver_CaCaNu. <- function(data,...){
   data <- fringe(data)
   gg_bar_stacked_ver_CaCaNu.(selectFringeCols(data,c(2,1,3)),...)
 }
 
-#' gg_bar_stacked2_100_hor_CaCaNu.: title.
+#' Horizontal 100% stacked bar by second variable
 #' Barras grouped
-#' Tiene múltiples líneas
 #' @name gg_bar_stacked2_100_hor_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -286,10 +341,7 @@ gg_bar_stacked2_100_hor_CaCaNu. <- function(data, ...){
   graph
 }
 
-
-
-
-#' gg_bar_facet_ver_CaCaNu.
+#' Vertical facet bar
 #' Facet vertical bargraph
 #' @name gg_bar_facet_ver_CaCaNu.
 #' @param x A category.
@@ -302,45 +354,75 @@ gg_bar_stacked2_100_hor_CaCaNu. <- function(data, ...){
 #' add(10, 1)
 gg_bar_facet_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                      xLabel = NULL,
-                                     yLabel = NULL, leg_pos = "right", angle_x = 45,
-                                     aggregation = "mean",
-                                     fillMissing = TRUE, fillMissingValue = 0,
-                                     groupLabelPosition = "top",
-                                     ...){
-  f <- fringe(data)
-  nms <- getClabels(f)
-  xLabel <- xLabel %||% nms[1]
-  yLabel <- yLabel %||% nms[3]
-  data <- f$d
+                                     yLabel = NULL, leg_pos = "right", angle_x = 0,
+                                     aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
-  if(groupLabelPosition == "top")
-    groupLabelPosition <- NULL
-  else
-    groupLabelPosition <- "both"
+    f <- fringe(data)
+    nms <- getClabels(f)
+    xlab <- xLabel %||% nms[1]
+    ylab <- yLabel %||% nms[3]
+    data <- f$d
 
-  data <- data %>%
-    dplyr::group_by(a, b) %>%
-    dplyr::summarise(c=agg(aggregation,c))
+    data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(suma=agg(aggregation,c)) %>%
+      dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/sum(suma), 4)) %>%
+      dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                    percent = ifelse(percent == 0, NA, percent))
 
-  if(fillMissing){
-    data <- data %>%
-      tidyr::spread(b, c, fill = fillMissingValue) %>%
-      tidyr::gather(b, c, -a)
-  }
+    graph <- ggplot(data_graph, aes(x = a, y = suma, fill = "")) +
+      geom_bar(stat = "identity", show.legend = FALSE) +
+      scale_fill_manual(values = getPalette()) +
+      labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+      theme_ds() +
+      theme(legend.position=leg_pos) +
+      theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+      facet_wrap(~b)
 
-  graph <- ggplot(data, aes(a, weight=c)) +
-    geom_bar(position = "dodge", aes(fill = ""), show.legend = FALSE)
-  graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption,
-         x = xLabel, y = yLabel) +
-    theme(legend.position=leg_pos) + guides(text = FALSE) + facet_grid(. ~a)
-  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  graph + facet_grid(. ~b,scale="free_x", space="free",switch = groupLabelPosition)
+    if(text == TRUE & type == 'count'){
+      return(graph + geom_text(data = data_graph, aes(y = pos, label = round(suma,2)),
+                               check_overlap = TRUE, color = color_text))
+    }else{
+      if(text == TRUE & type == 'percent'){
+        return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")),
+                                 check_overlap = TRUE, color = color_text))
+      }else{
+        graph
+      }
+    }
+    return(graph)
+  # f <- fringe(data)
+  # nms <- getClabels(f)
+  # xLabel <- xLabel %||% nms[1]
+  # yLabel <- yLabel %||% nms[3]
+  # data <- f$d
+  #
+  # if(groupLabelPosition == "top")
+  #   groupLabelPosition <- NULL
+  # else
+  #   groupLabelPosition <- "both"
+  #
+  # data <- data %>%
+  #   dplyr::group_by(a, b) %>%
+  #   dplyr::summarise(c=agg(aggregation,c))
+  #
+  # if(fillMissing){
+  #   data <- data %>%
+  #     tidyr::spread(b, c, fill = fillMissingValue) %>%
+  #     tidyr::gather(b, c, -a)
+  # }
+  #
+  # graph <- ggplot(data, aes(a, weight=c)) +
+  #   geom_bar(position = "dodge", aes(fill = ""), show.legend = FALSE)
+  # graph <- graph +
+  #   labs(title = titleLabel, subtitle = subtitle, caption = caption,
+  #        x = xLabel, y = yLabel) +
+  #   theme(legend.position=leg_pos) + guides(text = FALSE) + facet_wrap(~a)
+  # graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+  #   theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+  # graph + facet_grid(. ~b,scale="free_x", space="free",switch = groupLabelPosition)
 }
 
 
-#' gg_bar_facet_hor_CaCaNu.
+#' Horizontal facet bar
 #' Horizontal bar graph
 #' @name gg_bar_facet_hor_CaCaNu.
 #' @param x A category.
@@ -351,52 +433,20 @@ gg_bar_facet_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_facet_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                     yLabel = NULL, leg_pos = "right", angle_x = 0,
-                                     aggregation = "mean",
-                                     fillMissing = TRUE, fillMissingValue = 0,
-                                     groupLabelPosition = "right",
-                                     ...){
+gg_bar_facet_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                     xLabel = NULL, yLabel = NULL, leg_pos = "right",
+                                     angle_x = 0, aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
-  f <- fringe(data)
-  nms <- getClabels(f)
-  xLabel <- xLabel %||% nms[1]
-  yLabel <- yLabel %||% nms[3]
-  data <- f$d
+  graph <- gg_bar_facet_ver_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, aggregation,
+                                    text, color_text, type)
 
-  if(groupLabelPosition == "right")
-    groupLabelPosition <- NULL
-  else
-    groupLabelPosition <- "both"
+  graph <- graph + coord_flip()
 
-  data <- data %>%
-    dplyr::group_by(a, b) %>%
-    dplyr::summarise(c=agg(aggregation,c))
-
-  if(fillMissing){
-    data <- data %>%
-      tidyr::spread(b, c, fill = fillMissingValue) %>%
-      tidyr::gather(b, c, -a)
-  }
-
-  graph <- ggplot(data, aes(a, weight=c)) +
-    geom_bar(position = "dodge", aes(fill = ""), show.legend = FALSE)
-  graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption,
-         x = xLabel, y = yLabel) +
-    theme(legend.position=leg_pos) + guides(text = FALSE) + facet_grid(. ~a)
-  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  graph <- graph + facet_grid(b~.,scale="free_y", space="free",switch = groupLabelPosition) +
-    coord_flip()
   graph
+
 }
 
-
-
-
-
-#' gg_bar_coloured_ver_x_facet_CaCaNu.
+#' Vertical facet bar coloured by first variable
 #' vertical bar
 #' @name gg_bar_coloured_ver_x_facet_CaCaNu.
 #' @param x A category.
@@ -408,7 +458,8 @@ gg_bar_facet_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_ver_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, leg_pos = "right", ...){
+                                                yLabel = NULL, leg_pos = "right", angle_x = 0,
+                                                aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -416,20 +467,36 @@ gg_bar_coloured_ver_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   ylab <- yLabel %||% nms[3]
   data <- f$d
 
-  graph <- ggplot(data, aes(x = a, weight = c, fill = factor(a))) +
-    geom_bar() +
+  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(suma=agg(aggregation,c)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/sum(suma), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent))
+
+  graph <- ggplot(data_graph, aes(x = a, y = suma, fill = factor(b))) +
+    geom_bar(stat = "identity") +
     scale_fill_manual(values = getPalette()) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme_ds() +
     theme(legend.position=leg_pos) +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-    facet_grid(. ~b)
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    facet_wrap(~b)
 
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(suma,2)),
+                             check_overlap = TRUE, color = color_text))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text))
+    }else{
+      graph
+    }
+  }
   graph
 }
 
 
-#' gg_bar_coloured_hor_x_facet_CaCaNu.
+#' Horizontal facet bar coloured by first variable
 #' horizontal bar
 #' @name gg_bar_coloured_hor_x_facet_CaCaNu.
 #' @param x A category.
@@ -441,15 +508,17 @@ gg_bar_coloured_ver_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_hor_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, leg_pos = "right", ...){
+                                                yLabel = NULL, leg_pos = "right", angle_x = 0,
+                                                aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
-  graph <- gg_bar_coloured_ver_x_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
+  graph <- gg_bar_coloured_ver_x_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos,
+                                               angle_x, aggregation, text, color_text, type, ...)
   graph <- graph + coord_flip()
 
   graph
 }
 
-#' gg_bar_coloured_ver_y_facet_CaCaNu.
+#' Vertical facet bar coloured by second variable
 #' vertical bar
 #' @name gg_bar_coloured_ver_y_facet_CaCaNu.
 #' @param x A category.
@@ -461,7 +530,8 @@ gg_bar_coloured_hor_x_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_ver_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, leg_pos = "right", ...){
+                                                yLabel = NULL, leg_pos = "right", angle_x = 0,
+                                                aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -469,39 +539,58 @@ gg_bar_coloured_ver_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   ylab <- yLabel %||% nms[3]
   data <- f$d
 
-  graph <- ggplot(data, aes(x = a, weight = c, fill = factor(b))) +
-    geom_bar() +
+  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(suma=agg(aggregation,c)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/sum(suma), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent))
+
+  graph <- ggplot(data_graph, aes(x = a, y = suma, fill = factor(b))) +
+    geom_bar(stat = "identity") +
     scale_fill_manual(values = getPalette()) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds() +
     theme(legend.position=leg_pos) +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-    facet_grid(. ~b)
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    facet_wrap(~b)
+
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(suma,2)),
+                             check_overlap = TRUE, color = color_text))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text))
+    }else{
+      graph
+    }
+  }
 
   graph
 }
 
 
-#' gg_bar_coloured_hor_y_facet_CaCaNu.
+#' Horizontal facet bar coloured by second variable
 #' horizontal bar
 #' @name gg_bar_coloured_hor_y_facet_CaCaNu.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_hor_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, leg_pos = "right", ...){
+                                                yLabel = NULL, leg_pos = "right", angle_x = 0,
+                                                aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
-  graph <- gg_bar_coloured_ver_y_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos)
+  graph <- gg_bar_coloured_ver_y_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x,
+                                               aggregation, text, color_text, type, ...)
   graph <- graph + coord_flip()
 
   graph
 }
 
-#' gg_bar_coloured_ver_z_facet_CaCaNu.
+#' Vertical facet bar density by first numeric variable
 #' Facet coloured vertical bar
 #' @name gg_bar_coloured_ver_z_facet_CaCaNu.
 #' @param x A category.
@@ -513,7 +602,8 @@ gg_bar_coloured_hor_y_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, reverse = FALSE, leg_pos = "right", ...){
+                                                yLabel = NULL, reverse = FALSE, leg_pos = "right", angle_x = 0,
+                                                aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -521,7 +611,10 @@ gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   ylab <- yLabel %||% nms[3]
   data <- f$d
 
-  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(suma=sum(c))
+  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(suma=agg(aggregation,c)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/sum(suma), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent))
 
   graph <- ggplot(data_graph, aes(x = a, y = suma, fill = suma)) +
     geom_bar(stat = "identity") +
@@ -537,12 +630,23 @@ gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
   }
 
   graph <- graph + theme(legend.position=leg_pos) +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) + facet_grid(. ~b)
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) + facet_wrap(~b)
 
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(suma,2)),
+                             check_overlap = TRUE, color = color_text))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text))
+    }else{
+      graph
+    }
+  }
   graph
 }
 
-#' gg_bar_coloured_hor_z_facet_CaCaNu.
+#' Horizontal facet bar density by first numeric variable
 #' Facet Coloured horizontal bar
 #' @name gg_bar_coloured_hor_z_facet_CaCaNu.
 #' @param x A category.
@@ -554,15 +658,17 @@ gg_bar_coloured_ver_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_hor_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, reverse = FALSE, leg_pos = "right", ...){
+                                                yLabel = NULL, reverse = FALSE, leg_pos = "right", angle_x = 0,
+                                                aggregation = "sum", text = TRUE, color_text = "black", type = "count", ...){
 
-  graph <- gg_bar_coloured_ver_z_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, leg_pos)
+  graph <- gg_bar_coloured_ver_z_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, leg_pos,
+                                               angle_x, aggregation, text, color_text, type, ...)
   graph <- graph + coord_flip()
 
   graph
 }
 
-#' gg_bar_coloured_parameter_ver_facet_CaCaNu.
+#' Vertical facet bar coloured highliting some parameter
 #' Facet Vertical coloured by parameter bars
 #' @name gg_bar_coloured_parameter_ver_facet_CaCaNu.
 #' @param x A number.
@@ -576,7 +682,7 @@ gg_bar_coloured_hor_z_facet_CaCaNu. <- function(data, titleLabel = "", subtitle 
 gg_bar_coloured_parameter_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                                         xLabel = NULL, yLabel = NULL,
                                                         parameter1 = NULL, parameter2 = NULL,
-                                                        leg_pos = "right", ...){
+                                                        leg_pos = "right", angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -584,7 +690,7 @@ gg_bar_coloured_parameter_ver_facet_CaCaNu. <- function(data, titleLabel = "", s
   p_a <-  parameter1 %||% sample(unique(data[,nms[1]]), length(unique(data[,nms[2]])))
   p_b <-  parameter2 %||% sample(unique(data[,nms[2]]), length(unique(data[,nms[2]])))
   data <- f$d
-  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(count = sum(c))
+  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(count = agg(aggregation,c))
 
   list_df <- apply(cbind(p_a, p_b), 1, function(x){
     df <- data_graph%>% mutate(color = ifelse(a==x[1] & b==x[2], TRUE, FALSE))
@@ -597,19 +703,20 @@ gg_bar_coloured_parameter_ver_facet_CaCaNu. <- function(data, titleLabel = "", s
   graph <- ggplot(data_graph, aes(a, weight = count)) +
     geom_bar(position ="dodge", aes(fill =  color %in% TRUE))
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   graph <- graph +
     guides(fill=FALSE) +
     scale_fill_manual(values = getPalette())
   graph <- graph +
     theme_ds() +
     theme(legend.position=leg_pos) +
-    facet_grid(.~b)
+    facet_wrap(~b)
 
   graph
 }
 
-#' gg_bar_coloured_parameter_hor_facet_CaCaNu.
+#' Horizontal facet bar coloured highliting some parameter
 #' Facet Horizontal coloured by parameter Bars
 #' @name gg_bar_coloured_parameter_hor_facet_CaCaNu.
 #' @param x A number.
@@ -623,39 +730,35 @@ gg_bar_coloured_parameter_ver_facet_CaCaNu. <- function(data, titleLabel = "", s
 gg_bar_coloured_parameter_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                                         xLabel = NULL, yLabel = NULL,
                                                         parameter1 = NULL, parameter2 = NULL,
-                                                        leg_pos = "right", ...){
+                                                        leg_pos = "right", angle_x = 0, ...){
 
   graph <- gg_bar_coloured_parameter_ver_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel,
-                                                       yLabel, parameter1, parameter2, leg_pos)
+                                                       yLabel, parameter1, parameter2, leg_pos, angle_x)
 
   graph <- graph + coord_flip()
   graph
 }
 
-
-
-
-
-
-
-
-
-#' gg_bar_circular_facet_CaCaNu.
+#' Circular bar facet
 #' Circular Bar
 #' @name gg_bar_circular_facet_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Nu,Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                          leg_pos="right", width = 0.85, ...){
+                                          leg_pos="right", aggregation = "sum", width = 0.85, ...){
 
   f <- fringe(data)
   data <- f$d
+
+  data <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = agg(aggregation, c))
 
   graph <- ggplot(data, aes(x = a, y = c , fill = a )) +
     geom_bar(width = width, stat="identity") +
@@ -667,14 +770,12 @@ gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", 
     theme_ds() +
     theme_ds_clean()
 
-  graph <- graph + theme(legend.position=leg_pos) + facet_grid(. ~b)
+  graph <- graph + theme(legend.position=leg_pos) + facet_wrap(~b)
 
   graph
 }
 
-
-
-#' gg_bar_stacked_polar_CaCaNu.
+#' Stacked polar bar
 #' Stacked Polar Bar
 #' @name gg_bar_stacked_polar_CaCaNu.
 #' @param x A number.
@@ -686,13 +787,28 @@ gg_bar_circular_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "", caption = "",
-                                         leg_pos= "right", ...){
+                                         leg_pos= "right", aggregation = "sum", text = TRUE, color_text = "black",
+                                         type = "count", ...){
   f <- fringe(data)
   nms <- getClabels(f)
   data <- f$d
 
-  graph <- ggplot(data = data, aes(x = a, weight = c, fill = b)) +
-    geom_bar(width = width, position = "stack") +
+  data_graph <- data %>% dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = agg(aggregation, c)) %>%
+    dplyr::mutate(pos = c*9/10,
+                  percent = 100 * round(c / sum(c), 4))
+
+  data <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c=agg(aggregation,c)) %>%
+    tidyr::spread(b, c, fill = 0) %>%
+    tidyr::gather(b, c, -a) %>%
+    dplyr::left_join(., data_graph, by = c("a", "b", "c")) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent))
+
+  graph <- ggplot(data = data, aes(x = a, y = c, fill = b)) +
+    geom_bar(width = width, position = "stack", stat = "identity") +
     coord_polar()
   graph <- graph +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "")
@@ -703,10 +819,21 @@ gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "", su
     scale_fill_manual(values = getPalette()) +
     theme(legend.position=leg_pos)
 
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data, aes(y = c, label = round(c,2)),
+                             check_overlap = TRUE, color = color_text, position = position_stack(vjust = 0.5)))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data, aes(y = c, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text, position = position_stack(vjust = 0.5)))
+    }else{
+      graph
+    }
+  }
   graph
 }
 
-#' gg_bar_stacked_polar_100_CaCaNu.
+#' Stacked 100% polar bar
 #' Stacked Polar Bar 100
 #' @name gg_bar_stacked_polar_100_CaCaNu.
 #' @param x A number.
@@ -718,18 +845,45 @@ gg_bar_stacked_polar_CaCaNu. <- function(data, width = 0.95, titleLabel = "", su
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_stacked_polar_100_CaCaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "", caption = "",
-                                             fillLabel = NULL, leg_pos= "right", ...){
+                                             fillLabel = NULL, leg_pos= "right",
+                                             aggregation = "sum", text = TRUE, color_text = "black",
+                                             type = "count", ...){
   f <- fringe(data)
   nms <- getClabels(f)
   flabel <- fillLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data = data, aes(x = a, weight = c, fill = b)) +
-    geom_bar(width = width, position = "fill") +
+  data_graph <- data %>% dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = agg(aggregation, c)) %>%
+    dplyr::mutate(pos = c*9/10,
+                  percent = 100 * round(c / sum(c), 4))
+
+  data <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c=agg(aggregation,c)) %>%
+    tidyr::spread(b, c, fill = 0) %>%
+    tidyr::gather(b, c, -a) %>%
+    dplyr::left_join(., data_graph, by = c("a", "b", "c")) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent))
+
+  graph <- ggplot(data = data, aes(x = a, y = c, fill = b)) +
+    geom_bar(width = width, position = "fill", stat = "identity") +
     coord_polar() + theme(legend.position=leg_pos) + theme_ds() +
     theme_ds_clean() + scale_fill_manual(values = getPalette())
   graph <- graph + theme(legend.position=leg_pos) +
     labs(title = titleLabel, subtitle = subtitle, caption = caption)
 
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data, aes(y = percent/100, label = round(c,2)),
+                             check_overlap = TRUE, color = color_text, position = position_stack(vjust = 0.5)))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data, aes(y = percent/100, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text, position = position_stack(vjust = 0.5)))
+    }else{
+      graph
+    }
+  }
   graph
 }

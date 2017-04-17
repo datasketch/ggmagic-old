@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_circular_facet_CaCaNu.}
 \alias{gg_bar_circular_facet_CaCaNu.}
-\title{gg_bar_circular_facet_CaCaNu.
+\title{Circular bar facet
 Circular Bar}
 \usage{
 gg_bar_circular_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", leg_pos = "right", width = 0.85, ...)
+  caption = "", leg_pos = "right", aggregation = "sum", width = 0.85,
+  ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,11 +18,11 @@ gg_bar_circular_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_circular_facet_CaCaNu.
+Circular bar facet
 Circular Bar
 }
 \section{ftypes}{
- Ca-Ca-Nu,Ca-Ca-Nu
+ Ca-Ca-Nu
 }
 
 \examples{

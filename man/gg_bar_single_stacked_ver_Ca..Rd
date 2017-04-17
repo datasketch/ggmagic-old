@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca.R
 \name{gg_bar_single_stacked_ver_Ca.}
 \alias{gg_bar_single_stacked_ver_Ca.}
-\title{gg_bar_single_stacked_ver_Ca.
+\title{Vertical stacked bar
 Single Vertical Stacked Bar}
 \usage{
 gg_bar_single_stacked_ver_Ca.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, leg_pos = "right", width = 0.3, ...)
+  caption = "", fillLabel = NULL, leg_pos = "right", width = 0.3,
+  text = TRUE, type = "count", color_text = "black", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_bar_single_stacked_ver_Ca.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_single_stacked_ver_Ca.
+Vertical stacked bar
 Single Vertical Stacked Bar
 }
 \section{ftypes}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Da.R
 \name{gg_pointline_hor_CaDa.}
 \alias{gg_pointline_hor_CaDa.}
-\title{gg_pointline_hor_CaDa.: title.
+\title{Horizontal line + point
 pointlines}
 \usage{
 gg_pointline_hor_CaDa.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_pointline_hor_CaDa.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_pointline_hor_CaDa.: title.
+Horizontal line + point
 pointlines
 }
 \section{ftypes}{

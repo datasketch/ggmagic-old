@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu-Nu.R
 \name{gg_steam_CaNuNu.}
 \alias{gg_steam_CaNuNu.}
-\title{gg_steam_CaNuNu.
+\title{Steam
 Steamgraph}
 \usage{
 gg_steam_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_steam_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_steam_CaNuNu.
+Steam
 Steamgraph
 }
 \section{ftypes}{

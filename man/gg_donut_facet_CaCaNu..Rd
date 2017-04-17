@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_donut_facet_CaCaNu.}
 \alias{gg_donut_facet_CaCaNu.}
-\title{gg_donut_facet_CaCaNu.
+\title{Donut facet
 Facet Donut}
 \usage{
 gg_donut_facet_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  width = 0.3, leg_pos = "right", ...)
+  width = 0.3, leg_pos = "right", aggregation = "sum", text = TRUE,
+  type = "count", color_text = "black", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_donut_facet_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_donut_facet_CaCaNu.
+Donut facet
 Facet Donut
 }
 \section{ftypes}{

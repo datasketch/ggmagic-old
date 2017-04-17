@@ -1,5 +1,5 @@
 
-#' gg_treemap_x_CaCaCaNu.
+#' Treemap coloured by first variable
 #' Treemap fill first Ca
 #' @name gg_treemap_x_CaCaCaNu.
 #' @param x A number.
@@ -33,7 +33,7 @@ gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
   graph
 }
 
-#' gg_treemap_y_CaCaCaNu.
+#' Treemap coloured by second variable
 #' Treemap fill second Ca
 #' @name gg_treemap_y_CaCaCaNu.
 #' @param x A number.
@@ -67,7 +67,7 @@ gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
   graph
 }
 
-#' gg_treemap_z_CaCaCaNu.
+#' Treemap coloured by third variable
 #' Treemap fill third Ca
 #' @name gg_treemap_z_CaCaCaNu.
 #' @param x A number.
@@ -102,19 +102,17 @@ gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 }
 
 
-#' gg_bar_stacked_100_hor_CaCaCaNu.
+#' Horizontal 100% stacked bar
 #' Stacked
 #' @name gg_bar_stacked_100_hor_CaCaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca-Nu, Ca-Ca-Ye-Nu
+#' @section ftypes: Ca-Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
-
 gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                              fillLabel = NULL, xlab = NULL, ylab = NULL,leg_pos = 'right', ...){
 
@@ -151,17 +149,14 @@ gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
   graph
 }
 
-
-
-
-#' gg_sunburst_CaCaCaNu.
+#' Sunburst
 #' sunburst
 #' @name gg_sunburst_CaCaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Nu
+#' @section ftypes: Ca-Ca-Ca-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -259,3 +254,4 @@ gg_sunburst_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   coord_polar('y') +  theme_ds_clean() + guides(fill = FALSE)
 
 }
+

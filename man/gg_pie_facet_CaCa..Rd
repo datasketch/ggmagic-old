@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_pie_facet_CaCa.}
 \alias{gg_pie_facet_CaCa.}
-\title{gg_pie_facet_CaCa.
+\title{Pie facet
 Facet Pie}
 \usage{
 gg_pie_facet_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_pie_facet_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_pie_facet_CaCa.
+Pie facet
 Facet Pie
 }
 \section{ftypes}{

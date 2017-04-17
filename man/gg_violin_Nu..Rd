@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu.R
 \name{gg_violin_Nu.}
 \alias{gg_violin_Nu.}
-\title{gg_violin_Nu.
+\title{Horizontal violin
 Violin}
 \usage{
 gg_violin_Nu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_violin_Nu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_violin_Nu.
+Horizontal violin
 Violin
 }
 \section{ftypes}{

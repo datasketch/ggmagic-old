@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_hist_ver_mean_facet_CaNu.}
 \alias{gg_hist_ver_mean_facet_CaNu.}
-\title{gg_hist_ver_mean_facet_CaNu.
+\title{Vertical histogram + mean facet
 Facet Vertical Histogram + Mean}
 \usage{
 gg_hist_ver_mean_facet_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
+  angle_x, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_hist_ver_mean_facet_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_hist_ver_mean_facet_CaNu.
+Vertical histogram + mean facet
 Facet Vertical Histogram + Mean
 }
 \section{ftypes}{

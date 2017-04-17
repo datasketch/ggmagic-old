@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_sunburst_CaCaNu.}
 \alias{gg_sunburst_CaCaNu.}
-\title{gg_sunburst_CaCaNu.
+\title{Sunburst
 sunburst}
 \usage{
 gg_sunburst_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, ...)
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, aggregation = "sum",
+  ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_sunburst_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_sunburst_CaCaNu.
+Sunburst
 sunburst
 }
 \section{ftypes}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ge-Nu.R
 \name{gg_bubble_latam_Ge.}
 \alias{gg_bubble_latam_Ge.}
-\title{gg_bubble_latam_Ge.
+\title{Points inside Latam map
 Points inside Latam map}
 \usage{
 gg_bubble_latam_Ge.(data, titleLabel = "", subtitle = "", caption = "",
@@ -19,7 +19,7 @@ gg_bubble_latam_Ge.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bubble_latam_Ge.
+Points inside Latam map
 Points inside Latam map
 }
 \section{ftypes}{

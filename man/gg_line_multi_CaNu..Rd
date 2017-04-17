@@ -2,11 +2,11 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_line_multi_CaNu.}
 \alias{gg_line_multi_CaNu.}
-\title{gg_line_multi_CaNu.
+\title{Grouped line
 Grouped Line Coloured}
 \usage{
 gg_line_multi_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = "Index", yLabel = NULL, leg_pos = "right", type = 1, ...)
+  xLabel = "Index", yLabel = NULL, leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +17,7 @@ gg_line_multi_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_multi_CaNu.
+Grouped line
 Grouped Line Coloured
 }
 \section{ftypes}{

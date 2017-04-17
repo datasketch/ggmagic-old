@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu-Nu.R
 \name{gg_point_CaNuNu.}
 \alias{gg_point_CaNuNu.}
-\title{gg_point_CaNuNu.
+\title{Scatter
 point}
 \usage{
 gg_point_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_point_CaNuNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_point_CaNuNu.
+Scatter
 point
 }
 \section{ftypes}{

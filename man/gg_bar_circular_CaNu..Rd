@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bar_circular_CaNu.}
 \alias{gg_bar_circular_CaNu.}
-\title{gg_bar_circular_CaNu.
+\title{Circular bar
 Circular Bar}
 \usage{
 gg_bar_circular_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_bar_circular_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_circular_CaNu.
+Circular bar
 Circular Bar
 }
 \section{ftypes}{

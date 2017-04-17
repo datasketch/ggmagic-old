@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_stacked_polar_CaCaNu.}
 \alias{gg_bar_stacked_polar_CaCaNu.}
-\title{gg_bar_stacked_polar_CaCaNu.
+\title{Stacked polar bar
 Stacked Polar Bar}
 \usage{
 gg_bar_stacked_polar_CaCaNu.(data, width = 0.95, titleLabel = "",
-  subtitle = "", caption = "", leg_pos = "right", ...)
+  subtitle = "", caption = "", leg_pos = "right", aggregation = "sum",
+  text = TRUE, color_text = "black", type = "count", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_bar_stacked_polar_CaCaNu.(data, width = 0.95, titleLabel = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_stacked_polar_CaCaNu.
+Stacked polar bar
 Stacked Polar Bar
 }
 \section{ftypes}{

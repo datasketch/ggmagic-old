@@ -2,11 +2,11 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_violin_mult_CaNu.}
 \alias{gg_violin_mult_CaNu.}
-\title{gg_violin_mult_CaNu.
+\title{Vertical violin
 Violin}
 \usage{
 gg_violin_mult_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +17,7 @@ gg_violin_mult_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_violin_mult_CaNu.
+Vertical violin
 Violin
 }
 \section{ftypes}{

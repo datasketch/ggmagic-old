@@ -2,9 +2,8 @@
 % Please edit documentation in R/Ca-Ye-Nu-bars.R
 \name{gg_bar_grouped2_ver_CaYeNu.}
 \alias{gg_bar_grouped2_ver_CaYeNu.}
-\title{gg_bar_grouped2_ver_CaYeNu.: title.
-Barras stacked
-Tiene múltiples líneas}
+\title{Vertical grouped bar by second variable
+Barras stacked}
 \usage{
 gg_bar_grouped2_ver_CaYeNu.(data, ...)
 }
@@ -17,9 +16,8 @@ gg_bar_grouped2_ver_CaYeNu.(data, ...)
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_grouped2_ver_CaYeNu.: title.
+Vertical grouped bar by second variable
 Barras stacked
-Tiene múltiples líneas
 }
 \section{ftypes}{
  Ca-Ye-Nu

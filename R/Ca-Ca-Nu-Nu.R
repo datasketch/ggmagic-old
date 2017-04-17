@@ -1,5 +1,5 @@
 
-#' gg_treemap_density_x_CaCaNuNu.
+#' Treemap density first numeric variable
 #' Treemap Fill by second Nu
 #' @name gg_treemap_density_x_CaCaNuNu.
 #' @param x A number.
@@ -38,7 +38,7 @@ gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
   graph
 }
 
-#' gg_treemap_density_y_CaCaNuNu.
+#' Treemap density second numeric variable
 #' Treemap Density by second Nu
 #' @name gg_treemap_density_y_CaCaNuNu.
 #' @param x A number.

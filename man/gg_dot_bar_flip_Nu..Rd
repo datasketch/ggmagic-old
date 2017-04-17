@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu.R
 \name{gg_dot_bar_flip_Nu.}
 \alias{gg_dot_bar_flip_Nu.}
-\title{gg_dot_bar_flip_Nu.
+\title{Vertical dot bar
 Dot bar flipped}
 \usage{
 gg_dot_bar_flip_Nu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_dot_bar_flip_Nu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_dot_bar_flip_Nu.
+Vertical dot bar
 Dot bar flipped
 }
 \section{ftypes}{

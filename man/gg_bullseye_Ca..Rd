@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca.R
 \name{gg_bullseye_Ca.}
 \alias{gg_bullseye_Ca.}
-\title{gg_bullseye_Ca.
+\title{Bullseye
 Bullseye}
 \usage{
 gg_bullseye_Ca.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_bullseye_Ca.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bullseye_Ca.
+Bullseye
 Bullseye
 }
 \section{ftypes}{

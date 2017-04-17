@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Ca-Nu.R
 \name{gg_sunburst_CaCaCaNu.}
 \alias{gg_sunburst_CaCaCaNu.}
-\title{gg_sunburst_CaCaCaNu.
+\title{Sunburst
 sunburst}
 \usage{
 gg_sunburst_CaCaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,11 +17,11 @@ gg_sunburst_CaCaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_sunburst_CaCaCaNu.
+Sunburst
 sunburst
 }
 \section{ftypes}{
- Ca-Ca-Nu
+ Ca-Ca-Ca-Nu
 }
 
 \examples{

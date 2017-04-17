@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bar_polar_CaNu.}
 \alias{gg_bar_polar_CaNu.}
-\title{gg_bar_polar_CaNu.
+\title{Polar bar
 Polar Bar}
 \usage{
 gg_bar_polar_CaNu.(data, width = 0.95, titleLabel = "", subtitle = "",
-  caption = "", leg_pos = "right", ...)
+  aggregation = "sum", caption = "", leg_pos = "right", text = TRUE,
+  color_text = "black", type = "count", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_bar_polar_CaNu.(data, width = 0.95, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_polar_CaNu.
+Polar bar
 Polar Bar
 }
 \section{ftypes}{

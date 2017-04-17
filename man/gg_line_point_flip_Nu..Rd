@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu.R
 \name{gg_line_point_flip_Nu.}
 \alias{gg_line_point_flip_Nu.}
-\title{gg_line_point_flip_Nu.
+\title{Horizontal line + point
 Line with point plot}
 \usage{
 gg_line_point_flip_Nu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_line_point_flip_Nu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_point_flip_Nu.
+Horizontal line + point
 Line with point plot
 }
 \section{ftypes}{

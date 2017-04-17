@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu-Nu.R
 \name{gg_line_point_NuNu.}
 \alias{gg_line_point_NuNu.}
-\title{gg_line_point_NuNu.
+\title{Line + point
 Line point plot}
 \usage{
 gg_line_point_NuNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_line_point_NuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_point_NuNu.
+Line + point
 Line point plot
 }
 \section{ftypes}{

@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_area_stacked_ver_CaNu.}
 \alias{gg_area_stacked_ver_CaNu.}
-\title{gg_area_stacked_ver_CaNu.
+\title{Vertical stacked area
 Stacked Vertical Area}
 \usage{
 gg_area_stacked_ver_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = "Index", yLabel = NULL, leg_pos = "right", ...)
+  caption = "", xLabel = "Index", yLabel = NULL, leg_pos = "right",
+  text = TRUE, color_text = "black", type = "count", angle_x, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_area_stacked_ver_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_area_stacked_ver_CaNu.
+Vertical stacked area
 Stacked Vertical Area
 }
 \section{ftypes}{

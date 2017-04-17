@@ -2,13 +2,13 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_facet_hor_CaCaNu.}
 \alias{gg_bar_facet_hor_CaCaNu.}
-\title{gg_bar_facet_hor_CaCaNu.
+\title{Horizontal facet bar
 Horizontal bar graph}
 \usage{
 gg_bar_facet_hor_CaCaNu.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 0, aggregation = "mean", fillMissing = TRUE,
-  fillMissingValue = 0, groupLabelPosition = "right", ...)
+  angle_x = 0, aggregation = "sum", text = TRUE, color_text = "black",
+  type = "count", ...)
 }
 \arguments{
 \item{x}{A category.}
@@ -19,7 +19,7 @@ gg_bar_facet_hor_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_facet_hor_CaCaNu.
+Horizontal facet bar
 Horizontal bar graph
 }
 \section{ftypes}{

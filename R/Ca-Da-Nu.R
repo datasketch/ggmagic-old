@@ -1,4 +1,4 @@
-#' gg_scatter_hor_CaDaNu.: title.
+#' Horizontal scatter
 #' pointlines
 #' @name gg_scatter_hor_CaDaNu.
 #' @param x A number.
@@ -9,7 +9,6 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "", xlab = NULL,
                                    ylab=NULL, clab = NULL, angle = 45, ...){
 
@@ -30,7 +29,7 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_steam_CaDaNu.
+#' Steam
 #' Steam
 #' @name gg_steam_CaDaNu.
 #' @param x A number.
@@ -41,7 +40,6 @@ gg_scatter_hor_CaDaNu. <- function(data,title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_steam_CaDaNu. <- function (data, title = "", subtitle = "", caption = "",
                               xLabel = NULL, yLabel = NULL, leg_pos = "right", ...){
 
@@ -73,7 +71,7 @@ gg_steam_CaDaNu. <- function (data, title = "", subtitle = "", caption = "",
 
 
 
-#' gg_area_stacked_ver_CaDaNu.
+#' Vertical stacked area
 #' Stacked Vertical Area
 #' @name gg_area_stacked_ver_CaDaNu.
 #' @param x A number.
@@ -114,7 +112,7 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_area_stacked_hor_CaDaNu.
+#' Horizontal stacked area
 #' Stacked Horizontal Area
 #' @name gg_area_stacked_hor_CaDaNu.
 #' @param x A number.
@@ -135,7 +133,7 @@ gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_area_stacked_100_ver_CaDaNu.
+#' Vertical 100% stacked area
 #' Stacked Vertical Area 100
 #' @name gg_area_stacked_100_ver_CaDaNu.
 #' @param x A number.
@@ -176,7 +174,7 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
   graph
 }
 
-#' gg_area_stacked_100_hor_CaDaNu.
+#' Horizontal 100% stacked area
 #' Stacked Horizontal Area 100
 #' @name gg_area_stacked_100_hor_CaDaNu.
 #' @param x A number.
@@ -197,7 +195,7 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
   graph
 }
 
-#' gg_multi_line_point_CaDaNu.
+#' Grouped line + point
 #' Grouped Line Color Point
 #' @name gg_multi_line_point_CaDaNu.
 #' @param x A number.
@@ -233,7 +231,7 @@ gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph
 }
 
-#' gg_multi_line_CaDaNu.
+#' Grouped line
 #' Grouped Line Coloured
 #' @name gg_multi_line_CaDaNu.
 #' @param x A number.
@@ -263,7 +261,7 @@ gg_multi_line_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption 
   graph
 }
 
-#' gg_bar_stacked_ver_CaDaNu.
+#' Vertical stacked bar
 #' vertical stacked bar graph
 #' @name gg_bar_stacked_ver_CaDaNu.
 #' @param x A category.
@@ -305,177 +303,4 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
 
   graph
 }
-
-#gg_scatter_trend_hor_CaDaNu.
-
-
-
-
-
-###
-#
-# flip_circleAreaPlotCCN  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
-#                                     yLabel = "Category", leg_pos = "top", ...){
-#
-#   graph <- circleAreaPlotCCN(data, titleLabel, xLabel, yLabel, leg_pos)
-#   graph <- graph + coord_flip()
-#
-#   return(graph)
-# }
-#
-# vertical_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
-#                                  yLabel = "Frequency", fillLabel = "Types", leg_pos = "top", ...){
-#
-#   graph <- ggplot(data, aes(a, fill=b, weights = c)) + geom_bar()
-#   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
-#   graph <- graph + theme_ds() + theme(legend.position=leg_pos)
-#
-#   return(graph)
-# }
-#
-# ordered_vertical_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Frequency",
-#                                          yLabel =  "Categories", fillLabel = "Types",
-#                                          leg_pos = "right", ...){
-#
-#   graph <- ggplot(data, aes(x=reorder(data$b,rep(1,length(data$b)),sum),fill=a, weights = c)) +
-#     geom_bar()
-#
-#   graph <- graph + labs(title = titleLabel, x = yLabel, y = xLabel,  fill = fillLabel)
-#   graph <- graph + theme_ds() + theme(legend.position=leg_pos)
-#
-#   return(graph)
-# }
-#
-# ordered_horizontal_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Frequency",
-#                                            yLabel =  "Categories", fillLabel = "Types",
-#                                            leg_pos = "right", ...){
-#
-#   graph <- ordered_vertical_bargraphCCN(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
-#
-#   graph <- graph + coord_flip()
-#
-#   return(graph)
-# }
-#
-# horizontal_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
-#                                    yLabel = "Category", fillLabel = "Types", leg_pos = "top", ...){
-#
-#   graph <- vertical_bargraphCCN(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
-#   graph <- graph + coord_flip()
-#
-#   return(graph)
-# }
-#
-# vertical_dotgraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Categories", yLabel = "Frequency",
-#                                  fillLabel = "Types", leg_pos = "right", ...){
-#
-#   graph <- ggplot(data = data, aes(a, fill = factor(b), weights = c)) +
-#     geom_dotplot(stackgroups = TRUE, binpositions = "all")
-#
-#   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel,  fill = fillLabel)
-#   graph <- graph + theme_ds() + scale_y_continuous(breaks = NULL) +
-#     theme(legend.position=leg_pos)
-#
-#   return(graph)
-# }
-#
-# horizontal_dotgraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Categories", yLabel = "Frequency",
-#                                    fillLabel = "Types", leg_pos = "top", ...){
-#
-#   graph <- vertical_dotgraphCCN(data, titleLabel, xLabel, yLabel, fillLabel, leg_pos)
-#
-#   graph <- graph + coord_flip()
-#
-#   return(graph)
-# }
-#
-# vertical_grouped_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
-#                                            yLabel = "Frequency", fillLabel = "Types",
-#                                            leg_pos = "top", ...){
-#
-#   graph <- ggplot(data, aes(a, weights = c)) + geom_bar(aes(fill=data$b), position = "dodge")
-#   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
-#   graph <- graph + theme_ds() + theme(legend.position=leg_pos)
-#
-#   return(graph)
-# }
-#
-# horizontal_grouped_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
-#                                              yLabel = "Frequency", fillLabel = "Types",
-#                                              leg_pos = "top", ...){
-#   graph <- vertical_grouped_bargraphCCN(data, titleLabel, xLabel, yLabel,
-#                                           fillLabel, leg_pos)
-#
-#   graph <- graph + coord_flip()
-#
-#   return(graph)
-# }
-#
-#
-# horizontal_linegraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Types",
-#                                     yLabel = "Frequency", ...){
-#
-#   data_graph <- data %>%
-#     dplyr::group_by(a, b) %>%
-#     dplyr::summarise(sum = sum(c)) %>%
-#     dplyr::arrange(desc(sum))
-#
-#   graph <- ggplot(data = data_graph, aes(x = a, y = sum, group=b)) + geom_line() +
-#     geom_point() + facet_grid(. ~b)
-#   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel)
-#
-#   graph <- graph + theme_ds()
-#
-#   return(graph)
-# }
-#
-# vertical_linegraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Types",
-#                                   yLabel = "Frequency", ...){
-#
-#   graph <- horizontal_linegraphCCN(data, titleLabel, xLabel, yLabel)
-#   graph <- graph + coord_flip()
-#
-#   return(graph)
-# }
-#
-# vertical_stacked_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
-#                                          yLabel = "Frequency", fillLabel = "Types",
-#                                          leg_pos = "top", ...){
-#
-#   graph <- ggplot(data, aes(a, fill=b, weights = c)) + geom_bar(position = "fill")
-#   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
-#   graph <- graph + theme_ds() + theme(legend.position=leg_pos)
-#
-#   return(graph)
-# }
-#
-# horizontal_stacked_bargraphCCN <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
-#                                            yLabel = "Frequency", fillLabel = "Types",
-#                                            leg_pos = "top", ...){
-#
-#
-#   graph <- vertical_stacked_bargraphCCN(data, titleLabel, xLabel, yLabel,
-#                                         fillLabel, leg_pos)
-#   graph <- graph + coord_flip()
-#
-#   return(graph)
-# }
-#
-# horizontal_area_bargraphCC <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Category",
-#                                        yLabel = "Frequency", fillLabel = "Types",
-#                                        leg_pos = "top", ...){
-#
-#   data_graph <- data %>%
-#     dplyr::group_by(a, b) %>%
-#     dplyr::summarise(sum = sum(c)) %>%
-#     dplyr::arrange(desc(sum))
-#   graph <- ggplot(data = data_graph,
-#                   aes(x=a, y=sum, group=b)) + geom_area(aes(fill = b), position = "stack")
-#   graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, fill=fillLabel)
-#   graph <- graph + theme_ds() + theme(legend.position=leg_pos)
-#
-#   return(graph)
-# }
-
-
 

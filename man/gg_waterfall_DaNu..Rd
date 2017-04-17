@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_waterfall_DaNu.}
 \alias{gg_waterfall_DaNu.}
-\title{gg_waterfall_DaNu.
+\title{Waterfall
 Waterfall}
 \usage{
 gg_waterfall_DaNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_waterfall_DaNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_waterfall_DaNu.
+Waterfall
 Waterfall
 }
 \section{ftypes}{

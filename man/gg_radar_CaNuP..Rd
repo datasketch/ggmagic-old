@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-NuP.R
 \name{gg_radar_CaNuP.}
 \alias{gg_radar_CaNuP.}
-\title{gg_radar_CaNuP.
+\title{Radar
 point}
 \usage{
 gg_radar_CaNuP.(data, titleLabel = "", subtitle = "", caption = "",
@@ -17,11 +17,11 @@ gg_radar_CaNuP.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_radar_CaNuP.
+Radar
 point
 }
 \section{ftypes}{
- Ca-Nu-Nu
+ Ca-NuP
 }
 
 \examples{

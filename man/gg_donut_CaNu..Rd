@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_donut_CaNu.}
 \alias{gg_donut_CaNu.}
-\title{gg_donut_CaNu.
+\title{Donut
 dount}
 \usage{
 gg_donut_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  width = 0.3, leg_pos = "right", aggregation = "sum", ...)
+  width = 0.3, leg_pos = "right", aggregation = "sum", text = TRUE,
+  color_text = "black", type = "count", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_donut_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_donut_CaNu.
+Donut
 dount
 }
 \section{ftypes}{

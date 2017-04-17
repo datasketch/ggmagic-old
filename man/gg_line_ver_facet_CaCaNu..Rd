@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_line_ver_facet_CaCaNu.}
 \alias{gg_line_ver_facet_CaCaNu.}
-\title{gg_line_ver_facet_CaCaNu.
+\title{Vertical line facet
 vertical linegraph}
 \usage{
 gg_line_ver_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = "Types", yLabel = "Frequency", ...)
+  caption = "", xLabel = "Types", yLabel = "Frequency",
+  aggregation = "sum", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A category.}
@@ -17,11 +18,11 @@ gg_line_ver_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_ver_facet_CaCaNu.
+Vertical line facet
 vertical linegraph
 }
 \section{ftypes}{
- Ca-Ca-Nu,Ca-Ca-Nu
+ Ca-Ca-Nu
 }
 
 \examples{

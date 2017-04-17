@@ -2,11 +2,13 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bar_ordered_ver_CaNu.}
 \alias{gg_bar_ordered_ver_CaNu.}
-\title{gg_bar_ordered_ver_CaNu.
+\title{Ordered vertical bar
 Ordered vertical Bars}
 \usage{
 gg_bar_ordered_ver_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
+  text = TRUE, type = "count", color_text = "black",
+  aggregation = "sum", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +19,7 @@ gg_bar_ordered_ver_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_ordered_ver_CaNu.
+Ordered vertical bar
 Ordered vertical Bars
 }
 \section{ftypes}{

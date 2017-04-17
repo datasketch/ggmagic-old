@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu.R
 \name{gg_box_flip_Nu.}
 \alias{gg_box_flip_Nu.}
-\title{gg_box_flip_Nu.
+\title{Horizontal boxplot
 Box plot flipped}
 \usage{
 gg_box_flip_Nu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_box_flip_Nu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_box_flip_Nu.
+Horizontal boxplot
 Box plot flipped
 }
 \section{ftypes}{

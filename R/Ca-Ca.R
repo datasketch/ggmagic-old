@@ -1,4 +1,4 @@
-#' gg_bubble_CaCa.
+#' Bubble
 #' Bubble
 #' @name gg_bubble_CaCa.
 #' @param x A number.
@@ -34,7 +34,7 @@ gg_bubble_CaCa.  <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_bubble_coloured_CaCa.
+#' Bubble coloured by first variable
 #' Coloured Bubble
 #' @name gg_bubble_coloured_CaCa.
 #' @param x A number.
@@ -70,7 +70,7 @@ gg_bubble_coloured_CaCa.  <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_dot_bar_ver_facet_CaCa.
+#' Vertical dot bar facet
 #' Facet Vertical Dot Bar
 #' @name gg_dot_bar_ver_facet_CaCa.
 #' @param x A number.
@@ -110,7 +110,7 @@ gg_dot_bar_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", cap
   graph
 }
 
-#' gg_dot_bar_hor_facet_CaCa.
+#' Horizontal dot bar facet
 #' Facet Horizontal Dot Bar
 #' @name gg_dot_bar_hor_facet_CaCa.
 #' @param x A number.
@@ -131,7 +131,7 @@ gg_dot_bar_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle ="", capt
   graph
 }
 
-#' gg_pie_facet_CaCa.
+#' Pie facet
 #' Facet Pie
 #' @name gg_pie_facet_CaCa.
 #' @param x A number.
@@ -165,7 +165,7 @@ gg_pie_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
 }
 
 #Width debe de ser un parámetro.  0 < width < 1.
-#' gg_donut_facet_CaCa.
+#' Donut facet
 #' Facet Donut
 #' @name gg_donut_facet_CaCa.
 #' @param x A number.
@@ -197,7 +197,7 @@ gg_donut_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", caption =
   graph
 }
 
-#' gg_bullseye_facet_CaCa.
+#' Bullseye facet
 #' Facet Bullseye
 #' @name gg_bullseye_facet_CaCa.
 #' @param x A number.
@@ -228,7 +228,7 @@ gg_bullseye_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
   graph
 }
 
-#' gg_bar_coloured_x_ver_facet_CaCa.
+#' Vertical bar facet coloured by first variable
 #' Facet Vertical coloured bars
 #' @name gg_bar_coloured_x_ver_facet_CaCa.
 #' @param x A number.
@@ -259,7 +259,7 @@ gg_bar_coloured_x_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
   graph
 }
 
-#' gg_bar_coloured_x_hor_facet_CaCa.
+#' Horizontal bar facet coloured by first variable
 #' Facet Horizontal coloured Bars
 #' @name gg_bar_coloured_x_hor_facet_CaCa.
 #' @param x A number.
@@ -280,7 +280,7 @@ gg_bar_coloured_x_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
   graph
 }
 
-#' gg_bar_coloured_y_ver_facet_CaCa.
+#' Vertical bar facet coloured by second variable
 #' Facet Vertical coloured bars
 #' @name gg_bar_coloured_y_ver_facet_CaCa.
 #' @param x A number.
@@ -306,7 +306,7 @@ gg_bar_coloured_y_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
   graph
 }
 
-#' gg_bar_coloured_y_hor_facet_CaCa.
+#' Horizontal bar facet coloured by second variable
 #' Facet Horizontal coloured Bars
 #' @name gg_bar_coloured_y_hor_facet_CaCa.
 #' @param x A number.
@@ -327,7 +327,7 @@ gg_bar_coloured_y_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = 
   graph
 }
 
-#' gg_bar_coloured_parameter_ver_facet_CaCa.
+#' Vertical bar facet highlighting some parameter
 #' Facet Vertical coloured by parameter bars
 #' @name gg_bar_coloured_parameter_ver_facet_CaCa.
 #' @param x A number.
@@ -375,7 +375,7 @@ gg_bar_coloured_parameter_ver_facet_CaCa. <- function(data, titleLabel = "", sub
   graph
 }
 
-#' gg_bar_coloured_parameter_hor_facet_CaCa.
+#' Horizontal bar facet highlighting some parameter
 #' Facet Horizontal coloured by parameter Bars
 #' @name gg_bar_coloured_parameter_hor_facet_CaCa.
 #' @param x A number.
@@ -398,7 +398,7 @@ gg_bar_coloured_parameter_hor_facet_CaCa. <- function(data, titleLabel = "", sub
   graph
 }
 
-#' gg_bar_stacked_ver_CaCa.
+#' Vertical stacked bar
 #' Stacked vertical Bar
 #' @name gg_bar_stacked_ver_CaCa.
 #' @param x A number.
@@ -424,7 +424,7 @@ gg_bar_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capti
   graph
 }
 
-#' gg_bar_stacked_hor_CaCa.
+#' Horizontal stacked bar
 #' Stacked horizontal Bar
 #' @name gg_bar_stacked_hor_CaCa.
 #' @param x A number.
@@ -444,7 +444,7 @@ gg_bar_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle ="", captio
   graph
 }
 
-#' gg_bar_ordered_stacked_hor_CaCa.
+#' Ordered horizontal stacked bar
 #' Ordered Stacked horizontal Bar
 #' @name gg_bar_ordered_stacked_hor_CaCa.
 #' @param x A number.
@@ -472,7 +472,7 @@ gg_bar_ordered_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle = "
   graph
 }
 
-#' gg_bar_ordered_stacked_ver_CaCa.
+#' Ordered vertical stacked bar
 #' Ordered Stacked Vertical Bar
 #' @name gg_bar_ordered_stacked_ver_CaCa.
 #' @param x A number.
@@ -493,7 +493,7 @@ gg_bar_ordered_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "
   graph
 }
 
-#' gg_stacked_dot_bar_hor_CaCa.
+#' Horizontal stacked dot bar
 #' Stacked horizontal dot Bar
 #' @name gg_stacked_dot_bar_hor_CaCa.
 #' @param x A number.
@@ -522,7 +522,7 @@ gg_stacked_dot_bar_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", c
   graph
 }
 
-#' gg_stacked_dot_bar_ver_CaCa.
+#' Vertical stacked dot bar
 #' Stacked vertical dot Bar
 #' @name gg_stacked_dot_bar_ver_CaCa.
 #' @param x A number.
@@ -543,7 +543,7 @@ gg_stacked_dot_bar_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
   graph
 }
 
-#' gg_bar_grouped_coloured_hor_CaCa.
+#' Horizontal grouped bar
 #' Unstacked Coloured horizontal Bar
 #' @name gg_bar_grouped_coloured_hor_CaCa.
 #' @param x A number.
@@ -574,7 +574,7 @@ gg_bar_grouped_coloured_hor_CaCa. <- function(data, titleLabel = "", subtitle = 
   graph
 }
 
-#' gg_bar_grouped_coloured_ver_CaCa.
+#' Vertical grouped bar
 #' Unstacked Coloured vertical Bar
 #' @name gg_bar_grouped_coloured_ver_CaCa.
 #' @param x A number.
@@ -594,7 +594,7 @@ gg_bar_grouped_coloured_ver_CaCa. <- function(data, titleLabel = "", subtitle = 
   graph
 }
 
-#' gg_line_hor_facet_CaCa.
+#' Horizontal line facet
 #' Horizontal Line
 #' @name gg_line_hor_facet_CaCa.
 #' @param x A number.
@@ -627,7 +627,7 @@ gg_line_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
   graph
 }
 
-#' gg_line_ver_facet_CaCa.
+#' Vertical line facet
 #' Vertical Line
 #' @name gg_line_ver_facet_CaCa.
 #' @param x A number.
@@ -647,7 +647,7 @@ gg_line_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", captio
   graph
 }
 
-#' gg_line_point_hor_facet_CaCa.
+#' Horizontal line + point facet
 #' Horizontal Line Point
 #' @name gg_line_point_hor_facet_CaCa.
 #' @param x A number.
@@ -683,7 +683,7 @@ gg_line_point_hor_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' gg_line_point_ver_facet_CaCa.
+#' Vertical line + point facet
 #' Vertical Line Point
 #' @name gg_line_point_ver_facet_CaCa.
 #' @param x A number.
@@ -703,7 +703,7 @@ gg_line_point_ver_facet_CaCa. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' gg_bar_stacked_100_ver_CaCa.
+#' Vertical 100% stacked bar
 #' Stacked 100pct vertical Bar
 #' @name gg_bar_stacked_100_ver_CaCa.
 #' @param x A number.
@@ -731,7 +731,7 @@ gg_bar_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", c
   graph
 }
 
-#' gg_bar_stacked_100_hor_CaCa.
+#' Horizontal 100% stacked bar
 #' Stacked 100pct horizontal Bar
 #' @name gg_bar_stacked_100_hor_CaCa.
 #' @param x A number.
@@ -752,7 +752,7 @@ gg_bar_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", c
   graph
 }
 
-#' gg_area_stacked_hor_CaCa.
+#' Horizontal stacked area
 #' Stacked horizontal Area
 #' @name gg_area_stacked_hor_CaCa.
 #' @param x A number.
@@ -785,7 +785,7 @@ gg_area_stacked_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_area_stacked_ver_CaCa.
+#' Vertical stacked area
 #' Stacked vertical Area
 #' @name gg_area_stacked_ver_CaCa.
 #' @param x A number.
@@ -805,7 +805,7 @@ gg_area_stacked_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_area_stacked_100_hor_CaCa.
+#' Horizontal 100% stacked area
 #' Stacked horizontal Area 100pct
 #' @name gg_area_stacked_100_hor_CaCa.
 #' @param x A number.
@@ -838,7 +838,7 @@ gg_area_stacked_100_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' gg_area_stacked_100_ver_CaCa.
+#' Vertical 100% stacked area
 #' Stacked vertical Area 100pct
 #' @name gg_area_stacked_100_ver_CaCa.
 #' @param x A number.
@@ -858,7 +858,7 @@ gg_area_stacked_100_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", 
   graph
 }
 
-#' gg_marimekko_ver_CaCa.
+#' Vertical marimekko
 #' Vertical Marimekko
 #' @name gg_marimekko_ver_CaCa.
 #' @param x A number.
@@ -900,7 +900,7 @@ gg_marimekko_ver_CaCa. <- function(data, titleLabel = "", subtitle = "", caption
   graph
 }
 
-#' gg_marimekko_hor_CaCa.
+#' Horizontal marimekko
 #' Horizontal Marimekko
 #' @name gg_marimekko_hor_CaCa.
 #' @param x A number.
@@ -918,7 +918,7 @@ gg_marimekko_hor_CaCa. <- function(data, titleLabel = "", subtitle = "", caption
   graph
 }
 
-#' gg_bar_polar_stacked_CaCa.
+#' Polar stacked bar
 #' Stacked Polar bar
 #' @name gg_bar_polar_stacked_CaCa.
 #' @param x A number.
@@ -958,7 +958,7 @@ gg_bar_polar_stacked_CaCa. <- function(data, titleLabel = "", subtitle = "", cap
 
 }
 
-#' gg_bar_polar_stacked_100_CaCa.
+#' Polar 100% stacked bar
 #' Stacked Polar  100pct
 #' @name gg_bar_polar_stacked_100_CaCa.
 #' @param x A number.
@@ -1013,7 +1013,7 @@ gg_bar_polar_stacked_100_CaCa. <- function(data, titleLabel = "", subtitle = "",
 
 
 
-#' gg_bar_circular_facet_CaCa.
+#' Circular bar facet
 #' Circular Bar
 #' @name gg_bar_circular_facet_CaCa.
 #' @param x A number.
@@ -1050,7 +1050,7 @@ graph <- graph +
   graph
 }
 
-#' gg_treemap_x_CaCa.
+#' Treemap coloured by first variable
 #' Treemap fill first Ca
 #' @name gg_treemap_x_CaCa.
 #' @param x A number.
@@ -1085,7 +1085,7 @@ gg_treemap_x_CaCa. <- function(data, titleLabel = "", subtitle = "", caption = "
   graph
 }
 
-#' gg_treemap_y_CaCa.
+#' Treemap coloured by second variable
 #' Treemap fill second Ca
 #' @name gg_treemap_y_CaCa.
 #' @param x A number.

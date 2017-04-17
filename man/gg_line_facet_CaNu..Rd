@@ -2,11 +2,11 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_line_facet_CaNu.}
 \alias{gg_line_facet_CaNu.}
-\title{gg_line_facet_CaNu.
+\title{Line facet
 Facet Line}
 \usage{
 gg_line_facet_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = "Index", yLabel = NULL, type = 1, ...)
+  xLabel = "Index", yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +17,7 @@ gg_line_facet_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_line_facet_CaNu.
+Line facet
 Facet Line
 }
 \section{ftypes}{

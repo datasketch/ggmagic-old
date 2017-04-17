@@ -1,13 +1,13 @@
 
 
-#' gg_radar_CaNuP.
+#' Radar
 #' point
 #' @name gg_radar_CaNuP.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu-Nu
+#' @section ftypes: Ca-NuP
 #' @examples
 #' add(1, 1)
 #' add(10, 1)

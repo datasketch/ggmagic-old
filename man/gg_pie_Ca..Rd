@@ -2,11 +2,11 @@
 % Please edit documentation in R/Ca.R
 \name{gg_pie_Ca.}
 \alias{gg_pie_Ca.}
-\title{gg_pie_Ca.
+\title{Pie
 Pie}
 \usage{
 gg_pie_Ca.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, text = TRUE, type = "percent", text_size = 4,
+  fillLabel = NULL, text = TRUE, type = "count", color_text = "black",
   leg_pos = "right", ...)
 }
 \arguments{
@@ -18,7 +18,7 @@ gg_pie_Ca.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_pie_Ca.
+Pie
 Pie
 }
 \section{ftypes}{

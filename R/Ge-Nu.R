@@ -1,5 +1,5 @@
 
-#' gg_choropleth_co_GeNu.
+#' Choropleth of Colombia's deptos
 #' Choropleth of Colombia's deptos
 #' @name gg_choropleth_co_GeNu.
 #' @param x A category.
@@ -83,7 +83,7 @@ gg_choropleth_co_GeNu. <- function(data, titleLabel = "", subtitle = "", caption
 }
 
 
-#' gg_sketchmap_depto_GeNu.
+#' Sketch map departments
 #' Sketch map departments
 #' @name gg_sketchmap_depto_GeNu.
 #' @param x A category.
@@ -114,7 +114,7 @@ gg_sketchmap_depto_GeNu. <- function(depto_ = depto_, color_map = "gold", color_
 }
 
 
-#' gg_choropleth_depto_GeNu.
+#' Choropleth by filtering deptos
 #' Choropleth by filtering deptos
 #' @name gg_choropleth_depto_GeNu.
 #' @param x A category.
@@ -197,7 +197,7 @@ gg_choropleth_depto_GeNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_choropleth_latam_GeNu.
+#' Choropleth of Latam
 #' Choropleth of Latam
 #' @name gg_choropleth_latam_GeNu.
 #' @param x A category.
@@ -255,7 +255,7 @@ gg_choropleth_latam_GeNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
-#' gg_bubble_co_Ge.
+#' Points inside Colombia's deptos map
 #' Points inside Colombia's deptos map
 #' @name gg_bubble_co_Ge.
 #' @param x A category.
@@ -321,7 +321,7 @@ gg_bubble_co_Ge. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_bubble_latam_Ge.
+#' Points inside Latam map
 #' Points inside Latam map
 #' @name gg_bubble_latam_Ge.
 #' @param x A category.
@@ -364,7 +364,7 @@ gg_bubble_latam_Ge. <- function(data, titleLabel = "", subtitle = "", caption = 
   graph
 }
 
-#' gg_bubble_depto_Ge.
+#' Points inside Colombia's mpios map
 #' Points inside Colombia's mpios map
 #' @name gg_bubble_depto_Ge.
 #' @param x A category.
@@ -430,7 +430,7 @@ gg_bubble_depto_Ge. <- function(data, titleLabel = "", subtitle = "", caption = 
   graph
 }
 
-#' gg_bubble_co_GeNu.
+#' Points inside Colombia's deptos map
 #' Points inside Colombia's deptos map
 #' @name gg_bubble_co_GeNu.
 #' @param x A category.
@@ -493,7 +493,7 @@ gg_bubble_co_GeNu. <- function(data, titleLabel = "", subtitle = "", caption = "
   graph
 }
 
-#' gg_bubble_latam_GeNu.
+#' Points inside Latam map
 #' Points inside Latam map
 #' @name gg_bubble_latam_GeNu.
 #' @param x A category.
@@ -532,7 +532,7 @@ gg_bubble_latam_GeNu. <- function(data, titleLabel = "", subtitle = "", caption 
   graph
 }
 
-#' gg_bubble_depto_GeNu.
+#' Points inside Colombia's mpios map
 #' Points inside Colombia's mpios map
 #' @name gg_bubble_depto_GeNu.
 #' @param x A category.
@@ -597,7 +597,7 @@ gg_bubble_depto_GeNu. <- function(data, titleLabel = "", subtitle = "", caption 
   graph
 }
 
-#' gg_bubble_co_CaGe.
+#' Points inside Colombia's deptos map
 #' Points inside Colombia's deptos map
 #' @name gg_bubble_co_CaGe.
 #' @param x A category.
@@ -639,7 +639,7 @@ gg_bubble_co_CaGe. <- function(data, titleLabel = "", subtitle = "", caption = "
   graph
 }
 
-#' gg_bubble_depto_CaGe.
+#' Points inside Colombia's mpios map
 #' Points inside Colombia's mpios map
 #' @name gg_bubble_depto_CaGe.
 #' @param x A category.

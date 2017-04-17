@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Da-Nu.R
 \name{gg_multi_line_point_CaDaNu.}
 \alias{gg_multi_line_point_CaDaNu.}
-\title{gg_multi_line_point_CaDaNu.
+\title{Grouped line + point
 Grouped Line Color Point}
 \usage{
 gg_multi_line_point_CaDaNu.(data, titleLabel = "", subtitle = "",
@@ -18,7 +18,7 @@ gg_multi_line_point_CaDaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_multi_line_point_CaDaNu.
+Grouped line + point
 Grouped Line Color Point
 }
 \section{ftypes}{

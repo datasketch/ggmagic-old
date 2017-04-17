@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_bubble_coloured_y_CaCaNu.}
 \alias{gg_bubble_coloured_y_CaCaNu.}
-\title{gg_bubble_coloured_y_CaCaNu.
+\title{Bubble coloured by second variable
 Coloured Bubble second Ca}
 \usage{
 gg_bubble_coloured_y_CaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, ...)
+  caption = "", xLabel = NULL, yLabel = NULL, aggregation = "sum",
+  angle_x = 0, text = TRUE, color_text = "black", type = "count", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,11 +18,11 @@ gg_bubble_coloured_y_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bubble_coloured_y_CaCaNu.
+Bubble coloured by second variable
 Coloured Bubble second Ca
 }
 \section{ftypes}{
- Ca-Ca-Nu,Ca-Ca-Nu
+ Ca-Ca-Nu
 }
 
 \examples{

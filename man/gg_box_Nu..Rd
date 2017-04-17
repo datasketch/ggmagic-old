@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu.R
 \name{gg_box_Nu.}
 \alias{gg_box_Nu.}
-\title{gg_box_Nu.
+\title{Vertical boxplot
 Box plot}
 \usage{
 gg_box_Nu.(data, title = "", subtitle = "", caption = "", yLabel = NULL,
@@ -17,7 +17,7 @@ gg_box_Nu.(data, title = "", subtitle = "", caption = "", yLabel = NULL,
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_box_Nu.
+Vertical boxplot
 Box plot
 }
 \section{ftypes}{

@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_boxplot_dot_flip_CaNu.}
 \alias{gg_boxplot_dot_flip_CaNu.}
-\title{gg_boxplot_dot_flip_CaNu.
+\title{Horizontal boxplot + jitter
 Boxplot + dot jitter flipped}
 \usage{
 gg_boxplot_dot_flip_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_boxplot_dot_flip_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_boxplot_dot_flip_CaNu.
+Horizontal boxplot + jitter
 Boxplot + dot jitter flipped
 }
 \section{ftypes}{

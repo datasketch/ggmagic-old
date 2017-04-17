@@ -2,13 +2,13 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_bar_ver_CaNu.}
 \alias{gg_bar_ver_CaNu.}
-\title{gg_bar_ver_CaNu.
+\title{Vertical bar
 Vertical Bars}
 \usage{
 gg_bar_ver_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, line_mean = FALSE, leg_pos = "right",
-  text = TRUE, type = "count", text_size = 3, aggregation = "mean",
-  angle = 0, ...)
+  text = TRUE, type = "count", color_text = "black",
+  aggregation = "sum", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -19,7 +19,7 @@ gg_bar_ver_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_ver_CaNu.
+Vertical bar
 Vertical Bars
 }
 \section{ftypes}{

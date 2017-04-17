@@ -2,11 +2,11 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_point_facet_CaNu.}
 \alias{gg_point_facet_CaNu.}
-\title{gg_point_facet_CaNu.
+\title{Scatter facet
 Facet Point}
 \usage{
 gg_point_facet_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = "Index", yLabel = NULL, type = 1, ...)
+  xLabel = "Index", yLabel = NULL, shape_type = 19, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +17,7 @@ gg_point_facet_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_point_facet_CaNu.
+Scatter facet
 Facet Point
 }
 \section{ftypes}{

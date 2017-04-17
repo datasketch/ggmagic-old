@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Da-Nu.R
 \name{gg_multi_line_CaDaNu.}
 \alias{gg_multi_line_CaDaNu.}
-\title{gg_multi_line_CaDaNu.
+\title{Grouped line
 Grouped Line Coloured}
 \usage{
 gg_multi_line_CaDaNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -18,7 +18,7 @@ gg_multi_line_CaDaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_multi_line_CaDaNu.
+Grouped line
 Grouped Line Coloured
 }
 \section{ftypes}{

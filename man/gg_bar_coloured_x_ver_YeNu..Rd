@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ye-Nu.R
 \name{gg_bar_coloured_x_ver_YeNu.}
 \alias{gg_bar_coloured_x_ver_YeNu.}
-\title{gg_bar_coloured_x_ver_YeNu.
+\title{Vertical bar coloured by first variable
 vertical coloured bar}
 \usage{
 gg_bar_coloured_x_ver_YeNu.(data, titleLabel = "", subtitle = "",
@@ -19,7 +19,7 @@ gg_bar_coloured_x_ver_YeNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_x_ver_YeNu.
+Vertical bar coloured by first variable
 vertical coloured bar
 }
 \section{ftypes}{

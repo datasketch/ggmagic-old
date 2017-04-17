@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ge-Nu.R
 \name{gg_bubble_co_GeNu.}
 \alias{gg_bubble_co_GeNu.}
-\title{gg_bubble_co_GeNu.
+\title{Points inside Colombia's deptos map
 Points inside Colombia's deptos map}
 \usage{
 gg_bubble_co_GeNu.(data, titleLabel = "", subtitle = "", caption = "",
@@ -19,7 +19,7 @@ gg_bubble_co_GeNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bubble_co_GeNu.
+Points inside Colombia's deptos map
 Points inside Colombia's deptos map
 }
 \section{ftypes}{

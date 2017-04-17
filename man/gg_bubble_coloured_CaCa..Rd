@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_bubble_coloured_CaCa.}
 \alias{gg_bubble_coloured_CaCa.}
-\title{gg_bubble_coloured_CaCa.
+\title{Bubble coloured by first variable
 Coloured Bubble}
 \usage{
 gg_bubble_coloured_CaCa.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_bubble_coloured_CaCa.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bubble_coloured_CaCa.
+Bubble coloured by first variable
 Coloured Bubble
 }
 \section{ftypes}{

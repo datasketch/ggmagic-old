@@ -1,15 +1,14 @@
-#' gg_scatter_CaNuNu.: title.
+#' Scatter
 #' pointlines
 #' @name gg_scatter_CaNuNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Ca-Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-
 gg_scatter_CaNuNu. <- function(data,title = "", subtitle = "", caption = "",
                                xLabel = NULL,
                                yLabel=NULL, cLabel = NULL, angle = 45,
@@ -40,14 +39,14 @@ gg_scatter_CaNuNu. <- function(data,title = "", subtitle = "", caption = "",
 }
 
 
-#' gg_scatter_trend_CaNuNu.: title.
+#' Scatter + trend
 #' pointlines
 #' @name gg_scatter_trend_CaNuNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Ca-Nu-Nu
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
@@ -94,7 +93,7 @@ gg_scatter_trend_CaNuNu. <- function(data,title = "", subtitle = "", caption = "
 
 
 
-#' gg_steam_CaNuNu.
+#' Steam
 #' Steamgraph
 #' @name gg_steam_CaNuNu.
 #' @param x A category.
@@ -131,7 +130,7 @@ gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_line_CaNuNu.
+#' Line
 #' lines
 #' @name gg_line_CaNuNu.
 #' @param x A category.
@@ -161,7 +160,7 @@ gg_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 
 }
 
-#' gg_point_line_CaNuNu.
+#' Line + point
 #' Point Lines
 #' @name gg_point_line_CaNuNu.
 #' @param x A category.
@@ -192,7 +191,7 @@ gg_point_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption 
 
 }
 
-#' gg_point_CaNuNu.
+#' Scatter
 #' point
 #' @name gg_point_CaNuNu.
 #' @param x A category.
@@ -220,7 +219,7 @@ gg_point_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-#' gg_circle_CaNuNu.
+#' Point
 #' Point
 #' @name gg_circle_CaNuNu.
 #' @param x A category.
@@ -231,7 +230,6 @@ gg_point_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-#'
 gg_circle_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                               yLabel = NULL, leg_pos="right", size = 10, ...){
   f <- fringe(data)

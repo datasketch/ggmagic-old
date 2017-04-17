@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_smooth_DaNu.}
 \alias{gg_smooth_DaNu.}
-\title{gg_smooth_DaNu.
+\title{Smooth
 smooth}
 \usage{
 gg_smooth_DaNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_smooth_DaNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_smooth_DaNu.
+Smooth
 smooth
 }
 \section{ftypes}{

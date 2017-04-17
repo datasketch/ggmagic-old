@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_bar_coloured_y_ver_facet_CaCa.}
 \alias{gg_bar_coloured_y_ver_facet_CaCa.}
-\title{gg_bar_coloured_y_ver_facet_CaCa.
+\title{Vertical bar facet coloured by second variable
 Facet Vertical coloured bars}
 \usage{
 gg_bar_coloured_y_ver_facet_CaCa.(data, titleLabel = "", subtitle = "",
@@ -17,7 +17,7 @@ gg_bar_coloured_y_ver_facet_CaCa.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_coloured_y_ver_facet_CaCa.
+Vertical bar facet coloured by second variable
 Facet Vertical coloured bars
 }
 \section{ftypes}{

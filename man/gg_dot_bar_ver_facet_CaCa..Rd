@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_dot_bar_ver_facet_CaCa.}
 \alias{gg_dot_bar_ver_facet_CaCa.}
-\title{gg_dot_bar_ver_facet_CaCa.
+\title{Vertical dot bar facet
 Facet Vertical Dot Bar}
 \usage{
 gg_dot_bar_ver_facet_CaCa.(data, titleLabel = "", subtitle = "",
@@ -18,7 +18,7 @@ gg_dot_bar_ver_facet_CaCa.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_dot_bar_ver_facet_CaCa.
+Vertical dot bar facet
 Facet Vertical Dot Bar
 }
 \section{ftypes}{

@@ -2,11 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_point_grouped_CaNu.}
 \alias{gg_point_grouped_CaNu.}
-\title{gg_point_grouped_CaNu.
+\title{Grouped scatter
 Grouped Color Point}
 \usage{
 gg_point_grouped_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = "Index", yLabel = NULL, leg_pos = "right", type = 1, ...)
+  xLabel = "Index", yLabel = NULL, leg_pos = "right", shape_type = 19,
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_point_grouped_CaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_point_grouped_CaNu.
+Grouped scatter
 Grouped Color Point
 }
 \section{ftypes}{

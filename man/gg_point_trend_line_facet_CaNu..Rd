@@ -2,12 +2,12 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_point_trend_line_facet_CaNu.}
 \alias{gg_point_trend_line_facet_CaNu.}
-\title{gg_point_trend_line_facet_CaNu.
+\title{Trend line facet
 Facet Trend Line}
 \usage{
 gg_point_trend_line_facet_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = "Index", yLabel = NULL, type = 1,
-  alpha = 0.3, se = FALSE, ...)
+  caption = "", xLabel = "Index", yLabel = NULL, shape_type = 19,
+  alpha = 0.3, se = FALSE, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -18,7 +18,7 @@ gg_point_trend_line_facet_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_point_trend_line_facet_CaNu.
+Trend line facet
 Facet Trend Line
 }
 \section{ftypes}{

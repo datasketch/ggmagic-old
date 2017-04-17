@@ -2,11 +2,11 @@
 % Please edit documentation in R/Ca-Nu.R
 \name{gg_area_ver_facet_CaNu.}
 \alias{gg_area_ver_facet_CaNu.}
-\title{gg_area_ver_facet_CaNu.
+\title{Vertical area facet
 Facet Vertical Area}
 \usage{
 gg_area_ver_facet_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = "Index", yLabel = NULL, ...)
+  caption = "", xLabel = "Index", yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +17,7 @@ gg_area_ver_facet_CaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_area_ver_facet_CaNu.
+Vertical area facet
 Facet Vertical Area
 }
 \section{ftypes}{

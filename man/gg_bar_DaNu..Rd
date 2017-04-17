@@ -2,7 +2,7 @@
 % Please edit documentation in R/Da-Nu.R
 \name{gg_bar_DaNu.}
 \alias{gg_bar_DaNu.}
-\title{gg_bar_DaNu.
+\title{Bar
 bar}
 \usage{
 gg_bar_DaNu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_bar_DaNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_bar_DaNu.
+Bar
 bar
 }
 \section{ftypes}{

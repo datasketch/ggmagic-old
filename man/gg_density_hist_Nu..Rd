@@ -2,7 +2,7 @@
 % Please edit documentation in R/Nu.R
 \name{gg_density_hist_Nu.}
 \alias{gg_density_hist_Nu.}
-\title{gg_density_hist_Nu.
+\title{Histogram + density
 density histogram}
 \usage{
 gg_density_hist_Nu.(data, title = "", subtitle = "", caption = "",
@@ -17,7 +17,7 @@ gg_density_hist_Nu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-gg_density_hist_Nu.
+Histogram + density
 density histogram
 }
 \section{ftypes}{
