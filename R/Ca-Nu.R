@@ -9,28 +9,36 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_pie_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                          text = TRUE, type = 'count', color_text = "black",
                          leg_pos="right", aggregation = "sum", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   data_graph <- data %>%
-    tidyr::drop_na(a) %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = agg(aggregation,b)) %>%
-    dplyr::arrange(count) %>%
+    dplyr::arrange(desc(a)) %>%
     dplyr::mutate(pos = cumsum(count) - count/2,
-                  percent = 100 * round(count/sum(count), 4))
+                  percent = 100 * round(count/sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data=data_graph, aes(x = factor(1), weight = count, fill = a)) +
-           geom_bar(width = 1) +
-           coord_polar(theta = "y")
+    geom_bar(width = 1) +
+    coord_polar(theta = "y")
 
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "")
-  graph <- graph + theme(legend.position=leg_pos) + guides(text = FALSE)
-  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab)
+  graph <- graph + guides(text = FALSE)
+  graph <- graph + theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette()) +
+    theme(legend.position=leg_pos)
 
 
   if(text == TRUE & type == 'count'){
@@ -62,24 +70,29 @@ gg_bar_coloured_x_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
+  ylab <- yLabel %||% paste(aggregation, nms[2], sep = " ")
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   data_graph <- data %>%
-                tidyr::drop_na(a) %>%
-                dplyr::group_by(a) %>%
-                dplyr::summarise(count = agg(aggregation,b)) %>%
-                dplyr::mutate(percent = 100 * round(count/sum(count), 4),
-                              pos = count*9/10)
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = agg(aggregation,b)) %>%
+    dplyr::mutate(percent = 100 * round(count/sum(count), 4),
+                  pos = count*9/10) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data_graph, aes(x = a, y = count, fill = factor(a))) +
-           geom_bar(stat = "identity") +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-           theme_ds() +
-           theme(legend.position=leg_pos) +
-           scale_fill_manual(values = getPalette()) +
-           guides(fill = FALSE) +
-           theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    geom_bar(stat = "identity") +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme_ds() +
+    theme(legend.position=leg_pos) +
+    scale_fill_manual(values = getPalette()) +
+    guides(fill = FALSE) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(line_mean){
     graph <- graph + geom_hline(aes(yintercept= mean(data_graph$count)), linetype="dashed")
@@ -116,7 +129,7 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 
 
   graph <- gg_bar_coloured_x_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, line_mean, text, type, leg_pos, aggregation, angle_x, color_text) +
-           coord_flip()
+    coord_flip()
   graph
 }
 
@@ -132,7 +145,7 @@ gg_bar_coloured_x_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                       reverse = FALSE, line_mean = FALSE,
+                                       fillLabel = NULL, reverse = FALSE, line_mean = FALSE,
                                        text = TRUE, type = 'count', color_text = "black",
                                        leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
@@ -140,21 +153,28 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
+  ylab <- yLabel %||% paste(aggregation, nms[2], sep = " ")
+  clab <- fillLabel %||% paste(aggregation, nms[2], sep = " ")
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   data_graph <- data %>%
-                dplyr::group_by(a) %>%
-                dplyr::summarise(count = agg(aggregation,b)) %>%
-                dplyr::mutate(percent = 100 * round(count/sum(count), 4),
-                              pos = count*9/10)
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = agg(aggregation,b)) %>%
+    dplyr::mutate(percent = 100 * round(count/sum(count), 4),
+                  pos = count*9/10) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data_graph, aes(x = a, y = count, fill = count)) +
-           geom_bar(stat = "identity") +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-           theme_ds() +
-           theme(legend.position=leg_pos) +
-           theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    geom_bar(stat = "identity") +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
+    theme_ds() +
+    theme(legend.position=leg_pos) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
 
   if(line_mean){
@@ -195,11 +215,11 @@ gg_bar_coloured_y_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", cap
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_y_hor_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                       reverse = FALSE, line_mean = FALSE,
+                                       fillLabel = NULL, reverse = FALSE, line_mean = FALSE,
                                        text = TRUE, type = "count", color_text = "black",
                                        leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
-  graph <- gg_bar_coloured_y_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel,
+  graph <- gg_bar_coloured_y_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel,
                                        reverse, line_mean, text, type, color_text,
                                        leg_pos, aggregation, angle_x)
   graph + coord_flip()
@@ -222,14 +242,20 @@ gg_bar_coloured_parameter_ver_CaNu. <- function(data, titleLabel = "", subtitle 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
+  ylab <- yLabel %||% paste(aggregation, nms[2], sep = " ")
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   data_graph <- data %>%
-                dplyr::group_by(a) %>%
-                dplyr::summarise(count = agg(aggregation,b)) %>%
-                dplyr::mutate(pos = count*9/10,
-                              percent = 100 * round(count / sum(count), 4))
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = agg(aggregation,b)) %>%
+    dplyr::mutate(pos = count*8/10,
+                  percent = 100 * round(count / sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   p <-  parameter %||% (data_graph %>% dplyr::filter(count == max(count)))$a
 
@@ -243,13 +269,13 @@ gg_bar_coloured_parameter_ver_CaNu. <- function(data, titleLabel = "", subtitle 
   graph <- graph + geom_bar(stat="identity", aes(fill = a %in% p ))
 
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph +
-           guides(fill = FALSE) +
-           theme(legend.position = leg_pos) +
-           theme_ds() +
-           scale_fill_manual(values = getPalette()) +
-           theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    guides(fill = FALSE) +
+    theme_ds() +
+    theme(legend.position = leg_pos) +
+    scale_fill_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(line_mean){
     graph <- graph + geom_hline(aes(yintercept= mean(data_graph$count)), linetype="dashed")
@@ -260,14 +286,14 @@ gg_bar_coloured_parameter_ver_CaNu. <- function(data, titleLabel = "", subtitle 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)),
                              check_overlap = TRUE, color = color_text))
-    }else{
+  }else{
     if(text == TRUE & type == 'percent'){
       return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")),
                                check_overlap = TRUE, color = color_text))
     }else{
       graph
     }
-    }
+  }
   graph
 }
 
@@ -305,26 +331,33 @@ gg_bar_coloured_parameter_hor_CaNu. <- function(data, titleLabel = "", subtitle 
 #' add(10, 1)
 gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "",
                              xLabel = NULL, text = TRUE, type = 'count',
-                             color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0,...){
+                             color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0,
+                             shape_type = 19,...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = agg(aggregation,b)) %>%
     dplyr::mutate(pos = count*9/10,
-                  percent = 100 * round(count / sum(count), 4))
+                  percent = 100 * round(count / sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data_graph, aes(x = a, y = 0, size = count, color = ""))
-  graph <- graph + geom_point(show.legend = FALSE)
+  graph <- graph + geom_point(show.legend = FALSE, shape = shape_type)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = "") +
-    scale_color_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    scale_color_manual(values = getPalette())
 
   graph <- graph + theme_ds() + theme(legend.position="none") +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     theme(axis.line=element_blank(),
           axis.text.y=element_blank(),
           axis.ticks.y=element_blank(),
@@ -346,7 +379,7 @@ gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Bubble coloured by first variable
 #' Coloured Bubble
-#' @name gg_bubble_coloured_CaNu.
+#' @name gg_bubble_coloured_x_CaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -355,28 +388,34 @@ gg_bubble_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_coloured_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      text = TRUE, type = 'count',
-                                      color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0,...){
+gg_bubble_coloured_x_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                        text = TRUE, type = 'count', color_text = "black", leg_pos = "right",
+                                        aggregation = "sum", angle_x = 0, shape_type = 19,...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = agg(aggregation,b)) %>%
     dplyr::mutate(pos = count*9/10,
-                  percent = 100 * round(count / sum(count), 4))
+                  percent = 100 * round(count / sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data = data_graph, aes(x = a, y = 0, size = count))
-  graph <- graph + geom_point(aes(color = a))
+  graph <- graph + geom_point(aes(color = a), shape = shape_type)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = "")
 
-  graph <- graph + scale_color_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+  graph <- graph + scale_color_manual(values = getPalette())
 
   graph <- graph + theme_ds() + theme(legend.position="none") +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     theme(axis.line=element_blank(),
           axis.text.y=element_blank(),
           axis.ticks.y=element_blank(),
@@ -396,6 +435,73 @@ gg_bubble_coloured_CaNu.  <- function(data, titleLabel = "", subtitle = "", capt
   graph
 }
 
+#' Bubble coloured by first numeric variable
+#' Coloured Bubble
+#' @name gg_bubble_density_y_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bubble_density_y_CaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, fillLabel = NULL,
+                                       text = TRUE, type = 'count', color_text = "black", leg_pos = "right",
+                                       aggregation = "sum", angle_x = 0, shape_type = 19, reverse = FALSE, ...){
+  f <- fringe(data)
+  nms <- getClabels(f)
+  xlab <- xLabel %||% nms[1]
+  clab <- fillLabel %||% paste(aggregation, nms[2], sep = " ")
+  data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = agg(aggregation,b)) %>%
+    dplyr::mutate(pos = count*9/10,
+                  percent = 100 * round(count / sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
+
+  graph <- ggplot(data = data_graph, aes(x = a, y = 0, size = count))
+  graph <- graph + geom_point(aes(color = count), shape = shape_type)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = "", color = clab) + guides(size = FALSE)
+
+  if(reverse){
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
+                                         high = getPalette(type = "sequential")[1])
+  }else{
+    graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[1],
+                                         high = getPalette(type = "sequential")[2])
+  }
+
+  graph <- graph + theme_ds() +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(axis.line=element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks.y=element_blank(),
+          panel.grid.major=element_blank()) +
+    theme(legend.position=leg_pos)
+
+
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data_graph, aes(y = 0, label = round(count,2)),
+                             check_overlap = TRUE, color = color_text, vjust = -1.3)) + guides(text = FALSE, size = FALSE)
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data_graph, aes(y = 0, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text, vjust = -1.3)) + guides(text = FALSE, size = FALSE)
+    }else{
+      return(graph + guides(text = FALSE, size = FALSE))
+    }
+  }
+  return(graph + guides(text = FALSE, size = FALSE))
+}
+
 #' Polar bar
 #' Polar Bar
 #' @name gg_bar_polar_CaNu.
@@ -408,21 +514,84 @@ gg_bubble_coloured_CaNu.  <- function(data, titleLabel = "", subtitle = "", capt
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_polar_CaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "", aggregation = "sum",
-                               caption = "", leg_pos = "right", text = TRUE, color_text = "black",
+                               caption = "", fillLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black",
                                type = "count", ...){
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = agg(aggregation,b)) %>%
     dplyr::arrange(count) %>%
     dplyr::mutate(pos = count*8/10,
-                  percent = 100 * round(count/sum(count), 4))
+                  percent = 100 * round(count/sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data = data_graph, aes(x = a, weight = count, fill = a)) + geom_bar(width = width) +
-    coord_polar() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
-    theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
+    coord_polar() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab) +
+    theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette()) +
+    theme(legend.position=leg_pos)
+
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)),
+                             check_overlap = TRUE, color = color_text))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text))
+    }else{
+      graph
+    }
+  }
+  graph
+}
+
+#' Circular bar
+#' Circular Bar
+#' @name gg_bar_circular_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_circular_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+                                  leg_pos="right", width = 0.85, aggregation = 'sum',  text = TRUE,
+                                  type = "count", color_text = "black", ...){
+
+  f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = agg(aggregation,b))  %>%
+    dplyr::arrange(count) %>%
+    dplyr::mutate(pos = count*9.7/10,
+                  percent = 100 * round(count/sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
+
+  graph <- ggplot(data_graph, aes(x = reorder(a,count), y = count , fill = a )) +
+    geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
+
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab) +
+    theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette()) +
+    theme(legend.position=leg_pos)
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)),
@@ -439,38 +608,6 @@ gg_bar_polar_CaNu. <- function(data, width = 0.95, titleLabel = "", subtitle = "
 }
 
 
-#' Circular bar
-#' Circular Bar
-#' @name gg_bar_circular_CaNu.
-#' @param x A number.
-#' @param y A number.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_bar_circular_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                  leg_pos="right", width = 0.85, aggregation = 'sum',  ...){
-
-  f <- fringe(data)
-  data <- f$d
-
-  data_graph <- data %>%
-                dplyr::group_by(a) %>%
-                dplyr::summarise(count = agg(aggregation,b))  %>%
-                dplyr::arrange(count)
-
-  graph <- ggplot(data_graph, aes(x = reorder(a,count), y = count , fill = a )) +
-    geom_bar(width = width, stat="identity") + coord_polar(theta = "y")
-
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
-    theme_ds() + theme_ds_clean() + scale_fill_manual(values = getPalette())
-
-  graph
-}
-
-
 #' Vertical stacked histogram
 #' Stacked Vertical Histogram
 #' @name gg_hist_stacked_ver_CaNu.
@@ -483,16 +620,21 @@ gg_bar_circular_CaNu. <- function(data, titleLabel = "", subtitle = "", caption 
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = 'Count', leg_pos = "right", angle_x = 0, ...){
+                                      yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(data, aes(b))
   graph <- graph + geom_histogram(aes(fill = a), binwidth = 10) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
     theme_ds() + theme(legend.position=leg_pos) + scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   graph
@@ -510,17 +652,22 @@ gg_hist_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' add(1, 1)
 #' add(10, 1)
 gg_density_multi_dist_coloured_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                                 xLabel = NULL, yLabel = 'Count', leg_pos = "right",
+                                                 xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
                                                  angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(data, aes(b))
   graph <- graph + geom_density(aes(colour = a)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab) +
     theme_ds() + theme(legend.position=leg_pos) + scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
@@ -539,19 +686,24 @@ gg_density_multi_dist_coloured_CaNu. <- function(data, titleLabel = "", subtitle
 #' add(1, 1)
 #' add(10, 1)
 gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                             yLabel = 'Count', leg_pos="right", angle_x = 0, ...){
+                                             yLabel = NULL, fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(data, aes(b))
   graph <- graph + geom_density(aes(fill = a)) +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
-           theme_ds() +
-           scale_fill_manual(values = getPalette()) +
-           theme(legend.position=leg_pos) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
+    theme_ds() +
+    scale_fill_manual(values = getPalette()) +
+    theme(legend.position=leg_pos) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -568,18 +720,23 @@ gg_area_multi_density_dist_CaNu. <- function(data, titleLabel = "", subtitle = "
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = 'Count', leg_pos="right", angle_x = 0, ...){
+                                    yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(data, aes(b))
-  graph <- graph + geom_density(aes(colour = a), show.legend = FALSE) + facet_wrap(~a) + theme(legend.position=leg_pos) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds()
+  graph <- graph + geom_density(aes(colour = a), show.legend = FALSE) + facet_wrap(~a) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds()
   graph <- graph + scale_color_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -596,7 +753,7 @@ gg_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = 'Count', leg_pos="right", angle_x = 0, ...){
+                                    yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   graph <- gg_dist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x)
 
@@ -617,12 +774,16 @@ gg_dist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                         yLabel = "Count", leg_pos='right', angle_x, ...){
+                                         yLabel = NULL, leg_pos='right', angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
@@ -630,10 +791,11 @@ gg_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
 
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) +
     geom_vline(data = data_graph, aes(xintercept = prom, color = ""), linetype = "dotted", size = 1, show.legend = FALSE) +
-    facet_wrap(~a) + theme(legend.position=leg_pos)
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds() +
+    facet_wrap(~a)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds() +
     scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette()[2]) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -650,9 +812,9 @@ gg_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                         yLabel = 'Count', leg_pos="right", angle_x = 0, ...){
+                                         yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
-  graph <- gg_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x)
+  graph <- gg_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
 
   graph <- graph + coord_flip()
 
@@ -671,16 +833,21 @@ gg_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = "Count", leg_pos='right', angle_x = 0, ...){
+                                    yLabel = NULL, leg_pos='right', angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) + facet_wrap(~a) +
-    theme(legend.position=leg_pos) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds() +
     scale_fill_manual(values = getPalette()) +
+    theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
@@ -698,9 +865,9 @@ gg_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = 'Count', leg_pos="right", angle_x = 0, ...){
+                                    yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
-  graph <- gg_hist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x = 0)
+  graph <- gg_hist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
 
   graph <- graph + coord_flip()
 
@@ -719,17 +886,22 @@ gg_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                         yLabel = 'Count', leg_pos="right", angle_x = 0, ...){
+                                         yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
     geom_density(aes(color = ""), show.legend = FALSE) +
-    theme(legend.position=leg_pos) + theme_ds() +
+    theme_ds() + theme(legend.position=leg_pos) +
     scale_color_manual(values = getPalette()) + scale_fill_manual(values = getPalette())
-  graph <- graph + facet_wrap(~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+  graph <- graph + facet_wrap(~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
@@ -747,9 +919,9 @@ gg_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                         yLabel = 'Count', leg_pos="right", angle_x = 0, ...){
+                                         yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
-  graph <- gg_dist_hist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x)
+  graph <- gg_dist_hist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
 
   graph <- graph + coord_flip()
 
@@ -768,12 +940,16 @@ gg_dist_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                              yLabel = 'Count', leg_pos="right", angle_x = 0, ...){
+                                              yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
@@ -782,9 +958,9 @@ gg_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = 
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
     geom_density(aes(color = ""), show.legend = FALSE) +
     geom_vline(data = data_graph, aes(xintercept = prom, color = "*"), linetype = "dotted", size = 1, show.legend = FALSE) +
-    theme(legend.position=leg_pos) + theme_ds() +
+    theme_ds() + theme(legend.position=leg_pos) +
     scale_color_manual(values = getPalette()) + scale_fill_manual(values = getPalette())
-  graph <- graph + facet_wrap(~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) +
+  graph <- graph + facet_wrap(~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
@@ -802,9 +978,9 @@ gg_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = 
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                              yLabel = 'Count', leg_pos="right", angle_x = 0,...){
+                                              yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
-  graph <- gg_dist_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x)
+  graph <- gg_dist_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
 
   graph <- graph + coord_flip()
 
@@ -823,17 +999,22 @@ gg_dist_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = 
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = 'Count', leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                        yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   graph <- ggplot(data, aes(b))
   graph <- graph + geom_density(aes(colour = a), show.legend = FALSE) +
     geom_point(aes(y = 0), color = "#D55E00", alpha = alpha, show.legend = FALSE) +
-    theme(legend.position = leg_pos) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds() +
+    theme(legend.position=leg_pos) +
     scale_color_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   graph <- graph + facet_wrap(~a)
@@ -853,9 +1034,9 @@ gg_dot_dist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_dist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = 'Count', leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                        yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
-  graph <- gg_dot_dist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x)
+  graph <- gg_dot_dist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x, ...)
 
   graph <- graph + coord_flip()
 
@@ -874,18 +1055,24 @@ gg_dot_dist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = "Count", leg_pos='right', alpha = 0.3, angle_x = 0, ...){
+                                        yLabel = NULL, leg_pos='right', alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) +
     geom_point(aes(y=0), alpha = alpha, color = "#D55E00") +
-    theme(legend.position=leg_pos) + facet_wrap(~a) +
+    facet_wrap(~a) +
     scale_fill_manual(values = getPalette()) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds() +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds()
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -902,9 +1089,9 @@ gg_dot_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = 'Count', leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                        yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
-  graph <- gg_dot_hist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x)
+  graph <- gg_dot_hist_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x, ...)
 
   graph <- graph + coord_flip()
 
@@ -923,24 +1110,29 @@ gg_dot_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                             yLabel = "Count", leg_pos='right', alpha = 0.3, angle_x = 0, ...){
+                                             yLabel = NULL, leg_pos='right', alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(prom = mean(b, na.rm = TRUE))
 
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(fill = ""), show.legend = FALSE) +
-    theme(legend.position=leg_pos) + facet_wrap(~a) +
+    facet_wrap(~a) +
     geom_vline(data = data_graph, aes(xintercept = prom, color = ""), linetype = "dotted", size = 1, show.legend = FALSE) +
     geom_point(aes(y = 0),  alpha = alpha, color = "#D55E00")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel) + theme_ds() +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) + theme_ds() +
     scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette()[2]) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -957,9 +1149,9 @@ gg_dot_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                             yLabel = 'Count', leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                             yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
-  graph <- gg_dot_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x)
+  graph <- gg_dot_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x, ...)
 
   graph <- graph + coord_flip()
 
@@ -978,20 +1170,26 @@ gg_dot_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                             yLabel = 'Count', leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                             yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(data, aes(x = b)) + geom_histogram(aes(y=..density.., fill = ""), show.legend = FALSE) +
     geom_density(aes(color=""), show.legend = FALSE) +
     geom_point(aes(y = 0), alpha = alpha, color = "#D55E00") +
-    theme(legend.position=leg_pos) + theme_ds() +
+    theme_ds() +
     scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette())
   graph <- graph + facet_wrap(~a) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
+    theme(legend.position=leg_pos) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
 
   graph
 }
@@ -1008,9 +1206,9 @@ gg_dot_dist_hist_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_dist_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                             yLabel = 'Count', leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                             yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
-  graph <- gg_dot_dist_hist_ver_facet_CaNu.(data, titleLabel,subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x)
+  graph <- gg_dot_dist_hist_ver_facet_CaNu.(data, titleLabel,subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x, ...)
 
   graph <- graph + coord_flip()
 
@@ -1029,13 +1227,17 @@ gg_dot_dist_hist_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count',
-                                                  leg_pos="right", alpha = 0.3, ...){
+gg_dot_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                                  leg_pos = "right", alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  ylab <- yLabel %||% "Conteo"
   xlab <- xLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
@@ -1046,8 +1248,9 @@ gg_dot_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitl
     geom_vline(data = data_graph, aes(xintercept = prom, colour = "*"), linetype = "dotted", size = 1, show.legend = FALSE) +
     geom_point(aes(y=0), alpha = alpha, color = "#D55E00") +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    theme(legend.position=leg_pos) + theme_ds() + scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette())
-  graph <- graph + facet_wrap(~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = yLabel)
+    theme_ds() + scale_fill_manual(values = getPalette()) + scale_color_manual(values = getPalette())
+  graph <- graph + facet_wrap(~a) + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -1063,9 +1266,9 @@ gg_dot_dist_hist_ver_mean_facet_CaNu. <- function(data, titleLabel = "", subtitl
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_dist_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = 'Count', leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+gg_dot_dist_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
-  graph <- gg_dot_dist_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x)
+  graph <- gg_dot_dist_hist_ver_mean_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x, ...)
 
   graph <- graph + coord_flip()
 
@@ -1083,13 +1286,17 @@ gg_dot_dist_hist_hor_mean_facet_CaNu. <- function(data, titleLabel = "", subtitl
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
+gg_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                  yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_count <- data %>%
     dplyr::group_by(a) %>%
@@ -1103,10 +1310,9 @@ gg_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   # data$xorder <- count
 
   graph <- ggplot(data_count, aes(x=xorder, y=b)) + geom_point(shape = shape_type, aes(color = ""), show.legend = FALSE) +
-    scale_color_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_ds() + facet_wrap(~a)
+    scale_color_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() + facet_wrap(~a) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -1122,13 +1328,17 @@ gg_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
+gg_line_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                       yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_count <- data %>%
     dplyr::group_by(a) %>%
@@ -1143,10 +1353,10 @@ gg_line_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
 
   graph <- ggplot(data_count, aes(x = xorder, y = b)) + geom_point(shape = shape_type, aes(color = ""), show.legend = FALSE) +
     geom_line(aes(color = ""), show.legend = FALSE) +
-    scale_color_manual(values = getPalette()) +
+    scale_color_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() + facet_wrap(~a) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_ds() + facet_wrap(~a)
 
   graph
 }
@@ -1162,13 +1372,17 @@ gg_line_point_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
-                                yLabel = NULL, angle_x =0, ...){
+gg_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_count <- data %>%
     dplyr::group_by(a) %>%
@@ -1182,10 +1396,9 @@ gg_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
   # data$xorder <- count
 
   graph <- ggplot(data_count, aes(x=xorder, y=b)) + geom_line(aes(color = ""), show.legend = FALSE) +
-    scale_color_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_ds() + facet_wrap(~a)
+    scale_color_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() + facet_wrap(~a) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -1201,13 +1414,17 @@ gg_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Index",
-                                    yLabel = NULL, angle_x =0, ...){
+gg_area_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                    yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
-  ylab <- xLabel %||% nms[1]
+  xlab <- xLabel %||% "Índice"
+  ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_count <- data %>%
     dplyr::group_by(a) %>%
@@ -1221,10 +1438,9 @@ gg_area_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
   # data$xorder <- count
 
   graph <- ggplot(data = data_count, aes(x=xorder, y=b, group=a)) + geom_area(aes(fill = ""), show.legend = FALSE) +
-    scale_fill_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_ds() + facet_wrap(~a)
+    scale_fill_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() + facet_wrap(~a) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -1241,10 +1457,10 @@ gg_area_ver_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Index",
+gg_area_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                     yLabel = NULL, angle_x = 0, ...){
 
-  graph <- gg_area_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x)
+  graph <- gg_area_ver_facet_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -1261,13 +1477,18 @@ gg_area_hor_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", captio
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
-                                          yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+gg_area_stacked_100_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                          yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
-  ylab <- yLabel %||% nms[2]
+  clab <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% "Índice"
+  ylab <- yLabel %||% paste("%", nms[2])
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_count <- data %>%
     dplyr::group_by(a) %>%
@@ -1288,9 +1509,10 @@ gg_area_stacked_100_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", 
   graph <- ggplot(data = data_graph,
                   aes(x=xorder, y=b, group=a)) +
     geom_area(aes(fill = a), position = "fill")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
     scale_y_continuous(labels = percent) +
+    theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   graph
 }
@@ -1306,10 +1528,10 @@ gg_area_stacked_100_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
-                                          yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+gg_area_stacked_100_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                          yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_area_stacked_100_ver_CaNu.(data, titleLabel,subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
+  graph <- gg_area_stacked_100_ver_CaNu.(data, titleLabel,subtitle, caption, xLabel, yLabel, fillLabel = NULL, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -1326,13 +1548,19 @@ gg_area_stacked_100_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
-                                      yLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black", type = "count", angle_x, ...){
+gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                      fillLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black",
+                                      type = "count", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_count <- data %>%
     dplyr::group_by(a)  %>%
@@ -1353,8 +1581,8 @@ gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   graph <- ggplot(data = data_graph,
                   aes(x=xorder, y=b, group=a)) +
     geom_area(aes(fill = a), position = "stack")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
+  graph <- graph + theme_ds() + scale_fill_manual(values = getPalette()) + theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   graph
 }
@@ -1370,10 +1598,10 @@ gg_area_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
-                                      yLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black", type = "count", angle_x = 0, ...){
+gg_area_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                      yLabel = NULL, fillLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black", type = "count", angle_x = 0, ...){
 
-  graph <- gg_area_stacked_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
+  graph <- gg_area_stacked_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, text, color_text, type, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -1390,13 +1618,18 @@ gg_area_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_point_grouped_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
-                                   yLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
+gg_point_grouped_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                   yLabel = NULL, fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_count <- data %>%
     dplyr::group_by(a) %>%
@@ -1410,10 +1643,10 @@ gg_point_grouped_CaNu. <- function(data, titleLabel = "", subtitle = "", caption
   # data$xorder <- count
 
   graph <- ggplot(data_count, aes(x=xorder, y=b)) + geom_point(aes(color = a), shape = shape_type) +
-    scale_color_manual(values = getPalette()) +
+    scale_color_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab)
+  graph <- graph + theme_ds() + theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_ds()
 
   graph
 }
@@ -1429,13 +1662,18 @@ gg_point_grouped_CaNu. <- function(data, titleLabel = "", subtitle = "", caption
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_point_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL,
-                                      leg_pos="right", shape_type = 19, angle_x = 0, ...){
+gg_line_point_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                      fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_count <- data %>%
     dplyr::group_by(a) %>%
@@ -1449,9 +1687,10 @@ gg_line_point_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
   # data$xorder <- count
 
   graph <- ggplot(data_count, aes(x=xorder, y=b)) + geom_point(aes(color = a), shape = shape_type) + geom_line(aes(color = a))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -1467,12 +1706,18 @@ gg_line_point_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index', yLabel = NULL, leg_pos="right", angle_x = 0, ...){
+gg_line_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_count <- data %>%
     dplyr::group_by(a) %>%
@@ -1486,9 +1731,10 @@ gg_line_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
   # data$xorder <- count
 
   graph <- ggplot(data_count, aes(x=xorder, y=b)) + geom_line(aes(color = a))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -1504,13 +1750,17 @@ gg_line_multi_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_point_trend_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
+gg_point_trend_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, shape_type = 19, alpha = 0.3, se = FALSE, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_count <- data %>%
     dplyr::group_by(a)  %>%
@@ -1526,9 +1776,8 @@ gg_point_trend_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = ""
   graph <- ggplot(data_count, aes(x = xorder, y = b)) + geom_point(shape = shape_type, aes(color = ""), show.legend = FALSE) +
     geom_smooth(method=lm, se=se, aes(colour = "*", fill = "*"), alpha = alpha, show.legend = FALSE) + facet_wrap(~a) +
     scale_color_manual(values = getPalette()) + scale_fill_manual(values = getPalette())
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  graph <- graph + theme_ds()
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -1547,13 +1796,17 @@ gg_point_trend_line_facet_CaNu. <- function(data, titleLabel = "", subtitle = ""
 #' add(1, 1)
 #' add(10, 1)
 
-gg_trend_ribbon_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = 'Index',
+gg_trend_ribbon_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                         yLabel = NULL, shape_type = 19, alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_count <- data %>%
     dplyr::group_by(a)  %>%
@@ -1569,9 +1822,8 @@ gg_trend_ribbon_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
   graph <- ggplot(data_count, aes(x = xorder, y = b)) + geom_point(aes(color = ""), shape = shape_type, show.legend = FALSE) +
     geom_smooth(aes(colour="*", fill = "*"), alpha = alpha, show.legend = FALSE) + facet_wrap(~a) +
     scale_color_manual(values = getPalette()) + scale_fill_manual(values = getPalette())
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  graph <- graph + theme_ds()
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -1589,28 +1841,35 @@ gg_trend_ribbon_facet_CaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                            width = 0.3, leg_pos="right", aggregation = 'sum',
                            text = TRUE, color_text = "black", type = "count", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(count = agg(aggregation, b))  %>%
-    dplyr::arrange(count) %>%
+    dplyr::arrange(desc(a)) %>%
     dplyr::mutate(pos = cumsum(count) - count/2,
-                  percent = 100 * round(count/sum(count), 4))
+                  percent = 100 * round(count/sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data = data_graph, aes(x = factor(1), fill = a, y = count)) +
     geom_bar(stat = "identity", width = width) + coord_polar(theta = "y")
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
-           scale_fill_manual(values = getPalette()) +
-           theme_ds() +
-           theme_ds_clean()
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab) +
+    scale_fill_manual(values = getPalette()) +
+    theme_ds() +
+    theme_ds_clean()
   graph <- graph + theme(legend.position = leg_pos)
 
   if(text == TRUE & type == 'count'){
@@ -1627,8 +1886,6 @@ gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
   graph
 }
 
-
-
 #' Vertical dot bar
 #' Vertical Dot Bar
 #' @name gg_dot_bar_ver_CaNu.
@@ -1641,12 +1898,16 @@ gg_donut_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_bar_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = "",
-                                xLabel = NULL, yLabel = NULL, leg_pos="right", angle_x =0, aggregation ="sum", ...){
+                                xLabel = NULL, yLabel = NULL, leg_pos="right", angle_x = 0, aggregation ="sum", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
-  ylab <- yLabel %||% nms[2]
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% paste(aggregation, nms[2])
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
@@ -1656,13 +1917,14 @@ gg_dot_bar_ver_CaNu.<- function(data, titleLabel = "", subtitle = "", caption = 
     dplyr::mutate(order = c(1:nrow(data_graph)))
 
   graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
-                  aes(x = order, fill = factor(a))) + geom_dotplot(method="histodot")
+                  aes(x = a, fill = a)) + geom_dotplot(method="histodot", show.legend = FALSE)
 
-  graph <- graph + labs(title = titleLabel, x = xLabel, y = yLabel, subtitle = subtitle, caption = caption)
+  graph <- graph + labs(title = titleLabel, x = xlab, y = ylab, subtitle = subtitle, caption = caption)
   graph <- graph + scale_y_continuous(breaks = NULL) +
     theme(legend.position=leg_pos) + theme_ds() +
     scale_fill_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -1699,66 +1961,27 @@ gg_dot_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bullseye_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bullseye_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                               leg_pos="right", aggregation = "sum", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
-  data_graph <- data %>% dplyr::group_by(a) %>%
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
     dplyr::summarise(count = agg(aggregation, b)) %>% dplyr::arrange(count)
   graph <- ggplot(data = data_graph,
                   aes(x = factor(1), fill = a, y = reorder(a, count))) +
     geom_bar(stat = "identity", width = 1) + coord_polar(theta = "x")
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab) +
     scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
   graph <- graph + theme(legend.position=leg_pos)
 
-  graph
-}
-
-
-#' Horizontal stacked bar
-#' Single Horizontal Stacked Bar
-#' @name gg_bar_single_stacked_hor_CaNu.
-#' @param x A number.
-#' @param y A number.
-#' @export
-#' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                            yLabel = "Count", leg_pos="right", width = 0.3, aggregation = 'sum',
-                                            text = TRUE, type = "count", color_text = "black", angle_x = 0, ...){
-
-  f <- fringe(data)
-  data <- f$d
-
-  data_graph <- data %>%
-    dplyr::group_by(a) %>%
-    dplyr::summarise(count = agg(aggregation,b)) %>%
-    dplyr::arrange(count) %>%
-    dplyr::mutate(pos = cumsum(count) - (count/2),
-                  percent = 100 * round(count/sum(count), 4))
-
-  graph <- ggplot(data=data_graph, aes(x = factor(1), fill = a, weight = count)) +
-    geom_bar(width = width)
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
-    scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
-  graph <- graph + theme(legend.position=leg_pos) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-
-  if(text == TRUE & type == 'count'){
-    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)), check_overlap = TRUE, color = color_text))
-  }else{
-    if(text == TRUE & type == 'percent'){
-      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")), check_overlap = TRUE, color = color_text))
-    }else{
-      graph
-    }
-  }
   graph
 }
 
@@ -1775,10 +1998,62 @@ gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = ""
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_single_stacked_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                            yLabel = "Count", leg_pos="right", width = 0.3, aggregation = 'sum',
-                                            text = TRUE, type = "count", color_text = "black", angle_x =0, ...){
+                                            fillLabel = NULL, leg_pos="right", width = 0.3, aggregation = 'sum',
+                                            text = TRUE, type = "count", color_text = "black", ...){
 
-  graph <- gg_bar_single_stacked_hor_CaNu.(data, titleLabel, subtitle, caption,  yLabel, leg_pos, width, aggregation,
+  f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
+  data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
+  data_graph <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(count = agg(aggregation,b)) %>%
+    dplyr::arrange(desc(a)) %>%
+    dplyr::mutate(pos = cumsum(count) - (count/2),
+                  percent = 100 * round(count/sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
+
+  graph <- ggplot(data=data_graph, aes(x = factor(1), fill = a, weight = count)) +
+    geom_bar(width = width)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab) +
+    scale_fill_manual(values = getPalette()) + theme_ds() + theme_ds_clean()
+  graph <- graph + theme(legend.position=leg_pos)
+
+  if(text == TRUE & type == 'count'){
+    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)), check_overlap = TRUE, color = color_text))
+  }else{
+    if(text == TRUE & type == 'percent'){
+      return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")), check_overlap = TRUE, color = color_text))
+    }else{
+      graph
+    }
+  }
+  graph
+}
+
+
+#' Horizontal stacked bar
+#' Single Horizontal Stacked Bar
+#' @name gg_bar_single_stacked_hor_CaNu.
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Ca-Nu
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+gg_bar_single_stacked_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                            fillLabel = NULL, leg_pos="right", width = 0.3, aggregation = 'sum',
+                                            text = TRUE, type = "count", color_text = "black", angle_x = 0, ...){
+
+  graph <- gg_bar_single_stacked_ver_CaNu.(data, titleLabel, subtitle, caption,  fillLabel, leg_pos, width, aggregation,
                                            text, type, color_text, angle_x, ...)
   graph <- graph + coord_flip()
 
@@ -1829,6 +2104,9 @@ gg_gauge_CaNu. <- function(data, ...){
 
   f <- fringe(data)
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
@@ -1884,6 +2162,9 @@ gg_gauge_dial_CaNu. <- function(data, ...){
   f <- fringe(data)
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   data_graph <- data %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(sum = agg(aggregation, b)) %>%
@@ -1899,8 +2180,7 @@ gg_gauge_dial_CaNu. <- function(data, ...){
   grid.draw(arrangeGrob(grobs = graphList,ncol=2))
 }
 
-
-#' Horizontal boxplot
+#' Vertical boxplot
 #' Boxplot
 #' @name gg_boxplot_CaNu.
 #' @param x A number.
@@ -1917,18 +2197,24 @@ gg_boxplot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
   f <- fringe(data)
   nms <- getClabels(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) +
-    geom_boxplot(show.legend = FALSE) + theme(legend.position=leg_pos)
+    geom_boxplot(show.legend = FALSE)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   graph
 }
 
-#' Vertical boxplot
+#' Horizontal boxplot
 #' Boxplot flipped
 #' @name gg_boxplot_flip_CaNu.
 #' @param x A number.
@@ -1940,7 +2226,7 @@ gg_boxplot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_boxplot_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                  yLabel = NULL, leg_pos = 'right', angle_x =0, ...){
+                                  yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
 
 
   graph <- gg_boxplot_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
@@ -1965,13 +2251,20 @@ gg_boxplot_dot_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) + geom_jitter(color = "#D55E00", show.legend = FALSE) +
-    geom_boxplot(show.legend = FALSE) + theme(legend.position=leg_pos)
+    geom_boxplot(show.legend = FALSE)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -2012,13 +2305,20 @@ gg_violin_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
                                  yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) +
-    geom_violin(show.legend = FALSE) + theme(legend.position=leg_pos)
+    geom_violin(show.legend = FALSE)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -2035,9 +2335,9 @@ gg_violin_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 #' add(1, 1)
 #' add(10, 1)
 gg_violin_mult_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = NULL, leg_pos = 'right', angle_x =0,...){
+                                      yLabel = NULL, leg_pos = 'right', angle_x = 0,...){
 
-  graph <- gg_violin_mult_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x ,...)
+  graph <- gg_violin_mult_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -2055,15 +2355,22 @@ gg_violin_mult_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' add(1, 1)
 #' add(10, 1)
 gg_violin_dot_mult_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                     yLabel = NULL, leg_pos = 'right', angle_x = 0,...){
+                                     yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
   f <- fringe(data)
+  nms <- getClabels(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   graph <- ggplot(data, mapping = aes(x = a, y = b, fill = a)) +
     geom_jitter(color = "#D55E00", show.legend = FALSE) + geom_violin(show.legend = FALSE)
   graph <- graph + theme_ds() + scale_fill_manual(values = getPalette())
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
 
   graph
 }
@@ -2102,23 +2409,30 @@ gg_violin_dot_mult_flip_CaNu. <- function(data, titleLabel = "", subtitle = "", 
 #' add(10, 1)
 gg_bar_ordered_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                      yLabel =  NULL, leg_pos = "right",  text = TRUE, type = "count",
-                                     color_text = "black", aggregation = "sum",angle_x = 0, ...){
+                                     color_text = "black", aggregation = "sum", angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
+  ylab <- yLabel %||% paste(aggregation, nms[2], sep = " ")
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>% dplyr::group_by(a) %>%
     dplyr::summarise(count = agg(aggregation,b)) %>%
     dplyr::mutate(pos = count*9/10,
-                  percent = 100 * round(count / sum(count), 4))
+                  percent = 100 * round(count / sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data_graph, aes(x = reorder(a, count), y = count, fill = "")) +
     geom_bar(stat = "identity")
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     scale_fill_manual(values = getPalette()) + theme_ds() + guides(fill = FALSE)
-  graph <- graph + theme(legend.position=leg_pos)
+  graph <- graph + theme(legend.position=leg_pos) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)),
@@ -2147,7 +2461,7 @@ gg_bar_ordered_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' add(10, 1)
 gg_bar_ordered_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                      yLabel =  NULL, leg_pos = "right",  text = TRUE, type = "count",
-                                     color_text = "black", aggregation = "sum",angle_x = 0, ...){
+                                     color_text = "black", aggregation = "sum", angle_x = 0, ...){
 
   graph <- gg_bar_ordered_ver_CaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos,
                                     text, type, color_text, aggregation, angle_x, ...)
@@ -2169,26 +2483,32 @@ gg_bar_ordered_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", capti
 #' add(10, 1)
 gg_bar_ver_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel =  NULL, line_mean = FALSE, leg_pos = "right", text = TRUE, type = "count",
-                             color_text = "black", aggregation = "sum",angle_x = 0,...){
+                             color_text = "black", aggregation = "sum",angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
+  ylab <- yLabel %||% paste(aggregation, nms[2], sep = " ")
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>% dplyr::group_by(a) %>%
     dplyr::summarise(count = agg(aggregation,b)) %>%
     dplyr::mutate(pos = count*9/10,
-                  percent = 100 * round(count / sum(count), 4))
+                  percent = 100 * round(count / sum(count), 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  count = ifelse(count == 0, NA, count))
 
   graph <- ggplot(data_graph, aes(x = a, y = count, fill = "")) +
-           geom_bar(stat = "identity")
+    geom_bar(stat = "identity")
   graph <- graph +
-           labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-           scale_fill_manual(values = getPalette()) + theme_ds() + guides(fill = FALSE)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    scale_fill_manual(values = getPalette()) + theme_ds() + guides(fill = FALSE)
   graph <- graph +
-           theme(legend.position=leg_pos) +
-           theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(legend.position=leg_pos) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(line_mean){
     graph <- graph + geom_hline(aes(yintercept= mean(data_graph$count)), linetype="dashed")
@@ -2248,12 +2568,17 @@ gg_bar_hor_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_steam_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                           yLabel =  NULL, leg_pos = "right", angle_x = 0,...){
+                           yLabel =  NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
+  clab <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% "Índice"
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
@@ -2264,7 +2589,7 @@ gg_steam_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 
   graph <- ggplot(data_graph, aes(x = xorder, y = b, group = a, fill = a)) +
     stat_steamgraph() +
-    labs(tittle = titleLabel, x = xLabel, y = ylab) +
+    labs(tittle = titleLabel, x = xlab, y = ylab, fill = clab) +
     scale_fill_manual(values = getPalette()) + theme_ds()
   graph <- graph + theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
@@ -2288,6 +2613,9 @@ gg_treemap_x_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 
   f <- fringe(data)
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
@@ -2323,11 +2651,16 @@ gg_treemap_x_CaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", subtitle = "",
-                                       caption = "", reverse = FALSE,
+                                       caption = "", fillLabel = NULL, reverse = FALSE,
                                        text = TRUE, color_text = "black", aggregation = "sum", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
@@ -2345,8 +2678,9 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", subtitle = "",
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'count', group = "a"), group.labels = FALSE)
   }
 
-  graph <- graph + theme(legend.title=element_blank()) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption)
+  graph <- graph +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) +
+    guides(fill = guide_legend(clab))
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -2358,8 +2692,6 @@ gg_treemap_density_y_CaNu. <- function(data, titleLabel = "", subtitle = "",
 
   graph
 }
-
-
 
 #' Bubbles
 #' Bubbles
@@ -2380,7 +2712,9 @@ gg_bubble_CaNu2. <- function(data, titleLabel = "", subtitle = "", caption = "",
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
-  data <- data %>% drop_na(b)
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   data <- data %>% dplyr::group_by(a) %>% dplyr::summarise(b = agg(aggregation,b))
   data$b <- rescale(data$b, to = c(5, 30))
   ncircles <- dim(data)[1]
@@ -2442,6 +2776,9 @@ gg_slope_CaNu. <-  function(data, titleLabel = "", subtitle = "", caption = "", 
   xlab <- xLabel %||% nms[2]
   ylab <- yLabel %||% nms[3]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
 
   data_graph <- data %>% group_by(a) %>% dplyr::mutate(xorder = 1:n())
 

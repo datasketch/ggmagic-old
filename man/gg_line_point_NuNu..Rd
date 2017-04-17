@@ -5,8 +5,8 @@
 \title{Line + point
 Line point plot}
 \usage{
-gg_line_point_NuNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, shape = 1, size = 3, ...)
+gg_line_point_NuNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, shape_type = 19, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

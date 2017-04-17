@@ -3,10 +3,11 @@
 \name{gg_stacked_dot_bar_ver_CaCa.}
 \alias{gg_stacked_dot_bar_ver_CaCa.}
 \title{Vertical stacked dot bar
-Stacked vertical dot Bar}
+Stacked Vertical dot Bar}
 \usage{
 gg_stacked_dot_bar_ver_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -18,7 +19,7 @@ The sum of \code{x} and \code{y}.
 }
 \description{
 Vertical stacked dot bar
-Stacked vertical dot Bar
+Stacked Vertical dot Bar
 }
 \section{ftypes}{
  Ca-Ca

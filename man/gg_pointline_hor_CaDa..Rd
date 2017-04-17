@@ -5,8 +5,9 @@
 \title{Horizontal line + point
 pointlines}
 \usage{
-gg_pointline_hor_CaDa.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, clab = NULL, ...)
+gg_pointline_hor_CaDa.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0,
+  shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

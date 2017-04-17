@@ -2,12 +2,12 @@
 % Please edit documentation in R/Ca-Ca-Nu.R
 \name{gg_pie_facet_CaCaNu.}
 \alias{gg_pie_facet_CaCaNu.}
-\title{Pie facet
+\title{Pie facet by second variable
 Facet Pie}
 \usage{
 gg_pie_facet_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
-  leg_pos = "right", aggregation = "sum", text = TRUE, type = "count",
-  color_text = "black", ...)
+  fillLabel = NULL, leg_pos = "right", aggregation = "sum", text = TRUE,
+  type = "count", color_text = "black", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -18,7 +18,7 @@ gg_pie_facet_CaCaNu.(data, titleLabel = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Pie facet
+Pie facet by second variable
 Facet Pie
 }
 \section{ftypes}{

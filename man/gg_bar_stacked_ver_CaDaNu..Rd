@@ -6,8 +6,9 @@
 vertical stacked bar graph}
 \usage{
 gg_bar_stacked_ver_CaDaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 45, text_size = 10, hline = NULL, ...)
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", angle_x = 0, aggregation = "sum", hline = NULL,
+  text = TRUE, type = "count", color_text = "black", ...)
 }
 \arguments{
 \item{x}{A category.}

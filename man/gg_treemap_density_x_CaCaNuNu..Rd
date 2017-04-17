@@ -6,7 +6,8 @@
 Treemap Fill by second Nu}
 \usage{
 gg_treemap_density_x_CaCaNuNu.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, reverse = FALSE, ...)
+  caption = "", fillLabel = NULL, reverse = FALSE, text = TRUE,
+  color_text = "black", aggregation = "sum", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

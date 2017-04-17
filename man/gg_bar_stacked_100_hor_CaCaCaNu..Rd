@@ -2,12 +2,13 @@
 % Please edit documentation in R/Ca-Ca-Ca-Nu.R
 \name{gg_bar_stacked_100_hor_CaCaCaNu.}
 \alias{gg_bar_stacked_100_hor_CaCaCaNu.}
-\title{Horizontal 100% stacked bar
+\title{Horizontal 100% stacked bar by first variable + facet by third variable
 Stacked}
 \usage{
 gg_bar_stacked_100_hor_CaCaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, xlab = NULL, ylab = NULL,
-  leg_pos = "right", ...)
+  caption = "", fillLabel = NULL, xLabel = NULL, yLabel = NULL,
+  leg_pos = "right", aggregation = "sum", text = TRUE, type = "count",
+  color_text = "black", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -18,7 +19,7 @@ gg_bar_stacked_100_hor_CaCaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Horizontal 100% stacked bar
+Horizontal 100% stacked bar by first variable + facet by third variable
 Stacked
 }
 \section{ftypes}{

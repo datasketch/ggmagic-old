@@ -2,8 +2,8 @@
 % Please edit documentation in R/Ca-Ye-Nu-bars.R
 \name{gg_bar_stacked_100_ver_CaYeNu.}
 \alias{gg_bar_stacked_100_ver_CaYeNu.}
-\title{Horizontal 100% stacked bar by second variable
-100 horizontal stacked bar graph}
+\title{Vertical 100% stacked bar by first variable
+100 vertical stacked bar graph}
 \usage{
 gg_bar_stacked_100_ver_CaYeNu.(data, ...)
 }
@@ -16,8 +16,8 @@ gg_bar_stacked_100_ver_CaYeNu.(data, ...)
 The sum of \code{x} and \code{y}.
 }
 \description{
-Horizontal 100% stacked bar by second variable
-100 horizontal stacked bar graph
+Vertical 100% stacked bar by first variable
+100 vertical stacked bar graph
 }
 \section{ftypes}{
  Ca-Ye-Nu

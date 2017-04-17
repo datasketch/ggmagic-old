@@ -2,11 +2,11 @@
 % Please edit documentation in R/Nu.R
 \name{gg_density_hist_Nu.}
 \alias{gg_density_hist_Nu.}
-\title{Histogram + density
+\title{Histogram density
 density histogram}
 \usage{
-gg_density_hist_Nu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, ...)
+gg_density_hist_Nu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +17,7 @@ gg_density_hist_Nu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Histogram + density
+Histogram density
 density histogram
 }
 \section{ftypes}{

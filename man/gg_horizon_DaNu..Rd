@@ -5,7 +5,7 @@
 \title{Horizon
 Horizon}
 \usage{
-gg_horizon_DaNu.(data, title = "", subtitle = "", caption = "",
+gg_horizon_DaNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, leg_pos = "right", reverse = FALSE,
   angle_x = 0, ...)
 }

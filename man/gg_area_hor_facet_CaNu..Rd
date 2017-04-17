@@ -6,7 +6,7 @@
 Facet Horizontal Area}
 \usage{
 gg_area_hor_facet_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = "Index", yLabel = NULL, angle_x = 0, ...)
+  caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

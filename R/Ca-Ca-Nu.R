@@ -1,4 +1,4 @@
-#' Pie facet
+#' Pie facet by second variable
 #' Facet Pie
 #' @name gg_pie_facet_CaCaNu.
 #' @param x A number.
@@ -9,16 +9,25 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", leg_pos="right",
+gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL, leg_pos = "right",
                                  aggregation = "sum", text = TRUE, type = 'count', color_text = "black", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
-  data_graph <- data %>% dplyr::group_by(a, b) %>%
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                    b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
     dplyr::summarise(c = agg(aggregation, c)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(c)) %>%
     dplyr::mutate(pos = cumsum(c) - c/2,
-                  percent = 100 * round(c / sum(c), 4))
+                  percent = 100 * round(c / total, 4))
 
   data <- data %>%
     dplyr::group_by(a, b) %>%
@@ -27,15 +36,15 @@ gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
     tidyr::gather(b, c, -a) %>%
     dplyr::left_join(., data_graph, by = c("a", "b", "c")) %>%
     dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
-                  percent = ifelse(percent == 0, NA, percent))
+                  percent = ifelse(percent == 0, NA, percent),
+                  c = ifelse(c == 0, NA, c))
 
   graph <- ggplot(data=data, aes(x = factor(1), weight = c, fill = a)) +
     geom_bar(width = 1) +
     coord_polar(theta = "y")
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "")
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab)
   graph <- graph +
-    theme(legend.position=leg_pos) +
     theme_ds() +
     theme_ds_clean() +
     scale_fill_manual(values = getPalette())
@@ -54,7 +63,6 @@ gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
       graph
     }
   }
-
   graph
 }
 
@@ -71,17 +79,26 @@ gg_pie_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_donut_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                   width = 0.3, leg_pos="right",
+gg_donut_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+                                   width = 0.3, leg_pos = "right",
                                    aggregation = "sum", text = TRUE, type = 'count', color_text = "black", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
-  data_graph <- data %>% dplyr::group_by(a, b) %>%
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
     dplyr::summarise(c = agg(aggregation, c)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(c)) %>%
     dplyr::mutate(pos = cumsum(c) - c/2,
-                  percent = 100 * round(c / sum(c), 4))
+                  percent = 100 * round(c / total, 4))
 
   data <- data %>%
     dplyr::group_by(a, b) %>%
@@ -90,14 +107,14 @@ gg_donut_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
     tidyr::gather(b, c, -a) %>%
     dplyr::left_join(., data_graph, by = c("a", "b", "c")) %>%
     dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
-                  percent = ifelse(percent == 0, NA, percent))
+                  percent = ifelse(percent == 0, NA, percent),
+                  c = ifelse(c == 0, NA, c))
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = a, weight = c)) +
     geom_bar(width = width) +
     coord_polar(theta = "y")
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "") +
-    theme(legend.position=leg_pos) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab) +
     theme_ds() +
     theme_ds_clean() +
     scale_fill_manual(values = getPalette())
@@ -130,18 +147,24 @@ gg_donut_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", leg_pos="right", ...){
+gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                      fillLabel = NULL, leg_pos = "right", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   graph <- ggplot(data=data, aes(x = factor(1), fill = a, weight = c)) +
     geom_bar(width = 1) +
     coord_polar(theta = "x")
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "")
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = "", y = "", fill = clab)
   graph <- graph +
-    theme(legend.position=leg_pos) +
     theme_ds() +
     theme_ds_clean() +
     scale_fill_manual(values = getPalette())
@@ -163,13 +186,18 @@ gg_bullseye_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' add(10, 1)
 gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                yLabel = NULL, aggregation = "sum", angle_x = 0,
-                               text = TRUE, color_text = "black", type = "count", ...){
+                               text = TRUE, color_text = "black", type = "count",
+                               shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
   ylab <- yLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -178,12 +206,12 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "
                   percent = 100 * round(count / sum(count), 4))
 
   graph <- ggplot(data_graph, aes(x = a, y = b, size = count))
-  graph <- graph + geom_point(aes(colour = ""))
+  graph <- graph + geom_point(aes(colour = ""), shape = shape_type)
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph  + theme(legend.position="none") +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     theme_ds() + scale_color_manual(values = getPalette()) +
-    guides(size = FALSE, colour = FALSE)
+    guides(size = FALSE, colour = FALSE) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data_graph, aes(y = b, label = round(count,2)),
@@ -212,7 +240,8 @@ gg_bubble_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(10, 1)
 gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                           yLabel = NULL, aggregation = "sum", angle_x = 0,
-                                          text = TRUE, color_text = "black", type = "count", ...){
+                                          text = TRUE, color_text = "black", type = "count",
+                                          shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -220,21 +249,29 @@ gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", 
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
-    dplyr::summarise(count = agg(aggregation, c)) %>%
-    dplyr::mutate(pos = count*9/10,
-                  percent = 100 * round(count / sum(count), 4))
+    dplyr::summarise(suma = agg(aggregation, c)) %>%
+    dplyr::group_by(a) %>%
+    dplyr::mutate(total = sum(suma)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/total, 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  suma = ifelse(suma == 0, NA, suma))
 
-  graph <- ggplot(data_graph, aes(x = a, y = b, size = count))
-  graph <- graph + geom_point(aes(color = a)) +
-    scale_color_manual(values = getPalette()) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+  graph <- ggplot(data_graph, aes(x = a, y = b, size = suma))
+  graph <- graph + geom_point(aes(color = a), shape = shape_type) +
+    scale_color_manual(values = getPalette())
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
-  graph <- graph + theme_ds() + theme(legend.position="none")
+  graph <- graph + theme_ds() + theme(legend.position="none") +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(data = data_graph, aes(y = b, label = round(count,2)),
+    return(graph + geom_text(data = data_graph, aes(y = b, label = round(suma,2)),
                              check_overlap = TRUE, color = color_text, vjust = -0.5))
   }else{
     if(text == TRUE & type == 'percent'){
@@ -260,7 +297,8 @@ gg_bubble_coloured_x_CaCaNu.  <- function(data, titleLabel = "", subtitle = "", 
 #' add(10, 1)
 gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                          yLabel = NULL,  aggregation = "sum", angle_x = 0,
-                                         text = TRUE, color_text = "black", type = "count", ...){
+                                         text = TRUE, color_text = "black", type = "count",
+                                         shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -268,24 +306,32 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
-    dplyr::summarise(count = agg(aggregation, c)) %>%
-    dplyr::mutate(pos = count*9/10,
-                  percent = 100 * round(count / sum(count), 4))
+    dplyr::summarise(suma = agg(aggregation, c)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(total = sum(suma)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/total, 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  suma = ifelse(suma == 0, NA, suma))
 
-  graph <- ggplot(data_graph, aes(x = a, y = b, size = count)) +
-    geom_point(aes(color = b)) +
+  graph <- ggplot(data_graph, aes(x = a, y = b, size = suma)) +
+    geom_point(aes(color = b), shape = shape_type) +
     scale_color_manual(values = getPalette())
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
   graph <- graph +
     theme_ds() +
-    theme(legend.position="none")
+    theme(legend.position="none") +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   if(text == TRUE & type == 'count'){
-    return(graph + geom_text(data = data_graph, aes(y = b, label = round(count,2)),
+    return(graph + geom_text(data = data_graph, aes(y = b, label = round(suma,2)),
                              check_overlap = TRUE, color = color_text, vjust = -0.5))
   }else{
     if(text == TRUE & type == 'percent'){
@@ -309,25 +355,32 @@ gg_bubble_coloured_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Types",
-                                      yLabel = "Frequency", aggregation = "sum", angle_x = 0,...){
+gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                      yLabel = NULL, aggregation = "sum", angle_x = 0,
+                                      shape_type = 19, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[2]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(sum = agg(aggregation, c)) %>%
     dplyr::arrange(desc(sum))
 
-  graph <- ggplot(data = data_graph, aes(x = a, y = sum, group=b)) +
-    geom_line() + theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
-    geom_point() + facet_wrap(~b)
+  graph <- ggplot(data = data_graph, aes(x = a, y = sum, group=b, colour = "")) +
+    geom_line(show.legend = FALSE) +
+    geom_point(shape = shape_type, show.legend = FALSE) + scale_color_manual(values = getPalette()) +
+      facet_wrap(~b)
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = ylab)
-  graph <- graph + theme_ds()
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -343,8 +396,8 @@ gg_line_hor_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = "Types",
-                                      yLabel = "Frequency", aggregation = "sum", angle_x = 0, ...){
+gg_line_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                      yLabel = NULL, aggregation = "sum", angle_x = 0, ...){
 
   graph <- gg_line_hor_facet_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, aggregation, angle_x, ...)
   graph <- graph + coord_flip()
@@ -353,9 +406,9 @@ gg_line_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 }
 
 
-#' Horizontal stacked area
-#' Stacked horizontal Area
-#' @name gg_area_stacked_hor_CaCaNu.
+#' Vertical stacked area
+#' Stacked vertical Area
+#' @name gg_area_stacked_ver_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -364,15 +417,18 @@ gg_line_ver_facet_CaCaNu. <- function(data, titleLabel = "", subtitle = "", capt
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                         yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -382,19 +438,21 @@ gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
   data_graph[is.na(data_graph)] <- 0
 
   graph <- ggplot(data = data_graph, aes(x=a, y=count, group=b)) +
-    geom_area(aes(fill = b), position = "stack") +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
-  graph <- graph + theme(legend.position=leg_pos) +
+    geom_area(aes(fill = b), position = "stack")
+
+  graph <- graph +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme_ds() +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos) +
     scale_fill_manual(values = getPalette())
 
   graph
 }
 
-#' Vertical stacked area
+#' Horizontal stacked area
 #' Stacked area
-#' @name gg_area_stacked_ver_CaCaNu.
+#' @name gg_area_stacked_hor_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -403,19 +461,19 @@ gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                         yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0,...){
 
 
-  graph <- gg_area_stacked_hor_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, aggregation, angle_x, ...)
+  graph <- gg_area_stacked_ver_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, aggregation, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
 }
 
-#' Horizontal 100% stacked area
-#' Stacked horizontal Area 100
-#' @name gg_area_stacked_100_hor_CaCaNu.
+#' Vertical 100% stacked area
+#' Stacked vertical Area 100
+#' @name gg_area_stacked_100_ver_CaCaNu.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -424,15 +482,19 @@ gg_area_stacked_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                            yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0,...){
+gg_area_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                            yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0,...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
-  ylab <- yLabel %||% nms[3]
+  ylab <- yLabel %||% paste("%", aggregation, nms[3], sep = " ")
+  clab <- fillLabel %||% nms[2]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -445,7 +507,7 @@ gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
   graph <- ggplot(data = data_graph, aes(x=a, y=count, group=b)) +
     geom_area(aes(fill = b), position = "fill")
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
   graph <- graph +
     theme_ds() + theme(legend.position=leg_pos) +
     scale_fill_manual(values = getPalette()) +
@@ -455,9 +517,9 @@ gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
   graph
 }
 
-#' Vertical 100% stacked area
+#' Horizontal 100% stacked area
 #' Stacked area 100
-#' @name gg_area_stacked_100_ver_CaCaNu.
+#' @name gg_area_stacked_100_hor_CaCaNu.
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -466,11 +528,11 @@ gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = ""
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_ver_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                            yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
+gg_area_stacked_100_hor_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                            yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
 
-  graph <- gg_area_stacked_100_hor_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, aggregation, angle_x, ...)
+  graph <- gg_area_stacked_100_ver_CaCaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, aggregation, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -492,7 +554,13 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
                                  leg_pos = "right", ...){
 
   f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -506,14 +574,14 @@ gg_treemap_x_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   if(text == TRUE){
 
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a",
-                                  label = "b"), group.labels = FALSE, group.label.colour = color_text, group.label.size = 30,
-                       group.label.min.size = 10, label.colour = color_text, label.size = 20, label.min.size = 5)  #guides(fill = FALSE) +
+                                  label = "b"), group.labels = FALSE, group.label.colour = color_text, group.label.size = 20,
+                       group.label.min.size = 15, label.colour = color_text, label.size = 10, label.min.size = 5)  #guides(fill = FALSE) +
   }else{
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'a', group = "a",
                                   label = "b"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
   }
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
-    theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + scale_fill_manual(values = getPalette()) +
+    theme_ds() + theme_ds_clean() + guides(fill = guide_legend(clab)) + theme(legend.position = leg_pos)
 
   graph
 }
@@ -535,8 +603,12 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% nms[2]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -549,15 +621,15 @@ gg_treemap_y_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption =
   if(text == TRUE){
 
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a",
-                                  label = "a"), group.labels = TRUE, group.label.colour = color_text, group.label.size = 30,
-                       group.label.min.size = 10, label.size = 0)  #guides(fill = FALSE) +
+                                  label = "a"), group.labels = FALSE, group.label.colour = color_text, group.label.size = 20,
+                       group.label.min.size = 15, label.colour = color_text, label.size = 10, label.min.size = 5)  #guides(fill = FALSE) +
   }else{
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'b', group = "a",
                                   label = "a"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
   }
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption) + scale_fill_manual(values = getPalette()) +
-    theme_ds() + theme_ds_clean() + theme(legend.position=leg_pos)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + scale_fill_manual(values = getPalette()) +
+    theme_ds() + theme_ds_clean() + guides(fill = guide_legend(clab)) + theme(legend.position = leg_pos)
 
   graph
 }
@@ -578,8 +650,12 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 
   f <- fringe(data)
   nms <- getClabels(f)
-  flabel <- fillLabel %||% nms[1]
+  clab <- fillLabel %||% paste(aggregation, nms[3], sep = " ")
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   data_graph <- data %>%
     dplyr::group_by(a, b) %>%
@@ -593,8 +669,8 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
   if(text == TRUE){
 
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'count', group = "a",
-                                  label = "b"), group.labels = FALSE, group.label.colour = color_text, group.label.size = 30,
-                       group.label.min.size = 10, label.colour = color_text, label.size = 20, label.min.size = 5)  #guides(fill = FALSE) +
+                                  label = "b"), group.labels = TRUE, group.label.colour = color_text, group.label.size = 20,
+                       group.label.min.size = 15, label.colour = color_text, label.size = 10, label.min.size = 5)  #guides(fill = FALSE) +
   }else{
     graph <- ggplotify(treemapify(data_graph, area = "count", fill = 'count', group = "a",
                                   label = "b"), group.labels = FALSE, label.size = 0)  #guides(fill = FALSE) +
@@ -606,8 +682,8 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
   #                    group.label.size.threshold = 1) +
 
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption) + theme_ds() + theme_ds_clean() +
-    theme(legend.position=leg_pos)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, fill = clab) + theme_ds() + theme_ds_clean() +
+    theme(legend.position=leg_pos) + guides(fill = guide_legend(clab))
 
   if(reverse){
     graph <- graph + scale_fill_gradient(low = getPalette(type = "sequential")[2],
@@ -631,26 +707,61 @@ gg_treemap_density_z_CaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel = NULL,
-                               leg_pos = "right", angle_x = 0, ...){
+gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, aggregation = "sum",
+                               yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, text = TRUE, type = "count",
+                               color_text = "black", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
-  ylab <- yLabel %||% nms[2]
-  xlab <- xLabel %||% nms[3]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
+  xlab <- xLabel %||% nms[2]
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
-  data$c <- ifelse(data$a %in% unique(data$a)[1], -data$c, data$c)
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
-  graph <- ggplot(data, aes(x = b, y = c, fill = a)) +
-    geom_bar(data = subset(data, a %in% unique(data$a)[1]), stat = "identity") +
-    geom_bar(data = subset(data, a %in% unique(data$a)[2]), stat = "identity", position = "identity") +
-    scale_y_continuous(labels = abs) +
-    theme_ds() +
+  data_graph <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(suma = agg(aggregation, c)) %>%
+    dplyr::group_by(a) %>%
+    dplyr::mutate(total = sum(suma)) %>%
+    dplyr::mutate(pos = suma*9/10, percent = 100 * round(suma/total, 4)) %>%
+    dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
+                  percent = ifelse(percent == 0, NA, percent),
+                  suma = ifelse(suma == 0, NA, suma)) %>%
+    dplyr::filter(a %in% unique(.$a)[1:2])
+
+  data_graph$suma <- ifelse(data_graph$a %in% unique(data_graph$a)[1], -data_graph$suma, data_graph$suma)
+  data_graph$pos <- ifelse(data_graph$a %in% unique(data_graph$a)[1], -data_graph$pos, data_graph$pos)
+
+  graph <- ggplot(data_graph, aes(x = b, y = suma, fill = a)) +
+    geom_bar(data = subset(data_graph, a %in% unique(data_graph$a)[1]), stat = "identity")
+
+  if(text == TRUE & type == 'count'){
+    graph <- graph + geom_text(data = subset(data_graph, a %in% unique(data_graph$a)[1]), aes(y = pos, label = abs(round(suma,2))),
+                                 check_overlap = TRUE, color = color_text)
+  }else if(text == TRUE & type == 'percent'){
+    graph <- graph + geom_text(data = subset(data_graph, a %in% unique(data_graph$a)[1]), aes(y = pos, label = paste(percent, "%", sep = "")),
+                                 check_overlap = TRUE, color = color_text)
+  }
+
+  graph <- graph +
+    geom_bar(data = subset(data_graph, a %in% unique(data_graph$a)[2]), stat = "identity", position = "identity")
+
+  if(text == TRUE & type == 'count'){
+    graph <- graph + geom_text(data = subset(data_graph, a %in% unique(data_graph$a)[2]), aes(y = pos, label = abs(round(suma,2))),
+                               check_overlap = TRUE, color = color_text, position = "identity")
+  }else if(text == TRUE & type == 'percent'){
+    graph <- graph + geom_text(data = subset(data_graph, a %in% unique(data_graph$a)[2]), aes(y = pos, label = paste(percent, "%", sep = "")),
+                               check_overlap = TRUE, color = color_text, position = "identity")
+  }
+
+  graph <- graph + theme_ds() +
     scale_fill_manual(values=getPalette()) +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xLabel, y = yLabel) +
-    scale_y_continuous(labels = comma) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
+    scale_y_continuous(labels = abs) +
     theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     coord_flip()
@@ -670,18 +781,28 @@ gg_pyramid_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_multi_line_point_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                        fillLabel = NULL, leg_pos="right", shape_type = 19, ...){
+                                        fillLabel = NULL, leg_pos ="right", aggregation = "sum", shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% nms[3]
-  flabel <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
-  graph <- ggplot(data, aes(x = as.factor(b), y = c, group = a)) + geom_point(aes(color = a), shape = shape_type) + geom_line(aes(color = a))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
-  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
+  data <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = agg(aggregation, c))
+
+  graph <- ggplot(data, aes(x = b, y = c, group = a)) + geom_point(aes(color = a), shape = shape_type) + geom_line(aes(color = a))
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab)
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
+    theme(legend.position=leg_pos) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -698,18 +819,28 @@ gg_multi_line_point_CaCaNu. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_multi_line_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                  fillLabel = NULL, leg_pos="right", ...){
+                                  fillLabel = NULL, aggregation = "sum", leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[2]
-  ylab <- yLabel %||% nms[3]
-  flabel <- fillLabel %||% nms[1]
+  ylab <- yLabel %||% paste(aggregation, nms[3], sep = " ")
+  clab <- fillLabel %||% nms[1]
   data <- f$d
 
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
+
+  data <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = agg(aggregation, c))
+
   graph <- ggplot(data, aes(x = as.factor(b), y = c, group = a))  + geom_line(aes(color = a))
-  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = flabel)
-  graph <- graph + theme_ds() + scale_color_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab)
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
+    theme(legend.position=leg_pos) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 
   graph
 }
@@ -736,6 +867,10 @@ gg_sunburst_CaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = 
   ylab <- yLabel %||% nms[3]
   flabel <- fillLabel %||% nms[1]
   data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
+                                 b = ifelse(is.na(b), "NA", b)) %>%
+    dplyr::filter(!is.na(c))
 
   #angulos
 

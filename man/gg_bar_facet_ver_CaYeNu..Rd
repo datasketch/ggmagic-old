@@ -2,8 +2,8 @@
 % Please edit documentation in R/Ca-Ye-Nu-bars.R
 \name{gg_bar_facet_ver_CaYeNu.}
 \alias{gg_bar_facet_ver_CaYeNu.}
-\title{Vertical stacked bar facet
-Barras stacked}
+\title{Vertical bar facet
+Barras vertical}
 \usage{
 gg_bar_facet_ver_CaYeNu.(data, ...)
 }
@@ -16,8 +16,8 @@ gg_bar_facet_ver_CaYeNu.(data, ...)
 The sum of \code{x} and \code{y}.
 }
 \description{
-Vertical stacked bar facet
-Barras stacked
+Vertical bar facet
+Barras vertical
 }
 \section{ftypes}{
  Ca-Ye-Nu

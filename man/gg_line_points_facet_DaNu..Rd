@@ -5,8 +5,9 @@
 \title{Line + point facet by years
 Line Points facet by years}
 \usage{
-gg_line_points_facet_DaNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
+gg_line_points_facet_DaNu.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0,
+  shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

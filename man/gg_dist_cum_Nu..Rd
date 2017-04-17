@@ -5,8 +5,8 @@
 \title{Cumulative distribution function
 Cumulative distribution function}
 \usage{
-gg_dist_cum_Nu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, ...)
+gg_dist_cum_Nu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

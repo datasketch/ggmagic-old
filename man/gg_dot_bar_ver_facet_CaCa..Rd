@@ -6,8 +6,8 @@
 Facet Vertical Dot Bar}
 \usage{
 gg_dot_bar_ver_facet_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, ncol = 1,
-  fillLabel = NULL, leg_pos = "right", ...)
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,8 +5,9 @@
 \title{Horizontal scatter
 pointlines}
 \usage{
-gg_scatter_hor_CaDaNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, clab = NULL, angle = 45, ...)
+gg_scatter_hor_CaDaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0,
+  shape_type = 19, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

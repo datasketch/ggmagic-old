@@ -6,7 +6,7 @@
 Facet Bullseye}
 \usage{
 gg_bullseye_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", leg_pos = "right", ...)
+  caption = "", fillLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

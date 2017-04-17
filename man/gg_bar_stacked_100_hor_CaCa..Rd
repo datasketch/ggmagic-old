@@ -2,12 +2,13 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_bar_stacked_100_hor_CaCa.}
 \alias{gg_bar_stacked_100_hor_CaCa.}
-\title{Horizontal 100% stacked bar
+\title{Horizontal 100% stacked bar by second variable
 Stacked 100pct horizontal Bar}
 \usage{
 gg_bar_stacked_100_hor_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Percent", leg_pos = "right",
-  l_ncol = 1, ...)
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", text = TRUE, type = "count", color_text = "black",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -18,7 +19,7 @@ gg_bar_stacked_100_hor_CaCa.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Horizontal 100% stacked bar
+Horizontal 100% stacked bar by second variable
 Stacked 100pct horizontal Bar
 }
 \section{ftypes}{

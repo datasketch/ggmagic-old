@@ -6,7 +6,8 @@
 Facet Donut}
 \usage{
 gg_donut_facet_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
-  width = 0.3, leg_pos = "right", ...)
+  fillLabel = NULL, width = 0.3, leg_pos = "right", text = TRUE,
+  type = "count", color_text = "black", ...)
 }
 \arguments{
 \item{x}{A number.}

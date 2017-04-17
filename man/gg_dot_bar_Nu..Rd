@@ -2,11 +2,11 @@
 % Please edit documentation in R/Nu.R
 \name{gg_dot_bar_Nu.}
 \alias{gg_dot_bar_Nu.}
-\title{Vertical dot bar
+\title{Vertical histogram dot bar
 Dot bar}
 \usage{
-gg_dot_bar_Nu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, ...)
+gg_dot_bar_Nu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +17,7 @@ gg_dot_bar_Nu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Vertical dot bar
+Vertical histogram dot bar
 Dot bar
 }
 \section{ftypes}{

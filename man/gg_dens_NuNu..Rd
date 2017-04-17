@@ -2,11 +2,12 @@
 % Please edit documentation in R/Nu-Nu.R
 \name{gg_dens_NuNu.}
 \alias{gg_dens_NuNu.}
-\title{Horizontal density
+\title{Horizontal density 2D bin
 Density in 2D}
 \usage{
-gg_dens_NuNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, reverse = FALSE, ...)
+gg_dens_NuNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, reverse = FALSE, angle_x = 0,
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -17,7 +18,7 @@ gg_dens_NuNu.(data, title = "", subtitle = "", caption = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Horizontal density
+Horizontal density 2D bin
 Density in 2D
 }
 \section{ftypes}{

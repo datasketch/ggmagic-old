@@ -6,9 +6,9 @@
 Facet Coloured horizontal bar}
 \usage{
 gg_bar_coloured_hor_z_facet_CaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, reverse = FALSE,
-  leg_pos = "right", angle_x = 0, aggregation = "sum", text = TRUE,
-  color_text = "black", type = "count", ...)
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  reverse = FALSE, leg_pos = "right", angle_x = 0, aggregation = "sum",
+  text = TRUE, color_text = "black", type = "count", ...)
 }
 \arguments{
 \item{x}{A category.}

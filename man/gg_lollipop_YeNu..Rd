@@ -6,8 +6,8 @@
 lollipop. segment and point
 gg_lollipop_YeNu.}
 \usage{
-gg_lollipop_YeNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, size = 7, ...)
+gg_lollipop_YeNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

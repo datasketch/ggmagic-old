@@ -5,8 +5,8 @@
 \title{Kagi
 Kagi}
 \usage{
-gg_kagi_DaNu.(data, title = "", subtitle = "", caption = "",
-  xlab = NULL, ylab = NULL, hline = NULL, angle_x = 0, ...)
+gg_kagi_DaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, hline = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

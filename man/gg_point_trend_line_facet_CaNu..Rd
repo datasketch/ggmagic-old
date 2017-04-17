@@ -6,7 +6,7 @@
 Facet Trend Line}
 \usage{
 gg_point_trend_line_facet_CaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = "Index", yLabel = NULL, shape_type = 19,
+  caption = "", xLabel = NULL, yLabel = NULL, shape_type = 19,
   alpha = 0.3, se = FALSE, angle_x = 0, ...)
 }
 \arguments{

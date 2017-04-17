@@ -5,8 +5,8 @@
 \title{Lollipop
 lollipop}
 \usage{
-gg_lollipop_DaNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
+gg_lollipop_DaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A data.}

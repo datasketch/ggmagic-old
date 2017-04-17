@@ -5,7 +5,7 @@
 \title{Boxplot
 Scatter}
 \usage{
-gg_box_DaNu.(data, title = "", subtitle = "", caption = "",
+gg_box_DaNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{

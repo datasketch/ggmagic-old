@@ -6,8 +6,8 @@
 Coloured Point}
 \usage{
 gg_point_CaCaCa.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, size = 3,
-  angle = 45, ...)
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0,
+  shape_type = 19, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

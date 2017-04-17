@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_stacked2_100_ver_CaCaNu.}
 \alias{gg_bar_stacked2_100_ver_CaCaNu.}
-\title{Vertical 100% stacked bar by second variable
+\title{Vertical 100% stacked bar by first variable
 Barras grouped}
 \usage{
 gg_bar_stacked2_100_ver_CaCaNu.(data, ...)
@@ -16,7 +16,7 @@ gg_bar_stacked2_100_ver_CaCaNu.(data, ...)
 The sum of \code{x} and \code{y}.
 }
 \description{
-Vertical 100% stacked bar by second variable
+Vertical 100% stacked bar by first variable
 Barras grouped
 }
 \section{ftypes}{

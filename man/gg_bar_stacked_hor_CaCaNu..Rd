@@ -2,12 +2,12 @@
 % Please edit documentation in R/Ca-Ca-Nu-bars.R
 \name{gg_bar_stacked_hor_CaCaNu.}
 \alias{gg_bar_stacked_hor_CaCaNu.}
-\title{Horizontal stacked bar by first variable
+\title{Horizontal stacked bar by second variable
 horizontal stacked bar graph}
 \usage{
 gg_bar_stacked_hor_CaCaNu.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  aggregation = "sum", text = TRUE, type = "count",
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", aggregation = "sum", text = TRUE, type = "count",
   color_text = "black", angle_x = 0, ...)
 }
 \arguments{
@@ -19,7 +19,7 @@ gg_bar_stacked_hor_CaCaNu.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Horizontal stacked bar by first variable
+Horizontal stacked bar by second variable
 horizontal stacked bar graph
 }
 \section{ftypes}{

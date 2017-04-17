@@ -5,8 +5,9 @@
 \title{Vertical line + point
 pointlines}
 \usage{
-gg_pointline_ver_CaDa.(data, title = "", subtitle = "", caption = "",
-  ylab = NULL, clab = NULL, ...)
+gg_pointline_ver_CaDa.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0,
+  shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,8 +5,9 @@
 \title{Vertical histogram
 Histogram 2D}
 \usage{
-gg_hist_NuNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, reverse = FALSE, ...)
+gg_hist_NuNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, reverse = FALSE, angle_x = 0,
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

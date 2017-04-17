@@ -5,8 +5,8 @@
 \title{Points facet by years
 Points facet by years}
 \usage{
-gg_points_facet_DaNu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
+gg_points_facet_DaNu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -6,7 +6,8 @@
 Treemap fill first Ca}
 \usage{
 gg_treemap_x_CaCa.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, ...)
+  fillLabel = NULL, text = "TRUE", color_text = "black",
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

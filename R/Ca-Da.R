@@ -9,22 +9,24 @@
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pointline_hor_CaDa. <- function(data,title = "", subtitle = "", caption = "",
-                                   xlab = NULL, clab = NULL, ...){
+gg_pointline_hor_CaDa. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                   xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0, shape_type = 19, ...){
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xlab %||% nms[2]
-  clab <- clab %||% nms[1]
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% nms[1]
+  clab <- fillLabel %||% nms[1]
   d <- f$d
 
-  graph <- ggplot(d, aes(x = b, y = 0, colour = a)) +
-       geom_point() +
-       scale_colour_brewer(clab,palette = 'Set1') +
-       theme_ds()  + scale_color_manual(values = getPalette()) +
-       labs(title = title, subtitle = subtitle, caption = caption, x = xlab)+
-    theme(axis.title.y=element_blank(),
-          axis.text.y=element_blank(),
-          axis.ticks.y=element_blank())
+  d <- d %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
+  graph <- ggplot(d, aes(x = b, y = a, colour = a)) +
+       geom_point(shape = shape_type) +
+       theme_ds() + scale_color_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    scale_x_date() + #guides(color = FALSE) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab)
 
  return(graph)
 }
@@ -40,23 +42,15 @@ gg_pointline_hor_CaDa. <- function(data,title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pointline_ver_CaDa. <- function(data,title = "", subtitle = "", caption = "",ylab = NULL, clab = NULL, ...){
+gg_pointline_ver_CaDa. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                   xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
-  f <- fringe(data)
-  nms <- getClabels(f)
-  clab <- clab %||% nms[1]
-  ylab <- ylab %||% nms[2]
-  data <- f$d
+  graph <- gg_pointline_hor_CaDa.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel,
+                                  angle_x, shape_type, ...)
 
-  graph <- ggplot(data, aes(x = b, y = 0, colour = a)) +
-       geom_point() +
-       scale_colour_brewer(clab,palette = 'Set1') +
-       coord_flip() +
-       theme_ds() +
-       theme(axis.title.x=element_blank(),
-          axis.text.x=element_blank(),
-          axis.ticks.x=element_blank()) + labs(title = title, subtitle = subtitle, caption = caption )
-  graph
+  graph <- graph + coord_flip()
+
+  return(graph)
 }
 
 
@@ -72,21 +66,25 @@ gg_pointline_ver_CaDa. <- function(data,title = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_histogram_CaDa. <- function(data,title = "", subtitle = "", caption = "",xlab = NULL, clab = NULL, ...){
+gg_histogram_CaDa. <- function(data, titleLabel = "", subtitle = "", caption = "",xLabel = NULL,
+                               yLabel = NULL, fillLabel = NULL, angle_x = 0, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xlab %||% nms[2]
-  ylab <- "count"
-  clab <- clab %||% nms[1]
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% "Conteo"
+  clab <- fillLabel %||% nms[1]
   d <- f$d
+
+  d <- d %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
   g <- ggplot(d, aes(x=as.Date(b), fill= a)) +
     stat_bin(binwidth=1, position="identity") +
     #scale_x_date(breaks=date_breaks(width="1 month")) +
-    xlab(xlab) +
-    ylab(ylab) +
-    scale_fill_brewer(clab,palette = 'Set1') +
-    ggtitle(title) +
-    theme_ds()
+    scale_fill_manual(values = getPalette()) +
+    theme_ds() + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    theme(legend.position=leg_pos)
   g
 }
 

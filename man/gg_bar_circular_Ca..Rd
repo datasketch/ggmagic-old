@@ -6,7 +6,8 @@
 Circular Bar}
 \usage{
 gg_bar_circular_Ca.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, leg_pos = "right", width = 0.85, ...)
+  fillLabel = NULL, leg_pos = "right", width = 0.85, text = TRUE,
+  color_text = "black", type = "count", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,8 +5,8 @@
 \title{Vertical line + point
 Line wiht point plot}
 \usage{
-gg_line_point_Nu.(data, title = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, ...)
+gg_line_point_Nu.(data, titleLabel = "", subtitle = "", caption = "",
+  xLabel = NULL, yLabel = NULL, shape_type = 19, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

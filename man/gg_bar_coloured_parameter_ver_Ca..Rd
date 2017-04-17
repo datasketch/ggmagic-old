@@ -6,9 +6,9 @@
 Vertical coloured by parameter bars}
 \usage{
 gg_bar_coloured_parameter_ver_Ca.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", parameter = NULL,
+  caption = "", xLabel = NULL, yLabel = NULL, parameter = NULL,
   text = TRUE, type = "count", color_text = "black", leg_pos = "right",
-  ...)
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

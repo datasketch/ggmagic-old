@@ -5,7 +5,7 @@
 \title{Violin
 Violin}
 \usage{
-gg_violin_DaNu.(data, title = "", subtitle = "", caption = "",
+gg_violin_DaNu.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{

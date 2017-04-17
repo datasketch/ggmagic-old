@@ -2,12 +2,13 @@
 % Please edit documentation in R/Ca-Ca.R
 \name{gg_bar_grouped_coloured_ver_CaCa.}
 \alias{gg_bar_grouped_coloured_ver_CaCa.}
-\title{Vertical grouped bar
+\title{Vertical grouped bar by second variable
 Unstacked Coloured vertical Bar}
 \usage{
 gg_bar_grouped_coloured_ver_CaCa.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = "Count", leg_pos = "right",
-  l_ncol = 1, ...)
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", text = TRUE, type = "count", color_text = "black",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -18,7 +19,7 @@ gg_bar_grouped_coloured_ver_CaCa.(data, titleLabel = "", subtitle = "",
 The sum of \code{x} and \code{y}.
 }
 \description{
-Vertical grouped bar
+Vertical grouped bar by second variable
 Unstacked Coloured vertical Bar
 }
 \section{ftypes}{

@@ -6,8 +6,9 @@
 Polar Bar}
 \usage{
 gg_bar_polar_CaNu.(data, width = 0.95, titleLabel = "", subtitle = "",
-  aggregation = "sum", caption = "", leg_pos = "right", text = TRUE,
-  color_text = "black", type = "count", ...)
+  aggregation = "sum", caption = "", fillLabel = NULL,
+  leg_pos = "right", text = TRUE, color_text = "black", type = "count",
+  ...)
 }
 \arguments{
 \item{x}{A number.}
