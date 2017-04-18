@@ -1,15 +1,15 @@
 #' Horizon
 #' Horizon
-#' @name gg_horizon_NuNu.
+#' @name gg_horizon_NumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu-Nu
+#' @section ftypes: Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_horizon_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, reverse = FALSE,
+gg_horizon_NumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, reverse = FALSE,
                              yLabel =  NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
@@ -37,16 +37,16 @@ gg_horizon_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Waterfall
 #' Waterfall
-#' @name gg_waterfall_NuNu.
+#' @name gg_waterfall_NumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu-Nu
+#' @section ftypes: Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_waterfall_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_waterfall_NumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                yLabel =  NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -68,16 +68,16 @@ gg_waterfall_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 
 #' Horizontal density 2D bin
 #' Density in 2D
-#' @name gg_dens_NuNu.
+#' @name gg_dens_NumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu-Nu
+#' @section ftypes: Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dens_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_dens_NumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                           yLabel = NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
 
   f <- fringe(data)
@@ -108,19 +108,19 @@ gg_dens_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xL
 
 #' Vertical density 2D bin
 #' Density 2D flipped
-#' @name gg_dens_flip_NuNu.
+#' @name gg_dens_flip_NumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu-Nu
+#' @section ftypes: Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dens_flip_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_dens_flip_NumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                yLabel = NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
 
-  graph <- gg_dens_NuNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, angle_x, leg_pos, ...)
+  graph <- gg_dens_NumNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, angle_x, leg_pos, ...)
   graph <- graph + coord_flip()
   graph
 }
@@ -128,16 +128,16 @@ gg_dens_flip_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 
 #' Vertical histogram
 #' Histogram 2D
-#' @name gg_hist_NuNu.
+#' @name gg_hist_NumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu-Nu
+#' @section ftypes: Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_hist_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_hist_NumNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                           xLabel = NULL, yLabel = NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
 
   f <- fringe(data)
@@ -148,8 +148,8 @@ gg_hist_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
   data <- data %>% dplyr::filter(!is.na(a), !is.na(b))
 
-  binNumber <- floor(sqrt(nrow(data)))
-  graph <- ggplot(data, aes(x = a, y = b)) + stat_bin2d(bins = binNumber) +
+  binNummber <- floor(sqrt(nrow(data)))
+  graph <- ggplot(data, aes(x = a, y = b)) + stat_bin2d(bins = binNummber) +
     theme_ds() +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
@@ -167,35 +167,35 @@ gg_hist_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Horizontal histogram
 #' Histogram 2d flipped
-#' @name gg_hist_flip_NuNu.
+#' @name gg_hist_flip_NumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu-Nu
+#' @section ftypes: Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_hist_flip_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_hist_flip_NumNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                xLabel = NULL, yLabel = NULL, reverse = FALSE, angle_x = 0, leg_pos = "right", ...){
 
-  graph <- gg_hist_NuNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, angle_x, leg_pos, ...)
+  graph <- gg_hist_NumNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, reverse, angle_x, leg_pos, ...)
   graph <- graph + coord_flip()
   graph
 }
 
 #' Line for each numeric variable
-#' Line for each Nu
-#' @name gg_line_multi_NuNu.
+#' Line for each Num
+#' @name gg_line_multi_NumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu-Nu
+#' @section ftypes: Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_multi_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_line_multi_NumNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                 xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -222,16 +222,16 @@ gg_line_multi_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = 
 
 #' Scatter
 #' Scatter plot
-#' @name gg_point_NuNu.
+#' @name gg_point_NumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu-Nu
+#' @section ftypes: Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_point_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_point_NumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                            yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -253,16 +253,16 @@ gg_point_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 
 #' Line + point
 #' Line point plot
-#' @name gg_line_point_NuNu.
+#' @name gg_line_point_NumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu-Nu
+#' @section ftypes: Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_point_NuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_point_NumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                 yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)

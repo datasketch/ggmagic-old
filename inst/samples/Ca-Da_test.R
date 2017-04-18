@@ -1,4 +1,4 @@
-# Ca-Da
+# Cat-Dat
 
 library(devtools)
 load_all()
@@ -10,20 +10,20 @@ data <- data.frame(proj = paste0("p",sample(LETTERS[5:7],50, replace=TRUE)),
                    )
 
 
-gg_pointline_hor_CaDa.(data)
-gg_pointline_ver_CaDa.(data)
+gg_pointline_hor_CatDat.(data)
+gg_pointline_ver_CatDat.(data)
 
 
 data <- data.frame(proj = paste0("p",sample(LETTERS[5:7],50, replace=TRUE)),
                    date = sample(seq(as.Date('1999-01-01'), as.Date('1999-02-01'), by="day"), 200,replace = TRUE)
 )
 
-gg_histogram_CaDa.(data)
+gg_histogram_CatDat.(data)
 
 ### OJO
 
-# Ca-Da
-# se puede transformar en Ca-Da-Nu
+# Cat-Dat
+# se puede transformar en Cat-Dat-Nu
 
 
 

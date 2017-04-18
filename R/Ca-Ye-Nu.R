@@ -1,16 +1,16 @@
 
 #' Horizontal line
 #' Tiene múltiples líneas
-#' @name gg_line_hor_CaYeNu.
+#' @name gg_line_hor_CatYeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Cat-Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_hor_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_hor_CatYeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                 yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, nbreaks = NULL,
                                 shape_type = 19,
                                 aggregation = "sum", ...){
@@ -49,16 +49,16 @@ gg_line_hor_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = 
 
 #' Scatter
 #' ciculos
-#' @name gg_circle_CaYeNu.
+#' @name gg_circle_CatYeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Cat-Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_circle_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_circle_CatYeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                               xLabel = NULL, yLabel = NULL, leg_pos = "right", shape_type = 19, angle_x = 0,  ...){
 
   f <- fringe(data)
@@ -82,16 +82,16 @@ gg_circle_CaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 
 #' Steam
 #' Steam
-#' @name gg_steam_CaYeNu.
+#' @name gg_steam_CatYeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Cat-Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "", xLabel = NULL,
+gg_steam_CatYeaNum. <-  function(data, titleLabel = "",  subtitle = "", caption = "", xLabel = NULL,
                               yLabel = NULL, fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
@@ -120,16 +120,16 @@ gg_steam_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "
 
 #' Slope
 #' Slope
-#' @name gg_slope_CaYeNu.
+#' @name gg_slope_CatYeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ye-Nu
+#' @section ftypes: Cat-Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_slope_CaYeNu. <-  function(data, titleLabel = "",  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+gg_slope_CatYeaNum. <-  function(data, titleLabel = "",  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                               leg_pos="right", text_size = 6, size_vjust = 1.5, overlap = TRUE,
                               size_hjust = 0.5, size_point = 3, size_line = 1,...){
 

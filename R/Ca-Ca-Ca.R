@@ -1,16 +1,16 @@
 
 #' Treemap coloured by first variable
-#' Treemap fill first Ca
-#' @name gg_treemap_x_CaCaCa.
+#' Treemap fill first Cat
+#' @name gg_treemap_x_CatCatCat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca
+#' @section ftypes: Cat-Cat-Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_treemap_x_CatCatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                  text = "TRUE", color_text = "black",
                                  leg_pos = "right", ...){
 
@@ -49,17 +49,17 @@ gg_treemap_x_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 }
 
 #' Treemap coloured by second variable
-#' Treemap fill second Ca
-#' @name gg_treemap_y_CaCaCa.
+#' Treemap fill second Cat
+#' @name gg_treemap_y_CatCatCat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca
+#' @section ftypes: Cat-Cat-Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_treemap_y_CatCatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                  text = "TRUE", color_text = "black",
                                  leg_pos = "right", ...){
 
@@ -98,17 +98,17 @@ gg_treemap_y_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 }
 
 #' Treemap coloured by third variable
-#' Treemap fill third Ca
-#' @name gg_treemap_z_CaCaCa.
+#' Treemap fill third Cat
+#' @name gg_treemap_z_CatCatCat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca
+#' @section ftypes: Cat-Cat-Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_treemap_z_CatCatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                  text = "TRUE", color_text = "black",
                                  leg_pos = "right", ...){
 
@@ -148,16 +148,16 @@ gg_treemap_z_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption =
 
 #' Scatter
 #' Coloured Point
-#' @name gg_point_CaCaCa.
+#' @name gg_point_CatCatCat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca
+#' @section ftypes: Cat-Cat-Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_point_CaCaCa. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+gg_point_CatCatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                              fillLabel = NULL, angle_x = 0, shape_type = 19, leg_pos = "right", ...){
 
   f <- fringe(data)

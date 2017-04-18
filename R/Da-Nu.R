@@ -1,15 +1,15 @@
 #' Horizon
 #' Horizon
-#' @name gg_horizon_DaNu.
+#' @name gg_horizon_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_horizon_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_horizon_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel =  NULL, leg_pos = "right", reverse = FALSE,
                              angle_x = 0,...){
 
@@ -41,16 +41,16 @@ gg_horizon_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Waterfall
 #' Waterfall
-#' @name gg_waterfall_DaNu.
+#' @name gg_waterfall_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_waterfall_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_waterfall_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel =  NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -75,16 +75,16 @@ gg_waterfall_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 
 #' Line
 #' Lines
-#' @name gg_line_DaNu.
+#' @name gg_line_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_line_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                            xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -107,16 +107,16 @@ gg_line_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Line + point
 #' Lines
-#' @name gg_line_points_DaNu.
+#' @name gg_line_points_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_points_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_points_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                   yLabel = NULL, shape_type = 19, hline = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -146,16 +146,16 @@ gg_line_points_DaNu. <- function(data, titleLabel = "", subtitle = "", caption =
 
 #' Scatter
 #' Point scatter plot
-#' @name gg_point_DaNu.
+#' @name gg_point_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_point_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_point_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                            xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
   f <- fringe(data)
@@ -180,16 +180,16 @@ gg_point_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Boxplot
 #' Scatter
-#' @name gg_box_DaNu.
+#' @name gg_box_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_box_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_box_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                          xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -213,16 +213,16 @@ gg_box_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Violin
 #' Violin
-#' @name gg_violin_DaNu.
+#' @name gg_violin_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_violin_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_violin_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                             xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -245,16 +245,16 @@ gg_violin_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Area
 #' Area
-#' @name gg_area_DaNu.
+#' @name gg_area_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_area_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                           xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -279,16 +279,16 @@ gg_area_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Kagi
 #' Kagi
-#' @name gg_kagi_DaNu.
+#' @name gg_kagi_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_kagi_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_kagi_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                           yLabel = NULL, hline = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -318,16 +318,16 @@ gg_kagi_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xL
 
 #' Smooth
 #' smooth
-#' @name gg_smooth_DaNu.
+#' @name gg_smooth_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_smooth_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_smooth_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                             xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
   f <- fringe(data)
@@ -349,16 +349,16 @@ gg_smooth_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Points facet by years
 #' Points facet by years
-#' @name gg_points_facet_DaNu.
+#' @name gg_points_facet_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_points_facet_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_points_facet_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                      xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
 
@@ -373,11 +373,11 @@ gg_points_facet_DaNu. <- function(data, titleLabel = "", subtitle = "", caption 
 
   data$Year <- format(data$a, "%Y")
   data$Month <- format(data$a, "%b")
-  data$Day <- format(data$a, "%d")
+  data$Daty <- format(data$a, "%d")
 
-  data$MonthDay <- format(data$a, "%d-%b")
+  data$MonthDaty <- format(data$a, "%d-%b")
 
-  #data$CommonDate <- as.Date(paste0("2000-",format(data$a, "%j")), "%Y-%j")
+  #data$CommonDatte <- as.Datte(paste0("2000-",format(data$a, "%j")), "%Y-%j")
 
   graph <- ggplot(data = data, mapping = aes(x = a, y = b, colour = Year)) +
            geom_point(shape = shape_type, show.legend = FALSE) + scale_color_manual(values = getPalette()) +
@@ -392,16 +392,16 @@ gg_points_facet_DaNu. <- function(data, titleLabel = "", subtitle = "", caption 
 
 #' Line + point facet by years
 #' Line Points facet by years
-#' @name gg_line_points_facet_DaNu.
+#' @name gg_line_points_facet_DatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_points_facet_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_line_points_facet_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                   xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
 
@@ -416,11 +416,11 @@ gg_line_points_facet_DaNu. <- function(data, titleLabel = "", subtitle = "", cap
 
   data$Year <- format(data$a, "%Y")
   data$Month <- format(data$a, "%b")
-  data$Day <- format(data$a, "%d")
+  data$Daty <- format(data$a, "%d")
 
-  data$MonthDay <- format(data$a, "%d-%b")
+  data$MonthDaty <- format(data$a, "%d-%b")
 
-  #data$CommonDate <- as.Date(paste0("2000-",format(data$a, "%j")), "%Y-%j")
+  #data$CommonDatte <- as.Datte(paste0("2000-",format(data$a, "%j")), "%Y-%j")
 
   graph <- ggplot(data = data, mapping = aes(x = a, y = b, shape = Year, colour = Year)) +
     geom_line(show.legend = FALSE) + geom_point(shape = shape_type, show.legend = FALSE) + scale_color_manual(values = getPalette()) + theme_ds() +
@@ -435,16 +435,16 @@ gg_line_points_facet_DaNu. <- function(data, titleLabel = "", subtitle = "", cap
 
 #' Vertical bar
 #' bar
-#' @name gg_bar_ver_DaNu.
+#' @name gg_bar_ver_DatNum.
 #' @param x A data.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ver_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_ver_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                          xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -468,20 +468,20 @@ gg_bar_ver_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Horizontal bar
 #' bar
-#' @name gg_bar_hor_DaNu.
+#' @name gg_bar_hor_DatNum.
 #' @param x A data.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_hor_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_hor_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                          xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
 
-  graph <- gg_bar_ver_DaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, ...)
+  graph <- gg_bar_ver_DatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, ...)
 
   graph <- graph + coord_flip()
 
@@ -490,16 +490,16 @@ gg_bar_hor_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Bubbles
 #' bubbles
-#' @name gg_bubbles_DaNu.
+#' @name gg_bubbles_DatNum.
 #' @param x A data.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubbles_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bubbles_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                              xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
   f <- fringe(data)
@@ -524,16 +524,16 @@ gg_bubbles_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Bubbles density by first numeric variable
 #' bubbles
-#' @name gg_bubbles_density_x_DaNu.
+#' @name gg_bubbles_density_x_DatNum.
 #' @param x A data.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubbles_density_x_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bubbles_density_x_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                              xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19,
                              leg_pos = "right", reverse = FALSE, ...){
 
@@ -568,16 +568,16 @@ gg_bubbles_density_x_DaNu. <- function(data, titleLabel = "", subtitle = "", cap
 
 #' Lollipop
 #' lollipop
-#' @name gg_lollipop_DaNu.
+#' @name gg_lollipop_DatNum.
 #' @param x A data.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lollipop_DaNu. <- function(data, titleLabel = "", subtitle = "",
+gg_lollipop_DatNum. <- function(data, titleLabel = "", subtitle = "",
                               caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0,
                               shape_type = 19, ...){
 
@@ -601,16 +601,16 @@ gg_lollipop_DaNu. <- function(data, titleLabel = "", subtitle = "",
 
 #' Stepped area
 #' stepped stacked area.
-#' @name gg_area_stepped_DaNu.
+#' @name gg_area_stepped_DatNum.
 #' @param x A data.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stepped_DaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_area_stepped_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                           xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -632,16 +632,16 @@ gg_area_stepped_DaNu. <- function(data, titleLabel = "", subtitle = "", caption 
 
 #' Vertical bar density by first numeric variable
 #' vertical coloured bar
-#' @name gg_bar_density_y_ver_DaNu.
+#' @name gg_bar_density_y_ver_DatNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_density_y_ver_DaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'count', color_text = "black",
+gg_bar_density_y_ver_DatNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'count', color_text = "black",
                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0,
                                       reverse = FALSE, ...){
 
@@ -661,7 +661,7 @@ gg_bar_density_y_ver_DaNu.<- function(data, titleLabel = "", subtitle = "", capt
     dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
                   percent = ifelse(percent == 0, NA, percent),
                   b = ifelse(b == 0, NA, b),
-                  a = as.Date(a))
+                  a = as.Datte(a))
 
   graph <- ggplot(data_graph, aes(x = a, y = b)) + geom_bar(stat = "identity", aes(fill = b)) +
     theme_ds()
@@ -694,20 +694,20 @@ gg_bar_density_y_ver_DaNu.<- function(data, titleLabel = "", subtitle = "", capt
 
 #' Horizontal bar density by first numeric variable
 #' Horizontal coloured bar
-#' @name gg_bar_density_y_hor_DaNu.
+#' @name gg_bar_density_y_hor_DatNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Da-Nu
+#' @section ftypes: Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_density_y_hor_DaNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
+gg_bar_density_y_hor_DatNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0,
                                       reverse = FALSE, ...){
 
-  graph <- gg_bar_density_y_ver_DaNu.(data, titleLabel, subtitle, caption, xLabel, text, type, color_text, yLabel, fillLabel, leg_pos, aggregation, angle_x, reverse, ...)
+  graph <- gg_bar_density_y_ver_DatNum.(data, titleLabel, subtitle, caption, xLabel, text, type, color_text, yLabel, fillLabel, leg_pos, aggregation, angle_x, reverse, ...)
   graph <- graph + coord_flip()
 
   graph

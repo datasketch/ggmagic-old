@@ -1,15 +1,15 @@
 #' Horizontal line
 #' Horizontal Lines
-#' @name gg_line_hor_YeNu.
+#' @name gg_line_hor_YeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_hor_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_line_hor_YeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
@@ -31,17 +31,17 @@ gg_line_hor_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 
 #' Lollipop
 #' lollipop. segment and point
-#' gg_lollipop_YeNu.
-#' @name gg_lollipop_YeNu.
+#' gg_lollipop_YeaNum.
+#' @name gg_lollipop_YeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_lollipop_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_lollipop_YeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                               xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
   f <- fringe(data)
@@ -65,16 +65,16 @@ gg_lollipop_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 
 #' Waterfall
 #' Waterfall
-#' @name gg_waterfall_YeNu.
+#' @name gg_waterfall_YeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_waterfall_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_waterfall_YeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                yLabel =  NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -97,16 +97,16 @@ gg_waterfall_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 
 #' Vertical bar coloured by first variable
 #' vertical coloured bar
-#' @name gg_bar_coloured_x_ver_YeNu.
+#' @name gg_bar_coloured_x_ver_YeaNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
+gg_bar_coloured_x_ver_YeaNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
                                        yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
   f <- fringe(data)
@@ -150,19 +150,19 @@ gg_bar_coloured_x_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
 
 #' Horizontal bar coloured by first variable
 #' Horizontal coloured bar
-#' @name gg_bar_coloured_x_hor_YeNu.
+#' @name gg_bar_coloured_x_hor_YeaNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_x_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
+gg_bar_coloured_x_hor_YeaNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
                                        yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
-  graph <- gg_bar_coloured_x_ver_YeNu.(data, titleLabel, subtitle, caption, xLabel, text, type, color_text, yLabel, leg_pos, aggregation, angle_x, ...)
+  graph <- gg_bar_coloured_x_ver_YeaNum.(data, titleLabel, subtitle, caption, xLabel, text, type, color_text, yLabel, leg_pos, aggregation, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -170,16 +170,16 @@ gg_bar_coloured_x_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", cap
 
 #' Vertical bar density by first numeric variable
 #' vertical coloured bar
-#' @name gg_bar_density_y_ver_YeNu.
+#' @name gg_bar_density_y_ver_YeaNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_density_y_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
+gg_bar_density_y_ver_YeaNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0,
                                       reverse = FALSE, ...){
 
@@ -233,20 +233,20 @@ gg_bar_density_y_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", capt
 
 #' Horizontal bar density by first numeric variable
 #' Horizontal coloured bar
-#' @name gg_bar_density_y_hor_YeNu.
+#' @name gg_bar_density_y_hor_YeaNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_density_y_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
+gg_bar_density_y_hor_YeaNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'percent', color_text = "black",
                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0,
                                       reverse = FALSE, ...){
 
-  graph <- gg_bar_density_y_ver_YeNu.(data, titleLabel, subtitle, caption, xLabel, text, type, color_text, yLabel, fillLabel, leg_pos, aggregation, angle_x, reverse, ...)
+  graph <- gg_bar_density_y_ver_YeaNum.(data, titleLabel, subtitle, caption, xLabel, text, type, color_text, yLabel, fillLabel, leg_pos, aggregation, angle_x, reverse, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -254,16 +254,16 @@ gg_bar_density_y_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", capt
 
 #' Vertical bar
 #' vertical bar
-#' @name gg_bar_ver_YeNu.
+#' @name gg_bar_ver_YeaNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'count', color_text = "black",
+gg_bar_ver_YeaNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,text = TRUE, type = 'count', color_text = "black",
                                        yLabel = NULL, leg_pos = "right", angle_x = 0, aggregation = "sum", ...){
 
   f <- fringe(data)
@@ -307,19 +307,19 @@ gg_bar_ver_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
 
 #' Horizontal bar
 #' horizontal bar
-#' @name gg_bar_hor_YeNu.
+#' @name gg_bar_hor_YeaNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, text = TRUE, type = 'count', color_text = "black",
+gg_bar_hor_YeaNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, text = TRUE, type = 'count', color_text = "black",
                             yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_bar_ver_YeNu.(data, titleLabel, subtitle, caption, xLabel, text, type, color_text, yLabel, leg_pos, angle_x, ...)
+  graph <- gg_bar_ver_YeaNum.(data, titleLabel, subtitle, caption, xLabel, text, type, color_text, yLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -327,16 +327,16 @@ gg_bar_hor_YeNu.<- function(data, titleLabel = "", subtitle = "", caption = "", 
 
 #' Vertical area
 #' Area
-#' @name gg_area_YeNu.
+#' @name gg_area_YeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
+gg_area_YeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -358,16 +358,16 @@ gg_area_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xL
 
 #' Horizon
 #' Horizon
-#' @name gg_horizon_YeNu.
+#' @name gg_horizon_YeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ye-Nu
+#' @section ftypes: Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_horizon_YeNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_horizon_YeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                            yLabel =  NULL, leg_pos = "right",reverse = FALSE, angle_x = 0, ...){
 
   f <- fringe(data)

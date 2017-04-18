@@ -1,15 +1,15 @@
 #' Treemap density first numeric variable
-#' Treemap Fill by second Nu
-#' @name gg_treemap_density_x_CaCaNuNu.
+#' Treemap Fill by second Num
+#' @name gg_treemap_density_x_CatCatNumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Nu-Nu
+#' @section ftypes: Cat-Cat-Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = "", caption = "",
+gg_treemap_density_x_CatCatNumNum. <- function(data, titleLabel = "",  subtitle = "", caption = "",
                                            fillLabel = NULL, reverse = FALSE,
                                            text = TRUE, color_text = "black", aggregation = "sum", leg_pos = "right", ...){
 
@@ -60,17 +60,17 @@ gg_treemap_density_x_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = ""
 }
 
 #' Treemap density second numeric variable
-#' Treemap Density by second Nu
-#' @name gg_treemap_density_y_CaCaNuNu.
+#' Treemap Density by second Num
+#' @name gg_treemap_density_y_CatCatNumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Nu-Nu
+#' @section ftypes: Cat-Cat-Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_density_y_CaCaNuNu. <- function(data, titleLabel = "",  subtitle = "", caption = "",
+gg_treemap_density_y_CatCatNumNum. <- function(data, titleLabel = "",  subtitle = "", caption = "",
                                            fillLabel = NULL,reverse = FALSE,
                                            text = TRUE, color_text = "black", aggregation = "sum", leg_pos = "right", ...){
 

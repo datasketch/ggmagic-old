@@ -1,15 +1,15 @@
 #' Radar
 #' point
-#' @name gg_radar_CaNuP.
+#' @name gg_radar_CatNumP.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-NuP
+#' @section ftypes: Cat-NumP
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_radar_CaNuP. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_radar_CatNumP. <- function(data, titleLabel = "", subtitle = "", caption = "",
                             leg_pos="right",rescale = FALSE,
                             aggregation = "mean",...){
   f <- fringe(data)

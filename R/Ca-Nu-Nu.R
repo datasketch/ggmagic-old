@@ -1,15 +1,15 @@
 #' Scatter + Aggregation on both numeric variables
 #' pointlines
-#' @name gg_scatter_agg_CaNuNu.
+#' @name gg_scatter_agg_CatNumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu-Nu
+#' @section ftypes: Cat-Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_scatter_agg_CaNuNu. <- function(data,titleLabel = "", subtitle = "", caption = "",
+gg_scatter_agg_CatNumNum. <- function(data,titleLabel = "", subtitle = "", caption = "",
                                xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0,
                                aggregation = "sum", shape_type = 19, leg_pos = "right", ...){
 
@@ -40,16 +40,16 @@ gg_scatter_agg_CaNuNu. <- function(data,titleLabel = "", subtitle = "", caption 
 
 #' Scatter + Aggregation on both numeric variables + trend
 #' pointlines
-#' @name gg_scatter_agg_trend_CaNuNu.
+#' @name gg_scatter_agg_trend_CatNumNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu-Nu
+#' @section ftypes: Cat-Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_scatter_agg_trend_CaNuNu. <- function(data,titleLabel = "", subtitle = "", caption = "",
+gg_scatter_agg_trend_CatNumNum. <- function(data,titleLabel = "", subtitle = "", caption = "",
                                      xLabel = NULL, yLabel=NULL, fillLabel = NULL, angle_x = 0,
                                      aggregation = "sum", se = FALSE, shape_type = 19, leg_pos = "right", ...){
 
@@ -89,16 +89,16 @@ gg_scatter_agg_trend_CaNuNu. <- function(data,titleLabel = "", subtitle = "", ca
 
 #' Steam
 #' Steamgraph
-#' @name gg_steam_CaNuNu.
+#' @name gg_steam_CatNumNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu-Nu
+#' @section ftypes: Cat-Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_steam_CatNumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel = NULL, fillLabel = NULL, leg_pos="right", angle_x = 0, aggregation = "sum", ...){
 
   f <- fringe(data)
@@ -132,17 +132,17 @@ gg_steam_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Line
 #' lines
-#' @name gg_line_CaNuNu.
+#' @name gg_line_CatNumNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu-Nu
+#' @section ftypes: Cat-Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                            yLabel = NULL, fillLabel, leg_pos="right", angle_x = 0, ...){
+gg_line_CatNumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                            yLabel = NULL, fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -166,16 +166,16 @@ gg_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 
 #' Line + point
 #' Point Lines
-#' @name gg_point_line_CaNuNu.
+#' @name gg_point_line_CatNumNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu-Nu
+#' @section ftypes: Cat-Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_point_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_point_line_CatNumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                   yLabel = NULL, fillLabel = NULL, leg_pos = "right", shape_type = 19, angle_x = 0,  ...){
 
   f <- fringe(data)
@@ -200,16 +200,16 @@ gg_point_line_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption 
 
 #' Scatter
 #' Point
-#' @name gg_scatter_CaNuNu.
+#' @name gg_scatter_CatNumNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu-Nu
+#' @section ftypes: Cat-Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_scatter_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_scatter_CatNumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                               yLabel = NULL, fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
@@ -235,16 +235,16 @@ gg_scatter_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "
 
 #' Scatter + Trend
 #' Point
-#' @name gg_scatter_trend_CaNuNu.
+#' @name gg_scatter_trend_CatNumNum.
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Nu-Nu
+#' @section ftypes: Cat-Num-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_scatter_trend_CaNuNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_scatter_trend_CatNumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                yLabel = NULL, fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)

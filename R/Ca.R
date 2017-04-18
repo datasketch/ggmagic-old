@@ -1,15 +1,15 @@
 #' Waffle
 #' Waffle
-#' @name gg_waffle_Ca.
+#' @name gg_waffle_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "", fillLabel = NULL,
+gg_waffle_Cat. <- function(data, square_size = 1, rows_number = 5, titleLabel = "", fillLabel = NULL,
                           subtitle = "", caption = "", leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getClabels(f)
@@ -37,16 +37,16 @@ gg_waffle_Ca. <- function(data, square_size = 1, rows_number = 5, titleLabel = "
 
 #' Vertical coloured bar
 #' Vertical coloured bars
-#' @name gg_bar_coloured_ver_Ca.
+#' @name gg_bar_coloured_ver_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_coloured_ver_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                     xLabel = NULL, yLabel = NULL,
                                     text = TRUE, type = 'count', color_text = "black",
                                     leg_pos = "right", angle_x = 0, ...){
@@ -89,21 +89,21 @@ gg_bar_coloured_ver_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 
 #' Horizontal coloured bar
 #' Horizontal coloured Bars
-#' @name gg_bar_coloured_hor_Ca.
+#' @name gg_bar_coloured_hor_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_coloured_hor_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                     xLabel = NULL, yLabel = NULL,
                                     text = TRUE, type = 'count', color_text = "black",
                                     leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_bar_coloured_ver_Ca.(data, titleLabel, subtitle, caption, xLabel,
+  graph <- gg_bar_coloured_ver_Cat.(data, titleLabel, subtitle, caption, xLabel,
                                    yLabel, text, type, color_text, leg_pos, angle_x, ...) +  coord_flip()
   return(graph)
 
@@ -112,16 +112,16 @@ gg_bar_coloured_hor_Ca. <- function(data, titleLabel = "", subtitle = "", captio
 
 #' Vertical bar highlighting some parameter
 #' Vertical coloured by parameter bars
-#' @name gg_bar_coloured_parameter_ver_Ca.
+#' @name gg_bar_coloured_parameter_ver_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_coloured_parameter_ver_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                               xLabel = NULL, yLabel = NULL, parameter = NULL,
                                               text = TRUE, type = 'count', color_text = "black",
                                               leg_pos = "right", angle_x = 0, ...){
@@ -170,21 +170,21 @@ gg_bar_coloured_parameter_ver_Ca. <- function(data, titleLabel = "", subtitle = 
 
 #' Horizontal bar highlighting some parameter
 #' Horizontal coloured by parameter Bars
-#' @name gg_bar_coloured_parameter_hor_Ca.
+#' @name gg_bar_coloured_parameter_hor_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_coloured_parameter_hor_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                               xLabel = NULL, yLabel = NULL, parameter = NULL,
                                               text = TRUE, type = 'count', color_text = "black",
                                               leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_bar_coloured_parameter_ver_Ca.(data, titleLabel, subtitle, caption, xLabel, yLabel,
+  graph <- gg_bar_coloured_parameter_ver_Cat.(data, titleLabel, subtitle, caption, xLabel, yLabel,
                                              parameter, text, type, color_text, leg_pos, angle_x, ...)
 
   graph <- graph + coord_flip()
@@ -193,16 +193,16 @@ gg_bar_coloured_parameter_hor_Ca. <- function(data, titleLabel = "", subtitle = 
 
 #' Vertical bar
 #' Vertical bars
-#' @name gg_bar_ver_Ca.
+#' @name gg_bar_ver_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+gg_bar_ver_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                            text = TRUE, type = 'count', color_text = "black",
                            leg_pos = "right", angle_x = 0, ...){
   f <- fringe(data)
@@ -242,20 +242,20 @@ gg_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 
 #' Horizontal bar
 #' Horizontal Bars
-#' @name gg_bar_hor_Ca.
+#' @name gg_bar_hor_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+gg_bar_hor_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                            text = TRUE, type = 'count', color_text = "black",
                            leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_bar_ver_Ca.(data, titleLabel, subtitle, caption, xLabel, yLabel, text, type,
+  graph <- gg_bar_ver_Cat.(data, titleLabel, subtitle, caption, xLabel, yLabel, text, type,
                           color_text, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
   graph
@@ -263,16 +263,16 @@ gg_bar_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 
 #' Ordered vertical bar
 #' Ordered vertical Bars
-#' @name gg_bar_ordered_ver_Ca.
+#' @name gg_bar_ordered_ver_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_ordered_ver_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                    yLabel = NULL, text = TRUE, type = 'count', color_text = "black",
                                    leg_pos = "right", angle_x = 0, ...){
 
@@ -314,20 +314,20 @@ gg_bar_ordered_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption
 
 #' Ordered horizontal bar
 #' Ordered horizontal Bars
-#' @name gg_bar_ordered_hor_Ca.
+#' @name gg_bar_ordered_hor_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_ordered_hor_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                    yLabel = NULL, text = TRUE, type = 'count', color_text = "black",
                                    leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_bar_ordered_ver_Ca.(data, titleLabel, subtitle, caption, xLabel, yLabel, text, type, color_text,
+  graph <- gg_bar_ordered_ver_Cat.(data, titleLabel, subtitle, caption, xLabel, yLabel, text, type, color_text,
                                   leg_pos, angle_x, ...)
 
   graph <- graph + coord_flip()
@@ -337,16 +337,16 @@ gg_bar_ordered_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption
 
 #' Pie
 #' Pie
-#' @name gg_pie_Ca.
+#' @name gg_pie_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_pie_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "",
                        fillLabel = NULL, text = TRUE, type = 'count', color_text = "black", leg_pos = "right", ...){
 
   f <- fringe(data)
@@ -387,16 +387,16 @@ gg_pie_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #Width debe de ser un parámetro.  0 < width < 1.
 #' Donut
 #' Donut
-#' @name gg_donut_Ca.
+#' @name gg_donut_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_donut_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                          width = 0.3, text = TRUE, type = 'count', color_text = "black", leg_pos = "right", ...){
 
   f <- fringe(data)
@@ -436,16 +436,16 @@ gg_donut_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fil
 
 #' Vertical dot bar
 #' Vertical Dot Bar
-#' @name gg_dot_bar_ver_Ca.
+#' @name gg_dot_bar_ver_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_dot_bar_ver_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
@@ -476,19 +476,19 @@ gg_dot_bar_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "
 
 #' Horizontal dot bar
 #' Horizontal Dot Bar
-#' @name gg_dot_bar_hor_Ca.
+#' @name gg_dot_bar_hor_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
+gg_dot_bar_hor_Cat. <- function(data, titleLabel = "", xLabel = NULL, yLabel = NULL,
                                subtitle = "", caption = "", leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_dot_bar_ver_Ca.(data, titleLabel, xLabel, yLabel, subtitle = subtitle, caption = caption,
+  graph <- gg_dot_bar_ver_Cat.(data, titleLabel, xLabel, yLabel, subtitle = subtitle, caption = caption,
                               leg_pos, angle_x, ...)
 
   graph <- graph + coord_flip()
@@ -498,16 +498,16 @@ gg_dot_bar_hor_Ca. <- function(data, titleLabel = "", xLabel = NULL, yLabel = NU
 
 #' Horizontal line
 #' Horizontal Line
-#' @name gg_line_hor_Ca.
+#' @name gg_line_hor_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
+gg_line_hor_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
                             caption = "", yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
@@ -535,19 +535,19 @@ gg_line_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
 
 #' Vertical line
 #' Vertical Line
-#' @name gg_line_ver_Ca.
+#' @name gg_line_ver_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
+gg_line_ver_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
                             caption = "", yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_line_hor_Ca.(data, titleLabel, xLabel, subtitle, caption, yLabel, leg_pos, angle_x, ...)
+  graph <- gg_line_hor_Cat.(data, titleLabel, xLabel, subtitle, caption, yLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -555,16 +555,16 @@ gg_line_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
 
 #' Horizontal line + point
 #' Horizontal Line Point
-#' @name gg_line_point_hor_Ca.
+#' @name gg_line_point_hor_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
+gg_line_point_hor_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
                                   caption = "", yLabel = NULL, leg_pos = "right",
                                   shape_type = 19, angle_x = 0, ...){
 
@@ -593,20 +593,20 @@ gg_line_point_hor_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
 
 #' Vertical line + point
 #' Vertical Line Point
-#' @name gg_line_point_ver_Ca.
+#' @name gg_line_point_ver_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_point_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
+gg_line_point_ver_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
                                   caption = "", yLabel = NULL, leg_pos = "right",
                                   shape_type = 19, angle_x = 0, ...){
 
-  graph <- gg_line_point_hor_Ca.(data, titleLabel, xLabel, subtitle, caption, yLabel, leg_pos, shape_type, angle_x, ...)
+  graph <- gg_line_point_hor_Cat.(data, titleLabel, xLabel, subtitle, caption, yLabel, leg_pos, shape_type, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -614,16 +614,16 @@ gg_line_point_ver_Ca. <- function(data, titleLabel = '', xLabel = NULL, subtitle
 
 #' Gauge
 #' Gauge
-#' @name gg_gauge_Ca.
+#' @name gg_gauge_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_gauge_Ca. <- function(data, titleLabel = '', subtitle = '', caption = '', ncol = 2, ...){
+gg_gauge_Cat. <- function(data, titleLabel = '', subtitle = '', caption = '', ncol = 2, ...){
 
   gg.gauge <- function(pos, breaks=c(0,30,70,100)) {
     require(ggplot2)
@@ -675,16 +675,16 @@ gg_gauge_Ca. <- function(data, titleLabel = '', subtitle = '', caption = '', nco
 
 #' Dial gauge
 #' Gauge
-#' @name gg_gauge_dial_Ca.
+#' @name gg_gauge_dial_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_gauge_dial_Ca. <- function(data, ...){
+gg_gauge_dial_Cat. <- function(data, ...){
 
   gg.gauge <- function(pos, breaks=c(0,50,100)) {
     require(ggplot2)
@@ -732,16 +732,16 @@ gg_gauge_dial_Ca. <- function(data, ...){
 
 #' Vertical stacked bar
 #' Single Vertical Stacked Bar
-#' @name gg_bar_single_stacked_ver_Ca.
+#' @name gg_bar_single_stacked_ver_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_single_stacked_ver_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                           fillLabel = NULL, leg_pos = "right", width = 0.3,
                                           text = TRUE, type = "count", color_text = "black", ...){
 
@@ -783,20 +783,20 @@ gg_bar_single_stacked_ver_Ca. <- function(data, titleLabel = "", subtitle = "", 
 
 #' Horizontal stacked bar
 #' Single Horizontal Stacked Bar
-#' @name gg_bar_single_stacked_hor_Ca.
+#' @name gg_bar_single_stacked_hor_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_single_stacked_hor_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                           fillLabel = NULL, leg_pos = "right", width = 0.3,
                                           text = TRUE, type = "count", color_text = "black", ...){
 
-  graph <- gg_bar_single_stacked_ver_Ca.(data, titleLabel, subtitle, caption, fillLabel, leg_pos, width,
+  graph <- gg_bar_single_stacked_ver_Cat.(data, titleLabel, subtitle, caption, fillLabel, leg_pos, width,
                                          text, type, color_text)
   graph <- graph + coord_flip()
 
@@ -805,16 +805,16 @@ gg_bar_single_stacked_hor_Ca. <- function(data, titleLabel = "", subtitle = "", 
 
 #' Bubble
 #' Bubble
-#' @name gg_bubble_Ca.
+#' @name gg_bubble_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bubble_Cat.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                            shape_type = 19, angle_x = 0, text = TRUE, type = 'count',
                            color_text = "black",  ...){
 
@@ -863,16 +863,16 @@ gg_bubble_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", x
 
 #' Bubble coloured
 #' Coloured Bubble
-#' @name gg_bubble_coloured_Ca.
+#' @name gg_bubble_coloured_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bubble_coloured_Cat.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                     fillLabel = NULL, shape_type = 19, angle_x = 0,  text = TRUE, type = 'count',
                                     color_text = "black",  ...){
 
@@ -923,16 +923,16 @@ gg_bubble_coloured_Ca.  <- function(data, titleLabel = "", subtitle = "", captio
 
 #' Polar bar
 #' Polar Bar
-#' @name gg_bar_polar_Ca.
+#' @name gg_bar_polar_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "", subtitle = "", caption = "",
+gg_bar_polar_Cat. <- function(data, width = 0.95, titleLabel = "", subtitle = "", caption = "",
                              fillLabel = NULL, leg_pos= "right", text = TRUE, type = "count", color_text = "black", ...){
 
   f <- fringe(data)
@@ -972,16 +972,16 @@ gg_bar_polar_Ca. <- function(data, width = 0.95, titleLabel = "", subtitle = "",
 
 #' Bullseye
 #' Bullseye
-#' @name gg_bullseye_Ca.
+#' @name gg_bullseye_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bullseye_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_bullseye_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                             leg_pos="right", ...){
 
   f <- fringe(data)
@@ -1003,16 +1003,16 @@ gg_bullseye_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 
 #' Circular bar
 #' Circular Bar
-#' @name gg_bar_circular_Ca.
+#' @name gg_bar_circular_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_bar_circular_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                 leg_pos="right", width = 0.85, text = TRUE, color_text = "black", type = "count", ...){
 
   f <- fringe(data)
@@ -1052,17 +1052,17 @@ gg_bar_circular_Ca. <- function(data, titleLabel = "", subtitle = "", caption = 
 }
 
 #' Treemap coloured by first variable
-#' Treemap fill by first Ca
-#' @name gg_treemap_Ca.
+#' Treemap fill by first Cat
+#' @name gg_treemap_Cat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_treemap_Cat. <- function(data, titleLabel = "", subtitle = "", caption = "",
                            text = TRUE, color_text = "black", ...){
 
   f <- fringe(data)
@@ -1095,15 +1095,15 @@ gg_treemap_Ca. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Bubble
 #' bubbles
-#' @name gg_bubble_Ca2.
+#' @name gg_bubble_Cat2.
 #' @param x A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca
+#' @section ftypes: Cat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bubble_Ca2. <- function(data, titleLabel = "", subtitle = "", caption = "",  sep = 3, lim_inf =-40,
+gg_bubble_Cat2. <- function(data, titleLabel = "", subtitle = "", caption = "",  sep = 3, lim_inf =-40,
                              lim_sup = 40, fillLabel = NULL, ...){
 
   f <- fringe(data)

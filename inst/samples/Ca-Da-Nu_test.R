@@ -1,4 +1,4 @@
-# Ca-Da
+# Cat-Dat
 
 library(devtools)
 load_all()
@@ -6,12 +6,12 @@ document()
 install()
 library(ggmagic)
 
-dataCaDaNu <- sampleData('Ca-Da-Nu')
-gg_scatter_hor_CaDaNu.(dataCaDaNu)
+dataCatDatNum <- sampleData('Cat-Dat-Num')
+gg_scatter_hor_CatDatNum.(dataCatDatNum)
 
 
-dataCaDaNu <- sampleData('Ca-Da-Nu', nrow = 400)
-gg_steam_CaDaNu.(dataCaDaNu)
+dataCatDatNum <- sampleData('Cat-Dat-Num', nrow = 400)
+gg_steam_CatDatNum.(dataCatDatNum)
 
 dfData = data.frame(
   time = 1:1000,
@@ -27,14 +27,14 @@ dfData = data.frame(
 )
 
 dfData <- dfData %>% select(cat, time, value)
-gg_steam_CaDaNu.(dfData)
+gg_steam_CatDatNum.(dfData)
 
-gg_area_stacked_ver_CaDaNu.(dfData)
-gg_area_stacked_hor_CaDaNu.(dfData)
-gg_area_stacked_100_ver_CaDaNu.(dfData)
-gg_area_stacked_100_hor_CaDaNu.(dfData)
+gg_area_stacked_ver_CatDatNum.(dfData)
+gg_area_stacked_hor_CatDatNum.(dfData)
+gg_area_stacked_100_ver_CatDatNum.(dfData)
+gg_area_stacked_100_hor_CatDatNum.(dfData)
 
-gg_multi_line_CaDaNu.(dataCaDaNu)
-gg_multi_line_point_CaDaNu.(dataCaDaNu)
+gg_multi_line_CatDatNum.(dataCatDatNum)
+gg_multi_line_point_CatDatNum.(dataCatDatNum)
 
-gg_bar_stacked_ver_CaDaNu.(dataCaDaNu, angle_x = 45, hline = c(500,1000))
+gg_bar_stacked_ver_CatDatNum.(dataCatDatNum, angle_x = 45, hline = c(500,1000))

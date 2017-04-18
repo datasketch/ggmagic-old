@@ -1,15 +1,15 @@
 #' Horizontal line + point
 #' pointlines
-#' @name gg_pointline_hor_CaDa.
+#' @name gg_pointline_hor_CatDat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da
+#' @section ftypes: Cat-Dat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pointline_hor_CaDa. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_pointline_hor_CatDat. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                    xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0, shape_type = 19, ...){
   f <- fringe(data)
   nms <- getClabels(f)
@@ -33,19 +33,19 @@ gg_pointline_hor_CaDa. <- function(data, titleLabel = "", subtitle = "", caption
 
 #' Vertical line + point
 #' pointlines
-#' @name gg_pointline_ver_CaDa.
+#' @name gg_pointline_ver_CatDat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da
+#' @section ftypes: Cat-Dat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_pointline_ver_CaDa. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_pointline_ver_CatDat. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                    xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
-  graph <- gg_pointline_hor_CaDa.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel,
+  graph <- gg_pointline_hor_CatDat.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel,
                                   angle_x, shape_type, ...)
 
   graph <- graph + coord_flip()
@@ -57,16 +57,16 @@ gg_pointline_ver_CaDa. <- function(data, titleLabel = "", subtitle = "", caption
 
 #' Histogram
 #' histogram
-#' @name gg_histogram_CaDa.
+#' @name gg_histogram_CatDat.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da
+#' @section ftypes: Cat-Dat
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_histogram_CaDa. <- function(data, titleLabel = "", subtitle = "", caption = "",xLabel = NULL,
+gg_histogram_CatDat. <- function(data, titleLabel = "", subtitle = "", caption = "",xLabel = NULL,
                                yLabel = NULL, fillLabel = NULL, angle_x = 0, leg_pos = "right", ...){
   f <- fringe(data)
   nms <- getClabels(f)

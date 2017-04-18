@@ -1,15 +1,15 @@
 #' Horizontal scatter
 #' pointlines
-#' @name gg_scatter_hor_CaDaNu.
+#' @name gg_scatter_hor_CatDatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Cat-Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_scatter_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_scatter_hor_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                    yLabel = NULL, fillLabel = NULL, angle_x = 0, shape_type = 19, leg_pos = "right", ...){
 
   f <- fringe(data)
@@ -33,19 +33,19 @@ gg_scatter_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption
 
 #' Vertical scatter
 #' pointlines
-#' @name gg_scatter_ver_CaDaNu.
+#' @name gg_scatter_ver_CatDatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Cat-Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_scatter_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_scatter_ver_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                    yLabel = NULL, fillLabel = NULL, angle_x = 0, shape_type = 19, leg_pos = "right", ...){
 
-  graph <- gg_scatter_hor_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, angle_x, shape_type, leg_pos, ...)
+  graph <- gg_scatter_hor_CatDatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, angle_x, shape_type, leg_pos, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -53,16 +53,16 @@ gg_scatter_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption
 
 #' Steam
 #' Steam
-#' @name gg_steam_CaDaNu.
+#' @name gg_steam_CatDatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Cat-Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_steam_CaDaNu. <- function (data, titleLabel = "", subtitle = "", caption = "",
+gg_steam_CatDatNum. <- function (data, titleLabel = "", subtitle = "", caption = "",
                               xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
 
@@ -98,16 +98,16 @@ gg_steam_CaDaNu. <- function (data, titleLabel = "", subtitle = "", caption = ""
 
 #' Vertical stacked area
 #' Stacked Vertical Area
-#' @name gg_area_stacked_ver_CaDaNu.
+#' @name gg_area_stacked_ver_CatDatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Cat-Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_ver_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL,
                                             leg_pos = "right", angle_x = 0, ...){
 
@@ -142,20 +142,20 @@ gg_area_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
 
 #' Horizontal stacked area
 #' Stacked Horizontal Area
-#' @name gg_area_stacked_hor_CaDaNu.
+#' @name gg_area_stacked_hor_CatDatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Cat-Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_hor_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                         yLabel = NULL, fillLabel = NULL,
                                         leg_pos = "right", angle_x = 0,...){
 
-  graph <- gg_area_stacked_ver_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x, ...)
+  graph <- gg_area_stacked_ver_CatDatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -163,16 +163,16 @@ gg_area_stacked_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
 
 #' Vertical 100% stacked area
 #' Stacked Vertical Area 100
-#' @name gg_area_stacked_100_ver_CaDaNu.
+#' @name gg_area_stacked_100_ver_CatDatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Cat-Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_100_ver_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                           yLabel = NULL, fillLabel = NULL,
                                           leg_pos = "right", angle_x = 0, ...){
 
@@ -208,20 +208,20 @@ gg_area_stacked_100_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
 
 #' Horizontal 100% stacked area
 #' Stacked Horizontal Area 100
-#' @name gg_area_stacked_100_hor_CaDaNu.
+#' @name gg_area_stacked_100_hor_CatDatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Cat-Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_area_stacked_100_hor_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL,
                                             leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_area_stacked_100_ver_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x, ...)
+  graph <- gg_area_stacked_100_ver_CatDatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -229,16 +229,16 @@ gg_area_stacked_100_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = ""
 
 #' Grouped line + point
 #' Grouped Line Color Point
-#' @name gg_multi_line_point_CaDaNu.
+#' @name gg_multi_line_point_CatDatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Cat-Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+gg_multi_line_point_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                                         fillLabel = NULL, leg_pos="right", shape_type = 19,
                                         angle_x = 0, ...){
 
@@ -269,16 +269,16 @@ gg_multi_line_point_CaDaNu. <- function(data, titleLabel = "", subtitle = "", ca
 
 #' Grouped line
 #' Grouped Line Coloured
-#' @name gg_multi_line_CaDaNu.
+#' @name gg_multi_line_CatDatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Cat-Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_multi_line_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+gg_multi_line_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                                   fillLabel = NULL, leg_pos="right", shape_type = 19,
                                   angle_x = 0, ...){
 
@@ -303,16 +303,16 @@ gg_multi_line_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption 
 
 #' Vertical stacked bar
 #' vertical stacked bar graph
-#' @name gg_bar_stacked_ver_CaDaNu.
+#' @name gg_bar_stacked_ver_CatDatNum.
 #' @param x A category.
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Cat-Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_stacked_ver_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, aggregation = "sum",
                                        hline = NULL, text = TRUE, type = "count", color_text = "black", ...){
   f <- fringe(data)
@@ -373,20 +373,20 @@ gg_bar_stacked_ver_CaDaNu. <- function(data, titleLabel = "", subtitle = "", cap
 
 #' Horizontal stacked bar
 #' horizontal stacked bar graph
-#' @name gg_bar_stacked_hor_CaDaNu.
+#' @name gg_bar_stacked_hor_CatDatNum.
 #' @param x A category.
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Da-Nu
+#' @section ftypes: Cat-Dat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_hor_CaDaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_bar_stacked_hor_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, aggregation = "sum",
                                        hline = NULL, text = TRUE, type = "count", color_text = "black", ...){
 
-  graph <- gg_bar_stacked_ver_CaDaNu.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x,
+  graph <- gg_bar_stacked_ver_CatDatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x,
                                       aggregation, hline, text, type, color_text, ...)
   graph <- graph + coord_flip()
 

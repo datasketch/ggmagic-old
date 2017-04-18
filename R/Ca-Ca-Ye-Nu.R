@@ -1,15 +1,15 @@
 #' Horizontal 100% stacked bar by first variable + facet by second variable
 #' Stacked
-#' @name gg_bar_stacked_100_hor_CaCaYeNu.
+#' @name gg_bar_stacked_100_hor_CatCatYeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ye-Nu
+#' @section ftypes: Cat-Cat-Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_100_hor_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_stacked_100_hor_CatCatYeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                              fillLabel = NULL, xLabel = NULL, yLabel = NULL, leg_pos = 'right',
                                              aggregation = "sum", text = TRUE, type = "count", color_text = "black",
                                              angle_x = 0, ...){
@@ -71,16 +71,16 @@ gg_bar_stacked_100_hor_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "
 
 #' Vertical 100% stacked bar by first variable + facet by second variable
 #' Stacked
-#' @name gg_bar_stacked_100_ver_CaCaYeNu.
+#' @name gg_bar_stacked_100_ver_CatCatYeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ye-Nu
+#' @section ftypes: Cat-Cat-Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_100_ver_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_stacked_100_ver_CatCatYeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                              fillLabel = NULL, xLabel = NULL, yLabel = NULL, leg_pos = 'right',
                                              aggregation = "sum", text = TRUE, type = "count", color_text = "black",
                                              angle_x = 0, ...){
@@ -141,16 +141,16 @@ gg_bar_stacked_100_ver_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "
 
 #' Vertical stacked bar by first variable + facet by second variable
 #' Stacked
-#' @name gg_bar_stacked_ver_CaCaYeNu.
+#' @name gg_bar_stacked_ver_CatCatYeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ye-Nu
+#' @section ftypes: Cat-Cat-Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_ver_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_stacked_ver_CatCatYeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                          fillLabel = NULL, xLabel = NULL, yLabel = NULL, leg_pos = 'right',
                                          aggregation = "sum", text = TRUE, type = "count", color_text = "black",
                                          angle_x = 0, ...){
@@ -210,21 +210,21 @@ gg_bar_stacked_ver_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "", c
 
 #' Horizontal stacked bar by first variable + facet by second variable
 #' Stacked
-#' @name gg_bar_stacked_hor_CaCaYeNu.
+#' @name gg_bar_stacked_hor_CatCatYeaNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ye-Nu
+#' @section ftypes: Cat-Cat-Yea-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_hor_CaCaYeNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_stacked_hor_CatCatYeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                          fillLabel = NULL, xLabel = NULL, yLabel = NULL, leg_pos = 'right',
                                          aggregation = "sum", text = TRUE, type = "count", color_text = "black",
                                          angle_x = 0, ...){
 
-  graph <- gg_bar_stacked_ver_CaCaYeNu.(data, titleLabel, subtitle, caption, fillLabel, xLabel,
+  graph <- gg_bar_stacked_ver_CatCatYeaNum.(data, titleLabel, subtitle, caption, fillLabel, xLabel,
                                         yLabel, leg_pos, aggregation, text, type, color_text, angle_x, ...)
 
   graph <- graph + coord_flip()

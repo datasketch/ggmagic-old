@@ -2,36 +2,36 @@
 load_all()
 document()
 
-dataNu <- data.frame(num = rnorm(150))
+dataNum <- data.frame(num = rnorm(150))
 
 # Horizon
-gg_horizon_Nu.(dataNu)
+gg_horizon_Num.(dataNum)
 
 # Waterfall
-gg_waterfall_Nu.(dataNu)
+gg_waterfall_Num.(dataNum)
 
 #Histogram + density + dots (with selection options)
-gg_hist_Nu.(dataNu)
-gg_hist_dens_Nu.(dataNu)
-gg_cumm_dist_Nu.(dataNu)
+gg_hist_Num.(dataNum)
+gg_hist_dens_Num.(dataNum)
+gg_dist_cum_Num.(dataNum)
 
-gg_cumm_dist_flip_Nu.(dataNu)
+#gg_cumm_dist_flip_Num.(dataNum)
 
-gg_line_point_Nu.(dataNu)
-gg_line_point_flip_Nu.(dataNu)
+gg_line_point_Num.(dataNum)
+gg_line_point_flip_Num.(dataNum)
 
-gg_point_Nu.(dataNu, type=2)
-gg_point_flip_Nu.(dataNu)
+gg_point_Num.(dataNum, type=2)
+gg_point_flip_Num.(dataNum)
 
-gg_density_hist_Nu.(dataNu)
-gg_box_Nu.(dataNu)
-gg_box_flip_Nu.(dataNu)
+gg_density_hist_Num.(dataNum)
+gg_box_Num.(dataNum)
+gg_box_flip_Num.(dataNum)
 
-gg_violin_Nu.(dataNu)
-gg_violin_flip_Nu.(dataNu)
+gg_violin_Num.(dataNum)
+gg_violin_flip_Num.(dataNum)
 
-gg_dot_bar_Nu.(dataNu)
-gg_dot_bar_flip_Nu.(dataNu)
+gg_dot_bar_Num.(dataNum)
+gg_dot_bar_flip_Num.(dataNum)
 
 
 
@@ -45,7 +45,7 @@ gg_dot_bar_flip_Nu.(dataNu)
 #Conversor de num?rico a categ?rico por rangos
 
 
-toCatRange <- function(dataNu, nCat){
+toCatRange <- function(dataNum, nCat){
 
   calRange <- function(a, range, base) base + (a*range)
 
@@ -56,14 +56,14 @@ toCatRange <- function(dataNu, nCat){
   }
 
 
-  rangeSize <- (max(dataNu) - min(dataNu))/nCat
-  maxRanges <- sapply(X = c(1:nCat), FUN =  calRange, range = rangeSize, base = min(dataNu))
+  rangeSize <- (max(dataNum) - min(dataNum))/nCat
+  maxRanges <- sapply(X = c(1:nCat), FUN =  calRange, range = rangeSize, base = min(dataNum))
   minRanges <- maxRanges - rangeSize
   matchRanges <- data.frame(minRanges, maxRanges)
   matchRanges$range <- paste("[", round(matchRanges$minRanges, 2), " - ", round(matchRanges$maxRanges, 2), "]", sep = "")
 
   getValue(55, matchRanges)
-  result <- sapply(X = dataNu[, 1], FUN = getValue, data = matchRanges)
+  result <- sapply(X = dataNum[, 1], FUN = getValue, data = matchRanges)
   result <- data.frame(result); names(result)[1] <- "a"
 
   return(result)

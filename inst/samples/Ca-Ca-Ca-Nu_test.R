@@ -5,13 +5,13 @@ install()
 library(ggmagic)
 
 data("G20")
-dataCaCaCaNu <- G20 %>% select(Region, Country, Economic.classification, HDI)
+dataCatCatCatNum <- G20 %>% select(Region, Country, Econ.classification, HDI)
 
 # Treemap
-gg_treemap_x_CaCaCaNu.(dataCaCaCaNu)
-gg_treemap_y_CaCaCaNu.(dataCaCaCaNu)
-gg_treemap_z_CaCaCaNu.(dataCaCaCaNu)
-gg_bar_stacked_100_hor_CaCaCaNu.(data = sampleData('Ca-Ca-Ca-Nu',addNA = FALSE))
+gg_treemap_x_CatCatCatNum.(dataCatCatCatNum)
+gg_treemap_y_CatCatCatNum.(dataCatCatCatNum)
+gg_treemap_z_CatCatCatNum.(dataCatCatCatNum)
+gg_bar_stacked_100_hor_CatCatCatNum.(data = sampleData('Cat-Cat-Cat-Num',addNA = FALSE))
 
 
 lev1 <- c(rep('colombia',5), rep('usa',5))
@@ -23,4 +23,5 @@ set.seed(1)
 data <- data.frame(lev1, lev2, lev3, val)
 
 
-gg_sunburst_CaCaCaNu.(data)
+gg_sunburst_CatCatCatNum.(data)
+

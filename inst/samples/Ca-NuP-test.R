@@ -5,8 +5,8 @@ install()
 library(ggmagic)
 
 
-data <- sampleData("Ca-NuP", nrow = 4, gt0 = TRUE)
+data <- sampleData("Cat-NumP", nrow = 4, gt0 = TRUE)
 data
-gg_radar_CaNuP.(data, rescale = TRUE)
+gg_radar_CatNumP.(data, rescale = TRUE)
 
 

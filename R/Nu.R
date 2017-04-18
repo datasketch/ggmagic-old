@@ -1,15 +1,15 @@
 #' Horizon
 #' Horizon
-#' @name gg_horizon_Nu.
+#' @name gg_horizon_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_horizon_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_horizon_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                            yLabel =  NULL, leg_pos = "right", reverse = FALSE, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -41,16 +41,16 @@ gg_horizon_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", x
 
 #' Waterfall
 #' Waterfall
-#' @name gg_waterfall_Nu.
+#' @name gg_waterfall_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_waterfall_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_waterfall_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel =  NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -76,16 +76,16 @@ gg_waterfall_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Histogram
 #' Histogram
-#' @name gg_hist_Nu.
+#' @name gg_hist_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_hist_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                         yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -113,16 +113,16 @@ gg_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLab
 
 #' Histogram + density
 #' Histograms with density
-#' @name gg_hist_dens_Nu.
+#' @name gg_hist_dens_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_hist_dens_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_hist_dens_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                              yLabel = NULL,  alfa = 0.5, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -149,16 +149,16 @@ gg_hist_dens_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Cumulative distribution function
 #' Cumulative distribution function
-#' @name gg_dist_cum_Nu.
+#' @name gg_dist_cum_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dist_cum_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_dist_cum_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                             yLabel = NULL, angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
@@ -182,16 +182,16 @@ gg_dist_cum_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 
 #' Vertical line + point
 #' Line wiht point plot
-#' @name gg_line_point_Nu.
+#' @name gg_line_point_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_point_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                               yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -217,19 +217,19 @@ gg_line_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 
 #' Horizontal line + point
 #' Line with point plot
-#' @name gg_line_point_flip_Nu.
+#' @name gg_line_point_flip_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_point_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_point_flip_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                    yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
-  graph <- gg_line_point_Nu.(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, angle_x = 0, ...)
+  graph <- gg_line_point_Num.(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, angle_x = 0, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -237,16 +237,16 @@ gg_line_point_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption
 
 #' Vertical scatter
 #' Scatter plot
-#' @name gg_point_Nu.
+#' @name gg_point_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_point_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                          yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -270,19 +270,19 @@ gg_point_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLa
 
 #' Horizontal scatter
 #' Line plot
-#' @name gg_point_flip_Nu.
+#' @name gg_point_flip_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_point_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_point_flip_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                               yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
-  graph <- gg_point_Nu.(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, angle_x, ...)
+  graph <- gg_point_Num.(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -291,16 +291,16 @@ gg_point_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = ""
 
 #' Histogram density
 #' density histogram
-#' @name gg_density_hist_Nu.
+#' @name gg_density_hist_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_density_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_density_hist_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                 yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -321,16 +321,16 @@ gg_density_hist_Nu. <- function(data, titleLabel = "", subtitle = "", caption = 
 
 #' Vertical boxplot
 #' Box plot
-#' @name gg_box_Nu.
+#' @name gg_box_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_box_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
+gg_box_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
                        xLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -352,19 +352,19 @@ gg_box_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabe
 
 #' Horizontal boxplot
 #' Box plot flipped
-#' @name gg_box_flip_Nu.
+#' @name gg_box_flip_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_box_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
+gg_box_flip_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
                             xLabel = NULL, angle_x = 0, ...){
 
-  graph <- gg_box_Nu.(data, titleLabel, subtitle, caption, yLabel, xLabel, angle_x = 0, ...)
+  graph <- gg_box_Num.(data, titleLabel, subtitle, caption, yLabel, xLabel, angle_x = 0, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -374,17 +374,17 @@ gg_box_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 
 #' Horizontal violin
 #' Violin
-#' @name gg_violin_Nu.
+#' @name gg_violin_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
 
-gg_violin_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
+gg_violin_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
                           xLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -408,19 +408,19 @@ gg_violin_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yL
 
 #' Vertical violin
 #' Violin flipped
-#' @name gg_violin_flip_Nu.
+#' @name gg_violin_flip_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_violin_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
+gg_violin_flip_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", yLabel = NULL,
                                xLabel = NULL, angle_x = 0, ...){
 
-  graph <- gg_violin_Nu.(data, titleLabel, subtitle, caption, yLabel, xLabel, angle_x = 0, ...)
+  graph <- gg_violin_Num.(data, titleLabel, subtitle, caption, yLabel, xLabel, angle_x = 0, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -428,16 +428,16 @@ gg_violin_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "
 
 #' Vertical histogram dot bar
 #' Dot bar
-#' @name gg_dot_bar_Nu.
+#' @name gg_dot_bar_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_bar_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_dot_bar_Num. <- function(data, titleLabel = "", subtitle = "", caption = "",
                            xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -458,19 +458,19 @@ gg_dot_bar_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Horizontal histogram dot bar
 #' Dot bar flipped
-#' @name gg_dot_bar_flip_Nu.
+#' @name gg_dot_bar_flip_Num.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Nu
+#' @section ftypes: Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_bar_flip_Nu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_dot_bar_flip_Num. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                 xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
-  graph <- gg_dot_bar_Nu.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, ...)
+  graph <- gg_dot_bar_Num.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph

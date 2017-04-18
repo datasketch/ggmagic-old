@@ -1,16 +1,16 @@
 
 #' Treemap coloured by first variable
-#' Treemap fill first Ca
-#' @name gg_treemap_x_CaCaCaNu.
+#' Treemap fill first Cat
+#' @name gg_treemap_x_CatCatCatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca-Nu
+#' @section ftypes: Cat-Cat-Cat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_treemap_x_CatCatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                    aggregation = "sum", text = "TRUE", color_text = "black",
                                    leg_pos = "right", ...){
 
@@ -50,17 +50,17 @@ gg_treemap_x_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 }
 
 #' Treemap coloured by second variable
-#' Treemap fill second Ca
-#' @name gg_treemap_y_CaCaCaNu.
+#' Treemap fill second Cat
+#' @name gg_treemap_y_CatCatCatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca-Nu
+#' @section ftypes: Cat-Cat-Cat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_treemap_y_CatCatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                    aggregation = "sum", text = "TRUE", color_text = "black",
                                    leg_pos = "right", ...){
 
@@ -100,17 +100,17 @@ gg_treemap_y_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 }
 
 #' Treemap coloured by third variable
-#' Treemap fill third Ca
-#' @name gg_treemap_z_CaCaCaNu.
+#' Treemap fill third Cat
+#' @name gg_treemap_z_CatCatCatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca-Nu
+#' @section ftypes: Cat-Cat-Cat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
+gg_treemap_z_CatCatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
                                    aggregation = "sum", text = "TRUE", color_text = "black",
                                    leg_pos = "right", ...){
 
@@ -152,16 +152,16 @@ gg_treemap_z_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption
 
 #' Horizontal 100% stacked bar by first variable + facet by third variable
 #' Stacked
-#' @name gg_bar_stacked_100_hor_CaCaCaNu.
+#' @name gg_bar_stacked_100_hor_CatCatCatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca-Nu
+#' @section ftypes: Cat-Cat-Cat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_stacked_100_hor_CatCatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                              fillLabel = NULL, xLabel = NULL, yLabel = NULL, leg_pos = 'right',
                                              aggregation = "sum", text = TRUE, type = "count", color_text = "black",
                                              angle_x = 0, ...){
@@ -224,16 +224,16 @@ gg_bar_stacked_100_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
 
 #' Vertical 100% stacked bar by first variable + facet by third variable
 #' Stacked
-#' @name gg_bar_stacked_100_ver_CaCaCaNu.
+#' @name gg_bar_stacked_100_ver_CatCatCatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca-Nu
+#' @section ftypes: Cat-Cat-Cat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_100_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_stacked_100_ver_CatCatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                              fillLabel = NULL, xLabel = NULL, yLabel = NULL, leg_pos = 'right',
                                              aggregation = "sum", text = TRUE, type = "count", color_text = "black",
                                              angle_x = 0, ...){
@@ -295,16 +295,16 @@ gg_bar_stacked_100_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "
 
 #' Vertical stacked bar by first variable + facet by third variable
 #' Stacked
-#' @name gg_bar_stacked_ver_CaCaCaNu.
+#' @name gg_bar_stacked_ver_CatCatCatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca-Nu
+#' @section ftypes: Cat-Cat-Cat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_stacked_ver_CatCatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                              fillLabel = NULL, xLabel = NULL, yLabel = NULL, leg_pos = 'right',
                                              aggregation = "sum", text = TRUE, type = "count", color_text = "black",
                                              angle_x = 0, ...){
@@ -365,21 +365,21 @@ gg_bar_stacked_ver_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 
 #' Horizontal stacked bar by first variable + facet by third variable
 #' Stacked
-#' @name gg_bar_stacked_hor_CaCaCaNu.
+#' @name gg_bar_stacked_hor_CatCatCatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca-Nu
+#' @section ftypes: Cat-Cat-Cat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_stacked_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "",
+gg_bar_stacked_hor_CatCatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                          fillLabel = NULL, xLabel = NULL, yLabel = NULL, leg_pos = 'right',
                                          aggregation = "sum", text = TRUE, type = "count", color_text = "black",
                                          angle_x = 0, ...){
 
-  graph <- gg_bar_stacked_ver_CaCaCaNu.(data, titleLabel, subtitle, caption, fillLabel, xLabel,
+  graph <- gg_bar_stacked_ver_CatCatCatNum.(data, titleLabel, subtitle, caption, fillLabel, xLabel,
                                         yLabel, leg_pos, aggregation, text, type, color_text, angle_x, ...)
 
   graph <- graph + coord_flip()
@@ -390,16 +390,16 @@ gg_bar_stacked_hor_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", c
 
 #' Sunburst
 #' sunburst
-#' @name gg_sunburst_CaCaCaNu.
+#' @name gg_sunburst_CatCatCatNum.
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
-#' @section ftypes: Ca-Ca-Ca-Nu
+#' @section ftypes: Cat-Cat-Cat-Num
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_sunburst_CaCaCaNu. <- function(data, titleLabel = "", subtitle = "", caption = "", aggregation = "sum",
+gg_sunburst_CatCatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", aggregation = "sum",
                                   fillLabel = NULL, xLabel = NULL, yLabel = NULL, leg_pos = 'right', ...){
 
 

@@ -5,14 +5,14 @@ document()
 install()
 library(ggmagic)
 
-catA <- rep("Callejero", round(runif(1, 10, 20), digits = 0))
+catA <- rep("Catllejero", round(runif(1, 10, 20), digits = 0))
 catB <- rep("De raza", round(runif(1, 10, 20), digits = 0))
 catC <- rep("Mixto", round(runif(1, 10, 20), digits = 0))
-dataCa <- data.frame(c(catA, catB, catC))
-names(dataCa) <- "SGRWHSR"
-data <- dataCa
+dataCat <- data.frame(c(catA, catB, catC))
+names(dataCat) <- "SGRWHSR"
+data <- dataCat
 # Waffle plot
-gg_waffle_Ca.(dataCa)
+gg_waffle_Cat.(dataCat)
 
 d <- data.frame(a=sample(letters[1:7],10000,replace=TRUE))
 
@@ -21,65 +21,65 @@ d <- data.frame(a=sample(letters[1:7],10000,replace=TRUE))
 # minScale y maxScale
 
 # Coloured Bar
-gg_bar_coloured_ver_Ca.(dataCa, leg_pos = "right")
-gg_bar_coloured_hor_Ca.(dataCa,leg_pos = "bottom", text = TRUE, text_size = 4)
+gg_bar_coloured_ver_Cat.(dataCat, leg_pos = "right")
+gg_bar_coloured_hor_Cat.(dataCat,leg_pos = "bottom", text = TRUE, text_size = 4)
 
 # Bar
-gg_bar_ver_Ca.(dataCa)
-gg_bar_hor_Ca.(d)
+gg_bar_ver_Cat.(dataCat)
+gg_bar_hor_Cat.(d)
 
 # Coloured by parameter Bar
-gg_bar_coloured_parameter_ver_Ca.(dataCa)
-gg_bar_coloured_parameter_hor_Ca.(dataCa, parameter = c("Mixto", "De raza"))
+gg_bar_coloured_parameter_ver_Cat.(dataCat)
+gg_bar_coloured_parameter_hor_Cat.(dataCat, parameter = c("Mixto", "De raza"))
 
 # Ordered Bar
-gg_bar_ordered_ver_Ca.(dataCa, type = 'percent')
-gg_bar_ordered_hor_Ca.(dataCa, type = 'count')
+gg_bar_ordered_ver_Cat.(dataCat, type = 'percent')
+gg_bar_ordered_hor_Cat.(dataCat, type = 'count')
 
 # Pie
-gg_pie_Ca.(dataCa, leg_pos = "right")
+gg_pie_Cat.(dataCat, leg_pos = "right")
 
 # Donut
-gg_donut_Ca.(dataCa, "Tipos", width = 0.2)
+gg_donut_Cat.(dataCat, "Tipos", width = 0.2)
 
 # PILE CHART
-gg_dot_bar_ver_Ca.(dataCa)
-gg_dot_bar_hor_Ca.(dataCa)
+gg_dot_bar_ver_Cat.(dataCat)
+gg_dot_bar_hor_Cat.(dataCat)
 
 # LINE
-gg_line_hor_Ca.(d)
-gg_line_ver_Ca.(d)
+gg_line_hor_Cat.(d)
+gg_line_ver_Cat.(d)
 
-gg_line_point_hor_Ca.(dataCa)
-gg_line_point_ver_Ca.(dataCa)
+gg_line_point_hor_Cat.(dataCat)
+gg_line_point_ver_Cat.(dataCat)
 
 # GAUGE
-gg_gauge_Ca.(dataCa, ncol = 1)
-gg_gauge_dial_Ca.(dataCa)
+gg_gauge_Cat.(dataCat, ncol = 1)
+gg_gauge_dial_Cat.(dataCat)
 
 #CIRCLE AREA PLOT
-gg_bubble_Ca.(d)
-gg_bubble_Ca.(dataCa)
+gg_bubble_Cat.(d)
+gg_bubble_Cat.(dataCat)
 
 # Coloured bubble
-gg_bubble_coloured_Ca.(d)
-gg_bubble_coloured_Ca.(dataCa)
+gg_bubble_coloured_Cat.(d)
+gg_bubble_coloured_Cat.(dataCat)
 
 # Polar Bar
-gg_bar_polar_Ca.(dataCa, width = 1)
+gg_bar_polar_Cat.(dataCat, width = 1)
 
 # Single Stacked Bar
-gg_bar_single_stacked_hor_Ca.(dataCa)
-gg_bar_single_stacked_ver_Ca.(dataCa)
+gg_bar_single_stacked_hor_Cat.(dataCat)
+gg_bar_single_stacked_ver_Cat.(dataCat)
 
 # Bullseye
-gg_bullseye_Ca.(dataCa)
+gg_bullseye_Cat.(dataCat)
 
 # Circular Bar
-gg_bar_circular_Ca.(dataCa)
+gg_bar_circular_Cat.(dataCat)
 
 # Treemap
-gg_treemap_Ca.(dataCa)
+gg_treemap_Cat.(dataCat)
 
 # Bubbles 2
-gg_bubble_Ca2.(dataCa)
+gg_bubble_Cat2.(dataCat)
