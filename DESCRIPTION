@@ -9,6 +9,7 @@ Depends:
     tools,
     datafringe,
     tidyverse,
+    forcats,
     waffle,
     scales,
     grid,
