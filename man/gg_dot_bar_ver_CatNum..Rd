@@ -6,8 +6,8 @@
 Vertical Dot Bar}
 \usage{
 gg_dot_bar_ver_CatNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0,
-  aggregation = "sum", ...)
+  sort = "no", topn = NULL, xLabel = NULL, yLabel = NULL,
+  leg_pos = "right", angle_x = 0, aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}

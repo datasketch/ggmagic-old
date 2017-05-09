@@ -6,9 +6,9 @@
 Vertical Bars}
 \usage{
 gg_bar_ver_CatNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, line_mean = FALSE, leg_pos = "right",
-  text = TRUE, type = "count", color_text = "black",
-  aggregation = "sum", angle_x = 0, ...)
+  xLabel = NULL, yLabel = NULL, topn = NULL, sort = "no",
+  line_mean = FALSE, leg_pos = "right", text = FALSE, type = "number",
+  color_text = "black", aggregation = "sum", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

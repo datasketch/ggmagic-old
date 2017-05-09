@@ -6,9 +6,9 @@
 Horizontal Bars}
 \usage{
 gg_bar_hor_CatNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, line_mean = FALSE, leg_pos = "right",
-  text = TRUE, type = "count", color_text = "black",
-  aggregation = "sum", angle_x = 0, ...)
+  topn = NULL, sort = "no", xLabel = NULL, yLabel = NULL,
+  line_mean = FALSE, leg_pos = "right", text = FALSE, type = "count",
+  color_text = "black", aggregation = "sum", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

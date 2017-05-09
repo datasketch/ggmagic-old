@@ -1,6 +1,6 @@
-library(devtools)
-document()
-install()
+
+devtools::document()
+devtools::install()
 
 
 load_all()
