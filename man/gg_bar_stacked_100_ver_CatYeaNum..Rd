@@ -22,8 +22,8 @@ Vertical 100% stacked bar by first variable
 \section{ftypes}{
  Cat-Yea-Num
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

@@ -24,8 +24,8 @@ Facet Vertical Dot Bar
 \section{ftypes}{
  Cat-Cat
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

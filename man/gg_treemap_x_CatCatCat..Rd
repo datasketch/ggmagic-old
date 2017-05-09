@@ -24,8 +24,8 @@ Treemap fill first Cat
 \section{ftypes}{
  Cat-Cat-Cat
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

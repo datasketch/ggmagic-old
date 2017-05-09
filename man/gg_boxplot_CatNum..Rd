@@ -23,8 +23,8 @@ Boxplot
 \section{ftypes}{
  Cat-Num
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

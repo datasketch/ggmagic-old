@@ -25,8 +25,8 @@ Horizontal bar graph
 \section{ftypes}{
  Cat-Cat-Num
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

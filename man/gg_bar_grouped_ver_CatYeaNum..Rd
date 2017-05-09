@@ -22,9 +22,9 @@ Barras stacked
 \section{ftypes}{
  Cat-Yea-Num
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 
 }
+

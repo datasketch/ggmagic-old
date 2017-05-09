@@ -24,8 +24,8 @@ Choropleth of Latam
 \section{ftypes}{
  Gnm-Num
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

@@ -25,8 +25,8 @@ horizontal stacked bar graph
 \section{ftypes}{
  Cat-Dat-Num
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

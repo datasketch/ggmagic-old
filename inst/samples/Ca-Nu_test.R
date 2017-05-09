@@ -22,6 +22,15 @@ gg_bubble_coloured_x_CatNum.(data)
 
 
 # Bars
+data <- sampleData("Cat-Num", 1000)
+data[[2]] <- 1000000*data[[2]]
+gg_bar_ver_CatNum.(data)
+gg_bar_ver_CatNum.(data, sort = "top")
+gg_bar_ver_CatNum.(data, sort = "bottom")
+gg_bar_hor_CatNum.(data)
+gg_bar_hor_CatNum.(data, sort = "top")
+gg_bar_hor_CatNum.(data, sort = "bottom")
+
 gg_bar_ver_CatNum.(data, aggregation = "sum", line_mean = TRUE)
 gg_bar_ver_CatNum.(data, aggregation = "sum", title = "HOLA",xLabel = "YEAH", line_mean = TRUE)
 

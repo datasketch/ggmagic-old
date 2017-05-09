@@ -24,8 +24,8 @@ Point
 \section{ftypes}{
  Cat-Num-Num
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

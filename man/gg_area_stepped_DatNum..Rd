@@ -23,8 +23,8 @@ stepped stacked area.
 \section{ftypes}{
  Dat-Num
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

@@ -25,8 +25,8 @@ Choropleth by filtering deptos
 \section{ftypes}{
  Gnm-Num
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

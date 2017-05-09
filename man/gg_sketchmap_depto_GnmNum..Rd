@@ -23,8 +23,8 @@ Sketch map departments
 \section{ftypes}{
  Gnm-Num
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

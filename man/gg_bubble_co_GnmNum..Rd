@@ -25,8 +25,8 @@ Points inside Colombia's deptos map
 \section{ftypes}{
  Gnm-Num
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

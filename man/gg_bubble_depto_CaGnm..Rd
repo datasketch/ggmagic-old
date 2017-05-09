@@ -25,8 +25,8 @@ Points inside Colombia's mpios map
 \section{ftypes}{
  Ca-Gnm
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

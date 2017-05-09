@@ -25,8 +25,8 @@ Horizontal coloured by parameter Bars
 \section{ftypes}{
  Cat
 }
-
 \examples{
 add(1, 1)
 add(10, 1)
 }
+

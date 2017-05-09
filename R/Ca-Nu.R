@@ -10,8 +10,8 @@
 #' add(1, 1)
 #' add(10, 1)
 gg_pie_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
-                         text = TRUE, type = 'count', color_text = "black",
-                         leg_pos="right", aggregation = "sum", ...){
+                           text = TRUE, type = 'count', color_text = "black",
+                           leg_pos="right", aggregation = "sum", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -64,7 +64,7 @@ gg_pie_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", f
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_ver_CatNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL, line_mean = FALSE, text = TRUE,
-                                       type = 'count', leg_pos = "right", aggregation = "sum", angle_x = 0, color_text = "black", ...){
+                                         type = 'count', leg_pos = "right", aggregation = "sum", angle_x = 0, color_text = "black", ...){
 
 
   f <- fringe(data)
@@ -125,7 +125,7 @@ gg_bar_coloured_x_ver_CatNum.<- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_x_hor_CatNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL, line_mean = FALSE, text = TRUE,
-                                       type = 'count', leg_pos = "right", aggregation = "sum", angle_x = 0, color_text = "black", ...){
+                                         type = 'count', leg_pos = "right", aggregation = "sum", angle_x = 0, color_text = "black", ...){
 
 
   graph <- gg_bar_coloured_x_ver_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, line_mean, text, type, leg_pos, aggregation, angle_x, color_text) +
@@ -145,9 +145,9 @@ gg_bar_coloured_x_hor_CatNum.<- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_y_ver_CatNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                       fillLabel = NULL, reverse = FALSE, line_mean = FALSE,
-                                       text = TRUE, type = 'count', color_text = "black",
-                                       leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
+                                         fillLabel = NULL, reverse = FALSE, line_mean = FALSE,
+                                         text = TRUE, type = 'count', color_text = "black",
+                                         leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
 
   f <- fringe(data)
@@ -215,13 +215,13 @@ gg_bar_coloured_y_ver_CatNum.<- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_y_hor_CatNum.<- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                       fillLabel = NULL, reverse = FALSE, line_mean = FALSE,
-                                       text = TRUE, type = "count", color_text = "black",
-                                       leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
+                                         fillLabel = NULL, reverse = FALSE, line_mean = FALSE,
+                                         text = TRUE, type = "count", color_text = "black",
+                                         leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
   graph <- gg_bar_coloured_y_ver_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel,
-                                       reverse, line_mean, text, type, color_text,
-                                       leg_pos, aggregation, angle_x)
+                                         reverse, line_mean, text, type, color_text,
+                                         leg_pos, aggregation, angle_x)
   graph + coord_flip()
 }
 
@@ -237,8 +237,8 @@ gg_bar_coloured_y_hor_CatNum.<- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_parameter_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, order = FALSE, parameter = NULL,line_mean = FALSE, text = TRUE, type = 'count',
-                                                color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
+                                                  yLabel = NULL, order = FALSE, parameter = NULL,line_mean = FALSE, text = TRUE, type = 'count',
+                                                  color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -309,11 +309,11 @@ gg_bar_coloured_parameter_ver_CatNum. <- function(data, titleLabel = "", subtitl
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_coloured_parameter_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                yLabel = NULL, order = FALSE, parameter = NULL,line_mean = FALSE, text = TRUE, type = 'count',
-                                                color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
+                                                  yLabel = NULL, order = FALSE, parameter = NULL,line_mean = FALSE, text = TRUE, type = 'count',
+                                                  color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
   graph <- gg_bar_coloured_parameter_ver_CatNum.(data, titleLabel, subtitle, caption, xLabel,
-                                               yLabel,order, parameter, line_mean, text, type, color_text, leg_pos = "right", aggregation, angle_x, ...)
+                                                 yLabel,order, parameter, line_mean, text, type, color_text, leg_pos = "right", aggregation, angle_x, ...)
   graph <- graph + coord_flip()
   graph
 }
@@ -330,9 +330,9 @@ gg_bar_coloured_parameter_hor_CatNum. <- function(data, titleLabel = "", subtitl
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_CatNum.  <- function(data, titleLabel = "", subtitle = "", caption = "",
-                             xLabel = NULL, text = TRUE, type = 'count',
-                             color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0,
-                             shape_type = 19,...){
+                               xLabel = NULL, text = TRUE, type = 'count',
+                               color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0,
+                               shape_type = 19,...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -389,8 +389,8 @@ gg_bubble_CatNum.  <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_coloured_x_CatNum.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        text = TRUE, type = 'count', color_text = "black", leg_pos = "right",
-                                        aggregation = "sum", angle_x = 0, shape_type = 19,...){
+                                          text = TRUE, type = 'count', color_text = "black", leg_pos = "right",
+                                          aggregation = "sum", angle_x = 0, shape_type = 19,...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -447,8 +447,8 @@ gg_bubble_coloured_x_CatNum.  <- function(data, titleLabel = "", subtitle = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_density_y_CatNum.  <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, fillLabel = NULL,
-                                       text = TRUE, type = 'count', color_text = "black", leg_pos = "right",
-                                       aggregation = "sum", angle_x = 0, shape_type = 19, reverse = FALSE, ...){
+                                         text = TRUE, type = 'count', color_text = "black", leg_pos = "right",
+                                         aggregation = "sum", angle_x = 0, shape_type = 19, reverse = FALSE, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -514,8 +514,8 @@ gg_bubble_density_y_CatNum.  <- function(data, titleLabel = "", subtitle = "", c
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_polar_CatNum. <- function(data, width = 0.95, titleLabel = "", subtitle = "", aggregation = "sum",
-                               caption = "", fillLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black",
-                               type = "count", ...){
+                                 caption = "", fillLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black",
+                                 type = "count", ...){
   f <- fringe(data)
   nms <- getClabels(f)
   clab <- fillLabel %||% nms[1]
@@ -565,8 +565,8 @@ gg_bar_polar_CatNum. <- function(data, width = 0.95, titleLabel = "", subtitle =
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_circular_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
-                                  leg_pos="right", width = 0.85, aggregation = 'sum',  text = TRUE,
-                                  type = "count", color_text = "black", ...){
+                                    leg_pos="right", width = 0.85, aggregation = 'sum',  text = TRUE,
+                                    type = "count", color_text = "black", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -620,7 +620,7 @@ gg_bar_circular_CatNum. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_stacked_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -652,8 +652,8 @@ gg_hist_stacked_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_density_multi_dist_coloured_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                                 xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
-                                                 angle_x = 0, ...){
+                                                   xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
+                                                   angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -686,7 +686,7 @@ gg_density_multi_dist_coloured_CatNum. <- function(data, titleLabel = "", subtit
 #' add(1, 1)
 #' add(10, 1)
 gg_area_multi_density_dist_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                             yLabel = NULL, fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                                               yLabel = NULL, fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -720,7 +720,7 @@ gg_area_multi_density_dist_CatNum. <- function(data, titleLabel = "", subtitle =
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                                      yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -753,7 +753,7 @@ gg_dist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", capt
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                                      yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   graph <- gg_dist_ver_facet_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x)
 
@@ -774,7 +774,7 @@ gg_dist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", capt
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_ver_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                         yLabel = NULL, leg_pos='right', angle_x = 0, ...){
+                                           yLabel = NULL, leg_pos='right', angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -812,7 +812,7 @@ gg_hist_ver_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_hor_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                         yLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                                           yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   graph <- gg_hist_ver_mean_facet_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
 
@@ -833,7 +833,7 @@ gg_hist_hor_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = NULL, leg_pos='right', angle_x = 0, ...){
+                                      yLabel = NULL, leg_pos='right', angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -865,7 +865,7 @@ gg_hist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", capt
 #' add(1, 1)
 #' add(10, 1)
 gg_hist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                                      yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   graph <- gg_hist_ver_facet_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
 
@@ -886,7 +886,7 @@ gg_hist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", capt
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_hist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                         yLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                                           yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -919,7 +919,7 @@ gg_dist_hist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_hist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                         yLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                                           yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   graph <- gg_dist_hist_ver_facet_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
 
@@ -940,7 +940,7 @@ gg_dist_hist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_hist_ver_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                              yLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                                                yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -978,7 +978,7 @@ gg_dist_hist_ver_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle 
 #' add(1, 1)
 #' add(10, 1)
 gg_dist_hist_hor_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                              yLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                                                yLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   graph <- gg_dist_hist_ver_mean_facet_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
 
@@ -999,7 +999,7 @@ gg_dist_hist_hor_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle 
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_dist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                          yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1034,7 +1034,7 @@ gg_dot_dist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_dist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                          yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
   graph <- gg_dot_dist_ver_facet_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x, ...)
 
@@ -1055,7 +1055,7 @@ gg_dot_dist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_hist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = NULL, leg_pos='right', alpha = 0.3, angle_x = 0, ...){
+                                          yLabel = NULL, leg_pos='right', alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1089,7 +1089,7 @@ gg_dot_hist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_hist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                          yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
   graph <- gg_dot_hist_ver_facet_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x, ...)
 
@@ -1110,7 +1110,7 @@ gg_dot_hist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_hist_ver_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                             yLabel = NULL, leg_pos='right', alpha = 0.3, angle_x = 0, ...){
+                                               yLabel = NULL, leg_pos='right', alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1149,7 +1149,7 @@ gg_dot_hist_ver_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle =
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_hist_hor_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                             yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                               yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
   graph <- gg_dot_hist_ver_mean_facet_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x, ...)
 
@@ -1170,7 +1170,7 @@ gg_dot_hist_hor_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle =
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_dist_hist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                             yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                               yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1206,7 +1206,7 @@ gg_dot_dist_hist_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle =
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_dist_hist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                             yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
+                                               yLabel = NULL, leg_pos="right", alpha = 0.3, angle_x = 0, ...){
 
   graph <- gg_dot_dist_hist_ver_facet_CatNum.(data, titleLabel,subtitle, caption, xLabel, yLabel, leg_pos, alpha, angle_x, ...)
 
@@ -1228,7 +1228,7 @@ gg_dot_dist_hist_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle =
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_dist_hist_ver_mean_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                                  leg_pos = "right", alpha = 0.3, angle_x = 0, ...){
+                                                    leg_pos = "right", alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1287,7 +1287,7 @@ gg_dot_dist_hist_hor_mean_facet_CatNum. <- function(data, titleLabel = "", subti
 #' add(1, 1)
 #' add(10, 1)
 gg_point_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                 yLabel = NULL, shape_type = 19, angle_x = 0, ...){
+                                   yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1329,7 +1329,7 @@ gg_point_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = NULL, shape_type = 19, angle_x = 0, ...){
+                                        yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1373,7 +1373,7 @@ gg_line_point_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_line_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                yLabel = NULL, angle_x = 0, ...){
+                                  yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1415,7 +1415,7 @@ gg_line_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption 
 #' add(1, 1)
 #' add(10, 1)
 gg_area_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = NULL, angle_x = 0, ...){
+                                      yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1458,7 +1458,7 @@ gg_area_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", capt
 #' add(1, 1)
 #' add(10, 1)
 gg_area_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                    yLabel = NULL, angle_x = 0, ...){
+                                      yLabel = NULL, angle_x = 0, ...){
 
   graph <- gg_area_ver_facet_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, ...)
   graph <- graph + coord_flip()
@@ -1478,7 +1478,7 @@ gg_area_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", capt
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_100_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                          yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+                                            yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1529,7 +1529,7 @@ gg_area_stacked_100_ver_CatNum. <- function(data, titleLabel = "", subtitle = ""
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_100_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                          yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+                                            yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   graph <- gg_area_stacked_100_ver_CatNum.(data, titleLabel,subtitle, caption, xLabel, yLabel, fillLabel = NULL, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
@@ -1549,8 +1549,8 @@ gg_area_stacked_100_hor_CatNum. <- function(data, titleLabel = "", subtitle = ""
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                      fillLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black",
-                                      type = "count", angle_x = 0, ...){
+                                        fillLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black",
+                                        type = "count", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1599,7 +1599,7 @@ gg_area_stacked_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_area_stacked_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = NULL, fillLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black", type = "count", angle_x = 0, ...){
+                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black", type = "count", angle_x = 0, ...){
 
   graph <- gg_area_stacked_ver_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, text, color_text, type, angle_x, ...)
   graph <- graph + coord_flip()
@@ -1619,7 +1619,7 @@ gg_area_stacked_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_point_grouped_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                   yLabel = NULL, fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
+                                     yLabel = NULL, fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1663,7 +1663,7 @@ gg_point_grouped_CatNum. <- function(data, titleLabel = "", subtitle = "", capti
 #' add(1, 1)
 #' add(10, 1)
 gg_line_point_multi_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                      fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
+                                        fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1707,7 +1707,7 @@ gg_line_point_multi_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_line_multi_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
+                                  fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1751,7 +1751,7 @@ gg_line_multi_CatNum. <- function(data, titleLabel = "", subtitle = "", caption 
 #' add(1, 1)
 #' add(10, 1)
 gg_point_trend_line_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                            yLabel = NULL, shape_type = 19, alpha = 0.3, se = FALSE, angle_x = 0, ...){
+                                              yLabel = NULL, shape_type = 19, alpha = 0.3, se = FALSE, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1797,7 +1797,7 @@ gg_point_trend_line_facet_CatNum. <- function(data, titleLabel = "", subtitle = 
 #' add(10, 1)
 
 gg_trend_ribbon_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = NULL, shape_type = 19, alpha = 0.3, angle_x = 0, ...){
+                                          yLabel = NULL, shape_type = 19, alpha = 0.3, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1842,8 +1842,8 @@ gg_trend_ribbon_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", 
 #' add(1, 1)
 #' add(10, 1)
 gg_donut_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
-                           width = 0.3, leg_pos="right", aggregation = 'sum',
-                           text = TRUE, color_text = "black", type = "count", ...){
+                             width = 0.3, leg_pos="right", aggregation = 'sum',
+                             text = TRUE, color_text = "black", type = "count", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1897,8 +1897,8 @@ gg_donut_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_dot_bar_ver_CatNum.<- function(data, titleLabel = "", subtitle = "", caption = "",
-                                xLabel = NULL, yLabel = NULL, leg_pos="right", angle_x = 0, aggregation ="sum", ...){
+gg_dot_bar_ver_CatNum.<- function(data, titleLabel = "", subtitle = "", caption = "", sort = "no", topn = NULL,
+                                  xLabel = NULL, yLabel = NULL, leg_pos="right", angle_x = 0, aggregation ="sum", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1908,6 +1908,17 @@ gg_dot_bar_ver_CatNum.<- function(data, titleLabel = "", subtitle = "", caption 
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
     dplyr::filter(!is.na(b))
+
+  if (nrow(data) == 0)
+    return()
+  if (sort == "top") {
+    data <- data %>% dplyr::arrange(desc(b))
+    if (!is.null(topn)) {
+      data <- dplyr::slice(data, 1:topn)
+    } else {
+      data <- data
+    }
+  }
 
   data_graph <- data %>%
     dplyr::group_by(a) %>%
@@ -1941,7 +1952,7 @@ gg_dot_bar_ver_CatNum.<- function(data, titleLabel = "", subtitle = "", caption 
 #' add(1, 1)
 #' add(10, 1)
 gg_dot_bar_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                 yLabel = NULL, leg_pos = "right", angle_x = 0, aggregation = "sum", ...){
+                                   yLabel = NULL, leg_pos = "right", angle_x = 0, aggregation = "sum", ...){
 
   graph <- gg_dot_bar_ver_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, aggregation, ...)
   graph <- graph + coord_flip()
@@ -1962,7 +1973,7 @@ gg_dot_bar_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption
 #' add(1, 1)
 #' add(10, 1)
 gg_bullseye_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", fillLabel = NULL,
-                              leg_pos="right", aggregation = "sum", ...){
+                                leg_pos="right", aggregation = "sum", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1998,8 +2009,8 @@ gg_bullseye_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_single_stacked_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                            fillLabel = NULL, leg_pos="right", width = 0.3, aggregation = 'sum',
-                                            text = TRUE, type = "count", color_text = "black", ...){
+                                              fillLabel = NULL, leg_pos="right", width = 0.3, aggregation = 'sum',
+                                              text = TRUE, type = "count", color_text = "black", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -2050,11 +2061,11 @@ gg_bar_single_stacked_ver_CatNum. <- function(data, titleLabel = "", subtitle = 
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_single_stacked_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                            fillLabel = NULL, leg_pos="right", width = 0.3, aggregation = 'sum',
-                                            text = TRUE, type = "count", color_text = "black", angle_x = 0, ...){
+                                              fillLabel = NULL, leg_pos="right", width = 0.3, aggregation = 'sum',
+                                              text = TRUE, type = "count", color_text = "black", angle_x = 0, ...){
 
   graph <- gg_bar_single_stacked_ver_CatNum.(data, titleLabel, subtitle, caption,  fillLabel, leg_pos, width, aggregation,
-                                           text, type, color_text, angle_x, ...)
+                                             text, type, color_text, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -2192,7 +2203,7 @@ gg_gauge_dial_CatNum. <- function(data,aggregation ='sum', ...){
 #' add(1, 1)
 #' add(10, 1)
 gg_boxplot_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
+                               yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
 
 
   f <- fringe(data)
@@ -2226,7 +2237,7 @@ gg_boxplot_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_boxplot_flip_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                  yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
+                                    yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
 
 
   graph <- gg_boxplot_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
@@ -2247,7 +2258,7 @@ gg_boxplot_flip_CatNum. <- function(data, titleLabel = "", subtitle = "", captio
 #' add(1, 1)
 #' add(10, 1)
 gg_boxplot_dot_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                 yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
+                                   yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
 
 
   f <- fringe(data)
@@ -2281,7 +2292,7 @@ gg_boxplot_dot_CatNum. <- function(data, titleLabel = "", subtitle = "", caption
 #' add(1, 1)
 #' add(10, 1)
 gg_boxplot_dot_flip_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
+                                        yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
 
 
   graph <- gg_boxplot_dot_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
@@ -2302,7 +2313,7 @@ gg_boxplot_dot_flip_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_violin_mult_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                 yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
+                                   yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -2335,7 +2346,7 @@ gg_violin_mult_CatNum. <- function(data, titleLabel = "", subtitle = "", caption
 #' add(1, 1)
 #' add(10, 1)
 gg_violin_mult_flip_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = NULL, leg_pos = 'right', angle_x = 0,...){
+                                        yLabel = NULL, leg_pos = 'right', angle_x = 0,...){
 
   graph <- gg_violin_mult_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
@@ -2355,7 +2366,7 @@ gg_violin_mult_flip_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 #' add(1, 1)
 #' add(10, 1)
 gg_violin_dot_mult_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                     yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
+                                       yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -2387,7 +2398,7 @@ gg_violin_dot_mult_CatNum. <- function(data, titleLabel = "", subtitle = "", cap
 #' add(1, 1)
 #' add(10, 1)
 gg_violin_dot_mult_flip_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                          yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
+                                            yLabel = NULL, leg_pos = 'right', angle_x = 0, ...){
 
   graph <- gg_violin_dot_mult_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
@@ -2408,8 +2419,8 @@ gg_violin_dot_mult_flip_CatNum. <- function(data, titleLabel = "", subtitle = ""
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ordered_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                     yLabel =  NULL, leg_pos = "right",  text = TRUE, type = "count",
-                                     color_text = "black", aggregation = "sum", angle_x = 0, ...){
+                                       yLabel =  NULL, leg_pos = "right",  text = TRUE, type = "count",
+                                       color_text = "black", aggregation = "sum", angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -2460,11 +2471,11 @@ gg_bar_ordered_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", cap
 #' add(1, 1)
 #' add(10, 1)
 gg_bar_ordered_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                     yLabel =  NULL, leg_pos = "right",  text = TRUE, type = "count",
-                                     color_text = "black", aggregation = "sum", angle_x = 0, ...){
+                                       yLabel =  NULL, leg_pos = "right",  text = TRUE, type = "count",
+                                       color_text = "black", aggregation = "sum", angle_x = 0, ...){
 
   graph <- gg_bar_ordered_ver_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos,
-                                    text, type, color_text, aggregation, angle_x, ...)
+                                      text, type, color_text, aggregation, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -2481,9 +2492,11 @@ gg_bar_ordered_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", cap
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel =  NULL, line_mean = FALSE, leg_pos = "right", text = TRUE, type = "count",
-                             color_text = "black", aggregation = "sum",angle_x = 0, ...){
+gg_bar_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                               xLabel = NULL, yLabel =  NULL,
+                               topn = NULL, sort = "no",
+                               line_mean = FALSE, leg_pos = "right", text = FALSE, type = "number",
+                               color_text = "black", aggregation = "sum",angle_x = 0, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -2493,19 +2506,34 @@ gg_bar_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
     dplyr::filter(!is.na(b))
 
-  data_graph <- data %>% dplyr::group_by(a) %>%
-    dplyr::summarise(count = agg(aggregation,b)) %>%
-    dplyr::mutate(pos = count*9/10,
-                  percent = 100 * round(count / sum(count), 4)) %>%
+  data <- data %>% dplyr::group_by(a) %>%
+    dplyr::summarise(b = agg(aggregation,b))
+  if (nrow(data) == 0)
+    return()
+  if (sort != "no") {
+    if (sort == "top")
+      data <- data %>% mutate(a = fct_reorder(a, b, .desc = TRUE))
+    if (sort == "bottom")
+      data <- data %>% mutate(a = fct_reorder(a, b, .desc = FALSE))
+    if (!is.null(topn)) {
+      data <- dplyr::slice(data, 1:topn)
+    } else {
+      data <- data
+    }
+  }
+  data_graph <- data %>%
+    dplyr::mutate(pos = b*9/10,
+                  percent = 100 * round(b / sum(b), 4)) %>%
     dplyr::mutate(pos = ifelse(pos == 0, NA, pos),
                   percent = ifelse(percent == 0, NA, percent),
-                  count = ifelse(count == 0, NA, count))
-
-  graph <- ggplot(data_graph, aes(x = a, y = count, fill = "")) +
+                  b = ifelse(b == 0, NA, b))
+  graph <- ggplot(data_graph, aes(x = a, y = b, fill = "")) +
     geom_bar(stat = "identity")
   graph <- graph +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
-    scale_fill_manual(values = getPalette()) + theme_ds() + guides(fill = FALSE)
+    scale_fill_manual(values = getPalette()) +
+    scale_y_continuous(labels = comma) +
+    theme_ds() + guides(fill = FALSE)
   graph <- graph +
     theme(legend.position=leg_pos) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
@@ -2516,8 +2544,8 @@ gg_bar_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "
     graph <- graph
   }
 
-  if(text == TRUE & type == 'count'){
-    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(count,2)),
+  if(text == TRUE & type == 'number'){
+    return(graph + geom_text(data = data_graph, aes(y = pos, label = round(b,2)),
                              check_overlap = TRUE, color = color_text))
   }else{
     if(text == TRUE & type == 'percent'){
@@ -2542,17 +2570,24 @@ gg_bar_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_bar_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                             yLabel =  NULL,line_mean = FALSE, leg_pos = "right", text = TRUE, type = "count",
-                             color_text = "black", aggregation = "sum", angle_x = 0, ...){
-
-  graph <- gg_bar_ver_CatNum.(data, titleLabel = titleLabel, subtitle = subtitle,
-                            caption = caption,
-                            xLabel = xLabel, yLabel = yLabel, line_mean = line_mean,
-                            leg_pos = leg_pos, text = text, type = type,
-                            color_text, aggregation = aggregation, angle_x = angle_x, ...)
+gg_bar_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
+                               topn = NULL, sort = "no",
+                               xLabel = NULL, yLabel =  NULL,
+                               line_mean = FALSE, leg_pos = "right", text = FALSE, type = "count",
+                               color_text = "black", aggregation = "sum", angle_x = 0, ...){
+  str(sort)
+  if(sort == "top") {sort <- "bottom"}else{
+  if(sort == "bottom") sort <- "top"
+  }
+  message(sort)
+  graph <- gg_bar_ver_CatNum.(data,
+                              titleLabel = titleLabel, subtitle = subtitle,
+                              caption = caption,
+                              topn = topn, sort = sort,
+                              xLabel = xLabel, yLabel = yLabel, line_mean = line_mean,
+                              leg_pos = leg_pos, text = text, type = type,
+                              color_text, aggregation = aggregation, angle_x = angle_x, ...)
   graph <- graph + coord_flip()
-
   graph
 }
 
@@ -2568,7 +2603,7 @@ gg_bar_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_steam_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                           yLabel =  NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+                             yLabel =  NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -2609,7 +2644,7 @@ gg_steam_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_treemap_x_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                               text = TRUE, color_text = "black", aggregation = "sum", ...){
+                                 text = TRUE, color_text = "black", aggregation = "sum", ...){
 
   f <- fringe(data)
   data <- f$d
@@ -2651,8 +2686,8 @@ gg_treemap_x_CatNum. <- function(data, titleLabel = "", subtitle = "", caption =
 #' add(1, 1)
 #' add(10, 1)
 gg_treemap_density_y_CatNum. <- function(data, titleLabel = "", subtitle = "",
-                                       caption = "", fillLabel = NULL, reverse = FALSE,
-                                       text = TRUE, color_text = "black", aggregation = "sum", ...){
+                                         caption = "", fillLabel = NULL, reverse = FALSE,
+                                         text = TRUE, color_text = "black", aggregation = "sum", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -2705,7 +2740,7 @@ gg_treemap_density_y_CatNum. <- function(data, titleLabel = "", subtitle = "",
 #' add(1, 1)
 #' add(10, 1)
 gg_bubble_CatNum2. <- function(data, titleLabel = "", subtitle = "", caption = "",  sep = 3, lim_inf =-80,
-                             lim_sup = 80, xLabel = NULL, aggregation = "sum", ...){
+                               lim_sup = 80, xLabel = NULL, aggregation = "sum", ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -2768,8 +2803,8 @@ gg_bubble_CatNum2. <- function(data, titleLabel = "", subtitle = "", caption = "
 #' add(1, 1)
 #' add(10, 1)
 gg_slope_CatNum. <-  function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                            leg_pos="right", overlap = TRUE, text_size = 6,
-                            size_point = 3, size_line = 1,...){
+                              leg_pos="right", overlap = TRUE, text_size = 6,
+                              size_point = 3, size_line = 1,...){
 
   f <- fringe(data)
   nms <- getClabels(f)
