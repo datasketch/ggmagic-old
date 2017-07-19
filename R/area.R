@@ -362,7 +362,7 @@ gg_area_stacked_ver_CatDatNum. <- function(data, titleLabel = "", subtitle = "",
     tidyr::drop_na(a,b) %>%
     tidyr::spread(b, c) %>%
     tidyr::gather(b, c, -a)
-
+  data_graph$b <- lubridate::as_date(as.numeric(data_graph$b))
   data_graph[is.na(data_graph)] <- 0
 
   graph <- ggplot(data = data_graph, aes(x = as.Date(b, origin = data[1,2]), y = c, group = a)) +
@@ -427,7 +427,7 @@ gg_area_stacked_100_ver_CatDatNum. <- function(data, titleLabel = "", subtitle =
     tidyr::drop_na(a,b) %>%
     tidyr::spread(b, c) %>%
     tidyr::gather(b, c, -a)
-
+  data_graph$b <- lubridate::as_date(as.numeric(data_graph$b))
   data_graph[is.na(data_graph)] <- 0
 
   graph <- ggplot(data = data_graph, aes(x = as.Date(b, origin = data[1,2]), y = c, group = a)) +
