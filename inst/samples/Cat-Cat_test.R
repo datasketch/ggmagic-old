@@ -21,8 +21,6 @@ dataCatCat[] <- sapply(dataCatCat, as.character)
 # Bubble
 gg_bubble_CatCat.(dataCatCat)
 
-# Coloured Bubble
-gg_bubble_coloured_CatCat.(dataCatCat)
 
 # Facet Dot Bar
 gg_dot_bar_ver_facet_CatCat.(dataCatCat)

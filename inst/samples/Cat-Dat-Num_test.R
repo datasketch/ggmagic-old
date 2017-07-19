@@ -27,6 +27,8 @@ dfData = data.frame(
 )
 
 dfData <- dfData %>% select(cat, time, value)
+dfData$cat <- as.character(dfData$cat)
+dfData$time <- lubridate::as_date(dfData$time)
 gg_steam_CatDatNum.(dfData)
 
 gg_area_stacked_ver_CatDatNum.(dfData)

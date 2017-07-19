@@ -5,6 +5,7 @@ load_all()
 document()
 install()
 
+
 library(ggmagic)
 
 datesA <- seq.Date(as.Date("2015-01-01"),to = Sys.Date(), by = "1 day")
@@ -32,7 +33,7 @@ gg_smooth_DatNum.(data)
 gg_points_facet_DatNum.(data)
 gg_line_points_facet_DatNum.(data)
 
-gg_bar_DatNum.(data)
+gg_bar_ver_DatNum.(data)
 
 gg_bubbles_DatNum.(data)
 
