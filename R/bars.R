@@ -2280,7 +2280,7 @@ gg_bar_stacked_ordered_hor_CatCat <- function(data, titleLabel = "", subtitle = 
                                               yLabel =  NULL, fillLabel = NULL, leg_pos = "right", text = TRUE,
                                               type = "count", color_text = "black", angle_x = 0,...){
 
-  graph <- gg_bar_stacked_ordered _ver_CatCat(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel,
+  graph <- gg_bar_stacked_ordered_ver_CatCat(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel,
                                              leg_pos, text, type, color_text, angle_x)
 
   graph <- graph + coord_flip()

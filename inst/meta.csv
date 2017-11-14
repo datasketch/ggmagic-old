@@ -1,0 +1,1508 @@
+name,title,desc,ctypes,ftype,group,app
+gg_area_DatNum,"Area
+Area","
+Area
+Area
+", Dat-Num, Dat-Num,area,NA
+gg_area_YeaNum,"Vertical area
+Area","
+Vertical area
+Area
+", Yea-Num,Num- Yea,area,NA
+gg_area_hor_facet_CatNum,"Horizontal area facet
+Facet Horizontal Area","
+Horizontal area facet
+Facet Horizontal Area
+", Cat-Num, Cat-Num,area,NA
+gg_area_multi_density_dist_CatNum,"Filled density distribution
+Filled Density Distribution","
+Filled density distribution
+Filled Density Distribution
+", Cat-Num, Cat-Num,area,NA
+gg_area_stacked_100_hor_CatCat,"Horizontal 100% stacked area
+Stacked horizontal Area 100pct","
+Horizontal 100% stacked area
+Stacked horizontal Area 100pct
+", Cat-Cat,Cat- Cat,area,NA
+gg_area_stacked_100_hor_CatCatNum.,"Horizontal 100% stacked area
+Stacked area 100","
+Horizontal 100% stacked area
+Stacked area 100
+", Cat-Cat-Num,Cat- Cat-Num,area,NA
+gg_area_stacked_100_hor_CatDatNum.,"Horizontal 100% stacked area
+Stacked Horizontal Area 100","
+Horizontal 100% stacked area
+Stacked Horizontal Area 100
+", Cat-Dat-Num, Cat-Dat-Num,area,NA
+gg_area_stacked_100_hor_CatNum,"Horizontal 100% stacked area
+Stacked Horizontal Area 100","
+Horizontal 100% stacked area
+Stacked Horizontal Area 100
+", Cat-Num, Cat-Num,area,NA
+gg_area_stacked_100_ver_CatCat,"Vertical 100% stacked area
+Stacked vertical Area 100pct","
+Vertical 100% stacked area
+Stacked vertical Area 100pct
+", Cat-Cat,Cat- Cat,area,NA
+gg_area_stacked_100_ver_CatCatNum.,"Vertical 100% stacked area
+Stacked vertical Area 100","
+Vertical 100% stacked area
+Stacked vertical Area 100
+", Cat-Cat-Num,Cat- Cat-Num,area,NA
+gg_area_stacked_100_ver_CatDatNum,"Vertical 100% stacked area
+Stacked Vertical Area 100","
+Vertical 100% stacked area
+Stacked Vertical Area 100
+", Cat-Dat-Num, Cat-Dat-Num,area,NA
+gg_area_stacked_100_ver_CatNum,"Vertical 100% stacked area
+Stacked Vertical Area 100","
+Vertical 100% stacked area
+Stacked Vertical Area 100
+", Cat-Num, Cat-Num,area,NA
+gg_area_stacked_hor_CatCat,"Horizontal stacked area
+Stacked horizontal Area","
+Horizontal stacked area
+Stacked horizontal Area
+", Cat-Cat,Cat- Cat,area,NA
+gg_area_stacked_hor_CatCatNum.,"Horizontal stacked area
+Stacked area","
+Horizontal stacked area
+Stacked area
+", Cat-Cat-Num,Cat- Cat-Num,area,NA
+gg_area_stacked_hor_CatDatNum,"Horizontal stacked area
+Stacked Horizontal Area","
+Horizontal stacked area
+Stacked Horizontal Area
+", Cat-Dat-Num, Cat-Dat-Num,area,NA
+gg_area_stacked_hor_CatNum,"Horizontal stacked area
+Stacked Horizontal Area","
+Horizontal stacked area
+Stacked Horizontal Area
+", Cat-Num, Cat-Num,area,NA
+gg_area_stacked_ver_CatCat,"Vertical stacked area
+Stacked vertical Area","
+Vertical stacked area
+Stacked vertical Area
+", Cat-Cat,Cat- Cat,area,NA
+gg_area_stacked_ver_CatCatNum,"Vertical stacked area
+Stacked vertical Area","
+Vertical stacked area
+Stacked vertical Area
+", Cat-Cat-Num,Cat- Cat-Num,area,NA
+gg_area_stacked_ver_CatDatNum,"Vertical stacked area
+Stacked Vertical Area","
+Vertical stacked area
+Stacked Vertical Area
+", Cat-Dat-Num, Cat-Dat-Num,area,NA
+gg_area_stacked_ver_CatNum,"Vertical stacked area
+Stacked Vertical Area","
+Vertical stacked area
+Stacked Vertical Area
+", Cat-Num, Cat-Num,area,NA
+gg_area_stepped_DatNum,"Stepped area
+Stepped stacked area","
+Stepped area
+Stepped stacked area
+", Dat-Num, Dat-Num,area,NA
+gg_area_ver_facet_CatNum,"Vertical area facet
+Facet Vertical Area","
+Vertical area facet
+Facet Vertical Area
+", Cat-Num, Cat-Num,area,NA
+gg_bar_circular_Cat.,"Circular bar
+Circular Bar","
+Circular bar
+Circular Bar
+", Cat, Cat,bar,NA
+gg_bar_circular_CatNum.,"Circular bar
+Circular Bar","
+Circular bar
+Circular Bar
+", Cat-Num, Cat-Num,bar,NA
+gg_bar_circular_facet_CatCat.,"Circular bar facet
+Circular Bar","
+Circular bar facet
+Circular Bar
+", Cat-Cat,Cat- Cat,bar,NA
+gg_bar_circular_facet_CatCatNum.,"Circular bar facet
+Circular Bar","
+Circular bar facet
+Circular Bar
+", Cat-Cat-Num,Cat- Cat-Num,bar,NA
+gg_bar_coloured_facet_x_hor_CatCat,"Horizontal bar facet coloured by first variable
+Facet Horizontal coloured Bars","
+Horizontal bar facet coloured by first variable
+Facet Horizontal coloured Bars
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_coloured_facet_x_hor_CatCatNum,"Horizontal facet bar coloured by first variable
+horizontal bar","
+Horizontal facet bar coloured by first variable
+horizontal bar
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_coloured_facet_x_ver_CatCat,"Vertical bar facet coloured by first variable
+Facet Vertical coloured bars","
+Vertical bar facet coloured by first variable
+Facet Vertical coloured bars
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_coloured_facet_x_ver_CatCatNum,"Vertical facet bar coloured by first variable
+vertical bar","
+Vertical facet bar coloured by first variable
+vertical bar
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_coloured_facet_y_hor_CatCat,"Horizontal bar facet coloured by second variable
+Facet Horizontal coloured Bars","
+Horizontal bar facet coloured by second variable
+Facet Horizontal coloured Bars
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_coloured_facet_y_hor_CatCatNum,"Horizontal facet bar coloured by second variable
+horizontal bar","
+Horizontal facet bar coloured by second variable
+horizontal bar
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_coloured_facet_y_ver_CatCat,"Vertical bar facet coloured by second variable
+Facet Vertical coloured bars","
+Vertical bar facet coloured by second variable
+Facet Vertical coloured bars
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_coloured_facet_y_ver_CatCatNum,"Vertical facet bar coloured by second variable
+vertical bar","
+Vertical facet bar coloured by second variable
+vertical bar
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_coloured_hor_Cat,"Horizontal coloured bar
+Horizontal coloured Bars","
+Horizontal coloured bar
+Horizontal coloured Bars
+", Cat, Cat,bar,OK
+gg_bar_coloured_parameter_facet_hor_CatCat,"Horizontal bar facet highlighting some parameter
+Facet Horizontal coloured by parameter Bars","
+Horizontal bar facet highlighting some parameter
+Facet Horizontal coloured by parameter Bars
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_coloured_parameter_facet_hor_CatCatNum,"Horizontal facet bar coloured highliting some parameter
+Facet Horizontal coloured by parameter Bars","
+Horizontal facet bar coloured highliting some parameter
+Facet Horizontal coloured by parameter Bars
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_coloured_parameter_facet_ver_CatCat,"Vertical bar facet highlighting some parameter
+Facet Vertical coloured by parameter bars","
+Vertical bar facet highlighting some parameter
+Facet Vertical coloured by parameter bars
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_coloured_parameter_facet_ver_CatCatNum,"Vertical facet bar coloured highliting some parameter
+Facet Vertical coloured by parameter bars","
+Vertical facet bar coloured highliting some parameter
+Facet Vertical coloured by parameter bars
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_coloured_parameter_hor_Cat,"Horizontal bar highlighting some parameter
+Horizontal coloured by parameter Bars","
+Horizontal bar highlighting some parameter
+Horizontal coloured by parameter Bars
+", Cat, Cat,bar,OK
+gg_bar_coloured_parameter_hor_CatNum,"Horizontal bar highlighting some parameter
+Horizontal coloured by parameter Bars","
+Horizontal bar highlighting some parameter
+Horizontal coloured by parameter Bars
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_coloured_parameter_ver_Cat,"Vertical bar highlighting some parameter
+Vertical coloured by parameter bars","
+Vertical bar highlighting some parameter
+Vertical coloured by parameter bars
+", Cat, Cat,bar,OK
+gg_bar_coloured_parameter_ver_CatNum,"Vertical bar highlighting some parameter
+Vertical coloured by parameter bars","
+Vertical bar highlighting some parameter
+Vertical coloured by parameter bars
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_coloured_ver_Cat,"Vertical coloured bar
+Vertical coloured bars","
+Vertical coloured bar
+Vertical coloured bars
+", Cat, Cat,bar,OK
+gg_bar_coloured_x_hor_CatNum,"Horizontal bar coloured by first variable
+horizontal bar","
+Horizontal bar coloured by first variable
+horizontal bar
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_coloured_x_hor_YeaNum,"Horizontal bar coloured by first variable
+Horizontal coloured bar","
+Horizontal bar coloured by first variable
+Horizontal coloured bar
+", Yea-Num,Num- Yea,bar,OK
+gg_bar_coloured_x_ver_CatNum,"Vertical bar coloured by first variable
+vertical bar","
+Vertical bar coloured by first variable
+vertical bar
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_coloured_x_ver_YeaNum,"Vertical bar coloured by first variable
+vertical coloured bar","
+Vertical bar coloured by first variable
+vertical coloured bar
+", Yea-Num,Num- Yea,bar,OK
+gg_bar_density_facet_z_hor_CatCatNum,"Horizontal facet bar density by first numeric variable
+Facet Coloured horizontal bar","
+Horizontal facet bar density by first numeric variable
+Facet Coloured horizontal bar
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_density_facet_z_ver_CatCatNum,"Vertical facet bar density by first numeric variable
+Facet coloured vertical bar","
+Vertical facet bar density by first numeric variable
+Facet coloured vertical bar
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_density_y_hor_CatNum,"Horizontal bar density by first numeric variable
+horizontal bar","
+Horizontal bar density by first numeric variable
+horizontal bar
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_density_y_hor_DatNum,"Horizontal bar density by first numeric variable
+Horizontal coloured bar","
+Horizontal bar density by first numeric variable
+Horizontal coloured bar
+", Dat-Num, Dat-Num,bar,OK
+gg_bar_density_y_hor_YeaNum,"Horizontal bar density by first numeric variable
+Horizontal coloured bar","
+Horizontal bar density by first numeric variable
+Horizontal coloured bar
+", Yea-Num,Num- Yea,bar,OK
+gg_bar_density_y_ver_CatNum,"Vertical bar density by first numeric variable
+vertical bar","
+Vertical bar density by first numeric variable
+vertical bar
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_density_y_ver_DatNum,"Vertical bar density by first numeric variable
+vertical coloured bar","
+Vertical bar density by first numeric variable
+vertical coloured bar
+", Dat-Num, Dat-Num,bar,OK
+gg_bar_density_y_ver_YeaNum,"Vertical bar density by first numeric variable
+vertical coloured bar","
+Vertical bar density by first numeric variable
+vertical coloured bar
+", Yea-Num,Num- Yea,bar,OK
+gg_bar_dot_facet_hor_CatCat,"Horizontal dot bar facet
+Facet Horizontal Dot Bar","
+Horizontal dot bar facet
+Facet Horizontal Dot Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_dot_facet_ver_CatCat,"Vertical dot bar facet
+Facet Vertical Dot Bar","
+Vertical dot bar facet
+Facet Vertical Dot Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_dot_hor_Cat,"Horizontal dot bar
+Horizontal Dot Bar","
+Horizontal dot bar
+Horizontal Dot Bar
+", Cat, Cat,bar,OK
+gg_bar_dot_hor_CatNum,"Horizontal dot bar
+Horizontal Dot Bar","
+Horizontal dot bar
+Horizontal Dot Bar
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_dot_ver_Cat,"Vertical dot bar
+Vertical Dot Bar","
+Vertical dot bar
+Vertical Dot Bar
+", Cat, Cat,bar,OK
+gg_bar_dot_ver_CatNum,"Vertical dot bar
+Vertical Dot Bar","
+Vertical dot bar
+Vertical Dot Bar
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_facet_hor_CatCatNum,"Horizontal facet bar
+Horizontal bar graph","
+Horizontal facet bar
+Horizontal bar graph
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_facet_hor_CatYeaNum,"Horizontal bar facet
+Barras stacked","
+Horizontal bar facet
+Barras stacked
+", Cat-Yea-Num, Cat-Num-Yea,bar,OK
+gg_bar_facet_ver_CatCatNum,"Vertical facet bar
+Facet vertical bargraph","
+Vertical facet bar
+Facet vertical bargraph
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_facet_ver_CatYeaNum,"Vertical bar facet
+Barras vertical","
+Vertical bar facet
+Barras vertical
+", Cat-Yea-Num, Cat-Num-Yea,bar,OK
+gg_bar_grouped2_hor_CatCatNum,"Horizontal grouped bar by first variable
+Barras grouped","
+Horizontal grouped bar by first variable
+Barras grouped
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_grouped2_hor_CatYeaNum,"Horizontal grouped bar by second variable
+Barras stacked","
+Horizontal grouped bar by second variable
+Barras stacked
+", Cat-Yea-Num, Cat-Num-Yea,bar,OK
+gg_bar_grouped2_ver_CatCatNum,"Vertical grouped bar by first variable
+Barras grouped","
+Vertical grouped bar by first variable
+Barras grouped
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_grouped2_ver_CatYeaNum,"Vertical grouped bar by second variable
+Barras stacked","
+Vertical grouped bar by second variable
+Barras stacked
+", Cat-Yea-Num, Cat-Num-Yea,bar,OK
+gg_bar_grouped_coloured_hor_CatCat,"Horizontal grouped bar by second variable
+Unstacked Coloured horizontal Bar","
+Horizontal grouped bar by second variable
+Unstacked Coloured horizontal Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_grouped_coloured_ver_CatCat,"Vertical grouped bar by second variable
+Unstacked Coloured vertical Bar","
+Vertical grouped bar by second variable
+Unstacked Coloured vertical Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_grouped_hor_CatCatNum,"Horizontal grouped bar by second variable
+horizontal bar graph","
+Horizontal grouped bar by second variable
+horizontal bar graph
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_grouped_hor_CatYeaNum,"Horizontal grouped bar by first variable
+Barras stacked","
+Horizontal grouped bar by first variable
+Barras stacked
+", Cat-Yea-Num, Cat-Num-Yea,bar,OK
+gg_bar_grouped_ver_CatCatNum,"Vertical grouped bar by second variable
+vertical unstacked bargraph","
+Vertical grouped bar by second variable
+vertical unstacked bargraph
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_grouped_ver_CatYeaNum,"Vertical grouped bar by first variable
+Barras stacked","
+Vertical grouped bar by first variable
+Barras stacked
+", Cat-Yea-Num, Cat-Num-Yea,bar,OK
+gg_bar_hor_Cat,"Horizontal bar
+Horizontal Bars","
+Horizontal bar
+Horizontal Bars
+", Cat, Cat,bar,OK
+gg_bar_hor_CatNum,"Horizontal bar
+Horizontal Bars","
+Horizontal bar
+Horizontal Bars
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_hor_DatNum,"Horizontal bar
+bar","
+Horizontal bar
+bar
+", Dat-Num, Dat-Num,bar,OK
+gg_bar_hor_YeaNum,"Horizontal bar
+horizontal bar","
+Horizontal bar
+horizontal bar
+", Yea-Num,Num- Yea,bar,OK
+gg_bar_ordered_hor_Cat,"Ordered horizontal bar
+Ordered horizontal Bars","
+Ordered horizontal bar
+Ordered horizontal Bars
+", Cat, Cat,bar,OK
+gg_bar_ordered_hor_CatNum,"Ordered horizontal bar
+Ordered horizontal Bars","
+Ordered horizontal bar
+Ordered horizontal Bars
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_ordered_ver_Cat,"Ordered vertical bar
+Ordered vertical Bars","
+Ordered vertical bar
+Ordered vertical Bars
+", Cat, Cat,bar,OK
+gg_bar_ordered_ver_CatNum,"Ordered vertical bar
+Ordered vertical Bars","
+Ordered vertical bar
+Ordered vertical Bars
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_polar_Cat.,"Polar bar
+Polar Bar","
+Polar bar
+Polar Bar
+", Cat, Cat,bar,NA
+gg_bar_polar_CatNum.,"Polar bar
+Polar Bar","
+Polar bar
+Polar Bar
+", Cat-Num, Cat-Num,bar,NA
+gg_bar_polar_stacked_100_CatCat.,"Polar 100% stacked bar
+Stacked Polar  100pct","
+Polar 100% stacked bar
+Stacked Polar  100pct
+", Cat-Cat,Cat- Cat,bar,NA
+gg_bar_polar_stacked_CatCat.,"Polar stacked bar
+Stacked Polar bar","
+Polar stacked bar
+Stacked Polar bar
+", Cat-Cat,Cat- Cat,bar,NA
+gg_bar_single_stacked_hor_Cat,"Horizontal stacked bar
+Single Horizontal Stacked Bar","
+Horizontal stacked bar
+Single Horizontal Stacked Bar
+", Cat, Cat,bar,OK
+gg_bar_single_stacked_hor_CatNum,"Horizontal stacked bar
+Single Horizontal Stacked Bar","
+Horizontal stacked bar
+Single Horizontal Stacked Bar
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_single_stacked_ver_Cat,"Vertical stacked bar
+Single Vertical Stacked Bar","
+Vertical stacked bar
+Single Vertical Stacked Bar
+", Cat, Cat,bar,OK
+gg_bar_single_stacked_ver_CatNum,"Vertical stacked bar
+Single Vertical Stacked Bar","
+Vertical stacked bar
+Single Vertical Stacked Bar
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_stacked2_100_hor_CatCatNum,"Horizontal 100% stacked bar by first variable
+Barras grouped","
+Horizontal 100% stacked bar by first variable
+Barras grouped
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_stacked2_100_ver_CatCatNum,"Vertical 100% stacked bar by first variable
+Barras grouped","
+Vertical 100% stacked bar by first variable
+Barras grouped
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_stacked2_hor_CatCatNum,"Horizontal stacked bar by first variable
+Barras grouped
+Tiene múltiples líneas","
+Horizontal stacked bar by first variable
+Barras grouped
+Tiene múltiples líneas
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_stacked2_ver_CatCatNum,"Vertical stacked bar by first variable
+Barras grouped","
+Vertical stacked bar by first variable
+Barras grouped
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_stacked_100_hor_CatCat,"Horizontal 100% stacked bar by second variable
+Stacked 100pct horizontal Bar","
+Horizontal 100% stacked bar by second variable
+Stacked 100pct horizontal Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_stacked_100_hor_CatCatCatNum,"Horizontal 100% stacked bar by first variable + facet by third variable
+Stacked","
+Horizontal 100% stacked bar by first variable + facet by third variable
+Stacked
+", Cat-Cat-Cat-Num, Cat-Cat2-Num,bar,OK
+gg_bar_stacked_100_hor_CatCatNum,"Horizontal 100% stacked bar by second variable
+100 horizontal stacked bar graph","
+Horizontal 100% stacked bar by second variable
+100 horizontal stacked bar graph
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_stacked_100_hor_CatCatYeaNum,"Horizontal 100% stacked bar by first variable + facet by second variable
+Stacked","
+Horizontal 100% stacked bar by first variable + facet by second variable
+Stacked
+", Cat-Cat-Yea-Num,Cat- Cat-Num-Yea,bar,OK
+gg_bar_stacked_100_hor_CatYeaNum,"Horizontal 100% stacked bar by first variable
+Barras horizontal stacked","
+Horizontal 100% stacked bar by first variable
+Barras horizontal stacked
+", Cat-Yea-Num, Cat-Num-Yea,bar,OK
+gg_bar_stacked_100_ver_CatCat,"Vertical 100% stacked bar by second variable
+Stacked 100pct vertical Bar","
+Vertical 100% stacked bar by second variable
+Stacked 100pct vertical Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_stacked_100_ver_CatCatCatNum,"Vertical 100% stacked bar by first variable + facet by third variable
+Stacked","
+Vertical 100% stacked bar by first variable + facet by third variable
+Stacked
+", Cat-Cat-Cat-Num, Cat-Cat2-Num,bar,OK
+gg_bar_stacked_100_ver_CatCatNum,"Vertical 100% stacked bar by second variable
+100 vertical stacked bar graph","
+Vertical 100% stacked bar by second variable
+100 vertical stacked bar graph
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_stacked_100_ver_CatCatYeaNum,"Vertical 100% stacked bar by first variable + facet by second variable
+Stacked","
+Vertical 100% stacked bar by first variable + facet by second variable
+Stacked
+", Cat-Cat-Yea-Num,Cat- Cat-Num-Yea,bar,OK
+gg_bar_stacked_100_ver_CatYeaNum,"Vertical 100% stacked bar by first variable
+100 vertical stacked bar graph","
+Vertical 100% stacked bar by first variable
+100 vertical stacked bar graph
+", Cat-Yea-Num, Cat-Num-Yea,bar,OK
+gg_bar_stacked_dot_hor_CatCat,"Horizontal stacked dot bar
+Stacked horizontal dot Bar","
+Horizontal stacked dot bar
+Stacked horizontal dot Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_stacked_dot_ver_CatCat,"Vertical stacked dot bar
+Stacked Vertical dot Bar","
+Vertical stacked dot bar
+Stacked Vertical dot Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_stacked_hor_CatCat,"Horizontal stacked bar by second variable
+Stacked horizontal Bar","
+Horizontal stacked bar by second variable
+Stacked horizontal Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_stacked_hor_CatCatCatNum,"Horizontal stacked bar by first variable + facet by third variable
+Stacked","
+Horizontal stacked bar by first variable + facet by third variable
+Stacked
+", Cat-Cat-Cat-Num, Cat-Cat2-Num,bar,OK
+gg_bar_stacked_hor_CatCatNum,"Horizontal stacked bar by second variable
+horizontal stacked bar graph","
+Horizontal stacked bar by second variable
+horizontal stacked bar graph
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_stacked_hor_CatCatYeaNum,"Horizontal stacked bar by first variable + facet by second variable
+Stacked","
+Horizontal stacked bar by first variable + facet by second variable
+Stacked
+", Cat-Cat-Yea-Num,Cat- Cat-Num-Yea,bar,OK
+gg_bar_stacked_hor_CatDatNum,"Horizontal stacked bar
+horizontal stacked bar graph","
+Horizontal stacked bar
+horizontal stacked bar graph
+", Cat-Dat-Num, Cat-Dat-Num,bar,OK
+gg_bar_stacked_hor_CatYeaNum,"Horizontal stacked bar by first variable
+Barras stacked","
+Horizontal stacked bar by first variable
+Barras stacked
+", Cat-Yea-Num, Cat-Num-Yea,bar,OK
+gg_bar_stacked_ordered_hor_CatCat,"Ordered horizontal stacked bar by second variable
+Ordered Stacked horizontal Bar","
+Ordered horizontal stacked bar by second variable
+Ordered Stacked horizontal Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_stacked_ordered_ver_CatCat,"Ordered vertical stacked bar by second variable
+Ordered Stacked vertical Bar","
+Ordered vertical stacked bar by second variable
+Ordered Stacked vertical Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_stacked_polar_100_CatCatNum.,"Stacked 100% polar bar
+Stacked Polar Bar 100","
+Stacked 100% polar bar
+Stacked Polar Bar 100
+", Cat-Cat-Num,Cat- Cat-Num,bar,NA
+gg_bar_stacked_polar_CatCatNum.,"Stacked polar bar
+Stacked Polar Bar","
+Stacked polar bar
+Stacked Polar Bar
+", Cat-Cat-Num,Cat- Cat-Num,bar,NA
+gg_bar_stacked_ver_CatCat,"Vertical stacked bar by second variable
+Stacked vertical Bar","
+Vertical stacked bar by second variable
+Stacked vertical Bar
+", Cat-Cat,Cat- Cat,bar,OK
+gg_bar_stacked_ver_CatCatCatNum,"Vertical stacked bar by first variable + facet by third variable
+Stacked","
+Vertical stacked bar by first variable + facet by third variable
+Stacked
+", Cat-Cat-Cat-Num, Cat-Cat2-Num,bar,OK
+gg_bar_stacked_ver_CatCatNum,"Vertical stacked bar by second variable
+vertical stacked bar graph","
+Vertical stacked bar by second variable
+vertical stacked bar graph
+", Cat-Cat-Num,Cat- Cat-Num,bar,OK
+gg_bar_stacked_ver_CatCatYeaNum,"Vertical stacked bar by first variable + facet by second variable
+Stacked","
+Vertical stacked bar by first variable + facet by second variable
+Stacked
+", Cat-Cat-Yea-Num,Cat- Cat-Num-Yea,bar,OK
+gg_bar_stacked_ver_CatDatNum,"Vertical stacked bar
+vertical stacked bar graph","
+Vertical stacked bar
+vertical stacked bar graph
+", Cat-Dat-Num, Cat-Dat-Num,bar,OK
+gg_bar_stacked_ver_CatYeaNum,"Vertical stacked bar by first variable
+Barras stacked","
+Vertical stacked bar by first variable
+Barras stacked
+", Cat-Yea-Num, Cat-Num-Yea,bar,OK
+gg_bar_ver_Cat,"Vertical bar
+Vertical bars","
+Vertical bar
+Vertical bars
+", Cat, Cat,bar,OK
+gg_bar_ver_CatNum,"Vertical bar
+Vertical Bars","
+Vertical bar
+Vertical Bars
+", Cat-Num, Cat-Num,bar,OK
+gg_bar_ver_DatNum,"Vertical bar
+bar","
+Vertical bar
+bar
+", Dat-Num, Dat-Num,bar,OK
+gg_bar_ver_YeaNum,"Vertical bar
+vertical bar","
+Vertical bar
+vertical bar
+", Yea-Num,Num- Yea,bar,OK
+gg_box_DatNum.,Boxplot,"
+Boxplot
+", Dat-Num, Dat-Num,box,NA
+gg_box_Num.,"Vertical boxplot
+Box plot","
+Vertical boxplot
+Box plot
+", Num, Num,box,NA
+gg_box_flip_Num.,"Horizontal boxplot
+Box plot flipped","
+Horizontal boxplot
+Box plot flipped
+", Num, Num,box,NA
+gg_boxplot_CatNum.,"Vertical boxplot
+Boxplot","
+Vertical boxplot
+Boxplot
+", Cat-Num, Cat-Num,boxplot,NA
+gg_boxplot_dot_CatNum.,"Vertical boxplot + jitter
+Boxplot + dot jitter","
+Vertical boxplot + jitter
+Boxplot + dot jitter
+", Cat-Num, Cat-Num,boxplot,NA
+gg_boxplot_dot_flip_CatNum.,"Horizontal boxplot + jitter
+Boxplot + dot jitter flipped","
+Horizontal boxplot + jitter
+Boxplot + dot jitter flipped
+", Cat-Num, Cat-Num,boxplot,NA
+gg_boxplot_flip_CatNum.,"Horizontal boxplot
+Boxplot flipped","
+Horizontal boxplot
+Boxplot flipped
+", Cat-Num, Cat-Num,boxplot,NA
+gg_bubble_Cat.,"Bubble
+Bubble","
+Bubble
+Bubble
+", Cat, Cat,bubble,NA
+gg_bubble_Cat2.,"Bubble
+bubbles","
+Bubble
+bubbles
+", Cat, Cat,bubble,NA
+gg_bubble_CatCat.,"Bubble
+Bubble","
+Bubble
+Bubble
+", Cat-Cat,Cat- Cat,bubble,NA
+gg_bubble_CatCatNum.,"Bubble
+Bubble","
+Bubble
+Bubble
+", Cat-Cat-Num,Cat- Cat-Num,bubble,NA
+gg_bubble_CatNum.,"Bubble
+Bubble","
+Bubble
+Bubble
+", Cat-Num, Cat-Num,bubble,NA
+gg_bubble_CatNum2.,"Bubbles
+Bubbles","
+Bubbles
+Bubbles
+", Cat-Num, Cat-Num,bubble,NA
+gg_bubble_coloured_Cat.,"Bubble coloured
+Coloured Bubble","
+Bubble coloured
+Coloured Bubble
+", Cat, Cat,bubble,NA
+gg_bubble_coloured_x_CatCat.,"Bubble coloured by first variable
+Coloured Bubble","
+Bubble coloured by first variable
+Coloured Bubble
+", Cat-Cat,Cat- Cat,bubble,NA
+gg_bubble_coloured_x_CatCatNum.,"Bubble coloured by first variable
+Coloured Bubble first Cat","
+Bubble coloured by first variable
+Coloured Bubble first Cat
+", Cat-Cat-Num,Cat- Cat-Num,bubble,NA
+gg_bubble_coloured_x_CatNum.,"Bubble coloured by first variable
+Coloured Bubble","
+Bubble coloured by first variable
+Coloured Bubble
+", Cat-Num, Cat-Num,bubble,NA
+gg_bubble_coloured_y_CatCat.,"Bubble coloured by second variable
+Coloured Bubble","
+Bubble coloured by second variable
+Coloured Bubble
+", Cat-Cat,Cat- Cat,bubble,NA
+gg_bubble_coloured_y_CatCatNum.,"Bubble coloured by second variable
+Coloured Bubble second Cat","
+Bubble coloured by second variable
+Coloured Bubble second Cat
+", Cat-Cat-Num,Cat- Cat-Num,bubble,NA
+gg_bubble_density_y_CatNum.,"Bubble coloured by first numeric variable
+Coloured Bubble","
+Bubble coloured by first numeric variable
+Coloured Bubble
+", Cat-Num, Cat-Num,bubble,NA
+gg_bubbles_DatNum.,"Bubbles
+bubbles","
+Bubbles
+bubbles
+", Dat-Num, Dat-Num,bubbles,NA
+gg_bubbles_density_x_DatNum.,"Bubbles density by first numeric variable
+bubbles","
+Bubbles density by first numeric variable
+bubbles
+", Dat-Num, Dat-Num,bubbles,NA
+gg_bullseye_Cat.,"Bullseye
+Bullseye","
+Bullseye
+Bullseye
+", Cat, Cat,bullseye,NA
+gg_bullseye_CatNum.,"Bullseye
+Bullseye","
+Bullseye
+Bullseye
+", Cat-Num, Cat-Num,bullseye,NA
+gg_bullseye_facet_CatCat.,"Bullseye facet
+Facet Bullseye","
+Bullseye facet
+Facet Bullseye
+", Cat-Cat,Cat- Cat,bullseye,NA
+gg_bullseye_facet_CatCatNum.,"Bullseye facet
+Facet Bullseye","
+Bullseye facet
+Facet Bullseye
+", Cat-Cat-Num,Cat- Cat-Num,bullseye,NA
+gg_circle_CatYeaNum.,"Scatter
+ciculos","
+Scatter
+ciculos
+", Cat-Yea-Num, Cat-Num-Yea,circle,NA
+gg_dens_NumNum.,"Horizontal density 2D bin
+Density in 2D","
+Horizontal density 2D bin
+Density in 2D
+", Num-Num,Num- Num,dens,NA
+gg_dens_flip_NumNum.,"Vertical density 2D bin
+Density 2D flipped","
+Vertical density 2D bin
+Density 2D flipped
+", Num-Num,Num- Num,dens,NA
+gg_density_hist_Num.,"Histogram density
+density histogram","
+Histogram density
+density histogram
+", Num, Num,density,NA
+gg_density_multi_dist_coloured_CatNum.,"Density distribution
+Coloured Density Distribution","
+Density distribution
+Coloured Density Distribution
+", Cat-Num, Cat-Num,density,NA
+gg_dist_cum_Num.,"Cumulative distribution function
+Cumulative distribution function","
+Cumulative distribution function
+Cumulative distribution function
+", Num, Num,dist,NA
+gg_dist_hist_hor_facet_CatNum.,"Horizontal histogram + distribution facet
+Facet Horizontal Histogram + Dist","
+Horizontal histogram + distribution facet
+Facet Horizontal Histogram + Dist
+
+Horizontal histogram + distribution facet
+Facet Horizontal Histogram + Dist
+", Cat-Num, Cat-Num,dist,NA
+gg_dist_hist_hor_mean_facet_CatNum.,"Horizontal histogram + distribution + mean facet
+Facet Horizontal Histogram + Dist + Mean","
+Horizontal histogram + distribution + mean facet
+Facet Horizontal Histogram + Dist + Mean
+
+Horizontal histogram + distribution + mean facet
+Facet Horizontal Histogram + Dist + Mean
+", Cat-Num, Cat-Num,dist,NA
+gg_dist_hist_ver_facet_CatNum.,"Vertical histogram + distribution facet
+Facet Vertical Histogram + Dist","
+Vertical histogram + distribution facet
+Facet Vertical Histogram + Dist
+
+Vertical histogram + distribution facet
+Facet Vertical Histogram + Dist
+", Cat-Num, Cat-Num,dist,NA
+gg_dist_hist_ver_mean_facet_CatNum.,"Vertical histogram + distribution + mean facet
+Facet Vertical Histogram + Dist + Mean","
+Vertical histogram + distribution + mean facet
+Facet Vertical Histogram + Dist + Mean
+
+Vertical histogram + distribution + mean facet
+Facet Vertical Histogram + Dist + Mean
+", Cat-Num, Cat-Num,dist,NA
+gg_dist_hor_facet_CatNum.,"Horizontal distribution facet
+Facet Horizontal Dist","
+Horizontal distribution facet
+Facet Horizontal Dist
+", Cat-Num, Cat-Num,dist,NA
+gg_dist_ver_facet_CatNum.,"Vertical distribution facet
+Facet Vertical Dist","
+Vertical distribution facet
+Facet Vertical Dist
+", Cat-Num, Cat-Num,dist,NA
+gg_donut_Cat.,"Donut
+Donut","
+Donut
+Donut
+", Cat, Cat,donut,NA
+gg_donut_CatNum.,"Donut
+dount","
+Donut
+dount
+", Cat-Num, Cat-Num,donut,NA
+gg_donut_facet_CatCat.,"Donut facet
+Facet Donut","
+Donut facet
+Facet Donut
+", Cat-Cat,Cat- Cat,donut,NA
+gg_donut_facet_CatCatNum.,"Donut facet
+Facet Donut","
+Donut facet
+Facet Donut
+", Cat-Cat-Num,Cat- Cat-Num,donut,NA
+gg_dot_bar_Num.,"Vertical histogram dot bar
+Dot bar","
+Vertical histogram dot bar
+Dot bar
+", Num, Num,dot,NA
+gg_dot_bar_flip_Num.,"Horizontal histogram dot bar
+Dot bar flipped","
+Horizontal histogram dot bar
+Dot bar flipped
+", Num, Num,dot,NA
+gg_dot_dist_hist_hor_facet_CatNum.,"Horizontal density dot + histogram + distribution facet
+Facet Horizontal Histogram + Dist + Dot","
+Horizontal density dot + histogram + distribution facet
+Facet Horizontal Histogram + Dist + Dot
+", Cat-Num, Cat-Num,dot,NA
+gg_dot_dist_hist_hor_mean_facet_CatNum.,"Horizontal density dot + histogram + distribution + mean facet
+Facet Horizontal Histogram + Dist + Mean + Dot","
+Horizontal density dot + histogram + distribution + mean facet
+Facet Horizontal Histogram + Dist + Mean + Dot
+", Cat-Num, Cat-Num,dot,NA
+gg_dot_dist_hist_ver_facet_CatNum.,"Vertical density dot + histogram + distribution facet
+Facet Vertical Histogram + Dist + Dot","
+Vertical density dot + histogram + distribution facet
+Facet Vertical Histogram + Dist + Dot
+", Cat-Num, Cat-Num,dot,NA
+gg_dot_dist_hist_ver_mean_facet_CatNum.,"Vertical density dot + histogram + distribution + mean facet
+Facet Vertical Histogram + Dist + Mean + Dot","
+Vertical density dot + histogram + distribution + mean facet
+Facet Vertical Histogram + Dist + Mean + Dot
+", Cat-Num, Cat-Num,dot,NA
+gg_dot_dist_hor_facet_CatNum.,"Horizontal density dot + distribution facet
+Facet Horizontal Dot Dist","
+Horizontal density dot + distribution facet
+Facet Horizontal Dot Dist
+", Cat-Num, Cat-Num,dot,NA
+gg_dot_dist_ver_facet_CatNum.,"Vertical density dot + distribution facet
+Facet Vertical Dot Dist","
+Vertical density dot + distribution facet
+Facet Vertical Dot Dist
+
+Vertical density dot + distribution facet
+Facet Vertical Dot Dist
+", Cat-Num, Cat-Num,dot,NA
+gg_dot_hist_hor_facet_CatNum.,"Horizontal density dot + histogram facet
+Facet Horizontal Histogram + Dot","
+Horizontal density dot + histogram facet
+Facet Horizontal Histogram + Dot
+", Cat-Num, Cat-Num,dot,NA
+gg_dot_hist_hor_mean_facet_CatNum.,"Horizontal density dot + histogram + mean facet
+Facet Horizontal Histogram + Mean + Dot","
+Horizontal density dot + histogram + mean facet
+Facet Horizontal Histogram + Mean + Dot
+", Cat-Num, Cat-Num,dot,NA
+gg_dot_hist_ver_facet_CatNum.,"Vertical density dot + histogram facet
+Facet Vertical Dot Histogram","
+Vertical density dot + histogram facet
+Facet Vertical Dot Histogram
+", Cat-Num, Cat-Num,dot,NA
+gg_dot_hist_ver_mean_facet_CatNum.,"Vertical density dot + histogram + mean facet
+Facet Vertical Histogram + Mean + Dot","
+Vertical density dot + histogram + mean facet
+Facet Vertical Histogram + Mean + Dot
+", Cat-Num, Cat-Num,dot,NA
+gg_gauge_Cat.,"Gauge
+Gauge","
+Gauge
+Gauge
+", Cat, Cat,gauge,NA
+gg_gauge_CatNum.,"Gauge
+Gauge","
+Gauge
+Gauge
+", Cat-Num, Cat-Num,gauge,NA
+gg_gauge_dial_Cat.,"Dial gauge
+Gauge","
+Dial gauge
+Gauge
+", Cat, Cat,gauge,NA
+gg_gauge_dial_CatNum.,"Dial gauge
+Gauge","
+Dial gauge
+Gauge
+", Cat-Num, Cat-Num,gauge,NA
+gg_hist_Num.,"Histogram
+Histogram","
+Histogram
+Histogram
+", Num, Num,hist,NA
+gg_hist_NumNum.,"Vertical histogram
+Histogram 2D","
+Vertical histogram
+Histogram 2D
+", Num-Num,Num- Num,hist,NA
+gg_hist_dens_Num.,"Histogram + density
+Histograms with density","
+Histogram + density
+Histograms with density
+", Num, Num,hist,NA
+gg_hist_flip_NumNum.,"Horizontal histogram
+Histogram 2d flipped","
+Horizontal histogram
+Histogram 2d flipped
+", Num-Num,Num- Num,hist,NA
+gg_hist_hor_facet_CatNum.,"Horizontal histogram facet
+Facet Horizontal Histogram","
+Horizontal histogram facet
+Facet Horizontal Histogram
+
+Horizontal histogram facet
+Facet Horizontal Histogram
+", Cat-Num, Cat-Num,hist,NA
+gg_hist_hor_mean_facet_CatNum.,"Horizontal histogram + mean facet
+Facet Horizontal Histogram + Mean","
+Horizontal histogram + mean facet
+Facet Horizontal Histogram + Mean
+
+Horizontal histogram + mean facet
+Facet Horizontal Histogram + Mean
+", Cat-Num, Cat-Num,hist,NA
+gg_hist_stacked_ver_CatNum.,"Vertical stacked histogram
+Stacked Vertical Histogram","
+Vertical stacked histogram
+Stacked Vertical Histogram
+", Cat-Num, Cat-Num,hist,NA
+gg_hist_ver_facet_CatNum.,"Vertical histogram facet
+Facet Vertical Histogram","
+Vertical histogram facet
+Facet Vertical Histogram
+
+Vertical histogram facet
+Facet Vertical Histogram
+", Cat-Num, Cat-Num,hist,NA
+gg_hist_ver_mean_facet_CatNum.,"Vertical histogram + mean facet
+Facet Vertical Histogram + Mean","
+Vertical histogram + mean facet
+Facet Vertical Histogram + Mean
+", Cat-Num, Cat-Num,hist,NA
+gg_histogram_CatDat.,"Histogram
+histogram","
+Histogram
+histogram
+", Cat-Dat, Cat-Dat,histogram,NA
+gg_horizon_DatNum.,"Horizon
+Horizon","
+Horizon
+Horizon
+", Dat-Num, Dat-Num,horizon,NA
+gg_horizon_Num.,"Horizon
+Horizon","
+Horizon
+Horizon
+", Num, Num,horizon,NA
+gg_horizon_NumNum.,"Horizon
+Horizon","
+Horizon
+Horizon
+", Num-Num,Num- Num,horizon,NA
+gg_horizon_YeaNum.,"Horizon
+Horizon","
+Horizon
+Horizon
+", Yea-Num,Num- Yea,horizon,NA
+gg_kagi_DatNum.,"Kagi
+Kagi","
+Kagi
+Kagi
+", Dat-Num, Dat-Num,kagi,NA
+gg_line_CatNumNum.,"Line
+lines","
+Line
+lines
+", Cat-Num-Num, Cat-Num2,line,NA
+gg_line_DatNum.,"Line
+Lines","
+Line
+Lines
+", Dat-Num, Dat-Num,line,NA
+gg_line_facet_CatNum.,"Line facet
+Facet Line","
+Line facet
+Facet Line
+", Cat-Num, Cat-Num,line,NA
+gg_line_hor_Cat.,"Horizontal line
+Horizontal Line","
+Horizontal line
+Horizontal Line
+", Cat, Cat,line,NA
+gg_line_hor_CatYeaNum.,"Horizontal line
+Tiene múltiples líneas","
+Horizontal line
+Tiene múltiples líneas
+", Cat-Yea-Num, Cat-Num-Yea,line,NA
+gg_line_hor_YeaNum.,"Horizontal line
+Horizontal Lines","
+Horizontal line
+Horizontal Lines
+", Yea-Num,Num- Yea,line,NA
+gg_line_hor_facet_CatCat.,"Horizontal line facet
+Horizontal Line","
+Horizontal line facet
+Horizontal Line
+", Cat-Cat,Cat- Cat,line,NA
+gg_line_hor_facet_CatCatNum.,"Horizontal line facet
+horizontal linegraph","
+Horizontal line facet
+horizontal linegraph
+", Cat-Cat-Num,Cat- Cat-Num,line,NA
+gg_line_multi_CatNum.,"Grouped line
+Grouped Line Coloured","
+Grouped line
+Grouped Line Coloured
+", Cat-Num, Cat-Num,line,NA
+gg_line_multi_NumNum.,"Line for each numeric variable
+Line for each Num","
+Line for each numeric variable
+Line for each Num
+", Num-Num,Num- Num,line,NA
+gg_line_point_Num.,"Vertical line + point
+Line wiht point plot","
+Vertical line + point
+Line wiht point plot
+", Num, Num,line,NA
+gg_line_point_NumNum.,"Line + point
+Line point plot","
+Line + point
+Line point plot
+", Num-Num,Num- Num,line,NA
+gg_line_point_facet_CatNum.,"Line + point facet
+Facet Line Point","
+Line + point facet
+Facet Line Point
+", Cat-Num, Cat-Num,line,NA
+gg_line_point_flip_Num.,"Horizontal line + point
+Line with point plot","
+Horizontal line + point
+Line with point plot
+", Num, Num,line,NA
+gg_line_point_hor_Cat.,"Horizontal line + point
+Horizontal Line Point","
+Horizontal line + point
+Horizontal Line Point
+", Cat, Cat,line,NA
+gg_line_point_hor_facet_CatCat.,"Horizontal line + point facet
+Horizontal Line Point","
+Horizontal line + point facet
+Horizontal Line Point
+", Cat-Cat,Cat- Cat,line,NA
+gg_line_point_multi_CatNum.,"Grouped line + point
+Grouped Line Color Point","
+Grouped line + point
+Grouped Line Color Point
+", Cat-Num, Cat-Num,line,NA
+gg_line_point_ver_Cat.,"Vertical line + point
+Vertical Line Point","
+Vertical line + point
+Vertical Line Point
+", Cat, Cat,line,NA
+gg_line_point_ver_facet_CatCat.,"Vertical line + point facet
+Vertical Line Point","
+Vertical line + point facet
+Vertical Line Point
+", Cat-Cat,Cat- Cat,line,NA
+gg_line_points_DatNum.,"Line + point
+Lines","
+Line + point
+Lines
+", Dat-Num, Dat-Num,line,NA
+gg_line_points_facet_DatNum.,"Line + point facet by years
+Line Points facet by years","
+Line + point facet by years
+Line Points facet by years
+", Dat-Num, Dat-Num,line,NA
+gg_line_ver_Cat.,"Vertical line
+Vertical Line","
+Vertical line
+Vertical Line
+", Cat, Cat,line,NA
+gg_line_ver_facet_CatCat.,"Vertical line facet
+Vertical Line","
+Vertical line facet
+Vertical Line
+", Cat-Cat,Cat- Cat,line,NA
+gg_line_ver_facet_CatCatNum.,"Vertical line facet
+vertical linegraph","
+Vertical line facet
+vertical linegraph
+", Cat-Cat-Num,Cat- Cat-Num,line,NA
+gg_lollipop_DatNum.,"Lollipop
+lollipop","
+Lollipop
+lollipop
+", Dat-Num, Dat-Num,lollipop,NA
+gg_lollipop_YeaNum.,"Lollipop
+lollipop. segment and point
+gg_lollipop_YeaNum.","
+Lollipop
+lollipop. segment and point
+gg_lollipop_YeaNum.
+", Yea-Num,Num- Yea,lollipop,NA
+gg_marimekko_hor_CatCat.,"Horizontal marimekko
+Horizontal Marimekko","
+Horizontal marimekko
+Horizontal Marimekko
+", Cat-Cat,Cat- Cat,marimekko,NA
+gg_marimekko_ver_CatCat.,"Vertical marimekko
+Vertical Marimekko","
+Vertical marimekko
+Vertical Marimekko
+", Cat-Cat,Cat- Cat,marimekko,NA
+gg_multi_line_CatCatNum.,"Grouped line by first variable
+Grouped Line Coloured","
+Grouped line by first variable
+Grouped Line Coloured
+", Cat-Cat-Num,Cat- Cat-Num,multi,NA
+gg_multi_line_CatDatNum.,"Grouped line
+Grouped Line Coloured","
+Grouped line
+Grouped Line Coloured
+", Cat-Dat-Num, Cat-Dat-Num,multi,NA
+gg_multi_line_point_CatCatNum.,"Grouped line + points by first variable
+Grouped Line Color Point","
+Grouped line + points by first variable
+Grouped Line Color Point
+", Cat-Cat-Num,Cat- Cat-Num,multi,NA
+gg_multi_line_point_CatDatNum.,"Grouped line + point
+Grouped Line Color Point","
+Grouped line + point
+Grouped Line Color Point
+", Cat-Dat-Num, Cat-Dat-Num,multi,NA
+gg_pie_Cat.,"Pie
+Pie","
+Pie
+Pie
+", Cat, Cat,pie,NA
+gg_pie_CatNum.,"Pie
+Pie","
+Pie
+Pie
+", Cat-Num, Cat-Num,pie,NA
+gg_pie_facet_CatCat.,"Pie facet
+Facet Pie","
+Pie facet
+Facet Pie
+", Cat-Cat,Cat- Cat,pie,NA
+gg_pie_facet_CatCatNum.,"Pie facet by second variable
+Facet Pie","
+Pie facet by second variable
+Facet Pie
+", Cat-Cat-Num,Cat- Cat-Num,pie,NA
+gg_point_CatCatCat.,"Scatter
+Coloured Point","
+Scatter
+Coloured Point
+", Cat-Cat-Cat, Cat-Cat2,point,NA
+gg_point_DatNum.,"Scatter
+Point scatter plot","
+Scatter
+Point scatter plot
+", Dat-Num, Dat-Num,point,NA
+gg_point_Num.,"Vertical scatter
+Scatter plot","
+Vertical scatter
+Scatter plot
+", Num, Num,point,NA
+gg_point_NumNum.,"Scatter
+Scatter plot","
+Scatter
+Scatter plot
+", Num-Num,Num- Num,point,NA
+gg_point_facet_CatNum.,"Scatter facet
+Facet Point","
+Scatter facet
+Facet Point
+", Cat-Num, Cat-Num,point,NA
+gg_point_flip_Num.,"Horizontal scatter
+Line plot","
+Horizontal scatter
+Line plot
+", Num, Num,point,NA
+gg_point_grouped_CatNum.,"Grouped scatter
+Grouped Color Point","
+Grouped scatter
+Grouped Color Point
+", Cat-Num, Cat-Num,point,NA
+gg_point_line_CatNumNum.,"Line + point
+Point Lines","
+Line + point
+Point Lines
+", Cat-Num-Num, Cat-Num2,point,NA
+gg_point_trend_line_facet_CatNum.,"Trend line facet
+Facet Trend Line","
+Trend line facet
+Facet Trend Line
+", Cat-Num, Cat-Num,point,NA
+gg_pointline_hor_CatDat.,"Horizontal line + point
+pointlines","
+Horizontal line + point
+pointlines
+", Cat-Dat, Cat-Dat,pointline,NA
+gg_pointline_ver_CatDat.,"Vertical line + point
+pointlines","
+Vertical line + point
+pointlines
+", Cat-Dat, Cat-Dat,pointline,NA
+gg_points_facet_DatNum.,"Points facet by years
+Points facet by years","
+Points facet by years
+Points facet by years
+", Dat-Num, Dat-Num,points,NA
+gg_pyramid_CatCatNum.,"Pyramid
+pyramid","
+Pyramid
+pyramid
+", Cat-Cat-Num,Cat- Cat-Num,pyramid,NA
+gg_radar_CatNumP.,"Radar
+point","
+Radar
+point
+", Cat-NumP, Cat-NumP,radar,NA
+gg_scatter_CatNumNum.,"Scatter
+Point","
+Scatter
+Point
+", Cat-Num-Num, Cat-Num2,scatter,NA
+gg_scatter_agg_CatNumNum.,"Scatter + Aggregation on both numeric variables
+pointlines","
+Scatter + Aggregation on both numeric variables
+pointlines
+", Cat-Num-Num, Cat-Num2,scatter,NA
+gg_scatter_agg_trend_CatNumNum.,"Scatter + Aggregation on both numeric variables + trend
+pointlines","
+Scatter + Aggregation on both numeric variables + trend
+pointlines
+", Cat-Num-Num, Cat-Num2,scatter,NA
+gg_scatter_hor_CatDatNum.,"Horizontal scatter
+pointlines","
+Horizontal scatter
+pointlines
+", Cat-Dat-Num, Cat-Dat-Num,scatter,NA
+gg_scatter_trend_CatNumNum.,"Scatter + Trend
+Point","
+Scatter + Trend
+Point
+", Cat-Num-Num, Cat-Num2,scatter,NA
+gg_scatter_ver_CatDatNum.,"Vertical scatter
+pointlines","
+Vertical scatter
+pointlines
+", Cat-Dat-Num, Cat-Dat-Num,scatter,NA
+gg_slope_CatNum.,"Slope
+Slope","
+Slope
+Slope
+", Cat-Num, Cat-Num,slope,NA
+gg_slope_CatYeaNum.,"Slope
+Slope","
+Slope
+Slope
+", Cat-Yea-Num, Cat-Num-Yea,slope,NA
+gg_smooth_DatNum.,"Smooth
+smooth","
+Smooth
+smooth
+", Dat-Num, Dat-Num,smooth,NA
+gg_steam_CatDatNum.,"Steam
+Steam","
+Steam
+Steam
+", Cat-Dat-Num, Cat-Dat-Num,steam,NA
+gg_steam_CatNum.,"Steam
+Steam","
+Steam
+Steam
+", Cat-Num, Cat-Num,steam,NA
+gg_steam_CatNumNum.,"Steam
+Steamgraph","
+Steam
+Steamgraph
+", Cat-Num-Num, Cat-Num2,steam,NA
+gg_steam_CatYeaNum.,"Steam
+Steam","
+Steam
+Steam
+", Cat-Yea-Num, Cat-Num-Yea,steam,NA
+gg_sunburst_CatCatCatNum.,"Sunburst
+sunburst","
+Sunburst
+sunburst
+", Cat-Cat-Cat-Num, Cat-Cat2-Num,sunburst,NA
+gg_sunburst_CatCatNum.,"Sunburst
+sunburst","
+Sunburst
+sunburst
+", Cat-Cat-Num,Cat- Cat-Num,sunburst,NA
+gg_treemap_Cat.,"Treemap coloured by first variable
+Treemap fill by first Cat","
+Treemap coloured by first variable
+Treemap fill by first Cat
+", Cat, Cat,treemap,NA
+gg_treemap_density_x_CatCatNumNum.,"Treemap density first numeric variable
+Treemap Fill by second Num","
+Treemap density first numeric variable
+Treemap Fill by second Num
+
+Treemap density first numeric variable
+Treemap Fill by second Num
+", Cat-Cat-Num-Num,Cat- Cat-Num2,treemap,NA
+gg_treemap_density_y_CatCatNumNum.,"Treemap density second numeric variable
+Treemap Density by second Num","
+Treemap density second numeric variable
+Treemap Density by second Num
+
+Treemap density second numeric variable
+Treemap Density by second Num
+", Cat-Cat-Num-Num,Cat- Cat-Num2,treemap,NA
+gg_treemap_density_y_CatNum.,"Treemap density by first numeric variable
+Treemap Density by Num","
+Treemap density by first numeric variable
+Treemap Density by Num
+", Cat-Num, Cat-Num,treemap,NA
+gg_treemap_density_z_CatCatNum.,"Treemap density by numeric variable
+Treemap Density by Num","
+Treemap density by numeric variable
+Treemap Density by Num
+", Cat-Cat-Num,Cat- Cat-Num,treemap,NA
+gg_treemap_x_CatCat.,"Treemap coloured by first variable
+Treemap fill first Cat","
+Treemap coloured by first variable
+Treemap fill first Cat
+", Cat-Cat,Cat- Cat,treemap,NA
+gg_treemap_x_CatCatCat.,"Treemap coloured by first variable
+Treemap fill first Cat","
+Treemap coloured by first variable
+Treemap fill first Cat
+", Cat-Cat-Cat, Cat-Cat2,treemap,NA
+gg_treemap_x_CatCatCatNum.,"Treemap coloured by first variable
+Treemap fill first Cat","
+Treemap coloured by first variable
+Treemap fill first Cat
+", Cat-Cat-Cat-Num, Cat-Cat2-Num,treemap,NA
+gg_treemap_x_CatCatNum.,"Treemap coloured by first variable
+Treemap Fill by first Cat","
+Treemap coloured by first variable
+Treemap Fill by first Cat
+", Cat-Cat-Num,Cat- Cat-Num,treemap,NA
+gg_treemap_x_CatNum.,"Treemap coloured by first variable
+Treemap fill by first Cat","
+Treemap coloured by first variable
+Treemap fill by first Cat
+", Cat-Num, Cat-Num,treemap,NA
+gg_treemap_y_CatCat.,"Treemap coloured by second variable
+Treemap fill second Cat","
+Treemap coloured by second variable
+Treemap fill second Cat
+", Cat-Cat,Cat- Cat,treemap,NA
+gg_treemap_y_CatCatCat.,"Treemap coloured by second variable
+Treemap fill second Cat","
+Treemap coloured by second variable
+Treemap fill second Cat
+", Cat-Cat-Cat, Cat-Cat2,treemap,NA
+gg_treemap_y_CatCatCatNum.,"Treemap coloured by second variable
+Treemap fill second Cat","
+Treemap coloured by second variable
+Treemap fill second Cat
+", Cat-Cat-Cat-Num, Cat-Cat2-Num,treemap,NA
+gg_treemap_y_CatCatNum.,"Treemap coloured by second variable
+Treemap Fill by second Cat","
+Treemap coloured by second variable
+Treemap Fill by second Cat
+", Cat-Cat-Num,Cat- Cat-Num,treemap,NA
+gg_treemap_z_CatCatCat.,"Treemap coloured by third variable
+Treemap fill third Cat","
+Treemap coloured by third variable
+Treemap fill third Cat
+", Cat-Cat-Cat, Cat-Cat2,treemap,NA
+gg_treemap_z_CatCatCatNum.,"Treemap coloured by third variable
+Treemap fill third Cat","
+Treemap coloured by third variable
+Treemap fill third Cat
+", Cat-Cat-Cat-Num, Cat-Cat2-Num,treemap,NA
+gg_trend_ribbon_facet_CatNum.,"Trend ribbon facet
+Facet Trend ribbon","
+Trend ribbon facet
+Facet Trend ribbon
+", Cat-Num, Cat-Num,trend,NA
+gg_violin_DatNum.,"Violin
+Violin","
+Violin
+Violin
+", Dat-Num, Dat-Num,violin,NA
+gg_violin_Num.,"Horizontal violin
+Violin","
+Horizontal violin
+Violin
+", Num, Num,violin,NA
+gg_violin_dot_mult_CatNum.,"Vertical violin + jitter
+Violin + dot jitter","
+Vertical violin + jitter
+Violin + dot jitter
+", Cat-Num, Cat-Num,violin,NA
+gg_violin_dot_mult_flip_CatNum.,"Horizontal violin + jitter
+Violin + dot jitter flipped","
+Horizontal violin + jitter
+Violin + dot jitter flipped
+", Cat-Num, Cat-Num,violin,NA
+gg_violin_flip_Num.,"Vertical violin
+Violin flipped","
+Vertical violin
+Violin flipped
+", Num, Num,violin,NA
+gg_violin_mult_CatNum.,"Vertical violin
+Violin","
+Vertical violin
+Violin
+", Cat-Num, Cat-Num,violin,NA
+gg_violin_mult_flip_CatNum.,"Horizontal violin
+Violin multi flipped","
+Horizontal violin
+Violin multi flipped
+", Cat-Num, Cat-Num,violin,NA
+gg_waffle_Cat.,"Waffle
+Waffle","
+Waffle
+Waffle
+", Cat, Cat,waffle,NA
+gg_waterfall_DatNum.,"Waterfall
+Waterfall","
+Waterfall
+Waterfall
+", Dat-Num, Dat-Num,waterfall,NA
+gg_waterfall_Num.,"Waterfall
+Waterfall","
+Waterfall
+Waterfall
+", Num, Num,waterfall,NA
+gg_waterfall_NumNum.,"Waterfall
+Waterfall","
+Waterfall
+Waterfall
+", Num-Num,Num- Num,waterfall,NA
+gg_waterfall_YeaNum.,"Waterfall
+Waterfall","
+Waterfall
+Waterfall
+", Yea-Num,Num- Yea,waterfall,NA
