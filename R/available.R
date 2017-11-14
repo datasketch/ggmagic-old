@@ -1,11 +1,28 @@
+#' @export
+ggMeta <- function(){
+  read_csv(system.file("meta.csv", package = "ggmagic"))
+}
 
 
 #' @export
 ggWhich <- function(d){
-  pf <- ggFtype()
-  ftype <- guessFtype(d) # TODO possibleFtypes
-  names(keep(pf, ~ ftype %in% .))
+  meta <- ggMeta()
+  if ("data.frame" %in% class(d)) {
+    guessedctypes <- guessCtypes(d, as_string = TRUE) # TODO possibleFtypes
+  } else {
+    guessedctypes <- paste(d, collapse = "-")
+  }
+  meta %>% filter(ctypes == guessedctypes)
 }
+
+
+
+# #' @export
+# ggWhich <- function(d){
+#   pf <- ggFtype()
+#   ftype <- guessFtype(d) # TODO possibleFtypes
+#   names(keep(pf, ~ ftype %in% .))
+# }
 
 
 #' @export
