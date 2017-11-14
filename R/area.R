@@ -1,15 +1,15 @@
 #' Vertical area
 #' Area
-#' @name gg_area_YeaNum.
+#' @name gg_area_YeaNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Yea-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_YeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
+#' gg_area_YeaNum(sampleData("Yea-Num"))
+gg_area_YeaNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                           yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -32,17 +32,16 @@ gg_area_YeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "", 
 
 #' Vertical area facet
 #' Facet Vertical Area
-#' @name gg_area_ver_facet_CatNum.
+#' @name gg_area_ver_facet_CatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = NULL, angle_x = 0, ...){
+#' gg_area_ver_facet_CatNum(sampleData("Cat-Num"))
+gg_area_ver_facet_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                     yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -75,19 +74,18 @@ gg_area_ver_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", capt
 
 #' Horizontal area facet
 #' Facet Horizontal Area
-#' @name gg_area_hor_facet_CatNum.
+#' @name gg_area_hor_facet_CatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = NULL, angle_x = 0, ...){
+#' gg_area_hor_facet_CatNum(sampleData("Cat-Num"))
+gg_area_hor_facet_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                     yLabel = NULL, angle_x = 0, ...){
 
-  graph <- gg_area_ver_facet_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, ...)
+  graph <- gg_area_ver_facet_CatNum(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -95,17 +93,16 @@ gg_area_hor_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", capt
 
 #' Vertical 100% stacked area
 #' Stacked Vertical Area 100
-#' @name gg_area_stacked_100_ver_CatNum.
+#' @name gg_area_stacked_100_ver_CatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_100_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                            yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+#' gg_area_stacked_100_ver_CatNum(sampleData("Cat-Num"))
+gg_area_stacked_100_ver_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                           yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -146,19 +143,18 @@ gg_area_stacked_100_ver_CatNum. <- function(data, titleLabel = "", subtitle = ""
 
 #' Horizontal 100% stacked area
 #' Stacked Horizontal Area 100
-#' @name gg_area_stacked_100_hor_CatNum.
+#' @name gg_area_stacked_100_hor_CatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_100_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+#' gg_area_stacked_100_hor_CatNum(sampleData("Cat-Num"))
+gg_area_stacked_100_hor_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_area_stacked_100_ver_CatNum.(data, titleLabel,subtitle, caption, xLabel, yLabel, fillLabel = NULL, leg_pos, angle_x, ...)
+  graph <- gg_area_stacked_100_ver_CatNum(data, titleLabel,subtitle, caption, xLabel, yLabel, fillLabel = NULL, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -166,16 +162,15 @@ gg_area_stacked_100_hor_CatNum. <- function(data, titleLabel = "", subtitle = ""
 
 #' Vertical stacked area
 #' Stacked Vertical Area
-#' @name gg_area_stacked_ver_CatNum.
+#' @name gg_area_stacked_ver_CatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+#' gg_area_stacked_ver_CatNum(sampleData("Cat-Num"))
+gg_area_stacked_ver_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
                                         fillLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black",
                                         type = "count", angle_x = 0, ...){
 
@@ -216,16 +211,15 @@ gg_area_stacked_ver_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 
 #' Horizontal stacked area
 #' Stacked Horizontal Area
-#' @name gg_area_stacked_hor_CatNum.
+#' @name gg_area_stacked_hor_CatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+#' gg_area_stacked_hor_CatNum(sampleData("Cat-Num"))
+gg_area_stacked_hor_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                         yLabel = NULL, fillLabel = NULL, leg_pos = "right", text = TRUE, color_text = "black", type = "count", angle_x = 0, ...){
 
   graph <- gg_area_stacked_ver_CatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, text, color_text, type, angle_x, ...)
@@ -236,16 +230,15 @@ gg_area_stacked_hor_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 
 #' Filled density distribution
 #' Filled Density Distribution
-#' @name gg_area_multi_density_dist_CatNum.
+#' @name gg_area_multi_density_dist_CatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_multi_density_dist_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+#' gg_area_multi_density_dist_CatNum(sampleData("Cat-Num"))
+gg_area_multi_density_dist_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                                yLabel = NULL, fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
@@ -270,16 +263,15 @@ gg_area_multi_density_dist_CatNum. <- function(data, titleLabel = "", subtitle =
 
 #' Area
 #' Area
-#' @name gg_area_DatNum.
+#' @name gg_area_DatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Dat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
+#' gg_area_DatNum(sampleData("Dat-Num"))
+gg_area_DatNum <- function(data, titleLabel = "", subtitle = "", caption = "",
                             xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -303,18 +295,17 @@ gg_area_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
 }
 
 #' Stepped area
-#' stepped stacked area.
-#' @name gg_area_stepped_DatNum.
+#' Stepped stacked area
+#' @name gg_area_stepped_DatNum
 #' @param x A data.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Dat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stepped_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                    xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
+#' gg_area_stepped_DatNum(sampleData("Dat-Num"))
+gg_area_stepped_DatNum <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                   xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -335,18 +326,17 @@ gg_area_stepped_DatNum. <- function(data, titleLabel = "", subtitle = "", captio
 
 #' Vertical stacked area
 #' Stacked Vertical Area
-#' @name gg_area_stacked_ver_CatDatNum.
+#' @name gg_area_stacked_ver_CatDatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Dat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_ver_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                           yLabel = NULL, fillLabel = NULL,
-                                           leg_pos = "right", angle_x = 0, ...){
+#' gg_area_stacked_ver_CatDatNum(sampleData("Cat-Dat-Num"))
+gg_area_stacked_ver_CatDatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                          yLabel = NULL, fillLabel = NULL, aggregation = "sum",
+                                          leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -359,14 +349,16 @@ gg_area_stacked_ver_CatDatNum. <- function(data, titleLabel = "", subtitle = "",
     dplyr::filter(!is.na(b), !is.na(c))
 
   data_graph <- data %>%
-    tidyr::drop_na(a,b) %>%
-    tidyr::spread(b, c) %>%
-    tidyr::gather(b, c, -a)
-  data_graph$b <- lubridate::as_date(as.numeric(data_graph$b))
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(count = agg(aggregation, c)) %>%
+    tidyr::spread(b, count) %>%
+    tidyr::gather(b, count, -a)
+
+  data_graph$b <- lubridate::as_date(data_graph$b)
   data_graph[is.na(data_graph)] <- 0
 
-  graph <- ggplot(data = data_graph, aes(x = as.Date(b, origin = data[1,2]), y = c, group = a)) +
-    geom_area(aes(fill = a), position = "stack")
+  graph <- ggplot(data_graph, aes( b, count))
+  graph <- graph + geom_area(aes(fill= a), position = 'stack')
   graph <- graph +
     labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
   graph <- graph +
@@ -379,20 +371,20 @@ gg_area_stacked_ver_CatDatNum. <- function(data, titleLabel = "", subtitle = "",
 
 #' Horizontal stacked area
 #' Stacked Horizontal Area
-#' @name gg_area_stacked_hor_CatDatNum.
+#' @name gg_area_stacked_hor_CatDatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Dat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_hor_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                           yLabel = NULL, fillLabel = NULL,
-                                           leg_pos = "right", angle_x = 0,...){
+#' gg_area_stacked_hor_CatDatNum(sampleData("Cat-Dat-Num"))
+gg_area_stacked_hor_CatDatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                          yLabel = NULL, fillLabel = NULL, aggregation = "sum",
+                                          leg_pos = "right", angle_x = 0,...){
 
-  graph <- gg_area_stacked_ver_CatDatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x, ...)
+  graph <- gg_area_stacked_ver_CatDatNum(data, titleLabel, subtitle, caption, xLabel, yLabel,
+                                         fillLabel, aggregation, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -400,18 +392,17 @@ gg_area_stacked_hor_CatDatNum. <- function(data, titleLabel = "", subtitle = "",
 
 #' Vertical 100% stacked area
 #' Stacked Vertical Area 100
-#' @name gg_area_stacked_100_ver_CatDatNum.
+#' @name gg_area_stacked_100_ver_CatDatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Dat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_100_ver_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                               yLabel = NULL, fillLabel = NULL,
-                                               leg_pos = "right", angle_x = 0, ...){
+#' gg_area_stacked_100_ver_CatDatNum(sampleData("Cat-Dat-Num"))
+gg_area_stacked_100_ver_CatDatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                              yLabel = NULL, fillLabel = NULL, aggregation = "sum",
+                                              leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -423,24 +414,51 @@ gg_area_stacked_100_ver_CatDatNum. <- function(data, titleLabel = "", subtitle =
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
     dplyr::filter(!is.na(b), !is.na(c))
 
-  data_graph <- data %>%
-    tidyr::drop_na(a,b) %>%
-    tidyr::spread(b, c) %>%
-    tidyr::gather(b, c, -a)
-  data_graph$b <- lubridate::as_date(as.numeric(data_graph$b))
+  data_graph <- data %>% dplyr::group_by(a, b) %>%
+    dplyr::summarise(count = agg(aggregation, c)) %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(percent = 100 * round(count / sum(count), 4))
+  # data_graph <- data %>%
+  #   dplyr::group_by(a, b) %>%
+  #  # dplyr::mutate(percent = 100 * round(c / sum(c), 4)
+  #   tidyr::spread(b, c) %>%
+  #   tidyr::gather(b, c, -a) %>%
+  #   dplyr::summarise(percent = 100 * round(c / sum(c), 4))
+
+  # data_graph <- data %>%
+  #   tidyr::drop_na(a,b) %>%
+  #   tidyr::spread(b, c) %>%
+  #   tidyr::gather(b, c, -a)
+  data_graph$b <- lubridate::as_date(data_graph$b)
   data_graph[is.na(data_graph)] <- 0
 
-  graph <- ggplot(data = data_graph, aes(x = as.Date(b, origin = data[1,2]), y = c, group = a)) +
-    geom_area(aes(fill = a), position = "fill")
+  graph <- ggplot(data_graph, aes(b, percent))
+  graph <- graph + geom_area(aes(fill= a), position = 'stack')
   graph <- graph +
-    labs(title = titleLabel, subtitle = subtitle, caption =  caption, x = xlab, y = ylab, fill = clab)
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, fill = clab)
   graph <- graph +
     theme_ds() +
     theme(legend.position=leg_pos) +
-    scale_y_continuous(labels = percent) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     scale_fill_manual(values = getPalette())
   graph
+
+  #
+  #
+  # data_graph$b <- lubridate::as_date(data_graph$b)
+  # data_graph[is.na(data_graph)] <- 0
+  #
+  # graph <- ggplot(data = data_graph, aes(x = as.Date(b, origin = data[1,2]), y = c, group = a)) +
+  #   geom_area(aes(fill = a), position = "fill")
+  # graph <- graph +
+  #   labs(title = titleLabel, subtitle = subtitle, caption =  caption, x = xlab, y = ylab, fill = clab)
+  # graph <- graph +
+  #   theme_ds() +
+  #   theme(legend.position=leg_pos) +
+  #   scale_y_continuous(labels = percent) +
+  #   theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+  #   scale_fill_manual(values = getPalette())
+  # graph
 }
 
 #' Horizontal 100% stacked area
@@ -466,17 +484,16 @@ gg_area_stacked_100_hor_CatDatNum. <- function(data, titleLabel = "", subtitle =
 
 #' Horizontal stacked area
 #' Stacked horizontal Area
-#' @name gg_area_stacked_hor_CatCat.
+#' @name gg_area_stacked_hor_CatCat
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_hor_CatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+#' gg_area_stacked_hor_CatCat(sampleData("Cat-Cat"))
+gg_area_stacked_hor_CatCat <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -505,17 +522,16 @@ gg_area_stacked_hor_CatCat. <- function(data, titleLabel = "", subtitle = "", ca
 
 #' Vertical stacked area
 #' Stacked vertical Area
-#' @name gg_area_stacked_ver_CatCat.
+#' @name gg_area_stacked_ver_CatCat
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_ver_CatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+#' gg_area_stacked_ver_CatCat(sampleData("Cat-Cat"))
+gg_area_stacked_ver_CatCat <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                       yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   graph <- gg_area_stacked_hor_CatCat.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
@@ -525,16 +541,15 @@ gg_area_stacked_ver_CatCat. <- function(data, titleLabel = "", subtitle = "", ca
 
 #' Vertical 100% stacked area
 #' Stacked vertical Area 100pct
-#' @name gg_area_stacked_100_ver_CatCat.
+#' @name gg_area_stacked_100_ver_CatCat
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_100_ver_CatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+#' gg_area_stacked_100_ver_CatCat(sampleData("Cat-Cat"))
+gg_area_stacked_100_ver_CatCat <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 1, ...){
 
   f <- fringe(data)
@@ -547,7 +562,7 @@ gg_area_stacked_100_ver_CatCat. <- function(data, titleLabel = "", subtitle = ""
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a),
                                  b = ifelse(is.na(b), "NA", b))
 
-  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(count=n()) %>%
+  data_graph <- data %>% dplyr::group_by(a, b) %>% dplyr::summarise(count = n()) %>%
     tidyr::spread(b, count) %>% tidyr::gather(b, count, -a)
   data_graph[is.na(data_graph)] <- 0
   graph <- ggplot(data = data_graph,
@@ -563,16 +578,15 @@ gg_area_stacked_100_ver_CatCat. <- function(data, titleLabel = "", subtitle = ""
 
 #' Horizontal 100% stacked area
 #' Stacked horizontal Area 100pct
-#' @name gg_area_stacked_100_hor_CatCat.
+#' @name gg_area_stacked_100_hor_CatCat
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_100_hor_CatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+#' gg_area_stacked_100_hor_CatCat(sampleData("Cat-Cat"))
+gg_area_stacked_100_hor_CatCat <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   graph <- gg_area_stacked_100_ver_CatCat.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel, leg_pos, angle_x, ...)
@@ -583,17 +597,16 @@ gg_area_stacked_100_hor_CatCat. <- function(data, titleLabel = "", subtitle = ""
 
 #' Vertical stacked area
 #' Stacked vertical Area
-#' @name gg_area_stacked_ver_CatCatNum.
+#' @name gg_area_stacked_ver_CatCatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_area_stacked_ver_CatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                           yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
+#' gg_area_stacked_ver_CatCatNum(sampleData("Cat-Cat-Num"))
+gg_area_stacked_ver_CatCatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                          yLabel = NULL, leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
