@@ -1177,7 +1177,7 @@ gg_line_facet_hor_CatCatNum <- function(data, titleLabel = "", subtitle = "", ca
 
 #' Vertical line facet
 #' vertical linegraph
-#' @name gg_line_facet_ver_CatCatNum
+#' @name gg_line_facet_ver_CatCatNum.
 #' @param x A category.
 #' @param y A category.
 #' @export

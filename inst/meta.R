@@ -56,8 +56,21 @@ metaApp <- data.frame("name" = c("gg_bar_circular_Cat.", "gg_bar_circular_CatNum
                                  "gg_bar_stacked_hor_CatDatNum", "gg_bar_stacked_hor_CatYeaNum", "gg_bar_stacked_ordered_hor_CatCat",
                                  "gg_bar_stacked_ordered_ver_CatCat", "gg_bar_stacked_ver_CatCat", "gg_bar_stacked_ver_CatCatCatNum",
                                  "gg_bar_stacked_ver_CatCatNum", "gg_bar_stacked_ver_CatCatYeaNum", "gg_bar_stacked_ver_CatDatNum",
-                                 "gg_bar_stacked_ver_CatYeaNum", "gg_bar_ver_Cat", "gg_bar_ver_CatNum", "gg_bar_ver_DatNum", "gg_bar_ver_YeaNum"),
-                      "app" = c(NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, rep("OK", 94)))
+                                 "gg_bar_stacked_ver_CatYeaNum", "gg_bar_ver_Cat", "gg_bar_ver_CatNum", "gg_bar_ver_DatNum", "gg_bar_ver_YeaNum",
+
+                                 "gg_line_facet_ver_CatCat.", "gg_line_facet_ver_CatCatNum.", "gg_line_point_facet_ver_CatCat.",
+                                 "gg_line_point_ver_Cat.", "gg_line_ver_Cat.","gg_line_point_flip_Num.",
+                                 "gg_line_DatNum", "gg_line_Num", "gg_line_YeaNum", "gg_line_facet_CatNum",
+                                 "gg_line_facet_hor_CatCat", "gg_line_facet_hor_CatCatNum",
+                                 "gg_line_hor_Cat", "gg_line_multi_CatCatNum", "gg_line_multi_CatDatNum", "gg_line_multi_CatNum",
+                                 "gg_line_multi_CatNumNum", "gg_line_multi_CatYeaNum", "gg_line_multi_NumNum", "gg_line_point_DatNum",
+                                 "gg_line_point_Num", "gg_line_point_YeaNum", "gg_line_point_facet_CatNum", "gg_line_point_facet_DatNum",
+                                 "gg_line_point_facet_hor_CatCat", "gg_line_point_hor_Cat",
+                                 "gg_line_point_multi_CatCatNum", "gg_line_point_multi_CatDatNum", "gg_line_point_multi_CatNum", "gg_line_point_multi_CatNumNum",
+                                 "gg_line_point_multi_CatYeaNum", "gg_line_point_multi_NumNum"),
+                      "app" = c(NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, rep("OK", 94),
+
+                                NA, NA, NA, NA, NA, NA, rep("OK", 26)))
 metaStatus <- data.frame("name" = c(),
 
 
