@@ -3742,12 +3742,12 @@ gg_bar_dot_ver_CatNum <- function(data, titleLabel = "", subtitle = "", caption 
   data_graph <- data_graph %>%
     dplyr::mutate(order = c(1:nrow(data_graph)))
 
-  graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
-                  aes(x = a, fill = a)) + geom_dotplot(method="histodot", show.legend = FALSE)
-
+   graph <- ggplot(data = merge(x = data, y = data_graph, by = "a", all.x = TRUE),
+                   aes(x = a, fill = a)) + geom_dotplot(method = "histodot", show.legend = FALSE)
+  #graph <- ggplot(data_graph, aes(x = as.factor(a), fill = a, y = suma)) + geom_dotplot(stackgroups = TRUE, method = "histodot")
   graph <- graph + labs(title = titleLabel, x = xlab, y = ylab, subtitle = subtitle, caption = caption)
   graph <- graph + scale_y_continuous(breaks = NULL) +
-    theme(legend.position=leg_pos) + theme_ds() +
+    theme(legend.position = leg_pos) + theme_ds() +
     scale_fill_manual(values = getPalette()) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
     theme(legend.position=leg_pos)
