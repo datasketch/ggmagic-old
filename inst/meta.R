@@ -38,7 +38,7 @@ metaApp <- data.frame("name" = c("gg_bar_circular_Cat.", "gg_bar_circular_CatNum
                                  "gg_bar_density_y_hor_CatNum", "gg_bar_density_y_hor_DatNum", "gg_bar_density_y_hor_YeaNum",
                                  "gg_bar_density_y_ver_CatNum", "gg_bar_density_y_ver_DatNum", "gg_bar_density_y_ver_YeaNum",
                                  "gg_bar_dot_facet_hor_CatCat", "gg_bar_dot_facet_ver_CatCat", "gg_bar_dot_hor_Cat",
-                                 "gg_bar_dot_ver_Cat", "gg_bar_dot_ver_CatNum", "gg_bar_facet_hor_CatCatNum", "gg_bar_facet_hor_CatYeaNum",
+                                 "gg_bar_dot_ver_Cat", "gg_bar_facet_hor_CatCatNum", "gg_bar_facet_hor_CatYeaNum",
                                  "gg_bar_facet_ver_CatCatNum", "gg_bar_facet_ver_CatYeaNum", "gg_bar_grouped2_hor_CatCatNum",
                                  "gg_bar_grouped2_hor_CatYeaNum", "gg_bar_grouped2_ver_CatCatNum", "gg_bar_grouped2_ver_CatYeaNum",
                                  "gg_bar_grouped_coloured_hor_CatCat", "gg_bar_grouped_coloured_ver_CatCat", "gg_bar_grouped_hor_CatCatNum",
@@ -57,7 +57,7 @@ metaApp <- data.frame("name" = c("gg_bar_circular_Cat.", "gg_bar_circular_CatNum
                                  "gg_bar_stacked_ordered_ver_CatCat", "gg_bar_stacked_ver_CatCat", "gg_bar_stacked_ver_CatCatCatNum",
                                  "gg_bar_stacked_ver_CatCatNum", "gg_bar_stacked_ver_CatCatYeaNum", "gg_bar_stacked_ver_CatDatNum",
                                  "gg_bar_stacked_ver_CatYeaNum", "gg_bar_ver_Cat", "gg_bar_ver_CatNum", "gg_bar_ver_DatNum", "gg_bar_ver_YeaNum"),
-                      "app" = c(NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, rep("OK", 95)))
+                      "app" = c(NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, rep("OK", 94)))
 metaStatus <- data.frame("name" = c(),
 
 
