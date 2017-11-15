@@ -26,6 +26,5 @@ Facet Trend Line
 }
 
 \examples{
-add(1, 1)
-add(10, 1)
+gg_point_trend_line_facet_CatNum.(sampleData("Cat-Num"))
 }

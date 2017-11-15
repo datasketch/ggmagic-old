@@ -6,8 +6,8 @@
 Horizontal Dot Bar}
 \usage{
 gg_bar_dot_hor_CatNum(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0,
-  aggregation = "sum", ...)
+  sort = "no", topn = NULL, xLabel = NULL, yLabel = NULL,
+  leg_pos = "right", angle_x = 0, aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}
@@ -26,5 +26,5 @@ Horizontal Dot Bar
 }
 
 \examples{
-gg_bar_dot_ver_CatNum(sampleData("Cat-Num"))
+gg_bar_dot_hor_CatNum(sampleData("Cat-Num"))
 }

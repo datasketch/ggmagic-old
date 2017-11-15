@@ -1,16 +1,15 @@
 #' Horizontal line
 #' Horizontal Lines
-#' @name gg_line_hor_YeaNum.
+#' @name gg_line_YeaNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Yea-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_hor_YeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
+#' gg_line_YeaNum(sampleData("Yea-Num"))
+gg_line_YeaNum <- function(data, titleLabel = "", subtitle = "", caption = "",
+                           xLabel = NULL, yLabel = NULL, angle_x = 0, ...) {
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -29,19 +28,55 @@ gg_line_hor_YeaNum. <- function(data, titleLabel = "", subtitle = "", caption = 
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
 }
 
+#' Line + point
+#' Lines
+#' @name gg_line_point_YeaNum
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Yea-Num
+#' @examples
+#' gg_line_point_YeaNum(sampleData("Yea-Num"))
+gg_line_point_YeaNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                 yLabel = NULL, shape_type = 19, hline = NULL, angle_x = 0, ...){
+
+  f <- fringe(data)
+  nms <- getClabels(f)
+  xlab <- xLabel %||% nms[1]
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
+
+  data <- data %>%
+    dplyr::filter(!is.na(a), !is.na(b))
+
+  graph <- ggplot(data, aes(x = a, y = b, group=1)) +
+    geom_line(stat = "identity", aes(color = ""), show.legend = FALSE) +
+    geom_point(aes(color = ""), shape = shape_type, show.legend = FALSE) +
+    scale_color_manual(values =  getPalette()) +
+    theme_ds() +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+
+  if(!is.null(hline)){
+    graph <- graph + geom_hline(data = data.frame(valores = hline),
+                                aes(yintercept = valores), linetype="dotted")
+  }
+
+  graph
+}
 
 #' Line + point facet
 #' Facet Line Point
-#' @name gg_line_point_facet_CatNum.
+#' @name gg_line_point_facet_CatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_point_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+#' gg_line_point_facet_CatNum(sampleData("Cat-Num"))
+gg_line_point_facet_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                         yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -76,17 +111,16 @@ gg_line_point_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 
 #' Line facet
 #' Facet Line
-#' @name gg_line_facet_CatNum.
+#' @name gg_line_facet_CatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                  yLabel = NULL, angle_x = 0, ...){
+#' gg_line_facet_CatNum(sampleData("Cat-Num"))
+gg_line_facet_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                 yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -118,17 +152,16 @@ gg_line_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption 
 
 #' Grouped line + point
 #' Grouped Line Color Point
-#' @name gg_line_point_multi_CatNum.
+#' @name gg_line_point_multi_CatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_point_multi_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                        fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
+#' gg_line_point_multi_CatNum(sampleData("Cat-Num"))
+gg_line_point_multi_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                       fillLabel = NULL, leg_pos="right", shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -144,13 +177,6 @@ gg_line_point_multi_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
     dplyr::group_by(a) %>%
     dplyr::mutate(xorder = 1:n())
 
-  # count <- data_count$count
-  # count <- unlist(lapply(count, function(i){
-  #   return(1:i)
-  # }))
-
-  # data$xorder <- count
-
   graph <- ggplot(data_count, aes(x=xorder, y=b)) + geom_point(aes(color = a), shape = shape_type) + geom_line(aes(color = a))
   graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab)
   graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
@@ -162,17 +188,16 @@ gg_line_point_multi_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 
 #' Grouped line
 #' Grouped Line Coloured
-#' @name gg_line_multi_CatNum.
+#' @name gg_line_multi_CatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_multi_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                  fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
+#' gg_line_multi_CatNum(sampleData("Cat-Num"))
+gg_line_multi_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                 fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -213,8 +238,7 @@ gg_line_multi_CatNum. <- function(data, titleLabel = "", subtitle = "", caption 
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
+#' gg_point_trend_line_facet_CatNum.(sampleData("Cat-Num"))
 gg_point_trend_line_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                               yLabel = NULL, shape_type = 19, alpha = 0.3, se = FALSE, angle_x = 0, ...){
 
@@ -289,19 +313,51 @@ gg_slope_CatNum. <-  function(data, titleLabel = "", subtitle = "", caption = ""
 
 }
 
-#' Vertical line + point
-#' Line wiht point plot
-#' @name gg_line_point_Num.
+#' Vertical line
+#' Line
+#' @name gg_line_Num
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_point_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel = NULL, shape_type = 19, angle_x = 0, ...){
+#' gg_line_Num(sampleData("Num"))
+gg_line_Num <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                        yLabel = NULL, shape_type = 19, angle_x = 0, ...){
+
+  f <- fringe(data)
+  nms <- getClabels(f)
+  ylab <- yLabel %||% nms[1]
+  xlab <- xLabel %||% "Index"
+  data <- f$d
+
+  data <- data %>% dplyr::filter(!is.na(a))
+
+  data_graph <- data %>%
+    dplyr::mutate(order = 1:nrow(data))
+
+  graph <- ggplot(data_graph, aes(x=order, y=a)) + geom_line(aes(color = ""), show.legend = FALSE)
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() + scale_color_manual(values = getPalette()) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+
+  graph
+}
+
+
+#' Vertical line + point
+#' Line wiht point plot
+#' @name gg_line_point_Num
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Num
+#' @examples
+#' gg_line_point_Num(sampleData("Num"))
+gg_line_point_Num <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                              yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -338,24 +394,23 @@ gg_line_point_Num. <- function(data, titleLabel = "", subtitle = "", caption = "
 gg_line_point_flip_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                     yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
-  graph <- gg_line_point_Num.(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, angle_x = 0, ...)
+  graph <- gg_line_point_Num(data, titleLabel, subtitle, caption, xLabel, yLabel, shape_type, angle_x = 0, ...)
   graph <- graph + coord_flip()
 
   graph
 }
 #' Line for each numeric variable
 #' Line for each Num
-#' @name gg_line_multi_NumNum.
+#' @name gg_line_multi_NumNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Num-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_multi_NumNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                  xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
+#' gg_line_multi_NumNum(sampleData("Num-Num"))
+gg_line_multi_NumNum <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                 xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -380,17 +435,16 @@ gg_line_multi_NumNum. <- function(data, titleLabel = "", subtitle = "", caption 
 
 #' Line + point
 #' Line point plot
-#' @name gg_line_point_NumNum.
+#' @name gg_line_point_multi_NumNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Num-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_point_NumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                  yLabel = NULL, shape_type = 19, angle_x = 0, ...){
+#' gg_line_point_multi_NumNum(sampleData("Num-Num"))
+gg_line_point_multi_NumNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                       yLabel = NULL, shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -398,13 +452,18 @@ gg_line_point_NumNum. <- function(data, titleLabel = "", subtitle = "", caption 
   xlab <- xLabel %||% nms[1]
   data <- f$d
 
+
   data <- data %>% dplyr::filter(!is.na(a), !is.na(b))
 
-  graph <- ggplot(data = data, aes(x = a, y = b)) +
-    geom_point(shape = shape_type, aes(color = ''), show.legend = FALSE) +
-    geom_line(aes(color = ''), show.legend = FALSE) + theme_ds() +
-    labs(title = titleLabel, subtitle = subtitle, caption = caption, y = ylab, x = xlab) +
-    scale_color_manual(values = getPalette()) +
+  data_graph <- data %>% dplyr::mutate(xorder = 1:nrow(.)) %>%
+    tidyr::gather(type, value, -xorder)
+
+  graph <- ggplot(data_graph, aes(x = xorder, y = value, group = type, colour = type)) +
+    geom_line() + theme_ds() + geom_point(shape = shape_type, aes(color = type), show.legend = FALSE) +
+    scale_color_manual(values = getPalette(),
+                       breaks = unique(data_graph$type),
+                       labels = nms)
+  graph <- graph  + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab) +
     theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
   return(graph)
 
@@ -412,17 +471,16 @@ gg_line_point_NumNum. <- function(data, titleLabel = "", subtitle = "", caption 
 
 #' Line
 #' Lines
-#' @name gg_line_DatNum.
+#' @name gg_line_DatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Dat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                            xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
+#' gg_line_DatNum(sampleData("Dat-Num"))
+gg_line_DatNum <- function(data, titleLabel = "", subtitle = "", caption = "",
+                           xLabel = NULL, yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -444,17 +502,16 @@ gg_line_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
 
 #' Line + point
 #' Lines
-#' @name gg_line_points_DatNum.
+#' @name gg_line_point_DatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Dat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_points_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                   yLabel = NULL, shape_type = 19, hline = NULL, angle_x = 0, ...){
+#' gg_line_point_DatNum(sampleData("Dat-Num"))
+gg_line_point_DatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                 yLabel = NULL, shape_type = 19, hline = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -483,17 +540,16 @@ gg_line_points_DatNum. <- function(data, titleLabel = "", subtitle = "", caption
 
 #' Line + point facet by years
 #' Line Points facet by years
-#' @name gg_line_points_facet_DatNum.
+#' @name gg_line_point_facet_DatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Dat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_points_facet_DatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
-                                         xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...){
+#' gg_line_point_facet_DatNum(sampleData("Dat-Num"))
+gg_line_point_facet_DatNum <- function(data, titleLabel = "", subtitle = "", caption = "",
+                                       xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
 
   f <- fringe(data)
@@ -526,17 +582,16 @@ gg_line_points_facet_DatNum. <- function(data, titleLabel = "", subtitle = "", c
 
 #' Horizontal line
 #' Horizontal Line
-#' @name gg_line_hor_Cat.
+#' @name gg_line_hor_Cat
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_hor_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
-                             caption = "", yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+#' gg_line_hor_Cat(sampleData("Cat"))
+gg_line_hor_Cat <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
+                            caption = "", yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -575,7 +630,7 @@ gg_line_hor_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitle = ""
 gg_line_ver_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
                              caption = "", yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
-  graph <- gg_line_hor_Cat.(data, titleLabel, xLabel, subtitle, caption, yLabel, leg_pos, angle_x, ...)
+  graph <- gg_line_hor_Cat(data, titleLabel, xLabel, subtitle, caption, yLabel, leg_pos, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -583,18 +638,17 @@ gg_line_ver_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitle = ""
 
 #' Horizontal line + point
 #' Horizontal Line Point
-#' @name gg_line_point_hor_Cat.
+#' @name gg_line_point_hor_Cat
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_point_hor_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
-                                   caption = "", yLabel = NULL, leg_pos = "right",
-                                   shape_type = 19, angle_x = 0, ...){
+#' gg_line_point_hor_Cat(sampleData('Cat'))
+gg_line_point_hor_Cat <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
+                                  caption = "", yLabel = NULL, leg_pos = "right",
+                                  shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -634,7 +688,7 @@ gg_line_point_ver_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitl
                                    caption = "", yLabel = NULL, leg_pos = "right",
                                    shape_type = 19, angle_x = 0, ...){
 
-  graph <- gg_line_point_hor_Cat.(data, titleLabel, xLabel, subtitle, caption, yLabel, leg_pos, shape_type, angle_x, ...)
+  graph <- gg_line_point_hor_Cat(data, titleLabel, xLabel, subtitle, caption, yLabel, leg_pos, shape_type, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -642,19 +696,63 @@ gg_line_point_ver_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitl
 
 #' Horizontal line
 #' Tiene múltiples líneas
-#' @name gg_line_hor_CatYeaNum.
+#' @name gg_line_multi_CatYeaNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Yea-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_hor_CatYeaNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                   yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, nbreaks = NULL,
-                                   shape_type = 19,
-                                   aggregation = "sum", ...){
+#' gg_line_multi_CatYeaNum(sampleData("Cat-Yea-Num"))
+gg_line_multi_CatYeaNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                    yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, nbreaks = NULL,
+                                    shape_type = 19,
+                                    aggregation = "sum", ...){
+  f <- fringe(data)
+  nms <- getClabels(f)
+  clab <- fillLabel %||% nms[1]
+  xlab <- xLabel %||% nms[2]
+  ylab <- yLabel %||% paste(aggregation, nms[3])
+  data <- f$d
+
+  data <- data %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c=agg(aggregation,c))
+
+  xValues <- as.numeric(data$b)
+  xValues <- xValues[!is.na(xValues)]
+  defaultNBreaks <- ifelse(length(unique(xValues)) <= 7, length(unique(xValues)), 5)
+  nbreaks <- nbreaks %||% defaultNBreaks
+
+  customBreaks <- round(seq(min(xValues),max(xValues), length.out = nbreaks))
+
+  graph <- ggplot(data, aes(x = b ,y=c,group=a,colour=a)) +
+    geom_line(stat = "identity")
+  graph <- graph + theme_ds() +
+    scale_shape(solid = TRUE) +
+    scale_y_continuous(labels = comma) +
+    scale_x_discrete(breaks = customBreaks) +
+    scale_color_manual(values = getPalette())  +
+    theme(legend.position = leg_pos) +
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 1)) +
+    labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab, color = clab)
+  graph
+}
+
+#' Horizontal line + points
+#' Tiene múltiples líneas con puntos
+#' @name gg_line_point_multi_CatYeaNum
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Cat-Yea-Num
+#' @examples
+#' gg_line_point_multi_CatYeaNum(sampleData("Cat-Yea-Num"))
+gg_line_point_multi_CatYeaNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                          yLabel = NULL, fillLabel = NULL, leg_pos = "right", angle_x = 0, nbreaks = NULL,
+                                          shape_type = 19,
+                                          aggregation = "sum", ...){
   f <- fringe(data)
   nms <- getClabels(f)
   clab <- fillLabel %||% nms[1]
@@ -731,17 +829,16 @@ gg_slope_CatYeaNum. <-  function(data, titleLabel = "",  subtitle = "", caption 
 
 #' Line
 #' lines
-#' @name gg_line_CatNumNum.
+#' @name gg_line_multi_CatNumNum
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_CatNumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                               yLabel = NULL, fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
+#' gg_line_multi_CatNumNum(sampleData("Cat-Num-Num"))
+gg_line_multi_CatNumNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                    yLabel = NULL, fillLabel = NULL, leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -765,17 +862,16 @@ gg_line_CatNumNum. <- function(data, titleLabel = "", subtitle = "", caption = "
 
 #' Line + point
 #' Point Lines
-#' @name gg_point_line_CatNumNum.
+#' @name gg_line_point_multi_CatNumNum
 #' @param x A category.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_point_line_CatNumNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                     yLabel = NULL, fillLabel = NULL, leg_pos = "right", shape_type = 19, angle_x = 0,  ...){
+#' gg_line_point_multi_CatNumNum(sampleData("Cat-Num-Num"))
+gg_line_point_multi_CatNumNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                          yLabel = NULL, fillLabel = NULL, leg_pos = "right", shape_type = 19, angle_x = 0,  ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -844,8 +940,8 @@ gg_pointline_hor_CatDat. <- function(data, titleLabel = "", subtitle = "", capti
 gg_pointline_ver_CatDat. <- function(data, titleLabel = "", subtitle = "", caption = "",
                                      xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
-  graph <- gg_pointline_hor_CatDat.(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel,
-                                    angle_x, shape_type, ...)
+  graph <- gg_pointline_hor_CatDat(data, titleLabel, subtitle, caption, xLabel, yLabel, fillLabel,
+                                   angle_x, shape_type, ...)
 
   graph <- graph + coord_flip()
 
@@ -854,18 +950,17 @@ gg_pointline_ver_CatDat. <- function(data, titleLabel = "", subtitle = "", capti
 
 #' Grouped line + point
 #' Grouped Line Color Point
-#' @name gg_multi_line_point_CatDatNum.
+#' @name gg_line_point_multi_CatDatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Dat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_multi_line_point_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                           fillLabel = NULL, leg_pos="right", shape_type = 19,
-                                           angle_x = 0, ...){
+#' gg_line_point_multi_CatDatNum(sampleData("Cat-Dat-Num"))
+gg_line_point_multi_CatDatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                          fillLabel = NULL, leg_pos="right", shape_type = 19,
+                                          angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -894,18 +989,17 @@ gg_multi_line_point_CatDatNum. <- function(data, titleLabel = "", subtitle = "",
 
 #' Grouped line
 #' Grouped Line Coloured
-#' @name gg_multi_line_CatDatNum.
+#' @name gg_line_multi_CatDatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Dat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_multi_line_CatDatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                     fillLabel = NULL, leg_pos="right", shape_type = 19,
-                                     angle_x = 0, ...){
+#' gg_line_multi_CatDatNum(sampleData("Cat-Dat-Num"))
+gg_line_multi_CatDatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                    fillLabel = NULL, leg_pos="right", shape_type = 19,
+                                    angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -928,16 +1022,14 @@ gg_multi_line_CatDatNum. <- function(data, titleLabel = "", subtitle = "", capti
 
 #' Horizontal line facet
 #' Horizontal Line
-#' @name gg_line_hor_facet_CatCat.
-#' @param x A number.
+#' @name gg_line_facet_hor_CatCat
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_hor_facet_CatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+#' gg_line_facet_hor_CatCat(sampleData("Cat-Cat"))
+gg_line_facet_hor_CatCat <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                       yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
@@ -966,7 +1058,7 @@ gg_line_hor_facet_CatCat. <- function(data, titleLabel = "", subtitle = "", capt
 
 #' Vertical line facet
 #' Vertical Line
-#' @name gg_line_ver_facet_CatCat.
+#' @name gg_line_facet_ver_CatCat.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -975,10 +1067,10 @@ gg_line_hor_facet_CatCat. <- function(data, titleLabel = "", subtitle = "", capt
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_ver_facet_CatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_facet_ver_CatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                       yLabel = NULL, angle_x = 0, ...){
 
-  graph <- gg_line_hor_facet_CatCat.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x = 0, ...)
+  graph <- gg_line_hor_facet_CatCat(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x = 0, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -986,17 +1078,16 @@ gg_line_ver_facet_CatCat. <- function(data, titleLabel = "", subtitle = "", capt
 
 #' Horizontal line + point facet
 #' Horizontal Line Point
-#' @name gg_line_point_hor_facet_CatCat.
+#' @name gg_line_point_facet_hor_CatCat
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_point_hor_facet_CatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                            yLabel = NULL, angle_x = 0, shape_type = 19, ...){
+#' gg_line_point_facet_hor_CatCat(sampleData("Cat-Cat"))
+gg_line_point_facet_hor_CatCat <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                           yLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1026,7 +1117,7 @@ gg_line_point_hor_facet_CatCat. <- function(data, titleLabel = "", subtitle = ""
 
 #' Vertical line + point facet
 #' Vertical Line Point
-#' @name gg_line_point_ver_facet_CatCat.
+#' @name gg_line_point_facet_ver_CatCat.
 #' @param x A number.
 #' @param y A number.
 #' @export
@@ -1035,7 +1126,7 @@ gg_line_point_hor_facet_CatCat. <- function(data, titleLabel = "", subtitle = ""
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_point_ver_facet_CatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_point_facet_ver_CatCat. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                             yLabel = NULL, angle_x = 0, shape_point = 19, ...){
 
   graph <- gg_line_point_hor_facet_CatCat.(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, shape_point, ...)
@@ -1046,18 +1137,17 @@ gg_line_point_ver_facet_CatCat. <- function(data, titleLabel = "", subtitle = ""
 
 #' Horizontal line facet
 #' horizontal linegraph
-#' @name gg_line_hor_facet_CatCatNum.
+#' @name gg_line_facet_hor_CatCatNum
 #' @param x A category.
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_line_hor_facet_CatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                         yLabel = NULL, aggregation = "sum", angle_x = 0,
-                                         shape_type = 19, ...){
+#' gg_line_facet_hor_CatCatNum(sampleData("Cat-Cat-Num"))
+gg_line_facet_hor_CatCatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                        yLabel = NULL, aggregation = "sum", angle_x = 0,
+                                        shape_type = 19, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]
@@ -1087,7 +1177,7 @@ gg_line_hor_facet_CatCatNum. <- function(data, titleLabel = "", subtitle = "", c
 
 #' Vertical line facet
 #' vertical linegraph
-#' @name gg_line_ver_facet_CatCatNum.
+#' @name gg_line_facet_ver_CatCatNum
 #' @param x A category.
 #' @param y A category.
 #' @export
@@ -1096,10 +1186,10 @@ gg_line_hor_facet_CatCatNum. <- function(data, titleLabel = "", subtitle = "", c
 #' @examples
 #' add(1, 1)
 #' add(10, 1)
-gg_line_ver_facet_CatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+gg_line_facet_ver_CatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
                                          yLabel = NULL, aggregation = "sum", angle_x = 0, ...){
 
-  graph <- gg_line_hor_facet_CatCatNum.(data, titleLabel, subtitle, caption, xLabel, yLabel, aggregation, angle_x, ...)
+  graph <- gg_line_facet_hor_CatCatNum(data, titleLabel, subtitle, caption, xLabel, yLabel, aggregation, angle_x, ...)
   graph <- graph + coord_flip()
 
   graph
@@ -1107,17 +1197,16 @@ gg_line_ver_facet_CatCatNum. <- function(data, titleLabel = "", subtitle = "", c
 
 #' Grouped line + points by first variable
 #' Grouped Line Color Point
-#' @name gg_multi_line_point_CatCatNum.
+#' @name gg_line_point_multi_CatCatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_multi_line_point_CatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                           fillLabel = NULL, leg_pos ="right", aggregation = "sum", shape_type = 19, angle_x = 0, ...){
+#' gg_line_point_multi_CatCatNum(sampleData("Cat-Cat-Num"))
+gg_line_point_multi_CatCatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                          fillLabel = NULL, leg_pos ="right", aggregation = "sum", shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1145,17 +1234,16 @@ gg_multi_line_point_CatCatNum. <- function(data, titleLabel = "", subtitle = "",
 
 #' Grouped line by first variable
 #' Grouped Line Coloured
-#' @name gg_multi_line_CatCatNum.
+#' @name gg_line_multi_CatCatNum
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat-Num
 #' @examples
-#' add(1, 1)
-#' add(10, 1)
-gg_multi_line_CatCatNum. <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-                                     fillLabel = NULL, aggregation = "sum", leg_pos="right", angle_x = 0, ...){
+#' gg_line_multi_CatCatNum(sampleData("Cat-Cat-Num"))
+gg_line_multi_CatCatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+                                    fillLabel = NULL, aggregation = "sum", leg_pos="right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
