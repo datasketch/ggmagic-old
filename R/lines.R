@@ -580,18 +580,19 @@ gg_line_point_facet_DatNum <- function(data, titleLabel = "", subtitle = "", cap
   graph
 }
 
+# le quite el hor... para la aplicación... luego se lo ponemos a todos
 #' Horizontal line
 #' Horizontal Line
-#' @name gg_line_hor_Cat
+#' @name gg_line_Cat
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat
 #' @examples
-#' gg_line_hor_Cat(sampleData("Cat"))
-gg_line_hor_Cat <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
-                            caption = "", yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
+#' gg_line_Cat(sampleData("Cat"))
+gg_line_Cat <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
+                        caption = "", yLabel = NULL, leg_pos = "right", angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -638,17 +639,17 @@ gg_line_ver_Cat. <- function(data, titleLabel = '', xLabel = NULL, subtitle = ""
 
 #' Horizontal line + point
 #' Horizontal Line Point
-#' @name gg_line_point_hor_Cat
+#' @name gg_line_point_Cat
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat
 #' @examples
-#' gg_line_point_hor_Cat(sampleData('Cat'))
-gg_line_point_hor_Cat <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
-                                  caption = "", yLabel = NULL, leg_pos = "right",
-                                  shape_type = 19, angle_x = 0, ...){
+#' gg_line_point_Cat(sampleData("Cat"))
+gg_line_point_Cat <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
+                              caption = "", yLabel = NULL, leg_pos = "right",
+                              shape_type = 19, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1022,15 +1023,15 @@ gg_line_multi_CatDatNum <- function(data, titleLabel = "", subtitle = "", captio
 
 #' Horizontal line facet
 #' Horizontal Line
-#' @name gg_line_facet_hor_CatCat
+#' @name gg_line_facet_CatCat
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat
 #' @examples
-#' gg_line_facet_hor_CatCat(sampleData("Cat-Cat"))
-gg_line_facet_hor_CatCat <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                      yLabel = NULL, angle_x = 0, ...){
+#' gg_line_facet_CatCat(sampleData("Cat-Cat"))
+gg_line_facet_CatCat <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                 yLabel = NULL, angle_x = 0, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1078,16 +1079,16 @@ gg_line_facet_ver_CatCat. <- function(data, titleLabel = "", subtitle = "", capt
 
 #' Horizontal line + point facet
 #' Horizontal Line Point
-#' @name gg_line_point_facet_hor_CatCat
+#' @name gg_line_point_facet_CatCat
 #' @param x A number.
 #' @param y A number.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat
 #' @examples
-#' gg_line_point_facet_hor_CatCat(sampleData("Cat-Cat"))
-gg_line_point_facet_hor_CatCat <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                           yLabel = NULL, angle_x = 0, shape_type = 19, ...){
+#' gg_line_point_facet_CatCat(sampleData("Cat-Cat"))
+gg_line_point_facet_CatCat <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                       yLabel = NULL, angle_x = 0, shape_type = 19, ...){
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -1137,17 +1138,17 @@ gg_line_point_facet_ver_CatCat. <- function(data, titleLabel = "", subtitle = ""
 
 #' Horizontal line facet
 #' horizontal linegraph
-#' @name gg_line_facet_hor_CatCatNum
+#' @name gg_line_facet_CatCatNum
 #' @param x A category.
 #' @param y A category.
 #' @export
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Cat-Num
 #' @examples
-#' gg_line_facet_hor_CatCatNum(sampleData("Cat-Cat-Num"))
-gg_line_facet_hor_CatCatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                        yLabel = NULL, aggregation = "sum", angle_x = 0,
-                                        shape_type = 19, ...){
+#' gg_line_facet_CatCatNum(sampleData("Cat-Cat-Num"))
+gg_line_facet_CatCatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                    yLabel = NULL, aggregation = "sum", angle_x = 0,
+                                    shape_type = 19, ...){
   f <- fringe(data)
   nms <- getClabels(f)
   xlab <- xLabel %||% nms[1]

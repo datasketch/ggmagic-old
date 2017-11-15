@@ -1028,6 +1028,11 @@ Kagi","
 Kagi
 Kagi
 ", Dat-Num, Dat-Num,kagi,NA
+gg_line_Cat,"Horizontal line
+Horizontal Line","
+Horizontal line
+Horizontal Line
+", Cat, Cat,line,OK
 gg_line_DatNum,"Line
 Lines","
 Line
@@ -1043,21 +1048,21 @@ Horizontal Lines","
 Horizontal line
 Horizontal Lines
 ", Yea-Num,Num- Yea,line,OK
+gg_line_facet_CatCat,"Horizontal line facet
+Horizontal Line","
+Horizontal line facet
+Horizontal Line
+", Cat-Cat,Cat- Cat,line,OK
+gg_line_facet_CatCatNum,"Horizontal line facet
+horizontal linegraph","
+Horizontal line facet
+horizontal linegraph
+", Cat-Cat-Num,Cat- Cat-Num,line,OK
 gg_line_facet_CatNum,"Line facet
 Facet Line","
 Line facet
 Facet Line
 ", Cat-Num, Cat-Num,line,OK
-gg_line_facet_hor_CatCat,"Horizontal line facet
-Horizontal Line","
-Horizontal line facet
-Horizontal Line
-", Cat-Cat,Cat- Cat,line,OK
-gg_line_facet_hor_CatCatNum,"Horizontal line facet
-horizontal linegraph","
-Horizontal line facet
-horizontal linegraph
-", Cat-Cat-Num,Cat- Cat-Num,line,OK
 gg_line_facet_ver_CatCat.,"Vertical line facet
 Vertical Line","
 Vertical line facet
@@ -1068,11 +1073,6 @@ vertical linegraph","
 Vertical line facet
 vertical linegraph
 ", Cat-Cat-Num,Cat- Cat-Num,line,NA
-gg_line_hor_Cat,"Horizontal line
-Horizontal Line","
-Horizontal line
-Horizontal Line
-", Cat, Cat,line,OK
 gg_line_multi_CatCatNum,"Grouped line by first variable
 Grouped Line Coloured","
 Grouped line by first variable
@@ -1103,6 +1103,11 @@ Line for each Num","
 Line for each numeric variable
 Line for each Num
 ", Num-Num,Num- Num,line,OK
+gg_line_point_Cat,"Horizontal line + point
+Horizontal Line Point","
+Horizontal line + point
+Horizontal Line Point
+", Cat, Cat,line,OK
 gg_line_point_DatNum,"Line + point
 Lines","
 Line + point
@@ -1118,6 +1123,11 @@ Lines","
 Line + point
 Lines
 ", Yea-Num,Num- Yea,line,OK
+gg_line_point_facet_CatCat,"Horizontal line + point facet
+Horizontal Line Point","
+Horizontal line + point facet
+Horizontal Line Point
+", Cat-Cat,Cat- Cat,line,OK
 gg_line_point_facet_CatNum,"Line + point facet
 Facet Line Point","
 Line + point facet
@@ -1128,11 +1138,6 @@ Line Points facet by years","
 Line + point facet by years
 Line Points facet by years
 ", Dat-Num, Dat-Num,line,OK
-gg_line_point_facet_hor_CatCat,"Horizontal line + point facet
-Horizontal Line Point","
-Horizontal line + point facet
-Horizontal Line Point
-", Cat-Cat,Cat- Cat,line,OK
 gg_line_point_facet_ver_CatCat.,"Vertical line + point facet
 Vertical Line Point","
 Vertical line + point facet
@@ -1143,11 +1148,6 @@ Line with point plot","
 Horizontal line + point
 Line with point plot
 ", Num, Num,line,NA
-gg_line_point_hor_Cat,"Horizontal line + point
-Horizontal Line Point","
-Horizontal line + point
-Horizontal Line Point
-", Cat, Cat,line,OK
 gg_line_point_multi_CatCatNum,"Grouped line + points by first variable
 Grouped Line Color Point","
 Grouped line + points by first variable
