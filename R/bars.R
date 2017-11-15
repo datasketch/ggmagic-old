@@ -3764,11 +3764,11 @@ gg_bar_dot_ver_CatNum <- function(data, titleLabel = "", subtitle = "", caption 
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' gg_bar_dot_ver_CatNum(sampleData("Cat-Num"))
-gg_bar_dot_hor_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                  yLabel = NULL, leg_pos = "right", angle_x = 0, aggregation = "sum", ...){
+#' gg_bar_dot_hor_CatNum(sampleData("Cat-Num"))
+gg_bar_dot_hor_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", sort = "no", topn = NULL,
+                                  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0, aggregation = "sum", ...){
 
-  graph <- gg_bar_dot_ver_CatNum(data, titleLabel, subtitle, caption, xLabel, yLabel, leg_pos, angle_x, aggregation, ...)
+  graph <- gg_bar_dot_ver_CatNum(data, titleLabel, subtitle, caption, sort, topn, xLabel, yLabel, leg_pos, angle_x, aggregation, ...)
   graph <- graph + coord_flip()
 
   graph
