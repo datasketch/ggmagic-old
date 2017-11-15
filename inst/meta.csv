@@ -1028,126 +1028,166 @@ Kagi","
 Kagi
 Kagi
 ", Dat-Num, Dat-Num,kagi,NA
-gg_line_CatNumNum.,"Line
-lines","
-Line
-lines
-", Cat-Num-Num, Cat-Num2,line,NA
-gg_line_DatNum.,"Line
+gg_line_DatNum,"Line
 Lines","
 Line
 Lines
 ", Dat-Num, Dat-Num,line,NA
-gg_line_facet_CatNum.,"Line facet
-Facet Line","
-Line facet
-Facet Line
-", Cat-Num, Cat-Num,line,NA
-gg_line_hor_Cat.,"Horizontal line
-Horizontal Line","
-Horizontal line
-Horizontal Line
-", Cat, Cat,line,NA
-gg_line_hor_CatYeaNum.,"Horizontal line
-Tiene múltiples líneas","
-Horizontal line
-Tiene múltiples líneas
-", Cat-Yea-Num, Cat-Num-Yea,line,NA
-gg_line_hor_YeaNum.,"Horizontal line
+gg_line_Num,"Vertical line
+Line","
+Vertical line
+Line
+", Num, Num,line,NA
+gg_line_YeaNum,"Horizontal line
 Horizontal Lines","
 Horizontal line
 Horizontal Lines
 ", Yea-Num,Num- Yea,line,NA
-gg_line_hor_facet_CatCat.,"Horizontal line facet
+gg_line_facet_CatNum,"Line facet
+Facet Line","
+Line facet
+Facet Line
+", Cat-Num, Cat-Num,line,NA
+gg_line_facet_hor_CatCat,"Horizontal line facet
 Horizontal Line","
 Horizontal line facet
 Horizontal Line
 ", Cat-Cat,Cat- Cat,line,NA
-gg_line_hor_facet_CatCatNum.,"Horizontal line facet
+gg_line_facet_hor_CatCatNum,"Horizontal line facet
 horizontal linegraph","
 Horizontal line facet
 horizontal linegraph
 ", Cat-Cat-Num,Cat- Cat-Num,line,NA
-gg_line_multi_CatNum.,"Grouped line
+gg_line_facet_ver_CatCat.,"Vertical line facet
+Vertical Line","
+Vertical line facet
+Vertical Line
+", Cat-Cat,Cat- Cat,line,NA
+gg_line_facet_ver_CatCatNum,"Vertical line facet
+vertical linegraph","
+Vertical line facet
+vertical linegraph
+", Cat-Cat-Num,Cat- Cat-Num,line,NA
+gg_line_hor_Cat,"Horizontal line
+Horizontal Line","
+Horizontal line
+Horizontal Line
+", Cat, Cat,line,NA
+gg_line_multi_CatCatNum,"Grouped line by first variable
+Grouped Line Coloured","
+Grouped line by first variable
+Grouped Line Coloured
+", Cat-Cat-Num,Cat- Cat-Num,line,NA
+gg_line_multi_CatDatNum,"Grouped line
+Grouped Line Coloured","
+Grouped line
+Grouped Line Coloured
+", Cat-Dat-Num, Cat-Dat-Num,line,NA
+gg_line_multi_CatNum,"Grouped line
 Grouped Line Coloured","
 Grouped line
 Grouped Line Coloured
 ", Cat-Num, Cat-Num,line,NA
-gg_line_multi_NumNum.,"Line for each numeric variable
+gg_line_multi_CatNumNum,"Line
+lines","
+Line
+lines
+", Cat-Num-Num, Cat-Num2,line,NA
+gg_line_multi_CatYeaNum,"Horizontal line
+Tiene múltiples líneas","
+Horizontal line
+Tiene múltiples líneas
+", Cat-Yea-Num, Cat-Num-Yea,line,NA
+gg_line_multi_NumNum,"Line for each numeric variable
 Line for each Num","
 Line for each numeric variable
 Line for each Num
 ", Num-Num,Num- Num,line,NA
-gg_line_point_Num.,"Vertical line + point
+gg_line_point_DatNum,"Line + point
+Lines","
+Line + point
+Lines
+", Dat-Num, Dat-Num,line,NA
+gg_line_point_Num,"Vertical line + point
 Line wiht point plot","
 Vertical line + point
 Line wiht point plot
 ", Num, Num,line,NA
-gg_line_point_NumNum.,"Line + point
-Line point plot","
+gg_line_point_YeaNum,"Line + point
+Lines","
 Line + point
-Line point plot
-", Num-Num,Num- Num,line,NA
-gg_line_point_facet_CatNum.,"Line + point facet
+Lines
+", Yea-Num,Num- Yea,line,NA
+gg_line_point_facet_CatNum,"Line + point facet
 Facet Line Point","
 Line + point facet
 Facet Line Point
 ", Cat-Num, Cat-Num,line,NA
+gg_line_point_facet_DatNum,"Line + point facet by years
+Line Points facet by years","
+Line + point facet by years
+Line Points facet by years
+", Dat-Num, Dat-Num,line,NA
+gg_line_point_facet_hor_CatCat,"Horizontal line + point facet
+Horizontal Line Point","
+Horizontal line + point facet
+Horizontal Line Point
+", Cat-Cat,Cat- Cat,line,NA
+gg_line_point_facet_ver_CatCat.,"Vertical line + point facet
+Vertical Line Point","
+Vertical line + point facet
+Vertical Line Point
+", Cat-Cat,Cat- Cat,line,NA
 gg_line_point_flip_Num.,"Horizontal line + point
 Line with point plot","
 Horizontal line + point
 Line with point plot
 ", Num, Num,line,NA
-gg_line_point_hor_Cat.,"Horizontal line + point
+gg_line_point_hor_Cat,"Horizontal line + point
 Horizontal Line Point","
 Horizontal line + point
 Horizontal Line Point
 ", Cat, Cat,line,NA
-gg_line_point_hor_facet_CatCat.,"Horizontal line + point facet
-Horizontal Line Point","
-Horizontal line + point facet
-Horizontal Line Point
-", Cat-Cat,Cat- Cat,line,NA
-gg_line_point_multi_CatNum.,"Grouped line + point
+gg_line_point_multi_CatCatNum,"Grouped line + points by first variable
+Grouped Line Color Point","
+Grouped line + points by first variable
+Grouped Line Color Point
+", Cat-Cat-Num,Cat- Cat-Num,line,NA
+gg_line_point_multi_CatDatNum,"Grouped line + point
+Grouped Line Color Point","
+Grouped line + point
+Grouped Line Color Point
+", Cat-Dat-Num, Cat-Dat-Num,line,NA
+gg_line_point_multi_CatNum,"Grouped line + point
 Grouped Line Color Point","
 Grouped line + point
 Grouped Line Color Point
 ", Cat-Num, Cat-Num,line,NA
+gg_line_point_multi_CatNumNum,"Line + point
+Point Lines","
+Line + point
+Point Lines
+", Cat-Num-Num, Cat-Num2,line,NA
+gg_line_point_multi_CatYeaNum,"Horizontal line + points
+Tiene múltiples líneas con puntos","
+Horizontal line + points
+Tiene múltiples líneas con puntos
+", Cat-Yea-Num, Cat-Num-Yea,line,NA
+gg_line_point_multi_NumNum,"Line + point
+Line point plot","
+Line + point
+Line point plot
+", Num-Num,Num- Num,line,NA
 gg_line_point_ver_Cat.,"Vertical line + point
 Vertical Line Point","
 Vertical line + point
 Vertical Line Point
 ", Cat, Cat,line,NA
-gg_line_point_ver_facet_CatCat.,"Vertical line + point facet
-Vertical Line Point","
-Vertical line + point facet
-Vertical Line Point
-", Cat-Cat,Cat- Cat,line,NA
-gg_line_points_DatNum.,"Line + point
-Lines","
-Line + point
-Lines
-", Dat-Num, Dat-Num,line,NA
-gg_line_points_facet_DatNum.,"Line + point facet by years
-Line Points facet by years","
-Line + point facet by years
-Line Points facet by years
-", Dat-Num, Dat-Num,line,NA
 gg_line_ver_Cat.,"Vertical line
 Vertical Line","
 Vertical line
 Vertical Line
 ", Cat, Cat,line,NA
-gg_line_ver_facet_CatCat.,"Vertical line facet
-Vertical Line","
-Vertical line facet
-Vertical Line
-", Cat-Cat,Cat- Cat,line,NA
-gg_line_ver_facet_CatCatNum.,"Vertical line facet
-vertical linegraph","
-Vertical line facet
-vertical linegraph
-", Cat-Cat-Num,Cat- Cat-Num,line,NA
 gg_lollipop_DatNum.,"Lollipop
 lollipop","
 Lollipop
@@ -1170,26 +1210,6 @@ Vertical Marimekko","
 Vertical marimekko
 Vertical Marimekko
 ", Cat-Cat,Cat- Cat,marimekko,NA
-gg_multi_line_CatCatNum.,"Grouped line by first variable
-Grouped Line Coloured","
-Grouped line by first variable
-Grouped Line Coloured
-", Cat-Cat-Num,Cat- Cat-Num,multi,NA
-gg_multi_line_CatDatNum.,"Grouped line
-Grouped Line Coloured","
-Grouped line
-Grouped Line Coloured
-", Cat-Dat-Num, Cat-Dat-Num,multi,NA
-gg_multi_line_point_CatCatNum.,"Grouped line + points by first variable
-Grouped Line Color Point","
-Grouped line + points by first variable
-Grouped Line Color Point
-", Cat-Cat-Num,Cat- Cat-Num,multi,NA
-gg_multi_line_point_CatDatNum.,"Grouped line + point
-Grouped Line Color Point","
-Grouped line + point
-Grouped Line Color Point
-", Cat-Dat-Num, Cat-Dat-Num,multi,NA
 gg_pie_Cat.,"Pie
 Pie","
 Pie
@@ -1245,11 +1265,6 @@ Grouped Color Point","
 Grouped scatter
 Grouped Color Point
 ", Cat-Num, Cat-Num,point,NA
-gg_point_line_CatNumNum.,"Line + point
-Point Lines","
-Line + point
-Point Lines
-", Cat-Num-Num, Cat-Num2,point,NA
 gg_point_trend_line_facet_CatNum.,"Trend line facet
 Facet Trend Line","
 Trend line facet
