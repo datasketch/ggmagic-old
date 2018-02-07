@@ -249,7 +249,7 @@ gg_bar_coloured_parameter_ver_CatNum <- function(data, titleLabel = "", subtitle
 #' @examples
 #' gg_bar_coloured_parameter_hor_CatNum(sampleData("Cat-Num"))
 gg_bar_coloured_parameter_hor_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
-                                                 yLabel = NULL, order = FALSE, parameter = NULL,line_mean = FALSE, text = TRUE, type = 'count',
+                                                 yLabel = NULL, order = FALSE, parameter = NULL, line_mean = FALSE, text = TRUE, type = 'count',
                                                  color_text = "black", leg_pos = "right", aggregation = "sum", angle_x = 0, ...){
 
   graph <- gg_bar_coloured_parameter_ver_CatNum(data, titleLabel, subtitle, caption, xLabel,
@@ -555,7 +555,7 @@ gg_bar_circular_CatNum. <- function(data, titleLabel = "", subtitle = "", captio
 #' @return The sum of \code{x} and \code{y}.
 #' @section ftypes: Cat-Num
 #' @examples
-#' gg_bar_single_stacked_ver_CatNum(sammpleData("Cat-Num"))
+#' gg_bar_single_stacked_ver_CatNum(sampleData("Cat-Num"))
 gg_bar_single_stacked_ver_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "",
                                              fillLabel = NULL, leg_pos="right", width = 0.3, aggregation = 'sum',
                                              text = TRUE, type = "count", color_text = "black", ...){

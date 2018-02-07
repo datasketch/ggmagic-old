@@ -80,7 +80,7 @@ theme_ds <- function(){
       size = text_size,
       hjust = 0.5,
       vjust = 0.5,
-      angle = 0,
+      angle = angle_x,
       lineheight = 0.9),
     axis.text = element_text(
       debug=FALSE,
