@@ -185,8 +185,7 @@ gg_area_stacked_CatOca <- function(data,
                                    yLineLabel = NULL,
                                    dropNa = FALSE,
                                    order = NULL,
-                                   theme = NULL,
-                                   export = FALSE, ...) {
+                                   theme = NULL, ...) {
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -254,8 +253,7 @@ gg_area_stacked_100_CatOca <- function(data,
                                        yLineLabel = NULL,
                                        dropNa = FALSE,
                                        order = NULL,
-                                       theme = NULL,
-                                       export = FALSE, ...) {
+                                       theme = NULL, ...) {
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -322,8 +320,7 @@ gg_area_density_CatNum <- function(data,
                                    yLine = NULL,
                                    yLineLabel = NULL,
                                    dropNa = FALSE,
-                                   theme = NULL,
-                                   export = FALSE, ...) {
+                                   theme = NULL, ...) {
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -350,9 +347,12 @@ gg_area_density_CatNum <- function(data,
                color = ifelse(is.null(yLine), "transparent", "black"),
                linetype = "dashed",
                size = 1) +
-    guides(text = FALSE) +
+    guides(text = FALSE,
+           alpha = guide_legend(label = FALSE)) +
+    #guides(fill = guide_legend(override.aes= list(alpha = 0.4)))
     labs(title = title, subtitle = subtitle, caption = caption, x = horLabel, y = verLabel) +
     scale_fill_manual(values = getPalette()) +
+    scale_alpha_continuous(legend = FALSE) +
     theme_ds()
   gg
 }

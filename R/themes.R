@@ -38,7 +38,7 @@ theme_ds_clean <- function(){
 
 
 #' @export
-theme_ds <- function(){
+theme_ds <- function(...){
   type <- 'outer'
   inner <- type == 'inner'
   palette <- list(
@@ -80,7 +80,7 @@ theme_ds <- function(){
       size = text_size,
       hjust = 0.5,
       vjust = 0.5,
-      angle = angle_x,
+      angle = 0,
       lineheight = 0.9),
     axis.text = element_text(
       debug=FALSE,

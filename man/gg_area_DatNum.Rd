@@ -2,28 +2,27 @@
 % Please edit documentation in R/area.R
 \name{gg_area_DatNum}
 \alias{gg_area_DatNum}
-\title{Area
-Area}
+\title{Vertical area (dates, numbers)}
 \usage{
-gg_area_DatNum(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
+gg_area_DatNum(data, title = NULL, subtitle = NULL, caption = NULL,
+  horLabel = NULL, verLabel = NULL, yLine = NULL, yLineLabel = NULL,
+  agg = "sum", dropNa = FALSE, order = NULL, percentage = FALSE,
+  theme = NULL, ...)
 }
 \arguments{
-\item{x}{A number.}
-
-\item{y}{A number.}
+\item{data}{A data.frame}
 }
 \value{
-The sum of \code{x} and \code{y}.
+Ggplot visualization
 }
 \description{
-Area
-Area
+Compare quantities over dates
 }
-\section{ftypes}{
- Dat-Num
+\section{ctypes}{
+
+Dat-Num
 }
 
 \examples{
-gg_area_DatNum(sampleData("Dat-Num"))
+gg_area_DatNum(sampleData("Dat-Num", nrow = 10))
 }
