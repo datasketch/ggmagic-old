@@ -35,8 +35,10 @@ orientationXY <- function(orientation, x, y, hor, ver, line = FALSE) {
 
 # order category column
 #'@export
-orderCategory <- function(data, col, order) {
+orderCategory <- function(data, col, order, labelWrap) {
+  data[[col]] <- str_wrap(data[[col]], labelWrap)
   if (!is.null(order)) {
+    order <- str_wrap(order, labelWrap)
     order <- union(order, unique(data[[col]])[!is.na(unique(data[[col]]))])
     if (all(!is.na(order)) & any(is.na(data[[col]]))) order <- c(union(order, unique(data[[col]][!is.na(data[[col]])])), NA)
     order[is.na(order)] <- "NA"
@@ -48,11 +50,15 @@ orderCategory <- function(data, col, order) {
 
 # converts a numeric column into the equivalent percentage column
 #'@export
-percentColumn <- function(data, col, percentage = TRUE) {
-  if (percentage)
-    data$percent <- round((data[[col]] * 100) / sum(data[[col]], na.rm = TRUE),
-                          #esto puede ser variable dep el format...
-                          digits = 1)
+percentColumn <- function(data, col, percentage = TRUE, nDigits = nDigits) {
+  if (percentage) {
+    #data$percent
+    data[[col]] <- round((data[[col]] * 100) / sum(data[[col]], na.rm = TRUE),
+                         #esto puede ser variable dep el format...
+                         digits = nDigits)
+  } else {
+    data[[col]] <- round(data[[col]], digits = nDigits)
+  }
   data
 }
 
@@ -86,6 +92,33 @@ highlightValueData <- function(data, col, highlightValue, color, highlightColor)
   data
 }
 
+# labels position
+#'@export
+labelPos <- function(data, col, labelRatio) {
+  half <- data[[col]] - data[[col]] / 2
+  small <- half < max(data[[col]] * labelRatio)
+  half[small] <- data[[col]][small] + max(data[[col]]) / 50
+  half
+}
 
 
 
+# fill color =------ highlightvalue... cuando es max o min...
+# fillColors <- function(data, col, colors, highlightValue, order) {
+#   f <- unique(data[[col]])
+#   if (length(f) < length(colors)) {
+#
+#   } else if (length(f) == length(colors)) {
+#
+#   } else {
+#     if (length(colors) <= 2) {
+#
+#     } else {
+#       if (!is.null(highlightValue)) {
+#
+#     }
+#
+#     }
+#   }
+#
+# }

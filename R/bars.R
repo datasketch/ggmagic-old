@@ -9,7 +9,8 @@
 #' @examples
 #' gg_bar_Cat(sampleData("Cat", nrow = 10))
 #' @export gg_bar_Cat
-gg_bar_Cat <- function(data,
+#gg_bar_Cat
+f0<- function(data,
                        title = NULL,
                        subtitle = NULL,
                        caption = NULL,
@@ -19,11 +20,15 @@ gg_bar_Cat <- function(data,
                        #horLineLabel = NULL,
                        verLine = NULL,
                        #verLineLabel = NULL,
-                       angleX = 0,
                        colors = c("#009EE3", "#F9B233"),
+                       colorText = "black",
                        dropNa = FALSE,
                        format = c("", ""),
                        highlightValue = NULL,
+                       labelRatio = 0.1,
+                       labelWrap = 12,
+                       marks = c(".", ","),
+                       nDigits = 2,
                        order = NULL,
                        orientation = "ver",
                        percentage = FALSE,
@@ -58,45 +63,57 @@ gg_bar_Cat <- function(data,
     dplyr::group_by(a) %>%
     dplyr::summarise(b = n())
 
-  d <- percentColumn(d, "b", percentage)
+  d <- percentColumn(d, "b", percentage, nDigits)
   if (percentage) {
     d <- d[, c(1, 3, 3)]
     names(d)[1:2] <- c("a", "b")
+    if (nchar(format[2]) == 0) {
+      format[2] <- " %"
+    }
   }
-  d <- orderCategory(d, "a", order)
+  d <- orderCategory(d, "a", order, labelWrap)
   d <- sortSlice(d, "b", sort, sliceN)
+  # labels position
+  half <- d$b - d$b / 2
+  small <- half < max(d$b * labelRatio)
+  half[small] <- d$b[small] + max(d$b) / 50
 
   gg <- ggplot(d, aes(x = a, y = b, fill = a %in% highlightValue)) +
     geom_bar(stat = "identity") +
-    geom_vline(xintercept = 1,
+    geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "black",
                               "transparent"),
                linetype = "dashed") +
-    geom_hline(yintercept = 1,
+    geom_hline(yintercept = lineXY[1],
                color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
                               "black",
                               "transparent"),
                linetype = "dashed") +
-    geom_text(aes(y = b - b / 2,
-                  label = paste0(ifelse(is.na(format[1]), "", format[1]),
-                                 d[[ifelse(percentage, "percent", "b")]],
-                                 ifelse(percentage, "%", ifelse(is.na(format[2]), "", format[2])))),
+    geom_text(aes(y = half,
+                  label = paste0(format[1],
+                                 format(b, big.mark = marks[1], decimal.mark = marks[2]),
+                                 format[2])),
               check_overlap = TRUE,
-              color = ifelse(showText, "black", "transparent")) +
+              color = ifelse(showText, colorText, "transparent")) +
     labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
     scale_fill_manual(values = colors) +
     scale_x_discrete(limits = d$a) +
-    # scale_y_continuous(labels = dollar_format(prefix = ifelse(is.na(format[1]), "", format[1]),
-    #                                           suffix = ifelse(is.na(format[2]), "", format[2]))) +
-    scale_y_continuous(limits = c(0, max(d$percent)),
-      labels = ifelse(percentage,
-                                       percent,
-                                       dollar_format(prefix = ifelse(is.na(format[1]), "", format[1]),
-                                                     suffix = ifelse(is.na(format[2]), "", format[2])))) +
+    scale_y_continuous(labels = function(x) paste0(format[1],
+                                                   format(x, big.mark = marks[1], decimal.mark = marks[2]),
+                                                   format[2])) +
+    # dollar_format(prefix = ifelse(is.na(format[1]), "", format[1]),
+      #               suffix = ifelse(is.na(format[2]), "", format[2]))
+      #) +
+                         # dollar_format(prefix = ifelse(is.na(format[1]), "", format[1]),
+                         #                      suffix = ifelse(is.na(format[2]), "", format[2]))) +
+    #scale_y_continuous(limits = c(0, max(d$percent)),
+      # labels = ifelse(percentage,
+      #                                  percent,
+      #                                  dollar_format(prefix = ifelse(is.na(format[1]), "", format[1]),
+      #                                                suffix = ifelse(is.na(format[2]), "", format[2])))) +
     theme_ds() +
-    theme(legend.position = "none", axis.text.x = element_text(angle = angleX))
-    guides(fill = FALSE)
+    theme(legend.position = "none")
   if (f$getCtypes()[1] == "Dat")
     gg <- gg +
     scale_x_date(labels = date_format("%b %d %Y"))
