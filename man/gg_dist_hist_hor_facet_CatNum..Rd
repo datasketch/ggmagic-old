@@ -2,7 +2,6 @@
 % Please edit documentation in R/histograms.R
 \name{gg_dist_hist_hor_facet_CatNum.}
 \alias{gg_dist_hist_hor_facet_CatNum.}
-\alias{gg_dist_hist_hor_facet_CatNum.}
 \title{Horizontal histogram + distribution facet
 Facet Horizontal Histogram + Dist}
 \usage{

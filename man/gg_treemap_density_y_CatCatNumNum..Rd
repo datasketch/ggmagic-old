@@ -2,17 +2,18 @@
 % Please edit documentation in R/treemap.R
 \name{gg_treemap_density_y_CatCatNumNum.}
 \alias{gg_treemap_density_y_CatCatNumNum.}
-\alias{gg_treemap_density_y_CatCatNumNum.}
 \title{Treemap density second numeric variable
 Treemap Density by second Num}
 \usage{
-gg_treemap_density_y_CatCatNumNum.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, reverse = FALSE, text = TRUE,
-  color_text = "black", aggregation = "sum", leg_pos = "right", ...)
+gg_treemap_density_y_CatCatNumNum.(data, titleLabel = "",
+  subtitle = "", caption = "", fillLabel = NULL, reverse = FALSE,
+  text = TRUE, color_text = "black", aggregation = "sum",
+  leg_pos = "right", ...)
 
-gg_treemap_density_y_CatCatNumNum.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, reverse = FALSE, text = TRUE,
-  color_text = "black", aggregation = "sum", leg_pos = "right", ...)
+gg_treemap_density_y_CatCatNumNum.(data, titleLabel = "",
+  subtitle = "", caption = "", fillLabel = NULL, reverse = FALSE,
+  text = TRUE, color_text = "black", aggregation = "sum",
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,8 +5,8 @@
 \title{Vertical violin
 Violin flipped}
 \usage{
-gg_violin_flip_Num.(data, titleLabel = "", subtitle = "", caption = "",
-  yLabel = NULL, xLabel = NULL, angle_x = 0, ...)
+gg_violin_flip_Num.(data, titleLabel = "", subtitle = "",
+  caption = "", yLabel = NULL, xLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

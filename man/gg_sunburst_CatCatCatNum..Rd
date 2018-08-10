@@ -6,8 +6,8 @@
 sunburst}
 \usage{
 gg_sunburst_CatCatCatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", aggregation = "sum", fillLabel = NULL, xLabel = NULL,
-  yLabel = NULL, leg_pos = "right", ...)
+  caption = "", aggregation = "sum", fillLabel = NULL,
+  xLabel = NULL, yLabel = NULL, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

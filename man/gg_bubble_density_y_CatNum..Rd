@@ -8,8 +8,8 @@ Coloured Bubble}
 gg_bubble_density_y_CatNum.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, fillLabel = NULL, text = TRUE,
   type = "count", color_text = "black", leg_pos = "right",
-  aggregation = "sum", angle_x = 0, shape_type = 19, reverse = FALSE,
-  ...)
+  aggregation = "sum", angle_x = 0, shape_type = 19,
+  reverse = FALSE, ...)
 }
 \arguments{
 \item{x}{A number.}

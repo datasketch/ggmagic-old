@@ -6,8 +6,9 @@
 lollipop. segment and point
 gg_lollipop_YeaNum.}
 \usage{
-gg_lollipop_YeaNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, angle_x = 0, shape_type = 19, ...)
+gg_lollipop_YeaNum.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0,
+  shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

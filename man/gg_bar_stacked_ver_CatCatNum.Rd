@@ -7,8 +7,8 @@ vertical stacked bar graph}
 \usage{
 gg_bar_stacked_ver_CatCatNum(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "right", aggregation = "sum", text = TRUE, type = "count",
-  color_text = "black", angle_x = 0, ...)
+  leg_pos = "right", aggregation = "sum", text = TRUE,
+  type = "count", color_text = "black", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A category.}

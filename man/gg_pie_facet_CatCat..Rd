@@ -5,9 +5,9 @@
 \title{Pie facet
 Facet Pie}
 \usage{
-gg_pie_facet_CatCat.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, leg_pos = "right", text = TRUE, type = "count",
-  color_text = "black", ...)
+gg_pie_facet_CatCat.(data, titleLabel = "", subtitle = "",
+  caption = "", fillLabel = NULL, leg_pos = "right", text = TRUE,
+  type = "count", color_text = "black", ...)
 }
 \arguments{
 \item{x}{A number.}

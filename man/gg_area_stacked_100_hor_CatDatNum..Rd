@@ -5,9 +5,9 @@
 \title{Horizontal 100% stacked area
 Stacked Horizontal Area 100}
 \usage{
-gg_area_stacked_100_hor_CatDatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "right", angle_x = 0, ...)
+gg_area_stacked_100_hor_CatDatNum.(data, titleLabel = "",
+  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+  fillLabel = NULL, leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

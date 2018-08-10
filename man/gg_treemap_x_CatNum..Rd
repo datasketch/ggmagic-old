@@ -5,8 +5,9 @@
 \title{Treemap coloured by first variable
 Treemap fill by first Cat}
 \usage{
-gg_treemap_x_CatNum.(data, titleLabel = "", subtitle = "", caption = "",
-  text = TRUE, color_text = "black", aggregation = "sum", ...)
+gg_treemap_x_CatNum.(data, titleLabel = "", subtitle = "",
+  caption = "", text = TRUE, color_text = "black",
+  aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}

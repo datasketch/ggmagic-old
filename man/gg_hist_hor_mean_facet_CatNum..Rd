@@ -2,7 +2,6 @@
 % Please edit documentation in R/histograms.R
 \name{gg_hist_hor_mean_facet_CatNum.}
 \alias{gg_hist_hor_mean_facet_CatNum.}
-\alias{gg_hist_hor_mean_facet_CatNum.}
 \title{Horizontal histogram + mean facet
 Facet Horizontal Histogram + Mean}
 \usage{

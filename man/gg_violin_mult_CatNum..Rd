@@ -5,8 +5,9 @@
 \title{Vertical violin
 Violin}
 \usage{
-gg_violin_mult_CatNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", angle_x = 0, ...)
+gg_violin_mult_CatNum.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

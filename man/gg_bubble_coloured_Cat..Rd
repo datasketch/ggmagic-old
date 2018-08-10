@@ -7,7 +7,8 @@ Coloured Bubble}
 \usage{
 gg_bubble_coloured_Cat.(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, fillLabel = NULL, shape_type = 19,
-  angle_x = 0, text = TRUE, type = "count", color_text = "black", ...)
+  angle_x = 0, text = TRUE, type = "count", color_text = "black",
+  ...)
 }
 \arguments{
 \item{x}{A number.}

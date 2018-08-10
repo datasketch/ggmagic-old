@@ -7,8 +7,8 @@ Bubble}
 \usage{
 gg_bubble_CatNum.(data, titleLabel = "", subtitle = "", caption = "",
   xLabel = NULL, text = TRUE, type = "count", color_text = "black",
-  leg_pos = "right", aggregation = "sum", angle_x = 0, shape_type = 19,
-  ...)
+  leg_pos = "right", aggregation = "sum", angle_x = 0,
+  shape_type = 19, ...)
 }
 \arguments{
 \item{x}{A number.}

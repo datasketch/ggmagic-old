@@ -5,9 +5,10 @@
 \title{Vertical 100% stacked area
 Stacked vertical Area 100}
 \usage{
-gg_area_stacked_100_ver_CatCatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "right", aggregation = "sum", angle_x = 0, ...)
+gg_area_stacked_100_ver_CatCatNum.(data, titleLabel = "",
+  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+  fillLabel = NULL, leg_pos = "right", aggregation = "sum",
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

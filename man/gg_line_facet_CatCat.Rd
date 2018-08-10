@@ -5,8 +5,8 @@
 \title{Horizontal line facet
 Horizontal Line}
 \usage{
-gg_line_facet_CatCat(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
+gg_line_facet_CatCat(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{y}{A number.}

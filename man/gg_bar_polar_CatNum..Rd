@@ -5,10 +5,10 @@
 \title{Polar bar
 Polar Bar}
 \usage{
-gg_bar_polar_CatNum.(data, width = 0.95, titleLabel = "", subtitle = "",
-  aggregation = "sum", caption = "", fillLabel = NULL,
-  leg_pos = "right", text = TRUE, color_text = "black", type = "count",
-  ...)
+gg_bar_polar_CatNum.(data, width = 0.95, titleLabel = "",
+  subtitle = "", aggregation = "sum", caption = "",
+  fillLabel = NULL, leg_pos = "right", text = TRUE,
+  color_text = "black", type = "count", ...)
 }
 \arguments{
 \item{x}{A number.}

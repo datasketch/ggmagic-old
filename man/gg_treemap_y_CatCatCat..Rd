@@ -6,8 +6,8 @@
 Treemap fill second Cat}
 \usage{
 gg_treemap_y_CatCatCat.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, text = "TRUE", color_text = "black",
-  leg_pos = "right", ...)
+  caption = "", fillLabel = NULL, text = "TRUE",
+  color_text = "black", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

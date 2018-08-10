@@ -5,9 +5,9 @@
 \title{Donut facet
 Facet Donut}
 \usage{
-gg_donut_facet_CatCat.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, width = 0.3, leg_pos = "right", text = TRUE,
-  type = "count", color_text = "black", ...)
+gg_donut_facet_CatCat.(data, titleLabel = "", subtitle = "",
+  caption = "", fillLabel = NULL, width = 0.3, leg_pos = "right",
+  text = TRUE, type = "count", color_text = "black", ...)
 }
 \arguments{
 \item{x}{A number.}

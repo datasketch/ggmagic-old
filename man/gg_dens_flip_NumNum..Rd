@@ -5,9 +5,9 @@
 \title{Vertical density 2D bin
 Density 2D flipped}
 \usage{
-gg_dens_flip_NumNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, reverse = FALSE, angle_x = 0,
-  leg_pos = "right", ...)
+gg_dens_flip_NumNum.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, reverse = FALSE,
+  angle_x = 0, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

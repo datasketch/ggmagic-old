@@ -5,10 +5,10 @@
 \title{Horizontal grouped bar by second variable
 Unstacked Coloured horizontal Bar}
 \usage{
-gg_bar_grouped_coloured_hor_CatCat(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "right", text = TRUE, type = "count", color_text = "black",
-  angle_x = 0, ...)
+gg_bar_grouped_coloured_hor_CatCat(data, titleLabel = "",
+  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+  fillLabel = NULL, leg_pos = "right", text = TRUE, type = "count",
+  color_text = "black", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

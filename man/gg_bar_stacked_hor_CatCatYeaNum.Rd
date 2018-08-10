@@ -7,8 +7,8 @@ Stacked}
 \usage{
 gg_bar_stacked_hor_CatCatYeaNum(data, titleLabel = "", subtitle = "",
   caption = "", fillLabel = NULL, xLabel = NULL, yLabel = NULL,
-  leg_pos = "right", aggregation = "sum", text = TRUE, type = "count",
-  color_text = "black", angle_x = 0, ...)
+  leg_pos = "right", aggregation = "sum", text = TRUE,
+  type = "count", color_text = "black", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

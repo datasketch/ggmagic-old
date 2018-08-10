@@ -5,9 +5,9 @@
 \title{Horizontal histogram
 Histogram 2d flipped}
 \usage{
-gg_hist_flip_NumNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, reverse = FALSE, angle_x = 0,
-  leg_pos = "right", ...)
+gg_hist_flip_NumNum.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, reverse = FALSE,
+  angle_x = 0, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

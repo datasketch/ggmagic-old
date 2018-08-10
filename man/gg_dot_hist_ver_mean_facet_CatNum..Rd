@@ -5,9 +5,9 @@
 \title{Vertical density dot + histogram + mean facet
 Facet Vertical Histogram + Mean + Dot}
 \usage{
-gg_dot_hist_ver_mean_facet_CatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  alpha = 0.3, angle_x = 0, ...)
+gg_dot_hist_ver_mean_facet_CatNum.(data, titleLabel = "",
+  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+  leg_pos = "right", alpha = 0.3, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

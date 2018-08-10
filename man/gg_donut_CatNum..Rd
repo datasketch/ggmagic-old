@@ -6,8 +6,9 @@
 dount}
 \usage{
 gg_donut_CatNum.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, width = 0.3, leg_pos = "right", aggregation = "sum",
-  text = TRUE, color_text = "black", type = "count", ...)
+  fillLabel = NULL, width = 0.3, leg_pos = "right",
+  aggregation = "sum", text = TRUE, color_text = "black",
+  type = "count", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,10 +5,10 @@
 \title{Slope
 Slope}
 \usage{
-gg_slope_CatYeaNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", text_size = 6,
-  size_vjust = 1.5, overlap = TRUE, size_hjust = 0.5, size_point = 3,
-  size_line = 1, ...)
+gg_slope_CatYeaNum.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
+  text_size = 6, size_vjust = 1.5, overlap = TRUE,
+  size_hjust = 0.5, size_point = 3, size_line = 1, ...)
 }
 \arguments{
 \item{x}{A number.}

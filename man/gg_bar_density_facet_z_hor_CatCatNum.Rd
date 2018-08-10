@@ -5,10 +5,11 @@
 \title{Horizontal facet bar density by first numeric variable
 Facet Coloured horizontal bar}
 \usage{
-gg_bar_density_facet_z_hor_CatCatNum(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  reverse = FALSE, leg_pos = "right", angle_x = 0, aggregation = "sum",
-  text = TRUE, color_text = "black", type = "count", ...)
+gg_bar_density_facet_z_hor_CatCatNum(data, titleLabel = "",
+  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+  fillLabel = NULL, reverse = FALSE, leg_pos = "right",
+  angle_x = 0, aggregation = "sum", text = TRUE,
+  color_text = "black", type = "count", ...)
 }
 \arguments{
 \item{x}{A category.}

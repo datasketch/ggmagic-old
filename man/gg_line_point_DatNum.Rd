@@ -5,9 +5,9 @@
 \title{Line + point
 Lines}
 \usage{
-gg_line_point_DatNum(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, shape_type = 19, hline = NULL,
-  angle_x = 0, ...)
+gg_line_point_DatNum(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, shape_type = 19,
+  hline = NULL, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,9 +5,9 @@
 \title{Histogram
 histogram}
 \usage{
-gg_histogram_CatDat.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0,
-  leg_pos = "right", ...)
+gg_histogram_CatDat.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  angle_x = 0, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

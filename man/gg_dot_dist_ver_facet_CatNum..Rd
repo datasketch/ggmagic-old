@@ -2,7 +2,6 @@
 % Please edit documentation in R/densities.R, R/histograms.R
 \name{gg_dot_dist_ver_facet_CatNum.}
 \alias{gg_dot_dist_ver_facet_CatNum.}
-\alias{gg_dot_dist_ver_facet_CatNum.}
 \title{Vertical density dot + distribution facet
 Facet Vertical Dot Dist}
 \usage{

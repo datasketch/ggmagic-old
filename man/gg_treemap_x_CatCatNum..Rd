@@ -6,8 +6,9 @@
 Treemap Fill by first Cat}
 \usage{
 gg_treemap_x_CatCatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, label_size = 5, aggregation = "sum",
-  text = "TRUE", color_text = "black", leg_pos = "right", ...)
+  caption = "", fillLabel = NULL, label_size = 5,
+  aggregation = "sum", text = "TRUE", color_text = "black",
+  leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -5,9 +5,9 @@
 \title{Steam
 Steamgraph}
 \usage{
-gg_steam_CatNumNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
-  angle_x = 0, aggregation = "sum", ...)
+gg_steam_CatNumNum.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", angle_x = 0, aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A category.}

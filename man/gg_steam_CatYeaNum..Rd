@@ -5,9 +5,9 @@
 \title{Steam
 Steam}
 \usage{
-gg_steam_CatYeaNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, leg_pos = "right",
-  angle_x = 0, ...)
+gg_steam_CatYeaNum.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

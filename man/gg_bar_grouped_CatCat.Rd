@@ -4,12 +4,13 @@
 \alias{gg_bar_grouped_CatCat}
 \title{Grouped bar (categories, ordered categories)}
 \usage{
-gg_bar_grouped_CatCat(data, title = NULL, subtitle = NULL, caption = NULL,
-  horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
-  angleX = 0, colors = c("#009EE3", "#F9B233"), dropNa = FALSE,
-  format = c("", ""), leyendLayout = "right", order = NULL,
-  orientation = "ver", percentage = FALSE, sort = "no", sliceN = NULL,
-  showText = TRUE, theme = NULL, ...)
+gg_bar_grouped_CatCat(data, title = NULL, subtitle = NULL,
+  caption = NULL, horLabel = NULL, verLabel = NULL, horLine = NULL,
+  verLine = NULL, colors = c("#009EE3", "#F9B233"), dropNa = FALSE,
+  format = c("", ""), labelRatio = 0.1, labelWrap = 12,
+  marks = c(".", ","), nDigits = 2, order = NULL,
+  orientation = "ver", percentage = FALSE, sort = "no",
+  sliceN = NULL, showText = TRUE, theme = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}

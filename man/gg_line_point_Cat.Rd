@@ -5,9 +5,9 @@
 \title{Horizontal line + point
 Horizontal Line Point}
 \usage{
-gg_line_point_Cat(data, titleLabel = "", xLabel = NULL, subtitle = "",
-  caption = "", yLabel = NULL, leg_pos = "right", shape_type = 19,
-  angle_x = 0, ...)
+gg_line_point_Cat(data, titleLabel = "", xLabel = NULL,
+  subtitle = "", caption = "", yLabel = NULL, leg_pos = "right",
+  shape_type = 19, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

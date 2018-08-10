@@ -7,8 +7,8 @@ Grouped Line Color Point}
 \usage{
 gg_line_point_multi_CatCatNum(data, titleLabel = "", subtitle = "",
   caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "right", aggregation = "sum", shape_type = 19, angle_x = 0,
-  ...)
+  leg_pos = "right", aggregation = "sum", shape_type = 19,
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

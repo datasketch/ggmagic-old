@@ -5,9 +5,9 @@
 \title{Circular bar
 Circular Bar}
 \usage{
-gg_bar_circular_Cat.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, leg_pos = "right", width = 0.85, text = TRUE,
-  color_text = "black", type = "count", ...)
+gg_bar_circular_Cat.(data, titleLabel = "", subtitle = "",
+  caption = "", fillLabel = NULL, leg_pos = "right", width = 0.85,
+  text = TRUE, color_text = "black", type = "count", ...)
 }
 \arguments{
 \item{x}{A number.}

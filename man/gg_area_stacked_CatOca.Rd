@@ -6,7 +6,8 @@
 \usage{
 gg_area_stacked_CatOca(data, title = NULL, subtitle = NULL,
   caption = NULL, horLabel = NULL, verLabel = NULL, yLine = NULL,
-  yLineLabel = NULL, dropNa = FALSE, order = NULL, theme = NULL, ...)
+  yLineLabel = NULL, dropNa = FALSE, order = NULL, theme = NULL,
+  ...)
 }
 \arguments{
 \item{data}{A data.frame}

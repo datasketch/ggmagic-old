@@ -5,9 +5,9 @@
 \title{Density distribution
 Coloured Density Distribution}
 \usage{
-gg_density_multi_dist_coloured_CatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "right", angle_x = 0, ...)
+gg_density_multi_dist_coloured_CatNum.(data, titleLabel = "",
+  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+  fillLabel = NULL, leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

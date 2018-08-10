@@ -5,9 +5,9 @@
 \title{Horizontal density dot + histogram + mean facet
 Facet Horizontal Histogram + Mean + Dot}
 \usage{
-gg_dot_hist_hor_mean_facet_CatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  alpha = 0.3, angle_x = 0, ...)
+gg_dot_hist_hor_mean_facet_CatNum.(data, titleLabel = "",
+  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+  leg_pos = "right", alpha = 0.3, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

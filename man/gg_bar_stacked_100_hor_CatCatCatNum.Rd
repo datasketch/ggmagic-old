@@ -5,10 +5,11 @@
 \title{Horizontal 100% stacked bar by first variable + facet by third variable
 Stacked}
 \usage{
-gg_bar_stacked_100_hor_CatCatCatNum(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, xLabel = NULL, yLabel = NULL,
-  leg_pos = "right", aggregation = "sum", text = TRUE, type = "count",
-  color_text = "black", angle_x = 0, ...)
+gg_bar_stacked_100_hor_CatCatCatNum(data, titleLabel = "",
+  subtitle = "", caption = "", fillLabel = NULL, xLabel = NULL,
+  yLabel = NULL, leg_pos = "right", aggregation = "sum",
+  text = TRUE, type = "count", color_text = "black", angle_x = 0,
+  ...)
 }
 \arguments{
 \item{x}{A number.}

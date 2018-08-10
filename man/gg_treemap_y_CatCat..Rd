@@ -5,9 +5,9 @@
 \title{Treemap coloured by second variable
 Treemap fill second Cat}
 \usage{
-gg_treemap_y_CatCat.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, text = TRUE, color_text = "black",
-  leg_pos = "right", ...)
+gg_treemap_y_CatCat.(data, titleLabel = "", subtitle = "",
+  caption = "", fillLabel = NULL, text = TRUE,
+  color_text = "black", leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

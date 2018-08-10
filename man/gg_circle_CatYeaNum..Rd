@@ -5,9 +5,9 @@
 \title{Scatter
 ciculos}
 \usage{
-gg_circle_CatYeaNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", shape_type = 19,
-  angle_x = 0, ...)
+gg_circle_CatYeaNum.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
+  shape_type = 19, angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

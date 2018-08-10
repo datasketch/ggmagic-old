@@ -6,8 +6,8 @@
 Pie}
 \usage{
 gg_pie_CatNum.(data, titleLabel = "", subtitle = "", caption = "",
-  fillLabel = NULL, text = TRUE, type = "count", color_text = "black",
-  leg_pos = "right", aggregation = "sum", ...)
+  fillLabel = NULL, text = TRUE, type = "count",
+  color_text = "black", leg_pos = "right", aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}

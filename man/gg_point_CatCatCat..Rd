@@ -5,9 +5,9 @@
 \title{Scatter
 Coloured Point}
 \usage{
-gg_point_CatCatCat.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, angle_x = 0,
-  shape_type = 19, leg_pos = "right", ...)
+gg_point_CatCatCat.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  angle_x = 0, shape_type = 19, leg_pos = "right", ...)
 }
 \arguments{
 \item{x}{A number.}

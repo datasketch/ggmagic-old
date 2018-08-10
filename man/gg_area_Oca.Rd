@@ -5,8 +5,9 @@
 \title{Vertical area (ordered categories)}
 \usage{
 gg_area_Oca(data, title = NULL, subtitle = NULL, caption = NULL,
-  horLabel = NULL, verLabel = NULL, yLine = NULL, yLineLabel = NULL,
-  dropNa = FALSE, order = NULL, theme = NULL, ...)
+  horLabel = NULL, verLabel = NULL, yLine = NULL,
+  yLineLabel = NULL, dropNa = FALSE, order = NULL, theme = NULL,
+  ...)
 }
 \arguments{
 \item{data}{A data.frame}

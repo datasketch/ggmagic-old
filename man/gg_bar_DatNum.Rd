@@ -6,9 +6,11 @@
 \usage{
 gg_bar_DatNum(data, title = NULL, subtitle = NULL, caption = NULL,
   horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
-  agg = "sum", angleX = 0, colors = c("#009EE3", "#F9B233"),
-  dropNa = FALSE, format = c("", ""), highlightValue = NULL,
-  order = NULL, orientation = "ver", percentage = FALSE, sort = "no",
+  agg = "sum", colors = c("#009EE3", "#F9B233"), colorText = "black",
+  diffColorsBar = FALSE, dropNa = FALSE, format = c("", ""),
+  highlightValue = NULL, labelRatio = 0.1, labelWrap = 12,
+  marks = c(".", ","), nDigits = 2, order = NULL,
+  orientation = "ver", percentage = FALSE, sort = "no",
   sliceN = NULL, showText = TRUE, theme = NULL, ...)
 }
 \arguments{

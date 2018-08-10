@@ -7,8 +7,8 @@ Facet Vertical coloured by parameter bars}
 \usage{
 gg_bar_coloured_parameter_facet_ver_CatCatNum(data, titleLabel = "",
   subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-  parameter1 = NULL, parameter2 = NULL, leg_pos = "right", angle_x = 0,
-  aggregation = "sum", text = TRUE, type = "count",
+  parameter1 = NULL, parameter2 = NULL, leg_pos = "right",
+  angle_x = 0, aggregation = "sum", text = TRUE, type = "count",
   color_text = "black", ...)
 }
 \arguments{

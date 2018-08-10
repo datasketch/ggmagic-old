@@ -5,8 +5,9 @@
 \title{Scatter facet
 Facet Point}
 \usage{
-gg_point_facet_CatNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, shape_type = 19, angle_x = 0, ...)
+gg_point_facet_CatNum.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, shape_type = 19,
+  angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}

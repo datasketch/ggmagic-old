@@ -5,9 +5,9 @@
 \title{Sunburst
 sunburst}
 \usage{
-gg_sunburst_CatCatNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, fillLabel = NULL, aggregation = "sum",
-  ...)
+gg_sunburst_CatCatNum.(data, titleLabel = "", subtitle = "",
+  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
+  aggregation = "sum", ...)
 }
 \arguments{
 \item{x}{A number.}

@@ -2,17 +2,16 @@
 % Please edit documentation in R/histograms.R
 \name{gg_dist_hist_hor_mean_facet_CatNum.}
 \alias{gg_dist_hist_hor_mean_facet_CatNum.}
-\alias{gg_dist_hist_hor_mean_facet_CatNum.}
 \title{Horizontal histogram + distribution + mean facet
 Facet Horizontal Histogram + Dist + Mean}
 \usage{
-gg_dist_hist_hor_mean_facet_CatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 0, ...)
+gg_dist_hist_hor_mean_facet_CatNum.(data, titleLabel = "",
+  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+  leg_pos = "right", angle_x = 0, ...)
 
-gg_dist_hist_hor_mean_facet_CatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 0, ...)
+gg_dist_hist_hor_mean_facet_CatNum.(data, titleLabel = "",
+  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
+  leg_pos = "right", angle_x = 0, ...)
 }
 \arguments{
 \item{x}{A number.}
