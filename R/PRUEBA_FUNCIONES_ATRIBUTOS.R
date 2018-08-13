@@ -4,71 +4,71 @@
 
 ### script para probar los argumentos de las funciones
 # función
-f0 <- gg_bar_Cat
-data <- s0
-order <- "g"
-hg <- c("g", "NA")
-f0(data)
-# # títulos
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO")
-# labels ejes, líneas
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
-   horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2)
-# orientatio
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
-   horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor")
-# dropna, format (que le gana a percentage), order, labelwrap, labelRatio
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
-   horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
-   dropNa = TRUE, format = c("pre", " &$pos"), order = order, labelWrap = 3,
-   labelRatio = 1)
-# percentage, marks, ndigits
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
-   horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
-   dropNa = TRUE, format = c("pre", " &$pos"), order = order, percentage = TRUE,
-   marks = c(",", "."), nDigits = 4)
-# sort, sliceN, showText, colorText
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
-   horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
-   dropNa = TRUE, format = c("pre", " &$pos"), order = order, percentage = TRUE,
-   marks = c(",", "."), nDigits = 4, sort = "asc", sliceN = 1,
-   colorText = "darkgreen")
-# colors
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
-   horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
-   dropNa = TRUE, format = c("pre", " &$pos"), order = order, percentage = TRUE,
-   marks = c(",", "."), nDigits = 4, sort = "asc",
-   colorText = "darkgreen", colors = "red")
-# colors, diffColorsBar
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
-   horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
-   dropNa = TRUE, format = c("pre", " &$pos"), order = order, percentage = TRUE,
-   marks = c(",", "."), nDigits = 4, sort = "asc",
-   colors = c("blue", "yellow", "orange"), diffColorsBar = TRUE)
-# colors, diffColorsBar
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
-horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
-dropNa = TRUE, format = c("pre", " &$pos"), order = order, percentage = TRUE,
-marks = c(",", "."), nDigits = 4, sort = "asc",
-colors = c("blue", "yellow"), diffColorsBar = TRUE)
-# colors, highlightvalue
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
-   horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
-   format = c("pre", " &$pos"), order = order, percentage = TRUE,
-   marks = c(",", "."), nDigits = 4, sort = "asc",
-   colors = "purple", highlightValue = hg)
-# colors, highlightvalue
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
-   horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
-   format = c("pre", " &$pos"), order = order, percentage = TRUE,
-   marks = c(",", "."), nDigits = 4, sort = "asc",
-   colors = c("purple", "red"), highlightValue = hg)
-# colors, highlightvalue, diffcolorsbar
-f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
-   horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
-   format = c("pre", " &$pos"), order = order, percentage = TRUE,
-   marks = c(",", "."), nDigits = 4, sort = "asc",
-   colors = c("purple", "red", "yellow"), highlightValue = "NA")
+# f0 <- gg_bar_Cat
+# data <- s0
+# order <- "g"
+# hg <- c("g", "NA")
+# f0(data)
+# # # títulos
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO")
+# # labels ejes, líneas
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
+#    horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2)
+# # orientatio
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
+#    horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor")
+# # dropna, format (que le gana a percentage), order, labelwrap, labelRatio
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
+#    horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
+#    dropNa = TRUE, format = c("pre", " &$pos"), order = order, labelWrap = 3,
+#    labelRatio = 1)
+# # percentage, marks, ndigits
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
+#    horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
+#    dropNa = TRUE, format = c("pre", " &$pos"), order = order, percentage = TRUE,
+#    marks = c(",", "."), nDigits = 4)
+# # sort, sliceN, showText, colorText
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
+#    horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
+#    dropNa = TRUE, format = c("pre", " &$pos"), order = order, percentage = TRUE,
+#    marks = c(",", "."), nDigits = 4, sort = "asc", sliceN = 1,
+#    colorText = "darkgreen")
+# # colors
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
+#    horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
+#    dropNa = TRUE, format = c("pre", " &$pos"), order = order, percentage = TRUE,
+#    marks = c(",", "."), nDigits = 4, sort = "asc",
+#    colorText = "darkgreen", colors = "red")
+# # colors, diffColorsBar
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
+#    horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
+#    dropNa = TRUE, format = c("pre", " &$pos"), order = order, percentage = TRUE,
+#    marks = c(",", "."), nDigits = 4, sort = "asc",
+#    colors = c("blue", "yellow", "orange"), diffColorsBar = TRUE)
+# # colors, diffColorsBar
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
+# horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
+# dropNa = TRUE, format = c("pre", " &$pos"), order = order, percentage = TRUE,
+# marks = c(",", "."), nDigits = 4, sort = "asc",
+# colors = c("blue", "yellow"), diffColorsBar = TRUE)
+# # colors, highlightvalue
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
+#    horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
+#    format = c("pre", " &$pos"), order = order, percentage = TRUE,
+#    marks = c(",", "."), nDigits = 4, sort = "asc",
+#    colors = "purple", highlightValue = hg)
+# # colors, highlightvalue
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
+#    horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
+#    format = c("pre", " &$pos"), order = order, percentage = TRUE,
+#    marks = c(",", "."), nDigits = 4, sort = "asc",
+#    colors = c("purple", "red"), highlightValue = hg)
+# # colors, highlightvalue, diffcolorsbar
+# f0(data, title = "TITL", subtitle = "Subtitl", caption = "CHIM SJAO",
+#    horLabel = "HORZ", verLabel = "VERZ", horLine = 4, verLine = 2, orientation = "hor",
+#    format = c("pre", " &$pos"), order = order, percentage = TRUE,
+#    marks = c(",", "."), nDigits = 4, sort = "asc",
+#    colors = c("purple", "red", "yellow"), highlightValue = "NA")
 
 
 

@@ -6,9 +6,9 @@
 \usage{
 gg_bar_Cat(data, title = NULL, subtitle = NULL, caption = NULL,
   horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
-  colors = c("#009EE3", "#F9B233"), colorText = "black",
-  diffColorsBar = FALSE, dropNa = FALSE, format = c("", ""),
-  highlightValue = NULL, labelRatio = 0.1, labelWrap = 12,
+  colors = "#009EE3", colorText = "black", diffColorsBar = FALSE,
+  dropNa = FALSE, format = c("", ""), highlightValue = NULL,
+  highlightValueColor = "#F9B233", labelRatio = 0.1, labelWrap = 12,
   marks = c(".", ","), nDigits = 2, order = NULL,
   orientation = "ver", percentage = FALSE, sort = "no",
   sliceN = NULL, showText = TRUE, theme = NULL, ...)

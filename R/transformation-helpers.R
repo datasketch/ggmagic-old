@@ -126,13 +126,13 @@ fillColors <- function(data, col, colors, diffColorsBar, highlightValue, highlig
       wh <- which(cat %in% highlightValue)
       hg <- cat[wh]
       rg <- setdiff(cat, cat[wh])
-      colHg <- rep(colors[length(colors)], length(hg))
+      colHg <- rep(highlightValueColor, length(hg))
       if (is.null(highlightValueColor)) {
         # toca cambiar la opción si colors[2] es null..
         # sumarle al color inicial, no que sea un valor fijo
         colHg <-  rep("#F9B233", length(hg))
       }
-      colRg <- rep(colors[1:length(colors)], length(rg))[1:length(rg)]
+      colRg <- rep(colors, length(rg))[1:length(rg)]
       fillCol <- c(colHg, colRg)
       names(fillCol) <- c(hg, rg)
     }
@@ -143,7 +143,7 @@ fillColors <- function(data, col, colors, diffColorsBar, highlightValue, highlig
       wh <- which(cat %in% highlightValue)
       hg <- cat[wh]
       rg <- setdiff(cat, cat[wh])
-      colHg <- rep(colors[length(colors)], length(hg))
+      colHg <- rep(highlightValueColor, length(hg))
       if (is.null(highlightValueColor)) {
         # toca cambiar la opción si colors[2] es null..
         # sumarle al color inicial, no que sea un valor fijo
