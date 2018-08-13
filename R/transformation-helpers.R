@@ -42,11 +42,10 @@ orderCategory <- function(data, col, order, labelWrap) {
     order <- union(order, unique(data[[col]])[!is.na(unique(data[[col]]))])
     if (all(!is.na(order)) & any(is.na(data[[col]]))) order <- c(union(order, unique(data[[col]][!is.na(data[[col]])])), NA)
     order[is.na(order)] <- "NA"
-    data <- data[order(match(data[[col]], order)), ]
-  }
+    data[[col]] <- factor(data[[col]], levels = unique(data[[col]][order(match(data[[col]], order))]))
+  data}
   data
 }
-
 
 # converts a numeric column into the equivalent percentage column
 #'@export
@@ -93,26 +92,6 @@ labelPosition <- function(data, col, labelRatio) {
 }
 
 
-
-# fill color =------ highlightvalue... cuando es max o min...
-# fillColors <- function(data, col, colors, highlightValue, order) {
-#   f <- unique(data[[col]])
-#   if (length(f) < length(colors)) {
-#
-#   } else if (length(f) == length(colors)) {
-#
-#   } else {
-#     if (length(colors) <= 2) {
-#
-#     } else {
-#       if (!is.null(highlightValue)) {
-#
-#     }
-#
-#     }
-#   }
-#
-# }
 
 # colores
 #' @export

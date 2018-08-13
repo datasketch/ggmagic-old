@@ -6,11 +6,12 @@
 \usage{
 gg_bar_grouped_CatCat(data, title = NULL, subtitle = NULL,
   caption = NULL, horLabel = NULL, verLabel = NULL, horLine = NULL,
-  verLine = NULL, colors = c("#009EE3", "#F9B233"), dropNa = FALSE,
-  format = c("", ""), labelRatio = 0.1, labelWrap = 12,
-  marks = c(".", ","), nDigits = 2, order = NULL,
-  orientation = "ver", percentage = FALSE, sort = "no",
-  sliceN = NULL, showText = TRUE, theme = NULL, ...)
+  verLine = NULL, colors = c("#009EE3", "#F9B233"),
+  colorText = "black", dropNa = c(FALSE, FALSE), format = c("", ""),
+  labelRatio = 0.1, labelWrap = c(12, 12), leyendLayout = "right",
+  marks = c(".", ","), nDigits = 2, order1 = NULL, order2 = NULL,
+  orientation = "ver", percentage = FALSE, sliceN = NULL,
+  showText = TRUE, theme = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}
