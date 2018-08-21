@@ -43,7 +43,8 @@ orderCategory <- function(data, col, order, labelWrap) {
     if (all(!is.na(order)) & any(is.na(data[[col]]))) order <- c(union(order, unique(data[[col]][!is.na(data[[col]])])), NA)
     order[is.na(order)] <- "NA"
     data[[col]] <- factor(data[[col]], levels = unique(data[[col]][order(match(data[[col]], order))]))
-  data}
+  data
+  }
   data
 }
 
@@ -63,19 +64,21 @@ percentColumn <- function(data, col, percentage = TRUE, nDigits = 2) {
 
 # sort and slice
 #'@export
-sortSlice <- function(data, col, sort, sliceN) {
+sortSlice <- function(data, col, colOrden, sort, sliceN) {
   if (sort == "asc") {
     data <- data %>%
       dplyr::arrange_(col)
+    data[[colOrden]] <- factor(data[[colOrden]], levels = unique(data[[colOrden]]))
   }
   if (sort == "desc") {
     col <- paste0('desc(', col, ')')
-  data <- data %>%
-    dplyr::arrange_(.dots = col)
+    data <- data %>%
+      dplyr::arrange_(.dots = col)
+    data[[colOrden]] <- factor(data[[colOrden]], levels = unique(data[[colOrden]]))
   }
   if (!is.null(sliceN)) {
     data <- data %>%
-    dplyr::slice(1:sliceN)
+      dplyr::slice(1:sliceN)
   }
   data
 }

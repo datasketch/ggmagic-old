@@ -66,7 +66,7 @@ gg_bar_Cat <- function(data,
 
   d <- percentColumn(d, "b", percentage, nDigits)
   d <- orderCategory(d, "a", order, labelWrap)
-  d <- sortSlice(d, "b", sort, sliceN)
+  d <- sortSlice(d, "b", "a", sort, sliceN)
   d <- labelPosition(d, "b", labelRatio)
   fillCol <- fillColors(d, "a", colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap)
 
@@ -181,7 +181,7 @@ gg_bar_CatNum <- function(data,
 
   d <- percentColumn(d, "b", percentage, nDigits)
   d <- orderCategory(d, "a", order, labelWrap)
-  d <- sortSlice(d, "b", sort, sliceN)
+  d <- sortSlice(d, "b", "a", sort, sliceN)
   d <- labelPosition(d, "b", labelRatio)
   fillCol <- fillColors(d, "a", colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap)
 
