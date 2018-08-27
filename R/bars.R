@@ -64,8 +64,9 @@ gg_bar_Cat <- function(data,
     dplyr::group_by(a) %>%
     dplyr::summarise(b = n())
 
+
   d <- percentColumn(d, "b", percentage, nDigits)
-  d <- orderCategory(d, "a", order, labelWrap)
+  d <- orderCategory(d, "a", orientation, order, labelWrap)
   d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
   d <- labelPosition(d, "b", labelRatio)
   fillCol <- fillColors(d, "a", colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap)
@@ -95,7 +96,9 @@ gg_bar_Cat <- function(data,
     labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
     scale_fill_manual(values = fillCol) +
     scale_y_continuous(labels = function(x) paste0(format[1],
-                                                   format(x, big.mark = marks[1], decimal.mark = marks[2]),
+                                                   format(x,
+                                                          big.mark = marks[1],
+                                                          decimal.mark = marks[2]),
                                                    format[2])) +
     theme_ds() +
     theme(legend.position = "none")
@@ -172,15 +175,16 @@ gg_bar_CatNum <- function(data,
     d <- d %>%
     tidyr::drop_na()
 
-  d <- d  %>%
+    d <- d  %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = NA)) %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(b = agg(agg, b))
+
   ### ARREGLAR LO DE PROCENTAJE
 
   d <- percentColumn(d, "b", percentage, nDigits)
-  d <- orderCategory(d, "a", order, labelWrap)
+  d <- orderCategory(d, "a", orientation, order, labelWrap)
   d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
   d <- labelPosition(d, "b", labelRatio)
   fillCol <- fillColors(d, "a", colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap)
@@ -290,7 +294,7 @@ gg_bar_grouped_CatCat <- function(data,
                                   order2 = NULL,
                                   orientation = "ver",
                                   percentage = FALSE,
-                                  sliceN = NULL,
+                                  # sliceN = NULL,
                                   showText = TRUE,
                                   theme = NULL, ...) {
   f <- fringe(data)
@@ -322,8 +326,8 @@ gg_bar_grouped_CatCat <- function(data,
     dplyr::summarise(c = n())
 
   d <- percentColumn(d, "c", percentage, nDigits)
-  d <- orderCategory(d, "a", order1, labelWrap[1])
-  d <- orderCategory(d, "b", order2, labelWrap[2])
+  d <- orderCategory(d, "a", orientation, order1, labelWrap[1])
+  d <- orderCategory(d, "b", orientation, order2, labelWrap[2])
   # d <- sortSlice(d, "c", sort, sliceN)
   d <- labelPosition(d, "c", labelRatio)
 
@@ -334,7 +338,7 @@ gg_bar_grouped_CatCat <- function(data,
   # geom_col(aes(fill = grp), position = "dodge") +
   gg <- ggplot(d, aes(x = a, y = c, fill = b)) +
     # geom_col(aes(fill = b), position = "dodge") +
-    geom_bar(stat = "identity", position = "dodge") +
+    geom_bar(stat = "identity", position = position_dodge(preserve = "single", width = 1)) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "black",
@@ -356,13 +360,15 @@ gg_bar_grouped_CatCat <- function(data,
     scale_fill_manual(values = getPalette()) +
     # scale_x_discrete(limits = d$a) +
     scale_y_continuous(labels = function(x) paste0(format[1],
-                                                   format(x, big.mark = marks[1], decimal.mark = marks[2]),
+                                                   format(x,
+                                                          big.mark = marks[1],
+                                                          decimal.mark = marks[2]),
                                                    format[2])) +
     theme_ds() +
     theme(legend.position = leyendLayout)
-  if (f$getCtypes()[1] == "Dat")
-    gg <- gg +
-    scale_x_date(labels = date_format("%Y-%m-%d"))
+  # if (f$getCtypes()[1] == "Dat")
+  #   gg <- gg +
+  #   scale_x_date(labels = date_format("%Y-%m-%d"))
   if (orientation == "hor")
     gg <- gg +
     coord_flip()
@@ -370,8 +376,237 @@ gg_bar_grouped_CatCat <- function(data,
 }
 
 
+#' Stacked bar (categories, ordered categories)
+#'
+#' Compare quantities among two categories
+#'
+#' @param data A data.frame
+#' @return Ggplot2 visualization
+#' @section ctypes:
+#' Cat-Cat, Cat-Dat, Cat-Yea, Yea-Cat, Yea-Dat, Yea-Yea, Dat-Cat, Dat-Yea, Dat-Dat
+#' @examples
+#' gg_bar_stacked_CatCat(sampleData("Cat-Cat", nrow = 10))
+#' @export gg_bar_stacked_CatCat
+gg_bar_stacked_CatCat <- function(data,
+                                  title = NULL,
+                                  subtitle = NULL,
+                                  caption = NULL,
+                                  horLabel = NULL,
+                                  verLabel = NULL,
+                                  horLine = NULL,
+                                  #horLineLabel = NULL,
+                                  verLine = NULL,
+                                  #verLineLabel = NULL,
+                                  colors = c("#009EE3", "#F9B233"),
+                                  colorText = "black",
+                                  dropNa = c(FALSE, FALSE),
+                                  format = c("", ""),
+                                  # highlightValue = NULL,
+                                  labelRatio = 0.1,
+                                  labelWrap = c(12, 12),
+                                  leyendLayout = "right",
+                                  marks = c(".", ","),
+                                  nDigits = 2,
+                                  order1 = NULL,
+                                  order2 = NULL,
+                                  orientation = "ver",
+                                  percentage = FALSE,
+                                  # sliceN = NULL,
+                                  showText = TRUE,
+                                  theme = NULL, ...) {
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
+
+  title <-  title %||% ""
+  subtitle <- subtitle %||% ""
+  caption <- caption %||% ""
+  labelsXY <- orientationXY(orientation,
+                            x = nms[1],
+                            y = paste("count", nms[1], nms[2]),
+                            hor = horLabel,
+                            ver = verLabel)
+  lineXY <- orientationXY(orientation,
+                          0,
+                          0,
+                          hor = horLine,
+                          ver = verLine)
+
+  if (any(dropNa))
+    d <- d %>%
+    tidyr::drop_na(which(dropNa))
+
+  d <- d  %>%
+    tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
+                           b = ifelse(is.character(d$b), "NA", NA))) %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = n())
+
+  d <- percentColumn(d, "c", percentage, nDigits)
+  d <- orderCategory(d, "a", orientation, order1, labelWrap[1])
+  d <- orderCategory(d, "b", orientation, order2, labelWrap[2])
+  # d <- sortSlice(d, "c", sort, sliceN)
+  d <- labelPosition(d, "c", labelRatio)
+
+  if (percentage & nchar(format[2]) == 0) {
+    format[2] <- "%"
+  }
+
+  # geom_col(aes(fill = grp), position = "dodge") +
+  gg <- ggplot(d, aes(x = a, y = c, fill = b)) +
+    # geom_col(aes(fill = b), position = "dodge") +
+    geom_bar(stat = "identity") +
+    geom_vline(xintercept = lineXY[2],
+               color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
+                              "black",
+                              "transparent"),
+               linetype = "dashed") +
+    geom_hline(yintercept = lineXY[1],
+               color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
+                              "black",
+                              "transparent"),
+               linetype = "dashed") +
+    geom_text(aes(y = labPos,
+                  label = paste0(format[1],
+                                 format(c, big.mark = marks[1], decimal.mark = marks[2]),
+                                 format[2])),
+              check_overlap = TRUE,
+              color = ifelse(showText, colorText, "transparent"),
+              position = position_dodge(width = 1)) +
+    labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
+    scale_fill_manual(values = getPalette()) +
+    # scale_x_discrete(limits = d$a) +
+    scale_y_continuous(labels = function(x) paste0(format[1],
+                                                   format(x,
+                                                          big.mark = marks[1],
+                                                          decimal.mark = marks[2]),
+                                                   format[2])) +
+    theme_ds() +
+    theme(legend.position = leyendLayout)
+  # if (f$getCtypes()[1] == "Dat")
+  #   gg <- gg +
+  #   scale_x_date(labels = date_format("%Y-%m-%d"))
+  if (orientation == "hor")
+    gg <- gg +
+    coord_flip()
+  gg
+}
 
 
+#' 100% Stacked bar (categories, ordered categories)
+#'
+#' Compare quantities among two categories
+#'
+#' @param data A data.frame
+#' @return Ggplot2 visualization
+#' @section ctypes:
+#' Cat-Cat, Cat-Dat, Cat-Yea, Yea-Cat, Yea-Dat, Yea-Yea, Dat-Cat, Dat-Yea, Dat-Dat
+#' @examples
+#' gg_bar_stacked_100_CatCat(sampleData("Cat-Cat", nrow = 10))
+#' @export gg_bar_stacked_100_CatCat
+gg_bar_stacked_100_CatCat <- function(data,
+                                      title = NULL,
+                                      subtitle = NULL,
+                                      caption = NULL,
+                                      horLabel = NULL,
+                                      verLabel = NULL,
+                                      horLine = NULL,
+                                      #horLineLabel = NULL,
+                                      verLine = NULL,
+                                      #verLineLabel = NULL,
+                                      colors = c("#009EE3", "#F9B233"),
+                                      colorText = "black",
+                                      dropNa = c(FALSE, FALSE),
+                                      format = c("", ""),
+                                      # highlightValue = NULL,
+                                      labelRatio = 0.1,
+                                      labelWrap = c(12, 12),
+                                      leyendLayout = "right",
+                                      marks = c(".", ","),
+                                      nDigits = 2,
+                                      order1 = NULL,
+                                      order2 = NULL,
+                                      orientation = "ver",
+                                      percentage = FALSE,
+                                      # sliceN = NULL,
+                                      showText = TRUE,
+                                      theme = NULL, ...) {
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
 
+  title <-  title %||% ""
+  subtitle <- subtitle %||% ""
+  caption <- caption %||% ""
+  labelsXY <- orientationXY(orientation,
+                            x = nms[1],
+                            y = paste("count", nms[1], nms[2]),
+                            hor = horLabel,
+                            ver = verLabel)
+  lineXY <- orientationXY(orientation,
+                          0,
+                          0,
+                          hor = horLine,
+                          ver = verLine)
+
+  if (any(dropNa))
+    d <- d %>%
+    tidyr::drop_na(which(dropNa))
+
+  d <- d  %>%
+    tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
+                           b = ifelse(is.character(d$b), "NA", NA))) %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = n())
+
+  d <- percentColumn(d, "c", percentage, nDigits)
+  d <- orderCategory(d, "a", orientation, order1, labelWrap[1])
+  d <- orderCategory(d, "b", orientation, order2, labelWrap[2])
+  # d <- sortSlice(d, "c", sort, sliceN)
+  d <- labelPosition(d, "c", labelRatio)
+
+  if (percentage & nchar(format[2]) == 0) {
+    format[2] <- "%"
+  }
+
+  # geom_col(aes(fill = grp), position = "dodge") +
+  gg <- ggplot(d, aes(x = a, y = c, fill = b)) +
+    # geom_col(aes(fill = b), position = "dodge") +
+    geom_bar(stat = "identity", position = "fill") +
+    geom_vline(xintercept = lineXY[2],
+               color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
+                              "black",
+                              "transparent"),
+               linetype = "dashed") +
+    geom_hline(yintercept = lineXY[1],
+               color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
+                              "black",
+                              "transparent"),
+               linetype = "dashed") +
+    geom_text(aes(y = labPos,
+                  label = paste0(format[1],
+                                 format(c, big.mark = marks[1], decimal.mark = marks[2]),
+                                 format[2])),
+              check_overlap = TRUE,
+              color = ifelse(showText, colorText, "transparent"),
+              position = position_dodge(width = 1)) +
+    labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
+    scale_fill_manual(values = getPalette()) +
+    # scale_x_discrete(limits = d$a) +
+    scale_y_continuous(labels = function(x) paste0(format[1],
+                                                   format(x,
+                                                          big.mark = marks[1],
+                                                          decimal.mark = marks[2]),
+                                                   format[2])) +
+    theme_ds() +
+    theme(legend.position = leyendLayout)
+  # if (f$getCtypes()[1] == "Dat")
+  #   gg <- gg +
+  #   scale_x_date(labels = date_format("%Y-%m-%d"))
+  if (orientation == "hor")
+    gg <- gg +
+    coord_flip()
+  gg
+}
 
 

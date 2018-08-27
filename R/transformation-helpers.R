@@ -35,7 +35,7 @@ orientationXY <- function(orientation, x, y, hor, ver, line = FALSE) {
 
 # order category column
 #'@export
-orderCategory <- function(data, col, order, labelWrap) {
+orderCategory <- function(data, col, orientation, order, labelWrap) {
   data[[col]] <- stringr::str_wrap(data[[col]], labelWrap)
   if (!is.null(order)) {
     order <- stringr::str_wrap(order, labelWrap)
@@ -43,7 +43,9 @@ orderCategory <- function(data, col, order, labelWrap) {
     if (all(!is.na(order)) & any(is.na(data[[col]]))) order <- c(union(order, unique(data[[col]][!is.na(data[[col]])])), NA)
     order[is.na(order)] <- "NA"
     data[[col]] <- factor(data[[col]], levels = unique(data[[col]][order(match(data[[col]], order))]))
-  data
+    if (orientation == "hor") {
+      data[[col]] <- factor(data[[col]], levels = rev(attr(data[[col]], "levels")))
+    }
   }
   data
 }
