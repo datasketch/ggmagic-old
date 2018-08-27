@@ -64,17 +64,20 @@ percentColumn <- function(data, col, percentage = TRUE, nDigits = 2) {
 
 # sort and slice
 #'@export
-sortSlice <- function(data, col, colOrden, sort, sliceN) {
+sortSlice <- function(data, col, colOrder, orientation, sort, sliceN) {
   if (sort == "asc") {
     data <- data %>%
       dplyr::arrange_(col)
-    data[[colOrden]] <- factor(data[[colOrden]], levels = unique(data[[colOrden]]))
+    data[[colOrder]] <- factor(data[[colOrder]], levels = unique(data[[colOrder]]))
   }
   if (sort == "desc") {
     col <- paste0('desc(', col, ')')
     data <- data %>%
       dplyr::arrange_(.dots = col)
-    data[[colOrden]] <- factor(data[[colOrden]], levels = unique(data[[colOrden]]))
+     data[[colOrder]] <- factor(data[[colOrder]], levels = unique(data[[colOrder]]))
+  }
+  if (orientation == "hor") {
+    data[[colOrder]] <- factor(data[[colOrder]], levels = rev(unique(data[[colOrder]])))
   }
   if (!is.null(sliceN)) {
     data <- data %>%
