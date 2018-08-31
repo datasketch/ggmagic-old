@@ -1754,7 +1754,7 @@ gg_bar_grouped_coloured_ver_CatCat <- function(data, titleLabel = "", subtitle =
 
   if(text == TRUE & type == 'count'){
     return(graph + geom_text(data = data, aes(y = pos, label = round(count,2)),
-                             check_overlap = TRUE, color = color_text, position = position_dodge(width=1)))
+                             check_overlap = TRUE, color = color_text, position = position_dodge(width=0.9)))
   }else{
     if(text == TRUE & type == 'percent'){
       return(graph + geom_text(data = data_graph, aes(y = pos, label = paste(percent, "%", sep = "")),

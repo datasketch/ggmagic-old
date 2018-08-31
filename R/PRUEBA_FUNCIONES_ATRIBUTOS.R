@@ -2,6 +2,11 @@
 # QUE TENGA PRIORIDAD EL SORT
 # FALTA HACER EL TEMA, también tiene que admitir temas viejos o ¿¿qué??...
 
+### arreglado el sort de horizontal... colores ejemplo...
+
+# gg_bar_Cat(data.frame(a = letters[1:8]), colors = colorNumeric(c("#009EE3",
+# "#E5007D", "#95C11E"), 1:8)(1:8)[sample(8)], diffColorsBar = TRUE)
+
 ### script para probar los argumentos de las funciones
 # función
 # f0 <- gg_bar_Cat
