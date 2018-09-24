@@ -612,7 +612,7 @@ gg_line_Cat <- function(data, titleLabel = '', xLabel = NULL, subtitle = "",
 
   graph <- graph + theme_minimal() + theme_ds() + theme(legend.position=leg_pos) +
     scale_color_manual(values = getPalette()) + guides(colour = FALSE) +
-    theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+    theme(axis.text.x = element_text(angle = angle_x, hjust = 0.5))
 
   graph
 }

@@ -91,11 +91,15 @@ sortSlice <- function(data, col, colOrder, orientation, sort, sliceN) {
 
 # labels position
 #'@export
-labelPosition <- function(data, col, labelRatio) {
+labelPosition <- function(data, col, labelRatio, zeroToNa = FALSE) {
   half <- data[[col]] - data[[col]] / 2
   small <- half < max(data[[col]] * labelRatio)
   half[small] <- data[[col]][small] + max(data[[col]]) / 50
   data$labPos <- half
+  # do I want zero labels to be shown?
+  if (zeroToNa) {
+    data$labPos[data[[col]] == 0] <- NA
+  }
   data
 }
 

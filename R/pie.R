@@ -1,3 +1,84 @@
+
+#' Pie
+#' @name gg_pie_Cat
+#' @export
+gg_pie_Cat <- function(data,
+                       title = NULL,
+                       subtitle = NULL,
+                       caption = NULL,
+                       colors = "#009EE3",
+                       colorText = "black",
+                       dropNa = FALSE,
+                       format = c("", ""),
+                       labelRatio = 0.1,
+                       labelWrap = 12,
+                       legPos = "right",
+                       legTitle = "",
+                       marks = c(".", ","),
+                       nDigits = 2,
+                       order = NULL,
+                       percentage = FALSE,
+                       sort = "no",
+                       sliceN = NULL,
+                       showText = TRUE,
+                       theme = NULL, ...) {
+
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
+
+  title <-  title %||% ""
+  subtitle <- subtitle %||% ""
+  caption <- caption %||% ""
+  legTitle <- legTitle %||% nms[1]
+
+  if (dropNa)
+    d <- d %>%
+    tidyr::drop_na()
+
+  d <- d  %>%
+    tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA))) %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(b = n()) %>%
+    dplyr::arrange(desc(a)) %>%
+    dplyr::mutate(yPos = cumsum(b) - b / 2,
+                  percent = round(b * 100/ sum(b, na.rm = TRUE), nDigits)) %>%
+    dplyr::mutate(b = ifelse(b == 0, NA, b),
+                  yPos = ifelse(yPos == 0, NA, yPos),
+                  percent = ifelse(percent == 0, NA, percent))
+
+  d <- orderCategory(d, "a", "ver", order, labelWrap)
+  d <- sortSlice(d, "b", "a", "ver", sort, sliceN)
+  d <- labelPosition(d, "yPos", labelRatio)
+  fillCol <- fillColors(d, "a", colors, TRUE, NULL, NULL, labelWrap)
+
+
+
+  gg <- ggplot(d, aes(x = factor(1), y = b, fill = a)) +
+    geom_bar(stat = "identity", width = 1) +
+    coord_polar(theta = "y") +
+    geom_text(aes(y = yPos,
+                  label = paste0(format[1],
+                                 format(b, big.mark = marks[1], decimal.mark = marks[2], digits = nDigits),
+                                 format[2])),
+              check_overlap = TRUE,
+              color = ifelse(showText, colorText, "transparent")) +
+    labs(title = title, subtitle = subtitle, caption = caption, x = "", y = "", fill = legTitle) +
+    scale_fill_manual(values = fillCol) +
+    theme_ds_clean() +
+    theme(legend.position = legPos)
+  gg
+}
+
+
+
+
+
+
+
+
+
+
 #' Pie
 #' Pie
 #' @name gg_pie_CatNum.

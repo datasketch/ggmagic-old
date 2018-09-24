@@ -66,8 +66,8 @@ gg_bar_Cat <- function(data,
 
 
   d <- percentColumn(d, "b", percentage, nDigits)
-  d <- orderCategory(d, "a", orientation, order, labelWrap)
   d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
+  d <- orderCategory(d, "a", orientation, order, labelWrap)
   d <- labelPosition(d, "b", labelRatio)
   fillCol <- fillColors(d, "a", colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap)
 
@@ -101,7 +101,8 @@ gg_bar_Cat <- function(data,
                                                           decimal.mark = marks[2]),
                                                    format[2])) +
     theme_ds() +
-    theme(legend.position = "none")
+    theme(legend.position = "none",
+          plot.caption = element_text(hjust = 1))
   # DESPUÉS PARA FECHAS
   # if (f$getCtypes()[1] == "Dat")
   #   gg <- gg +
@@ -184,8 +185,8 @@ gg_bar_CatNum <- function(data,
   ### ARREGLAR LO DE PROCENTAJE
 
   d <- percentColumn(d, "b", percentage, nDigits)
-  d <- orderCategory(d, "a", orientation, order, labelWrap)
   d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
+  d <- orderCategory(d, "a", orientation, order, labelWrap)
   d <- labelPosition(d, "b", labelRatio)
   fillCol <- fillColors(d, "a", colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap)
 
@@ -219,7 +220,8 @@ gg_bar_CatNum <- function(data,
                                                            decimal.mark = marks[2]),
                                                     format[2])) +
     theme_ds() +
-    theme(legend.position = "none")
+    theme(legend.position = "none",
+          plot.caption = element_text(hjust = 1))
   ### FECHAAA
   # if (f$getCtypes()[1] == "Dat")
   #   gg <- gg +
@@ -323,14 +325,18 @@ gg_bar_grouped_CatCat <- function(data,
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = ifelse(is.character(d$b), "NA", NA))) %>%
     dplyr::group_by(a, b) %>%
-    dplyr::summarise(c = n())
+    dplyr::summarise(c = n()) %>%
+    tidyr::spread(b, c, fill = 0) %>%
+    tidyr::gather(b, c, -a)
+
+
 
   d <- percentColumn(d, "c", percentage, nDigits)
   d <- orderCategory(d, "a", orientation, order1, labelWrap[1])
   d <- orderCategory(d, "b", orientation, order2, labelWrap[2])
   # d <- sortSlice(d, "c", sort, sliceN)
-  d <- labelPosition(d, "c", labelRatio)
-
+  d <- labelPosition(d, "c", labelRatio, zeroToNa = TRUE)
+View(d)
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"
   }
@@ -338,7 +344,8 @@ gg_bar_grouped_CatCat <- function(data,
   # geom_col(aes(fill = grp), position = "dodge") +
   gg <- ggplot(d, aes(x = a, y = c, fill = b)) +
     # geom_col(aes(fill = b), position = "dodge") +
-    geom_bar(stat = "identity", position = position_dodge(preserve = "single", width = 1)) +
+    # geom_bar(stat = "identity", position = position_dodge(preserve = "single", width = 1)) +
+    geom_bar(stat = "identity", position = "dodge") +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "black",
