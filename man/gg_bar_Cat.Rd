@@ -6,7 +6,7 @@
 \usage{
 gg_bar_Cat(data, title = NULL, subtitle = NULL, caption = NULL,
   horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
-  colors = "#009EE3", colorText = "black", diffColorsBar = FALSE,
+  colors = "#009EE3", colorText = "black", colorScale = "no",
   dropNa = FALSE, format = c("", ""), highlightValue = NULL,
   highlightValueColor = "#F9B233", labelRatio = 0.1, labelWrap = 12,
   marks = c(".", ","), nDigits = 2, order = NULL,

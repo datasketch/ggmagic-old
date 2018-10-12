@@ -21,7 +21,7 @@ gg_bar_Cat <- function(data,
                        #verLineLabel = NULL,
                        colors = "#009EE3",
                        colorText = "black",
-                       diffColorsBar = FALSE,
+                       colorScale = "no",
                        dropNa = FALSE,
                        format = c("", ""),
                        highlightValue = NULL,
@@ -62,20 +62,21 @@ gg_bar_Cat <- function(data,
   d <- d  %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA))) %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(b = n())
+    dplyr::summarise(b = n()) %>%
+    dplyr::mutate(percent = b * 100 / sum(b, na.rm = TRUE))
 
 
-  d <- percentColumn(d, "b", percentage, nDigits)
+  # d <- percentColumn(d, "b", percentage, nDigits)
   d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
   d <- orderCategory(d, "a", orientation, order, labelWrap)
-  d <- labelPosition(d, "b", labelRatio)
-  fillCol <- fillColors(d, "a", colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap)
+  d <- labelPosition(d, "b", labelRatio, percentage)
+  fillCol <- fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
 
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"
   }
 
-  gg <- ggplot(d, aes(x = a, y = b, fill = a)) +
+  gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], fill = a)) +
     geom_bar(stat = "identity") +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
@@ -89,7 +90,10 @@ gg_bar_Cat <- function(data,
                linetype = "dashed") +
     geom_text(aes(y = labPos,
                   label = paste0(format[1],
-                                 format(b, big.mark = marks[1], decimal.mark = marks[2]),
+                                 format(d[[ifelse(percentage, "percent", "b")]],
+                                        big.mark = marks[1],
+                                        decimal.mark = marks[2],
+                                        digits = nDigits),
                                  format[2])),
               check_overlap = TRUE,
               color = ifelse(showText, colorText, "transparent")) +
@@ -98,7 +102,8 @@ gg_bar_Cat <- function(data,
     scale_y_continuous(labels = function(x) paste0(format[1],
                                                    format(x,
                                                           big.mark = marks[1],
-                                                          decimal.mark = marks[2]),
+                                                          decimal.mark = marks[2],
+                                                          digits = nDigits),
                                                    format[2])) +
     theme_ds() +
     theme(legend.position = "none",
@@ -289,7 +294,7 @@ gg_bar_grouped_CatCat <- function(data,
                                   # highlightValue = NULL,
                                   labelRatio = 0.1,
                                   labelWrap = c(12, 12),
-                                  leyendPosition = "right",
+                                  legendPosition = "right",
                                   marks = c(".", ","),
                                   nDigits = 2,
                                   order1 = NULL,
@@ -370,7 +375,7 @@ gg_bar_grouped_CatCat <- function(data,
                                                           decimal.mark = marks[2]),
                                                    format[2])) +
     theme_ds() +
-    theme(legend.position = leyendPosition,
+    theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
   # if (f$getCtypes()[1] == "Dat")
   #   gg <- gg +
