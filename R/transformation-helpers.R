@@ -72,7 +72,8 @@ sortSlice <- function(data, col, colOrder, orientation, sort, sliceN) {
 
 # labels position
 #'@export
-labelPosition <- function(data, col, labelRatio, zeroToNa = FALSE) {
+labelPosition <- function(data, col, labelRatio, percentage = FALSE, zeroToNa = FALSE) {
+  col <- ifelse(percentage, "percent", col)
   half <- data[[col]] - data[[col]] / 2
   small <- half < max(data[[col]] * labelRatio)
   half[small] <- data[[col]][small] + max(data[[col]]) / 50
