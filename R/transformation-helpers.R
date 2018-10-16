@@ -134,10 +134,20 @@ labelPosition <- function(data, col, labelRatio, percentage = FALSE, zeroToNa = 
 # colores
 #' @export
 fillColors <- function(data, col, colors, colorScale, highlightValue, highlightValueColor, labelWrap) {
-  cat <- stringr::str_wrap(unique(data[[col]]), labelWrap)
+  # cat <- stringr::str_wrap(unique(data[[col]]), labelWrap)
+  cat <- unique(data[[col]])
   highlightValue <- stringr::str_wrap(highlightValue, labelWrap)
   ds <- dsColorsHex(TRUE)
-
+  if (!is.null(colors)) {
+    cl <- col2rgb(colors)
+    colors <- map_chr(1:ncol(cl), function(s) {
+      rgb(cl[1, s],
+          cl[2, s],
+          cl[3, s],
+          maxColorValue = 255)
+    })
+  }
+print(colors)
   if (colorScale == "no") {
     if (is.null(colors)) {
       colors <- dsColorsHex()[2]
@@ -151,10 +161,13 @@ fillColors <- function(data, col, colors, colorScale, highlightValue, highlightV
       colors <- dsColorsHex()
     }
     map(colors, function(y) {
-      l0 <- ds[(grep(substr(y, 4, 4), ignore.case = TRUE, ds) + 7) %% 16]
-      colors <<- c(colors, paste0(substr(y, 1, 3), l0, substr(y, 5, 7)))
+      l0 <- ds[(grep(substr(y, 2, 2), ignore.case = TRUE, ds) + 7) %% 16]
+      l1 <- paste0(substr(y, 1, 1), l0, substr(y, 3, 7))
+      p0 <- ds[(grep(substr(l1, 4, 4), ignore.case = TRUE, ds) + 7) %% 16]
+      p1 <- paste0(substr(l1, 1, 3), p0, substr(l1, 5, 7))
+      colors <<- c(colors, l1, p1)
     })
-    fillCol <- leaflet::colorNumeric(colors, 1:length(cat))(1:length(cat))
+    fillCol <- leaflet::colorNumeric(colors, 1:length(cat))(1:length(cat))[sample(1:length(cat))]
     names(fillCol) <- cat
   }
 
@@ -230,7 +243,7 @@ fillColors <- function(data, col, colors, colorScale, highlightValue, highlightV
 #' @export
 dsColorsHex <- function(hex = FALSE) {
   if (hex) {
-    c <- c(0:9, "A", "B", "C", "D", "E")
+    c <- c(0:9, "A", "B", "C", "D", "E", "F")
 
   } else {
     c <- c("#2E0F35", "#74D1F7", "#B70F7F", "#C2C4C4", "#8097A4",  "#A6CEDE", "#801549",
