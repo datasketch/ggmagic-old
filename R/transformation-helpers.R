@@ -147,7 +147,6 @@ fillColors <- function(data, col, colors, colorScale, highlightValue, highlightV
           maxColorValue = 255)
     })
   }
-print(colors)
   if (colorScale == "no") {
     if (is.null(colors)) {
       colors <- dsColorsHex()[2]
@@ -160,14 +159,18 @@ print(colors)
     if (is.null(colors)) {
       colors <- dsColorsHex()
     }
-    map(colors, function(y) {
-      l0 <- ds[(grep(substr(y, 2, 2), ignore.case = TRUE, ds) + 7) %% 16]
+    ad <- unlist(map(colors, function(y) {
+      l0 <- ds[((grep(substr(y, 2, 2), ignore.case = TRUE, ds) + 6) %% 16) + 1]
       l1 <- paste0(substr(y, 1, 1), l0, substr(y, 3, 7))
-      p0 <- ds[(grep(substr(l1, 4, 4), ignore.case = TRUE, ds) + 7) %% 16]
-      p1 <- paste0(substr(l1, 1, 3), p0, substr(l1, 5, 7))
-      colors <<- c(colors, l1, p1)
-    })
-    fillCol <- leaflet::colorNumeric(colors, 1:length(cat))(1:length(cat))[sample(1:length(cat))]
+      # p0 <- ds[((grep(substr(l1, 4, 4), ignore.case = TRUE, ds) + 7) %% 16) + 1]
+      p0 <- ds[((grep(substr(ifelse(length(colors) > 1, y, l1), 4, 4), ignore.case = TRUE, ds) + 6) %% 16) + 1]
+      p1 <- paste0(substr(ifelse(length(colors) > 1, y, l1), 1, 3), p0, substr(ifelse(length(colors) > 1, y, l1), 5, 7))
+      # colors <<- c(colors, l1, p1)
+      c(l1, p1)
+    }))
+    # [sample(1:length(cat))]
+    print(c(colors, ad))
+    fillCol <- c(colors, leaflet::colorFactor(c(colors, ad), cat)(cat)[sample(1:length(cat))])
     names(fillCol) <- cat
   }
 
@@ -176,7 +179,7 @@ print(colors)
       colors <- dsColorsHex()[c(1, 7, 3, 4)]
     }
     if (length(colors) == 1) {
-      l0 <- ds[(grep(substr(colors, 2, 2), ignore.case = TRUE, ds) + 7) %% 16]
+      l0 <- ds[((grep(substr(colors, 2, 2), ignore.case = TRUE, ds) + 7) %% 16) + 1]
       colors <- c(colors, paste0(substr(colors, 1, 1), l0, substr(colors, 3, 7)))
     }
     fillCol <- leaflet::colorNumeric(colors, 1:length(cat))(1:length(cat))
@@ -186,12 +189,13 @@ print(colors)
   if (!is.null(highlightValue) & sum(highlightValue %in% names(fillCol)) > 0) {
     wh <- which(names(fillCol) %in% highlightValue)
     if (is.null(highlightValueColor)) {
-      l0 <- ds[(grep(substr(colors[1], 2, 2), ignore.case = TRUE, ds) + 13) %% 16]
+      l0 <- ds[((grep(substr(colors[1], 2, 2), ignore.case = TRUE, ds) + 13) %% 16) + 1]
       highlightValueColor <- paste0(substr(colors[1], 1, 1), l0, substr(colors[1], 3, 7))
     }
     fillCol[wh] <- highlightValueColor
   }
   fillCol
+  print(fillCol)
 }
 # fillColors <- function(data, col, colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap) {
 #   cat <- stringr::str_wrap(unique(data[[col]]), labelWrap)
@@ -249,5 +253,6 @@ dsColorsHex <- function(hex = FALSE) {
     c <- c("#2E0F35", "#74D1F7", "#B70F7F", "#C2C4C4", "#8097A4",  "#A6CEDE", "#801549",
            "#FECA84", "#ACD9C2", "#EEF1F2")
   }
+  c
 }
 
