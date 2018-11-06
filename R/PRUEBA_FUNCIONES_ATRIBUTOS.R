@@ -75,147 +75,58 @@
 #    marks = c(",", "."), nDigits = 4, sort = "asc",
 #    colors = c("purple", "red", "yellow"), highlightValue = "NA")
 
-## CAT CAT
-# gg_bar_grouped_CatCat(s1, title = "title", subtitle = "subtitle",
-#                       caption = "JSHAOFJ JDJ", horLabel = "HORZ",
-#                       verLabel = "VERZZZ", orientation = "hor",
-#                       colorText = "blue", dropNa = c(FALSE, TRUE),
-#                       format = c("sjo ", " ksh&"))
 
-# gg_bar_CatNum <- function(data,
-#                           title = NULL,
-#                           subtitle = NULL,
-#                           caption = NULL,
-#                           horLabel = NULL,
-#                           verLabel = NULL,
-#                           horLine = NULL,
-#                           #horLineLabel = NULL,
-#                           verLine = NULL,
-#                           #verLineLabel = NULL,
-#                           agg = "sum",
-#                           colors = c("#009EE3", "#F9B233"),
-#                           colorText = "black",
-#                           diffColorsBar = FALSE,
-#                           dropNa = FALSE,
-#                           format = c("", ""),
-#                           highlightValue = NULL,
-#                           highlightValueColor = "#F9B233",
-#                           labelRatio = 0.1,
-#                           labelWrap = 12,
-#                           marks = c(".", ","),
-#                           nDigits = 2,
-#                           order = NULL,
-#                           orientation = "ver",
-#                           percentage = FALSE,
-#                           sort = "no",
-#                           sliceN = NULL,
-#                           showText = TRUE,
-#                           theme = NULL, ...) {
-#   f <- fringe(data)
-#   nms <- getClabels(f)
-#   d <- f$d
-#
-#   title <-  title %||% ""
-#   subtitle <- subtitle %||% ""
-#   caption <- caption %||% ""
-#   labelsXY <- orientationXY(orientation,
-#                             x = nms[1],
-#                             y = ifelse(nrow(d) == dplyr::n_distinct(d$a), nms[2], paste(agg, nms[2])),
-#                             hor = horLabel,
-#                             ver = verLabel)
-#   lineXY <- orientationXY(orientation,
-#                           0,
-#                           0,
-#                           hor = horLine,
-#                           ver = verLine)
-#
-#   d <- d  %>%
-#     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
-#                            b = NA)) %>%
-#     dplyr::group_by(a) %>%
-#     dplyr::summarise(b = agg(agg, b))
-#
-#   if (dropNa)
-#     d <- d %>%
-#     tidyr::drop_na()
-#   ### ARREGLAR LO DE PROCENTAJE
-#
-#   d <- percentColumn(d, "b", percentage, nDigits)
-#   d <- orderCategory(d, "a", order, labelWrap)
-#   d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
-#   d <- labelPosition(d, "b", labelRatio)
-#   fillCol <- fillColors(d, "a", colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap)
-#
-#   if (percentage & nchar(format[2]) == 0) {
-#     format[2] <- "%"
-#   }
-#
-#   gg <- ggplot(d, aes(x = a, y = b, fill = a)) +
-#     geom_bar(stat = "identity") +
-#     geom_vline(xintercept = lineXY[1],#ifelse(orientation == "hor", horLine %||% 0, verLine %||% 0),
-#                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
-#                               "black",
-#                               "transparent"),
-#                linetype = "dashed") +
-#     geom_hline(yintercept = lineXY[2],#ifelse(orientation == "hor", verLine %||% 0, horLine %||% 0),
-#                color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
-#                               "black",
-#                               "transparent"),
-#                linetype = "dashed") +
-#     geom_text(aes(y = labPos,
-#                   label = paste0(format[1],
-#                                  format(b, big.mark = marks[1], decimal.mark = marks[2]),
-#                                  format[2])),
-#               check_overlap = TRUE,
-#               color = ifelse(showText, colorText, "transparent")) +
-#     labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
-#     scale_fill_manual(values = fillCol) +
-#     scale_y_continuous(labels =  function(x) paste0(format[1],
-#                                                     format(x,
-#                                                            big.mark = marks[1],
-#                                                            decimal.mark = marks[2]),
-#                                                     format[2])) +
-#     theme_ds() +
-#     theme(legend.position = "none")
-#   ### FECHAAA
-#   # if (f$getCtypes()[1] == "Dat")
-#   #   gg <- gg +
-#   #   scale_x_date(labels = date_format("%Y-%m-%d"))
-#   if (orientation == "hor")
-#     gg <- gg +
-#     coord_flip()
-#   gg
-# }
+# gg_bar_Cat(s0, title = "title", subtitle = "skrkrj",
+#            caption = "sjjsfasdf ", colorScale = "no",
+#            highlightValueColor = "blue", dropNa = TRUE, sort = "aasc",
+#            order = "X_C", orientation = "ver", percentage = TRUE, nDigits = 5,
+#            colors = c("yellow", "orange"))
+
+## PRUEBA CAT CAT NUM
+# FALTA LEGEND TITLE
+
+### PREGUNTAS ----- stacked con percentage TRUE no es stacked 100?¿?¿?¿
+# poner sólo bar CATCATNUM y como parámetro stacked, grouped, 100
+
+# s0 <- rbind(sampleData("Cat-Cat-Num"),
+#             c("ajs sjjsj sjjsjsj sj", "sjaja ja ajds j sjs", 1432))
+# gg_bar_grouped_CatCatNum(s0, title = "title", subtitle = "skrkrj",
+#                          caption = "sjjsfasdf", horLabel = " HOR",
+#                          verLabel = " VER", agg = "sum", dropNa = c(TRUE, TRUE),
+#                          labelRatio = 1, legendPosition = "right", legendTitle = "d",
+#                          marks = c(",", "."), percentage = TRUE, nDigits = 4,
+#                          order1 = "CatE", order2 = "TypeD", colorScale = "continuous",
+#                          colors = c("red", "yellow", "brown", "blue"), labelWrap = c(20, 40))
 
 
-barCatCat <- function(data,
-         title = NULL,
-         subtitle = NULL,
-         caption = NULL,
-         horLabel = NULL,
-         verLabel = NULL,
-         horLine = NULL,
-         #horLineLabel = NULL,
-         verLine = NULL,
-         #verLineLabel = NULL,
-         colors = "#009EE3",
-         colorText = "black",
-         diffColorsBar = FALSE,
-         dropNa = FALSE,
-         format = c("", ""),
-         highlightValue = NULL,
-         highlightValueColor = "#F9B233",
-         labelRatio = 0.1,
-         labelWrap = 12,
-         marks = c(".", ","),
-         nDigits = 2,
-         order = NULL,
-         orientation = "ver",
-         percentage = FALSE,
-         sort = "no",
-         sliceN = NULL,
-         showText = TRUE,
-         theme = NULL, ...) {
+gg_bar_grouped_CatCatNum <- function(data,
+                                     title = NULL,
+                                     subtitle = NULL,
+                                     caption = NULL,
+                                     horLabel = NULL,
+                                     verLabel = NULL,
+                                     horLine = NULL,
+                                     #horLineLabel = NULL,
+                                     verLine = NULL,
+                                     #verLineLabel = NULL,
+                                     agg = "sum",
+                                     colors = NULL,
+                                     colorText = "black",
+                                     colorScale = "discrete",
+                                     dropNa = c(FALSE, FALSE),
+                                     format = c("", ""),
+                                     labelRatio = 0.1,
+                                     labelWrap = c(12, 12),
+                                     legendPosition = "right",
+                                     legendTitle = NULL,
+                                     marks = c(".", ","),
+                                     nDigits = 2,
+                                     order1 = NULL,
+                                     order2 = NULL,
+                                     orientation = "ver",
+                                     percentage = FALSE,
+                                     showText = TRUE,
+                                     theme = NULL, ...) {
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d
@@ -225,7 +136,9 @@ barCatCat <- function(data,
   caption <- caption %||% ""
   labelsXY <- orientationXY(orientation,
                             x = nms[1],
-                            y = paste("count", nms[1]),
+                            y = ifelse(nrow(d) == dplyr::n_distinct(d$a) & nrow(d) == dplyr::n_distinct(d$b),
+                                       nms[3],
+                                       paste(agg, nms[3])),
                             hor = horLabel,
                             ver = verLabel)
   lineXY <- orientationXY(orientation,
@@ -234,28 +147,35 @@ barCatCat <- function(data,
                           hor = horLine,
                           ver = verLine)
 
-  if (dropNa)
+  if (any(dropNa))
     d <- d %>%
-    tidyr::drop_na()
+    tidyr::drop_na(which(dropNa))
 
   d <- d  %>%
-    tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA))) %>%
-    dplyr::group_by(a) %>%
-    dplyr::summarise(b = n())
+    tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
+                           b = ifelse(is.character(d$b), "NA", NA),
+                           c = NA)) %>%
+    dplyr::group_by(a, b) %>%
+    dplyr::summarise(c = agg(agg, c)) %>%
+    tidyr::spread(b, c, fill = 0) %>%
+    tidyr::gather(b, c, -a) %>%
+    dplyr::mutate(percent = c * 100 / sum(c, na.rm = TRUE))
 
 
-  d <- percentColumn(d, "b", percentage, nDigits)
-  d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
-  d <- orderCategory(d, "a", orientation, order, labelWrap)
-  d <- labelPosition(d, "b", labelRatio)
-  fillCol <- fillColors(d, "a", colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap)
+  d <- orderCategory(d, "a", orientation, order1, labelWrap[1])
+  d <- orderCategory(d, "b", orientation, order2, labelWrap[2])
+  d <- labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
+  fillCol <- fillColors(d, "b", colors, colorScale, NULL, NULL, labelWrap[2])
 
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"
   }
 
-  gg <- ggplot(d, aes(x = a, y = b, fill = a)) +
-    geom_bar(stat = "identity") +
+  # geom_col(aes(fill = grp), position = "dodge") +
+  gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "c")]], fill = b)) +
+    # geom_col(aes(fill = b), position = "dodge") +
+    # geom_bar(stat = "identity", position = position_dodge(preserve = "single", width = 1)) +
+    geom_bar(stat = "identity", position = "dodge") +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "black",
@@ -268,129 +188,27 @@ barCatCat <- function(data,
                linetype = "dashed") +
     geom_text(aes(y = labPos,
                   label = paste0(format[1],
-                                 format(b, big.mark = marks[1], decimal.mark = marks[2]),
+                                 format(d[[ifelse(percentage, "percent", "c")]],
+                                        big.mark = marks[1],
+                                        decimal.mark = marks[2],
+                                        digits = nDigits),
                                  format[2])),
               check_overlap = TRUE,
-              color = ifelse(showText, colorText, "transparent")) +
+              color = ifelse(showText, colorText, "transparent"),
+              position = position_dodge(width = 1)) +
     labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
     scale_fill_manual(values = fillCol) +
+    # scale_x_discrete(limits = d$a) +
     scale_y_continuous(labels = function(x) paste0(format[1],
                                                    format(x,
                                                           big.mark = marks[1],
-                                                          decimal.mark = marks[2]),
+                                                          decimal.mark = marks[2],
+                                                          digits = nDigits),
                                                    format[2])) +
     theme_ds() +
-    theme(legend.position = "none",
+    theme(legend.position = legendPosition,
+          legend.title = element_text(legendTitle),
           plot.caption = element_text(hjust = 1))
-  # DESPUÉS PARA FECHAS
-  # if (f$getCtypes()[1] == "Dat")
-  #   gg <- gg +
-  #   scale_x_date(labels = date_format("%b %d %Y"))
-  if (orientation == "hor")
-    gg <- gg +
-    coord_flip()
-  gg
-}
-
-
-gg_bar_CatNum <- function(data,
-                          title = NULL,
-                          subtitle = NULL,
-                          caption = NULL,
-                          horLabel = NULL,
-                          verLabel = NULL,
-                          horLine = NULL,
-                          #horLineLabel = NULL,
-                          verLine = NULL,
-                          #verLineLabel = NULL,
-                          agg = "sum",
-                          colors = c("#009EE3", "#F9B233"),
-                          colorText = "black",
-                          diffColorsBar = FALSE,
-                          dropNa = FALSE,
-                          format = c("", ""),
-                          highlightValue = NULL,
-                          highlightValueColor = "#F9B233",
-                          labelRatio = 0.1,
-                          labelWrap = 12,
-                          marks = c(".", ","),
-                          nDigits = 2,
-                          order = NULL,
-                          orientation = "ver",
-                          percentage = FALSE,
-                          sort = "no",
-                          sliceN = NULL,
-                          showText = TRUE,
-                          theme = NULL, ...) {
-  f <- fringe(data)
-  nms <- getClabels(f)
-  d <- f$d
-
-  title <-  title %||% ""
-  subtitle <- subtitle %||% ""
-  caption <- caption %||% ""
-  labelsXY <- orientationXY(orientation,
-                            x = nms[1],
-                            y = ifelse(nrow(d) == dplyr::n_distinct(d$a), nms[2], paste(agg, nms[2])),
-                            hor = horLabel,
-                            ver = verLabel)
-  lineXY <- orientationXY(orientation,
-                          0,
-                          0,
-                          hor = horLine,
-                          ver = verLine)
-
-  if (dropNa)
-    d <- d %>%
-    tidyr::drop_na()
-
-  d <- d  %>%
-    tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
-                           b = NA)) %>%
-    dplyr::group_by(a) %>%
-    dplyr::summarise(b = agg(agg, b))
-
-  ### ARREGLAR LO DE PROCENTAJE
-
-  d <- percentColumn(d, "b", percentage, nDigits)
-  d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
-  d <- orderCategory(d, "a", orientation, order, labelWrap)
-  d <- labelPosition(d, "b", labelRatio)
-  fillCol <- fillColors(d, "a", colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap)
-
-  if (percentage & nchar(format[2]) == 0) {
-    format[2] <- "%"
-  }
-
-  gg <- ggplot(d, aes(x = a, y = b, fill = a)) +
-    geom_bar(stat = "identity") +
-    geom_vline(xintercept = lineXY[1],#ifelse(orientation == "hor", horLine %||% 0, verLine %||% 0),
-               color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
-                              "black",
-                              "transparent"),
-               linetype = "dashed") +
-    geom_hline(yintercept = lineXY[2],#ifelse(orientation == "hor", verLine %||% 0, horLine %||% 0),
-               color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
-                              "black",
-                              "transparent"),
-               linetype = "dashed") +
-    geom_text(aes(y = labPos,
-                  label = paste0(format[1],
-                                 format(b, big.mark = marks[1], decimal.mark = marks[2]),
-                                 format[2])),
-              check_overlap = TRUE,
-              color = ifelse(showText, colorText, "transparent")) +
-    labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
-    scale_fill_manual(values = fillCol) +
-    scale_y_continuous(labels =  function(x) paste0(format[1],
-                                                    format(x,
-                                                           big.mark = marks[1],
-                                                           decimal.mark = marks[2]),
-                                                    format[2])) +
-    theme_ds() +
-    theme(legend.position = "none",
-          plot.caption = element_text(hjust = 1))
-  ### FECHAAA
   # if (f$getCtypes()[1] == "Dat")
   #   gg <- gg +
   #   scale_x_date(labels = date_format("%Y-%m-%d"))
@@ -399,4 +217,3 @@ gg_bar_CatNum <- function(data,
     coord_flip()
   gg
 }
-
