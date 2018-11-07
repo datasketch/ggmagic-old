@@ -31,7 +31,7 @@ orientationXY <- function(orientation, x, y, hor, ver, line = FALSE) {
 # order category column
 #'@export
 orderCategory <- function(data, col, orientation, order, labelWrap) {
-  data[[col]] <- factor(stringr::str_wrap(data[[col]], labelWrap), levels = stringr::str_wrap(data[[col]], labelWrap))
+  data[[col]] <- factor(stringr::str_wrap(data[[col]], labelWrap), levels = unique(stringr::str_wrap(data[[col]], labelWrap)))
   if (!is.null(order)) {
     order <- stringr::str_wrap(order, labelWrap)
     order <- union(order, unique(data[[col]])[!is.na(unique(data[[col]]))])
@@ -45,6 +45,7 @@ orderCategory <- function(data, col, orientation, order, labelWrap) {
   data
 }
 
+
 # sort and slice
 #'@export
 sortSlice <- function(data, col, colOrder, orientation, sort, sliceN) {
@@ -57,7 +58,7 @@ sortSlice <- function(data, col, colOrder, orientation, sort, sliceN) {
     col <- paste0('desc(', col, ')')
     data <- data %>%
       dplyr::arrange_(.dots = col)
-     data[[colOrder]] <- factor(data[[colOrder]], levels = unique(data[[colOrder]]))
+    data[[colOrder]] <- factor(data[[colOrder]], levels = unique(data[[colOrder]]))
   }
   if (orientation == "hor") {
     data[[colOrder]] <- factor(data[[colOrder]], levels = rev(unique(data[[colOrder]])))
@@ -151,53 +152,7 @@ fillColors <- function(data, col, colors, colorScale, highlightValue, highlightV
     fillCol[wh] <- highlightValueColor
   }
   fillCol
-  print(fillCol)
 }
-# fillColors <- function(data, col, colors, diffColorsBar, highlightValue, highlightValueColor, labelWrap) {
-#   cat <- stringr::str_wrap(unique(data[[col]]), labelWrap)
-#   highlightValue <- stringr::str_wrap(highlightValue, labelWrap)
-#   if (diffColorsBar) {
-#     # este fillCol es dependiendo de la columna categórica
-#     fillCol <- colorNumeric(colors, 1:length(cat))(1:length(cat))[sample(length(cat))]
-#     # este fillCol es dependiendo de la columna numérica
-#     # fillCol <- colorNumeric(colors, 1:max(b, na.rm = TRUE))(b))
-#     names(fillCol) <- cat
-#     if (!is.null(highlightValue) & sum(highlightValue %in% cat) > 0) {
-#       wh <- which(cat %in% highlightValue)
-#       hg <- cat[wh]
-#       rg <- setdiff(cat, cat[wh])
-#       colHg <- rep(highlightValueColor, length(hg))
-#       if (is.null(highlightValueColor)) {
-#         # toca cambiar la opción si colors[2] es null..
-#         # sumarle al color inicial, no que sea un valor fijo
-#         colHg <-  rep("#F9B233", length(hg))
-#       }
-#       # colRg <- rep(colors, length(rg))[1:length(rg)]
-#       colRg <- colorNumeric(colors, 1:length(rg))(1:length(rg))#[sample(length(rg))]
-#       fillCol <- c(colHg, colRg)
-#       names(fillCol) <- c(hg, rg)
-#     }
-#   } else {
-#     fillCol <- rep(colors, length(cat))[1:length(cat)]
-#     names(fillCol) <- cat
-#     if (!is.null(highlightValue) & sum(highlightValue %in% cat) > 0) {
-#       wh <- which(cat %in% highlightValue)
-#       hg <- cat[wh]
-#       rg <- setdiff(cat, cat[wh])
-#       colHg <- rep(highlightValueColor, length(hg))
-#       if (is.null(highlightValueColor)) {
-#         # toca cambiar la opción si colors[2] es null..
-#         # sumarle al color inicial, no que sea un valor fijo
-#         colHg <-  rep("#F9B233", length(hg))
-#       }
-#       colRg <- rep(colors, length(rg))[1:length(rg)]
-#       fillCol <- c(colHg, colRg)
-#       names(fillCol) <- c(hg, rg)
-#     }
-#   }
-#   fillCol
-# }
-
 
 # ds palette
 #' @export

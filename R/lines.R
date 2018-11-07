@@ -38,6 +38,7 @@ gg_line_CatNum <- function(data,
                            sort = "no",
                            sliceN = NULL,
                            showText = TRUE,
+                           spline = FALSE,
                            theme = NULL, ...) {
   f <- fringe(data)
   nms <- getClabels(f)
@@ -76,6 +77,10 @@ gg_line_CatNum <- function(data,
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"
   }
+
+  # if (spline) {
+  #   d <- as.data.frame(spline(d))
+  # }
 
   gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], colour = "", group = 1)) +
     geom_line() +
