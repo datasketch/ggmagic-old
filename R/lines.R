@@ -174,7 +174,7 @@ gg_line_Cat <- function(data,
 
   data <- data %>%
     dplyr::group_by_(names(data)) %>%
-    dplyr::summarise_(b = n())
+    dplyr::summarise(b = n())
 
   names(data)[2] <- paste0("count", names(data[1]))
   gg <- gg_line_CatNum(data,

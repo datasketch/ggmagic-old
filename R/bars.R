@@ -161,7 +161,7 @@ gg_bar_Cat <- function(data,
 
   data <- data %>%
     dplyr::group_by_(names(data)) %>%
-    dplyr::summarise_(b = n())
+    dplyr::summarise(b = n())
 
   names(data)[2] <- paste0("count", names(data[1]))
   gg <- gg_bar_CatNum(data,
@@ -420,7 +420,7 @@ gg_bar_CatCat <- function(data,
                           theme = NULL, ...) {
   data <- data %>%
     dplyr::group_by_(names(data)) %>%
-    dplyr::summarise_(b = n())
+    dplyr::summarise(b = n())
 
   names(data)[2] <- paste0("count", names(data[1]))
   gg <- gg_bar_CatCatNum(data,
