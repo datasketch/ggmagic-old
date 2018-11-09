@@ -8,11 +8,11 @@ gg_line_CatNum(data, title = NULL, subtitle = NULL, caption = NULL,
   horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
   agg = "sum", colors = NULL, colorText = "black",
   colorScale = "no", dropNa = FALSE, format = c("", ""),
-  highlightValue = NULL, highlightValueColor = NULL,
-  labelRatio = 0.1, labelWrap = 12, marks = c(".", ","),
-  nDigits = 2, order = NULL, orientation = "ver",
-  percentage = FALSE, shapeType = 19, sort = "no", sliceN = NULL,
-  showText = TRUE, spline = FALSE, theme = NULL, ...)
+  highlightValue = NULL, highlightValueColor = NULL, labelRatio = 1,
+  labelWrap = 12, marks = c(".", ","), nDigits = 2, order = NULL,
+  orientation = "ver", percentage = FALSE, shapeType = 19,
+  sort = "no", sliceN = NULL, showText = TRUE, spline = FALSE,
+  startAtZero = TRUE, theme = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}
