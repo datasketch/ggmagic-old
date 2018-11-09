@@ -126,7 +126,6 @@ fillColors <- function(data, col, colors, colorScale, highlightValue, highlightV
       c(l1, p1)
     }))
     # [sample(1:length(cat))]
-    print(c(colors, ad))
     fillCol <- c(colors, leaflet::colorFactor(c(colors, ad), cat)(cat)[sample(1:length(cat))])
     names(fillCol) <- cat
   }

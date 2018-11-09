@@ -106,127 +106,129 @@
 # Barras ------------------------------------------------------------------
 
 # Categoricas
-#
+
 # datCat <- sampleData('Cat', nrow = 300)
-# hgch_bar_Cat(datCat)
-# hgch_bar_Cat(datCat, title = 'Esto es un título',
-#              subtitle = 'Esto es un subtitulo',
-#              caption = 'Esto es un caption'
+# gg_bar_Cat(datCat)
+# gg_bar_Cat(datCat, title = 'Esto es un título',
+#            subtitle = 'Esto es un subtitulo',
+#            caption = 'Esto es un caption'
 # )
-# hgch_bar_Cat(datCat, orientation = 'hor', verLabel = 'Texto vertical',
-#              horLabel = 'Texto horizontal')
-# hgch_bar_Cat(datCat, orientation = 'ver', verLabel = 'Texto vertical',
-#              horLabel = 'Texto horizontal')
-# hgch_bar_Cat(datCat, horLine = 40, percentage = TRUE)
-# hgch_bar_Cat(datCat, orientation = 'hor', horLine = 3)
-# hgch_bar_Cat(datCat, colorScale = 'discrete', theme = tma(showText = FALSE))
+# gg_bar_Cat(datCat, orientation = 'hor', verLabel = 'Texto vertical',
+#            horLabel = 'Texto horizontal')
+# gg_bar_Cat(datCat, orientation = 'ver', verLabel = 'Texto vertical',
+#            horLabel = 'Texto horizontal')
+# gg_bar_Cat(datCat, horLine = 40, percentage = TRUE)
+# gg_bar_Cat(datCat, orientation = 'hor', horLine = 3)
+# gg_bar_Cat(datCat, colorScale = 'discrete', showText = FALSE)
 #
 # # Categorica-Numerica
 #
 # datCatNum <- sampleData('Cat-Num')
-# hgch_bar_CatNum(datCatNum)
-# hgch_bar_CatNum(datCatNum, sort = 'asc')
-# hgch_bar_CatNum(datCatNum, sort = 'desc', colorScale = 'discrete')
-# hgch_bar_CatNum(datCatNum, export = TRUE, nDigits = 2, theme = tma(showText = F),
-#                 marks = c(',', '.'), format = c('$', ''))
+# gg_bar_CatNum(datCatNum)
+# gg_bar_CatNum(datCatNum, sort = 'asc')
+# gg_bar_CatNum(datCatNum, sort = 'desc', colorScale = 'discrete')
+# gg_bar_CatNum(datCatNum, export = TRUE, nDigits = 2,
+#               marks = c(',', '.'), format = c('$', ''))
 #
 # # Data-Numerica
 # datDatNum <- sampleData('Dat-Num')
-# hgch_bar_DatNum(datDatNum)
-# hgch_bar_DatNum(datDatNum, dropNa = TRUE)
+# gg_bar_DatNum(datDatNum)
+# gg_bar_DatNum(datDatNum, dropNa = TRUE)
 #
 #
 # #Años - Númerico
 # datYeaNum <- sampleData('Yea-Num', 250)
-# hgch_bar_YeaNum(datYeaNum, agg = 'mean')
+# gg_bar_YeaNum(datYeaNum, agg = 'mean')
 #
 #
 # # Categoricos - categoricos
 # dfCC <- sampleData('Cat-Cat', 999)
-# hgch_bar_grouped_CatCat(dfCC)
-# hgch_bar_grouped_CatCat(dfCC, percentage = TRUE)
-# hgch_bar_stacked_CatCat(dfCC)
-# hgch_bar_stacked_CatCat(dfCC, percentage = T)
+# gg_bar_CatCat(dfCC, graphType = "grouped")
+# gg_bar_CatCat(dfCC, percentage = TRUE, graphType = "grouped")
+# gg_bar_CatCat(dfCC, graphType = "stacked")
+# gg_bar_CatCat(dfCC, percentage = T, graphType = "stacked")
 #
 # # Categoricos - categoricos - Numericos
 # dfCCN <- sampleData('Cat-Cat-Num', 500)
-# hgch_bar_grouped_CatCatNum(dfCCN)
-# hgch_bar_grouped_CatCatNum(dfCCN, colorScale = "no")
-# hgch_bar_stacked_CatCatNum(dfCCN, percentage = T)
-# hgch_bar_stacked_CatCatNum(dfCCN, percentage = T,
-#                            orientation = "ver", horLine = 60,
-#                            horLineLabel  = 'anaperra',
-#                            verLine = 3)
+# gg_bar_CatCatNum(dfCCN, graphType = "grouped")
+# gg_bar_CatCatNum(dfCCN, colorScale = "no", graphType = "grouped")
+# gg_bar_CatCatNum(dfCCN, percentage = T, graphType = "stacked")
+# gg_bar_CatCatNum(dfCCN, percentage = T, graphType = "stacked",
+#                  orientation = "ver", horLine = 60,
+#                  horLineLabel  = 'anaperra',
+#                  verLine = 3)
 #
 #
 # # Categoricos - Fecha - numericos
 # dfCDN <- sampleData('Cat-Dat-Num')
-# hgch_bar_grouped_CatDatNum(dfCDN)
-# hgch_bar_stacked_CatDatNum(dfCDN)
+# gg_bar_CatDatNum(dfCDN, graphType = "grouped")
+# gg_bar_CatDatNum(dfCDN, graphType = "stacked")
 #
 # # Categoricos - Años - Numericos
 # dfCAN <- sampleData('Cat-Yea-Num')
-# hgch_bar_grouped_CatYeaNum(dfCAN)
-# hgch_bar_stacked_CatYeaNum(dfCAN, percentage = TRUE)
+# gg_bar_CatYeaNum(dfCAN, graphType = "grouped")
+# gg_bar_CatYeaNum(dfCAN, percentage = TRUE, graphType = "stacked")
 #
 #
 # # Categoricos y P columnas numericas
 # dfCNp <- sampleData('Cat-NumP')
-# hgch_bar_grouped_CatNumP(dfCNp)
+# gg_bar_CatNumP(dfCNp, graphType = "grouped")
+# gg_bar_CatNumP(dfCNp, graphType = "stacked", percentage = TRUE)
+#
+#
 # # Líneas ------------------------------------------------------------------
 #
 #
 # # Categoricas
 #
 # datCat <- sampleData('Cat', nrow = 300)
-# hgch_line_Cat(datCat)
-# hgch_line_Cat(datCat, spline = T)
-# hgch_line_Cat(datCat, startAtZero = F,  sort = 'desc', order = c('IlkD'))
-# hgch_line_Cat(datCat, title = 'Esto es un título',
-#               subtitle = 'Esto es un subtitulo',
-#               caption = 'Esto es un caption'
+# gg_line_Cat(datCat)
+# gg_line_Cat(datCat, spline = T)
+# gg_line_Cat(datCat, startAtZero = F,  sort = 'desc', order = c('IlkD'))
+# gg_line_Cat(datCat, title = 'Esto es un título',
+#             subtitle = 'Esto es un subtitulo',
+#             caption = 'Esto es un caption'
 # )
 #
 # # Categorica-Numerica
 #
 # datCatNum <- sampleData('Cat-Num')
-# hgch_line_CatNum(datCatNum)
-# hgch_line_CatNum(datCatNum, sort = 'asc', dropNa = TRUE)
-# hgch_line_CatNum(datCatNum, sort = 'desc', colors = c('orange'))
-# hgch_line_CatNum(datCatNum, export = TRUE, nDigits = 2, theme = tma(showText = F),
-#                  marks = c(',', '.'), format = c('', ' <b>cosas</b>'), order = c('FormE'))
+# gg_line_CatNum(datCatNum)
+# gg_line_CatNum(datCatNum, sort = 'asc', dropNa = TRUE)
+# gg_line_CatNum(datCatNum, sort = 'desc', colors = c('orange'))
+# gg_line_CatNum(datCatNum, export = TRUE, nDigits = 2, showText = F,
+#                marks = c(',', '.'), format = c('', ' <b>cosas</b>'), order = c('FormE'))
 #
 # # Data-Numerica
 # datDatNum <- sampleData('Dat-Num', 100)
-# hgch_line_DatNum(datDatNum)
-# hgch_line_DatNum(datDatNum, dropNa = TRUE, colors = '#8B0000')
+# gg_line_DatNum(datDatNum)
+# gg_line_DatNum(datDatNum, dropNa = TRUE, colors = '#8B0000')
 #
 #
 # #Años - Númerico
 # datYeaNum <- sampleData('Yea-Num', 250)
-# hgch_line_YeaNum(datYeaNum, agg = 'mean', startAtZero = F)
+# gg_line_YeaNum(datYeaNum, agg = 'mean', startAtZero = F)
 #
 #
 # # Categoricos - categoricos
 # dfCC <- sampleData('Cat-Cat', 999)
-# hgch_line_CatCat(dfCC)
-# hgch_line_CatCat(dfCC, percentage = TRUE)
+# gg_line_CatCat(dfCC)
+# gg_line_CatCat(dfCC, percentage = TRUE)
 #
 # # Categoricos - categoricos - Numericos
 # dfCCN <- sampleData('Cat-Cat-Num', 500)
-# hgch_line_CatCatNum(dfCCN, spline = T, plotBandsColorY = '#DDD', plotBandsToY = 10000, plotBandsFromY = 5000,
-#                     plotBandsColorX = '#CCC', plotBandsFromX = 3, plotBandsToX = 5)
-# hgch_line_CatCatNum(dfCCN, colors = c('#FF0AC2', '#FFCDDD', '#FDFD0D', '#FDACDC'))
+# gg_line_CatCatNum(dfCCN, spline = T)
+# gg_line_CatCatNum(dfCCN, colors = c('#FF0AC2', '#FFCDDD', '#FDFD0D', '#FDACDC'))
 #
 #
 # # Categoricos - Fecha - numericos
 # dfCDN <- sampleData('Cat-Dat-Num')
-# hgch_line_CatDatNum(dfCDN)
+# gg_line_CatDatNum(dfCDN)
 #
 # # Categoricos - Años - Numericos
 # dfCAN <- sampleData('Cat-Yea-Num')
-# hgch_line_CatYeaNum(dfCAN, startAtZero = F)
+# gg_line_CatYeaNum(dfCAN, startAtZero = F)
 #
 # # Categoricos y P columnas numericas
 # dfCNp <- sampleData('Cat-NumP')
-# hgch_line_CatNumP(dfCNp)
+# gg_line_CatNumP(dfCNp)

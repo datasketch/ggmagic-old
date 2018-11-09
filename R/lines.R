@@ -83,7 +83,7 @@ gg_line_CatNum <- function(data,
   #   d <- as.data.frame(spline(d))
   # }
 
-  gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], colour = "", group = 1)) +
+  gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], colour = a, group = 1)) +
     geom_line() +
     geom_point(type = shapeType) +
     geom_vline(xintercept = lineXY[2],
@@ -106,7 +106,7 @@ gg_line_CatNum <- function(data,
               check_overlap = TRUE,
               color = ifelse(showText, colorText, "transparent")) +
     labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
-    scale_color_manual(values = ifelse(is.null(colors), dsColorsHex()[1], colors)) +
+    scale_color_manual(values = fillCol) +
     scale_y_continuous(labels =  function(x) paste0(format[1],
                                                     format(x,
                                                            big.mark = marks[1],
@@ -173,7 +173,7 @@ gg_line_Cat <- function(data,
 
 
   data <- data %>%
-    dplyr::group_by_(names(data)) %>%
+    dplyr::group_by_all() %>%
     dplyr::summarise(b = n())
 
   names(data)[2] <- paste0("count", names(data[1]))
@@ -267,7 +267,6 @@ gg_line_CatCatNum <- function(data,
                               colorScale = "discrete",
                               dropNa = c(FALSE, FALSE),
                               format = c("", ""),
-                              graphType = "grouped",
                               labelRatio = 1,
                               labelWrap = c(12, 12),
                               legendPosition = "right",
@@ -316,14 +315,10 @@ gg_line_CatCatNum <- function(data,
     tidyr::spread(b, c, fill = 0) %>%
     tidyr::gather(b, c, -a) %>%
     dplyr::mutate(percent = c * 100 / sum(c, na.rm = TRUE))
-  View(d)
 
-  if (graphType == "stacked") {
-    d <- d %>%
-      dplyr::mutate(c = ifelse(c == 0, NA, c))
-  }
 
   d <- orderCategory(d, "a", orientation, order, labelWrap[1])
+  d <- orderCategory(d, "b", orientation, NULL, labelWrap[2])
   d <- labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
   fillCol <- fillColors(d, "b", colors, colorScale, NULL, NULL, labelWrap[2])
 
@@ -344,6 +339,16 @@ gg_line_CatCatNum <- function(data,
                               "black",
                               "transparent"),
                linetype = "dashed") +
+    geom_text(aes(y = labPos,
+                  label = paste0(format[1],
+                                 format(d[[ifelse(percentage, "percent", "c")]],
+                                        big.mark = marks[1],
+                                        decimal.mark = marks[2],
+                                        digits = nDigits),
+                                 format[2])),
+              check_overlap = TRUE,
+              color = ifelse(showText, colorText, "transparent"),
+              position = position_dodge(width = 1)) +
     labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
     scale_colour_manual(values = fillCol,
                         name = legendTitle) +
@@ -358,37 +363,94 @@ gg_line_CatCatNum <- function(data,
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
 
-  if (graphType == "stacked") {
-    gg <- gg +
-      geom_text(aes(y = d[[ifelse(percentage, "percent", "c")]],
-                    label = paste0(format[1],
-                                   format(d[[ifelse(percentage, "percent", "c")]],
-                                          big.mark = marks[1],
-                                          decimal.mark = marks[2],
-                                          digits = nDigits),
-                                   format[2])),
-                check_overlap = TRUE,
-                color = ifelse(showText, colorText, "transparent"),
-                position = position_stack(vjust = 0.5))
-  } else {
-    gg <- gg +
-      geom_text(aes(y = labPos,
-                    label = paste0(format[1],
-                                   format(d[[ifelse(percentage, "percent", "c")]],
-                                          big.mark = marks[1],
-                                          decimal.mark = marks[2],
-                                          digits = nDigits),
-                                   format[2])),
-                check_overlap = TRUE,
-                color = ifelse(showText, colorText, "transparent"),
-                position = position_dodge(width = 1))
-  }
   # if (f$getCtypes()[1] == "Dat")
   #   gg <- gg +
   #   scale_x_date(labels = date_format("%Y-%m-%d"))
   if (orientation == "hor")
     gg <- gg +
     coord_flip()
+  gg
+}
+
+
+#' Lines (categories, ordered categories)
+#'
+#' Compare quantities among two categories
+#'
+#' @param data A data.frame
+#' @return Ggplot2 visualization
+#' @section ctypes:
+#' Cat-Cat, Cat-Dat, Cat-Yea, Yea-Cat, Yea-Dat, Yea-Yea, Dat-Cat, Dat-Yea, Dat-Dat
+#' @examples
+#' gg_line_CatCat(sampleData("Cat-Cat", nrow = 10))
+#' @export gg_line_CatCat
+gg_line_CatCat <- function(data,
+                           title = NULL,
+                           subtitle = NULL,
+                           caption = NULL,
+                           horLabel = NULL,
+                           verLabel = NULL,
+                           horLine = NULL,
+                           #horLineLabel = NULL,
+                           verLine = NULL,
+                           #verLineLabel = NULL,
+                           agg = "sum",
+                           colors = NULL,
+                           colorText = "black",
+                           colorScale = "discrete",
+                           dropNa = c(FALSE, FALSE),
+                           format = c("", ""),
+                           labelRatio = 1,
+                           labelWrap = c(12, 12),
+                           legendPosition = "right",
+                           legendTitle = NULL,
+                           marks = c(".", ","),
+                           nDigits = 2,
+                           order = NULL,
+                           orientation = "ver",
+                           percentage = FALSE,
+                           shapeType = 19,
+                           showText = TRUE,
+                           spline = FALSE,
+                           startAtZero = TRUE,
+                           theme = NULL, ...) {
+
+
+  data <- data %>%
+    dplyr::group_by_all() %>%
+    dplyr::summarise(b = n())
+
+  names(data)[2] <- paste0("count", names(data[1]))
+  gg <- gg_line_CatCatNum(data,
+                          title = title,
+                          subtitle = subtitle,
+                          caption = caption,
+                          horLabel = horLabel,
+                          verLabel = verLabel,
+                          horLine = horLine,
+                          #horLineLabel = NULL,
+                          verLine = verLine,
+                          #verLineLabel = NULL,
+                          agg = "sum",
+                          colors = colors,
+                          colorText = colorText,
+                          colorScale = colorScale,
+                          dropNa = dropNa,
+                          format = format,
+                          highlightValue = highlightValue,
+                          highlightValueColor = highlightValueColor,
+                          labelRatio = labelRatio,
+                          labelWrap = labelWrap,
+                          marks = marks,
+                          nDigits = nDigits,
+                          order = order,
+                          orientation = orientation,
+                          percentage = percentage,
+                          shapeType = shapeType,
+                          showText = showText,
+                          spline = spline,
+                          startAtZero = startAtZero,
+                          theme = theme, ...)
   gg
 }
 
@@ -448,7 +510,6 @@ gg_line_CatNumP <- function(data,
                             colorScale = "discrete",
                             dropNa = c(FALSE, FALSE),
                             format = c("", ""),
-                            graphType = "grouped",
                             labelRatio = 1,
                             labelWrap = c(12, 12),
                             legendPosition = "right",
@@ -482,7 +543,6 @@ gg_line_CatNumP <- function(data,
                          colorScale = colorScale,
                          dropNa = dropNa,
                          format = format,
-                         graphType = graphType,
                          labelRatio = labelRatio,
                          labelWrap = labelWrap,
                          legendPosition = legendPosition,

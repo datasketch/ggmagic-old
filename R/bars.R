@@ -160,7 +160,7 @@ gg_bar_Cat <- function(data,
                        theme = NULL, ...) {
 
   data <- data %>%
-    dplyr::group_by_(names(data)) %>%
+    dplyr::group_by_all() %>%
     dplyr::summarise(b = n())
 
   names(data)[2] <- paste0("count", names(data[1]))
@@ -419,10 +419,10 @@ gg_bar_CatCat <- function(data,
                           showText = TRUE,
                           theme = NULL, ...) {
   data <- data %>%
-    dplyr::group_by_(names(data)) %>%
+    dplyr::group_by_all() %>%
     dplyr::summarise(b = n())
 
-  names(data)[2] <- paste0("count", names(data[1]))
+  names(data)[2] <- paste0("count", names(data)[1])
   gg <- gg_bar_CatCatNum(data,
                          title = title,
                          subtitle = subtitle,
@@ -466,7 +466,7 @@ gg_bar_CatCat <- function(data,
 #' Cat-Yea-Num
 #' @examples
 #' gg_bar_CatYeaNum(sampleData("Cat-Yea-Num", nrow = 10))
-#' @export gg_bar_YeaNum
+#' @export gg_bar_CatYeaNum
 gg_bar_CatYeaNum <- gg_bar_CatCatNum
 
 
