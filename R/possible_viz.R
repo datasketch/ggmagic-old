@@ -5435,3 +5435,125 @@ gg_bullseye_facet_CatCatNum. <- function(data, titleLabel = "", subtitle = "", c
 }
 
 
+
+
+#' Filled density distribution (categories, numbers)
+#'
+#' Compare categories distributions
+#' @param data A data.frame
+#' @return Ggplot visualization
+#' @section ctypes:
+#' Cat-Num
+#' @examples
+#' gg_area_density_CatNum(sampleData("Cat-Num", nrow = 10))
+#' @export gg_area_density_CatNum
+gg_area_density_CatNum <- function(data,
+                                   title = NULL,
+                                   subtitle = NULL,
+                                   caption = NULL,
+                                   horLabel = NULL,
+                                   verLabel = NULL,
+                                   yLine = NULL,
+                                   yLineLabel = NULL,
+                                   dropNa = FALSE,
+                                   theme = NULL, ...) {
+
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
+
+  horLabel <- horLabel %||% nms[1]
+  verLabel <- verLabel %||% "density"
+  yLineLabel <- yLineLabel %||% yLine
+  title <-  title %||% ""
+  subtitle <- subtitle %||% ""
+  caption <- caption %||% ""
+
+  if (dropNa)
+    d <- d %>%
+    tidyr::drop_na()
+
+  d <- d  %>%
+    tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
+                           b = ifelse(is.character(d$b), "NA", NA)))
+
+  gg <- ggplot(d, aes(x = b)) +
+    geom_density(aes(fill = a, alpha = .64)) +
+    geom_hline(yintercept = ifelse(is.null(yLine), 0, yLine),
+               color = ifelse(is.null(yLine), "transparent", "black"),
+               linetype = "dashed",
+               size = 1) +
+    guides(text = FALSE,
+           alpha = guide_legend(label = FALSE)) +
+    #guides(fill = guide_legend(override.aes= list(alpha = 0.4)))
+    labs(title = title, subtitle = subtitle, caption = caption, x = horLabel, y = verLabel) +
+    scale_fill_manual(values = getPalette()) +
+    scale_alpha_continuous(legend = FALSE) +
+    theme_ds()
+  gg
+}
+
+
+
+#' Vertical area facet
+#' Facet Vertical Area
+#' @name gg_area_ver_facet_CatNum
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Cat-Num
+#' @examples
+#' gg_area_ver_facet_CatNum(sampleData("Cat-Num"))
+gg_area_ver_facet_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                     yLabel = NULL, angle_x = 0, ...){
+
+  f <- fringe(data)
+  nms <- getClabels(f)
+  xlab <- xLabel %||% "Índice"
+  ylab <- yLabel %||% nms[2]
+  data <- f$d
+
+  data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%
+    dplyr::filter(!is.na(b))
+
+  data_count <- data %>%
+    dplyr::group_by(a) %>%
+    dplyr::mutate(xorder = 1:n())
+
+  # count <- data_count$count
+  # count <- unlist(lapply(count, function(i){
+  #   return(1:i)
+  # }))
+  #
+  # data$xorder <- count
+
+  graph <- ggplot(data = data_count, aes(x=xorder, y=b, group=a)) + geom_area(aes(fill = ""), show.legend = FALSE) +
+    scale_fill_manual(values = getPalette())
+  graph <- graph + labs(title = titleLabel, subtitle = subtitle, caption = caption, x = xlab, y = ylab)
+  graph <- graph + theme_ds() + facet_wrap(~a) + theme(axis.text.x = element_text(angle = angle_x, hjust = 1))
+
+  graph
+}
+
+
+#' Horizontal area facet
+#' Facet Horizontal Area
+#' @name gg_area_hor_facet_CatNum
+#' @param x A number.
+#' @param y A number.
+#' @export
+#' @return The sum of \code{x} and \code{y}.
+#' @section ftypes: Cat-Num
+#' @examples
+#' gg_area_hor_facet_CatNum(sampleData("Cat-Num"))
+gg_area_hor_facet_CatNum <- function(data, titleLabel = "", subtitle = "", caption = "", xLabel = NULL,
+                                     yLabel = NULL, angle_x = 0, ...) {
+
+  graph <- gg_area_ver_facet_CatNum(data, titleLabel, subtitle, caption, xLabel, yLabel, angle_x, ...)
+  graph <- graph + coord_flip()
+
+  graph
+}
+
+

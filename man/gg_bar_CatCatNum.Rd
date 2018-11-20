@@ -8,9 +8,9 @@ gg_bar_CatCatNum(data, title = NULL, subtitle = NULL, caption = NULL,
   horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
   agg = "sum", colors = NULL, colorText = "black",
   colorScale = "discrete", dropNa = c(FALSE, FALSE), format = c("",
-  ""), graphType = "grouped", labelRatio = 0.1, labelWrap = c(12,
+  ""), graphType = "grouped", labelRatio = 0.5, labelWrap = c(12,
   12), legendPosition = "right", legendTitle = NULL, marks = c(".",
-  ","), nDigits = 2, order1 = NULL, order2 = NULL,
+  ","), nDigits = 0, order1 = NULL, order2 = NULL,
   orientation = "ver", percentage = FALSE, showText = TRUE,
   theme = NULL, ...)
 }

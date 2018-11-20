@@ -2,12 +2,17 @@
 % Please edit documentation in R/area.R
 \name{gg_area_DatNum}
 \alias{gg_area_DatNum}
-\title{Vertical area (dates, numbers)}
+\title{Area (dates, numbers)}
 \usage{
 gg_area_DatNum(data, title = NULL, subtitle = NULL, caption = NULL,
-  horLabel = NULL, verLabel = NULL, yLine = NULL,
-  yLineLabel = NULL, agg = "sum", dropNa = FALSE, order = NULL,
-  percentage = FALSE, theme = NULL, ...)
+  horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
+  agg = "sum", colors = NULL, colorText = "black",
+  colorOpacity = 0.6, colorScale = "no", dropNa = FALSE,
+  format = c("", ""), labelRatio = 1, labelWrap = 12,
+  marks = c(".", ","), nDigits = 0, order = NULL,
+  orientation = "ver", percentage = FALSE, shapeType = 19,
+  sort = "no", sliceN = NULL, showText = TRUE, spline = FALSE,
+  startAtZero = TRUE, theme = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}

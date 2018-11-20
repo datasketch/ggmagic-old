@@ -10,7 +10,7 @@ gg_line_CatNumP(data, title = NULL, subtitle = NULL, caption = NULL,
   colorScale = "discrete", dropNa = c(FALSE, FALSE), format = c("",
   ""), labelRatio = 1, labelWrap = c(12, 12),
   legendPosition = "right", legendTitle = NULL, marks = c(".", ","),
-  nDigits = 2, order = NULL, orientation = "ver",
+  nDigits = 0, order = NULL, orientation = "ver",
   percentage = FALSE, shapeType = 19, showText = TRUE,
   spline = FALSE, startAtZero = TRUE, theme = NULL, ...)
 }

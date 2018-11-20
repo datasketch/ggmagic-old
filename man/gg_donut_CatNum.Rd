@@ -8,7 +8,7 @@ gg_donut_CatNum(data, title = NULL, subtitle = NULL, caption = NULL,
   agg = "sum", colors = NULL, colorText = "black",
   colorScale = "discrete", dropNa = FALSE, format = c("", ""),
   labelRatio = 0.1, labelWrap = 12, legendPosition = "right",
-  legendTitle = NULL, marks = c(".", ","), nDigits = 2,
+  legendTitle = NULL, marks = c(".", ","), nDigits = 0,
   order = NULL, percentage = FALSE, sort = "no", sliceN = NULL,
   showText = TRUE, theme = NULL, ...)
 }

@@ -9,7 +9,7 @@ gg_line_Cat(data, title = NULL, subtitle = NULL, caption = NULL,
   colors = NULL, colorText = "black", colorScale = "no",
   dropNa = FALSE, format = c("", ""), highlightValue = NULL,
   highlightValueColor = NULL, labelRatio = 1, labelWrap = 12,
-  marks = c(".", ","), nDigits = 2, order = NULL,
+  marks = c(".", ","), nDigits = 0, order = NULL,
   orientation = "ver", percentage = FALSE, shapeType = 19,
   sort = "no", sliceN = NULL, showText = TRUE, spline = FALSE,
   startAtZero = TRUE, theme = NULL, ...)
