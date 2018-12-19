@@ -302,9 +302,9 @@ gg_area_CatCatNum <- function(data,
                           hor = horLine,
                           ver = verLine)
 
-  if (any(dropNa))
+  if (any(dropNaV))
     d <- d %>%
-    tidyr::drop_na(which(dropNa))
+    tidyr::drop_na(which(dropNaV))
 
   d <- d  %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
@@ -319,9 +319,9 @@ gg_area_CatCatNum <- function(data,
                   percent_a = ifelse(percent == 0, NA, percent))
 
 
-  d <- orderCategory(d, "a", orientation, order1, labelWrap[1])
-  d <- orderCategory(d, "b", orientation, order2, labelWrap[2])
-  fillCol <- fillColors(d, "b", colors, colorScale, NULL, NULL, labelWrap[2])
+  d <- orderCategory(d, "a", orientation, order1, labelWrapV[1])
+  d <- orderCategory(d, "b", orientation, order2, labelWrapV[2])
+  fillCol <- fillColors(d, "b", colors, colorScale, NULL, NULL, labelWrapV[2])
 
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"

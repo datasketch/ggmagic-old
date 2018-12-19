@@ -306,9 +306,9 @@ gg_line_CatCatNum <- function(data,
                           hor = horLine,
                           ver = verLine)
 
-  if (any(dropNa))
+  if (any(dropNaV))
     d <- d %>%
-    tidyr::drop_na(which(dropNa))
+    tidyr::drop_na(which(dropNaV))
 
   d <- d  %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
@@ -321,10 +321,10 @@ gg_line_CatCatNum <- function(data,
     dplyr::mutate(percent = c * 100 / sum(c, na.rm = TRUE))
 
 
-  d <- orderCategory(d, "a", orientation, order, labelWrap[1])
-  d <- orderCategory(d, "b", orientation, NULL, labelWrap[2])
+  d <- orderCategory(d, "a", orientation, order, labelWrapV[1])
+  d <- orderCategory(d, "b", orientation, NULL, labelWrapV[2])
   d <- labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
-  fillCol <- fillColors(d, "b", colors, colorScale, NULL, NULL, labelWrap[2])
+  fillCol <- fillColors(d, "b", colors, colorScale, NULL, NULL, labelWrapV[2])
 
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"
