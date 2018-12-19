@@ -7,8 +7,8 @@
 gg_bar_CatCat(data, title = NULL, subtitle = NULL, caption = NULL,
   horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
   colors = NULL, colorText = "black", colorScale = "discrete",
-  dropNa = c(FALSE, FALSE), format = c("", ""),
-  graphType = "grouped", labelRatio = 0.5, labelWrap = c(12, 12),
+  dropNaV = c(FALSE, FALSE), format = c("", ""),
+  graphType = "grouped", labelRatio = 0.5, labelWrapV = c(12, 12),
   legendPosition = "right", legendTitle = NULL, marks = c(".", ","),
   nDigits = 0, order1 = NULL, order2 = NULL, orientation = "ver",
   percentage = FALSE, showText = TRUE, theme = NULL, ...)
