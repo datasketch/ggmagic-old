@@ -84,7 +84,7 @@ gg_area_CatNum <- function(data,
   gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], colour = a, fill = a, group = 1)) +
     geom_area(alpha = colorOpacity) +
     geom_line() +
-    geom_point(type = shapeType) +
+    geom_point(shape = shapeType) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "black",
@@ -330,7 +330,7 @@ gg_area_CatCatNum <- function(data,
   gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "c")]], colour = b, fill = b, group = b)) +
     geom_area(alpha = colorOpacity, position = "stack") +
     geom_line(position = "stack") +
-    geom_point(type = shapeType, position = "stack", show.legend = FALSE) +
+    geom_point(shape = shapeType, position = "stack", show.legend = FALSE) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "black",

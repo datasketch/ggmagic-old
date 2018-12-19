@@ -74,7 +74,6 @@ gg_line_CatNum <- function(data,
   d <- orderCategory(d, "a", orientation, order, labelWrap)
   d <- labelPosition(d, "b", labelRatio, percentage)
   fillCol <- fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
-assign("d0", d, envir = globalenv())
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"
   }
@@ -85,7 +84,7 @@ assign("d0", d, envir = globalenv())
 
   gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], colour = a, group = 1)) +
     geom_line() +
-    geom_point(type = shapeType) +
+    geom_point(shape = shapeType) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "black",
@@ -332,7 +331,7 @@ gg_line_CatCatNum <- function(data,
 
   gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "c")]], colour = b, group = b)) +
     geom_line() +
-    geom_point(type = shapeType) +
+    geom_point(shape = shapeType) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "black",
