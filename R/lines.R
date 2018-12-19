@@ -84,7 +84,7 @@ gg_line_CatNum <- function(data,
 
   gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], colour = a, group = 1)) +
     geom_line() +
-    geom_point(shape = shapeType) +
+    geom_point(shape = as.integer(shapeType)) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "black",
@@ -331,7 +331,7 @@ gg_line_CatCatNum <- function(data,
 
   gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "c")]], colour = b, group = b)) +
     geom_line() +
-    geom_point(shape = shapeType) +
+    geom_point(shape = as.integer(shapeType)) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "black",
