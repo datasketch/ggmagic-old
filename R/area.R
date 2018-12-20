@@ -266,6 +266,7 @@ gg_area_CatCatNum <- function(data,
                               colorScale = "discrete",
                               dropNaV = c(FALSE, FALSE),
                               format = c("", ""),
+                              graphType = "grouped",
                               labelRatio = 1.1,
                               labelWrapV = c(12, 12),
                               legendPosition = "right",
@@ -314,13 +315,22 @@ gg_area_CatCatNum <- function(data,
     dplyr::summarise(c = agg(agg, c)) %>%
     tidyr::spread(b, c, fill = 0) %>%
     tidyr::gather(b, c, -a) %>%
-    dplyr::mutate(percent = c * 100 / sum(c, na.rm = TRUE)) %>%
-    dplyr::mutate(c_a = ifelse(c == 0, NA, c),
-                  percent_a = ifelse(percent == 0, NA, percent))
+    dplyr::mutate(percent = c * 100 / sum(c, na.rm = TRUE))
 
+  if (graphType == "stacked") {
+    d <- d %>%
+      dplyr::mutate(c = ifelse(c == 0, NA, c),
+                    percent_a = ifelse(percent == 0, NA, percent))
+
+  }
 
   d <- orderCategory(d, "a", orientation, order1, labelWrapV[1])
   d <- orderCategory(d, "b", orientation, order2, labelWrapV[2])
+
+  if (graphType == "grouped") {
+    d <- labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
+  }
+
   fillCol <- fillColors(d, "b", colors, colorScale, NULL, NULL, labelWrapV[2])
 
   if (percentage & nchar(format[2]) == 0) {
@@ -328,9 +338,9 @@ gg_area_CatCatNum <- function(data,
   }
 
   gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "c")]], colour = b, fill = b, group = b)) +
-    geom_area(alpha = colorOpacity, position = "stack") +
-    geom_line(position = "stack") +
-    geom_point(shape = as.integer(shapeType), position = "stack", show.legend = FALSE) +
+    geom_area(alpha = colorOpacity, position = ifelse(graphType == "stacked", "stack", "dodge")) +
+    geom_line(position = ifelse(graphType == "stacked", "stack", "dodge")) +
+    geom_point(shape = as.integer(shapeType), position = ifelse(graphType == "stacked", "stack", "dodge"), show.legend = FALSE) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "black",
@@ -341,17 +351,6 @@ gg_area_CatCatNum <- function(data,
                               "black",
                               "transparent"),
                linetype = "dashed") +
-    geom_text(aes(y = d[[ifelse(percentage, "percent_a", "c_a")]],
-                  label = paste0(format[1],
-                                 format(d[[ifelse(percentage, "percent", "c")]],
-                                        big.mark = marks[1],
-                                        decimal.mark = marks[2],
-                                        digits = nDigits,
-                                        nsmall = nDigits),
-                                 format[2])),
-              check_overlap = TRUE,
-              color = ifelse(showText, colorText, "transparent"),
-              position = position_stack(vjust = labelRatio)) +
     labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
     scale_colour_manual(values = fillCol,
                         guide = FALSE) +
@@ -368,6 +367,34 @@ gg_area_CatCatNum <- function(data,
     theme_ds() +
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
+
+  if (graphType == "stacked") {
+    gg <- gg +
+      geom_text(aes(y = d[[ifelse(percentage, "percent", "c")]],
+                    label = paste0(format[1],
+                                   format(d[[ifelse(percentage, "percent", "c")]],
+                                          big.mark = marks[1],
+                                          decimal.mark = marks[2],
+                                          digits = nDigits,
+                                          nsmall = nDigits),
+                                   format[2])),
+                check_overlap = TRUE,
+                color = ifelse(showText, colorText, "transparent"),
+                position = position_stack(vjust = labelRatio))
+  } else {
+    gg <- gg +
+      geom_text(aes(y = labPos,
+                    label = paste0(format[1],
+                                   format(d[[ifelse(percentage, "percent", "c")]],
+                                          big.mark = marks[1],
+                                          decimal.mark = marks[2],
+                                          digits = nDigits,
+                                          nsmall = nDigits),
+                                   format[2])),
+                check_overlap = TRUE,
+                color = ifelse(showText, colorText, "transparent"))
+  }
+
 
   # if (f$getCtypes()[1] == "Dat")
   #   gg <- gg +
@@ -407,6 +434,7 @@ gg_area_CatCat <- function(data,
                            colorScale = "discrete",
                            dropNaV = c(FALSE, FALSE),
                            format = c("", ""),
+                           graphType = "grouped",
                            labelRatio = 1.1,
                            labelWrapV = c(12, 12),
                            legendPosition = "right",
@@ -444,6 +472,7 @@ gg_area_CatCat <- function(data,
                           colorScale = colorScale,
                           dropNaV = dropNaV,
                           format = format,
+                          graphType = graphType,
                           labelRatio = labelRatio,
                           labelWrapV = labelWrapV,
                           legendPosition = legendPosition,
@@ -520,6 +549,7 @@ gg_area_CatNumP <- function(data,
                             colorScale = "discrete",
                             dropNaV = c(FALSE, FALSE),
                             format = c("", ""),
+                            graphType = graphType,
                             labelRatio = 1.1,
                             labelWrapV = c(12, 12),
                             legendPosition = "right",
@@ -555,6 +585,7 @@ gg_area_CatNumP <- function(data,
                           colorScale = colorScale,
                           dropNaV = dropNaV,
                           format = format,
+                          graphType = graphType,
                           labelRatio = labelRatio,
                           labelWrapV = labelWrapV,
                           legendPosition = legendPosition,
