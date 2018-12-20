@@ -8,12 +8,12 @@ gg_area_CatDatNum(data, title = NULL, subtitle = NULL,
   caption = NULL, horLabel = NULL, verLabel = NULL, horLine = NULL,
   verLine = NULL, agg = "sum", colors = NULL, colorText = "black",
   colorOpacity = 0.6, colorScale = "discrete", dropNaV = c(FALSE,
-  FALSE), format = c("", ""), labelRatio = 1.1, labelWrapV = c(12,
-  12), legendPosition = "right", legendTitle = NULL, marks = c(".",
-  ","), nDigits = 0, order1 = NULL, order2 = NULL,
-  orientation = "ver", percentage = FALSE, shapeType = 19,
-  showText = TRUE, spline = FALSE, startAtZero = TRUE,
-  theme = NULL, ...)
+  FALSE), format = c("", ""), graphType = "grouped",
+  labelRatio = 1.1, labelWrapV = c(12, 12), legendPosition = "right",
+  legendTitle = NULL, marks = c(".", ","), nDigits = 0,
+  order1 = NULL, order2 = NULL, orientation = "ver",
+  percentage = FALSE, shapeType = 19, showText = TRUE,
+  spline = FALSE, startAtZero = TRUE, theme = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}
