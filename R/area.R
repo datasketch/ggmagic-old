@@ -289,9 +289,9 @@ gg_area_CatCatNum <- function(data,
   title <-  title %||% ""
   subtitle <- subtitle %||% ""
   caption <- caption %||% ""
-  legendTitle <- legendTitle %||% nms[2]
+  legendTitle <- legendTitle %||% nms[1]
   labelsXY <- orientationXY(orientation,
-                            x = nms[1],
+                            x = nms[2],
                             y = ifelse(nrow(d) == dplyr::n_distinct(d$a) & nrow(d) == dplyr::n_distinct(d$b),
                                        nms[3],
                                        paste(agg, nms[3])),
@@ -331,13 +331,13 @@ gg_area_CatCatNum <- function(data,
     d <- labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
   }
 
-  fillCol <- fillColors(d, "b", colors, colorScale, NULL, NULL, labelWrapV[2])
+  fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
 
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"
   }
 
-  gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "c")]], colour = b, fill = b, group = b)) +
+  gg <- ggplot(d, aes(x = b, y = d[[ifelse(percentage, "percent", "c")]], colour = a, fill = a, group = a)) +
     geom_area(alpha = colorOpacity, position = ifelse(graphType == "stacked", "stack", "dodge")) +
     geom_line(position = ifelse(graphType == "stacked", "stack", "dodge")) +
     geom_point(shape = as.integer(shapeType), position = ifelse(graphType == "stacked", "stack", "dodge"), show.legend = FALSE) +
