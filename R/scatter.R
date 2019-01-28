@@ -14,7 +14,7 @@ gg_point_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -58,7 +58,7 @@ gg_point_grouped_CatNum. <- function(data, titleLabel = "", subtitle = "", capti
   f <- fringe(data)
   nms <- getClabels(f)
   clab <- fillLabel %||% nms[1]
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
 

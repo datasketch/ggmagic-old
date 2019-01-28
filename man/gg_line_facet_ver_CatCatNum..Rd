@@ -4,11 +4,6 @@
 \alias{gg_line_facet_ver_CatCatNum.}
 \title{Vertical line facet
 vertical linegraph}
-\usage{
-gg_line_facet_ver_CatCatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, aggregation = "sum",
-  angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A category.}
 

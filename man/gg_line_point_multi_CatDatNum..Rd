@@ -4,11 +4,6 @@
 \alias{gg_line_point_multi_CatDatNum.}
 \title{Grouped line + point
 Grouped Line Color Point}
-\usage{
-gg_line_point_multi_CatDatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "right", shape_type = 19, angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

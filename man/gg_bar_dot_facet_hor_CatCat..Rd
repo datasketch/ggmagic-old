@@ -4,11 +4,6 @@
 \alias{gg_bar_dot_facet_hor_CatCat.}
 \title{Horizontal dot bar facet
 Facet Horizontal Dot Bar}
-\usage{
-gg_bar_dot_facet_hor_CatCat.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

@@ -4,12 +4,6 @@
 \alias{gg_bar_stacked_100_ver_CatCatNum.}
 \title{Vertical 100% stacked bar by second variable
 100 vertical stacked bar graph}
-\usage{
-gg_bar_stacked_100_ver_CatCatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "right", aggregation = "sum", text = TRUE,
-  color_text = "black", type = "count", angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A category.}
 

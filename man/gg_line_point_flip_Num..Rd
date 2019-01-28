@@ -4,11 +4,6 @@
 \alias{gg_line_point_flip_Num.}
 \title{Horizontal line + point
 Line with point plot}
-\usage{
-gg_line_point_flip_Num.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, shape_type = 19,
-  angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

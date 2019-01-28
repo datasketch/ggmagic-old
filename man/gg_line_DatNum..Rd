@@ -4,10 +4,6 @@
 \alias{gg_line_DatNum.}
 \title{Line
 Lines}
-\usage{
-gg_line_DatNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

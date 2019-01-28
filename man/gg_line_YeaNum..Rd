@@ -4,10 +4,6 @@
 \alias{gg_line_YeaNum.}
 \title{Horizontal line
 Horizontal Lines}
-\usage{
-gg_line_YeaNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

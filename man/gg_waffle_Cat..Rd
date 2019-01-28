@@ -4,11 +4,6 @@
 \alias{gg_waffle_Cat.}
 \title{Waffle
 Waffle}
-\usage{
-gg_waffle_Cat.(data, square_size = 1, rows_number = 5,
-  titleLabel = "", fillLabel = NULL, subtitle = "", caption = "",
-  leg_pos = "right", ...)
-}
 \arguments{
 \item{x}{A number.}
 

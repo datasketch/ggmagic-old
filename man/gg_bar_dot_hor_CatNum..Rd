@@ -4,12 +4,6 @@
 \alias{gg_bar_dot_hor_CatNum.}
 \title{Horizontal dot bar
 Horizontal Dot Bar}
-\usage{
-gg_bar_dot_hor_CatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", sort = "no", topn = NULL, xLabel = NULL,
-  yLabel = NULL, leg_pos = "right", angle_x = 0,
-  aggregation = "sum", ...)
-}
 \arguments{
 \item{x}{A number.}
 

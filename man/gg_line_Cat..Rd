@@ -4,10 +4,6 @@
 \alias{gg_line_Cat.}
 \title{Horizontal line
 Horizontal Line}
-\usage{
-gg_line_Cat.(data, titleLabel = "", xLabel = NULL, subtitle = "",
-  caption = "", yLabel = NULL, leg_pos = "right", angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

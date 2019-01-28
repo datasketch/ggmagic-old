@@ -223,7 +223,7 @@ gg_dist_cum_Num. <- function(data, titleLabel = "", subtitle = "", caption = "",
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "index"
   data <- f$d
 
   data <- data %>% dplyr::filter(!is.na(a))

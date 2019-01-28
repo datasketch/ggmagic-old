@@ -4,11 +4,6 @@
 \alias{gg_trend_ribbon_facet_CatNum.}
 \title{Trend ribbon facet
 Facet Trend ribbon}
-\usage{
-gg_trend_ribbon_facet_CatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, shape_type = 19,
-  alpha = 0.3, angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

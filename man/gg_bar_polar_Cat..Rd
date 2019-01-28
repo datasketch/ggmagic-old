@@ -4,11 +4,6 @@
 \alias{gg_bar_polar_Cat.}
 \title{Polar bar
 Polar Bar}
-\usage{
-gg_bar_polar_Cat.(data, width = 0.95, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, leg_pos = "right", text = TRUE,
-  type = "count", color_text = "black", ...)
-}
 \arguments{
 \item{x}{A number.}
 

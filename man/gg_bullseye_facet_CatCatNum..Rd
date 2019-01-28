@@ -4,10 +4,6 @@
 \alias{gg_bullseye_facet_CatCatNum.}
 \title{Bullseye facet
 Facet Bullseye}
-\usage{
-gg_bullseye_facet_CatCatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, leg_pos = "right", ...)
-}
 \arguments{
 \item{x}{A number.}
 

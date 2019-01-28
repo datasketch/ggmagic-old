@@ -4,11 +4,6 @@
 \alias{gg_line_point_facet_CatNum.}
 \title{Line + point facet
 Facet Line Point}
-\usage{
-gg_line_point_facet_CatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, shape_type = 19,
-  angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

@@ -4,11 +4,6 @@
 \alias{gg_bullseye_CatNum.}
 \title{Bullseye
 Bullseye}
-\usage{
-gg_bullseye_CatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, leg_pos = "right",
-  aggregation = "sum", ...)
-}
 \arguments{
 \item{x}{A number.}
 

@@ -4,10 +4,6 @@
 \alias{gg_line_Num.}
 \title{Vertical line
 Line}
-\usage{
-gg_line_Num.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, shape_type = 19, angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

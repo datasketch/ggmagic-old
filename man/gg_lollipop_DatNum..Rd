@@ -4,11 +4,6 @@
 \alias{gg_lollipop_DatNum.}
 \title{Lollipop
 lollipop}
-\usage{
-gg_lollipop_DatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0,
-  shape_type = 19, ...)
-}
 \arguments{
 \item{x}{A data.}
 

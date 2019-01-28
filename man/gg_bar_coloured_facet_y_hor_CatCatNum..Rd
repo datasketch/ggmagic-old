@@ -4,13 +4,6 @@
 \alias{gg_bar_coloured_facet_y_hor_CatCatNum.}
 \title{Horizontal facet bar coloured by second variable
 horizontal bar}
-\usage{
-gg_bar_coloured_facet_y_hor_CatCatNum.(data, titleLabel = "",
-  subtitle = "", caption = "", xLabel = NULL, yLabel = NULL,
-  fillLabel = NULL, leg_pos = "right", angle_x = 0,
-  aggregation = "sum", text = TRUE, color_text = "black",
-  type = "count", ...)
-}
 \arguments{
 \item{x}{A category.}
 

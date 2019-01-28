@@ -3789,7 +3789,7 @@ gg_line_point_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -3832,7 +3832,7 @@ gg_line_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", caption 
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -3874,7 +3874,7 @@ gg_line_point_multi_CatNum. <- function(data, titleLabel = "", subtitle = "", ca
   f <- fringe(data)
   nms <- getClabels(f)
   clab <- fillLabel %||% nms[1]
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -3910,7 +3910,7 @@ gg_line_multi_CatNum. <- function(data, titleLabel = "", subtitle = "", caption 
   f <- fringe(data)
   nms <- getClabels(f)
   clab <- fillLabel %||% nms[1]
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -3952,7 +3952,7 @@ gg_point_trend_line_facet_CatNum. <- function(data, titleLabel = "", subtitle = 
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -5092,7 +5092,7 @@ gg_trend_ribbon_facet_CatNum. <- function(data, titleLabel = "", subtitle = "", 
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
 
@@ -5510,7 +5510,7 @@ gg_area_ver_facet_CatNum <- function(data, titleLabel = "", subtitle = "", capti
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   ylab <- yLabel %||% nms[2]
   data <- f$d
 

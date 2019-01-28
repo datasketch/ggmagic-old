@@ -16,7 +16,7 @@ gg_steam_CatNum. <- function(data, titleLabel = "", subtitle = "", caption = "",
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[2]
   clab <- fillLabel %||% nms[1]
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   data <- f$d
 
   data <- data %>% dplyr::mutate(a = ifelse(is.na(a), "NA", a)) %>%

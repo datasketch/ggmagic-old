@@ -121,7 +121,7 @@ gg_violin_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", y
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   ylab <- yLabel %||% nms[1]
   data <- f$d
 

@@ -4,11 +4,6 @@
 \alias{gg_point_trend_line_facet_CatNum.}
 \title{Trend line facet
 Facet Trend Line}
-\usage{
-gg_point_trend_line_facet_CatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, shape_type = 19,
-  alpha = 0.3, se = FALSE, angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

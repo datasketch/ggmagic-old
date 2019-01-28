@@ -4,12 +4,6 @@
 \alias{gg_bar_facet_hor_CatCatNum.}
 \title{Horizontal facet bar
 Horizontal bar graph}
-\usage{
-gg_bar_facet_hor_CatCatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 0, aggregation = "sum", text = TRUE,
-  color_text = "black", type = "count", ...)
-}
 \arguments{
 \item{x}{A category.}
 

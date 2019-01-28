@@ -4,11 +4,6 @@
 \alias{gg_bar_polar_stacked_CatCat.}
 \title{Polar stacked bar
 Stacked Polar bar}
-\usage{
-gg_bar_polar_stacked_CatCat.(data, titleLabel = "", subtitle = "",
-  caption = "", width = 0.95, fillLabel = NULL, text = TRUE,
-  type = "count", color_text = "black", leg_pos = "right", ...)
-}
 \arguments{
 \item{x}{A number.}
 

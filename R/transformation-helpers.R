@@ -166,27 +166,5 @@ dsColorsHex <- function(hex = FALSE) {
   c
 }
 
-# save plot
-#' @export
-save_viz <- function(file,
-                     viz,
-                     ext,
-                     width = 10,
-                     height = 7, ...) {
-  tmp <- paste(tempdir(), 'svg', sep ='.')
-  svglite::svglite(tmp, width = width, height = height)
-  print(viz)
-  dev.off()
-  bitmap <- rsvg::rsvg(tmp, height = 500)
-  tmpSave <- file
-  if (ext == '.png') {
-    png::writePNG(bitmap, tmpSave, dpi = 144) }
-  if (ext == '.jpeg') {
-    jpeg::writeJPEG(bitmap, tmpSave)}
-  if (ext == '.svg') {
-    rsvg::rsvg_svg(tmp, tmpSave)}
-  if (ext == '.pdf') {
-    rsvg::rsvg_pdf(tmp, tmpSave)}
-}
 
 

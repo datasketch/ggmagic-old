@@ -15,7 +15,7 @@ gg_waterfall_Num. <- function(data, titleLabel = "", subtitle = "", caption = ""
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "ndice"
   ylab <- yLabel %||% nms[1]
   data <- f$d
 

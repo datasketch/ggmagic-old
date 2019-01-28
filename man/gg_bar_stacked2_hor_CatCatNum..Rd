@@ -5,9 +5,6 @@
 \title{Horizontal stacked bar by first variable
 Barras grouped
 Tiene múltiples líneas}
-\usage{
-gg_bar_stacked2_hor_CatCatNum.(data, ...)
-}
 \arguments{
 \item{x}{A number.}
 

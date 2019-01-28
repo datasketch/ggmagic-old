@@ -4,11 +4,6 @@
 \alias{gg_line_point_facet_DatNum.}
 \title{Line + point facet by years
 Line Points facet by years}
-\usage{
-gg_line_point_facet_DatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0,
-  shape_type = 19, ...)
-}
 \arguments{
 \item{x}{A number.}
 

@@ -4,10 +4,6 @@
 \alias{gg_area_ver_facet_CatNum}
 \title{Vertical area facet
 Facet Vertical Area}
-\usage{
-gg_area_ver_facet_CatNum(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

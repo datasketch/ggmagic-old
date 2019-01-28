@@ -1,9 +1,21 @@
-
+# save plot
 #' @export
-save_ggmagic <- function(p, filename,format = NULL, width = NULL, height = NULL){
+save_ggmagic <- function(viz, filename, format = NULL, width = 10, height = 7, ...) {
   format <- file_ext(filename) %||% "png"
-  width <- width %||% 12
-  height <- height %||% 8
-  filename <- paste0(file_path_sans_ext(filename),'.',format)
-  ggsave(filename, plot = p, width = width, height = height,units = "cm")
+  tmp <- paste(tempdir(), 'svg', sep ='.')
+  svglite::svglite(tmp, width = width, height = height)
+  print(viz)
+  dev.off()
+  bitmap <- rsvg::rsvg(tmp, height = 500)
+  out_file <- paste0(file_path_sans_ext(filename),'.',format)
+  if (format == 'png') {
+    png::writePNG(bitmap, out_file, dpi = 144) }
+  if (format == 'jpeg') {
+    jpeg::writeJPEG(bitmap, out_file)}
+  if (format == 'svg') {
+    rsvg::rsvg_svg(tmp, out_file)}
+  if (format == 'pdf') {
+    rsvg::rsvg_pdf(tmp, out_file)
+  }
 }
+

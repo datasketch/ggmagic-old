@@ -4,11 +4,6 @@
 \alias{gg_slope_CatNum.}
 \title{Slope
 Slope}
-\usage{
-gg_slope_CatNum.(data, titleLabel = "", subtitle = "", caption = "",
-  xLabel = NULL, yLabel = NULL, leg_pos = "right", overlap = TRUE,
-  text_size = 6, size_point = 3, size_line = 1, ...)
-}
 \arguments{
 \item{x}{A number.}
 

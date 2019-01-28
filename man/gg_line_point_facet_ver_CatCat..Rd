@@ -4,11 +4,6 @@
 \alias{gg_line_point_facet_ver_CatCat.}
 \title{Vertical line + point facet
 Vertical Line Point}
-\usage{
-gg_line_point_facet_ver_CatCat.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0,
-  shape_point = 19, ...)
-}
 \arguments{
 \item{x}{A number.}
 

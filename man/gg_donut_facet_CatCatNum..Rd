@@ -4,12 +4,6 @@
 \alias{gg_donut_facet_CatCatNum.}
 \title{Donut facet
 Facet Donut}
-\usage{
-gg_donut_facet_CatCatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, width = 0.3, leg_pos = "right",
-  aggregation = "sum", text = TRUE, type = "count",
-  color_text = "black", ...)
-}
 \arguments{
 \item{x}{A number.}
 

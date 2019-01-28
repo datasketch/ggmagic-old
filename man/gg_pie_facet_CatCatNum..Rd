@@ -4,12 +4,6 @@
 \alias{gg_pie_facet_CatCatNum.}
 \title{Pie facet by second variable
 Facet Pie}
-\usage{
-gg_pie_facet_CatCatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", fillLabel = NULL, leg_pos = "right",
-  aggregation = "sum", text = TRUE, type = "count",
-  color_text = "black", ...)
-}
 \arguments{
 \item{x}{A number.}
 

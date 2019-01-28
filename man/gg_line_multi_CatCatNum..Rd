@@ -4,11 +4,6 @@
 \alias{gg_line_multi_CatCatNum.}
 \title{Grouped line by first variable
 Grouped Line Coloured}
-\usage{
-gg_line_multi_CatCatNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  aggregation = "sum", leg_pos = "right", angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

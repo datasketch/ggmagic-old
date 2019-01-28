@@ -4,12 +4,6 @@
 \alias{gg_line_multi_CatYeaNum.}
 \title{Horizontal line
 Tiene múltiples líneas}
-\usage{
-gg_line_multi_CatYeaNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, fillLabel = NULL,
-  leg_pos = "right", angle_x = 0, nbreaks = NULL, shape_type = 19,
-  aggregation = "sum", ...)
-}
 \arguments{
 \item{x}{A number.}
 

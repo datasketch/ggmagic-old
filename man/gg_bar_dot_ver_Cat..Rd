@@ -4,11 +4,6 @@
 \alias{gg_bar_dot_ver_Cat.}
 \title{Vertical dot bar
 Vertical Dot Bar}
-\usage{
-gg_bar_dot_ver_Cat.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, leg_pos = "right",
-  angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

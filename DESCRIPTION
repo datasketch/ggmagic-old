@@ -22,4 +22,4 @@ Depends:
     zoo
 License: What license is it under?
 LazyData: no
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1

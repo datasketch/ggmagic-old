@@ -4,11 +4,6 @@
 \alias{gg_horizon_NumNum.}
 \title{Horizon
 Horizon}
-\usage{
-gg_horizon_NumNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, reverse = FALSE, yLabel = NULL,
-  leg_pos = "right", angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

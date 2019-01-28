@@ -127,7 +127,7 @@ gg_box_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", yLab
   f <- fringe(data)
   nms <- getClabels(f)
   ylab <- yLabel %||% nms[1]
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "indice"
   data <- f$d
 
   data <- data %>% dplyr::filter(!is.na(a))

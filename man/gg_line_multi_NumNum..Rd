@@ -4,10 +4,6 @@
 \alias{gg_line_multi_NumNum.}
 \title{Line for each numeric variable
 Line for each Num}
-\usage{
-gg_line_multi_NumNum.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 

@@ -729,7 +729,7 @@ gg_hist_Num. <- function(data, titleLabel = "", subtitle = "", caption = "", xLa
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "index"
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -766,7 +766,7 @@ gg_hist_dens_Num. <- function(data, titleLabel = "", subtitle = "", caption = ""
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "index"
   ylab <- yLabel %||% nms[1]
   data <- f$d
 
@@ -803,7 +803,7 @@ gg_density_hist_Num. <- function(data, titleLabel = "", subtitle = "", caption =
 
   f <- fringe(data)
   nms <- getClabels(f)
-  xlab <- xLabel %||% "Índice"
+  xlab <- xLabel %||% "index"
   ylab <- yLabel %||% nms[1]
   data <- f$d
 

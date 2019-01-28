@@ -4,9 +4,6 @@
 \alias{gg_bar_stacked2_100_ver_CatCatNum.}
 \title{Vertical 100% stacked bar by first variable
 Barras grouped}
-\usage{
-gg_bar_stacked2_100_ver_CatCatNum.(data, ...)
-}
 \arguments{
 \item{x}{A number.}
 

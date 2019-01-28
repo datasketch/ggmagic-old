@@ -4,10 +4,6 @@
 \alias{gg_line_facet_ver_CatCat.}
 \title{Vertical line facet
 Vertical Line}
-\usage{
-gg_line_facet_ver_CatCat.(data, titleLabel = "", subtitle = "",
-  caption = "", xLabel = NULL, yLabel = NULL, angle_x = 0, ...)
-}
 \arguments{
 \item{x}{A number.}
 
