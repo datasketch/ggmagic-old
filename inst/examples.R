@@ -52,3 +52,33 @@ gg_bar_CatCatNum(dfCyn, colorScale = "continuous")
 gg_bar_CatCatNum(dfCyn, graphType = "stacked")
 gg_bar_CatCatNum(dfCyn, graphType = "stacked", percentage = T)
 gg_bar_CatCatNum(dfCyn, format = c("$", ""))
+
+
+dCN <- sampleData("Cat-Num")
+gg_treemap_CatNum(dCN)
+gg_treemap_CatNum(dCN,
+                  title = "titulo",
+                  subtitle =  "subtitulo",
+                  caption = "caption",
+                  colors = c("#AFCC1D", "#FFDC1A", "#FCDAA4"))
+gg_treemap_CatNum(dCN,
+                  colorScale = "discrete",
+                  highlightValue = "IlkD", highlightValueColor = "red")
+
+gg_treemap_CatNum(dCN,
+                  showLegend = F,
+                  colorScale = "continuous",
+                  agg = "mean",
+                  marks = c(".", ","))
+
+gg_treemap_CatNum(dCN,
+                  percentage = T,
+                  nDigits = 5,
+                  sliceN = 3,
+                  dropNa = T,
+                  legendPosition = c("bottom", "bottom"),
+                  showText = F)
+
+dC <- sampleData("Cat")
+gg_treemap_Cat(dC)
+
