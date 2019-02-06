@@ -208,11 +208,34 @@ hgchc_treemap_CatCatNum <- function(data,
 
   d <- orderCategory(d, "a", "ver", unique(d$a), labelWrapV[1])
   d <- orderCategory(d, "b", "ver", unique(d$b), labelWrapV[2])
- label<- NULL
-  g <- ggplot(d, aes(area = c, fill = a, subgroup = b)) +
-    treemapify::geom_treemap()
 
-  g
+  fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
 
+  if (showText) {
+    d$label <- paste0(d$a, "\n", format[1] ,format(d$c,  big.mark = marks[1], decimal.mark = marks[2]), format[2])
+  } else {
+    d$label <- ""
+  }
+
+ g <- ggplot(d, aes(area = c, fill = a, subgroup = b, label = label)) +
+    treemapify::geom_treemap() +
+   geom_treemap_subgroup_border() +
+   geom_treemap_subgroup_text(place = "centre", grow = T, alpha = 0.5, colour =
+                                "black", fontface = "italic", min.size = 0) +
+   geom_treemap_text(colour = "white", place = "topleft", reflow = T, min.size = 0)
+
+ if (!showLegend) {
+   g <- g + theme(legend.position = "none")
+ } else {
+   g <- g + theme(legend.position = legendPosition[2],  legend.justification = legendPosition[1]) +
+     guides(fill=guide_legend(nrow=1,byrow=TRUE))
+ }
+
+ g <- g +
+   scale_fill_manual(values = fillCol) +
+   labs(title = title, subtitle = subtitle, caption = caption, fill = "")
+
+
+ g
 
 }
