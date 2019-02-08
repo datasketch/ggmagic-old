@@ -75,30 +75,30 @@ gg_treemap_CatNum <-  function(data,
     format[2] <- "%"
   }
 
-   d$b <- round(d$b, nDig)
+  d$b <- round(d$b, nDig)
 
-   if (showText) {
-     d$label <- paste0(d$a, "\n", format[1] ,format(d$b,  big.mark = marks[1], decimal.mark = marks[2]), format[2])
-   } else {
+  if (showText) {
+    d$label <- paste0(d$a, "\n", format[1] ,format(d$b,  big.mark = marks[1], decimal.mark = marks[2]), format[2])
+  } else {
     d$label <- ""
-     }
+  }
 
   g <- ggplot(d, aes(area = b, fill = a, label =  label)) +
-         treemapify::geom_treemap() +
-           geom_treemap_text(min.size = 0,
-                             colour = "white"
-                             )
+    treemapify::geom_treemap() +
+    geom_treemap_text(min.size = 0,
+                      colour = "white"
+    )
 
   if (!showLegend) {
-   g <- g + theme(legend.position = "none")
+    g <- g + theme(legend.position = "none")
   } else {
-   g <- g + theme(legend.position = legendPosition[2],  legend.justification = legendPosition[1]) +
-            guides(fill=guide_legend(nrow=1,byrow=TRUE))
+    g <- g + theme(legend.position = legendPosition[2],  legend.justification = legendPosition[1]) +
+      guides(fill=guide_legend(nrow=1,byrow=TRUE))
   }
 
   g <- g +
-        scale_fill_manual(values = fillCol) +
-         labs(title = title, subtitle = subtitle, caption = caption, fill = "")
+    scale_fill_manual(values = fillCol) +
+    labs(title = title, subtitle = subtitle, caption = caption, fill = "")
 
 
   g
@@ -155,31 +155,33 @@ gg_treemap_Cat <-  function(data,
 #' Compare aggregations among category's levels
 #'
 #' @param data A data.frame
-#' @return Highcharts visualization
+#' @return Ggplot visualization
 #' @section ctypes:
 #' Cat-Cat-Num, Cat-Yea-Num, Cat-Dat-Num,
 #' @examples
-#' hgch_treemap_CatNum(sampleData("Cat-Cat-Num", nrow = 10))
-#' @export hgchc_treemap_CatCatNum
+#' gg_treemap_CatNum(sampleData("Cat-Cat-Num", nrow = 10))
+#' @export gg_treemap_CatCatNum
 
-hgchc_treemap_CatCatNum <- function(data,
-                                    title = NULL,
-                                    subtitle = NULL,
-                                    caption = NULL,
-                                    agg = "sum",
-                                    colors = NULL,
-                                    colorScale = 'discrete',
-                                    dropNaV = c(FALSE, FALSE),
-                                    format = c("", ""),
-                                    labelWrapV = c(12, 12),
-                                    marks = c(".", ","),
-                                    nDigits = NULL,
-                                    percentage = FALSE,
-                                    showText = TRUE,
-                                    showLegend = TRUE,
-                                    legendPosition = c("right", "bottom"),
-                                    theme = NULL, ...) {
-  data <- sampleData("Cat-Cat-Num")
+gg_treemap_CatCatNum <- function(data,
+                                 title = NULL,
+                                 subtitle = NULL,
+                                 caption = NULL,
+                                 agg = "sum",
+                                 colors = NULL,
+                                 colorScale = 'discrete',
+                                 colorGroup = 'transparent',
+                                 colorText = c('#212428', '#FFFFFF'),
+                                 dropNaV = c(FALSE, FALSE),
+                                 format = c("", ""),
+                                 labelWrapV = c(12, 12),
+                                 marks = c(".", ","),
+                                 nDigits = NULL,
+                                 percentage = FALSE,
+                                 showText = TRUE,
+                                 showLegend = TRUE,
+                                 legendPosition = c("right", "bottom"),
+                                 theme = NULL, ...) {
+
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d
@@ -217,25 +219,110 @@ hgchc_treemap_CatCatNum <- function(data,
     d$label <- ""
   }
 
- g <- ggplot(d, aes(area = c, fill = a, subgroup = b, label = label)) +
+  g <- ggplot(d, aes(area = c, fill = a, subgroup = b, label = label)) +
     treemapify::geom_treemap() +
-   geom_treemap_subgroup_border() +
-   geom_treemap_subgroup_text(place = "centre", grow = T, alpha = 0.5, colour =
-                                "black", fontface = "italic", min.size = 0) +
-   geom_treemap_text(colour = "white", place = "topleft", reflow = T, min.size = 0)
+    geom_treemap_subgroup_border(color = colorGroup) +
+    geom_treemap_subgroup_text(place = "topleft",  colour = colorText[1], min.size = 0, reflow = T, size = 17) +
+    geom_treemap_text(colour = colorText[2], place = "bottomleft", min.size = 0, size = 15)
 
- if (!showLegend) {
-   g <- g + theme(legend.position = "none")
- } else {
-   g <- g + theme(legend.position = legendPosition[2],  legend.justification = legendPosition[1]) +
-     guides(fill=guide_legend(nrow=1,byrow=TRUE))
- }
+  if (!showLegend) {
+    g <- g + theme(legend.position = "none")
+  } else {
+    g <- g + theme(legend.position = legendPosition[2],  legend.justification = legendPosition[1]) +
+      guides(fill=guide_legend(nrow=1,byrow=TRUE))
+  }
 
- g <- g +
-   scale_fill_manual(values = fillCol) +
-   labs(title = title, subtitle = subtitle, caption = caption, fill = "")
+  g <- g +
+    scale_fill_manual(values = fillCol) +
+    labs(title = title, subtitle = subtitle, caption = caption, fill = "")
 
 
- g
+  g
+
+}
+
+
+
+
+#' Treemap (categories, categories)
+#'
+#' Compare aggregations among category's levels
+#'
+#' @param data A data.frame
+#' @return Ggplot visualization
+#' @section ctypes:
+#' Cat-Cat, Cat-Yea, Cat-Dat,
+#' @examples
+#' gg_treemap_CatCat(sampleData("Cat-Cat", nrow = 10))
+#' @export gg_treemap_CatCat
+
+gg_treemap_CatCat <- function(data,
+                              title = NULL,
+                              subtitle = NULL,
+                              caption = NULL,
+                              agg = "sum",
+                              colors = NULL,
+                              colorScale = 'discrete',
+                              colorGroup = 'transparent',
+                              colorText = c('#212428', '#FFFFFF'),
+                              dropNaV = c(FALSE, FALSE),
+                              format = c("", ""),
+                              labelWrapV = c(12, 12),
+                              marks = c(".", ","),
+                              nDigits = NULL,
+                              percentage = FALSE,
+                              showText = TRUE,
+                              showLegend = TRUE,
+                              legendPosition = c("right", "bottom"),
+                              theme = NULL, ...) {
+
+  datN <- names(data)
+  data <- data %>%
+    dplyr::group_by_(datN[1], datN[2]) %>%
+    dplyr::summarise(Conteo = n())
+
+  gg_treemap_CatCatNum(data = data, title = title,subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV, format = format, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
+}
+
+
+
+
+#' Treemap (categories, categories)
+#'
+#' Compare aggregations among category's levels
+#'
+#' @param data A data.frame
+#' @return Highcharts visualization
+#' @section ctypes:
+#' Cat-NumP, Yea-NumP, Dat-NumP
+#' @examples
+#' gg_treemap_CatNumP(sampleData("Cat-NumP", nrow = 10))
+#' @export gg_treemap_CatNumP
+
+gg_treemap_CatNumP <- function(data,
+                               title = NULL,
+                               subtitle = NULL,
+                               caption = NULL,
+                               agg = "sum",
+                               colors = NULL,
+                               colorScale = 'discrete',
+                               dropNaV = c(FALSE, FALSE),
+                               format = c("", ""),
+                               labelWrapV = c(12, 12),
+                               marks = c(".", ","),
+                               nDigits = NULL,
+                               percentage = FALSE,
+                               showText = TRUE,
+                               showLegend = TRUE,
+                               legendPosition = c("right", "bottom"),
+                               theme = NULL,
+                               tooltip = list("headerFormat" = NULL,
+                                              "pointFormat" = NULL,
+                                              "shared" = NULL),
+                               export = FALSE,
+                               lang = 'es', ...) {
+
+  data <- data %>% gather("Categories", "Conteo", names(data)[-1])
+  gg_treemap_CatCatNum(data = data, title = title,subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV, format = format, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
 
 }
