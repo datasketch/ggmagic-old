@@ -83,7 +83,7 @@ dC <- sampleData("Cat")
 gg_treemap_Cat(dC)
 
 data <- sampleData('Cat-Cat-Num')
-gg_treemap_CatCatNum(data)
+gg_treemap_CatCatNum(data, colorGroup = '#cccccc')
 gg_treemap_CatCatNum(data, colorScale = 'continuous')
 gg_treemap_CatCatNum(data, colorScale = 'continuous', showLegend = F)
 gg_treemap_CatCatNum(data,
@@ -92,3 +92,9 @@ gg_treemap_CatCatNum(data,
                      showText = F,
                      colorGroup = '#cccccc',
                      colorText = c('#ffffff'))
+
+data <- sampleData('Cat-Cat')
+gg_treemap_CatCat(data)
+
+data <- sampleData('Cat-NumP')
+gg_treemap_CatNumP(data)

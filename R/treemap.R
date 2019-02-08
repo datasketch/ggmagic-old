@@ -306,6 +306,8 @@ gg_treemap_CatNumP <- function(data,
                                agg = "sum",
                                colors = NULL,
                                colorScale = 'discrete',
+                               colorGroup = 'transparent',
+                               colorText = c('#212428', '#FFFFFF'),
                                dropNaV = c(FALSE, FALSE),
                                format = c("", ""),
                                labelWrapV = c(12, 12),
@@ -315,12 +317,7 @@ gg_treemap_CatNumP <- function(data,
                                showText = TRUE,
                                showLegend = TRUE,
                                legendPosition = c("right", "bottom"),
-                               theme = NULL,
-                               tooltip = list("headerFormat" = NULL,
-                                              "pointFormat" = NULL,
-                                              "shared" = NULL),
-                               export = FALSE,
-                               lang = 'es', ...) {
+                               theme = NULL, ...) {
 
   data <- data %>% gather("Categories", "Conteo", names(data)[-1])
   gg_treemap_CatCatNum(data = data, title = title,subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV, format = format, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
