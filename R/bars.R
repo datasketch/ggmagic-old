@@ -125,7 +125,7 @@ gg_bar_CatNum <- function(data,
       coord_flip()
 
     if (is.null(theme)) {
-      gg <- gg %>% tma()
+      gg <- gg + tma()
     } else {
       gg <- gg + theme
     }
@@ -383,7 +383,7 @@ gg_bar_CatCatNum <- function(data,
 
 
   if (is.null(theme)) {
-    gg <- gg %>% tma()
+    gg <- gg + tma()
   } else {
     gg <- gg + theme
   }
