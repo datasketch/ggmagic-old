@@ -10,7 +10,7 @@ gg_bar_CatNum(data, title = NULL, subtitle = NULL, caption = NULL,
   colorScale = "no", dropNa = FALSE, format = c("", ""),
   highlightValue = NULL, highlightValueColor = NULL,
   labelRatio = 0.1, labelWrap = 12, marks = c(".", ","),
-  nDigits = 0, order = NULL, orientation = "ver",
+  nDigits = NULL, order = NULL, orientation = "ver",
   percentage = FALSE, sort = "no", sliceN = NULL, showText = TRUE,
   theme = NULL, ...)
 }

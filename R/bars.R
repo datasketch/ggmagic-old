@@ -30,7 +30,7 @@ gg_bar_CatNum <- function(data,
                           labelRatio = 0.1,
                           labelWrap = 12,
                           marks = c(".", ","),
-                          nDigits = 0,
+                          nDigits = NULL,
                           order = NULL,
                           orientation = "ver",
                           percentage = FALSE,
@@ -60,12 +60,18 @@ gg_bar_CatNum <- function(data,
     d <- d %>%
     tidyr::drop_na()
 
+  if (is.null(nDigits)) {
+    nDig <- 0
+  } else {
+    nDig <- nDigits
+  }
+
     d <- d  %>%
       tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                              b = NA)) %>%
       dplyr::group_by(a) %>%
-      dplyr::summarise(b = agg(agg, b)) %>%
-      dplyr::mutate(percent = b * 100 / sum(b, na.rm = TRUE))
+      dplyr::summarise(b = round(agg(agg, b)), nDig) %>%
+      dplyr::mutate(percent = round(b * 100 / sum(b, na.rm = TRUE), nDig))
 
     d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
     d <- orderCategory(d, "a", orientation, order, labelWrap)
@@ -93,10 +99,10 @@ gg_bar_CatNum <- function(data,
                                    format(d[[ifelse(percentage, "percent", "b")]],
                                           big.mark = marks[1],
                                           decimal.mark = marks[2],
-                                          digits = nDigits,
-                                          nsmall = nDigits),
+                                          nsmall = nDig),
                                    format[2])),
                 check_overlap = TRUE,
+                size = 3,
                 color = ifelse(showText, colorText, "transparent")) +
       labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
       scale_fill_manual(values = fillCol) +
@@ -104,8 +110,7 @@ gg_bar_CatNum <- function(data,
                                                       format(x,
                                                              big.mark = marks[1],
                                                              decimal.mark = marks[2],
-                                                             digits = nDigits,
-                                                             nsmall = nDigits),
+                                                             nsmall = nDig),
                                                       format[2])) +
       theme_ds() +
       theme(legend.position = "none",
@@ -197,33 +202,6 @@ gg_bar_Cat <- function(data,
                       theme = theme, ...)
   gg
 }
-
-#' Bar (years, numbers)
-#'
-#' Compare quantities over years
-#'
-#' @param data A data.frame
-#' @return Ggplot2 visualization
-#' @section ctypes:
-#' Yea-Num
-#' @examples
-#' gg_bar_YeaNum(sampleData("Yea-Num", nrow = 10))
-#' @export gg_bar_YeaNum
-gg_bar_YeaNum <- gg_bar_CatNum
-
-
-#' Bar (dates, numbers)
-#'
-#' Compare quantities over dates
-#'
-#' @param data A data.frame
-#' @return Ggplot2 visualization
-#' @section ctypes:
-#' Dat-Num
-#' @examples
-#' gg_bar_DatNum(sampleData("Dat-Num", nrow = 10))
-#' @export gg_bar_DatNum
-gg_bar_DatNum <- gg_bar_CatNum
 
 
 
@@ -462,32 +440,6 @@ gg_bar_CatCat <- function(data,
 }
 
 
-#' Bar (catrgories, years, numbers)
-#'
-#' Compare quantities among categories over years
-#'
-#' @param data A data.frame
-#' @return Ggplot2 visualization
-#' @section ctypes:
-#' Cat-Yea-Num
-#' @examples
-#' gg_bar_CatYeaNum(sampleData("Cat-Yea-Num", nrow = 10))
-#' @export gg_bar_CatYeaNum
-gg_bar_CatYeaNum <- gg_bar_CatCatNum
-
-
-#' Bar (dates, numbers)
-#'
-#' Compare quantities among categories over dates
-#'
-#' @param data A data.frame
-#' @return Ggplot2 visualization
-#' @section ctypes:
-#' Cat-Dat-Num
-#' @examples
-#' gg_bar_CatDatNum(sampleData("Cat-Dat-Num", nrow = 10))
-#' @export gg_bar_CatDatNum
-gg_bar_CatDatNum <- gg_bar_CatCatNum
 
 
 #' Bar (ordered category, n numbers)

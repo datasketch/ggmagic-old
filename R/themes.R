@@ -179,3 +179,31 @@ theme_ds <- function(...){
 
 
 
+tma <- function ( background = 'transparent',
+                  bordercolor = 'transparent',
+                  colores = NULL,
+                  fontFamily = 'Ubuntu',
+                  fontSize = 11,
+                  marginBottom = 0,
+                  marginLeft = 0,
+                  marginRight = 0,
+                  marginTop = 0,
+                  plotBackgroundColor = "transparent",
+                  plotBorderColor = "#cccccc",
+                  plotBorderWidth = 1,
+                  gridColor =  "#cccccc") {
+
+  theme(plot.background = element_rect(fill = background, colour = background),
+        panel.background = element_rect(fill = plotBackgroundColor),
+        panel.border = element_rect(size = plotBorderWidth, fill = 'transparent', colour = plotBorderColor),
+        text = element_text(size = fontSize,  family = fontFamily,  colour = 'red'),
+        plot.margin = margin(marginTop, marginRight, marginBottom, marginLeft),
+        panel.grid.major = element_line(colour = gridColor),
+        panel.grid.minor = element_blank(),
+        axis.ticks = element_line(colour = '#cccccc'),
+        axis.line.x = element_line(colour = '#cccccc'),
+        axis.line.y = element_line(colour ='#cccccc'),
+        axis.text = element_text(size = (fontSize-2), family = fontFamily)
+  )
+}
+
