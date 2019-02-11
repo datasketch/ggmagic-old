@@ -37,6 +37,7 @@ gg_bar_CatNum <- function(data,
                           sort = "no",
                           sliceN = NULL,
                           showText = TRUE,
+                          sizeText = 3,
                           theme = NULL, ...) {
   f <- fringe(data)
   nms <- getClabels(f)
@@ -102,7 +103,7 @@ gg_bar_CatNum <- function(data,
                                           nsmall = nDig),
                                    format[2])),
                 check_overlap = TRUE,
-                size = 3,
+                size = sizeText,
                 color = ifelse(showText, colorText, "transparent")) +
       labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
       scale_fill_manual(values = fillCol) +
@@ -157,13 +158,14 @@ gg_bar_Cat <- function(data,
                        labelRatio = 0.1,
                        labelWrap = 12,
                        marks = c(".", ","),
-                       nDigits = 0,
+                       nDigits = NULL,
                        order = NULL,
                        orientation = "ver",
                        percentage = FALSE,
                        sort = "no",
                        sliceN = NULL,
                        showText = TRUE,
+                       sizeText = 3,
                        theme = NULL, ...) {
 
   data <- data %>%
@@ -199,6 +201,7 @@ gg_bar_Cat <- function(data,
                       sort = sort,
                       sliceN = sliceN,
                       showText = showText,
+                      sizeText = sizeText,
                       theme = theme, ...)
   gg
 }
@@ -244,6 +247,7 @@ gg_bar_CatCatNum <- function(data,
                              orientation = "ver",
                              percentage = FALSE,
                              showText = TRUE,
+                             sizeText = 3,
                              theme = NULL, ...) {
   f <- fringe(data)
   nms <- getClabels(f)
@@ -300,6 +304,14 @@ gg_bar_CatCatNum <- function(data,
     format[2] <- "%"
   }
 
+
+  if (is.null(nDigits)) {
+    nDig <- 0
+  } else {
+    nDig <- nDigits
+  }
+
+
   gg <- ggplot(d, aes(x = b, y = d[[ifelse(percentage, "percent", "c")]], fill = a)) +
     geom_bar(stat = "identity", position = ifelse(graphType == "stacked", "stack", "dodge")) +
     geom_vline(xintercept = lineXY[2],
@@ -319,8 +331,8 @@ gg_bar_CatCatNum <- function(data,
                                                    format(x,
                                                           big.mark = marks[1],
                                                           decimal.mark = marks[2],
-                                                          digits = nDigits,
-                                                          nsmall = nDigits),
+                                                          digits = nDig,
+                                                          nsmall = nDig),
                                                    format[2])) +
     theme_ds() +
     theme(legend.position = legendPosition,
@@ -333,10 +345,11 @@ gg_bar_CatCatNum <- function(data,
                                    format(d[[ifelse(percentage, "percent", "c")]],
                                           big.mark = marks[1],
                                           decimal.mark = marks[2],
-                                          digits = nDigits,
-                                          nsmall = nDigits),
+                                          digits = nDig,
+                                          nsmall = nDig),
                                    format[2])),
                 check_overlap = TRUE,
+                sizeText = sizeText,
                 color = ifelse(showText, colorText, "transparent"),
                 position = position_stack(vjust = labelRatio))
   } else {
@@ -346,10 +359,11 @@ gg_bar_CatCatNum <- function(data,
                                    format(d[[ifelse(percentage, "percent", "c")]],
                                           big.mark = marks[1],
                                           decimal.mark = marks[2],
-                                          digits = nDigits,
-                                          nsmall = nDigits),
+                                          digits = nDig,
+                                          nsmall = nDig),
                                    format[2])),
                 check_overlap = TRUE,
+                sizeText = sizeText,
                 color = ifelse(showText, colorText, "transparent"),
                 position = position_dodge(width = 1))
   }
@@ -401,6 +415,7 @@ gg_bar_CatCat <- function(data,
                           orientation = "ver",
                           percentage = FALSE,
                           showText = TRUE,
+                          sizeText = 3,
                           theme = NULL, ...) {
   data <- data %>%
     dplyr::group_by_all() %>%
@@ -435,6 +450,7 @@ gg_bar_CatCat <- function(data,
                          orientation = orientation,
                          percentage = percentage,
                          showText = showText,
+                         sizeText = sizeText,
                          theme = theme, ...)
   gg
 }
@@ -481,6 +497,7 @@ gg_bar_CatNumP <- function(data,
                            orientation = "ver",
                            percentage = FALSE,
                            showText = TRUE,
+                           sizeText = 3,
                            theme = NULL, ...) {
 
   data <- data %>%
@@ -513,6 +530,7 @@ gg_bar_CatNumP <- function(data,
                          orientation = orientation,
                          percentage = percentage,
                          showText = showText,
+                         sizeText = sizeText,
                          theme = theme, ...)
   gg
 }
