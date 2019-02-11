@@ -123,6 +123,13 @@ gg_bar_CatNum <- function(data,
     if (orientation == "hor")
       gg <- gg +
       coord_flip()
+
+    if (is.null(theme)) {
+      gg <- gg %>% tma()
+    } else {
+      gg <- gg + theme
+    }
+
     gg
 }
 
@@ -373,6 +380,14 @@ gg_bar_CatCatNum <- function(data,
   if (orientation == "hor")
     gg <- gg +
     coord_flip()
+
+
+  if (is.null(theme)) {
+    gg <- gg %>% tma()
+  } else {
+    gg <- gg + theme
+  }
+
   gg
 }
 
