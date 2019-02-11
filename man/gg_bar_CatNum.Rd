@@ -12,7 +12,7 @@ gg_bar_CatNum(data, title = NULL, subtitle = NULL, caption = NULL,
   labelRatio = 0.1, labelWrap = 12, marks = c(".", ","),
   nDigits = NULL, order = NULL, orientation = "ver",
   percentage = FALSE, sort = "no", sliceN = NULL, showText = TRUE,
-  theme = NULL, ...)
+  sizeText = 3, theme = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}

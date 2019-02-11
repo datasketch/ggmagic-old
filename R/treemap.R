@@ -159,7 +159,7 @@ gg_treemap_Cat <-  function(data,
 #' @section ctypes:
 #' Cat-Cat-Num, Cat-Yea-Num, Cat-Dat-Num,
 #' @examples
-#' gg_treemap_CatNum(sampleData("Cat-Cat-Num", nrow = 10))
+#' gg_treemap_CatCatNum(sampleData("Cat-Cat-Num", nrow = 10))
 #' @export gg_treemap_CatCatNum
 
 gg_treemap_CatCatNum <- function(data,

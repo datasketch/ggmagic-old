@@ -11,7 +11,8 @@ gg_bar_CatCat(data, title = NULL, subtitle = NULL, caption = NULL,
   graphType = "grouped", labelRatio = 0.5, labelWrapV = c(12, 12),
   legendPosition = "right", legendTitle = NULL, marks = c(".", ","),
   nDigits = 0, order1 = NULL, order2 = NULL, orientation = "ver",
-  percentage = FALSE, showText = TRUE, theme = NULL, ...)
+  percentage = FALSE, showText = TRUE, sizeText = 3, theme = NULL,
+  ...)
 }
 \arguments{
 \item{data}{A data.frame}
