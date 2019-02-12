@@ -178,12 +178,13 @@ theme_ds <- function(...){
 }
 
 
-
+#' @export
 tma <- function ( background = 'transparent',
                   bordercolor = 'transparent',
                   colores = NULL,
                   fontFamily = 'Ubuntu',
                   fontSize = 11,
+                  fontColor = '#666666',
                   marginBottom = 0,
                   marginLeft = 0,
                   marginRight = 0,
@@ -191,12 +192,17 @@ tma <- function ( background = 'transparent',
                   plotBackgroundColor = "transparent",
                   plotBorderColor = "#cccccc",
                   plotBorderWidth = 1,
-                  gridColor =  "#cccccc") {
+                  gridColor =  "#cccccc",
+                  angleTicks = 0) {
 
   theme(plot.background = element_rect(fill = background, colour = background),
         panel.background = element_rect(fill = plotBackgroundColor),
         panel.border = element_rect(size = plotBorderWidth, fill = 'transparent', colour = plotBorderColor),
-        text = element_text(size = fontSize,  family = fontFamily,  colour = 'red'),
+        text = element_text(size = fontSize,  family = fontFamily),
+        axis.title.x = element_text(colour = fontColor), #color label eje x
+        axis.title.y = element_text(colour = fontColor),
+        axis.text.x = element_text(color = fontColor, size = fontSize, angle= angleTicks),
+        axis.text.y = element_text(color = fontColor, size = fontSize, angle= angleTicks),
         plot.margin = margin(marginTop, marginRight, marginBottom, marginLeft),
         panel.grid.major = element_line(colour = gridColor),
         panel.grid.minor = element_blank(),
