@@ -118,10 +118,11 @@ gg_line_CatNum <- function(data,
     theme_ds() +
     theme(legend.position = "none",
           plot.caption = element_text(hjust = 1))
-  ### FECHAAA
-  # if (f$getCtypes()[1] == "Dat")
-  #   gg <- gg +
-  #   scale_x_date(labels = date_format("%Y-%m-%d"))
+  if (is.null(theme)) {
+    gg <- gg + tma()
+  } else {
+    gg <- gg + theme
+  }
   if (orientation == "hor")
     gg <- gg +
     coord_flip()
@@ -172,13 +173,17 @@ gg_line_Cat <- function(data,
                         startAtZero = TRUE,
                         theme = NULL, ...) {
 
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
 
-  data <- data %>%
+  d <- d %>%
     dplyr::group_by_all() %>%
     dplyr::summarise(b = n())
 
-  names(data)[2] <- paste0("count", names(data[1]))
-  gg <- gg_line_CatNum(data,
+  names(d) <- c(f$dic_$d$label, paste0("count ", f$dic_$d$label))
+
+  gg <- gg_line_CatNum(data = d,
                        title = title,
                        subtitle = subtitle,
                        caption = caption,
@@ -213,34 +218,6 @@ gg_line_Cat <- function(data,
   gg
 }
 
-
-
-#' Lines (years, numbers)
-#'
-#' Compare quantities over years
-#'
-#' @param data A data.frame
-#' @return Ggplot2 visualization
-#' @section ctypes:
-#' Cat-Num, Dat-Num, Yea-Num
-#' @examples
-#' gg_line_YeaNum(sampleData("Yea-Num", nrow = 10))
-#' @export gg_line_YeaNum
-gg_line_YeaNum <- gg_line_CatNum
-
-
-#' Lines (dates, numbers)
-#'
-#' Compare quantities over dates
-#'
-#' @param data A data.frame
-#' @return Ggplot2 visualization
-#' @section ctypes:
-#' Cat-Num, Dat-Num, Yea-Num
-#' @examples
-#' gg_line_DatNum(sampleData("Dat-Num", nrow = 10))
-#' @export gg_line_DatNum
-gg_line_DatNum <- gg_line_CatNum
 
 
 #' Lines (categories, ordered categories, numbers)
@@ -367,10 +344,11 @@ gg_line_CatCatNum <- function(data,
     theme_ds() +
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
-
-  # if (f$getCtypes()[1] == "Dat")
-  #   gg <- gg +
-  #   scale_x_date(labels = date_format("%Y-%m-%d"))
+  if (is.null(theme)) {
+    gg <- gg + tma()
+  } else {
+    gg <- gg + theme
+  }
   if (orientation == "hor")
     gg <- gg +
     coord_flip()
@@ -421,12 +399,18 @@ gg_line_CatCat <- function(data,
                            theme = NULL, ...) {
 
 
-  data <- data %>%
-    dplyr::group_by_all() %>%
-    dplyr::summarise(b = n())
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
 
-  names(data)[2] <- paste0("count", names(data[1]))
-  gg <- gg_line_CatCatNum(data,
+  d <- d %>%
+    dplyr::group_by_all() %>%
+    dplyr::summarise(c = n())
+
+  names(d) <- c(f$dic_$d$label, paste0("count", f$dic_$d$label[1]))
+
+
+  gg <- gg_line_CatCatNum(data = d,
                           title = title,
                           subtitle = subtitle,
                           caption = caption,
@@ -458,34 +442,6 @@ gg_line_CatCat <- function(data,
                           theme = theme, ...)
   gg
 }
-
-
-#' Lines (catrgories, years, numbers)
-#'
-#' Compare quantities among categories over years
-#'
-#' @param data A data.frame
-#' @return Ggplot2 visualization
-#' @section ctypes:
-#' Cat-Yea-Num
-#' @examples
-#' gg_line_CatYeaNum(sampleData("Cat-Yea-Num", nrow = 10))
-#' @export gg_line_CatYeaNum
-gg_line_CatYeaNum <- gg_line_CatCatNum
-
-
-#' Lines (catrgories, dates, numbers)
-#'
-#' Compare quantities among categories over dates
-#'
-#' @param data A data.frame
-#' @return Ggplot2 visualization
-#' @section ctypes:
-#' Cat-Dat-Num
-#' @examples
-#' gg_line_CatDatNum(sampleData("Cat-Dat-Num", nrow = 10))
-#' @export gg_line_CatDatNum
-gg_line_CatDatNum <- gg_line_CatCatNum
 
 
 #' Lines (ordered category, n numbers)
@@ -530,8 +486,13 @@ gg_line_CatNumP <- function(data,
                             startAtZero = TRUE,
                             theme = NULL, ...) {
 
-  data <- data %>%
-    gather("categories", "count", names(data)[-1])
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
+  names(d) <- f$dic_$d$label
+
+  data <- d %>%
+    gather("categories", "count", names(d)[-1])
   gg <- gg_line_CatCatNum(data,
                          title = title,
                          subtitle = subtitle,

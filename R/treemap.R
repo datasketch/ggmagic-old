@@ -100,7 +100,11 @@ gg_treemap_CatNum <-  function(data,
     scale_fill_manual(values = fillCol) +
     labs(title = title, subtitle = subtitle, caption = caption, fill = "")
 
-
+  if (is.null(theme)) {
+    g <- g + tma()
+  } else {
+    g <- g + theme
+  }
   g
 }
 
@@ -137,14 +141,17 @@ gg_treemap_Cat <-  function(data,
                             legendPosition = c("left", "bottom"),
                             theme = NULL,
                             ...) {
-  nameD <- paste0('Count ', names(data))
-  data <- data  %>%
-    dplyr::group_by_(names(data)) %>%
-    dplyr::summarise(Conteo = n())
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
 
-  data <- plyr::rename(data, c('Conteo' = nameD))
+  d <- d %>%
+    dplyr::group_by_all() %>%
+    dplyr::summarise(b = n())
 
-  g <- gg_treemap_CatNum(data = data, title = title, subtitle = subtitle, caption = caption,labelWrap = labelWrap, colors = colors, colorScale = colorScale, agg = agg,marks = marks,nDigits = nDigits,dropNa = dropNa, highlightValueColor = highlightValueColor,percentage = percentage,format = format, highlightValue = highlightValue,sliceN = sliceN, showText = showText, showLegend = showLegend, legendPosition = legendPosition, theme = theme,...)
+  names(d) <- c(f$dic_$d$label, paste0("count ", f$dic_$d$label))
+
+  g <- gg_treemap_CatNum(data = d, title = title, subtitle = subtitle, caption = caption,labelWrap = labelWrap, colors = colors, colorScale = colorScale, agg = agg,marks = marks,nDigits = nDigits,dropNa = dropNa, highlightValueColor = highlightValueColor,percentage = percentage,format = format, highlightValue = highlightValue,sliceN = sliceN, showText = showText, showLegend = showLegend, legendPosition = legendPosition, theme = theme,...)
   g
 }
 
@@ -236,6 +243,11 @@ gg_treemap_CatCatNum <- function(data,
     scale_fill_manual(values = fillCol) +
     labs(title = title, subtitle = subtitle, caption = caption, fill = "")
 
+  if (is.null(theme)) {
+    g <- g + tma()
+  } else {
+    g <- g + theme
+  }
 
   g
 
@@ -276,12 +288,16 @@ gg_treemap_CatCat <- function(data,
                               legendPosition = c("right", "bottom"),
                               theme = NULL, ...) {
 
-  datN <- names(data)
-  data <- data %>%
-    dplyr::group_by_(datN[1], datN[2]) %>%
-    dplyr::summarise(Conteo = n())
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
 
-  gg_treemap_CatCatNum(data = data, title = title,subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV, format = format, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
+  d <- d %>%
+    dplyr::group_by_all() %>%
+    dplyr::summarise(c = n())
+
+  names(d) <- c(f$dic_$d$label, paste0("count", f$dic_$d$label[1]))
+  gg_treemap_CatCatNum(data = d, title = title,subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV, format = format, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
 }
 
 
@@ -319,7 +335,13 @@ gg_treemap_CatNumP <- function(data,
                                legendPosition = c("right", "bottom"),
                                theme = NULL, ...) {
 
-  data <- data %>% gather("Categories", "Conteo", names(data)[-1])
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
+  names(d) <- f$dic_$d$label
+
+  data <- d %>%
+    gather("categories", "count", names(d)[-1])
   gg_treemap_CatCatNum(data = data, title = title,subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV, format = format, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
 
 }

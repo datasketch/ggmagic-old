@@ -175,12 +175,17 @@ gg_bar_Cat <- function(data,
                        sizeText = 3,
                        theme = NULL, ...) {
 
-  data <- data %>%
+
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
+
+  d <- d %>%
     dplyr::group_by_all() %>%
     dplyr::summarise(b = n())
 
-  names(data)[2] <- paste0("count", names(data[1]))
-  gg <- gg_bar_CatNum(data,
+  names(d) <- c(f$dic_$d$label, paste0("count ", f$dic_$d$label))
+  gg <- gg_bar_CatNum(data = d,
                       title = title,
                       subtitle = subtitle,
                       caption = caption,
@@ -432,12 +437,17 @@ gg_bar_CatCat <- function(data,
                           showText = TRUE,
                           sizeText = 3,
                           theme = NULL, ...) {
-  data <- data %>%
-    dplyr::group_by_all() %>%
-    dplyr::summarise(b = n())
 
-  names(data)[2] <- paste0("count", names(data)[1])
-  gg <- gg_bar_CatCatNum(data,
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
+
+  d <- d %>%
+    dplyr::group_by_all() %>%
+    dplyr::summarise(c = n())
+
+  names(d) <- c(f$dic_$d$label, paste0("count", f$dic_$d$label[1]))
+  gg <- gg_bar_CatCatNum(data = d,
                          title = title,
                          subtitle = subtitle,
                          caption = caption,
@@ -515,8 +525,13 @@ gg_bar_CatNumP <- function(data,
                            sizeText = 3,
                            theme = NULL, ...) {
 
-  data <- data %>%
-    gather("categories", "count", names(data)[-1])
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
+  names(d) <- f$dic_$d$label
+
+  data <- d %>%
+    gather("categories", "count", names(d)[-1])
   gg <- gg_bar_CatCatNum(data,
                          title = title,
                          subtitle = subtitle,

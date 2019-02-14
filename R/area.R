@@ -119,6 +119,13 @@ gg_area_CatNum <- function(data,
     theme_ds() +
     theme(legend.position = "none",
           plot.caption = element_text(hjust = 1))
+
+  if (is.null(theme)) {
+    gg <- gg + tma()
+  } else {
+    gg <- gg + theme
+  }
+
   if (orientation == "hor")
     gg <- gg +
     coord_flip()
@@ -167,13 +174,17 @@ gg_area_Cat <- function(data,
                         startAtZero = TRUE,
                         theme = NULL, ...) {
 
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
 
-  data <- data %>%
+  d <- d %>%
     dplyr::group_by_all() %>%
     dplyr::summarise(b = n())
 
-  names(data)[2] <- paste0("count", names(data[1]))
-  gg <- gg_area_CatNum(data,
+  names(d) <- c(f$dic_$d$label, paste0("count ", f$dic_$d$label))
+
+  gg <- gg_area_CatNum(data = d,
                        title = title,
                        subtitle = subtitle,
                        caption = caption,
@@ -206,36 +217,6 @@ gg_area_Cat <- function(data,
                        theme = theme, ...)
   gg
 }
-
-
-
-#' Area (years, numbers)
-#'
-#' Compare quantities over years
-#'
-#' @param data A data.frame
-#' @return Ggplot visualization
-#' @section ctypes:
-#' Yea-Num
-#' @examples
-#' gg_area_YeaNum(sampleData("Yea-Num", nrow = 10))
-#' @export gg_area_YeaNum
-gg_area_YeaNum <- gg_area_CatNum
-
-
-#' Area (dates, numbers)
-#'
-#' Compare quantities over dates
-#'
-#' @param data A data.frame
-#' @return Ggplot visualization
-#' @section ctypes:
-#' Dat-Num
-#' @examples
-#' gg_area_DatNum(sampleData("Dat-Num", nrow = 10))
-#' @export gg_area_DatNum
-gg_area_DatNum <- gg_area_CatNum
-
 
 
 #' Area (categories, ordered categories, numbers)
@@ -395,10 +376,12 @@ gg_area_CatCatNum <- function(data,
                 color = ifelse(showText, colorText, "transparent"))
   }
 
+  if (is.null(theme)) {
+    gg <- gg + tma()
+  } else {
+    gg <- gg + theme
+  }
 
-  # if (f$getCtypes()[1] == "Dat")
-  #   gg <- gg +
-  #   scale_x_date(labels = date_format("%Y-%m-%d"))
   if (orientation == "hor")
     gg <- gg +
     coord_flip()
@@ -450,12 +433,17 @@ gg_area_CatCat <- function(data,
                            spline = FALSE,
                            startAtZero = TRUE,
                            theme = NULL, ...) {
-  data <- data %>%
-    dplyr::group_by_all() %>%
-    dplyr::summarise(b = n())
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
 
-  names(data)[2] <- paste0("count", names(data)[1])
-  gg <- gg_area_CatCatNum(data,
+  d <- d %>%
+    dplyr::group_by_all() %>%
+    dplyr::summarise(c = n())
+
+  names(d) <- c(f$dic_$d$label, paste0("count", f$dic_$d$label[1]))
+
+  gg <- gg_area_CatCatNum(data = d,
                           title = title,
                           subtitle = subtitle,
                           caption = caption,
@@ -490,35 +478,6 @@ gg_area_CatCat <- function(data,
                           theme = theme, ...)
   gg
 }
-
-
-#' Area (catrgories, years, numbers)
-#'
-#' Compare quantities among categories over years
-#'
-#' @param data A data.frame
-#' @return Ggplot2 visualization
-#' @section ctypes:
-#' Cat-Yea-Num
-#' @examples
-#' gg_area_CatYeaNum(sampleData("Cat-Yea-Num", nrow = 10))
-#' @export gg_area_CatYeaNum
-gg_area_CatYeaNum <- gg_area_CatCatNum
-
-
-
-#' Area (dates, numbers)
-#'
-#' Compare quantities among categories over dates
-#'
-#' @param data A data.frame
-#' @return Ggplot2 visualization
-#' @section ctypes:
-#' Cat-Dat-Num
-#' @examples
-#' gg_area_CatDatNum(sampleData("Cat-Dat-Num", nrow = 10))
-#' @export gg_area_CatDatNum
-gg_area_CatDatNum <- gg_area_CatCatNum
 
 
 #' Area (ordered category, n numbers)
@@ -565,9 +524,14 @@ gg_area_CatNumP <- function(data,
                             spline = FALSE,
                             startAtZero = TRUE,
                             theme = NULL, ...) {
+  data <- sampleData("Cat-Num-Num")
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
+  names(d) <- f$dic_$d$label
 
-  data <- data %>%
-    gather("categories", "count", names(data)[-1])
+  data <- d %>%
+    gather("categories", "count", names(d)[-1])
   gg <- gg_area_CatCatNum(data,
                           title = title,
                           subtitle = subtitle,

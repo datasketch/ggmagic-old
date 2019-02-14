@@ -99,6 +99,13 @@ gg_pie_CatNum <- function(data,
     theme_ds_clean() +
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
+
+  if (is.null(theme)) {
+    gg <- gg + tma()
+  } else {
+    gg <- gg + theme
+  }
+
   gg
 }
 
@@ -121,7 +128,7 @@ gg_pie_Cat <- function(data,
                        caption = NULL,
                        colors = NULL,
                        colorText = "black",
-                       colorScale = "no",
+                       colorScale = "discrete",
                        dropNa = FALSE,
                        format = c("", ""),
                        labelRatio = 0.1,
@@ -137,13 +144,17 @@ gg_pie_Cat <- function(data,
                        sliceN = NULL,
                        showText = TRUE,
                        theme = NULL, ...) {
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
 
-  data <- data %>%
+  d <- d %>%
     dplyr::group_by_all() %>%
     dplyr::summarise(b = n())
 
-  names(data)[2] <- paste0("count", names(data[1]))
-  gg <- gg_pie_CatNum(data,
+  names(d) <- c(f$dic_$d$label, paste0("count ", f$dic_$d$label))
+
+  gg <- gg_pie_CatNum(data = d,
                       title = title,
                       subtitle = subtitle,
                       caption = caption,
@@ -275,6 +286,12 @@ gg_donut_CatNum <- function(data,
     theme_ds_clean() +
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
+
+  if (is.null(theme)) {
+    gg <- gg + tma()
+  } else {
+    gg <- gg + theme
+  }
   gg
 }
 
@@ -297,7 +314,7 @@ gg_donut_Cat <- function(data,
                          caption = NULL,
                          colors = NULL,
                          colorText = "black",
-                         colorScale = "no",
+                         colorScale = "discrete",
                          dropNa = FALSE,
                          format = c("", ""),
                          labelRatio = 0.1,
@@ -314,12 +331,17 @@ gg_donut_Cat <- function(data,
                          showText = TRUE,
                          theme = NULL, ...) {
 
-  data <- data %>%
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
+
+  d <- d %>%
     dplyr::group_by_all() %>%
     dplyr::summarise(b = n())
 
-  names(data)[2] <- paste0("count", names(data[1]))
-  gg <- gg_donut_CatNum(data,
+  names(d) <- c(f$dic_$d$label, paste0("count ", f$dic_$d$label))
+
+  gg <- gg_donut_CatNum(data = d,
                         title = title,
                         subtitle = subtitle,
                         caption = caption,
