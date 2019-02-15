@@ -193,7 +193,7 @@ tma <- function ( background = 'transparent',
                   plotBorderColor = "#cccccc",
                   plotBorderWidth = 1,
                   gridColor =  "#cccccc",
-                  angleTicks = 0) {
+                  angleTicks = 0, ...) {
 
   theme(plot.background = element_rect(fill = background, colour = background),
         panel.background = element_rect(fill = plotBackgroundColor),

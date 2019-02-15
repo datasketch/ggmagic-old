@@ -57,6 +57,8 @@ gg_treemap_CatNum <-  function(data,
                            b = NA)) %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(b = agg(agg, b))
+  d$a <- as.character(d$a)
+  d$a[is.na(d$a)] <- 'NA'
 
 
 
@@ -210,6 +212,7 @@ gg_treemap_CatCatNum <- function(data,
 
   d <- d %>% drop_na(c)
 
+
   if (percentage) {
     d <- d %>% group_by(b) %>%
       dplyr::mutate(c = (c / sum(c, na.rm = TRUE)) * 100)
@@ -218,7 +221,7 @@ gg_treemap_CatCatNum <- function(data,
   d <- orderCategory(d, "a", "ver", unique(d$a), labelWrapV[1])
   d <- orderCategory(d, "b", "ver", unique(d$b), labelWrapV[2])
 
-  fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
+  fillCol <- fillColors(d, "b", colors, colorScale, NULL, NULL, labelWrapV[1])
 
   if (showText) {
     d$label <- paste0(d$a, "\n", format[1] ,format(d$c,  big.mark = marks[1], decimal.mark = marks[2]), format[2])
@@ -226,7 +229,7 @@ gg_treemap_CatCatNum <- function(data,
     d$label <- ""
   }
 
-  g <- ggplot(d, aes(area = c, fill = a, subgroup = b, label = label)) +
+  g <- ggplot(d, aes(area = c, fill = b, subgroup = b, label = label)) +
     treemapify::geom_treemap() +
     geom_treemap_subgroup_border(color = colorGroup) +
     geom_treemap_subgroup_text(place = "topleft",  colour = colorText[1], min.size = 0, reflow = T, size = 17) +
