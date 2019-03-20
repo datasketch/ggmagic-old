@@ -63,12 +63,15 @@ gg_line_CatNum <- function(data,
     d <- d %>%
     tidyr::drop_na()
 
-  d <- d  %>%
+  d <-  d <- d  %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = NA)) %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(b = agg(agg, b)) %>%
     dplyr::mutate(percent = b * 100 / sum(b, na.rm = TRUE))
+
+  d$a <- as.character(d$a)
+  d$a[is.na(d$a)] <- 'NA'
 
   d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
   d <- orderCategory(d, "a", orientation, order, labelWrap)
@@ -296,7 +299,11 @@ gg_line_CatCatNum <- function(data,
     tidyr::gather(b, c, -a) %>%
     dplyr::mutate(percent = c * 100 / sum(c, na.rm = TRUE))
 
-
+  d$c[is.na(d$c)] <- NA
+  d$a <- as.character(d$a)
+  d$a[is.na(d$a)] <- NA
+  d$b <- as.character(d$b)
+  d$b[is.na(d$b)] <- NA
   d <- orderCategory(d, "a", orientation, order, labelWrapV[1])
   d <- orderCategory(d, "b", orientation, NULL, labelWrapV[2])
   d <- labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
