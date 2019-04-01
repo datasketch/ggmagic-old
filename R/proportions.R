@@ -96,12 +96,12 @@ gg_pie_CatNum <- function(data,
                                                            nsmall = nDigits),
                                                     format[2])) +
     theme_ds() +
-    theme_ds_clean() +
+    #theme_ds_clean() +
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
 
   if (is.null(theme)) {
-    gg <- gg + tma()
+    gg <- gg + tma() + theme_ds_clean()
   } else {
     gg <- gg + theme
   }
@@ -283,12 +283,12 @@ gg_donut_CatNum <- function(data,
                                                            nsmall = nDigits),
                                                     format[2])) +
     theme_ds() +
-    theme_ds_clean() +
+    #theme_ds_clean() +
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
 
   if (is.null(theme)) {
-    gg <- gg + tma()
+    gg <- gg + tma() + theme_ds_clean()
   } else {
     gg <- gg + theme
   }

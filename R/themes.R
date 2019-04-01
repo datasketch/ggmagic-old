@@ -182,16 +182,17 @@ getDefaultTheme <- list(
   colores = NULL,
   fontFamily = 'Ubuntu',
   fontSize = 11,
-  fontColor = '#666666',
+  fontColor = '#5A6B72',
   marginBottom = 0,
   marginLeft = 0,
   marginRight = 0,
   marginTop = 0,
   plotBackgroundColor = "transparent",
-  plotBorderColor = "#cccccc",
+  plotBorderColor = "transparent",
   plotBorderWidth = 1,
   gridColor =  "#cccccc",
-  angleTicks = 0
+  angleTicks = 0,
+  axis_x = list(color = "#5A6B72")
 )
 
 getTheme <- function(theme = NULL){
@@ -215,7 +216,8 @@ tma <- function(custom = NULL, ...) {
 
   custom <- getTheme(theme = custom)
 
-  theme(plot.background = element_rect(fill = custom$background, colour = custom$background),
+  theme(
+        plot.background = element_rect(fill = custom$background, colour = custom$background),
         panel.background = element_rect(fill = custom$plotBackgroundColor),
         panel.border = element_rect(size = custom$plotBorderWidth, fill = 'transparent', colour = custom$plotBorderColor),
         text = element_text(size = custom$fontSize,  family = custom$fontFamily),
@@ -223,13 +225,16 @@ tma <- function(custom = NULL, ...) {
         axis.title.y = element_text(colour = custom$fontColor),
         axis.text.x = element_text(color = custom$fontColor, size = custom$fontSize, angle= custom$angleTicks),
         axis.text.y = element_text(color = custom$fontColor, size = custom$fontSize, angle= custom$angleTicks),
-        plot.margin = margin(custom$marginTop, custom$marginRight, custom$marginBottom, custom$marginLeft),
-        panel.grid.major = element_line(colour = custom$gridColor),
-        panel.grid.minor = element_blank(),
-        axis.ticks = element_line(colour = '#cccccc'),
-        axis.line.x = element_line(colour = '#cccccc'),
-        axis.line.y = element_line(colour ='#cccccc'),
-        axis.text = element_text(size = (custom$fontSize-2), family = custom$fontFamily)
+       #  plot.margin = margin(custom$marginTop, custom$marginRight, custom$marginBottom, custom$marginLeft),
+       panel.grid.major.y = element_line(size = 0.5, linetype = 'dotted',
+                                         colour = "#5A6B72"),
+       panel.grid.major.x = element_line(size = 0.5, linetype = 'solid', colour = "transparent"),
+       panel.grid.minor = element_line(size = 0.5, linetype = 'solid',
+                                       colour = "transparent"),
+        axis.ticks = element_line(colour = 'transparent'),
+        axis.line.x = element_line(colour = custom$axis_x$color) #,
+        #axis.line.y = element_line(colour ='#cccccc'),
+        #axis.text = element_text(size = (custom$fontSize-2), family = custom$fontFamily)
   )
 }
 
