@@ -6,8 +6,8 @@
 \usage{
 gg_area_CatNum(data, title = NULL, subtitle = NULL, caption = NULL,
   horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
-  agg = "sum", colors = NULL, colorText = "black",
-  colorOpacity = 0.6, colorScale = "no", dropNa = FALSE,
+  agg = "sum", colors = NULL, colorText = "#5A6B72",
+  colorOpacity = 0.7, colorScale = "no", dropNa = FALSE,
   format = c("", ""), labelRatio = 1, labelWrap = 12,
   marks = c(".", ","), nDigits = 0, order = NULL,
   orientation = "ver", percentage = FALSE, shapeType = 19,
