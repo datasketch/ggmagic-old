@@ -15,7 +15,7 @@ gg_pie_CatNum <- function(data,
                           caption = NULL,
                           agg = "sum",
                           colors = NULL,
-                          colorText = "black",
+                          colorText = "#5A6B72",
                           colorScale = "discrete",
                           dropNa = FALSE,
                           format = c("", ""),
@@ -94,16 +94,15 @@ gg_pie_CatNum <- function(data,
                                                            decimal.mark = marks[2],
                                                            digits = nDigits,
                                                            nsmall = nDigits),
-                                                    format[2])) +
-    theme_ds() +
-    #theme_ds_clean() +
-    theme(legend.position = legendPosition,
-          plot.caption = element_text(hjust = 1))
+                                                    format[2]))
+  gg <- gg +
+         theme(legend.position = legendPosition,
+           plot.caption = element_text(hjust = 1))
 
   if (is.null(theme)) {
     gg <- gg + tma() + theme_ds_clean()
   } else {
-    gg <- gg + theme
+    gg <- gg + theme + theme_ds_clean()
   }
 
   gg
@@ -127,7 +126,7 @@ gg_pie_Cat <- function(data,
                        subtitle = NULL,
                        caption = NULL,
                        colors = NULL,
-                       colorText = "black",
+                       colorText = "#5A6B72",
                        colorScale = "discrete",
                        dropNa = FALSE,
                        format = c("", ""),
@@ -201,7 +200,7 @@ gg_donut_CatNum <- function(data,
                             caption = NULL,
                             agg = "sum",
                             colors = NULL,
-                            colorText = "black",
+                            colorText = "#5A6B72",
                             colorScale = "discrete",
                             dropNa = FALSE,
                             format = c("", ""),
@@ -282,15 +281,14 @@ gg_donut_CatNum <- function(data,
                                                            digits = nDigits,
                                                            nsmall = nDigits),
                                                     format[2])) +
-    theme_ds() +
-    #theme_ds_clean() +
+
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
 
   if (is.null(theme)) {
     gg <- gg + tma() + theme_ds_clean()
   } else {
-    gg <- gg + theme
+    gg <- gg + theme + theme_ds_clean()
   }
   gg
 }
@@ -313,7 +311,7 @@ gg_donut_Cat <- function(data,
                          subtitle = NULL,
                          caption = NULL,
                          colors = NULL,
-                         colorText = "black",
+                         colorText = "#5A6B72",
                          colorScale = "discrete",
                          dropNa = FALSE,
                          format = c("", ""),

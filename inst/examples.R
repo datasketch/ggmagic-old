@@ -18,6 +18,8 @@ gg_area_CatNum(df,
 
 gg_area_CatNum(df, percentage = TRUE)
 
+gg_area_CatNumP(sampleData("Cat-NumP"))
+
 dfCdn <- sampleData("Cat-Cat-Num")
 gg_area_CatCatNum(dfCdn)
 gg_area_CatCatNum(dfCdn, graphType = "stacked")

@@ -5,7 +5,7 @@
 \title{Pie (categories)}
 \usage{
 gg_pie_Cat(data, title = NULL, subtitle = NULL, caption = NULL,
-  colors = NULL, colorText = "black", colorScale = "discrete",
+  colors = NULL, colorText = "#5A6B72", colorScale = "discrete",
   dropNa = FALSE, format = c("", ""), labelRatio = 0.1,
   labelWrap = 12, legendPosition = "right", legendTitle = NULL,
   marks = c(".", ","), nDigits = 0, order = NULL,

@@ -5,7 +5,7 @@
 \title{Donut (categories, numbers)}
 \usage{
 gg_donut_CatNum(data, title = NULL, subtitle = NULL, caption = NULL,
-  agg = "sum", colors = NULL, colorText = "black",
+  agg = "sum", colors = NULL, colorText = "#5A6B72",
   colorScale = "discrete", dropNa = FALSE, format = c("", ""),
   labelRatio = 0.1, labelWrap = 12, legendPosition = "right",
   legendTitle = NULL, marks = c(".", ","), nDigits = 0,
