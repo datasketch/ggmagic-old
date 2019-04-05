@@ -8,9 +8,9 @@ gg_treemap_CatCatNum(data, title = NULL, subtitle = NULL,
   caption = NULL, agg = "sum", colors = NULL,
   colorScale = "discrete", colorGroup = "transparent",
   colorText = c("#212428", "#FFFFFF"), dropNaV = c(FALSE, FALSE),
-  format = c("", ""), labelWrapV = c(12, 12), marks = c(".", ","),
-  nDigits = NULL, percentage = FALSE, showText = TRUE,
-  showLegend = TRUE, legendPosition = c("right", "bottom"),
+  prefix = NULL, suffix = NULL, labelWrapV = c(12, 12),
+  marks = c(".", ","), nDigits = NULL, percentage = FALSE,
+  showText = TRUE, showLegend = TRUE, legendPosition = "bottom",
   theme = NULL, ...)
 }
 \arguments{

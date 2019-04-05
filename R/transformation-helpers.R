@@ -77,7 +77,7 @@ labelPosition <- function(data, col, labelRatio, percentage = FALSE, zeroToNa = 
   col <- ifelse(percentage, "percent", col)
   half <- data[[col]] - data[[col]] / 2
   small <- half < max(data[[col]] * labelRatio)
-  half[small] <- data[[col]][small] + max(data[[col]]) / 50
+  #half[small] <- data[[col]][small] + max(data[[col]]) / 50
   data$labPos <- half
   # do I want zero labels to be shown?
   if (zeroToNa) {
@@ -160,8 +160,7 @@ dsColorsHex <- function(hex = FALSE) {
     c <- c(0:9, "A", "B", "C", "D", "E", "F")
 
   } else {
-    c <- c("#2E0F35", "#74D1F7", "#B70F7F", "#C2C4C4", "#8097A4",  "#A6CEDE", "#801549",
-           "#FECA84", "#ACD9C2", "#EEF1F2")
+    c <- c("#FECA84", "#3DB26F", "#74D1F7", "#F75E64", "#8097A4", "#B70F7F", "#5D6AE9", "#53255E", "#BDCAD1")
   }
   c
 }

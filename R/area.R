@@ -95,8 +95,8 @@ gg_area_CatNum <- function(data,
 
   d$a <- as.factor(d$a)
 
-  minLim <- min(d[[ifelse(percentage, "percent", "b")]])
-  maxLim <- max(d[[ifelse(percentage, "percent", "b")]]) + 0.3 * max(d[[ifelse(percentage, "percent", "b")]])
+  minLim <- min(d[[ifelse(percentage, "percent", "b")]], na.rm = T)
+  maxLim <- max(d[[ifelse(percentage, "percent", "b")]], na.rm = T) + 0.3 * max(d[[ifelse(percentage, "percent", "b")]], na.rm = T)
   varP <- ifelse(percentage, "percent", "b")
   gg <- ggplot(d, aes(x=a, group = 1, y = d[[varP]], fill = "b")) +
     geom_area(alpha = colorOpacity) +
@@ -122,7 +122,7 @@ gg_area_CatNum <- function(data,
                                                            digits = nDigits,
                                                            nsmall = nDigits),
                                                     suffix),
-                       breaks = seq(ifelse(startAtZero, 0, minLim), maxLim, round(maxLim/7)),
+                       breaks = seq(ifelse(startAtZero, 0, minLim), maxLim, round(maxLim/Lc, 2)),
                        limits = c(ifelse(startAtZero, 0, minLim), maxLim)#c(ifelse(startAtZero, 0, NA), NA)
     ) +
     geom_text(aes(y = labPos,
@@ -149,9 +149,10 @@ gg_area_CatNum <- function(data,
     coord_flip()
   }
 
-  gg + theme(legend.position = "none",
+  gg <- gg + theme(legend.position = "none",
              plot.caption = element_text(hjust = 1),
              axis.text.x = element_text(angle = angleText))
+  gg
 
 }
 
@@ -279,7 +280,7 @@ gg_area_CatCatNum <- function(data,
                               graphType = "grouped",
                               labelRatio = 1.1,
                               labelWrapV = c(12, 12),
-                              legendPosition = "right",
+                              legendPosition = "bottom",
                               legendTitle = NULL,
                               marks = c(".", ","),
                               nDigits = 0,
@@ -305,7 +306,7 @@ gg_area_CatCatNum <- function(data,
   caption <- caption %||% ""
   legendTitle <- legendTitle %||% nms[1]
 
-  prefix_agg <- ifelse(is.null(agg_text), agg, agg_text)
+  prefix_agg <- ifelse(is.null(agg_text), agg, as.character(agg_text))
 
   labelsXY <- orientationXY(orientation,
                             x = nms[2],
@@ -324,13 +325,14 @@ gg_area_CatCatNum <- function(data,
     d <- d %>%
     tidyr::drop_na(which(dropNaV))
 
-  d <- d  %>%
+
+  d <- d %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = ifelse(is.character(d$b), "NA", NA),
                            c = NA)) %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c = agg(agg, c)) %>%
-    tidyr::spread(b, c, fill = 0) %>%
+    tidyr::spread(b, c) %>%
     tidyr::gather(b, c, -a) %>%
     dplyr::mutate(percent = c * 100 / sum(c, na.rm = TRUE))
 
@@ -344,8 +346,14 @@ gg_area_CatCatNum <- function(data,
   d <- orderCategory(d, "a", orientation, order1, labelWrapV[1])
   d <- orderCategory(d, "b", orientation, order2, labelWrapV[2])
 
+  if (graphType == "stacked") {
+    d <- d %>% drop_na(c)
+  }
+
   if (graphType == "grouped") {
-    d <- labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
+    d$z <- d$c
+    d$z[is.na(d$z)] <- 0
+    d <- labelPosition(d, "z", labelRatio, percentage, zeroToNa = TRUE)
   }
 
   fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
@@ -355,12 +363,11 @@ gg_area_CatCatNum <- function(data,
   }
 
   varP <- ifelse(percentage, "percent", "c")
-  minLim <- min(d[[varP]])
-  maxLim <- max(d[[varP]]) + 0.3 * max(d[[varP]])
+  minLim <- min(d[[varP]], na.rm = T)
+  maxLim <- max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T)
 
   gg <- ggplot(d, aes(x = b, y = d[[varP]], colour = a, fill = a, group = a)) +
     geom_area(alpha = colorOpacity, position = ifelse(graphType == "stacked", "stack", "dodge")) +
-    geom_line(position = ifelse(graphType == "stacked", "stack", "dodge")) +
     geom_point(shape = as.integer(shapeType), position = ifelse(graphType == "stacked", "stack", "dodge"), show.legend = FALSE) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
@@ -376,16 +383,19 @@ gg_area_CatCatNum <- function(data,
     scale_colour_manual(values = fillCol,
                         guide = FALSE) +
     scale_fill_manual(values = fillCol,
-                      name = legendTitle) +
-    scale_y_continuous(labels = function(x) paste0(prefix,
+                      name = legendTitle)
+
+  if(graphType != "stacked"){
+   gg <- gg + scale_y_continuous(labels = function(x) paste0(prefix,
                                                    format(x,
                                                           big.mark = marks[1],
                                                           decimal.mark = marks[2],
                                                           digits = nDigits,
                                                           nsmall = nDigits),
                                                    suffix),
-                       breaks = seq(ifelse(startAtZero, 0, minLim), maxLim, round(maxLim/7)),
-                       limits = c(ifelse(startAtZero, 0, minLim), maxLim))
+                                                   breaks = seq(ifelse(startAtZero, 0, minLim), maxLim, round(maxLim/Lc, 2)),
+                                                   limits = c(ifelse(startAtZero, 0, minLim), maxLim))
+  }
 
   if (graphType == "stacked") {
     gg <- gg +
@@ -425,8 +435,11 @@ gg_area_CatCatNum <- function(data,
     coord_flip()
   }
 
-  gg  + theme(plot.caption = element_text(hjust = 1),
-              axis.text.x = element_text(angle = angleText))
+  gg  + theme(axis.text.x = element_text(angle = angleText),
+              legend.position= legendPosition
+             ) +
+    theme_leg() +
+    guides(fill = guide_legend(nrow = 1))
 }
 
 
@@ -462,7 +475,7 @@ gg_area_CatCat <- function(data,
                            graphType = "grouped",
                            labelRatio = 1.1,
                            labelWrapV = c(12, 12),
-                           legendPosition = "right",
+                           legendPosition = "bottom",
                            legendTitle = NULL,
                            marks = c(".", ","),
                            nDigits = 0,
@@ -557,7 +570,7 @@ gg_area_CatNumP <- function(data,
                             graphType = "grouped",
                             labelRatio = 1.1,
                             labelWrapV = c(12, 12),
-                            legendPosition = "right",
+                            legendPosition = "bottom",
                             legendTitle = NULL,
                             marks = c(".", ","),
                             nDigits = 0,
@@ -578,40 +591,40 @@ gg_area_CatNumP <- function(data,
 
   data <- d %>%
     gather("categories", "count", names(d)[-1])
+
   gg <- gg_area_CatCatNum(data,
-                          title = title,
-                          subtitle = subtitle,
-                          caption = caption,
-                          horLabel = horLabel,
-                          verLabel = verLabel,
-                          horLine = horLine,
-                          #horLineLabel = NULL,
-                          verLine = verLine,
-                          #verLineLabel = NULL,
-                          agg = "sum",
-                          agg_text = agg_text,
-                          colors = colors,
-                          colorText = colorText,
-                          colorOpacity = colorOpacity,
-                          colorScale = colorScale,
-                          dropNaV = dropNaV,
-                          prefix = prefix,
-                          suffix = suffix,
-                          graphType = graphType,
-                          labelRatio = labelRatio,
-                          labelWrapV = labelWrapV,
-                          legendPosition = legendPosition,
-                          legendTitle = legendTitle,
-                          marks = marks,
-                          nDigits = nDigits,
-                          order1 = order1,
-                          order2 = order2,
-                          orientation = orientation,
-                          percentage = percentage,
-                          shapeType = shapeType,
-                          showText = showText,
-                          spline = spline,
-                          startAtZero = startAtZero,
-                          theme = theme, ...)
+                         title = title,
+                         subtitle = subtitle,
+                         caption = caption,
+                         horLabel = horLabel,
+                         verLabel = verLabel,
+                         horLine = horLine,
+                         #horLineLabel = NULL,
+                         verLine = verLine,
+                         #verLineLabel = NULL,
+                         agg = agg,
+                         agg_text = agg_text,
+                         colors = colors,
+                         colorText = colorText,
+                         colorScale = colorScale,
+                         dropNaV = dropNaV,
+                         prefix = prefix,
+                         suffix = suffix,
+                         graphType = graphType,
+                         labelRatio = labelRatio,
+                         labelWrapV =labelWrapV,
+                         legendPosition = legendPosition,
+                         legendTitle = legendTitle,
+                         marks = marks,
+                         nDigits = nDigits,
+                         order1 = order1,
+                         order2 = order2,
+                         orientation = orientation,
+                         percentage = percentage,
+                         shapeType = shapeType,
+                         showText = showText,
+                         spline = spline,
+                         startAtZero = startAtZero,
+                         theme = theme, ...)
   gg
 }

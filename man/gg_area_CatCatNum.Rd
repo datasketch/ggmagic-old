@@ -10,7 +10,7 @@ gg_area_CatCatNum(data, title = NULL, subtitle = NULL,
   colorText = "#5A6B72", colorOpacity = 0.7, colorScale = "discrete",
   dropNaV = c(FALSE, FALSE), prefix = NULL, suffix = NULL,
   graphType = "grouped", labelRatio = 1.1, labelWrapV = c(12, 12),
-  legendPosition = "right", legendTitle = NULL, marks = c(".", ","),
+  legendPosition = "bottom", legendTitle = NULL, marks = c(".", ","),
   nDigits = 0, order1 = NULL, order2 = NULL, orientation = "ver",
   percentage = FALSE, shapeType = 19, showText = TRUE,
   spline = FALSE, startAtZero = TRUE, theme = NULL, ...)

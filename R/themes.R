@@ -232,10 +232,22 @@ tma <- function(custom = NULL, ...) {
        panel.grid.minor = element_line(size = 0.5, linetype = 'solid',
                                        colour = "transparent"),
         axis.ticks = element_line(colour = 'transparent'),
-        axis.line.x = element_line(colour = custom$axis_x$color) #,
+        axis.line.x = element_line(colour = custom$axis_x$color)
         #axis.line.y = element_line(colour ='#cccccc'),
         #axis.text = element_text(size = (custom$fontSize-2), family = custom$fontFamily)
   )
 }
 
-
+theme_leg <- function(...) {
+  theme(
+    legend.title= element_blank(),
+    legend.key = element_rect(fill = "transparent", colour = "transparent"),
+    legend.key.size = unit(0.5, "cm"),
+    legend.text=element_text(color="#5A6B72",size=11, margin = margin(0, .3, 0, 0, "cm")),
+    legend.background = element_rect(colour = 'transparent', fill = 'transparent'),
+    plot.caption = element_text(hjust = 1),
+    legend.box.spacing = unit(0.3, "cm"),
+    legend.box.margin = margin(0.3, 0.3, 0.3, 0.3, "cm"),
+    legend.box.background = element_rect(colour = "#5A6B72")
+  )
+}

@@ -20,11 +20,13 @@ gg_line_CatNum <- function(data,
                            verLine = NULL,
                            #verLineLabel = NULL,
                            agg = "sum",
+                           agg_text = NULL,
                            colors = NULL,
-                           colorText = "black",
+                           colorText = "#5A6B72",
                            colorScale = "no",
                            dropNa = FALSE,
-                           format = c("", ""),
+                           prefix = NULL,
+                           suffix = NULL,
                            highlightValue = NULL,
                            highlightValueColor = NULL,
                            labelRatio = 1,
@@ -41,6 +43,7 @@ gg_line_CatNum <- function(data,
                            spline = FALSE,
                            startAtZero = TRUE,
                            theme = NULL, ...) {
+
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d
@@ -48,9 +51,19 @@ gg_line_CatNum <- function(data,
   title <-  title %||% ""
   subtitle <- subtitle %||% ""
   caption <- caption %||% ""
+
+  if(!is.null(colors)) {
+    colors <- colors[1]
+  }
+
+  Lc <- length(unique(d$a))
+  angleText <- ifelse( Lc >= 7 & Lc < 15, 45,
+                       ifelse(Lc >= 15, 90, 0))
+
+  prefix_agg <- ifelse(is.null(agg_text), agg, agg_text)
   labelsXY <- orientationXY(orientation,
                             x = nms[1],
-                            y = ifelse(nrow(d) == dplyr::n_distinct(d$a), nms[2], paste(agg, nms[2])),
+                            y = ifelse(nrow(d) == dplyr::n_distinct(d$a), nms[2], paste(prefix_agg, nms[2])),
                             hor = horLabel,
                             ver = verLabel)
   lineXY <- orientationXY(orientation,
@@ -77,50 +90,52 @@ gg_line_CatNum <- function(data,
   d <- orderCategory(d, "a", orientation, order, labelWrap)
   d <- labelPosition(d, "b", labelRatio, percentage)
   fillCol <- fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
-  if (percentage & nchar(format[2]) == 0) {
-    format[2] <- "%"
+  if (percentage & is.null(suffix)) {
+    suffix <- "%"
   }
 
   # if (spline) {
   #   d <- as.data.frame(spline(d))
   # }
+  varP <- ifelse(percentage, "percent", "b")
+  minLim <- min(d[[varP]], na.rm = T)
+  maxLim <- max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T)
 
   gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], colour = a, group = 1)) +
     geom_line() +
     geom_point(shape = as.integer(shapeType)) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
-                              "black",
+                              "#5A6B72",
                               "transparent"),
                linetype = "dashed") +
     geom_hline(yintercept = lineXY[1],
                color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
-                              "black",
+                              "#5A6B72",
                               "transparent"),
                linetype = "dashed") +
     geom_text(aes(y = labPos,
-                  label = paste0(format[1],
+                  label = paste0(prefix,
                                  format(d[[ifelse(percentage, "percent", "b")]],
                                         big.mark = marks[1],
                                         decimal.mark = marks[2],
                                         digits = nDigits,
                                         nsmall = nDigits),
-                                 format[2])),
+                                 suffix)),
               check_overlap = TRUE,
               color = ifelse(showText, colorText, "transparent")) +
     labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
     scale_color_manual(values = fillCol) +
-    scale_y_continuous(labels =  function(x) paste0(format[1],
+    scale_y_continuous(labels =  function(x) paste0(prefix,
                                                     format(x,
                                                            big.mark = marks[1],
                                                            decimal.mark = marks[2],
                                                            digits = nDigits,
                                                            nsmall = nDigits),
-                                                    format[2]),
-                       limits = c(ifelse(startAtZero, 0, NA), NA)) +
-    theme_ds() +
-    theme(legend.position = "none",
-          plot.caption = element_text(hjust = 1))
+                                                    suffix),
+                       breaks = seq(ifelse(startAtZero, 0, minLim), maxLim, round(maxLim/Lc, 2)),
+                       limits = c(ifelse(startAtZero, 0, minLim), maxLim))
+
   if (is.null(theme)) {
     gg <- gg + tma()
   } else {
@@ -129,6 +144,10 @@ gg_line_CatNum <- function(data,
   if (orientation == "hor")
     gg <- gg +
     coord_flip()
+
+  gg <- gg + theme(legend.position = "none",
+                   plot.caption = element_text(hjust = 1),
+                   axis.text.x = element_text(angle = angleText))
   gg
 }
 
@@ -155,10 +174,11 @@ gg_line_Cat <- function(data,
                         verLine = NULL,
                         #verLineLabel = NULL,
                         colors = NULL,
-                        colorText = "black",
+                        colorText = "#5A6B72",
                         colorScale = "no",
                         dropNa = FALSE,
-                        format = c("", ""),
+                        prefix = NULL,
+                        suffix = NULL,
                         highlightValue = NULL,
                         highlightValueColor = NULL,
                         labelRatio = 1,
@@ -197,11 +217,13 @@ gg_line_Cat <- function(data,
                        verLine = verLine,
                        #verLineLabel = NULL,
                        agg = "sum",
+                       agg_text = " ",
                        colors = colors,
                        colorText = colorText,
                        colorScale = colorScale,
                        dropNa = dropNa,
-                       format = format,
+                       prefix = prefix,
+                       suffix = suffix,
                        highlightValue = highlightValue,
                        highlightValueColor = highlightValueColor,
                        labelRatio = labelRatio,
@@ -245,14 +267,16 @@ gg_line_CatCatNum <- function(data,
                               verLine = NULL,
                               #verLineLabel = NULL,
                               agg = "sum",
+                              agg_text = NULL,
                               colors = NULL,
-                              colorText = "black",
+                              colorText = "#5A6B72",
                               colorScale = "discrete",
                               dropNaV = c(FALSE, FALSE),
-                              format = c("", ""),
+                              prefix = NULL,
+                              suffix = NULL,
                               labelRatio = 1,
                               labelWrapV = c(12, 12),
-                              legendPosition = "right",
+                              legendPosition = "bottom",
                               legendTitle = NULL,
                               marks = c(".", ","),
                               nDigits = 0,
@@ -267,6 +291,10 @@ gg_line_CatCatNum <- function(data,
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d
+
+  Lc <- length(unique(d$a))
+  angleText <- ifelse( Lc >= 7 & Lc < 15, 45,
+                       ifelse(Lc >= 15, 90, 0))
 
   title <-  title %||% ""
   subtitle <- subtitle %||% ""
@@ -295,7 +323,7 @@ gg_line_CatCatNum <- function(data,
                            c = NA)) %>%
     dplyr::group_by(a, b) %>%
     dplyr::summarise(c = agg(agg, c)) %>%
-    tidyr::spread(b, c, fill = 0) %>%
+    tidyr::spread(b, c) %>%
     tidyr::gather(b, c, -a) %>%
     dplyr::mutate(percent = c * 100 / sum(c, na.rm = TRUE))
 
@@ -309,48 +337,51 @@ gg_line_CatCatNum <- function(data,
   d <- labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
   fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
 
-  if (percentage & nchar(format[2]) == 0) {
-    format[2] <- "%"
+  if (percentage & is.null(suffix)) {
+    suffix <- "%"
   }
+
+  varP <- ifelse(percentage, "percent", "c")
+  minLim <- min(d[[varP]], na.rm = T)
+  maxLim <- max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T)
 
   gg <- ggplot(d, aes(x = b, y = d[[ifelse(percentage, "percent", "c")]], colour = a, group = a)) +
     geom_line() +
     geom_point(shape = as.integer(shapeType)) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
-                              "black",
+                              "#5A6B72",
                               "transparent"),
                linetype = "dashed") +
     geom_hline(yintercept = lineXY[1],
                color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
-                              "black",
+                              "#5A6B72",
                               "transparent"),
                linetype = "dashed") +
     geom_text(aes(y = labPos,
-                  label = paste0(format[1],
+                  label = paste0(prefix,
                                  format(d[[ifelse(percentage, "percent", "c")]],
                                         big.mark = marks[1],
                                         decimal.mark = marks[2],
                                         digits = nDigits,
                                         nsmall = nDigits),
-                                 format[2])),
+                                 suffix)),
               check_overlap = TRUE,
               color = ifelse(showText, colorText, "transparent"),
               position = position_dodge(width = 1)) +
     labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
     scale_colour_manual(values = fillCol,
                         name = legendTitle) +
-    scale_y_continuous(labels = function(x) paste0(format[1],
+    scale_y_continuous(labels = function(x) paste0(prefix,
                                                    format(x,
                                                           big.mark = marks[1],
                                                           decimal.mark = marks[2],
                                                           digits = nDigits,
                                                           nsmall = nDigits),
-                                                   format[2]),
-                       limits = c(ifelse(startAtZero, 0, NA), NA)) +
-    theme_ds() +
-    theme(legend.position = legendPosition,
-          plot.caption = element_text(hjust = 1))
+                                                   suffix),
+                       breaks = seq(ifelse(startAtZero, 0, minLim), maxLim, round(maxLim/Lc, 2)),
+                       limits = c(ifelse(startAtZero, 0, minLim), maxLim))
+
   if (is.null(theme)) {
     gg <- gg + tma()
   } else {
@@ -359,7 +390,11 @@ gg_line_CatCatNum <- function(data,
   if (orientation == "hor")
     gg <- gg +
     coord_flip()
-  gg
+
+  gg + theme(axis.text.x = element_text(angle = angleText),
+             legend.position= legendPosition) +
+    theme_leg() +
+    guides(colour = guide_legend(nrow = 1))
 }
 
 
@@ -384,15 +419,15 @@ gg_line_CatCat <- function(data,
                            #horLineLabel = NULL,
                            verLine = NULL,
                            #verLineLabel = NULL,
-                           agg = "sum",
                            colors = NULL,
-                           colorText = "black",
+                           colorText = "#5A6B72",
                            colorScale = "discrete",
                            dropNaV = c(FALSE, FALSE),
-                           format = c("", ""),
+                           prefix = NULL,
+                           suffix = NULL,
                            labelRatio = 1,
                            labelWrapV = c(12, 12),
-                           legendPosition = "right",
+                           legendPosition = "bottom",
                            legendTitle = NULL,
                            marks = c(".", ","),
                            nDigits = 0,
@@ -428,11 +463,13 @@ gg_line_CatCat <- function(data,
                           verLine = verLine,
                           #verLineLabel = NULL,
                           agg = "sum",
+                          agg_text = " ",
                           colors = colors,
                           colorText = colorText,
                           colorScale = colorScale,
                           dropNaV = dropNaV,
-                          format = format,
+                          prefix = prefix,
+                          suffix = suffix,
                           highlightValue = highlightValue,
                           highlightValueColor = highlightValueColor,
                           labelRatio = labelRatio,
@@ -473,14 +510,16 @@ gg_line_CatNumP <- function(data,
                             verLine = NULL,
                             #verLineLabel = NULL,
                             agg = "sum",
+                            agg_text = NULL,
                             colors = NULL,
-                            colorText = "black",
+                            colorText = "#5A6B72",
                             colorScale = "discrete",
                             dropNaV = c(FALSE, FALSE),
-                            format = c("", ""),
+                            prefix = NULL,
+                            suffix = NULL,
                             labelRatio = 1,
                             labelWrapV = c(12, 12),
-                            legendPosition = "right",
+                            legendPosition = "bottom",
                             legendTitle = NULL,
                             marks = c(".", ","),
                             nDigits = 0,
@@ -510,12 +549,14 @@ gg_line_CatNumP <- function(data,
                          #horLineLabel = NULL,
                          verLine = verLine,
                          #verLineLabel = NULL,
-                         agg = "sum",
+                         agg = agg,
+                         agg_text = agg_text,
                          colors = colors,
                          colorText = colorText,
                          colorScale = colorScale,
                          dropNaV = dropNaV,
-                         format = format,
+                         prefix = prefix,
+                         suffix = suffix,
                          labelRatio = labelRatio,
                          labelWrapV = labelWrapV,
                          legendPosition = legendPosition,

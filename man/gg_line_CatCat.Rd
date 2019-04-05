@@ -6,13 +6,13 @@
 \usage{
 gg_line_CatCat(data, title = NULL, subtitle = NULL, caption = NULL,
   horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
-  agg = "sum", colors = NULL, colorText = "black",
-  colorScale = "discrete", dropNaV = c(FALSE, FALSE), format = c("",
-  ""), labelRatio = 1, labelWrapV = c(12, 12),
-  legendPosition = "right", legendTitle = NULL, marks = c(".", ","),
-  nDigits = 0, order = NULL, orientation = "ver",
-  percentage = FALSE, shapeType = 19, showText = TRUE,
-  spline = FALSE, startAtZero = TRUE, theme = NULL, ...)
+  colors = NULL, colorText = "#5A6B72", colorScale = "discrete",
+  dropNaV = c(FALSE, FALSE), prefix = NULL, suffix = NULL,
+  labelRatio = 1, labelWrapV = c(12, 12), legendPosition = "bottom",
+  legendTitle = NULL, marks = c(".", ","), nDigits = 0,
+  order = NULL, orientation = "ver", percentage = FALSE,
+  shapeType = 19, showText = TRUE, spline = FALSE,
+  startAtZero = TRUE, theme = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}

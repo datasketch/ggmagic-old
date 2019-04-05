@@ -20,11 +20,13 @@ gg_bar_CatNum <- function(data,
                           verLine = NULL,
                           #verLineLabel = NULL,
                           agg = "sum",
+                          agg_text = NULL,
                           colors = NULL,
-                          colorText = "black",
+                          colorText = "#5A6B72",
                           colorScale = "no",
                           dropNa = FALSE,
-                          format = c("", ""),
+                          prefix = NULL,
+                          suffix = NULL,
                           highlightValue = NULL,
                           highlightValueColor = NULL,
                           labelRatio = 0.1,
@@ -46,9 +48,17 @@ gg_bar_CatNum <- function(data,
   title <-  title %||% ""
   subtitle <- subtitle %||% ""
   caption <- caption %||% ""
+
+  Lc <- length(unique(d$a))
+  angleText <- ifelse( Lc >= 7 & Lc < 15, 45,
+                       ifelse(Lc >= 15, 90, 0))
+
+
+  prefix_agg <- ifelse(is.null(agg_text), agg, agg_text)
+
   labelsXY <- orientationXY(orientation,
                             x = nms[1],
-                            y = ifelse(nrow(d) == dplyr::n_distinct(d$a), nms[2], paste(agg, nms[2])),
+                            y = ifelse(nrow(d) == dplyr::n_distinct(d$a), nms[2], paste(prefix_agg, nms[2])),
                             hor = horLabel,
                             ver = verLabel)
   lineXY <- orientationXY(orientation,
@@ -79,47 +89,47 @@ gg_bar_CatNum <- function(data,
     d <- labelPosition(d, "b", labelRatio, percentage)
     fillCol <- fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
 
-    if (percentage & nchar(format[2]) == 0) {
-      format[2] <- "%"
+    if (percentage & is.null(suffix)) {
+      suffix <- "%"
     }
+
+    varP <- ifelse(percentage, "percent", "b")
+    minLim <- ifelse(min(d[[varP]], na.rm = T) < 0, min(d[[varP]], na.rm = T), 0)
+    maxLim <- max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T)
 
     gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], fill = a)) +
       geom_bar(stat = "identity") +
       geom_vline(xintercept = lineXY[2],
                  color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
-                                "black",
+                                "#5A6B72",
                                 "transparent"),
                  linetype = "dashed") +
       geom_hline(yintercept = lineXY[1],
                  color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
-                                "black",
+                                "#5A6B72",
                                 "transparent"),
                  linetype = "dashed") +
       geom_text(aes(y = labPos,
-                    label = paste0(format[1],
+                    label = paste0(prefix,
                                    format(d[[ifelse(percentage, "percent", "b")]],
                                           big.mark = marks[1],
                                           decimal.mark = marks[2],
                                           nsmall = nDig),
-                                   format[2])),
+                                   suffix)),
                 check_overlap = TRUE,
                 size = sizeText,
                 color = ifelse(showText, colorText, "transparent")) +
       labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
       scale_fill_manual(values = fillCol) +
-      scale_y_continuous(labels =  function(x) paste0(format[1],
+      scale_y_continuous(labels =  function(x) paste0(prefix,
                                                       format(x,
                                                              big.mark = marks[1],
                                                              decimal.mark = marks[2],
                                                              nsmall = nDig),
-                                                      format[2])) +
-      theme_ds() +
-      theme(legend.position = "none",
-            plot.caption = element_text(hjust = 1))
-    ### FECHAAA
-    # if (f$getCtypes()[1] == "Dat")
-    #   gg <- gg +
-    #   scale_x_date(labels = date_format("%Y-%m-%d"))
+                                                      suffix),
+                         breaks = seq(minLim, maxLim, round(maxLim/Lc, 2)),
+                         limits = c(minLim, maxLim))
+
     if (orientation == "hor")
       gg <- gg +
       coord_flip()
@@ -130,7 +140,9 @@ gg_bar_CatNum <- function(data,
       gg <- gg + theme
     }
 
-    gg
+    gg + theme(legend.position = "none",
+             plot.caption = element_text(hjust = 1),
+             axis.text.x = element_text(angle = angleText))
 }
 
 
@@ -156,10 +168,11 @@ gg_bar_Cat <- function(data,
                        verLine = NULL,
                        #verLineLabel = NULL,
                        colors = NULL,
-                       colorText = "black",
+                       colorText = "#5A6B72",
                        colorScale = "no",
                        dropNa = FALSE,
-                       format = c("", ""),
+                       prefix = NULL,
+                       suffix = NULL,
                        highlightValue = NULL,
                        highlightValueColor = NULL,
                        labelRatio = 0.1,
@@ -196,11 +209,13 @@ gg_bar_Cat <- function(data,
                       verLine = verLine,
                       #verLineLabel = NULL,
                       agg = "sum",
+                      agg_text = " ",
                       colors = colors,
                       colorText = colorText,
                       colorScale = colorScale,
                       dropNa = dropNa,
-                      format = format,
+                      prefix = prefix,
+                      suffix = suffix,
                       highlightValue = highlightValue,
                       highlightValueColor = highlightValueColor,
                       labelRatio = labelRatio,
@@ -242,15 +257,17 @@ gg_bar_CatCatNum <- function(data,
                              verLine = NULL,
                              #verLineLabel = NULL,
                              agg = "sum",
+                             agg_text = NULL,
                              colors = NULL,
-                             colorText = "black",
+                             colorText = "#5A6B72",
                              colorScale = "discrete",
                              dropNaV = c(FALSE, FALSE),
-                             format = c("", ""),
+                             prefix = NULL,
+                             suffix = NULL,
                              graphType = "grouped",
                              labelRatio = 0.5,
                              labelWrapV = c(12, 12),
-                             legendPosition = "right",
+                             legendPosition = "bottom",
                              legendTitle = NULL,
                              marks = c(".", ","),
                              nDigits = 0,
@@ -265,15 +282,22 @@ gg_bar_CatCatNum <- function(data,
   nms <- getClabels(f)
   d <- f$d
 
+  Lc <- length(unique(d$a))
+  angleText <- ifelse( Lc >= 7 & Lc < 15, 45,
+                       ifelse(Lc >= 15, 90, 0))
+
   title <-  title %||% ""
   subtitle <- subtitle %||% ""
   caption <- caption %||% ""
   legendTitle <- legendTitle %||% nms[1]
+
+  prefix_agg <- ifelse(is.null(agg_text), agg, as.character(agg_text))
+
   labelsXY <- orientationXY(orientation,
                             x = nms[2],
                             y = ifelse(nrow(d) == dplyr::n_distinct(d$a) & nrow(d) == dplyr::n_distinct(d$b),
                                        nms[3],
-                                       paste(agg, nms[3])),
+                                       paste(prefix_agg, nms[3])),
                             hor = horLabel,
                             ver = verLabel)
   lineXY <- orientationXY(orientation,
@@ -312,8 +336,8 @@ gg_bar_CatCatNum <- function(data,
   fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
 
 
-  if (percentage & nchar(format[2]) == 0) {
-    format[2] <- "%"
+  if (percentage & is.null(suffix)) {
+    suffix <- "%"
   }
 
 
@@ -323,43 +347,47 @@ gg_bar_CatCatNum <- function(data,
     nDig <- nDigits
   }
 
+  varP <- ifelse(percentage, "percent", "c")
+  minLim <- ifelse(min(d[[varP]], na.rm = T) < 0, min(d[[varP]], na.rm = T), 0)
+  maxLim <- max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T)
 
   gg <- ggplot(d, aes(x = b, y = d[[ifelse(percentage, "percent", "c")]], fill = a)) +
     geom_bar(stat = "identity", position = ifelse(graphType == "stacked", "stack", "dodge")) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
-                              "black",
+                              "#5A6B72",
                               "transparent"),
                linetype = "dashed") +
     geom_hline(yintercept = lineXY[1],
                color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
-                              "black",
+                              "#5A6B72",
                               "transparent"),
                linetype = "dashed") +
     labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
     scale_fill_manual(values = fillCol,
                       name = legendTitle) +
-    scale_y_continuous(labels = function(x) paste0(format[1],
+    scale_y_continuous(labels = function(x) paste0(prefix,
                                                    format(x,
                                                           big.mark = marks[1],
                                                           decimal.mark = marks[2],
                                                           digits = nDig,
                                                           nsmall = nDig),
-                                                   format[2])) +
-    theme_ds() +
+                                                   suffix),
+                       breaks = seq(minLim, maxLim, round(maxLim/Lc, 2)),
+                       limits = c(minLim, maxLim)) +
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
 
   if (graphType == "stacked") {
     gg <- gg +
       geom_text(aes(y = d[[ifelse(percentage, "percent", "c")]],
-                    label = paste0(format[1],
+                    label = paste0(prefix,
                                    format(d[[ifelse(percentage, "percent", "c")]],
                                           big.mark = marks[1],
                                           decimal.mark = marks[2],
                                           digits = nDig,
                                           nsmall = nDig),
-                                   format[2])),
+                                   suffix)),
                 check_overlap = TRUE,
                 sizeText = sizeText,
                 color = ifelse(showText, colorText, "transparent"),
@@ -367,13 +395,13 @@ gg_bar_CatCatNum <- function(data,
   } else {
     gg <- gg +
       geom_text(aes(y = labPos,
-                    label = paste0(format[1],
+                    label = paste0(prefix,
                                    format(d[[ifelse(percentage, "percent", "c")]],
                                           big.mark = marks[1],
                                           decimal.mark = marks[2],
                                           digits = nDig,
                                           nsmall = nDig),
-                                   format[2])),
+                                   suffix)),
                 check_overlap = TRUE,
                 sizeText = sizeText,
                 color = ifelse(showText, colorText, "transparent"),
@@ -393,7 +421,10 @@ gg_bar_CatCatNum <- function(data,
     gg <- gg + theme
   }
 
-  gg
+  gg + theme(axis.text.x = element_text(angle = angleText),
+             legend.position= legendPosition) +
+    theme_leg() +
+    guides(fill = guide_legend(nrow = 1))
 }
 
 
@@ -419,14 +450,15 @@ gg_bar_CatCat <- function(data,
                           verLine = NULL,
                           #verLineLabel = NULL,
                           colors = NULL,
-                          colorText = "black",
+                          colorText = "#5A6B72",
                           colorScale = "discrete",
                           dropNaV = c(FALSE, FALSE),
-                          format = c("", ""),
+                          prefix = NULL,
+                          suffix = NULL,
                           graphType = "grouped",
                           labelRatio = 0.5,
                           labelWrapV = c(12, 12),
-                          legendPosition = "right",
+                          legendPosition = "bottom",
                           legendTitle = NULL,
                           marks = c(".", ","),
                           nDigits = 0,
@@ -458,11 +490,13 @@ gg_bar_CatCat <- function(data,
                          verLine = verLine,
                          #verLineLabel = NULL,
                          agg = "sum",
+                         agg_text = " ",
                          colors = colors,
                          colorText = colorText,
                          colorScale = colorScale,
                          dropNaV = dropNaV,
-                         format = format,
+                         prefix = prefix,
+                         suffix = suffix,
                          graphType = graphType,
                          labelRatio = labelRatio,
                          labelWrapV = labelWrapV,
@@ -505,15 +539,17 @@ gg_bar_CatNumP <- function(data,
                            verLine = NULL,
                            #verLineLabel = NULL,
                            agg = "sum",
+                           agg_text = NULL,
                            colors = NULL,
-                           colorText = "black",
+                           colorText = "#5A6B72",
                            colorScale = "discrete",
                            dropNaV = c(FALSE, FALSE),
-                           format = c("", ""),
+                           prefix = NULL,
+                           suffix = NULL,
                            graphType = "grouped",
                            labelRatio = 0.5,
                            labelWrapV = c(12, 12),
-                           legendPosition = "right",
+                           legendPosition = "bottom",
                            legendTitle = NULL,
                            marks = c(".", ","),
                            nDigits = 0,
@@ -532,6 +568,7 @@ gg_bar_CatNumP <- function(data,
 
   data <- d %>%
     gather("categories", "count", names(d)[-1])
+
   gg <- gg_bar_CatCatNum(data,
                          title = title,
                          subtitle = subtitle,
@@ -542,12 +579,14 @@ gg_bar_CatNumP <- function(data,
                          #horLineLabel = NULL,
                          verLine = verLine,
                          #verLineLabel = NULL,
-                         agg = "sum",
+                         agg = agg,
+                         agg_text = agg_text,
                          colors = colors,
                          colorText = colorText,
                          colorScale = colorScale,
                          dropNaV = dropNaV,
-                         format = format,
+                         prefix = prefix,
+                         suffix = suffix,
                          graphType = graphType,
                          labelRatio = labelRatio,
                          labelWrapV = labelWrapV,

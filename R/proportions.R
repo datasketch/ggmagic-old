@@ -18,10 +18,11 @@ gg_pie_CatNum <- function(data,
                           colorText = "#5A6B72",
                           colorScale = "discrete",
                           dropNa = FALSE,
-                          format = c("", ""),
+                          prefix = NULL,
+                          suffix = NULL,
                           labelRatio = 0.1,
                           labelWrap = 12,
-                          legendPosition = "right",
+                          legendPosition = "bottom",
                           legendTitle = NULL,
                           marks = c(".", ","),
                           nDigits = 0,
@@ -38,6 +39,7 @@ gg_pie_CatNum <- function(data,
   title <-  title %||% ""
   subtitle <- subtitle %||% ""
   caption <- caption %||% ""
+
 
   if (dropNa)
     d <- d %>%
@@ -64,8 +66,8 @@ gg_pie_CatNum <- function(data,
   if (percentage) {
     lb0 <- ""
     lb1 <- ""
-    if (nchar(format[2]) == 0) {
-    format[2] <- "%"
+    if (nchar(suffix) == 0) {
+    suffix <- "%"
     }
   }
 
@@ -74,13 +76,13 @@ gg_pie_CatNum <- function(data,
     coord_polar(theta = "y") +
     geom_text(aes(y = b,
                   label = paste0(lb0,
-                                 format[1],
+                                 prefix,
                                  format(d$percent,
                                         big.mark = marks[1],
                                         decimal.mark = marks[2],
                                         digits = nDigits,
                                         nsmall = nDigits),
-                                 format[2],
+                                 suffix,
                                  lb1)),
               check_overlap = TRUE,
               color = ifelse(showText, colorText, "transparent"),
@@ -88,16 +90,13 @@ gg_pie_CatNum <- function(data,
     labs(title = title, subtitle = subtitle, caption = caption, x = "", y = "") +
     scale_fill_manual(values = fillCol,
                       name = legendTitle) +
-    scale_y_continuous(labels =  function(x) paste0(format[1],
+    scale_y_continuous(labels =  function(x) paste0(prefix,
                                                     format(x,
                                                            big.mark = marks[1],
                                                            decimal.mark = marks[2],
                                                            digits = nDigits,
                                                            nsmall = nDigits),
-                                                    format[2]))
-  gg <- gg +
-         theme(legend.position = legendPosition,
-           plot.caption = element_text(hjust = 1))
+                                                    suffix))
 
   if (is.null(theme)) {
     gg <- gg + tma() + theme_ds_clean()
@@ -105,7 +104,11 @@ gg_pie_CatNum <- function(data,
     gg <- gg + theme + theme_ds_clean()
   }
 
-  gg
+  gg +
+   theme_leg() +
+    theme(legend.position = legendPosition,
+                         plot.caption = element_text(hjust = 1)) +
+    guides(fill = guide_legend(nrow = 1))
 }
 
 
@@ -129,10 +132,11 @@ gg_pie_Cat <- function(data,
                        colorText = "#5A6B72",
                        colorScale = "discrete",
                        dropNa = FALSE,
-                       format = c("", ""),
+                       prefix = NULL,
+                       suffix = NULL,
                        labelRatio = 0.1,
                        labelWrap = 12,
-                       legendPosition = "right",
+                       legendPosition = "bottom",
                        legendTitle = NULL,
                        marks = c(".", ","),
                        nDigits = 0,
@@ -162,7 +166,8 @@ gg_pie_Cat <- function(data,
                       colorText = colorText,
                       colorScale = colorScale,
                       dropNa = dropNa,
-                      format = format,
+                      prefix = prefix,
+                      suffix = prefix,
                       highlightValue = highlightValue,
                       highlightValueColor = highlightValueColor,
                       labelRatio = labelRatio,
@@ -203,10 +208,11 @@ gg_donut_CatNum <- function(data,
                             colorText = "#5A6B72",
                             colorScale = "discrete",
                             dropNa = FALSE,
-                            format = c("", ""),
+                            prefix = NULL,
+                            suffix = NULL,
                             labelRatio = 0.1,
                             labelWrap = 12,
-                            legendPosition = "right",
+                            legendPosition = "bottom",
                             legendTitle = NULL,
                             marks = c(".", ","),
                             nDigits = 0,
@@ -249,8 +255,8 @@ gg_donut_CatNum <- function(data,
   if (percentage) {
     lb0 <- ""
     lb1 <- ""
-    if (nchar(format[2]) == 0) {
-      format[2] <- "%"
+    if (nchar(suffix) == 0) {
+      suffix <- "%"
     }
   }
 
@@ -260,13 +266,13 @@ gg_donut_CatNum <- function(data,
     xlim(c(0.5, 2.5)) +
     geom_text(aes(y = b,
                   label = paste0(lb0,
-                                 format[1],
+                                 prefix,
                                  format(d$percent,
                                         big.mark = marks[1],
                                         decimal.mark = marks[2],
                                         digits = nDigits,
                                         nsmall = nDigits),
-                                 format[2],
+                                 suffix,
                                  lb1)),
               check_overlap = TRUE,
               color = ifelse(showText, colorText, "transparent"),
@@ -274,13 +280,13 @@ gg_donut_CatNum <- function(data,
     labs(title = title, subtitle = subtitle, caption = caption, x = "", y = "") +
     scale_fill_manual(values = fillCol,
                       name = legendTitle) +
-    scale_y_continuous(labels =  function(x) paste0(format[1],
+    scale_y_continuous(labels =  function(x) paste0(prefix,
                                                     format(x,
                                                            big.mark = marks[1],
                                                            decimal.mark = marks[2],
                                                            digits = nDigits,
                                                            nsmall = nDigits),
-                                                    format[2])) +
+                                                    suffix)) +
 
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
@@ -290,7 +296,11 @@ gg_donut_CatNum <- function(data,
   } else {
     gg <- gg + theme + theme_ds_clean()
   }
-  gg
+  gg +
+    theme_leg() +
+    theme(legend.position = legendPosition,
+          plot.caption = element_text(hjust = 1)) +
+    guides(fill = guide_legend(nrow = 1))
 }
 
 
@@ -314,10 +324,11 @@ gg_donut_Cat <- function(data,
                          colorText = "#5A6B72",
                          colorScale = "discrete",
                          dropNa = FALSE,
-                         format = c("", ""),
+                         prefix = NULL,
+                         suffix = NULL,
                          labelRatio = 0.1,
                          labelWrap = 12,
-                         legendPosition = "right",
+                         legendPosition = "bottom",
                          legendTitle = NULL,
                          marks = c(".", ","),
                          nDigits = 0,
@@ -348,7 +359,8 @@ gg_donut_Cat <- function(data,
                         colorText = colorText,
                         colorScale = colorScale,
                         dropNa = dropNa,
-                        format = format,
+                        prefix = prefix,
+                        suffix = suffix,
                         highlightValue = highlightValue,
                         highlightValueColor = highlightValueColor,
                         labelRatio = labelRatio,

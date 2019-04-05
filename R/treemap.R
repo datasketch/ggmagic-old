@@ -16,11 +16,13 @@ gg_treemap_CatNum <-  function(data,
                                caption = NULL,
                                labelWrap = 12,
                                colors = NULL,
-                               colorScale = 'continuous',
+                               colorScale = 'discrete',
                                agg = "sum",
                                marks = c(".", ","),
                                nDigits = NULL,
                                dropNa = FALSE,
+                               prefix = NULL,
+                               suffix = NULL,
                                highlightValueColor = '#F9B233',
                                percentage = FALSE,
                                format = c('', ''),
@@ -28,7 +30,7 @@ gg_treemap_CatNum <-  function(data,
                                sliceN = NULL,
                                showText = TRUE,
                                showLegend = TRUE,
-                               legendPosition = c("left", "bottom"),
+                               legendPosition = "bottom",
                                theme = NULL,
                                ...) {
 
@@ -73,14 +75,14 @@ gg_treemap_CatNum <-  function(data,
   #d <- labelPosition(d, "b", labelRatio, percentage)
   fillCol <- fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
 
-  if (percentage & nchar(format[2]) == 0) {
-    format[2] <- "%"
+  if (percentage & is.null(suffix)) {
+    suffix <- "%"
   }
 
   d$b <- round(d$b, nDig)
 
   if (showText) {
-    d$label <- paste0(d$a, "\n", format[1] ,format(d$b,  big.mark = marks[1], decimal.mark = marks[2]), format[2])
+    d$label <- paste0(d$a, "\n", prefix ,format(d$b,  big.mark = marks[1], decimal.mark = marks[2]), suffix)
   } else {
     d$label <- ""
   }
@@ -94,7 +96,7 @@ gg_treemap_CatNum <-  function(data,
   if (!showLegend) {
     g <- g + theme(legend.position = "none")
   } else {
-    g <- g + theme(legend.position = legendPosition[2],  legend.justification = legendPosition[1]) +
+    g <- g + theme(legend.position = legendPosition) +
       guides(fill=guide_legend(nrow=1,byrow=TRUE))
   }
 
@@ -107,7 +109,8 @@ gg_treemap_CatNum <-  function(data,
   } else {
     g <- g + theme
   }
-  g
+  g +
+    theme_leg()
 }
 
 #' Treemap (categories)
@@ -135,12 +138,13 @@ gg_treemap_Cat <-  function(data,
                             dropNa = FALSE,
                             highlightValueColor = '#F9B233',
                             percentage = FALSE,
-                            format = c('', ''),
+                            prefix = NULL,
+                            suffix = NULL,
                             highlightValue = NULL,
                             sliceN = NULL,
                             showText = TRUE,
                             showLegend = TRUE,
-                            legendPosition = c("left", "bottom"),
+                            legendPosition = "bottom",
                             theme = NULL,
                             ...) {
   f <- fringe(data)
@@ -153,7 +157,7 @@ gg_treemap_Cat <-  function(data,
 
   names(d) <- c(f$dic_$d$label, paste0("count ", f$dic_$d$label))
 
-  g <- gg_treemap_CatNum(data = d, title = title, subtitle = subtitle, caption = caption,labelWrap = labelWrap, colors = colors, colorScale = colorScale, agg = agg,marks = marks,nDigits = nDigits,dropNa = dropNa, highlightValueColor = highlightValueColor,percentage = percentage,format = format, highlightValue = highlightValue,sliceN = sliceN, showText = showText, showLegend = showLegend, legendPosition = legendPosition, theme = theme,...)
+  g <- gg_treemap_CatNum(data = d, title = title, subtitle = subtitle, caption = caption,labelWrap = labelWrap, colors = colors, colorScale = colorScale, agg = agg,marks = marks,nDigits = nDigits,dropNa = dropNa, highlightValueColor = highlightValueColor,percentage = percentage, prefix = prefix, suffix = suffix, highlightValue = highlightValue,sliceN = sliceN, showText = showText, showLegend = showLegend, legendPosition = legendPosition, theme = theme,...)
   g
 }
 
@@ -181,14 +185,15 @@ gg_treemap_CatCatNum <- function(data,
                                  colorGroup = 'transparent',
                                  colorText = c('#212428', '#FFFFFF'),
                                  dropNaV = c(FALSE, FALSE),
-                                 format = c("", ""),
+                                 prefix = NULL,
+                                 suffix = NULL,
                                  labelWrapV = c(12, 12),
                                  marks = c(".", ","),
                                  nDigits = NULL,
                                  percentage = FALSE,
                                  showText = TRUE,
                                  showLegend = TRUE,
-                                 legendPosition = c("right", "bottom"),
+                                 legendPosition = "bottom",
                                  theme = NULL, ...) {
 
   f <- fringe(data)
@@ -224,7 +229,7 @@ gg_treemap_CatCatNum <- function(data,
   fillCol <- fillColors(d, "b", colors, colorScale, NULL, NULL, labelWrapV[1])
 
   if (showText) {
-    d$label <- paste0(d$a, "\n", format[1] ,format(d$c,  big.mark = marks[1], decimal.mark = marks[2]), format[2])
+    d$label <- paste0(d$a, "\n", prefix ,format(d$c,  big.mark = marks[1], decimal.mark = marks[2]), suffix)
   } else {
     d$label <- ""
   }
@@ -238,7 +243,7 @@ gg_treemap_CatCatNum <- function(data,
   if (!showLegend) {
     g <- g + theme(legend.position = "none")
   } else {
-    g <- g + theme(legend.position = legendPosition[2],  legend.justification = legendPosition[1]) +
+    g <- g + theme(legend.position = legendPosition) +
       guides(fill=guide_legend(nrow=1,byrow=TRUE))
   }
 
@@ -252,7 +257,8 @@ gg_treemap_CatCatNum <- function(data,
     g <- g + theme
   }
 
-  g
+  g +
+    theme_leg()
 
 }
 
@@ -281,14 +287,15 @@ gg_treemap_CatCat <- function(data,
                               colorGroup = 'transparent',
                               colorText = c('#212428', '#FFFFFF'),
                               dropNaV = c(FALSE, FALSE),
-                              format = c("", ""),
+                              prefix = NULL,
+                              suffix = NULL,
                               labelWrapV = c(12, 12),
                               marks = c(".", ","),
                               nDigits = NULL,
                               percentage = FALSE,
                               showText = TRUE,
                               showLegend = TRUE,
-                              legendPosition = c("right", "bottom"),
+                              legendPosition = "bottom",
                               theme = NULL, ...) {
 
   f <- fringe(data)
@@ -300,7 +307,7 @@ gg_treemap_CatCat <- function(data,
     dplyr::summarise(c = n())
 
   names(d) <- c(f$dic_$d$label, paste0("count", f$dic_$d$label[1]))
-  gg_treemap_CatCatNum(data = d, title = title,subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV, format = format, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
+  gg_treemap_CatCatNum(data = d, title = title,subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV,  prefix = prefix, suffix = suffix, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
 }
 
 
@@ -328,14 +335,15 @@ gg_treemap_CatNumP <- function(data,
                                colorGroup = 'transparent',
                                colorText = c('#212428', '#FFFFFF'),
                                dropNaV = c(FALSE, FALSE),
-                               format = c("", ""),
+                               prefix = NULL,
+                               suffix = NULL,
                                labelWrapV = c(12, 12),
                                marks = c(".", ","),
                                nDigits = NULL,
                                percentage = FALSE,
                                showText = TRUE,
                                showLegend = TRUE,
-                               legendPosition = c("right", "bottom"),
+                               legendPosition = "bottom",
                                theme = NULL, ...) {
 
   f <- fringe(data)
@@ -345,6 +353,6 @@ gg_treemap_CatNumP <- function(data,
 
   data <- d %>%
     gather("categories", "count", names(d)[-1])
-  gg_treemap_CatCatNum(data = data, title = title,subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV, format = format, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
+  gg_treemap_CatCatNum(data = data, title = title, subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV, prefix = prefix ,suffix = suffix, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
 
 }

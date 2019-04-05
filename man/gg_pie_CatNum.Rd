@@ -6,11 +6,11 @@
 \usage{
 gg_pie_CatNum(data, title = NULL, subtitle = NULL, caption = NULL,
   agg = "sum", colors = NULL, colorText = "#5A6B72",
-  colorScale = "discrete", dropNa = FALSE, format = c("", ""),
-  labelRatio = 0.1, labelWrap = 12, legendPosition = "right",
-  legendTitle = NULL, marks = c(".", ","), nDigits = 0,
-  order = NULL, percentage = FALSE, sort = "no", sliceN = NULL,
-  showText = TRUE, theme = NULL, ...)
+  colorScale = "discrete", dropNa = FALSE, prefix = NULL,
+  suffix = NULL, labelRatio = 0.1, labelWrap = 12,
+  legendPosition = "bottom", legendTitle = NULL, marks = c(".", ","),
+  nDigits = 0, order = NULL, percentage = FALSE, sort = "no",
+  sliceN = NULL, showText = TRUE, theme = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}
