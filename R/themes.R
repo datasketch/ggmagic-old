@@ -182,7 +182,7 @@ getDefaultTheme <- list(
   colores = NULL,
   fontFamily = 'Ubuntu',
   fontSize = 11,
-  fontColor = '#5A6B72',
+  color = '#5A6B72',
   marginBottom = 0,
   marginLeft = 0,
   marginRight = 0,
@@ -221,10 +221,10 @@ tma <- function(custom = NULL, ...) {
         panel.background = element_rect(fill = custom$plotBackgroundColor),
         panel.border = element_rect(size = custom$plotBorderWidth, fill = 'transparent', colour = custom$plotBorderColor),
         text = element_text(size = custom$fontSize,  family = custom$fontFamily),
-        axis.title.x = element_text(colour = custom$fontColor), #color label eje x
-        axis.title.y = element_text(colour = custom$fontColor),
-        axis.text.x = element_text(color = custom$fontColor, size = custom$fontSize, angle= custom$angleTicks),
-        axis.text.y = element_text(color = custom$fontColor, size = custom$fontSize, angle= custom$angleTicks),
+        axis.title.x = element_text(colour = custom$color), #color label eje x
+        axis.title.y = element_text(colour = custom$color),
+        axis.text.x = element_text(color = custom$color, size = custom$fontSize, angle= custom$angleTicks),
+        axis.text.y = element_text(color = custom$color, size = custom$fontSize, angle= custom$angleTicks),
        #  plot.margin = margin(custom$marginTop, custom$marginRight, custom$marginBottom, custom$marginLeft),
        panel.grid.major.y = element_line(size = 0.5, linetype = 'dotted',
                                          colour = "#5A6B72"),
@@ -238,16 +238,17 @@ tma <- function(custom = NULL, ...) {
   )
 }
 
-theme_leg <- function(...) {
+theme_leg <- function(custom = NULL, ...) {
+  custom <- getTheme(theme = custom)
   theme(
     legend.title= element_blank(),
     legend.key = element_rect(fill = "transparent", colour = "transparent"),
     legend.key.size = unit(0.5, "cm"),
-    legend.text=element_text(color="#5A6B72",size=11, margin = margin(0, .3, 0, 0, "cm")),
-    legend.background = element_rect(colour = 'transparent', fill = 'transparent'),
+    legend.text=element_text(color=custom$color,size=11, margin = margin(0, .3, 0, 0, "cm")),
+    legend.background = element_rect(colour = NA, fill = 'transparent'),
     plot.caption = element_text(hjust = 1),
     legend.box.spacing = unit(0.3, "cm"),
     legend.box.margin = margin(0.3, 0.3, 0.3, 0.3, "cm"),
-    legend.box.background = element_rect(colour = "#5A6B72")
+    legend.box.background = element_rect(colour = "transparent", fill = "transparent")
   )
 }
