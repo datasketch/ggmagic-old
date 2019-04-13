@@ -247,8 +247,8 @@ theme_leg <- function(custom = NULL, ...) {
     legend.text=element_text(color=custom$color,size=11, margin = margin(0, .3, 0, 0, "cm")),
     legend.background = element_rect(colour = NA, fill = 'transparent'),
     plot.caption = element_text(hjust = 1),
-    legend.box.spacing = unit(0.3, "cm"),
-    legend.box.margin = margin(0.3, 0.3, 0.3, 0.3, "cm"),
+    #legend.box.spacing = unit(0.3, "cm"),
+    #legend.box.margin = margin(0.3, 0.3, 0.3, 0.3, "cm"),
     legend.box.background = element_rect(colour = "transparent", fill = "transparent")
   )
 }
