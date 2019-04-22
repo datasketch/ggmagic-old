@@ -127,7 +127,7 @@ gg_bar_CatNum <- function(data,
                                                              decimal.mark = marks[2],
                                                              nsmall = nDig),
                                                       suffix),
-                         breaks = seq(minLim, maxLim, round(maxLim/Lc, 2)),
+                         breaks = seq(minLim, maxLim, round(maxLim/Lc, nDig)),
                          limits = c(minLim, maxLim))
 
     if (orientation == "hor")
@@ -373,7 +373,7 @@ gg_bar_CatCatNum <- function(data,
                                                           digits = nDig,
                                                           nsmall = nDig),
                                                    suffix),
-                       breaks = seq(minLim, maxLim, round(maxLim/Lc, 2)),
+                       breaks = seq(minLim, maxLim, round(maxLim/Lc, nDig)),
                        limits = c(minLim, maxLim)) +
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
