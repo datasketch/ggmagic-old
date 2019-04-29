@@ -238,6 +238,7 @@ tma <- function(custom = NULL, ...) {
   )
 }
 
+#' @export
 theme_leg <- function(custom = NULL, ...) {
   custom <- getTheme(theme = custom)
   theme(

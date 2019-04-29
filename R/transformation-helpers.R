@@ -76,8 +76,9 @@ sortSlice <- function(data, col, colOrder, orientation, sort, sliceN) {
 labelPosition <- function(data, col, labelRatio, percentage = FALSE, zeroToNa = FALSE) {
   col <- ifelse(percentage, "percent", col)
   half <- data[[col]] - data[[col]] / 2
-  small <- half < max(data[[col]] * labelRatio)
-  #half[small] <- data[[col]][small] + max(data[[col]]) / 50
+  small <- half < max(data[[col]] * labelRatio, na.rm = TRUE)
+  small <- which(small)
+  half[small] <- data[[col]][small] + max(data[[col]], na.rm = TRUE) / 50
   data$labPos <- half
   # do I want zero labels to be shown?
   if (zeroToNa) {
@@ -108,7 +109,7 @@ fillColors <- function(data, col, colors, colorScale, highlightValue, highlightV
     if (is.null(colors)) {
       colors <- dsColorsHex()[2]
     }
-    fillCol <- rep(colors, length(cat))[1:length(cat)]
+    fillCol <- rep(colors[1], length(cat))[1:length(cat)]
     names(fillCol) <- cat
   }
 

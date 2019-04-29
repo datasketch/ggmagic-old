@@ -51,8 +51,8 @@ gg_area_CatNum <- function(data,
   }
 
   Lc <- length(unique(d$a))
-  angleText <- ifelse( Lc >= 7 & Lc < 15, 45,
-                 ifelse(Lc >= 15, 90, 0))
+  angleText <- ifelse( Lc >= 10 & Lc < 15, 45,
+                       ifelse(Lc >= 15, 90, 0))
 
   title <-  title %||% ""
   subtitle <- subtitle %||% ""
@@ -90,8 +90,6 @@ gg_area_CatNum <- function(data,
   if (percentage & is.null(suffix)) {
     suffix <- "%"
   }
-
-
 
   d$a <- as.factor(d$a)
 
@@ -298,7 +296,7 @@ gg_area_CatCatNum <- function(data,
   d <- f$d
 
   Lc <- length(unique(d$a))
-  angleText <- ifelse( Lc >= 7 & Lc < 15, 45,
+  angleText <- ifelse( Lc >= 10 & Lc < 15, 45,
                        ifelse(Lc >= 15, 90, 0))
 
   title <-  title %||% ""
@@ -351,14 +349,17 @@ gg_area_CatCatNum <- function(data,
   }
 
   if (graphType == "grouped") {
-    d$z <- d$c
-    d$z[is.na(d$z)] <- 0
-    d <- labelPosition(d, "z", labelRatio, percentage, zeroToNa = TRUE)
+    # d$z <- d$c
+    # d$z[is.na(d$z)] <- 0
+    # # nuevo
+    # d$zp <- d$percent
+    # d$zp[is.na(d$zp)] <- 0
+    d <- labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
   }
 
   fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
 
-  if (percentage & is.null(suffix) == 0) {
+  if (percentage & is.null(suffix)) {
     suffix <- "%"
   }
 
@@ -384,7 +385,7 @@ gg_area_CatCatNum <- function(data,
                         guide = FALSE) +
     scale_fill_manual(values = fillCol,
                       name = legendTitle)
-
+  # esto hace que en stacked no salgan sufijos ni prefijos revisar!!!!
   if(graphType != "stacked"){
    gg <- gg + scale_y_continuous(labels = function(x) paste0(prefix,
                                                    format(x,

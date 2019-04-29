@@ -50,9 +50,8 @@ gg_bar_CatNum <- function(data,
   caption <- caption %||% ""
 
   Lc <- length(unique(d$a))
-  angleText <- ifelse( Lc >= 7 & Lc < 15, 45,
+  angleText <- ifelse( Lc >= 10 & Lc < 15, 45,
                        ifelse(Lc >= 15, 90, 0))
-
 
   prefix_agg <- ifelse(is.null(agg_text), agg, agg_text)
 
@@ -76,71 +75,75 @@ gg_bar_CatNum <- function(data,
   } else {
     nDig <- nDigits
   }
-
-    d <- d  %>%
+  d <- d  %>%
       tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                              b = NA)) %>%
       dplyr::group_by(a) %>%
       dplyr::summarise(b = round(agg(agg, b)), nDig) %>%
       dplyr::mutate(percent = round(b * 100 / sum(b, na.rm = TRUE), nDig))
 
-    d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
-    d <- orderCategory(d, "a", orientation, order, labelWrap)
-    d <- labelPosition(d, "b", labelRatio, percentage)
-    fillCol <- fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
+  d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
+  d <- orderCategory(d, "a", orientation, order, labelWrap)
+  d <- labelPosition(d, "b", labelRatio, percentage)
+  fillCol <- fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
 
-    if (percentage & is.null(suffix)) {
-      suffix <- "%"
-    }
+  if (percentage & is.null(suffix)) {
+    suffix <- "%"
+  }
 
-    varP <- ifelse(percentage, "percent", "b")
-    minLim <- ifelse(min(d[[varP]], na.rm = T) < 0, min(d[[varP]], na.rm = T), 0)
-    maxLim <- max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T)
+  varP <- ifelse(percentage, "percent", "b")
+  minLim <- ifelse(min(d[[varP]], na.rm = T) < 0, min(d[[varP]], na.rm = T), 0)
+  maxLim <- max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T)
+  sq <- nchar(round(maxLim - minLim, 0)) - 1
+  minLim <- round(minLim *  10^(-sq), 0) * 10^sq
+  maxLim <- round(maxLim *  10^(-sq), 0) * 10^sq
+  sq <- seq(minLim, maxLim, 10^sq)
+  sq <- unique(c(0, minLim, sq))
 
-    gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], fill = a)) +
-      geom_bar(stat = "identity") +
-      geom_vline(xintercept = lineXY[2],
-                 color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
-                                "#5A6B72",
-                                "transparent"),
-                 linetype = "dashed") +
-      geom_hline(yintercept = lineXY[1],
-                 color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
-                                "#5A6B72",
-                                "transparent"),
-                 linetype = "dashed") +
-      geom_text(aes(y = labPos,
-                    label = paste0(prefix,
-                                   format(d[[ifelse(percentage, "percent", "b")]],
-                                          big.mark = marks[1],
-                                          decimal.mark = marks[2],
-                                          nsmall = nDig),
-                                   suffix)),
-                check_overlap = TRUE,
-                size = sizeText,
-                color = ifelse(showText, colorText, "transparent")) +
-      labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
-      scale_fill_manual(values = fillCol) +
-      scale_y_continuous(labels =  function(x) paste0(prefix,
-                                                      format(x,
-                                                             big.mark = marks[1],
-                                                             decimal.mark = marks[2],
-                                                             nsmall = nDig),
-                                                      suffix),
-                         breaks = seq(minLim, maxLim, round(maxLim/Lc, nDig)),
-                         limits = c(minLim, maxLim))
+  gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], fill = a)) +
+    geom_bar(stat = "identity") +
+    geom_vline(xintercept = lineXY[2],
+               color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
+                              "#5A6B72",
+                              "transparent"),
+               linetype = "dashed") +
+    geom_hline(yintercept = lineXY[1],
+               color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
+                              "#5A6B72",
+                              "transparent"),
+               linetype = "dashed") +
+    geom_text(aes(y = labPos,
+                  label = paste0(prefix,
+                                 format(d[[ifelse(percentage, "percent", "b")]],
+                                        big.mark = marks[1],
+                                        decimal.mark = marks[2],
+                                        nsmall = nDig),
+                                 suffix)),
+              check_overlap = TRUE,
+              size = sizeText,
+              color = ifelse(showText, colorText, "transparent")) +
+    labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
+    scale_fill_manual(values = fillCol) +
+    scale_y_continuous(labels =  function(x) paste0(prefix,
+                                                    format(x,
+                                                           big.mark = marks[1],
+                                                           decimal.mark = marks[2],
+                                                           nsmall = nDig),
+                                                    suffix),
+                       breaks = sq,
+                       limits = c(minLim, maxLim))
 
-    if (orientation == "hor")
-      gg <- gg +
-      coord_flip()
+  if (orientation == "hor")
+    gg <- gg +
+    coord_flip()
 
-    if (is.null(theme)) {
-      gg <- gg + tma()
-    } else {
-      gg <- gg + theme
-    }
+  if (is.null(theme)) {
+    gg <- gg + tma()
+  } else {
+    gg <- gg + theme
+  }
 
-    gg + theme(legend.position = "none",
+  gg + theme(legend.position = "none",
              plot.caption = element_text(hjust = 1),
              axis.text.x = element_text(angle = angleText))
 }
@@ -283,7 +286,7 @@ gg_bar_CatCatNum <- function(data,
   d <- f$d
 
   Lc <- length(unique(d$a))
-  angleText <- ifelse( Lc >= 7 & Lc < 15, 45,
+  angleText <- ifelse( Lc >= 10 & Lc < 15, 45,
                        ifelse(Lc >= 15, 90, 0))
 
   title <-  title %||% ""
@@ -318,9 +321,12 @@ gg_bar_CatCatNum <- function(data,
     dplyr::summarise(c = agg(agg, c)) %>%
     tidyr::spread(b, c, fill = 0) %>%
     tidyr::gather(b, c, -a) %>%
+    dplyr::group_by(b) %>%
     dplyr::mutate(percent = c * 100 / sum(c, na.rm = TRUE))
 
+  pd <- position_dodge(width = 0.6)
   if (graphType == "stacked") {
+    pd <- "stack"
     d <- d %>%
       dplyr::mutate(c = ifelse(c == 0, NA, c),
                     percent = ifelse(percent == 0, NA, percent))
@@ -335,11 +341,9 @@ gg_bar_CatCatNum <- function(data,
 
   fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
 
-
   if (percentage & is.null(suffix)) {
     suffix <- "%"
   }
-
 
   if (is.null(nDigits)) {
     nDig <- 0
@@ -350,9 +354,16 @@ gg_bar_CatCatNum <- function(data,
   varP <- ifelse(percentage, "percent", "c")
   minLim <- ifelse(min(d[[varP]], na.rm = T) < 0, min(d[[varP]], na.rm = T), 0)
   maxLim <- max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T)
+  # sq <- nchar(round(maxLim - minLim, 0)) - 2
+  # minLim <- round(minLim *  10^(-sq), 0) * 10^sq
+  # maxLim <- round(maxLim *  10^(-sq), 0) * 10^sq
+  # sq <- seq(minLim, maxLim, 10^sq)
+  # sq <- unique(c(0, minLim, sq))
 
   gg <- ggplot(d, aes(x = b, y = d[[ifelse(percentage, "percent", "c")]], fill = a)) +
-    geom_bar(stat = "identity", position = ifelse(graphType == "stacked", "stack", "dodge")) +
+    # geom_bar(width = 0.5, stat = "identity", position = ifelse(graphType == "stacked", "stack", "dodge")) +
+    geom_bar(width = 0.5, stat = "identity", position = pd) +
+    # geom_bar(stat = "identity", position = position_dodge(width = 0.5)) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
                               "#5A6B72",
@@ -373,6 +384,8 @@ gg_bar_CatCatNum <- function(data,
                                                           digits = nDig,
                                                           nsmall = nDig),
                                                    suffix),
+                       # breaks = sq,
+                       # limits = c(minLim, maxLim)) +
                        breaks = seq(minLim, maxLim, round(maxLim/Lc, nDig)),
                        limits = c(minLim, maxLim)) +
     theme(legend.position = legendPosition,
@@ -405,7 +418,7 @@ gg_bar_CatCatNum <- function(data,
                 check_overlap = TRUE,
                 sizeText = sizeText,
                 color = ifelse(showText, colorText, "transparent"),
-                position = position_dodge(width = 1))
+                position = position_dodge(width = 0.65))
   }
   # if (f$getCtypes()[1] == "Dat")
   #   gg <- gg +
