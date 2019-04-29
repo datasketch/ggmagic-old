@@ -276,7 +276,7 @@ gg_area_CatCatNum <- function(data,
                               prefix = NULL,
                               suffix = NULL,
                               graphType = "grouped",
-                              labelRatio = 1.1,
+                              labelRatio = 1,
                               labelWrapV = c(12, 12),
                               legendPosition = "bottom",
                               legendTitle = NULL,
@@ -386,17 +386,17 @@ gg_area_CatCatNum <- function(data,
     scale_fill_manual(values = fillCol,
                       name = legendTitle)
   # esto hace que en stacked no salgan sufijos ni prefijos revisar!!!!
-  if(graphType != "stacked"){
-   gg <- gg + scale_y_continuous(labels = function(x) paste0(prefix,
-                                                   format(x,
-                                                          big.mark = marks[1],
-                                                          decimal.mark = marks[2],
-                                                          digits = nDigits,
-                                                          nsmall = nDigits),
-                                                   suffix),
-                                                   breaks = seq(ifelse(startAtZero, 0, minLim), maxLim, round(maxLim/Lc, 2)),
-                                                   limits = c(ifelse(startAtZero, 0, minLim), maxLim))
-  }
+  # if(graphType != "stacked"){
+    gg <- gg + scale_y_continuous(labels = function(x) paste0(prefix,
+                                                              format(x,
+                                                                     big.mark = marks[1],
+                                                                     decimal.mark = marks[2],
+                                                                     digits = nDigits,
+                                                                     nsmall = nDigits),
+                                                              suffix),
+                                  breaks = seq(ifelse(startAtZero, 0, minLim), maxLim, round(maxLim/Lc, 2)),
+                                  limits = c(ifelse(startAtZero, 0, minLim), maxLim))
+  # }
 
   if (graphType == "stacked") {
     gg <- gg +
@@ -474,7 +474,7 @@ gg_area_CatCat <- function(data,
                            prefix = NULL,
                            suffix = NULL,
                            graphType = "grouped",
-                           labelRatio = 1.1,
+                           labelRatio = 1,
                            labelWrapV = c(12, 12),
                            legendPosition = "bottom",
                            legendTitle = NULL,
@@ -569,7 +569,7 @@ gg_area_CatNumP <- function(data,
                             prefix = NULL,
                             suffix = NULL,
                             graphType = "grouped",
-                            labelRatio = 1.1,
+                            labelRatio = 1,
                             labelWrapV = c(12, 12),
                             legendPosition = "bottom",
                             legendTitle = NULL,

@@ -8,11 +8,11 @@ gg_bar_Cat(data, title = NULL, subtitle = NULL, caption = NULL,
   horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
   colors = NULL, colorText = "#5A6B72", colorScale = "no",
   dropNa = FALSE, prefix = NULL, suffix = NULL,
-  highlightValue = NULL, highlightValueColor = NULL,
-  labelRatio = 0.1, labelWrap = 12, marks = c(".", ","),
-  nDigits = NULL, order = NULL, orientation = "ver",
-  percentage = FALSE, sort = "no", sliceN = NULL, showText = TRUE,
-  sizeText = 3, theme = NULL, ...)
+  highlightValue = NULL, highlightValueColor = NULL, labelRatio = 1,
+  labelWrap = 12, marks = c(".", ","), nDigits = NULL,
+  order = NULL, orientation = "ver", percentage = FALSE,
+  sort = "no", sliceN = NULL, showText = TRUE, sizeText = 3,
+  theme = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}

@@ -9,9 +9,9 @@ gg_bar_CatCatNum(data, title = NULL, subtitle = NULL, caption = NULL,
   agg = "sum", agg_text = NULL, colors = NULL,
   colorText = "#5A6B72", colorScale = "discrete", dropNaV = c(FALSE,
   FALSE), prefix = NULL, suffix = NULL, graphType = "grouped",
-  labelRatio = 0.5, labelWrapV = c(12, 12),
-  legendPosition = "bottom", legendTitle = NULL, marks = c(".", ","),
-  nDigits = 0, order1 = NULL, order2 = NULL, orientation = "ver",
+  labelRatio = 1, labelWrapV = c(12, 12), legendPosition = "bottom",
+  legendTitle = NULL, marks = c(".", ","), nDigits = 0,
+  order1 = NULL, order2 = NULL, orientation = "ver",
   percentage = FALSE, showText = TRUE, sizeText = 3, theme = NULL,
   ...)
 }

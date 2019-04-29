@@ -3,7 +3,6 @@ load_all()
 document()
 install()
 
-library(ggmagic)
 library(hgchmagic)
 library(ggmagic)
 
