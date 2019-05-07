@@ -161,8 +161,8 @@ gg_area_CatCat(s2, labelRatio = 1, graphType = "stacked")
 hgch_area_CatCat(s2, labelRatio = 1, graphType = "stacked")
 
 # REVISAR
-gg_area_CatCat(s2, graphType = "stacked", percentage = TRUE)
-hgch_area_CatCat(s2, graphType = "stacked", percentage = TRUE)
+gg_area_CatCat(s2, graphType = "stacked", percentage = TRUE) # ¿están bien?
+hgch_area_CatCat(s2, graphType = "stacked", percentage = TRUE) # ¿están bien?
 gg_area_CatCat(s2, labelRatio = 0.5, graphType = "stacked", percentage = TRUE, legendPosition = "top")
 hgch_area_CatCat(s2, labelRatio = 0.5, graphType = "stacked", percentage = TRUE, legendPosition = "right")
 gg_area_CatCat(s2, labelRatio = 1, graphType = "stacked", percentage = TRUE, suffix ="pres")

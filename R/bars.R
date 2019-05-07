@@ -384,11 +384,12 @@ gg_bar_CatCatNum <- function(data,
                                                           decimal.mark = marks[2],
                                                           digits = nDig,
                                                           nsmall = nDig),
-                                                   suffix),
+                                                   suffix)#,
                        # breaks = sq,
                        # limits = c(minLim, maxLim)) +
-                       breaks = seq(minLim, maxLim, round(maxLim/Lc, nDig)),
-                       limits = c(minLim, maxLim)) +
+                       # breaks = seq(minLim, maxLim, round(maxLim/Lc, nDig)),
+                       # limits = c(minLim, maxLim)
+                       ) +
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
 
