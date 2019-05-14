@@ -16,9 +16,9 @@ default_options <- list(
   dropNa = FALSE,
   dropNaV = c(FALSE, FALSE),
   graph_type = "grouped",
-  highlight_value = NULL, #highlightValue
-  highlight_valueColor = '#F9B233', #highlight_value_color
-  label_ratio = 1, # no debería ser label_ratio
+  highlight_value = NULL,
+  highlight_valueColor = '#F9B233',
+  label_ratio = 1,
   label_wrap = 12,
   label_wrapV = c(12, 12),
   lang = "es",
@@ -38,9 +38,9 @@ default_options <- list(
   spline = FALSE,
   startAtZero = TRUE,
   suffix = NULL,
-  text_color = "#5A6B72", # text_color
-  text_show = TRUE, # text_show
-  text_size = 3, # text_size
+  text_color = "#5A6B72",
+  text_show = TRUE,
+  text_size = 3,
   theme = NULL
 )
 
