@@ -48,16 +48,16 @@ gg_line_CatNum <- function(data,
   title <-  title %||% ""
   subtitle <- subtitle %||% ""
   caption <- caption %||% ""
-  labelsXY <- orientationXY(orientation,
-                            x = nms[1],
-                            y = ifelse(nrow(d) == dplyr::n_distinct(d$a), nms[2], paste(agg, nms[2])),
-                            hor = horLabel,
-                            ver = verLabel)
-  lineXY <- orientationXY(orientation,
-                          0,
-                          0,
-                          hor = horLine,
-                          ver = verLine)
+  labelsXY <- ggmagic::orientationXY(orientation,
+                                     x = nms[1],
+                                     y = ifelse(nrow(d) == dplyr::n_distinct(d$a), nms[2], paste(agg, nms[2])),
+                                     hor = horLabel,
+                                     ver = verLabel)
+  lineXY <- ggmagic::orientationXY(orientation,
+                                   0,
+                                   0,
+                                   hor = horLine,
+                                   ver = verLine)
 
   if (dropNa)
     d <- d %>%
@@ -67,16 +67,16 @@ gg_line_CatNum <- function(data,
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = NA)) %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(b = agg(agg, b)) %>%
+    dplyr::summarise(b = ggmagic::agg(agg, b)) %>%
     dplyr::mutate(percent = b * 100 / sum(b, na.rm = TRUE))
 
   d$a <- as.character(d$a)
   d$a[is.na(d$a)] <- 'NA'
 
-  d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
-  d <- orderCategory(d, "a", orientation, order, labelWrap)
-  d <- labelPosition(d, "b", labelRatio, percentage)
-  fillCol <- fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
+  d <- ggmagic::sortSlice(d, "b", "a", orientation, sort, sliceN)
+  d <- ggmagic::orderCategory(d, "a", orientation, order, labelWrap)
+  d <- ggmagic::labelPosition(d, "b", labelRatio, percentage)
+  fillCol <- ggmagic::fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"
   }
@@ -272,18 +272,18 @@ gg_line_CatCatNum <- function(data,
   subtitle <- subtitle %||% ""
   caption <- caption %||% ""
   legendTitle <- legendTitle %||% nms[1]
-  labelsXY <- orientationXY(orientation,
-                            x = nms[2],
-                            y = ifelse(nrow(d) == dplyr::n_distinct(d$a) & nrow(d) == dplyr::n_distinct(d$b),
-                                       nms[3],
-                                       paste(agg, nms[3])),
-                            hor = horLabel,
-                            ver = verLabel)
-  lineXY <- orientationXY(orientation,
-                          0,
-                          0,
-                          hor = horLine,
-                          ver = verLine)
+  labelsXY <- ggmagic::orientationXY(orientation,
+                                     x = nms[2],
+                                     y = ifelse(nrow(d) == dplyr::n_distinct(d$a) & nrow(d) == dplyr::n_distinct(d$b),
+                                                nms[3],
+                                                paste(agg, nms[3])),
+                                     hor = horLabel,
+                                     ver = verLabel)
+  lineXY <- ggmagic::orientationXY(orientation,
+                                   0,
+                                   0,
+                                   hor = horLine,
+                                   ver = verLine)
 
   if (any(dropNaV))
     d <- d %>%
@@ -294,20 +294,20 @@ gg_line_CatCatNum <- function(data,
                            b = ifelse(is.character(d$b), "NA", NA),
                            c = NA)) %>%
     dplyr::group_by(a, b) %>%
-    dplyr::summarise(c = agg(agg, c)) %>%
+    dplyr::summarise(c = ggmagic::agg(agg, c)) %>%
     tidyr::spread(b, c, fill = 0) %>%
     tidyr::gather(b, c, -a) %>%
     dplyr::mutate(percent = c * 100 / sum(c, na.rm = TRUE))
-
+  #REVISAR PARA QUÉ ESTO...
   d$c[is.na(d$c)] <- NA
   d$a <- as.character(d$a)
   d$a[is.na(d$a)] <- NA
   d$b <- as.character(d$b)
   d$b[is.na(d$b)] <- NA
-  d <- orderCategory(d, "a", orientation, order, labelWrapV[1])
-  d <- orderCategory(d, "b", orientation, NULL, labelWrapV[2])
-  d <- labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
-  fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
+  d <- ggmagic::orderCategory(d, "a", orientation, order, labelWrapV[1])
+  d <- ggmagic::orderCategory(d, "b", orientation, NULL, labelWrapV[2])
+  d <- ggmagic::labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
+  fillCol <- ggmagic::fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
 
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"

@@ -49,14 +49,14 @@ gg_pie_CatNum <- function(data,
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = NA)) %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(b = agg(agg, b)) %>%
+    dplyr::summarise(b = ggmagic::agg(agg, b)) %>%
     dplyr::mutate(percent = b * 100 / sum(b, na.rm = TRUE))%>%
     dplyr::mutate(b = ifelse(b == 0, NA, b),
                   percent = ifelse(percent == 0, NA, percent))
 
-  d <- sortSlice(d, "b", "a", "ver", sort, sliceN)
-  d <- orderCategory(d, "a", "ver", order, labelWrap)
-  fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrap)
+  d <- ggmagic::sortSlice(d, "b", "a", "ver", sort, sliceN)
+  d <- ggmagic::orderCategory(d, "a", "ver", order, labelWrap)
+  fillCol <- ggmagic::fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrap)
   lb0 <- paste0(format(d$b,
                        big.mark = marks[1],
                        decimal.mark = marks[2],
@@ -238,14 +238,14 @@ gg_donut_CatNum <- function(data,
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = NA)) %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(b = agg(agg, b)) %>%
+    dplyr::summarise(b = ggmagic::agg(agg, b)) %>%
     dplyr::mutate(percent = b * 100 / sum(b, na.rm = TRUE))%>%
     dplyr::mutate(b = ifelse(b == 0, NA, b),
                   percent = ifelse(percent == 0, NA, percent))
 
-  d <- sortSlice(d, "b", "a", "ver", sort, sliceN)
-  d <- orderCategory(d, "a", "ver", order, labelWrap)
-  fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrap)
+  d <- ggmagic::sortSlice(d, "b", "a", "ver", sort, sliceN)
+  d <- ggmagic::orderCategory(d, "a", "ver", order, labelWrap)
+  fillCol <- ggmagic::fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrap)
   lb0 <- paste0(format(d$b,
                        big.mark = marks[1],
                        decimal.mark = marks[2],

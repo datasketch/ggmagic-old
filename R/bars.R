@@ -55,37 +55,34 @@ gg_bar_CatNum <- function(data,
 
   prefix_agg <- ifelse(is.null(agg_text), agg, agg_text)
 
-  labelsXY <- orientationXY(orientation,
-                            x = nms[1],
-                            y = ifelse(nrow(d) == dplyr::n_distinct(d$a), nms[2], paste(prefix_agg, nms[2])),
-                            hor = horLabel,
-                            ver = verLabel)
-  lineXY <- orientationXY(orientation,
-                          0,
-                          0,
-                          hor = horLine,
-                          ver = verLine)
+  labelsXY <- ggmagic::orientationXY(orientation,
+                                     x = nms[1],
+                                     y = ifelse(nrow(d) == dplyr::n_distinct(d$a), nms[2], paste(prefix_agg, nms[2])),
+                                     hor = horLabel,
+                                     ver = verLabel)
+  lineXY <- ggmagic::orientationXY(orientation,
+                                   0,
+                                   0,
+                                   hor = horLine,
+                                   ver = verLine)
 
   if (dropNa)
     d <- d %>%
     tidyr::drop_na()
 
-  if (is.null(nDigits)) {
-    nDig <- 0
-  } else {
-    nDig <- nDigits
-  }
-  d <- d  %>%
-      tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
-                             b = NA)) %>%
-      dplyr::group_by(a) %>%
-      dplyr::summarise(b = round(agg(agg, b)), nDig) %>%
-      dplyr::mutate(percent = round(b * 100 / sum(b, na.rm = TRUE), nDig))
+  nDig <- ifelse(!is.null(nDigits), nDigits, 0)
 
-  d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
-  d <- orderCategory(d, "a", orientation, order, labelWrap)
-  d <- labelPosition(d, "b", labelRatio, percentage)
-  fillCol <- fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
+  d <- d  %>%
+    tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
+                           b = NA)) %>%
+    dplyr::group_by(a) %>%
+    dplyr::summarise(b = round(ggmagic::agg(agg, b)), nDig) %>%
+    dplyr::mutate(percent = round(b * 100 / sum(b, na.rm = TRUE), nDig))
+
+  d <- ggmagic::sortSlice(d, "b", "a", orientation, sort, sliceN)
+  d <- ggmagic::orderCategory(d, "a", orientation, order, labelWrap)
+  d <- ggmagic::labelPosition(d, "b", labelRatio, percentage)
+  fillCol <- ggmagic::fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
 
   if (percentage & is.null(suffix)) {
     suffix <- "%"
@@ -94,11 +91,11 @@ gg_bar_CatNum <- function(data,
   varP <- ifelse(percentage, "percent", "b")
   minLim <- ifelse(min(d[[varP]], na.rm = T) < 0, min(d[[varP]], na.rm = T), 0)
   maxLim <- max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T)
-  sq <- nchar(round(maxLim - minLim, 0)) - 1
-  minLim <- round(minLim *  10^(-sq), 0) * 10^sq
-  maxLim <- round(maxLim *  10^(-sq), 0) * 10^sq
-  sq <- seq(minLim, maxLim, 10^sq)
-  sq <- unique(c(0, minLim, sq))
+  # sq <- nchar(round(maxLim - minLim, 0)) - 1
+  # minLim <- round(minLim *  10^(-sq), 0) * 10^sq
+  # maxLim <- round(maxLim *  10^(-sq), 0) * 10^sq
+  # sq <- seq(minLim, maxLim, 10^sq)
+  # sq <- unique(c(0, minLim, sq))
 
   gg <- ggplot(d, aes(x = a, y = d[[ifelse(percentage, "percent", "b")]], fill = a)) +
     geom_bar(stat = "identity") +
@@ -296,18 +293,18 @@ gg_bar_CatCatNum <- function(data,
 
   prefix_agg <- ifelse(is.null(agg_text), agg, as.character(agg_text))
 
-  labelsXY <- orientationXY(orientation,
-                            x = nms[2],
-                            y = ifelse(nrow(d) == dplyr::n_distinct(d$a) & nrow(d) == dplyr::n_distinct(d$b),
-                                       nms[3],
-                                       paste(prefix_agg, nms[3])),
-                            hor = horLabel,
-                            ver = verLabel)
-  lineXY <- orientationXY(orientation,
-                          0,
-                          0,
-                          hor = horLine,
-                          ver = verLine)
+  labelsXY <- ggmagic::orientationXY(orientation,
+                                     x = nms[2],
+                                     y = ifelse(nrow(d) == dplyr::n_distinct(d$a) & nrow(d) == dplyr::n_distinct(d$b),
+                                                nms[3],
+                                                paste(prefix_agg, nms[3])),
+                                     hor = horLabel,
+                                     ver = verLabel)
+  lineXY <- ggmagic::orientationXY(orientation,
+                                   0,
+                                   0,
+                                   hor = horLine,
+                                   ver = verLine)
 
   if (any(dropNaV))
     d <- d %>%
@@ -318,7 +315,7 @@ gg_bar_CatCatNum <- function(data,
                            b = ifelse(is.character(d$b), "NA", NA),
                            c = NA)) %>%
     dplyr::group_by(a, b) %>%
-    dplyr::summarise(c = agg(agg, c)) %>%
+    dplyr::summarise(c = ggmagic::agg(agg, c)) %>%
     tidyr::spread(b, c, fill = 0) %>%
     tidyr::gather(b, c, -a) %>%
     dplyr::group_by(b) %>%
@@ -333,24 +330,20 @@ gg_bar_CatCatNum <- function(data,
                     percent = ifelse(percent == 0, NA, percent))
   }
 
-  d <- orderCategory(d, "a", orientation, order1, labelWrapV[1])
-  d <- orderCategory(d, "b", orientation, order2, labelWrapV[2])
+  d <- ggmagic::orderCategory(d, "a", orientation, order1, labelWrapV[1])
+  d <- ggmagic::orderCategory(d, "b", orientation, order2, labelWrapV[2])
 
   if (graphType == "grouped") {
-    d <- labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
+    d <- ggmagic::labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
   }
 
-  fillCol <- fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
+  fillCol <- ggmagic::fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
 
   if (percentage & is.null(suffix)) {
     suffix <- "%"
   }
 
-  if (is.null(nDigits)) {
-    nDig <- 0
-  } else {
-    nDig <- nDigits
-  }
+  nDig <- ifelse(!is.null(nDigits), nDigits, 0)
 
   varP <- ifelse(percentage, "percent", "c")
   minLim <- ifelse(min(d[[varP]], na.rm = T) < 0, min(d[[varP]], na.rm = T), 0)
@@ -384,12 +377,11 @@ gg_bar_CatCatNum <- function(data,
                                                           decimal.mark = marks[2],
                                                           digits = nDig,
                                                           nsmall = nDig),
-                                                   suffix)#,
+                                                   suffix),
                        # breaks = sq,
                        # limits = c(minLim, maxLim)) +
-                       # breaks = seq(minLim, maxLim, round(maxLim/Lc, nDig)),
-                       # limits = c(minLim, maxLim)
-                       ) +
+                       breaks = seq(minLim, maxLim, round(maxLim/Lc, nDig)),
+                       limits = c(minLim, maxLim)) +
     theme(legend.position = legendPosition,
           plot.caption = element_text(hjust = 1))
 
