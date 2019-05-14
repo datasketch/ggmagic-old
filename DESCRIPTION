@@ -19,7 +19,10 @@ Depends:
     ggpmisc,
     treemapify,
     packcircles,
-    zoo
+    zoo,
+    jpeg,
+    rsvg,
+    svglite
 License: What license is it under?
 LazyData: no
 RoxygenNote: 6.1.1
