@@ -9,149 +9,122 @@
 #' @examples
 #' gg_area_CatNum(sampleData("Cat-Num", nrow = 10))
 #' @export gg_area_CatNum
-gg_area_CatNum <- function(data,
-                           title = NULL,
-                           subtitle = NULL,
-                           caption = NULL,
-                           horLabel = NULL,
-                           verLabel = NULL,
-                           horLine = NULL,
-                           #horLineLabel = NULL,
-                           verLine = NULL,
-                           #verLineLabel = NULL,
-                           agg = "sum",
-                           agg_text = NULL,
-                           colors = NULL,
-                           colorText = "#5A6B72",
-                           colorOpacity = 0.7,
-                           colorScale = "no",
-                           dropNa = FALSE,
-                           prefix = NULL,
-                           suffix = NULL,
-                           labelRatio = 1,
-                           labelWrap = 12,
-                           marks = c(".", ","),
-                           nDigits = 0,
-                           order = NULL,
-                           orientation = "ver",
-                           percentage = FALSE,
-                           shapeType = 19,
-                           sort = "no",
-                           sliceN = NULL,
-                           showText = TRUE,
-                           spline = FALSE,
-                           startAtZero = TRUE,
-                           theme = NULL, ...) {
+gg_area_CatNum <- function(data = NULL, opts = NULL, ...) {
+
+  if (is.null(data)) {
+    stop("Load an available dataset")
+  }
+
+  opts <- getOptions(opts = opts)
+
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d
 
-  if(!is.null(colors)) {
-    colors <- colors[1]
-  }
-
   Lc <- length(unique(d$a))
-  angleText <- ifelse( Lc >= 10 & Lc < 15, 45,
+  angleText <- ifelse( Lc >= 10 & Lc < 15,
+                       45,
                        ifelse(Lc >= 15, 90, 0))
 
-  title <-  title %||% ""
-  subtitle <- subtitle %||% ""
-  caption <- caption %||% ""
+  opts$title <-  opts$title %||% ""
+  opts$subtitle <- opts$subtitle %||% ""
+  opts$caption <- opts$caption %||% ""
 
-  prefix_agg <- ifelse(is.null(agg_text), agg, agg_text)
+  prefix_agg <- ifelse(is.null(opts$agg_text), opts$agg, opts$agg_text)
 
-  labelsXY <- ggmagic::orientationXY(orientation,
+  labelsXY <- ggmagic::orientationXY(opts$orientation,
                                      x = nms[1],
                                      y = ifelse(nrow(d) == dplyr::n_distinct(d$a), nms[2], paste(prefix_agg, nms[2])),
-                                     hor = horLabel,
-                                     ver = verLabel)
-  lineXY <- ggmagic::orientationXY(orientation,
+                                     hor = opts$horLabel,
+                                     ver = opts$verLabel)
+  lineXY <- ggmagic::orientationXY(opts$orientation,
                                    0,
                                    0,
-                                   hor = horLine,
-                                   ver = verLine)
+                                   hor = opts$horLine,
+                                   ver = opts$verLine)
 
-  if (dropNa)
+  if (opts$dropNa)
     d <- d %>%
     tidyr::drop_na()
+
+  opts$nDigits <- ifelse(!is.null(opts$nDigits), opts$nDigits, 0)
+  opts$color_scale <- "no"
 
   d <- d  %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = NA)) %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(b = ggmagic::agg(agg, b)) %>%
-    dplyr::mutate(percent = b * 100 / sum(b, na.rm = TRUE))
+    dplyr::summarise(b = ggmagic::agg(opts$agg, b)) %>%
+    dplyr::mutate(percent = round(b * 100 / sum(b, na.rm = TRUE), opts$nDigits))
 
-  d <- ggmagic::sortSlice(d, "b", "a", orientation, sort, sliceN)
-  d <- ggmagic::orderCategory(d, "a", orientation, order, labelWrap)
-  d <- ggmagic::labelPosition(d, "b", labelRatio, percentage)
-  fillCol <- ggmagic::fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrap)
+  d <- ggmagic::sortSlice(d, "b", "a", opts$orientation, opts$sort, opts$sliceN)
+  d <- ggmagic::orderCategory(d, "a", opts$orientation, opts$order, opts$label_wrap)
+  d <- ggmagic::labelPosition(d, "b", opts$label_ratio, opts$percentage)
+  fillCol <- ggmagic::fillColors(d, "a", opts$colors, opts$color_scale, NULL, NULL, opts$label_wrap)
 
-  if (percentage & is.null(suffix)) {
-    suffix <- "%"
+  if (opts$percentage & is.null(opts$suffix)) {
+    opts$suffix <- "%"
   }
 
   d$a <- as.factor(d$a)
 
-  minLim <- min(d[[ifelse(percentage, "percent", "b")]], na.rm = T)
-  maxLim <- max(d[[ifelse(percentage, "percent", "b")]], na.rm = T) + 0.3 * max(d[[ifelse(percentage, "percent", "b")]], na.rm = T)
-  varP <- ifelse(percentage, "percent", "b")
-  gg <- ggplot(d, aes(x=a, group = 1, y = d[[varP]], fill = "b")) +
-    geom_area(alpha = colorOpacity) +
+  varP <- ifelse(opts$percentage, "percent", "b")
+  minLim <- min(d[[varP]], na.rm = T)
+  maxLim <- max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T)
+
+  gg <- ggplot(d, aes(x = a, group = 1, y = d[[varP]], fill = "b")) +
+    geom_area(alpha = opts$color_opacity) +
     geom_line(aes(color = varP)) +
-    geom_point(shape = as.integer(shapeType), colour = unique(fillCol)) +
-    scale_color_manual(values = unique(fillCol)) +
-    scale_fill_manual(name="",
-                      values = c("b" =  unique(fillCol))) +
-        geom_vline(xintercept = lineXY[2],
-               color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
+    geom_point(shape = as.integer(opts$shape_type), colour = unique(fillCol)) +
+    geom_vline(xintercept = lineXY[2],
+               color = ifelse((opts$orientation == "hor" & !is.null(opts$horLine)) | (opts$orientation == "ver" & !is.null(opts$verLine)),
                               "#5A6B72",
                               "transparent"),
                linetype = "dashed") +
     geom_hline(yintercept = lineXY[1],
-               color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
+               color = ifelse((opts$orientation == "hor" & !is.null(opts$verLine)) | (opts$orientation == "ver" & !is.null(opts$horLine)),
                               "#5A6B72",
                               "transparent"),
                linetype = "dashed") +
-    scale_y_continuous(labels =  function(x) paste0(prefix,
-                                                    format(x,
-                                                           big.mark = marks[1],
-                                                           decimal.mark = marks[2],
-                                                           digits = nDigits,
-                                                           nsmall = nDigits),
-                                                    suffix),
-                       breaks = seq(ifelse(startAtZero, 0, minLim), maxLim, round(maxLim/Lc, 2)),
-                       limits = c(ifelse(startAtZero, 0, minLim), maxLim)#c(ifelse(startAtZero, 0, NA), NA)
-    ) +
     geom_text(aes(y = labPos,
-                  label = paste0(prefix,
+                  label = paste0(opts$prefix,
                                  format(d[[varP]],
-                                        big.mark = marks[1],
-                                        decimal.mark = marks[2],
-                                        digits = nDigits,
-                                        nsmall = nDigits),
-                                 suffix)),
+                                        big.mark = opts$marks[1],
+                                        decimal.mark = opts$marks[2],
+                                        digits = opts$nDigits,
+                                        nsmall = opts$nDigits),
+                                 opts$suffix)),
               check_overlap = TRUE,
-              color = ifelse(showText, colorText, "transparent")) +
-    labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2])
+              size = opts$text_size,
+              color = ifelse(opts$text_show, opts$text_color, "transparent")) +
+    labs(title = opts$title, subtitle = opts$subtitle, caption = opts$caption, x = labelsXY[1], y = labelsXY[2]) +
+    scale_color_manual(values = unique(fillCol)) +
+    scale_fill_manual(name = "", values = c("b" =  unique(fillCol))) +
+    scale_y_continuous(labels =  function(x) paste0(opts$prefix,
+                                                    format(x,
+                                                           big.mark = opts$marks[1],
+                                                           decimal.mark = opts$marks[2],
+                                                           digits = opts$nDigits,
+                                                           nsmall = opts$nDigits),
+                                                    opts$suffix),
+                       breaks = seq(ifelse(opts$startAtZero, 0, minLim), maxLim, round(maxLim/Lc, 2)),
+                       limits = c(ifelse(opts$startAtZero, 0, minLim), maxLim))#c(ifelse(startAtZero, 0, NA), NA))
 
-
-  if (is.null(theme)) {
-      gg <- gg + tma()
-  } else {
-    gg <- gg + theme
+  if (opts$orientation == "hor") {
+    gg <- gg +
+      coord_flip()
   }
 
-  if (orientation == "hor") {
-    gg <- gg +
-    coord_flip()
+  if (is.null(opts$theme)) {
+    gg <- gg + ggmagic::tma(orientation = opts$orientation)
+  } else {
+    gg <- gg + opts$theme
   }
 
   gg <- gg + theme(legend.position = "none",
-             plot.caption = element_text(hjust = 1),
-             axis.text.x = element_text(angle = angleText))
+                   plot.caption = element_text(hjust = 1),
+                   axis.text.x = element_text(angle = angleText))
   gg
-
 }
 
 
@@ -166,37 +139,13 @@ gg_area_CatNum <- function(data,
 #' @examples
 #' gg_area_Cat(sampleData("Cat", nrow = 10))
 #' @export gg_area_Cat
-gg_area_Cat <- function(data,
-                        title = NULL,
-                        subtitle = NULL,
-                        caption = NULL,
-                        horLabel = NULL,
-                        verLabel = NULL,
-                        horLine = NULL,
-                        #horLineLabel = NULL,
-                        verLine = NULL,
-                        #verLineLabel = NULL,
-                        colors = NULL,
-                        colorText = "#5A6B72",
-                        colorOpacity = 0.6,
-                        colorScale = "no",
-                        dropNa = FALSE,
-                        prefix = NULL,
-                        suffix = NULL,
-                        labelRatio = 1,
-                        labelWrap = 12,
-                        marks = c(".", ","),
-                        nDigits = 0,
-                        order = NULL,
-                        orientation = "ver",
-                        percentage = FALSE,
-                        shapeType = 19,
-                        sort = "no",
-                        sliceN = NULL,
-                        showText = TRUE,
-                        spline = FALSE,
-                        startAtZero = TRUE,
-                        theme = NULL, ...) {
+gg_area_Cat <- function(data = NULL, opts = NULL, ...) {
+
+  if (is.null(data)) {
+    stop("Load an available dataset")
+  }
+
+  opts <- getOptions(opts = opts)
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -206,41 +155,10 @@ gg_area_Cat <- function(data,
     dplyr::group_by_all() %>%
     dplyr::summarise(b = n())
 
-  names(d) <- c(f$dic_$d$label, paste0("count ", f$dic_$d$label))
+  prefix_agg <- ifelse(is.null(opts$agg_text), "Count", opts$agg_text)
+  names(d) <- c(f$dic_$d$label, paste(prefix_agg, f$dic_$d$label))
 
-  gg <- gg_area_CatNum(data = d,
-                       title = title,
-                       subtitle = subtitle,
-                       caption = caption,
-                       horLabel = horLabel,
-                       verLabel = verLabel,
-                       horLine = horLine,
-                       #horLineLabel = NULL,
-                       verLine = verLine,
-                       #verLineLabel = NULL,
-                       agg = "sum",
-                       agg_text = " ",
-                       colors = colors,
-                       colorText = colorText,
-                       colorOpacity = colorOpacity,
-                       colorScale = colorScale,
-                       dropNa = dropNa,
-                       prefix = prefix,
-                       suffix = suffix,
-                       labelRatio = labelRatio,
-                       labelWrap = labelWrap,
-                       marks = marks,
-                       nDigits = nDigits,
-                       order = order,
-                       orientation = orientation,
-                       percentage = percentage,
-                       shapeType = shapeType,
-                       sort = sort,
-                       sliceN = sliceN,
-                       showText = showText,
-                       spline = spline,
-                       startAtZero = startAtZero,
-                       theme = theme, ...)
+  gg <- gg_area_CatNum(data = d, opts = opts)
   gg
 }
 
@@ -256,189 +174,164 @@ gg_area_Cat <- function(data,
 #' @examples
 #' gg_area_CatCatNum(sampleData("Cat-Cat-Num", nrow = 10))
 #' @export gg_area_CatCatNum
-gg_area_CatCatNum <- function(data,
-                              title = NULL,
-                              subtitle = NULL,
-                              caption = NULL,
-                              horLabel = NULL,
-                              verLabel = NULL,
-                              horLine = NULL,
-                              #horLineLabel = NULL,
-                              verLine = NULL,
-                              #verLineLabel = NULL,
-                              agg = "sum",
-                              agg_text = NULL,
-                              colors = NULL,
-                              colorText = "#5A6B72",
-                              colorOpacity = 0.7,
-                              colorScale = "discrete",
-                              dropNaV = c(FALSE, FALSE),
-                              prefix = NULL,
-                              suffix = NULL,
-                              graphType = "grouped",
-                              labelRatio = 1,
-                              labelWrapV = c(12, 12),
-                              legendPosition = "bottom",
-                              legendTitle = NULL,
-                              marks = c(".", ","),
-                              nDigits = 0,
-                              order1 = NULL,
-                              order2 = NULL,
-                              orientation = "ver",
-                              percentage = FALSE,
-                              shapeType = 19,
-                              showText = TRUE,
-                              spline = FALSE,
-                              startAtZero = TRUE,
-                              theme = NULL, ...) {
+gg_area_CatCatNum <- function(data = NULL, opts = NULL, ...) {
+
+  if (is.null(data)) {
+    stop("Load an available dataset")
+  }
+
+  opts <- getOptions(opts = opts)
+
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d
 
   Lc <- length(unique(d$a))
-  angleText <- ifelse( Lc >= 10 & Lc < 15, 45,
+  angleText <- ifelse( Lc >= 10 & Lc < 15,
+                       45,
                        ifelse(Lc >= 15, 90, 0))
 
-  title <-  title %||% ""
-  subtitle <- subtitle %||% ""
-  caption <- caption %||% ""
-  legendTitle <- legendTitle %||% nms[1]
+  opts$title <-  opts$title %||% ""
+  opts$subtitle <- opts$subtitle %||% ""
+  opts$caption <- opts$caption %||% ""
+  opts$legend_title <- opts$legend_title %||% nms[1]
 
-  prefix_agg <- ifelse(is.null(agg_text), agg, as.character(agg_text))
+  prefix_agg <- ifelse(is.null(opts$agg_text), opts$agg, as.character(opts$agg_text))
 
-  labelsXY <- ggmagic::orientationXY(orientation,
+  labelsXY <- ggmagic::orientationXY(opts$orientation,
                                      x = nms[2],
                                      y = ifelse(nrow(d) == dplyr::n_distinct(d$a) & nrow(d) == dplyr::n_distinct(d$b),
                                                 nms[3],
                                                 paste(prefix_agg, nms[3])),
-                                     hor = horLabel,
-                                     ver = verLabel)
-  lineXY <- ggmagic::orientationXY(orientation,
+                                     hor = opts$horLabel,
+                                     ver = opts$verLabel)
+  lineXY <- ggmagic::orientationXY(opts$orientation,
                                    0,
                                    0,
-                                   hor = horLine,
-                                   ver = verLine)
+                                   hor = opts$horLine,
+                                   ver = opts$verLine)
 
-  if (any(dropNaV))
+  if (any(opts$dropNaV))
     d <- d %>%
-    tidyr::drop_na(which(dropNaV))
+    tidyr::drop_na(which(opts$dropNaV))
 
+  opts$nDigits <- ifelse(!is.null(opts$nDigits), opts$nDigits, 0)
 
   d <- d %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = ifelse(is.character(d$b), "NA", NA),
                            c = NA)) %>%
     dplyr::group_by(a, b) %>%
-    dplyr::summarise(c = ggmagic::agg(agg, c)) %>%
+    dplyr::summarise(c = ggmagic::agg(opts$agg, c)) %>%
     tidyr::spread(b, c) %>%
     tidyr::gather(b, c, -a) %>%
-    dplyr::mutate(percent = c * 100 / sum(c, na.rm = TRUE))
+    dplyr::mutate(percent = round(c * 100 / sum(c, na.rm = TRUE)))
 
-  if (graphType == "stacked") {
+  if (opts$graph_type == "stacked") {
     d <- d %>%
       dplyr::mutate(c = ifelse(c == 0, NA, c),
                     percent_a = ifelse(percent == 0, NA, percent))
 
   }
 
-  d <- ggmagic::orderCategory(d, "a", orientation, order1, labelWrapV[1])
-  d <- ggmagic::orderCategory(d, "b", orientation, order2, labelWrapV[2])
+  d <- ggmagic::orderCategory(d, "a", opts$orientation, opts$order1, opts$label_wrapV[1])
+  d <- ggmagic::orderCategory(d, "b", opts$orientation, opts$order2, opts$label_wrapV[2])
 
-  if (graphType == "stacked") {
-    d <- d %>% drop_na(c)
+  if (opts$graph_type == "stacked") {
+    d <- d %>%
+      drop_na(c)
   }
 
-  if (graphType == "grouped") {
-    # d$z <- d$c
-    # d$z[is.na(d$z)] <- 0
-    # # nuevo
-    # d$zp <- d$percent
-    # d$zp[is.na(d$zp)] <- 0
-    d <- ggmagic::labelPosition(d, "c", labelRatio, percentage, zeroToNa = TRUE)
+  if (opts$graph_type == "grouped") {
+    d <- ggmagic::labelPosition(d, "c", opts$label_ratio, opts$percentage, zeroToNa = TRUE)
   }
 
-  fillCol <- ggmagic::fillColors(d, "a", colors, colorScale, NULL, NULL, labelWrapV[1])
+  fillCol <- ggmagic::fillColors(d, "a", opts$colors, opts$color_scale, NULL, NULL, opts$label_wrapV[1])
 
-  if (percentage & is.null(suffix)) {
-    suffix <- "%"
+  if (opts$percentage & is.null(opts$suffix)) {
+    opts$suffix <- "%"
   }
 
-  varP <- ifelse(percentage, "percent", "c")
+  varP <- ifelse(opts$percentage, "percent", "c")
   minLim <- min(d[[varP]], na.rm = T)
   maxLim <- max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T)
 
   gg <- ggplot(d, aes(x = b, y = d[[varP]], colour = a, fill = a, group = a)) +
-    geom_area(alpha = colorOpacity, position = ifelse(graphType == "stacked", "stack", "dodge")) +
-    geom_point(shape = as.integer(shapeType), position = ifelse(graphType == "stacked", "stack", "dodge"), show.legend = FALSE) +
+    geom_area(alpha = opts$color_opacity, position = ifelse(opts$graph_type == "stacked", "stack", "dodge")) +
+    geom_point(shape = as.integer(opts$shape_type), position = ifelse(opts$graph_type == "stacked", "stack", "dodge"), show.legend = FALSE) +
     geom_vline(xintercept = lineXY[2],
-               color = ifelse((orientation == "hor" & !is.null(horLine)) | (orientation == "ver" & !is.null(verLine)),
+               color = ifelse((opts$orientation == "hor" & !is.null(opts$horLine)) | (opts$orientation == "ver" & !is.null(opts$verLine)),
                               "#5A6B72",
                               "transparent"),
                linetype = "dashed") +
     geom_hline(yintercept = lineXY[1],
-               color = ifelse((orientation == "hor" & !is.null(verLine)) | (orientation == "ver" & !is.null(horLine)),
+               color = ifelse((opts$orientation == "hor" & !is.null(opts$verLine)) | (opts$orientation == "ver" & !is.null(opts$horLine)),
                               "#5A6B72",
                               "transparent"),
                linetype = "dashed") +
-    labs(title = title, subtitle = subtitle, caption = caption, x = labelsXY[1], y = labelsXY[2]) +
-    scale_colour_manual(values = fillCol,
-                        guide = FALSE) +
-    scale_fill_manual(values = fillCol,
-                      name = legendTitle)
+    labs(title = opts$title, subtitle = opts$subtitle, caption = opts$caption, x = labelsXY[1], y = labelsXY[2]) +
+    scale_colour_manual(values = fillCol, guide = FALSE) +
+    scale_fill_manual(values = fillCol, name = opts$legend_title)
   # esto hace que en stacked no salgan sufijos ni prefijos revisar!!!!
   # if(graphType != "stacked"){
-    gg <- gg + scale_y_continuous(labels = function(x) paste0(prefix,
-                                                              format(x,
-                                                                     big.mark = marks[1],
-                                                                     decimal.mark = marks[2],
-                                                                     digits = nDigits,
-                                                                     nsmall = nDigits),
-                                                              suffix),
-                                  breaks = seq(ifelse(startAtZero, 0, minLim), maxLim, round(maxLim/Lc, 2)),
-                                  limits = c(ifelse(startAtZero, 0, minLim), maxLim))
+  gg <- gg +
+    scale_y_continuous(labels = function(x) paste0(opts$prefix,
+                                                   format(x,
+                                                          big.mark = opts$marks[1],
+                                                          decimal.mark = opts$marks[2],
+                                                          digits = opts$nDigits,
+                                                          nsmall = opts$nDigits),
+                                                   opts$suffix),
+                       breaks = seq(ifelse(opts$startAtZero, 0, minLim), maxLim, round(maxLim/Lc, 2)),
+                       limits = c(ifelse(opts$startAtZero, 0, minLim), maxLim))
   # }
 
-  if (graphType == "stacked") {
+  if (opts$graph_type == "stacked") {
     gg <- gg +
-      geom_text(aes(y = d[[ifelse(percentage, "percent", "c")]],
-                    label = paste0(prefix,
-                                   format(d[[ifelse(percentage, "percent", "c")]],
-                                          big.mark = marks[1],
-                                          decimal.mark = marks[2],
-                                          digits = nDigits,
-                                          nsmall = nDigits),
-                                   suffix)),
+      geom_text(aes(y = d[[varP]],
+                    label = paste0(opts$prefix,
+                                   format(d[[varP]],
+                                          big.mark = opts$marks[1],
+                                          decimal.mark = opts$marks[2],
+                                          digits = opts$nDigits,
+                                          nsmall = opts$nDigits),
+                                   opts$suffix)),
                 check_overlap = TRUE,
-                color = ifelse(showText, colorText, "transparent"),
-                position = position_stack(vjust = labelRatio))
+                size = opts$text_size,
+                color = ifelse(opts$text_show, opts$text_color, "transparent"),
+                position = position_stack(vjust = opts$label_ratio))
   } else {
     gg <- gg +
       geom_text(aes(y = labPos,
-                    label = paste0(prefix,
-                                   format(d[[ifelse(percentage, "percent", "c")]],
-                                          big.mark = marks[1],
-                                          decimal.mark = marks[2],
-                                          digits = nDigits,
-                                          nsmall = nDigits),
-                                   suffix)),
+                    label = paste0(opts$prefix,
+                                   format(d[[varP]],
+                                          big.mark = opts$marks[1],
+                                          decimal.mark = opts$marks[2],
+                                          digits = opts$nDigits,
+                                          nsmall = opts$nDigits),
+                                   opts$suffix)),
                 check_overlap = TRUE,
-                color = ifelse(showText, colorText, "transparent"))
+                size = opts$text_size,
+                color = ifelse(opts$text_show, opts$text_color, "transparent")#,
+                # position = position_dodge(width = 0.65)) # PROBAR SI MEJORA CON ESTO
+      )
   }
 
-  if (is.null(theme)) {
-    gg <- gg + tma()
-  } else {
-    gg <- gg + theme
-  }
-
-  if (orientation == "hor") {
+  if (opts$orientation == "hor") {
     gg <- gg +
-    coord_flip()
+      coord_flip()
   }
 
-  gg  + theme(axis.text.x = element_text(angle = angleText),
-              legend.position= legendPosition
-             ) +
+  if (is.null(opts$theme)) {
+    gg <- gg + ggmagic::tma(orientation = opts$orientation)
+  } else {
+    gg <- gg + opts$theme
+  }
+
+  gg +
+    theme(axis.text.x = element_text(angle = angleText),
+          plot.caption = element_text(hjust = 1),
+          legend.position = opts$legend_position) +
     theme_leg() +
     guides(fill = guide_legend(nrow = 1))
 }
@@ -456,39 +349,14 @@ gg_area_CatCatNum <- function(data,
 #' @examples
 #' gg_area_CatCat(sampleData("Cat-Cat", nrow = 10))
 #' @export gg_area_CatCat
-gg_area_CatCat <- function(data,
-                           title = NULL,
-                           subtitle = NULL,
-                           caption = NULL,
-                           horLabel = NULL,
-                           verLabel = NULL,
-                           horLine = NULL,
-                           #horLineLabel = NULL,
-                           verLine = NULL,
-                           #verLineLabel = NULL,
-                           colors = NULL,
-                           colorText = "#5A6B72",
-                           colorOpacity = 0.6,
-                           colorScale = "discrete",
-                           dropNaV = c(FALSE, FALSE),
-                           prefix = NULL,
-                           suffix = NULL,
-                           graphType = "grouped",
-                           labelRatio = 1,
-                           labelWrapV = c(12, 12),
-                           legendPosition = "bottom",
-                           legendTitle = NULL,
-                           marks = c(".", ","),
-                           nDigits = 0,
-                           order1 = NULL,
-                           order2 = NULL,
-                           orientation = "ver",
-                           percentage = FALSE,
-                           shapeType = 19,
-                           showText = TRUE,
-                           spline = FALSE,
-                           startAtZero = TRUE,
-                           theme = NULL, ...) {
+gg_area_CatCat <- function(data = NULL, opts = NULL, ...) {
+
+  if (is.null(data)) {
+    stop("Load an available dataset")
+  }
+
+  opts <- getOptions(opts = opts)
+
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d
@@ -497,43 +365,10 @@ gg_area_CatCat <- function(data,
     dplyr::group_by_all() %>%
     dplyr::summarise(c = n())
 
-  names(d) <- c(f$dic_$d$label, paste0("count", f$dic_$d$label[1]))
+  prefix_agg <- ifelse(is.null(opts$agg_text), "Count", opts$agg_text)
+  names(d) <- c(f$dic_$d$label, paste(prefix_agg, f$dic_$d$label[1]))
 
-  gg <- gg_area_CatCatNum(data = d,
-                          title = title,
-                          subtitle = subtitle,
-                          caption = caption,
-                          horLabel = horLabel,
-                          verLabel = verLabel,
-                          horLine = horLine,
-                          #horLineLabel = NULL,
-                          verLine = verLine,
-                          #verLineLabel = NULL,
-                          agg = "sum",
-                          agg_text = "",
-                          colors = colors,
-                          colorText = colorText,
-                          colorOpacity = colorOpacity,
-                          colorScale = colorScale,
-                          dropNaV = dropNaV,
-                          prefix = prefix,
-                          suffix = suffix,
-                          graphType = graphType,
-                          labelRatio = labelRatio,
-                          labelWrapV = labelWrapV,
-                          legendPosition = legendPosition,
-                          legendTitle = legendTitle,
-                          marks = marks,
-                          nDigits = nDigits,
-                          order1 = order1,
-                          order2 = order2,
-                          orientation = orientation,
-                          percentage = percentage,
-                          shapeType = shapeType,
-                          showText = showText,
-                          spline = spline,
-                          startAtZero = startAtZero,
-                          theme = theme, ...)
+  gg <- gg_area_CatCatNum(data = d, opts = opts)
   gg
 }
 
@@ -549,41 +384,13 @@ gg_area_CatCat <- function(data,
 #' @examples
 #' gg_area_CatNumP(sampleData("Cat-NumP", nrow = 10))
 #' @export gg_area_CatNumP
-gg_area_CatNumP <- function(data,
-                            title = NULL,
-                            subtitle = NULL,
-                            caption = NULL,
-                            horLabel = NULL,
-                            verLabel = NULL,
-                            horLine = NULL,
-                            #horLineLabel = NULL,
-                            verLine = NULL,
-                            #verLineLabel = NULL,
-                            agg = "sum",
-                            agg_text = NULL,
-                            colors = NULL,
-                            colorText = "#5A6B72",
-                            colorOpacity = 0.7,
-                            colorScale = "discrete",
-                            dropNaV = c(FALSE, FALSE),
-                            prefix = NULL,
-                            suffix = NULL,
-                            graphType = "grouped",
-                            labelRatio = 1,
-                            labelWrapV = c(12, 12),
-                            legendPosition = "bottom",
-                            legendTitle = NULL,
-                            marks = c(".", ","),
-                            nDigits = 0,
-                            order1 = NULL,
-                            order2 = NULL,
-                            orientation = "ver",
-                            percentage = FALSE,
-                            shapeType = 19,
-                            showText = TRUE,
-                            spline = FALSE,
-                            startAtZero = TRUE,
-                            theme = NULL, ...) {
+gg_area_CatNumP <- function(data = NULL, opts = NULL, ...) {
+
+  if (is.null(data)) {
+    stop("Load an available dataset")
+  }
+
+  opts <- getOptions(opts = opts)
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -593,39 +400,6 @@ gg_area_CatNumP <- function(data,
   data <- d %>%
     gather("categories", "count", names(d)[-1])
 
-  gg <- gg_area_CatCatNum(data,
-                         title = title,
-                         subtitle = subtitle,
-                         caption = caption,
-                         horLabel = horLabel,
-                         verLabel = verLabel,
-                         horLine = horLine,
-                         #horLineLabel = NULL,
-                         verLine = verLine,
-                         #verLineLabel = NULL,
-                         agg = agg,
-                         agg_text = agg_text,
-                         colors = colors,
-                         colorText = colorText,
-                         colorScale = colorScale,
-                         dropNaV = dropNaV,
-                         prefix = prefix,
-                         suffix = suffix,
-                         graphType = graphType,
-                         labelRatio = labelRatio,
-                         labelWrapV =labelWrapV,
-                         legendPosition = legendPosition,
-                         legendTitle = legendTitle,
-                         marks = marks,
-                         nDigits = nDigits,
-                         order1 = order1,
-                         order2 = order2,
-                         orientation = orientation,
-                         percentage = percentage,
-                         shapeType = shapeType,
-                         showText = showText,
-                         spline = spline,
-                         startAtZero = startAtZero,
-                         theme = theme, ...)
+  gg <- gg_area_CatCatNum(data = d, opts = opts)
   gg
 }

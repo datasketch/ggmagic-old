@@ -5,9 +5,9 @@ default_options <- list(
   horLabel = NULL,
   verLabel = NULL,
   horLine = NULL,
-  horLine_label = " ",
+  horLine_label = NULL,
   verLine = NULL,
-  verLine_label = " ",
+  verLine_label = NULL,
   agg = "sum",
   agg_text = NULL,
   colors = NULL,
@@ -41,10 +41,14 @@ default_options <- list(
   text_color = "#5A6B72",
   text_show = TRUE,
   text_size = 3,
-  theme = NULL
+  theme = NULL,
+
+  export = FALSE,
+  showText = TRUE
 )
 
 # ¿no toca exportar
+#' @export
 getOptions <- function(opts = NULL) {
   if (is.null(opts)){
     opts <- default_options
@@ -54,12 +58,30 @@ getOptions <- function(opts = NULL) {
   opts
 }
 
-opts$
-function(data = NULL,
-         opts = NULL, ...) {
+# cambiaron de nombre
+# horLine_label = " ",
+# verLine_label = " ",
+# color_opacity = "0.7",
+# color_scale ="discrete",
+# graph_type = "grouped",
+# highlight_value = NULL,
+# highlight_valueColor = '#F9B233',
+# label_ratio = 1,
+# label_wrap = 12,
+# label_wrapV = c(12, 12)
+# legend_position = "bottom",
+# legend_title = NULL,
+# shape_type = 19,
+# text_color = "#5A6B72",
+# text_show = TRUE,
+# text_size = 3,
 
-  if (is.null(data)) {
-    stop("Load an available dataset")
-  }
 
-  opts <- getOptions(opts = opts)
+
+
+
+
+
+
+
+

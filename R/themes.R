@@ -118,6 +118,10 @@ theme_ds <- function(...){
       angle = 90,
       vjust=y_title_spacing(spacing)),
     axis.ticks.length = grid::unit(0.15, "cm"),
+    axis.ticks.length.x.bottom = grid::unit(0.15, "cm"),
+    axis.ticks.length.x.top = grid::unit(0.15, "cm"),
+    axis.ticks.length.y.left = grid::unit(0.15, "cm"),
+    axis.ticks.length.y.right = grid::unit(0.15, "cm"),
     legend.background = element_rect(
       colour = ifelse(inner, 'white', palette$background),
       fill = ifelse(inner, 'white', palette$background)),
@@ -192,7 +196,8 @@ getDefaultTheme <- list(
   plotBorderWidth = 1,
   gridColor =  "#cccccc",
   angleTicks = 0,
-  axis_x = list(color = "#5A6B72")
+  axis_x = list(color = "#5A6B72"),
+  axis_y = list(color = "#5A6B72")
 )
 
 getTheme <- function(theme = NULL){
@@ -212,10 +217,9 @@ getTheme <- function(theme = NULL){
 
 
 #' @export
-tma <- function(custom = NULL, ...) {
+tma <- function(custom = NULL, orientation = "ver", ...) {
 
   custom <- getTheme(theme = custom)
-
   theme(
         plot.background = element_rect(fill = custom$background, colour = custom$background),
         panel.background = element_rect(fill = custom$plotBackgroundColor),
@@ -223,17 +227,15 @@ tma <- function(custom = NULL, ...) {
         text = element_text(size = custom$fontSize,  family = custom$fontFamily),
         axis.title.x = element_text(colour = custom$color), #color label eje x
         axis.title.y = element_text(colour = custom$color),
-        axis.text.x = element_text(color = custom$color, size = custom$fontSize, angle= custom$angleTicks),
-        axis.text.y = element_text(color = custom$color, size = custom$fontSize, angle= custom$angleTicks),
-       #  plot.margin = margin(custom$marginTop, custom$marginRight, custom$marginBottom, custom$marginLeft),
-       panel.grid.major.y = element_line(size = 0.5, linetype = 'dotted',
-                                         colour = "#5A6B72"),
-       panel.grid.major.x = element_line(size = 0.5, linetype = 'solid', colour = "transparent"),
-       panel.grid.minor = element_line(size = 0.5, linetype = 'solid',
-                                       colour = "transparent"),
+        axis.text.x = element_text(color = custom$color, size = custom$fontSize, angle = custom$angleTicks),
+        axis.text.y = element_text(color = custom$color, size = custom$fontSize, angle = custom$angleTicks),
+        #  plot.margin = margin(custom$marginTop, custom$marginRight, custom$marginBottom, custom$marginLeft),
+        panel.grid.major.y = element_line(size = 0.4, linetype = 'dotted', colour = ifelse(orientation == "ver", "#5A6B72", "transparent")),
+        panel.grid.major.x = element_line(size = 0.4, linetype = 'dotted', colour = ifelse(orientation == "ver", "transparent", "#5A6B72")),
+        panel.grid.minor = element_line(size = 0.4, linetype = 'solid', colour = "transparent"),
         axis.ticks = element_line(colour = 'transparent'),
-        axis.line.x = element_line(colour = custom$axis_x$color)
-        #axis.line.y = element_line(colour ='#cccccc'),
+        axis.line.x = element_line(colour = ifelse(orientation == "ver", custom$axis_x$color, "transparent")),
+        axis.line.y = element_line(colour = ifelse(orientation == "ver", "transparent", custom$axis_y$color))
         #axis.text = element_text(size = (custom$fontSize-2), family = custom$fontFamily)
   )
 }

@@ -4,16 +4,7 @@
 \alias{gg_bar_CatNumP}
 \title{Bar (ordered category, n numbers)}
 \usage{
-gg_bar_CatNumP(data, title = NULL, subtitle = NULL, caption = NULL,
-  horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
-  agg = "sum", agg_text = NULL, colors = NULL,
-  colorText = "#5A6B72", colorScale = "discrete", dropNaV = c(FALSE,
-  FALSE), prefix = NULL, suffix = NULL, graphType = "grouped",
-  labelRatio = 1, labelWrapV = c(12, 12), legendPosition = "bottom",
-  legendTitle = NULL, marks = c(".", ","), nDigits = 0,
-  order1 = NULL, order2 = NULL, orientation = "ver",
-  percentage = FALSE, showText = TRUE, sizeText = 3, theme = NULL,
-  ...)
+gg_bar_CatNumP(data = NULL, opts = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}

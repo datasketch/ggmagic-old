@@ -4,16 +4,7 @@
 \alias{gg_area_CatCat}
 \title{Area (categories, ordered categories)}
 \usage{
-gg_area_CatCat(data, title = NULL, subtitle = NULL, caption = NULL,
-  horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
-  colors = NULL, colorText = "#5A6B72", colorOpacity = 0.6,
-  colorScale = "discrete", dropNaV = c(FALSE, FALSE), prefix = NULL,
-  suffix = NULL, graphType = "grouped", labelRatio = 1,
-  labelWrapV = c(12, 12), legendPosition = "bottom",
-  legendTitle = NULL, marks = c(".", ","), nDigits = 0,
-  order1 = NULL, order2 = NULL, orientation = "ver",
-  percentage = FALSE, shapeType = 19, showText = TRUE,
-  spline = FALSE, startAtZero = TRUE, theme = NULL, ...)
+gg_area_CatCat(data = NULL, opts = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}

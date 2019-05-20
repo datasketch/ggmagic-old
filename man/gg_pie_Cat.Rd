@@ -11,21 +11,39 @@ gg_pie_Cat(data, title = NULL, subtitle = NULL, caption = NULL,
   marks = c(".", ","), nDigits = 0, order = NULL,
   orientation = "ver", percentage = FALSE, sort = "no",
   sliceN = NULL, showText = TRUE, theme = NULL, ...)
+
+gg_pie_Cat(data, title = NULL, subtitle = NULL, caption = NULL,
+  colors = NULL, colorText = "#5A6B72", colorScale = "discrete",
+  dropNa = FALSE, prefix = NULL, suffix = NULL, labelRatio = 0.1,
+  labelWrap = 12, legendPosition = "bottom", legendTitle = NULL,
+  marks = c(".", ","), nDigits = 0, order = NULL,
+  orientation = "ver", percentage = FALSE, sort = "no",
+  sliceN = NULL, showText = TRUE, theme = NULL, ...)
 }
 \arguments{
+\item{data}{A data.frame}
+
 \item{data}{A data.frame}
 }
 \value{
 Ggplot2 visualization
+
+Ggplot2 visualization
 }
 \description{
+Compare category's levels
+
 Compare category's levels
 }
 \section{ctypes}{
 
 Cat, Yea, Dat
+
+
+Cat, Yea, Dat
 }
 
 \examples{
+gg_pie_Cat(sampleData("Cat", nrow = 10))
 gg_pie_Cat(sampleData("Cat", nrow = 10))
 }

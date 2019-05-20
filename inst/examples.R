@@ -3,184 +3,215 @@ load_all()
 document()
 install()
 
-library(hgchmagic)
 library(ggmagic)
+library(hgchmagic)
+
+# por default queda color_scale discrete...¿?
+# poner función de getOptions en transformation_helpers
+# colores discrete en barras "hor" salen reversados en ggmagic y hgchmagic, más
+# bien el eje está reversado, pasa en area y líneas también
+# ggmagic el texto de show_text que salga en bold como en
+# ¿para qué es lo de los breaks del eje y?
+# opts$horLine matches opts$horLine_label problemas a veces...[["horLine"]]
+# ¿area CatNum siempre color_scale no?
+# ¿líneas CatNum siempre color_scale no?
+# en ggmagic el máximo valor del eje el mayor que en hgchmagic
+# area CatCat "stacked" sale rara en ggmagic, revisar con hgchmagic
+# líneas CatCat... ¿las categorías que no tienen valor se ponen en 0?
+# en ggmagic parece estar así en hgchmagic no
+# en CatCat de ggmagic y hgchmagic salen labels repetidos eje y
+# en pie y donut la opción de que salga conteo y porcentaje ¿?
 
 s0 <- sampleData("Cat")
 
 # faltan las divisiones del eje y (calcularlas) ggplot
 
-gg_bar_Cat(s0, orientation = "hor")
+gg_bar_Cat(s0, opts = list(orientation = "hor"))
 hgch_bar_Cat(s0, orientation = "hor") # color scale no... salen distintos
-gg_bar_Cat(s0, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj", colorScale = "discrete")
-hgch_bar_Cat(s0, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj", colorScale = "discrete")
-gg_bar_Cat(s0, labelRatio = 1, colorScale = "no", colors = c("blue", "red"))
-hgch_bar_Cat(s0, labelRatio = 1, colorScale = "no", colors = c("blue", "red")) # ¿no funciona el color?
+gg_bar_Cat(s0, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete"))
+hgch_bar_Cat(s0, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete")
+gg_bar_Cat(s0, opts = list(label_ratio = 1, color_scale = "no", colors = c("blue", "red")))
+hgch_bar_Cat(s0, label_ratio = 1, color_scale = "no", colors = c("blue", "red")) # ¿no funciona el color?
 
-gg_bar_Cat(s0, percentage = TRUE)
+gg_bar_Cat(s0, opts = list(percentage = TRUE))
 hgch_bar_Cat(s0, percentage = TRUE)
-gg_bar_Cat(s0, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous")
-hgch_bar_Cat(s0, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous") # parece que no sale escala continua
-gg_bar_Cat(s0, labelRatio = 1, percentage = TRUE, suffix ="pres")
-hgch_bar_Cat(s0, labelRatio = 1, percentage = TRUE, suffix ="pres") # no sale sufijo que reemplazaría porcentaje
+gg_bar_Cat(s0, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
+hgch_bar_Cat(s0, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous") # parece que no sale escala continua
+gg_bar_Cat(s0, opts = list(label_ratio = 1, percentage = TRUE, suffix ="pres"))
+hgch_bar_Cat(s0, label_ratio = 1, percentage = TRUE, suffix ="pres") # no sale sufijo que reemplazaría porcentaje
 
 gg_area_Cat(s0) # los labels salen un poco montados en los puntos, si se agranda la ventana se arregla
 hgch_area_Cat(s0) # color default amarillo en hgchmagic, verde en ggmagic
-gg_area_Cat(s0, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj")
-hgch_area_Cat(s0, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj") # no salen sufijo ni prefixo en labels
-gg_area_Cat(s0, labelRatio = 1, colorScale = "no", colors = c("blue", "red"))
-hgch_area_Cat(s0, labelRatio = 1, colorScale = "no", colors = c("blue", "red")) # ¿no funciona el color?
+gg_area_Cat(s0, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj"))
+hgch_area_Cat(s0, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj") # no salen sufijo ni prefixo en labels
+gg_area_Cat(s0, opts = list(label_ratio = 1, color_scale = "no", colors = c("blue", "red")))
+hgch_area_Cat(s0, label_ratio = 1, color_scale = "no", colors = c("blue", "red")) # ¿no funciona el color?
 
-gg_area_Cat(s0, percentage = TRUE)
+gg_area_Cat(s0, opts = list(percentage = TRUE, orientation = "hor"))
 hgch_area_Cat(s0, percentage = TRUE) # no sale porcentaje en labels ni sufijo
-gg_area_Cat(s0, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous") # salen los puntos de colores continuous, ¿no debería pasar?
-hgch_area_Cat(s0, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous") # no sale sufijos en labels (en particular el porcentaje)
-gg_area_Cat(s0, labelRatio = 1, percentage = TRUE, suffix ="pres")
-hgch_area_Cat(s0, labelRatio = 1, percentage = TRUE, suffix ="pres")
+gg_area_Cat(s0, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")) # salen los puntos de colores continuous, ¿no debería pasar?
+hgch_area_Cat(s0, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous") # no sale sufijos en labels (en particular el porcentaje)
+gg_area_Cat(s0, opts = list(label_ratio = 1, percentage = TRUE, suffix ="pres"))
+hgch_area_Cat(s0, label_ratio = 1, percentage = TRUE, suffix ="pres")
 
-gg_line_Cat(s0) # líneas y pie no sirven es por algo del tema... no han sido modificada, 'alinearlas' con area
+gg_line_Cat(s0) # color_scale = "discrete" ¿dejarla así?
 hgch_line_Cat(s0)
-gg_line_Cat(s0, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj", colorScale = "discrete")
-hgch_line_Cat(s0, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj", colorScale = "discrete")
-gg_line_Cat(s0, labelRatio = 1, colorScale = "no", colors = c("blue", "red"))
-hgch_line_Cat(s0, labelRatio = 1, colorScale = "no", colors = c("blue", "red"))
+gg_line_Cat(s0, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete"))
+hgch_line_Cat(s0, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete")
+gg_line_Cat(s0, opts = list(label_ratio = 1, color_scale = "no", colors = c("blue", "red")))
+hgch_line_Cat(s0, label_ratio = 1, color_scale = "no", colors = c("blue", "red"))
 
-gg_line_Cat(s0, percentage = TRUE)
-hgch_line_Cat(s0, percentage = TRUE)
-gg_line_Cat(s0, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous")
-hgch_line_Cat(s0, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous")
-gg_line_Cat(s0, labelRatio = 1, percentage = TRUE, suffix ="pres")
-hgch_line_Cat(s0, labelRatio = 1, percentage = TRUE, suffix ="pres")
+gg_line_Cat(s0, opts = list(percentage = TRUE, orientation = "hor"))
+hgch_line_Cat(s0, percentage = TRUE, orientation = "hor")
+gg_line_Cat(s0, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
+hgch_line_Cat(s0, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
+gg_line_Cat(s0, opts = list(label_ratio = 1, percentage = TRUE, suffix = "pres"))
+hgch_line_Cat(s0, label_ratio = 1, percentage = TRUE, suffix = "pres")
+
+gg_pie_Cat(s0)
+hgch_pie_Cat(s0)
+gg_pie_Cat(s0, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete"))
+hgch_pie_Cat(s0, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete")
+gg_pie_Cat(s0, opts = list(label_ratio = 1, color_scale = "no", colors = c("blue", "red")))
+hgch_pie_Cat(s0, label_ratio = 1, color_scale = "no", colors = c("blue", "red"))
+
+gg_pie_Cat(s0, opts = list(percentage = TRUE))
+hgch_pie_Cat(s0, percentage = TRUE)
+gg_pie_Cat(s0, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
+hgch_pie_Cat(s0, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
+gg_pie_Cat(s0, opts = list(label_ratio = 1, percentage = TRUE, suffix = "pres"))
+hgch_pie_Cat(s0, label_ratio = 1, percentage = TRUE, suffix = "pres")
+
+
 
 s1 <- sampleData("Cat-Num")
 s1 <- rbind(s1, c("tT", 2))
 
 gg_bar_CatNum(s1)
 hgch_bar_CatNum(s1)
-gg_bar_CatNum(s1, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj", colorScale = "discrete")
-hgch_bar_CatNum(s1, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj", colorScale = "discrete")
-gg_bar_CatNum(s1, labelRatio = 1, colorScale = "no", colors = c("blue", "red"))
-hgch_bar_CatNum(s1, labelRatio = 1, colorScale = "no", colors = c("blue", "red")) # salen distintos colores y no salen los marks (punto en miles) en los labels
+gg_bar_CatNum(s1, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete"))
+hgch_bar_CatNum(s1, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete")
+gg_bar_CatNum(s1, opts = list(label_ratio = 1, color_scale = "no", colors = c("blue", "red")))
+hgch_bar_CatNum(s1, label_ratio = 1, color_scale = "no", colors = c("blue", "red")) # salen distintos colores y no salen los marks (punto en miles) en los labels
 
-gg_bar_CatNum(s1, percentage = TRUE)
-hgch_bar_CatNum(s1, percentage = TRUE)
-gg_bar_CatNum(s1, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous")
-hgch_bar_CatNum(s1, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous")
-gg_bar_CatNum(s1, labelRatio = 1, percentage = TRUE, suffix ="pres")
-hgch_bar_CatNum(s1, labelRatio = 1, percentage = TRUE, suffix ="pres") # prioridad sufijo
+gg_bar_CatNum(s1, opts = list(percentage = TRUE,  orientation = "hor"))
+hgch_bar_CatNum(s1, percentage = TRUE, orientation = "hor")
+gg_bar_CatNum(s1, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
+hgch_bar_CatNum(s1, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
+gg_bar_CatNum(s1, opts = list(label_ratio = 1, percentage = TRUE, suffix ="pres"))
+hgch_bar_CatNum(s1, label_ratio = 1, percentage = TRUE, suffix ="pres") # prioridad sufijo
 
 gg_area_CatNum(s1)
 hgch_area_CatNum(s1)
-gg_area_CatNum(s1, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj")
-hgch_area_CatNum(s1, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj")
-gg_area_CatNum(s1, labelRatio = 1, colorScale = "no", colors = c("blue", "red"))
-hgch_area_CatNum(s1, labelRatio = 1, colorScale = "no", colors = c("blue", "red"))
+gg_area_CatNum(s1, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj"))
+hgch_area_CatNum(s1, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj")
+gg_area_CatNum(s1, opts = list(label_ratio = 1, color_scale = "no", colors = c("blue", "red")))
+hgch_area_CatNum(s1, label_ratio = 1, color_scale = "no", colors = c("blue", "red"))
 
-gg_area_CatNum(s1, percentage = TRUE)
-hgch_area_CatNum(s1, percentage = TRUE) #falta porcentaje, sufijos en labels
-gg_area_CatNum(s1, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous")
-hgch_area_CatNum(s1, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous")
-gg_area_CatNum(s1, labelRatio = 1, percentage = TRUE, suffix ="pres")
-hgch_area_CatNum(s1, labelRatio = 1, percentage = TRUE, suffix ="pres")
+gg_area_CatNum(s1, opts = list(percentage = TRUE, orientation = "hor"))
+hgch_area_CatNum(s1, percentage = TRUE, orientation = "hor") #falta porcentaje, sufijos en labels
+gg_area_CatNum(s1, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
+hgch_area_CatNum(s1, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
+gg_area_CatNum(s1, opts = list(label_ratio = 1, percentage = TRUE, suffix ="pres"))
+hgch_area_CatNum(s1, label_ratio = 1, percentage = TRUE, suffix ="pres")
 
 gg_line_CatNum(s1)
 hgch_line_CatNum(s1)
-gg_line_CatNum(s1, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj", colorScale = "discrete")
-hgch_line_CatNum(s1, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj", colorScale = "discrete")
-gg_line_CatNum(s1, labelRatio = 1, colorScale = "no", colors = c("blue", "red"))
-hgch_line_CatNum(s1, labelRatio = 1, colorScale = "no", colors = c("blue", "red"))
+gg_line_CatNum(s1, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete"))
+hgch_line_CatNum(s1, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete")
+gg_line_CatNum(s1, opts = list(label_ratio = 1, color_scale = "no", colors = c("blue", "red")))
+hgch_line_CatNum(s1, label_ratio = 1, color_scale = "no", colors = c("blue", "red"))
 
-gg_line_CatNum(s1, percentage = TRUE)
+gg_line_CatNum(s1, opts = list(percentage = TRUE, orientation = "hor"))
 hgch_line_CatNum(s1, percentage = TRUE)
-gg_line_CatNum(s1, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous")
-hgch_line_CatNum(s1, labelRatio = 0.5, percentage = TRUE, colorScale = "continuous")
-gg_line_CatNum(s1, labelRatio = 1, percentage = TRUE, suffix ="pres")
-hgch_line_CatNum(s1, labelRatio = 1, percentage = TRUE, suffix ="pres")
+gg_line_CatNum(s1, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
+hgch_line_CatNum(s1, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
+gg_line_CatNum(s1, opts = list(label_ratio = 1, percentage = TRUE, suffix ="pres"))
+hgch_line_CatNum(s1, label_ratio = 1, percentage = TRUE, suffix ="pres")
 
 s2 <- sampleData("Cat-Cat")
 
 # mejorar la división de los ejes
-gg_bar_CatCat(s2)
-hgch_bar_CatCat(s2)
-gg_bar_CatCat(s2, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj")
-hgch_bar_CatCat(s2, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj")
-gg_bar_CatCat(s2, labelRatio = 1)
-hgch_bar_CatCat(s2, labelRatio = 1)
-
+gg_bar_CatCat(s2) # se repiten labels eje y
+hgch_bar_CatCat(s2) # se repiten labels eje y
+gg_bar_CatCat(s2, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj"))
+hgch_bar_CatCat(s2, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj")
+gg_bar_CatCat(s2, opts = list(label_ratio = 1))
+hgch_bar_CatCat(s2, label_ratio = 1)
 
 # REVISAR
-gg_bar_CatCat(s2, percentage = TRUE)
-hgch_bar_CatCat(s2, percentage = TRUE)
-gg_bar_CatCat(s2, labelRatio = 0.5, percentage = TRUE, legendPosition = "top")
-hgch_bar_CatCat(s2, labelRatio = 0.5, percentage = TRUE, legendPosition = "right")
-gg_bar_CatCat(s2, labelRatio = 1, percentage = TRUE, suffix ="pres")
-hgch_bar_CatCat(s2, labelRatio = 1, percentage = TRUE, suffix ="pres")
+gg_bar_CatCat(s2, opts = list(percentage = TRUE, orientation = "hor"))
+hgch_bar_CatCat(s2, percentage = TRUE, orientatio = "hor")
+gg_bar_CatCat(s2, opts = list(label_ratio = 0.5, percentage = TRUE, legend_position = "top"))
+hgch_bar_CatCat(s2, label_ratio = 0.5, percentage = TRUE, legend_position = "right")
+gg_bar_CatCat(s2, opts = list(label_ratio = 1, percentage = TRUE, suffix ="pres"))
+hgch_bar_CatCat(s2, label_ratio = 1, percentage = TRUE, suffix ="pres")
 
 
-gg_bar_CatCat(s2, graphType = "stacked") +
-  scale_y_continuous(limits = c(0, 200))
+gg_bar_CatCat(s2, opts = list(graph_type = "stacked")) +
+  scale_y_continuous(limits = c(0, 30))
 hgch_bar_CatCat(s2, graphType = "stacked")
-gg_bar_CatCat(s2, graphType = "stacked", labelRatio = 0.1, prefix = "dskk", suffix = " jdjdj") +
-  scale_y_continuous(limits = c(0, 200))
-hgch_bar_CatCat(s2, graphType = "stacked", labelRatio = 0.1, prefix = "dskk", suffix = " jdjdj")
-gg_bar_CatCat(s2, graphType = "stacked", labelRatio = 1) +
-  scale_y_continuous(limits = c(0, 200))
-hgch_bar_CatCat(s2, graphType = "stacked", labelRatio = 1)
+gg_bar_CatCat(s2, opts = list(graph_type = "stacked", label_ratio = 0.1, prefix = "dskk", suffix = " jdjdj")) +
+  scale_y_continuous(limits = c(0, 20))
+hgch_bar_CatCat(s2, graphType = "stacked", label_ratio = 0.1, prefix = "dskk", suffix = " jdjdj")
+gg_bar_CatCat(s2, opts = list(graph_type = "stacked", label_ratio = 1)) +
+  scale_y_continuous(limits = c(0, 20))
+hgch_bar_CatCat(s2, graphType = "stacked", label_ratio = 1)
 
-gg_bar_CatCat(s2, graphType = "stacked", percentage = TRUE) +
+gg_bar_CatCat(s2, opts = list(graph_type = "stacked", percentage = TRUE, orientation = "hor")) +
   scale_y_continuous(limits = c(0, 100))
-hgch_bar_CatCat(s2, graphType = "stacked", percentage = TRUE)
-gg_bar_CatCat(s2, graphType = "stacked", labelRatio = 0.1, percentage = TRUE, legendPosition = "top") +
+hgch_bar_CatCat(s2, graphType = "stacked", percentage = TRUE, orientation = "hor")
+gg_bar_CatCat(s2, opts = list(graph_type = "stacked", label_ratio = 0.1, percentage = TRUE, legend_position = "top")) +
   scale_y_continuous(limits = c(0, 100))
-hgch_bar_CatCat(s2, graphType = "stacked", labelRatio = 0.1, percentage = TRUE, legendPosition = "right")
-gg_bar_CatCat(s2, graphType = "stacked", labelRatio = 1, percentage = TRUE, suffix ="pres") +
+hgch_bar_CatCat(s2, graphType = "stacked", label_ratio = 0.1, percentage = TRUE, legend_position = "right")
+gg_bar_CatCat(s2, opts = list(graph_type = "stacked", label_ratio = 1, percentage = TRUE, suffix ="pres")) +
   scale_y_continuous(limits = c(0, 100))
-hgch_bar_CatCat(s2, graphType = "stacked", labelRatio = 1, percentage = TRUE, suffix ="pres")
+hgch_bar_CatCat(s2, graphType = "stacked", label_ratio = 1, percentage = TRUE, suffix ="pres")
 
-gg_area_CatCat(s2)
-hgch_area_CatCat(s2)
-gg_area_CatCat(s2, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj")
-hgch_area_CatCat(s2, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj") # faltan prefijos y sufijos en labels
-gg_area_CatCat(s2, labelRatio = 1)
-hgch_area_CatCat(s2, labelRatio = 1)
+gg_area_CatCat(s2) # se repiten labels eje y
+hgch_area_CatCat(s2) # se repiten labels eje y
+gg_area_CatCat(s2, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj"))
+hgch_area_CatCat(s2, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj") # faltan prefijos y sufijos en labels
+gg_area_CatCat(s2, labopts = list(el_ratio = 1))
+hgch_area_CatCat(s2, label_ratio = 1)
 
 # hay una diferencia entre los dos paquetes con el porcentaje, mirar fotos
-gg_area_CatCat(s2, percentage = TRUE)
-hgch_area_CatCat(s2, percentage = TRUE)
-gg_area_CatCat(s2, labelRatio = 0.5, percentage = TRUE, legendPosition = "top")
-hgch_area_CatCat(s2, labelRatio = 0.5, percentage = TRUE, legendPosition = "right")
-gg_area_CatCat(s2, labelRatio = 1, percentage = TRUE, suffix ="pres")
-hgch_area_CatCat(s2, labelRatio = 1, percentage = TRUE, suffix ="pres")
+gg_area_CatCat(s2, opts = list(percentage = TRUE, orientation = "hor"))
+hgch_area_CatCat(s2, percentage = TRUE, orientation = "hor")
+gg_area_CatCat(s2, opts = list(label_ratio = 0.5, percentage = TRUE, legend_position = "top"))
+hgch_area_CatCat(s2, label_ratio = 0.5, percentage = TRUE, legend_position = "right")
+gg_area_CatCat(s2, opts = list(label_ratio = 1, percentage = TRUE, suffix ="pres"))
+hgch_area_CatCat(s2, label_ratio = 1, percentage = TRUE, suffix ="pres")
 
 # la gráfica es diferente mirar fotos
-gg_area_CatCat(s2, graphType = "stacked")
+gg_area_CatCat(s2, opts = list(graph_type = "stacked")) # recisar contra hgchmagic
 hgch_area_CatCat(s2, graphType = "stacked")
-gg_area_CatCat(s2, labelRatio = 0.5, graphType = "stacked", prefix = "dskk", suffix = " jdjdj") # faltan sufijos y prefijos en el eje y
-hgch_area_CatCat(s2, labelRatio = 0.5, graphType = "stacked", prefix = "dskk", suffix = " jdjdj")
-gg_area_CatCat(s2, labelRatio = 1, graphType = "stacked")
-hgch_area_CatCat(s2, labelRatio = 1, graphType = "stacked")
+gg_area_CatCat(s2, opts = list(label_ratio = 0.5, graph_type = "stacked", prefix = "dskk", suffix = " jdjdj")) # faltan sufijos y prefijos en el eje y
+hgch_area_CatCat(s2, label_ratio = 0.5, graphType = "stacked", prefix = "dskk", suffix = " jdjdj")
+gg_area_CatCat(s2, opts = list(label_ratio = 1, graph_type = "stacked"))
+hgch_area_CatCat(s2, label_ratio = 1, graphType = "stacked")
 
 # REVISAR
-gg_area_CatCat(s2, graphType = "stacked", percentage = TRUE) # ¿están bien?
-hgch_area_CatCat(s2, graphType = "stacked", percentage = TRUE) # ¿están bien?
-gg_area_CatCat(s2, labelRatio = 0.5, graphType = "stacked", percentage = TRUE, legendPosition = "top")
-hgch_area_CatCat(s2, labelRatio = 0.5, graphType = "stacked", percentage = TRUE, legendPosition = "right")
-gg_area_CatCat(s2, labelRatio = 1, graphType = "stacked", percentage = TRUE, suffix ="pres")
-hgch_area_CatCat(s2, labelRatio = 1, graphType = "stacked", percentage = TRUE, suffix ="pres")
+gg_area_CatCat(s2, opts = list(graph_type = "stacked", percentage = TRUE, orientation = "hor")) # ¿están bien?
+hgch_area_CatCat(s2, graphType = "stacked", percentage = TRUE, orientation = "hor") # ¿están bien?
+gg_area_CatCat(s2, opts = list(label_ratio = 0.5, graph_type = "stacked", percentage = TRUE, legend_position = "top"))
+hgch_area_CatCat(s2, label_ratio = 0.5, graphType = "stacked", percentage = TRUE, legend_position = "right")
+gg_area_CatCat(s2, opts = list(label_ratio = 1, graph_type = "stacked", percentage = TRUE, suffix ="pres"))
+hgch_area_CatCat(s2, label_ratio = 1, graphType = "stacked", percentage = TRUE, suffix ="pres")
 
-gg_line_CatCat(s2)
-hgch_line_CatCat(s2)
-gg_line_CatCat(s2, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj")
-hgch_line_CatCat(s2, labelRatio = 0.5, prefix = "dskk", suffix = " jdjdj")
-gg_line_CatCat(s2, labelRatio = 1)
-hgch_line_CatCat(s2, labelRatio = 1)
+gg_line_CatCat(s2) # se repiten labels eje y
+hgch_line_CatCat(s2) # se repiten labels eje y
+gg_line_CatCat(s2, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj"))
+hgch_line_CatCat(s2, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj")
+gg_line_CatCat(s2, opts = list(label_ratio = 1)) # se repiten labels en el eje y
+hgch_line_CatCat(s2, label_ratio = 1) # se repiten labels en el eje y
 
-gg_line_CatCat(s2, percentage = TRUE)
+gg_line_CatCat(s2, opts = list(percentage = TRUE, orientation = "hor"))
 hgch_line_CatCat(s2, percentage = TRUE)
-gg_line_CatCat(s2, labelRatio = 0.5, percentage = TRUE, legendPosition = "top")
-hgch_line_CatCat(s2, labelRatio = 0.5, percentage = TRUE, legendPosition = "right")
-gg_line_CatCat(s2, labelRatio = 1, percentage = TRUE, suffix ="pres")
-hgch_line_CatCat(s2, labelRatio = 1, percentage = TRUE, suffix ="pres")
+gg_line_CatCat(s2, opts = list(label_ratio = 0.5, percentage = TRUE, legend_position = "top"))
+hgch_line_CatCat(s2, label_ratio = 0.5, percentage = TRUE, legend_position = "right")
+gg_line_CatCat(s2, opts = list(label_ratio = 1, percentage = TRUE, suffix ="pres"))
+hgch_line_CatCat(s2, label_ratio = 1, percentage = TRUE, suffix ="pres")
 
 
 
@@ -188,9 +219,9 @@ hgch_line_CatCat(s2, labelRatio = 1, percentage = TRUE, suffix ="pres")
 gg_line_CatNum
 function (data, title = NULL, subtitle = NULL, caption = NULL,
           horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
-          agg = "sum", colors = NULL, colorText = "black", colorScale = "no",
+          agg = "sum", colors = NULL, colorText = "black", color_scale = "no",
           dropNa = FALSE, format = c("", ""), highlightValue = NULL,
-          highlightValueColor = NULL, labelRatio = 1, labelWrap = 12,
+          highlightValueColor = NULL, label_ratio = 1, labelWrap = 12,
           marks = c(".", ","), nDigits = 0, order = NULL, orientation = "ver",
           percentage = FALSE, shapeType = 19, sort = "no", sliceN = NULL,
           showText = TRUE, spline = FALSE, startAtZero = TRUE, theme = NULL,
@@ -220,8 +251,8 @@ function (data, title = NULL, subtitle = NULL, caption = NULL,
                              b)) %>% dplyr::mutate(percent = b * 100/sum(b, na.rm = TRUE))
   d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
   d <- orderCategory(d, "a", orientation, order, labelWrap)
-  d <- labelPosition(d, "b", labelRatio, percentage)
-  fillCol <- fillColors(d, "a", colors, colorScale, highlightValue,
+  d <- labelPosition(d, "b", label_ratio, percentage)
+  fillCol <- fillColors(d, "a", colors, color_scale, highlightValue,
                         highlightValueColor, labelWrap)
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"
@@ -247,11 +278,11 @@ function (data, title = NULL, subtitle = NULL, caption = NULL,
 }
 
 labelPosition
-function (data, col, labelRatio, percentage = FALSE, zeroToNa = FALSE)
+function (data, col, label_ratio, percentage = FALSE, zeroToNa = FALSE)
 {
   col <- ifelse(percentage, "percent", col)
   half <- data[[col]] - data[[col]]/2
-  small <- half < max(data[[col]] * labelRatio)
+  small <- half < max(data[[col]] * label_ratio)
   half[small] <- data[[col]][small] + max(data[[col]])/50
   data$labPos <- half
   if (zeroToNa) {
@@ -267,8 +298,8 @@ gg_bar_CatNum
 f0 <- function (data, title = NULL, subtitle = NULL, caption = NULL,
                 horLabel = NULL, verLabel = NULL, horLine = NULL, verLine = NULL,
                 agg = "sum", agg_text = NULL, colors = NULL, colorText = "#5A6B72",
-                colorScale = "no", dropNa = FALSE, prefix = NULL, suffix = NULL,
-                highlightValue = NULL, highlightValueColor = NULL, labelRatio = 0.1,
+                color_scale = "no", dropNa = FALSE, prefix = NULL, suffix = NULL,
+                highlightValue = NULL, highlightValueColor = NULL, label_ratio = 0.1,
                 labelWrap = 12, marks = c(".", ","), nDigits = NULL, order = NULL,
                 orientation = "ver", percentage = FALSE, sort = "no", sliceN = NULL,
                 showText = TRUE, sizeText = 3, theme = NULL, ...)
@@ -304,8 +335,8 @@ f0 <- function (data, title = NULL, subtitle = NULL, caption = NULL,
 
   d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
   d <- orderCategory(d, "a", orientation, order, labelWrap)
-  d1 <- labelPosition(d, "b", labelRatio, percentage)
-  fillCol <- fillColors(d, "a", colors, colorScale, highlightValue,
+  d1 <- labelPosition(d, "b", label_ratio, percentage)
+  fillCol <- fillColors(d, "a", colors, color_scale, highlightValue,
                         highlightValueColor, labelWrap)
   if (percentage & is.null(suffix)) {
     suffix <- "%"
@@ -347,10 +378,10 @@ f0 <- function (data, title = NULL, subtitle = NULL, caption = NULL,
 
 
 
-lp0 <- function(data, col, labelRatio, percentage = FALSE, zeroToNa = FALSE) {
+lp0 <- function(data, col, label_ratio, percentage = FALSE, zeroToNa = FALSE) {
   col <- ifelse(percentage, "percent", col)
   half <- data[[col]] - data[[col]] / 2
-  small <- half < max(data[[col]] * labelRatio)
+  small <- half < max(data[[col]] * label_ratio)
   half[small] <- data[[col]][small] + max(data[[col]]) / 50
   data$labPos <- half
   # do I want zero labels to be shown?
@@ -391,12 +422,12 @@ f0 <- function(data,
                agg = "sum",
                colors = NULL,
                colorText = "black",
-               colorScale = "no",
+               color_scale = "no",
                dropNa = FALSE,
                format = c("", ""),
                highlightValue = NULL,
                highlightValueColor = NULL,
-               labelRatio = 1,
+               label_ratio = 1,
                labelWrap = 12,
                marks = c(".", ","),
                nDigits = 0,
@@ -441,8 +472,8 @@ f0 <- function(data,
 
   d <- sortSlice(d, "b", "a", orientation, sort, sliceN)
   d <- orderCategory(d, "a", orientation, order, labelWrap)
-  d <- labelPosition(d, "b", labelRatio, percentage)
-  fillCol <- fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
+  d <- labelPosition(d, "b", label_ratio, percentage)
+  fillCol <- fillColors(d, "a", colors, color_scale, highlightValue, highlightValueColor, labelWrap)
   if (percentage & nchar(format[2]) == 0) {
     format[2] <- "%"
   }
@@ -605,7 +636,7 @@ tm <- function(...){
     panel.background = element_rect(fill = palette$background,colour = NA),
     panel.border = element_blank(),
     panel.grid.major = element_line(linetype='dashed',colour = palette$gridline),
-    panel.grid.minor = element_blank(),
+    panel.grid.minor = element_line(linetype='dashed',colour = palette$gridline),
     panel.margin = grid::unit(0.5 * spacing, 'cm'),
     panel.margin.x = NULL,
     panel.margin.y = NULL,
@@ -802,14 +833,14 @@ gg_area_CatNumP(sampleData("Cat-NumP"))
 
 dfCdn <- sampleData("Cat-Cat-Num")
 gg_area_CatCatNum(dfCdn)
-gg_area_CatCatNum(dfCdn, graphType = "stacked")
-gg_area_CatCatNum(dfCdn, percentage = TRUE, graphType = "stacked")
+gg_area_CatCatNum(dfCdn, graph_type = "stacked")
+gg_area_CatCatNum(dfCdn, percentage = TRUE, graph_type = "stacked")
 gg_area_CatCatNum(dfCdn, showText = F)
 
 dfCc <- sampleData('Cat-Cat')
 gg_area_CatCat(dfCc)
-gg_area_CatCat(dfCc, graphType = "stacked")
-gg_area_CatCat(dfCc, percentage = TRUE, graphType = "stacked")
+gg_area_CatCat(dfCc, graph_type = "stacked")
+gg_area_CatCat(dfCc, percentage = TRUE, graph_type = "stacked")
 gg_area_CatCat(dfCc, showText = F)
 
 
@@ -817,7 +848,7 @@ gg_area_CatCat(dfCc, showText = F)
 
 df <- sampleData('Cat-Num')
 gg_bar_CatNum(df)
-gg_bar_CatNum(df, colorScale = "discrete")
+gg_bar_CatNum(df, color_scale = "discrete")
 gg_bar_CatNum(df, orientation = "hor")
 gg_bar_CatNum(df, highlightValue = "FormC", highlightValueColor = "red")
 gg_bar_CatNum(df, agg = "mean")
@@ -830,9 +861,9 @@ gg_bar_CatNum(df, horLine = 4000)
 
 
 dfCyn <- sampleData('Cat-Yea-Num')
-gg_bar_CatCatNum(dfCyn, colorScale = "continuous")
-gg_bar_CatCatNum(dfCyn, graphType = "stacked")
-gg_bar_CatCatNum(dfCyn, graphType = "stacked", percentage = T)
+gg_bar_CatCatNum(dfCyn, color_scale = "continuous")
+gg_bar_CatCatNum(dfCyn, graph_type = "stacked")
+gg_bar_CatCatNum(dfCyn, graph_type = "stacked", percentage = T)
 gg_bar_CatCatNum(dfCyn, format = c("$", ""))
 
 
@@ -844,12 +875,12 @@ gg_treemap_CatNum(dCN,
                   caption = "caption",
                   colors = c("#AFCC1D", "#FFDC1A", "#FCDAA4"))
 gg_treemap_CatNum(dCN,
-                  colorScale = "discrete",
+                  color_scale = "discrete",
                   highlightValue = "IlkD", highlightValueColor = "red")
 
 gg_treemap_CatNum(dCN,
                   showLegend = F,
-                  colorScale = "continuous",
+                  color_scale = "continuous",
                   agg = "mean",
                   marks = c(".", ","))
 
@@ -858,7 +889,7 @@ gg_treemap_CatNum(dCN,
                   nDigits = 5,
                   sliceN = 3,
                   dropNa = T,
-                  legendPosition = c("bottom", "bottom"),
+                  legend_position = c("bottom", "bottom"),
                   showText = F)
 
 dC <- sampleData("Cat")
@@ -866,10 +897,10 @@ gg_treemap_Cat(dC)
 
 data <- sampleData('Cat-Cat-Num')
 gg_treemap_CatCatNum(data, colorGroup = '#cccccc')
-gg_treemap_CatCatNum(data, colorScale = 'continuous')
-gg_treemap_CatCatNum(data, colorScale = 'continuous', showLegend = F)
+gg_treemap_CatCatNum(data, color_scale = 'continuous')
+gg_treemap_CatCatNum(data, color_scale = 'continuous', showLegend = F)
 gg_treemap_CatCatNum(data,
-                     colorScale = 'continuous',
+                     color_scale = 'continuous',
                      showLegend = F,
                      showText = F,
                      colorGroup = '#cccccc',
