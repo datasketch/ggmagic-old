@@ -16,6 +16,7 @@ default_options <- list(
   dropNa = FALSE,
   dropNaV = c(FALSE, FALSE),
   graph_type = "grouped",
+  group_color = "transparent",
   highlight_value = NULL,
   highlight_valueColor = '#F9B233',
   label_ratio = 1,
@@ -23,6 +24,7 @@ default_options <- list(
   label_wrapV = c(12, 12),
   lang = "es",
   legend_position = "bottom",
+  legend_show = TRUE,
   legend_title = NULL,
   marks = c(".", ","),
   nDigits = NULL,
@@ -39,12 +41,11 @@ default_options <- list(
   startAtZero = TRUE,
   suffix = NULL,
   text_color = "#5A6B72",
+  text_colorV = c("#FFFFFF", "#212428"),
   text_show = TRUE,
   text_size = 3,
-  theme = NULL,
-
-  export = FALSE,
-  showText = TRUE
+  text_sizeV = c(15, 17),
+  theme = NULL
 )
 
 # ¿no toca exportar

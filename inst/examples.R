@@ -23,6 +23,7 @@ library(hgchmagic)
 # en pie y donut la opción de que salga conteo y porcentaje ¿?
 # se puede poner geom_label en vez de geom_text y queda con un recuadro del
 # mismo color (se ve más, como en los judíos)
+# que labelratio sirva en treemap
 
 s0 <- sampleData("Cat")
 
@@ -98,6 +99,19 @@ hgch_donut_Cat(s0, label_ratio = 0.5, percentage = TRUE, color_scale = "continuo
 gg_donut_Cat(s0, opts = list(label_ratio = 1.5, percentage = TRUE, suffix = "pres"))
 hgch_donut_Cat(s0, label_ratio = 1.5, percentage = TRUE, suffix = "pres")
 
+gg_treemap_Cat(s0)
+hgch_treemap_Cat(s0)
+gg_treemap_Cat(s0, opts = list(prefix = "dskk", suffix = " jdjdj", color_scale = "discrete"))
+hgch_treemap_Cat(s0, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete")
+gg_treemap_Cat(s0, opts = list(color_scale = "no", colors = c("blue", "red")))
+hgch_treemap_Cat(s0, label_ratio = 1, color_scale = "no", colors = c("blue", "red"))
+
+gg_treemap_Cat(s0, opts = list(percentage = TRUE, legend_position = "top"))
+hgch_treemap_Cat(s0, percentage = TRUE)
+gg_treemap_Cat(s0, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
+hgch_treemap_Cat(s0, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
+gg_treemap_Cat(s0, opts = list(label_ratio = 1.5, percentage = TRUE, suffix = "pres"))
+hgch_treemap_Cat(s0, label_ratio = 1.5, percentage = TRUE, suffix = "pres")
 
 s1 <- sampleData("Cat-Num")
 s1 <- rbind(s1, c("tT", 2))
@@ -171,6 +185,20 @@ gg_donut_CatNum(s1, opts = list(label_ratio = 0.5, percentage = TRUE, color_scal
 hgch_donut_CatNum(s1, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
 gg_donut_CatNum(s1, opts = list(label_ratio = 1.5, percentage = TRUE, suffix ="pres"))
 hgch_donut_CatNum(s1, label_ratio = 1, percentage = TRUE, suffix ="pres")
+
+gg_treemap_CatNum(s1)
+hgch_treemap_CatNum(s1)
+gg_treemap_CatNum(s1, opts = list(prefix = "dskk", suffix = " jdjdj", color_scale = "discrete"))
+hgch_treemap_CatNum(s1, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete")
+gg_treemap_CatNum(s1, opts = list(color_scale = "no", colors = c("blue", "red")))
+hgch_treemap_CatNum(s1, label_ratio = 1, color_scale = "no", colors = c("blue", "red"))
+
+gg_treemap_CatNum(s1, opts = list(percentage = TRUE, legend_position = "top"))
+hgch_treemap_CatNum(s1, percentage = TRUE)
+gg_treemap_CatNum(s1, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
+hgch_treemap_CatNum(s1, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
+gg_treemap_CatNum(s1, opts = list(label_ratio = 1.5, percentage = TRUE, suffix ="pres"))
+hgch_treemap_CatNum(s1, label_ratio = 1, percentage = TRUE, suffix ="pres")
 
 
 s2 <- sampleData("Cat-Cat")
@@ -257,6 +285,19 @@ hgch_line_CatCat(s2, label_ratio = 0.5, percentage = TRUE, legend_position = "ri
 gg_line_CatCat(s2, opts = list(label_ratio = 1, percentage = TRUE, suffix ="pres"))
 hgch_line_CatCat(s2, label_ratio = 1, percentage = TRUE, suffix ="pres")
 
+gg_treemap_CatCat(s2) # se repiten labels eje y
+hgch_treemap_CatCat(s2) # se repiten labels eje y
+gg_treemap_CatCat(s2, opts = list(prefix = "dskk", suffix = " jdjdj"))
+hgch_treemap_CatCat(s2, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj")
+gg_treemap_CatCat(s2, opts = list(label_ratio = 1)) # se repiten labels en el eje y
+hgch_treemap_CatCat(s2, label_ratio = 1) # se repiten labels en el eje y
+
+gg_treemap_CatCat(s2, opts = list(percentage = TRUE, orientation = "hor"))
+hgch_treemap_CatCat(s2, percentage = TRUE)
+gg_treemap_CatCat(s2, opts = list(label_ratio = 0.5, percentage = TRUE, legend_position = "top"))
+hgch_treemap_CatCat(s2, label_ratio = 0.5, percentage = TRUE, legend_position = "right")
+gg_treemap_CatCat(s2, opts = list(label_ratio = 1, percentage = TRUE, suffix ="pres"))
+hgch_treemap_CatCat(s2, label_ratio = 1, percentage = TRUE, suffix ="pres")
 
 
 

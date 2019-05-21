@@ -4,13 +4,7 @@
 \alias{gg_treemap_Cat}
 \title{Treemap (categories)}
 \usage{
-gg_treemap_Cat(data, title = NULL, subtitle = NULL, caption = NULL,
-  labelWrap = 12, colors = NULL, colorScale = "continuous",
-  agg = "sum", marks = c(".", ","), nDigits = NULL, dropNa = FALSE,
-  highlightValueColor = "#F9B233", percentage = FALSE, prefix = NULL,
-  suffix = NULL, highlightValue = NULL, sliceN = NULL,
-  showText = TRUE, showLegend = TRUE, legendPosition = "bottom",
-  theme = NULL, ...)
+gg_treemap_Cat(data = NULL, opts = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}

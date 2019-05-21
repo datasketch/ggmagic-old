@@ -283,9 +283,7 @@ gg_bar_CatCatNum <- function(data = NULL, opts = NULL, ...) {
                        # breaks = sq,
                        # limits = c(minLim, maxLim)) +
                        breaks = seq(minLim, maxLim, maxLim/Lc),
-                       limits = c(minLim, maxLim)) +
-    theme(legend.position = opts$legend_position,
-          plot.caption = element_text(hjust = 1))
+                       limits = c(minLim, maxLim))
 
   if (opts$graph_type == "stacked") {
     gg <- gg +

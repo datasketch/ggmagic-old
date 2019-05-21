@@ -9,107 +9,68 @@
 #' @examples
 #' gg_treemap_CatNum(sampleData("Cat-Num", nrow = 10))
 #' @export gg_treemap_CatNum
+gg_treemap_CatNum <- function(data = NULL, opts = NULL, ...) {
 
-gg_treemap_CatNum <-  function(data,
-                               title = NULL,
-                               subtitle = NULL,
-                               caption = NULL,
-                               labelWrap = 12,
-                               colors = NULL,
-                               colorScale = 'discrete',
-                               agg = "sum",
-                               marks = c(".", ","),
-                               nDigits = NULL,
-                               dropNa = FALSE,
-                               prefix = NULL,
-                               suffix = NULL,
-                               highlightValueColor = '#F9B233',
-                               percentage = FALSE,
-                               format = c('', ''),
-                               highlightValue = NULL,
-                               sliceN = NULL,
-                               showText = TRUE,
-                               showLegend = TRUE,
-                               legendPosition = "bottom",
-                               theme = NULL,
-                               ...) {
+  if (is.null(data)) {
+    stop("Load an available dataset")
+  }
+
+  opts <- getOptions(opts = opts)
 
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d
 
+  opts$title <-  opts$title %||% ""
+  opts$subtitle <- opts$subtitle %||% ""
+  opts$caption <- opts$caption %||% ""
 
-  title <-  title %||% ""
-  subtitle <- subtitle %||% ""
-  caption <- caption %||% ""
-
-  if (dropNa)
+  if (opts$dropNa)
     d <- d %>%
     tidyr::drop_na()
 
-
-  if (is.null(nDigits)) {
-    nDig <- 0
-  } else {
-    nDig <- nDigits
-  }
+  opts$nDigits <- ifelse(!is.null(opts$nDigits), opts$nDigits, 0)
 
   d <- d  %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = NA)) %>%
     dplyr::group_by(a) %>%
-    dplyr::summarise(b = agg(agg, b))
-  d$a <- as.character(d$a)
-  d$a[is.na(d$a)] <- 'NA'
+    dplyr::summarise(b = ggmagic::agg(opts$agg, b))  %>%
+    dplyr::mutate(percent = round(b * 100 / sum(b, na.rm = TRUE), opts$nDigits))
 
+  d <- ggmagic::sortSlice(d, "b", "a", "ver", "desc", opts$sliceN)
+  d <- ggmagic::orderCategory(d, "a", "ver", unique(d$a), opts$label_wrap)
+  fillCol <- ggmagic::fillColors(d, "a", opts$colors, opts$color_scale, opts$highlight_value, opts$highlight_valueColor, opts$label_wrap)
 
-
-  if (percentage) {
-    d <- d %>%
-      dplyr::mutate(b = b * 100 / sum(b, na.rm = TRUE))
+  if (opts$percentage & is.null(opts$suffix)) {
+    opts$suffix <- "%"
   }
 
+  varP <- ifelse(opts$percentage, "percent", "b")
 
-  d <- sortSlice(d, "b", "a", "ver", "desc", sliceN)
-  d <- orderCategory(d, "a", "ver", unique(d$a), labelWrap)
-  #d <- labelPosition(d, "b", labelRatio, percentage)
-  fillCol <- fillColors(d, "a", colors, colorScale, highlightValue, highlightValueColor, labelWrap)
-
-  if (percentage & is.null(suffix)) {
-    suffix <- "%"
-  }
-
-  d$b <- round(d$b, nDig)
-
-  if (showText) {
-    d$label <- paste0(d$a, "\n", prefix ,format(d$b,  big.mark = marks[1], decimal.mark = marks[2]), suffix)
-  } else {
-    d$label <- ""
-  }
-
-  g <- ggplot(d, aes(area = b, fill = a, label =  label)) +
+  gg <- ggplot(d, aes(area = b,
+                     fill = a,
+                     label =  paste0(d$a, "\n", paste0(opts$prefix,
+                                                       format(d[[varP]],
+                                                              big.mark = opts$marks[1],
+                                                              decimal.mark = opts$marks[2],
+                                                              digits = opts$nDigits),
+                                                       opts$suffix)))) +
     treemapify::geom_treemap() +
-    geom_treemap_text(min.size = 0,
-                      colour = "white"
-    )
+    geom_treemap_text(min.size = 0, colour = ifelse(opts$text_show, opts$text_colorV[1], "transparent"), size = opts$text_sizeV[1]) +
+    labs(title = opts$title, subtitle = opts$subtitle, caption = opts$caption) +
+    scale_fill_manual(values = fillCol, name = opts$legend_title)
 
-  if (!showLegend) {
-    g <- g + theme(legend.position = "none")
+  if (is.null(opts$theme)) {
+    gg <- gg + ggmagic::tma()
   } else {
-    g <- g + theme(legend.position = legendPosition) +
-      guides(fill=guide_legend(nrow=1,byrow=TRUE))
+    gg <- gg + opts$theme
   }
 
-  g <- g +
-    scale_fill_manual(values = fillCol) +
-    labs(title = title, subtitle = subtitle, caption = caption, fill = "")
-
-  if (is.null(theme)) {
-    g <- g + tma()
-  } else {
-    g <- g + theme
-  }
-  g +
+  gg +
+    theme(legend.position = ifelse(opts$legend_show, opts$legend_position, "none"),
+          plot.caption = element_text(hjust = 1)) +
+    guides(fill=guide_legend(nrow = 1, byrow = TRUE)) +
     theme_leg()
 }
 
@@ -124,29 +85,14 @@ gg_treemap_CatNum <-  function(data,
 #' @examples
 #' gg_treemap_Cat(sampleData("Cat", nrow = 10))
 #' @export gg_treemap_Cat
+gg_treemap_Cat <-  function(data = NULL, opts = NULL, ...) {
 
-gg_treemap_Cat <-  function(data,
-                            title = NULL,
-                            subtitle = NULL,
-                            caption = NULL,
-                            labelWrap = 12,
-                            colors = NULL,
-                            colorScale = 'continuous',
-                            agg = "sum",
-                            marks = c(".", ","),
-                            nDigits = NULL,
-                            dropNa = FALSE,
-                            highlightValueColor = '#F9B233',
-                            percentage = FALSE,
-                            prefix = NULL,
-                            suffix = NULL,
-                            highlightValue = NULL,
-                            sliceN = NULL,
-                            showText = TRUE,
-                            showLegend = TRUE,
-                            legendPosition = "bottom",
-                            theme = NULL,
-                            ...) {
+  if (is.null(data)) {
+    stop("Load an available dataset")
+  }
+
+  opts <- getOptions(opts = opts)
+
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d
@@ -155,10 +101,11 @@ gg_treemap_Cat <-  function(data,
     dplyr::group_by_all() %>%
     dplyr::summarise(b = n())
 
-  names(d) <- c(f$dic_$d$label, paste0("count ", f$dic_$d$label))
+  prefix_agg <- ifelse(is.null(opts$agg_text), "Count", opts$agg_text)
+  names(d) <- c(f$dic_$d$label, paste0(prefix_agg, f$dic_$d$label[1]))
 
-  g <- gg_treemap_CatNum(data = d, title = title, subtitle = subtitle, caption = caption,labelWrap = labelWrap, colors = colors, colorScale = colorScale, agg = agg,marks = marks,nDigits = nDigits,dropNa = dropNa, highlightValueColor = highlightValueColor,percentage = percentage, prefix = prefix, suffix = suffix, highlightValue = highlightValue,sliceN = sliceN, showText = showText, showLegend = showLegend, legendPosition = legendPosition, theme = theme,...)
-  g
+  gg <- gg_treemap_CatNum(data = d, opts = opts)
+  gg
 }
 
 
@@ -174,94 +121,73 @@ gg_treemap_Cat <-  function(data,
 #' @examples
 #' gg_treemap_CatCatNum(sampleData("Cat-Cat-Num", nrow = 10))
 #' @export gg_treemap_CatCatNum
+gg_treemap_CatCatNum <- function(data = NULL, opts = NULL, ...) {
 
-gg_treemap_CatCatNum <- function(data,
-                                 title = NULL,
-                                 subtitle = NULL,
-                                 caption = NULL,
-                                 agg = "sum",
-                                 colors = NULL,
-                                 colorScale = 'discrete',
-                                 colorGroup = 'transparent',
-                                 colorText = c('#212428', '#FFFFFF'),
-                                 dropNaV = c(FALSE, FALSE),
-                                 prefix = NULL,
-                                 suffix = NULL,
-                                 labelWrapV = c(12, 12),
-                                 marks = c(".", ","),
-                                 nDigits = NULL,
-                                 percentage = FALSE,
-                                 showText = TRUE,
-                                 showLegend = TRUE,
-                                 legendPosition = "bottom",
-                                 theme = NULL, ...) {
+  if (is.null(data)) {
+    stop("Load an available dataset")
+  }
+
+  opts <- getOptions(opts = opts)
 
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d
 
-  title <-  title %||% ""
-  subtitle <- subtitle %||% ""
-  caption <- caption %||% ""
+  opts$title <-  opts$title %||% ""
+  opts$subtitle <- opts$subtitle %||% ""
+  opts$caption <- opts$caption %||% ""
 
-  if (any(dropNaV))
+  if (any(opts$dropNaV))
     d <- d %>%
-    tidyr::drop_na(which(dropNaV))
+    tidyr::drop_na(which(opts$dropNaV))
+
+  opts$nDigits <- ifelse(!is.null(opts$nDigits), opts$nDigits, 0)
 
   d <- d %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = ifelse(is.character(d$b), "NA", NA),
                            c = NA)) %>%
     dplyr::group_by(a, b) %>%
-    dplyr::summarise(c = agg(agg, c))
+    dplyr::summarise(c = ggmagic::agg(opts$agg, c))  %>%
+    dplyr::group_by(b) %>%
+    dplyr::mutate(percent = round(c * 100 / sum(c, na.rm = TRUE), opts$nDigits)) %>%
+    drop_na(c)
 
-  d <- d %>% drop_na(c)
+  d <- ggmagic::orderCategory(d, "a", "ver", unique(d$a), opts$label_wrapV[1])
+  d <- ggmagic::orderCategory(d, "b", "ver", unique(d$b), opts$label_wrapV[2])
+  fillCol <- ggmagic::fillColors(d, "a", opts$colors, opts$color_scale, NULL, NULL, opts$label_wrap)
 
-
-  if (percentage) {
-    d <- d %>% group_by(b) %>%
-      dplyr::mutate(c = (c / sum(c, na.rm = TRUE)) * 100)
+  if (opts$percentage & is.null(opts$suffix)) {
+    opts$suffix <- "%"
   }
 
-  d <- orderCategory(d, "a", "ver", unique(d$a), labelWrapV[1])
-  d <- orderCategory(d, "b", "ver", unique(d$b), labelWrapV[2])
+  varP <- ifelse(opts$percentage, "percent", "c")
 
-  fillCol <- fillColors(d, "b", colors, colorScale, NULL, NULL, labelWrapV[1])
-
-  if (showText) {
-    d$label <- paste0(d$a, "\n", prefix ,format(d$c,  big.mark = marks[1], decimal.mark = marks[2]), suffix)
-  } else {
-    d$label <- ""
-  }
-
-  g <- ggplot(d, aes(area = c, fill = b, subgroup = b, label = label)) +
+  gg <- ggplot(d, aes(area = c, fill = b, subgroup = b, label =  paste0(d$a, "\n", paste0(opts$prefix,
+                                                                                          format(d[[varP]],
+                                                                                                 big.mark = opts$marks[1],
+                                                                                                 decimal.mark = opts$marks[2],
+                                                                                                 digits = opts$nDigits),
+                                                                                          opts$suffix)))) +
     treemapify::geom_treemap() +
-    geom_treemap_subgroup_border(color = colorGroup) +
-    geom_treemap_subgroup_text(place = "topleft",  colour = colorText[1], min.size = 0, reflow = T, size = 17) +
-    geom_treemap_text(colour = colorText[2], place = "bottomleft", min.size = 0, size = 15)
+    geom_treemap_subgroup_border(color = opts$group_color) +
+    geom_treemap_subgroup_text(place = "topleft",  colour = opts$text_colorV[2], min.size = 0, reflow = T, size = opts$text_sizeV[2]) +
+    geom_treemap_text(colour = opts$text_colorV[1], place = "bottomleft", min.size = 0, size = opts$text_sizeV[2]) +
+    labs(title = opts$title, subtitle = opts$subtitle, caption = opts$caption) +
+    scale_fill_manual(values = fillCol, name = opts$legend_title)
 
-  if (!showLegend) {
-    g <- g + theme(legend.position = "none")
+  if (is.null(opts$theme)) {
+    gg <- gg + ggmagic::tma()
   } else {
-    g <- g + theme(legend.position = legendPosition) +
-      guides(fill=guide_legend(nrow=1,byrow=TRUE))
+    gg <- gg + opts$theme
   }
 
-  g <- g +
-    scale_fill_manual(values = fillCol) +
-    labs(title = title, subtitle = subtitle, caption = caption, fill = "")
-
-  if (is.null(theme)) {
-    g <- g + tma()
-  } else {
-    g <- g + theme
-  }
-
-  g +
+  gg +
+    theme(legend.position = ifelse(opts$legend_show, opts$legend_position, "none"),
+          plot.caption = element_text(hjust = 1)) +
+    guides(fill=guide_legend(nrow = 1, byrow = TRUE)) +
     theme_leg()
-
 }
-
 
 
 
@@ -276,27 +202,13 @@ gg_treemap_CatCatNum <- function(data,
 #' @examples
 #' gg_treemap_CatCat(sampleData("Cat-Cat", nrow = 10))
 #' @export gg_treemap_CatCat
+gg_treemap_CatCat <- function(data = NULL, opts = NULL, ...) {
 
-gg_treemap_CatCat <- function(data,
-                              title = NULL,
-                              subtitle = NULL,
-                              caption = NULL,
-                              agg = "sum",
-                              colors = NULL,
-                              colorScale = 'discrete',
-                              colorGroup = 'transparent',
-                              colorText = c('#212428', '#FFFFFF'),
-                              dropNaV = c(FALSE, FALSE),
-                              prefix = NULL,
-                              suffix = NULL,
-                              labelWrapV = c(12, 12),
-                              marks = c(".", ","),
-                              nDigits = NULL,
-                              percentage = FALSE,
-                              showText = TRUE,
-                              showLegend = TRUE,
-                              legendPosition = "bottom",
-                              theme = NULL, ...) {
+  if (is.null(data)) {
+    stop("Load an available dataset")
+  }
+
+  opts <- getOptions(opts = opts)
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -306,8 +218,11 @@ gg_treemap_CatCat <- function(data,
     dplyr::group_by_all() %>%
     dplyr::summarise(c = n())
 
-  names(d) <- c(f$dic_$d$label, paste0("count", f$dic_$d$label[1]))
-  gg_treemap_CatCatNum(data = d, title = title,subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV,  prefix = prefix, suffix = suffix, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
+  prefix_agg <- ifelse(is.null(opts$agg_text), "Count", opts$agg_text)
+  names(d) <- c(f$dic_$d$label, paste(prefix_agg, f$dic_$d$label[1]))
+
+  gg <- gg_treemap_CatCatNum(data = d, opts = opts)
+  gg
 }
 
 
@@ -325,34 +240,22 @@ gg_treemap_CatCat <- function(data,
 #' gg_treemap_CatNumP(sampleData("Cat-NumP", nrow = 10))
 #' @export gg_treemap_CatNumP
 
-gg_treemap_CatNumP <- function(data,
-                               title = NULL,
-                               subtitle = NULL,
-                               caption = NULL,
-                               agg = "sum",
-                               colors = NULL,
-                               colorScale = 'discrete',
-                               colorGroup = 'transparent',
-                               colorText = c('#212428', '#FFFFFF'),
-                               dropNaV = c(FALSE, FALSE),
-                               prefix = NULL,
-                               suffix = NULL,
-                               labelWrapV = c(12, 12),
-                               marks = c(".", ","),
-                               nDigits = NULL,
-                               percentage = FALSE,
-                               showText = TRUE,
-                               showLegend = TRUE,
-                               legendPosition = "bottom",
-                               theme = NULL, ...) {
+gg_treemap_CatNumP <- function(data = NULL, opts = NULL, ...) {
+
+  if (is.null(data)) {
+    stop("Load an available dataset")
+  }
+
+  opts <- getOptions(opts = opts)
 
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d
   names(d) <- f$dic_$d$label
 
-  data <- d %>%
+  d <- d %>%
     gather("categories", "count", names(d)[-1])
-  gg_treemap_CatCatNum(data = data, title = title, subtitle = subtitle, caption = caption, agg = agg,colors = colors, colorScale = colorScale, colorGroup = colorGroup, colorText = colorText, dropNaV = dropNaV, prefix = prefix ,suffix = suffix, labelWrapV = labelWrapV, marks = marks, nDigits = nDigits, percentage = percentage, showText = showText, showLegend = showLegend, legendPosition = legendPosition,theme = theme, ...)
 
+  gg <- gg_treemap_CatCatNum(data = d, opts = opts)
+  gg
 }
