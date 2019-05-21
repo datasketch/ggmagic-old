@@ -4,46 +4,22 @@
 \alias{gg_pie_CatNum}
 \title{Pie (categories, numbers)}
 \usage{
-gg_pie_CatNum(data, title = NULL, subtitle = NULL, caption = NULL,
-  agg = "sum", colors = NULL, colorText = "#5A6B72",
-  colorScale = "discrete", dropNa = FALSE, prefix = NULL,
-  suffix = NULL, labelRatio = 0.1, labelWrap = 12,
-  legendPosition = "bottom", legendTitle = NULL, marks = c(".", ","),
-  nDigits = 0, order = NULL, percentage = FALSE, sort = "no",
-  sliceN = NULL, showText = TRUE, theme = NULL, ...)
-
-gg_pie_CatNum(data, title = NULL, subtitle = NULL, caption = NULL,
-  agg = "sum", colors = NULL, colorText = "#5A6B72",
-  colorScale = "discrete", dropNa = FALSE, prefix = NULL,
-  suffix = NULL, labelRatio = 0.1, labelWrap = 12,
-  legendPosition = "bottom", legendTitle = NULL, marks = c(".", ","),
-  nDigits = 0, order = NULL, percentage = FALSE, sort = "no",
-  sliceN = NULL, showText = TRUE, theme = NULL, ...)
+gg_pie_CatNum(data = NULL, opts = NULL, ...)
 }
 \arguments{
-\item{data}{A data.frame}
-
 \item{data}{A data.frame}
 }
 \value{
 Ggplot2 visualization
-
-Ggplot2 visualization
 }
 \description{
-Compare aggregations among category's levels
-
 Compare aggregations among category's levels
 }
 \section{ctypes}{
 
 Cat-Num, Dat-Num, Yea-Num
-
-
-Cat-Num, Dat-Num, Yea-Num
 }
 
 \examples{
-gg_pie_CatNum(sampleData("Cat-Num", nrow = 10))
 gg_pie_CatNum(sampleData("Cat-Num", nrow = 10))
 }

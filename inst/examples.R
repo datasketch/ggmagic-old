@@ -21,6 +21,8 @@ library(hgchmagic)
 # en ggmagic parece estar así en hgchmagic no
 # en CatCat de ggmagic y hgchmagic salen labels repetidos eje y
 # en pie y donut la opción de que salga conteo y porcentaje ¿?
+# se puede poner geom_label en vez de geom_text y queda con un recuadro del
+# mismo color (se ve más, como en los judíos)
 
 s0 <- sampleData("Cat")
 
@@ -75,13 +77,26 @@ hgch_pie_Cat(s0, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_sc
 gg_pie_Cat(s0, opts = list(label_ratio = 1, color_scale = "no", colors = c("blue", "red")))
 hgch_pie_Cat(s0, label_ratio = 1, color_scale = "no", colors = c("blue", "red"))
 
-gg_pie_Cat(s0, opts = list(percentage = TRUE))
+gg_pie_Cat(s0, opts = list(percentage = TRUE, legend_position = "top"))
 hgch_pie_Cat(s0, percentage = TRUE)
 gg_pie_Cat(s0, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
 hgch_pie_Cat(s0, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
-gg_pie_Cat(s0, opts = list(label_ratio = 1, percentage = TRUE, suffix = "pres"))
-hgch_pie_Cat(s0, label_ratio = 1, percentage = TRUE, suffix = "pres")
+gg_pie_Cat(s0, opts = list(label_ratio = 1.5, percentage = TRUE, suffix = "pres"))
+hgch_pie_Cat(s0, label_ratio = 1.5, percentage = TRUE, suffix = "pres")
 
+gg_donut_Cat(s0)
+hgch_donut_Cat(s0)
+gg_donut_Cat(s0, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete"))
+hgch_donut_Cat(s0, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete")
+gg_donut_Cat(s0, opts = list(label_ratio = 1, color_scale = "no", colors = c("blue", "red")))
+hgch_donut_Cat(s0, label_ratio = 1, color_scale = "no", colors = c("blue", "red"))
+
+gg_donut_Cat(s0, opts = list(percentage = TRUE, legend_position = "top"))
+hgch_donut_Cat(s0, percentage = TRUE)
+gg_donut_Cat(s0, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
+hgch_donut_Cat(s0, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
+gg_donut_Cat(s0, opts = list(label_ratio = 1.5, percentage = TRUE, suffix = "pres"))
+hgch_donut_Cat(s0, label_ratio = 1.5, percentage = TRUE, suffix = "pres")
 
 
 s1 <- sampleData("Cat-Num")
@@ -128,6 +143,35 @@ gg_line_CatNum(s1, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale
 hgch_line_CatNum(s1, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
 gg_line_CatNum(s1, opts = list(label_ratio = 1, percentage = TRUE, suffix ="pres"))
 hgch_line_CatNum(s1, label_ratio = 1, percentage = TRUE, suffix ="pres")
+
+gg_pie_CatNum(s1)
+hgch_pie_CatNum(s1)
+gg_pie_CatNum(s1, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete"))
+hgch_pie_CatNum(s1, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete")
+gg_pie_CatNum(s1, opts = list(label_ratio = 1.5, color_scale = "no", colors = c("blue", "red")))
+hgch_pie_CatNum(s1, label_ratio = 1, color_scale = "no", colors = c("blue", "red"))
+
+gg_pie_CatNum(s1, opts = list(percentage = TRUE, legend_position = "top"))
+hgch_pie_CatNum(s1, percentage = TRUE)
+gg_pie_CatNum(s1, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
+hgch_pie_CatNum(s1, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
+gg_pie_CatNum(s1, opts = list(label_ratio = 1.5, percentage = TRUE, suffix ="pres"))
+hgch_pie_CatNum(s1, label_ratio = 1, percentage = TRUE, suffix ="pres")
+
+gg_donut_CatNum(s1)
+hgch_donut_CatNum(s1)
+gg_donut_CatNum(s1, opts = list(label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete"))
+hgch_donut_CatNum(s1, label_ratio = 0.5, prefix = "dskk", suffix = " jdjdj", color_scale = "discrete")
+gg_donut_CatNum(s1, opts = list(label_ratio = 1.5, color_scale = "no", colors = c("blue", "red")))
+hgch_donut_CatNum(s1, label_ratio = 1, color_scale = "no", colors = c("blue", "red"))
+
+gg_donut_CatNum(s1, opts = list(percentage = TRUE, legend_position = "top"))
+hgch_donut_CatNum(s1, percentage = TRUE)
+gg_donut_CatNum(s1, opts = list(label_ratio = 0.5, percentage = TRUE, color_scale = "continuous"))
+hgch_donut_CatNum(s1, label_ratio = 0.5, percentage = TRUE, color_scale = "continuous")
+gg_donut_CatNum(s1, opts = list(label_ratio = 1.5, percentage = TRUE, suffix ="pres"))
+hgch_donut_CatNum(s1, label_ratio = 1, percentage = TRUE, suffix ="pres")
+
 
 s2 <- sampleData("Cat-Cat")
 
