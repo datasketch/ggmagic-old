@@ -230,14 +230,6 @@ gg_line_CatCatNum <- function(data = NULL, opts = NULL, ...) {
     tidyr::gather(b, c, -a) %>%
     dplyr::mutate(percent = round(c * 100 / sum(c, na.rm = TRUE), opts$nDigits))
 
-  #REVISAR PARA QUÉ ESTO...
-  # d$c[is.na(d$c)] <- NA
-  # d$a <- as.character(d$a)
-  # d$a[is.na(d$a)] <- NA
-  # d$b <- as.character(d$b)
-  # d$b[is.na(d$b)] <- NA
-
-
   d <- ggmagic::orderCategory(d, "a", opts$orientation, opts$order1, opts$label_wrapV[1])
   d <- ggmagic::orderCategory(d, "b", opts$orientation, opts$order2, opts$label_wrapV[2])
   d <- ggmagic::labelPosition(d, "c", opts$label_ratio, opts$percentage, zeroToNa = TRUE)
