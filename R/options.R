@@ -45,7 +45,19 @@ default_options <- list(
   text_show = TRUE,
   text_size = 3,
   text_sizeV = c(15, 17),
-  theme = NULL
+  theme = NULL,
+
+  nDigitsY = NULL,
+  nDigitsX = NULL,
+  prefixX = NULL,
+  prefixY = NULL,
+  prefixSize = NULL,
+  suffixX = NULL,
+  suffixY = NULL,
+  suffixSize = NULL,
+  regression = FALSE,
+  regression_color = '#d35400',
+  nDigitsSize = NULL
 )
 
 # ¿no toca exportar

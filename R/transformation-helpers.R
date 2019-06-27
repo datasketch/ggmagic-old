@@ -87,6 +87,21 @@ labelPosition <- function(data, col, labelRatio, percentage = FALSE, zeroToNa = 
   data
 }
 
+#' select discrete default color
+#' @export
+
+discreteColorSelect <- function (colorDefault, d) {
+  lengData <- length(unique(d$a))
+  lengColor <- length(colorDefault)
+  if (lengData == lengColor) {
+    colorDefault <- colorDefault
+  } else if (lengData > lengColor) {
+    colorDefault <- c(colorDefault, sample(colorDefault, lengData-lengColor,replace = TRUE))
+  } else {
+    colorDefault <- colorDefault[1:lengData]
+  }
+  colorDefault
+}
 
 # colores
 #' @export
