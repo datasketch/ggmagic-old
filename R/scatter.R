@@ -326,3 +326,122 @@ gg_scatter_CatNumNum <- function(data = NULL,
 
 }
 
+
+#' Scatter Cat Num Num Num
+#'
+#' @param data
+#'
+#' @export
+gg_scatter_CatNumNumNum <- function(data = NULL,
+                                    opts = NULL, ...) {
+
+  if (is.null(data)) {
+    stop("Load an available dataset")
+  }
+  opts <- getOptions(opts = opts)
+
+  f <- fringe(data)
+  nms <- getClabels(f)
+  d <- f$d
+
+  labelsXY <- ggmagic::orientationXY('ver',
+                                     x = nms[1],
+                                     y = nms[2],
+                                     hor = opts$horLabel,
+                                     ver = opts$verLabel)
+  lineXY <- ggmagic::orientationXY('ver',
+                                   0,
+                                   0,
+                                   hor = opts$horLine,
+                                   ver = opts$verLine)
+
+
+
+  d <- d %>% drop_na()
+  if (opts$color_scale == 'discrete') {
+    colorDefault <- c("#3DB26F", "#FECA84", "#74D1F7", "#F75E64", "#8097A4", "#B70F7F", "#5D6AE9", "#53255E", "#BDCAD1")
+    colorDefault <- ggmagic::discreteColorSelect(colorDefault, d)
+  } else if (opts$color_scale == "no"){
+    colorDefault <- rep("#3DB26F", length(unique(d$a)))
+  } else {
+    colorDefault <- leaflet::colorNumeric(c("#53255E", "#ff4097"), 1:length(unique(d$a)))(1:length(unique(d$a)))
+  }
+
+  if (is.null(opts$colors)) {
+    opts$colors <- colorDefault
+  } else {
+    opts$colors <- ggmagic::fillColors(d, "a", opts$colors, opts$color_scale, opts$highlight_value, opts$highlight_valueColor, opts$label_wrap)
+  }
+
+  if (is.null(opts$nDigitsY)) {
+    nDigY <- 0
+  } else {
+    nDigY <- opts$nDigitsY
+  }
+
+  if (is.null(opts$nDigitsX)) {
+    nDigX <- 0
+  } else {
+    nDigX <- opts$nDigitsX
+  }
+
+
+  d$b <- round(d$b, nDigX)
+  d$c <- round(d$c, nDigY)
+
+  Lc <- length(unique(d$a))
+  minLim <- min(d[['c']], na.rm = T)
+  maxLim <- max(d[['c']], na.rm = T) + 0.3 * max(d[['c']], na.rm = T)
+
+  gg <- ggplot(d, aes(x = b, y = c, size = d, colour = a)) +
+    geom_point() +
+    scale_size(guide = 'none') +
+    scale_colour_manual(values = opts$colors) +
+    geom_vline(xintercept = lineXY[2],
+               color = ifelse((opts$orientation == "hor" & !is.null(opts$horLine)) | (opts$orientation == "ver" & !is.null(opts$verLine)),
+                              "#5A6B72",
+                              "transparent"),
+               linetype = "dashed") +
+    geom_hline(yintercept = lineXY[1],
+               color = ifelse((opts$orientation == "hor" & !is.null(opts$verLine)) | (opts$orientation == "ver" & !is.null(opts$horLine)),
+                              "#5A6B72",
+                              "transparent"),
+               linetype = "dashed") +
+    labs(title = opts$title, subtitle = opts$subtitle, caption = opts$caption, x = labelsXY[1], y = labelsXY[2]) +
+    scale_x_continuous(labels =  function(x) paste0(opts$prefixX,
+                                                    format(x,
+                                                           big.mark = opts$marks[1],
+                                                           decimal.mark = opts$marks[2],
+                                                           digits = nDigX,
+                                                           nsmall = nDigX),
+                                                    opts$suffixY)) +
+    scale_y_continuous(labels =  function(x) paste0(opts$prefixY,
+                                                    format(x,
+                                                           big.mark = opts$marks[1],
+                                                           decimal.mark = opts$marks[2],
+                                                           digits = nDigY,
+                                                           nsmall = nDigY),
+                                                    opts$suffixY),
+                       limits = c(minLim, maxLim))
+
+
+  if (opts$regression) {
+    gg <- gg + geom_smooth(method=lm,
+                           se=FALSE,
+                           fullrange=TRUE)
+  }
+
+  if (is.null(opts$theme)) {
+    gg <- gg + ggmagic::tma(orientation = "ver")
+  } else {
+    gg <- gg + opts$theme
+  }
+
+  gg +
+    theme(plot.caption = element_text(hjust = 1),
+          legend.position= opts$legend_position) +
+    theme_leg() +
+    guides(fill = guide_legend(nrow = 1, override.aes = list(linetype = 0)),
+           color = guide_legend(override.aes = list(linetype = 0)))
+
+}
