@@ -211,9 +211,9 @@ gg_area_CatCatNum <- function(data = NULL, opts = NULL, ...) {
                                    hor = opts$horLine,
                                    ver = opts$verLine)
 
-  if (any(opts$dropNaV))
+  if (any(opts$drop_naV))
     d <- d %>%
-    tidyr::drop_na(which(opts$dropNaV))
+    tidyr::drop_na(which(opts$drop_naV))
 
   opts$nDigits <- ifelse(!is.null(opts$nDigits), opts$nDigits, 0)
 

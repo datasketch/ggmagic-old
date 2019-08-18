@@ -40,7 +40,7 @@ gg_treemap_CatNum <- function(data = NULL, opts = NULL, ...) {
 
   d <- ggmagic::sortSlice(d, "b", "a", "ver", "desc", opts$sliceN)
   d <- ggmagic::orderCategory(d, "a", "ver", unique(d$a), opts$label_wrap)
-  fillCol <- ggmagic::fillColors(d, "a", opts$colors, opts$color_scale, opts$highlight_value, opts$highlight_valueColor, opts$label_wrap)
+  fillCol <- fillColors(data = d, "a", colors = opts$colors, opts$color_scale, opts$highlight_value, opts$highlight_valueColor, opts$label_wrap)
 
   if (opts$percentage & is.null(opts$suffix)) {
     opts$suffix <- "%"
@@ -48,7 +48,7 @@ gg_treemap_CatNum <- function(data = NULL, opts = NULL, ...) {
 
   varP <- ifelse(opts$percentage, "percent", "b")
 
-  gg <- ggplot(d, aes(area = b,
+  gg <- ggplot(d, aes(area = c,
                      fill = a,
                      label =  paste0(d$a, "\n", paste0(opts$prefix,
                                                        format(d[[varP]],
@@ -137,9 +137,9 @@ gg_treemap_CatCatNum <- function(data = NULL, opts = NULL, ...) {
   opts$subtitle <- opts$subtitle %||% ""
   opts$caption <- opts$caption %||% ""
 
-  if (any(opts$dropNaV))
+  if (any(opts$drop_naV))
     d <- d %>%
-    tidyr::drop_na(which(opts$dropNaV))
+    tidyr::drop_na(which(opts$drop_naV))
 
   opts$nDigits <- ifelse(!is.null(opts$nDigits), opts$nDigits, 0)
 
@@ -163,7 +163,7 @@ gg_treemap_CatCatNum <- function(data = NULL, opts = NULL, ...) {
 
   varP <- ifelse(opts$percentage, "percent", "c")
 
-  gg <- ggplot(d, aes(area = c, fill = b, subgroup = b, label =  paste0(d$a, "\n", paste0(opts$prefix,
+  gg <- ggplot(d, aes(area = c, fill = a, subgroup = b, label =  paste0(d$a, "\n", paste0(opts$prefix,
                                                                                           format(d[[varP]],
                                                                                                  big.mark = opts$marks[1],
                                                                                                  decimal.mark = opts$marks[2],

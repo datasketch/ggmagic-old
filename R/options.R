@@ -7,6 +7,8 @@ default_options <- list(
   color_scale ="discrete",
   dropNa = FALSE,
   dropNaV = c(FALSE, FALSE),
+  graph_type = 'grouped',
+  group_color = 'transparent',
   highlight_value = NULL,
   highlight_valueColor = '#F9B233',
   horLabel = NULL,
@@ -57,7 +59,6 @@ default_options <- list(
   verLine_label = NULL
 )
 
-# ¿no toca exportar
 #' @export
 getOptions <- function(opts = NULL) {
   if (is.null(opts)){
