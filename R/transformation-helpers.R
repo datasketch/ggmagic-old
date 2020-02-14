@@ -105,7 +105,7 @@ discreteColorSelect <- function (colorDefault, d) {
 
 # colores
 #' @export
-fillColors <- function(data, col, colors, colorScale, highlightValue, highlightValueColor, labelWrap) {
+fillColors <- function(data, col, colors, color_scale, highlightValue, highlightValueColor, labelWrap) {
   # cat <- stringr::str_wrap(unique(data[[col]]), labelWrap)
   # cat <- unique(data[[col]])
   cat <- levels(unique(data[[col]]))
@@ -120,7 +120,7 @@ fillColors <- function(data, col, colors, colorScale, highlightValue, highlightV
           maxColorValue = 255)
     })
   }
-  if (colorScale == "no") {
+  if (color_scale == "no") {
     if (is.null(colors)) {
       colors <- dsColorsHex()[2]
     }
@@ -128,7 +128,7 @@ fillColors <- function(data, col, colors, colorScale, highlightValue, highlightV
     names(fillCol) <- cat
   }
 
-  if (colorScale == "discrete") {
+  if (color_scale == "discrete") {
     if (is.null(colors)) {
       colors <- dsColorsHex()
     }
@@ -146,7 +146,7 @@ fillColors <- function(data, col, colors, colorScale, highlightValue, highlightV
     names(fillCol) <- cat
   }
 
-  if (colorScale == "continuous") {
+  if (color_scale == "continuous") {
     if (is.null(colors)) {
       colors <- dsColorsHex()[c(1, 7, 3, 4)]
     }

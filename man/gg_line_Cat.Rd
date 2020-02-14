@@ -4,7 +4,15 @@
 \alias{gg_line_Cat}
 \title{Lines (categories)}
 \usage{
-gg_line_Cat(data = NULL, opts = NULL, ...)
+gg_line_Cat(data = NULL, agg_text = NULL, caption = NULL,
+  colors = NULL, drop_na = FALSE, hor_label = NULL,
+  hor_line = NULL, label_ratio = 1, label_wrap = 12, marks = c(".",
+  ","), n_digits = NULL, order = NULL, orientation = "ver",
+  percentage = FALSE, prefix = NULL, shape_size = 3,
+  shape_type = 19, slice_n = NULL, sort = "no", start_zero = TRUE,
+  subtitle = NULL, suffix = NULL, text_color = "#5A6B72",
+  text_show = TRUE, text_size = 3, theme = NULL, title = NULL,
+  ver_label = NULL, ver_line = NULL, opts = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}

@@ -4,7 +4,21 @@
 \alias{gg_line_CatCat}
 \title{Lines (categories, ordered categories)}
 \usage{
-gg_line_CatCat(data = NULL, opts = NULL, ...)
+gg_line_CatCat(data = NULL, agg_text = NULL, caption = NULL,
+  colors = NULL, color_scale = "discrete", drop_na_v = c(FALSE,
+  FALSE), graph_type = "grouped", group_color = "transparent",
+  highlight_value = NULL, highlight_value_color = "#F9B233",
+  hor_label = NULL, hor_line = NULL, hor_line_label = NULL,
+  label_ratio = 1, label_wrap_v = c(12, 12),
+  legend_position = "bottom", legend_show = TRUE,
+  legend_title = NULL, marks = c(".", ","), n_digits = NULL,
+  order1 = NULL, order2 = NULL, orientation = "ver",
+  percentage = FALSE, prefix = NULL, shape_type = 19,
+  slice_n = NULL, sort = "no", spline = FALSE, start_zero = TRUE,
+  subtitle = NULL, suffix = NULL, text_color = "#212428",
+  text_show = TRUE, text_size = 3, theme = NULL, title = NULL,
+  ver_label = NULL, ver_line = NULL, ver_line_label = NULL,
+  opts = NULL, ...)
 }
 \arguments{
 \item{data}{A data.frame}

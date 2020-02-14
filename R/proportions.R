@@ -9,13 +9,74 @@
 #' @examples
 #' gg_pie_CatNum(sampleData("Cat-Num", nrow = 10))
 #' @export gg_pie_CatNum
-gg_pie_CatNum <- function(data = NULL, opts = NULL, ...) {
+gg_pie_CatNum <- function(data = NULL,
+                          agg = "sum",
+                          agg_text = NULL,
+                          caption = NULL,
+                          colors = NULL,
+                          color_scale ="discrete",
+                          drop_na = FALSE,
+                          highlight_value = NULL,
+                          highlight_value_color = '#F9B233',
+                          hor_label = NULL,
+                          hor_line = NULL,
+                          label_ratio = 1,
+                          label_wrap = 12,
+                          legend_position = "bottom",
+                          legend_show = TRUE,
+                          legend_title = NULL,
+                          marks = c(".", ","),
+                          n_digits = NULL,
+                          order = NULL,
+                          orientation = "ver",
+                          percentage = FALSE,
+                          prefix = NULL,
+                          slice_n = NULL,
+                          sort = "no",
+                          subtitle = NULL,
+                          suffix = NULL,
+                          text_color = "#5A6B72",
+                          text_show = TRUE,
+                          text_size = 3,
+                          theme = NULL,
+                          title = NULL,
+                          opts = NULL, ...) {
 
   if (is.null(data)) {
     stop("Load an available dataset")
   }
 
-  opts <- getOptions(opts = opts)
+  defaultOptions <- list(
+    agg = agg,
+    agg_text = agg_text,
+    caption = caption,
+    colors = colors,
+    color_scale = color_scale,
+    drop_na = drop_na,
+    highlight_value = highlight_value,
+    highlight_value_color = highlight_value_color,
+    label_ratio = label_ratio,
+    label_wrap = label_wrap,
+    legend_position = legend_position,
+    legend_show = legend_show,
+    legend_title = legend_title,
+    marks = marks,
+    n_digits = n_digits,
+    order = order,
+    orientation = orientation,
+    percentage = percentage,
+    prefix = prefix,
+    slice_n = slice_n,
+    sort = sort,
+    subtitle = subtitle,
+    suffix = suffix,
+    text_color = text_color,
+    text_show = text_show,
+    text_size = text_size,
+    theme = theme,
+    title = title
+  )
+  opts <- modifyList(defaultOptions, opts %||% list())
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -25,7 +86,7 @@ gg_pie_CatNum <- function(data = NULL, opts = NULL, ...) {
   opts$subtitle <- opts$subtitle %||% ""
   opts$caption <- opts$caption %||% ""
 
-  if (opts$dropNa)
+  if (opts$drop_na)
     d <- d %>%
     tidyr::drop_na()
 
@@ -99,13 +160,72 @@ gg_pie_CatNum <- function(data = NULL, opts = NULL, ...) {
 #' @examples
 #' gg_pie_Cat(sampleData("Cat", nrow = 10))
 #' @export gg_pie_Cat
-gg_pie_Cat <- function(data = NULL, opts = NULL, ...) {
+gg_pie_Cat <- function(data = NULL,
+                       agg_text = NULL,
+                       caption = NULL,
+                       colors = NULL,
+                       color_scale ="discrete",
+                       drop_na = FALSE,
+                       highlight_value = NULL,
+                       highlight_value_color = '#F9B233',
+                       hor_label = NULL,
+                       hor_line = NULL,
+                       label_ratio = 1,
+                       label_wrap = 12,
+                       legend_position = "bottom",
+                       legend_show = TRUE,
+                       legend_title = NULL,
+                       marks = c(".", ","),
+                       n_digits = NULL,
+                       order = NULL,
+                       orientation = "ver",
+                       percentage = FALSE,
+                       prefix = NULL,
+                       slice_n = NULL,
+                       sort = "no",
+                       subtitle = NULL,
+                       suffix = NULL,
+                       text_color = "#5A6B72",
+                       text_show = TRUE,
+                       text_size = 3,
+                       theme = NULL,
+                       title = NULL,
+                       opts = NULL, ...) {
 
   if (is.null(data)) {
     stop("Load an available dataset")
   }
 
-  opts <- getOptions(opts = opts)
+  defaultOptions <- list(
+    agg_text = agg_text,
+    caption = caption,
+    colors = colors,
+    color_scale = color_scale,
+    drop_na = drop_na,
+    highlight_value = highlight_value,
+    highlight_value_color = highlight_value_color,
+    label_ratio = label_ratio,
+    label_wrap = label_wrap,
+    legend_position = legend_position,
+    legend_show = legend_show,
+    legend_title = legend_title,
+    marks = marks,
+    n_digits = n_digits,
+    order = order,
+    orientation = orientation,
+    percentage = percentage,
+    prefix = prefix,
+    slice_n = slice_n,
+    sort = sort,
+    subtitle = subtitle,
+    suffix = suffix,
+    text_color = text_color,
+    text_show = text_show,
+    text_size = text_size,
+    theme = theme,
+    title = title
+  )
+  opts <- modifyList(defaultOptions, opts %||% list())
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -118,7 +238,7 @@ gg_pie_Cat <- function(data = NULL, opts = NULL, ...) {
   prefix_agg <- ifelse(is.null(opts$agg_text), "Count", opts$agg_text)
   names(d) <- c(f$dic_$d$label, paste0(prefix_agg, f$dic_$d$label))
 
-  gg <- gg_pie_CatNum(data = , opts = opts, ...)
+  gg <- gg_pie_CatNum(data = d, opts = opts, ...)
   gg
 }
 
@@ -135,13 +255,74 @@ gg_pie_Cat <- function(data = NULL, opts = NULL, ...) {
 #' @examples
 #' gg_donut_CatNum(sampleData("Cat-Num", nrow = 10))
 #' @export gg_donut_CatNum
-gg_donut_CatNum <- function(data = NULL, opts = NULL, ...) {
+gg_donut_CatNum <- function(data = NULL,
+                            agg = "sum",
+                            agg_text = NULL,
+                            caption = NULL,
+                            colors = NULL,
+                            color_scale ="discrete",
+                            drop_na = FALSE,
+                            highlight_value = NULL,
+                            highlight_value_color = '#F9B233',
+                            hor_label = NULL,
+                            hor_line = NULL,
+                            label_ratio = 1,
+                            label_wrap = 12,
+                            legend_position = "bottom",
+                            legend_show = TRUE,
+                            legend_title = NULL,
+                            marks = c(".", ","),
+                            n_digits = NULL,
+                            order = NULL,
+                            orientation = "ver",
+                            percentage = FALSE,
+                            prefix = NULL,
+                            slice_n = NULL,
+                            sort = "no",
+                            subtitle = NULL,
+                            suffix = NULL,
+                            text_color = "#5A6B72",
+                            text_show = TRUE,
+                            text_size = 3,
+                            theme = NULL,
+                            title = NULL,
+                            opts = NULL, ...) {
 
   if (is.null(data)) {
     stop("Load an available dataset")
   }
 
-  opts <- getOptions(opts = opts)
+  defaultOptions <- list(
+    agg = agg,
+    agg_text = agg_text,
+    caption = caption,
+    colors = colors,
+    color_scale = color_scale,
+    drop_na = drop_na,
+    highlight_value = highlight_value,
+    highlight_value_color = highlight_value_color,
+    label_ratio = label_ratio,
+    label_wrap = label_wrap,
+    legend_position = legend_position,
+    legend_show = legend_show,
+    legend_title = legend_title,
+    marks = marks,
+    n_digits = n_digits,
+    order = order,
+    orientation = orientation,
+    percentage = percentage,
+    prefix = prefix,
+    slice_n = slice_n,
+    sort = sort,
+    subtitle = subtitle,
+    suffix = suffix,
+    text_color = text_color,
+    text_show = text_show,
+    text_size = text_size,
+    theme = theme,
+    title = title
+  )
+  opts <- modifyList(defaultOptions, opts %||% list())
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -151,7 +332,7 @@ gg_donut_CatNum <- function(data = NULL, opts = NULL, ...) {
   opts$subtitle <- opts$subtitle %||% ""
   opts$caption <- opts$caption %||% ""
 
-  if (opts$dropNa)
+  if (opts$drop_na)
     d <- d %>%
     tidyr::drop_na()
 
@@ -227,13 +408,72 @@ gg_donut_CatNum <- function(data = NULL, opts = NULL, ...) {
 #' @examples
 #' gg_donut_Cat(sampleData("Cat", nrow = 10))
 #' @export gg_donut_Cat
-gg_donut_Cat <- function(data = NULL, opts = NULL, ...) {
+gg_donut_Cat <- function(data = NULL,
+                         agg_text = NULL,
+                         caption = NULL,
+                         colors = NULL,
+                         color_scale ="discrete",
+                         drop_na = FALSE,
+                         highlight_value = NULL,
+                         highlight_value_color = '#F9B233',
+                         hor_label = NULL,
+                         hor_line = NULL,
+                         label_ratio = 1,
+                         label_wrap = 12,
+                         legend_position = "bottom",
+                         legend_show = TRUE,
+                         legend_title = NULL,
+                         marks = c(".", ","),
+                         n_digits = NULL,
+                         order = NULL,
+                         orientation = "ver",
+                         percentage = FALSE,
+                         prefix = NULL,
+                         slice_n = NULL,
+                         sort = "no",
+                         subtitle = NULL,
+                         suffix = NULL,
+                         text_color = "#5A6B72",
+                         text_show = TRUE,
+                         text_size = 3,
+                         theme = NULL,
+                         title = NULL,
+                         opts = NULL, ...) {
 
   if (is.null(data)) {
     stop("Load an available dataset")
   }
 
-  opts <- getOptions(opts = opts)
+  defaultOptions <- list(
+    agg_text = agg_text,
+    caption = caption,
+    colors = colors,
+    color_scale = color_scale,
+    drop_na = drop_na,
+    highlight_value = highlight_value,
+    highlight_value_color = highlight_value_color,
+    label_ratio = label_ratio,
+    label_wrap = label_wrap,
+    legend_position = legend_position,
+    legend_show = legend_show,
+    legend_title = legend_title,
+    marks = marks,
+    n_digits = n_digits,
+    order = order,
+    orientation = orientation,
+    percentage = percentage,
+    prefix = prefix,
+    slice_n = slice_n,
+    sort = sort,
+    subtitle = subtitle,
+    suffix = suffix,
+    text_color = text_color,
+    text_show = text_show,
+    text_size = text_size,
+    theme = theme,
+    title = title
+  )
+  opts <- modifyList(defaultOptions, opts %||% list())
 
   f <- fringe(data)
   nms <- getClabels(f)
@@ -246,6 +486,6 @@ gg_donut_Cat <- function(data = NULL, opts = NULL, ...) {
   prefix_agg <- ifelse(is.null(opts$agg_text), "Count", opts$agg_text)
   names(d) <- c(f$dic_$d$label, paste0(prefix_agg, f$dic_$d$label))
 
-  gg <- gg_pie_CatNum(data = , opts = opts, ...)
+  gg <- gg_donut_CatNum(data = d, opts = opts, ...)
   gg
 }
