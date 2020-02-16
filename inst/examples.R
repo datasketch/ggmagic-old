@@ -172,3 +172,21 @@ gg_pie_CatNum(data = catnum_data,
 cat_data <- sampleData("Cat")
 gg_donut_Cat(data = cat_data)
 
+
+
+# Treemap
+cat_data <- sampleData("Cat", 300)
+gg_treemap_Cat(cat_data)
+
+catnum_data <- sampleData("Cat-Num", 300)
+gg_treemap_CatNum(catnum_data)
+
+catcatnum_data <- sampleData("Cat-Cat-Num", 500)
+gg_treemap_CatCatNum(catcatnum_data,
+                     group_color = "#CCCCCC",
+                     drop_na_v = c(TRUE, TRUE))
+gg_treemap_CatCatNum(catcatnum_data,
+                     group_color = "#CCCCCC",
+                     drop_na_v = c(TRUE, TRUE),
+                     text_show_v = c(F, F),
+                     legend_show = FALSE)
