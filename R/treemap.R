@@ -315,7 +315,7 @@ gg_treemap_CatCatNum <- function(data = NULL,
 
   d <- ggmagic::orderCategory(d, "a", "ver", unique(d$a), opts$label_wrap_v[1])
   d <- ggmagic::orderCategory(d, "b", "ver", unique(d$b), opts$label_wrap_v[2])
-  fillCol <- ggmagic::fillColors(d, "a", opts$colors, opts$color_scale, NULL, NULL, opts$label_wrap)
+  fillCol <- ggmagic::fillColors(d, "b", opts$colors, opts$color_scale, NULL, NULL, opts$label_wrap)
 
   if (opts$percentage & is.null(opts$suffix)) {
     opts$suffix <- "%"
@@ -323,7 +323,7 @@ gg_treemap_CatCatNum <- function(data = NULL,
 
   varP <- ifelse(opts$percentage, "percent", "c")
 
-  gg <- ggplot(d, aes(area = c, fill = a, subgroup = b, label =  paste0(d$a, "\n", paste0(opts$prefix,
+  gg <- ggplot(d, aes(area = c, fill = b, subgroup = b, label =  paste0(d$a, "\n", paste0(opts$prefix,
                                                                                           format(d[[varP]],
                                                                                                  big.mark = opts$marks[1],
                                                                                                  decimal.mark = opts$marks[2],
