@@ -4,16 +4,40 @@
 \alias{gg_bar_Cat}
 \title{Bar (categories)}
 \usage{
-gg_bar_Cat(data = NULL, agg_text = NULL, caption = NULL,
-  colors = NULL, color_scale = "discrete", drop_na = FALSE,
-  graph_type = "grouped", highlight_value = NULL,
-  highlight_value_color = "#F9B233", hor_label = NULL,
-  hor_line = NULL, label_ratio = 1, label_wrap = 12, marks = c(".",
-  ","), n_digits = NULL, order = NULL, orientation = "ver",
-  percentage = FALSE, prefix = NULL, slice_n = NULL, sort = "no",
-  subtitle = NULL, suffix = NULL, text_color = "#5A6B72",
-  text_show = TRUE, text_size = 3, theme = NULL, title = NULL,
-  ver_label = NULL, ver_line = NULL, opts = NULL, ...)
+gg_bar_Cat(
+  data = NULL,
+  agg_text = NULL,
+  caption = NULL,
+  colors = NULL,
+  color_scale = "discrete",
+  drop_na = FALSE,
+  graph_type = "grouped",
+  highlight_value = NULL,
+  highlight_value_color = "#F9B233",
+  hor_label = NULL,
+  hor_line = NULL,
+  label_ratio = 1,
+  label_wrap = 12,
+  marks = c(".", ","),
+  n_digits = NULL,
+  order = NULL,
+  orientation = "ver",
+  percentage = FALSE,
+  prefix = NULL,
+  slice_n = NULL,
+  sort = "no",
+  subtitle = NULL,
+  suffix = NULL,
+  text_color = "#5A6B72",
+  text_show = TRUE,
+  text_size = 3,
+  theme = NULL,
+  title = NULL,
+  ver_label = NULL,
+  ver_line = NULL,
+  opts = NULL,
+  ...
+)
 }
 \arguments{
 \item{data}{A data.frame}
