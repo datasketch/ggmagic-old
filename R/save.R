@@ -1,21 +1,26 @@
 # save plot
 #' @export
-save_ggmagic <- function(viz, filename, format = NULL, width = 10, height = 7, ...) {
-  format <- file_ext(filename) %||% "png"
-  tmp <- paste(tempdir(), 'svg', sep ='.')
+save_ggmagic <- function (viz, filename, format = NULL, width = 10, height = 7, ...) {
+  if (is.null(format)) {
+    format <- file_ext(filename) %||% "png"
+  }
+  filename <- file_path_sans_ext(filename)
+  tmp <- paste(tempdir(), "svg", sep = ".")
   svglite::svglite(tmp, width = width, height = height)
   print(viz)
   dev.off()
   bitmap <- rsvg::rsvg(tmp, height = 500)
-  out_file <- paste0(file_path_sans_ext(filename),'.',format)
-  if (format == 'png') {
-    png::writePNG(bitmap, out_file, dpi = 144) }
-  if (format == 'jpeg') {
-    jpeg::writeJPEG(bitmap, out_file)}
-  if (format == 'svg') {
-    rsvg::rsvg_svg(tmp, out_file)}
-  if (format == 'pdf') {
-    rsvg::rsvg_pdf(tmp, out_file)
+  if (format == "png") {
+    png::writePNG(bitmap, paste0(filename, ".", format), dpi = 144)
+  }
+  if (format == "jpeg") {
+    jpeg::writeJPEG(bitmap, paste0(filename, ".", format))
+  }
+  if (format == "svg") {
+    rsvg::rsvg_svg(tmp, paste0(filename, ".", format))
+  }
+  if (format == "pdf") {
+    rsvg::rsvg_pdf(tmp, paste0(filename, ".", format))
   }
 }
 
