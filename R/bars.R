@@ -79,7 +79,7 @@ gg_bar_CatNum <- function(data = NULL,
   )
   opts <- modifyList(defaultOptions, opts %||% list())
 
-
+ options(scipen = 9999)
   f <- fringe(data)
   nms <- getClabels(f)
   d <- f$d

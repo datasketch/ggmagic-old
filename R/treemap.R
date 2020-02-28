@@ -332,6 +332,8 @@ gg_treemap_CatCatNum <- function(data = NULL,
     treemapify::geom_treemap() +
     geom_treemap_subgroup_border(color = opts$group_color) +
     labs(title = opts$title, subtitle = opts$subtitle, caption = opts$caption) +
+    scale_x_continuous(expand = c(0, 0)) +
+    scale_y_continuous(expand = c(0, 0))  +
     scale_fill_manual(values = fillCol, name = opts$legend_title)
 
   if (text_show_v[1]) {
