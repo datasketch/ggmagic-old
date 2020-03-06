@@ -7,6 +7,7 @@
 gg_donut_CatNum(
   data = NULL,
   agg = "sum",
+  background = "transparent",
   agg_text = NULL,
   caption = NULL,
   colors = NULL,

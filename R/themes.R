@@ -180,38 +180,39 @@ theme_ds <- function(...){
   )
 }
 
-getDefaultTheme <- list(
-  background = 'transparent',
-  bordercolor = 'transparent',
-  colores = NULL,
-  fontFamily = 'Ubuntu',
-  fontSize = 11,
-  color = '#5A6B72',
-  marginBottom = 0,
-  marginLeft = 0,
-  marginRight = 0,
-  marginTop = 0,
-  plotBackgroundColor = "transparent",
-  plotBorderColor = "transparent",
-  plotBorderWidth = 1,
-  gridColor =  "#cccccc",
-  angleTicks = 0,
-  axis_x = list(color = "#5A6B72"),
-  axis_y = list(color = "#5A6B72")
-)
+
 
 getTheme <- function(theme = NULL){
 
-  userTheme <- theme
-  defaultTheme <- getDefaultTheme
+  getDefaultTheme <- list(
+    background = 'transparent',
+    bordercolor = 'transparent',
+    colores = NULL,
 
-  if(!is.null(theme)){
-    theme <- modifyList(defaultTheme, userTheme)
-  }else{
-    theme <- defaultTheme
-  }
 
+    font_family = "Ubuntu",
+    font_size = '11px',
+    font_color = '#5A6B72',
+    font_size_title = '23px',
+    font_size_subtitle = '17px',
+    font_size_caption = '13px',
+
+    color = '#5A6B72',
+    marginBottom = 0,
+    marginLeft = 0,
+    marginRight = 0,
+    marginTop = 0,
+    plotBackgroundColor = "transparent",
+    plotBorderColor = "transparent",
+    plotBorderWidth = 1,
+    gridColor =  "#cccccc",
+    angleTicks = 0,
+    axis_x = list(color = "#5A6B72"),
+    axis_y = list(color = "#5A6B72")
+  )
+  theme <- modifyList(getDefaultTheme, theme %||% list())
   theme
+
 }
 
 
@@ -221,21 +222,25 @@ tma <- function(custom = NULL, orientation = "ver", ...) {
 
   custom <- getTheme(theme = custom)
   theme(
+        plot.title = element_text(family = custom$font_family, colour = custom$font_color, size = as.numeric(gsub('px', '',custom$font_size_title)), hjust = 0.5),
+        plot.subtitle = element_text(family = custom$font_family, colour = custom$font_color, size = as.numeric(gsub('px', '',custom$font_size_subtitle)), hjust = 0.5),
+        plot.caption = element_text(family = custom$font_family, colour = custom$font_color, size = as.numeric(gsub('px', '',custom$font_size_caption))),
         plot.background = element_rect(fill = custom$background, colour = custom$background),
-        panel.background = element_rect(fill = custom$plotBackgroundColor),
+        panel.background = element_rect(fill = custom$background),
         panel.border = element_rect(size = custom$plotBorderWidth, fill = 'transparent', colour = custom$plotBorderColor),
-        text = element_text(size = custom$fontSize,  family = custom$fontFamily),
-        axis.title.x = element_text(colour = custom$color), #color label eje x
-        axis.title.y = element_text(colour = custom$color),
-        axis.text.x = element_text(color = custom$color, size = custom$fontSize, angle = custom$angleTicks),
-        axis.text.y = element_text(color = custom$color, size = custom$fontSize, angle = custom$angleTicks),
+        text = element_text( family = custom$font_family, size = as.numeric(gsub('px', '',custom$font_size))),
+        axis.title.x = element_text(colour = custom$font_color), #color label eje x
+        axis.title.y = element_text(colour = custom$font_color),
+        axis.text.x = element_text(color = custom$font_color, size = custom$font_size, angle = custom$angleTicks),
+        axis.text.y = element_text(color = custom$font_color, size = custom$font_size, angle = custom$angleTicks),
         #  plot.margin = margin(custom$marginTop, custom$marginRight, custom$marginBottom, custom$marginLeft),
         panel.grid.major.y = element_line(size = 0.4, linetype = 'dotted', colour = ifelse(orientation == "ver", "#5A6B72", "transparent")),
         panel.grid.major.x = element_line(size = 0.4, linetype = 'dotted', colour = ifelse(orientation == "ver", "transparent", "#5A6B72")),
         panel.grid.minor = element_line(size = 0.4, linetype = 'solid', colour = "transparent"),
         axis.ticks = element_line(colour = 'transparent'),
         axis.line.x = element_line(colour = ifelse(orientation == "ver", custom$axis_x$color, "transparent")),
-        axis.line.y = element_line(colour = ifelse(orientation == "ver", "transparent", custom$axis_y$color))
+        axis.line.y = element_line(colour = ifelse(orientation == "ver", "transparent", custom$axis_y$color)),
+        legend.text=element_text(color=custom$font_color, size=as.numeric(gsub('px', '',custom$font_size)))
         #axis.text = element_text(size = (custom$fontSize-2), family = custom$fontFamily)
   )
 }

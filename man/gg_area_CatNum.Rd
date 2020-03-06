@@ -10,7 +10,7 @@ gg_area_CatNum(
   agg_text = NULL,
   caption = NULL,
   colors = NULL,
-  color_opacity = 0.7,
+  fill_opacity = 0.7,
   drop_na = FALSE,
   hor_label = NULL,
   hor_line = NULL,

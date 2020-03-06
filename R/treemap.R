@@ -91,11 +91,20 @@ gg_treemap_CatNum <- function(data = NULL,
 
   d <- ggmagic::sortSlice(d, "b", "a", "ver", "desc", opts$slice_n)
   d <- ggmagic::orderCategory(d, "a", "ver", unique(d$a), opts$label_wrap)
-  fillCol <- fillColors(data = d, "a", colors = opts$colors, opts$color_scale, opts$highlight_value, opts$highlight_value_color, opts$label_wrap)
+
+  colores_plot <- opts$colors
+  if (!is.null(opts$theme$colors)) colores_plot <- opts$theme$colors
+  fillCol <- fillColors(data = d, "a", colors = colores_plot, opts$color_scale, opts$highlight_value, opts$highlight_value_color, opts$label_wrap)
 
   if (opts$percentage & is.null(opts$suffix)) {
     opts$suffix <- "%"
   }
+
+  label_size <- opts$text_size
+  if (!is.null(opts$theme$labsData_sizeLabel)) label_size <- as.numeric(gsub("px", "",opts$theme$labsData_sizeLabel))/3
+
+  label_color <- opts$text_color
+  if (!is.null(opts$theme$labsData_colLabel)) label_color <-  opts$theme$labsData_colLabel
 
   varP <- ifelse(opts$percentage, "percent", "b")
 
@@ -109,14 +118,13 @@ gg_treemap_CatNum <- function(data = NULL,
                                                        opts$suffix)))) +
     treemapify::geom_treemap() +
     scale_fill_manual(values = fillCol) +
-     geom_treemap_text(size = opts$text_size * 5, colour = ifelse(opts$text_show, opts$text_color, "transparent")) +
+     geom_treemap_text(size = label_size * 5, colour = ifelse(opts$text_show, label_color, "transparent")) +
      labs(title = opts$title, subtitle = opts$subtitle, caption = opts$caption)
 
-  if (is.null(opts$theme)) {
-    gg <- gg + ggmagic::tma()
-  } else {
-    gg <- gg + opts$theme
-  }
+  theme_user <- opts$theme
+  optsTheme <- list( colors = opts$colors, background = opts$background)
+  themeCustom <- modifyList(optsTheme, theme_user %||% list())
+  gg <- gg + ggmagic::tma(custom = themeCustom, orientation = opts$orientation)
 
   gg +
     theme(legend.position = "none",
@@ -224,11 +232,13 @@ gg_treemap_CatCatNum <- function(data = NULL,
                                  caption = NULL,
                                  colors = NULL,
                                  color_scale ="discrete",
-                                 drop_na_v = c(FALSE, FALSE),
+                                 drop_na = FALSE,
+                                 drop_na_legend = FALSE,
                                  group_color = 'transparent',
                                  highlight_value = NULL,
                                  highlight_value_color = '#F9B233',
-                                 label_wrap_v = c(12, 12),
+                                 label_wrap = 12,
+                                 label_wrap_legend = 12,
                                  legend_position = "bottom",
                                  legend_show = TRUE,
                                  legend_title = NULL,
@@ -260,11 +270,13 @@ gg_treemap_CatCatNum <- function(data = NULL,
     caption = caption,
     colors = colors,
     color_scale = color_scale,
-    drop_na_v = drop_na_v,
+    drop_na = drop_na,
+    drop_na_legend = drop_na_legend,
     group_color = group_color,
     highlight_value = highlight_value,
     highlight_value_color = highlight_value_color,
-    label_wrap_v = label_wrap_v,
+    label_wrap = label_wrap,
+    label_wrap_legend = label_wrap_legend,
     legend_position = legend_position,
     legend_show = legend_show,
     legend_title = legend_title,
@@ -297,9 +309,13 @@ gg_treemap_CatCatNum <- function(data = NULL,
 
   options(scipen = 9999)
 
-  if (any(opts$drop_na_v))
+  if (opts$drop_na)
     d <- d %>%
-    tidyr::drop_na(which(opts$drop_na_v))
+    tidyr::drop_na(b)
+
+  if(opts$drop_na_legend)
+    d <- d %>%
+    tidyr::drop_na(a)
 
   opts$n_digits <- ifelse(!is.null(opts$n_digits), opts$n_digits, 0)
 
@@ -313,9 +329,11 @@ gg_treemap_CatCatNum <- function(data = NULL,
     dplyr::mutate(percent = round(c * 100 / sum(c, na.rm = TRUE), opts$n_digits)) %>%
     drop_na(c)
 
-  d <- ggmagic::orderCategory(d, "a", "ver", unique(d$a), opts$label_wrap_v[1])
-  d <- ggmagic::orderCategory(d, "b", "ver", unique(d$b), opts$label_wrap_v[2])
-  fillCol <- ggmagic::fillColors(d, "b", opts$colors, opts$color_scale, NULL, NULL, opts$label_wrap)
+  d <- ggmagic::orderCategory(d, "a", opts$orientation, opts$order1, opts$label_wrap_legend)
+  d <- ggmagic::orderCategory(d, "b", opts$orientation, opts$order2, opts$label_wrap)
+  colores_plot <- opts$colors
+  if (!is.null(opts$theme$colors)) colores_plot <- opts$theme$colors
+  fillCol <- ggmagic::fillColors(d, "b", colores_plot, opts$color_scale, NULL, NULL, opts$label_wrap)
 
   if (opts$percentage & is.null(opts$suffix)) {
     opts$suffix <- "%"
@@ -345,11 +363,10 @@ gg_treemap_CatCatNum <- function(data = NULL,
    gg <- gg + geom_treemap_subgroup_text(place = text_position_v[2],  colour = opts$text_color_v[2], min.size = 0, reflow = T, size = opts$text_size_v[2])
   }
 
-  if (is.null(opts$theme)) {
-    gg <- gg + ggmagic::tma()
-  } else {
-    gg <- gg + opts$theme
-  }
+  theme_user <- opts$theme
+  optsTheme <- list( colors = opts$colors, background = opts$background)
+  themeCustom <- modifyList(optsTheme, theme_user %||% list())
+  gg <- gg + ggmagic::tma(custom = themeCustom)
 
   gg +
     theme(legend.position = ifelse(opts$legend_show, opts$legend_position, "none"),
@@ -376,11 +393,13 @@ gg_treemap_CatCat <- function(data = NULL,
                               caption = NULL,
                               colors = NULL,
                               color_scale ="discrete",
-                              drop_na_v = c(FALSE, FALSE),
+                              drop_na = FALSE,
+                              drop_na_legend = FALSE,
                               group_color = 'transparent',
                               highlight_value = NULL,
                               highlight_value_color = '#F9B233',
-                              label_wrap_v = c(12, 12),
+                              label_wrap = 12,
+                              label_wrap_legend = 12,
                               legend_position = "bottom",
                               legend_show = TRUE,
                               legend_title = NULL,
@@ -410,11 +429,13 @@ gg_treemap_CatCat <- function(data = NULL,
     caption = caption,
     colors = colors,
     color_scale = color_scale,
-    drop_na_v = drop_na_v,
+    drop_na = drop_na,
+    drop_na_legend = drop_na_legend,
     group_color = group_color,
     highlight_value = highlight_value,
     highlight_value_color = highlight_value_color,
-    label_wrap_v = label_wrap_v,
+    label_wrap = label_wrap,
+    label_wrap_legend = label_wrap_legend,
     legend_position = legend_position,
     legend_show = legend_show,
     legend_title = legend_title,

@@ -90,18 +90,20 @@ gg_pie_CatNum <- function(data = NULL,
     d <- d %>%
     tidyr::drop_na()
 
-  opts$nDigits <- ifelse(!is.null(opts$nDigits), opts$nDigits, 0)
+  opts$n_digits <- ifelse(!is.null(opts$n_digits), opts$n_digits, 0)
 
   d <- d  %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = NA)) %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(b = ggmagic::agg(opts$agg, b)) %>%
-    dplyr::mutate(percent = round(b * 100 / sum(b, na.rm = TRUE), opts$nDigits))
+    dplyr::mutate(percent = round(b * 100 / sum(b, na.rm = TRUE), opts$n_digits))
 
   d <- ggmagic::sortSlice(d, "b", "a", "ver", opts$sort, opts$sliceN)
   d <- ggmagic::orderCategory(d, "a", "ver", opts$order, opts$label_wrap)
-  fillCol <- ggmagic::fillColors(d, "a", opts$colors, opts$color_scale, NULL, NULL, opts$label_wrap)
+  colores_plot <- opts$colors
+  if (!is.null(opts$theme$colors)) colores_plot <- opts$theme$colors
+  fillCol <- ggmagic::fillColors(d, "a", colores_plot, opts$color_scale, NULL, NULL, opts$label_wrap)
 
   d$ct <- cumsum(d[[ifelse(opts$percentage, "percent", "b")]][order(d$a, decreasing = TRUE)]) -
     d[[ifelse(opts$percentage, "percent", "b")]][order(d$a, decreasing = TRUE)] / 2
@@ -113,6 +115,12 @@ gg_pie_CatNum <- function(data = NULL,
     opts$suffix <- "%"
   }
 
+  label_size <- opts$text_size
+  if (!is.null(opts$theme$labsData_sizeLabel)) label_size <- as.numeric(gsub("px", "",opts$theme$labsData_sizeLabel))/3
+
+  label_color <- opts$text_color
+  if (!is.null(opts$theme$labsData_colLabel)) label_color <-  opts$theme$labsData_colLabel
+
   gg <- ggplot(d, aes(x = 1, y = b, fill = a)) +
     geom_bar(stat = "identity") +
     coord_polar(theta = "y") +
@@ -122,30 +130,29 @@ gg_pie_CatNum <- function(data = NULL,
                                  format(d[[ifelse(opts$percentage, "percent", "b")]][order(d$a, decreasing = TRUE)],
                                         big.mark = opts$marks[1],
                                         decimal.mark = opts$marks[2],
-                                        digits = opts$nDigits,
-                                        nsmall = opts$nDigits),
+                                        digits = opts$n_digits,
+                                        nsmall = opts$n_digits),
                                  opts$suffix)),
               check_overlap = TRUE,
-              size = opts$text_size,
-              color = ifelse(opts$text_show, opts$text_color, "transparent")) +
+              size = label_size,
+              color = ifelse(opts$text_show, label_color, "transparent")) +
     labs(title = opts$title, subtitle = opts$subtitle, caption = opts$caption, x = "", y = "") +
     scale_fill_manual(values = fillCol, name = opts$legend_title)
 
-  if (is.null(opts$theme)) {
-    gg <- gg +
-      ggmagic::tma() +
-      theme_ds_clean()
-  } else {
-    gg <- gg +
-      opts$theme +
-      theme_ds_clean()
-  }
+
+  theme_user <- opts$theme
+  optsTheme <- list( colors = opts$colors, background = opts$background)
+  themeCustom <- modifyList(optsTheme, theme_user %||% list())
+  gg <- gg + ggmagic::tma(custom = themeCustom)+ theme_ds_clean()
+
 
   gg +
     theme_leg() +
     theme(legend.position = opts$legend_position,
-          plot.caption = element_text(hjust = 1)) +
-    guides(fill = guide_legend(nrow = 1))
+          plot.caption = element_text(hjust = 1),
+          plot.background = element_rect(fill = opts$background, colour = opts$background),
+          panel.background = element_rect(fill = opts$background, colour =opts$background)) #+
+    #guides(fill = guide_legend(nrow = 1))
 }
 
 
@@ -257,6 +264,7 @@ gg_pie_Cat <- function(data = NULL,
 #' @export gg_donut_CatNum
 gg_donut_CatNum <- function(data = NULL,
                             agg = "sum",
+                            background = "transparent",
                             agg_text = NULL,
                             caption = NULL,
                             colors = NULL,
@@ -295,6 +303,7 @@ gg_donut_CatNum <- function(data = NULL,
   defaultOptions <- list(
     agg = agg,
     agg_text = agg_text,
+    background = background,
     caption = caption,
     colors = colors,
     color_scale = color_scale,
@@ -336,18 +345,20 @@ gg_donut_CatNum <- function(data = NULL,
     d <- d %>%
     tidyr::drop_na()
 
-  opts$nDigits <- ifelse(!is.null(opts$nDigits), opts$nDigits, 0)
+  opts$n_digits <- ifelse(!is.null(opts$n_digits), opts$n_digits, 0)
 
   d <- d  %>%
     tidyr::replace_na(list(a = ifelse(is.character(d$a), "NA", NA),
                            b = NA)) %>%
     dplyr::group_by(a) %>%
     dplyr::summarise(b = ggmagic::agg(opts$agg, b)) %>%
-    dplyr::mutate(percent = round(b * 100 / sum(b, na.rm = TRUE), opts$nDigits))
+    dplyr::mutate(percent = round(b * 100 / sum(b, na.rm = TRUE), opts$n_digits))
 
   d <- ggmagic::sortSlice(d, "b", "a", "ver", opts$sort, opts$sliceN)
   d <- ggmagic::orderCategory(d, "a", "ver", opts$order, opts$label_wrap)
-  fillCol <- ggmagic::fillColors(d, "a", opts$colors, opts$color_scale, NULL, NULL, opts$label_wrap)
+  colores_plot <- opts$colors
+  if (!is.null(opts$theme$colors)) colores_plot <- opts$theme$colors
+  fillCol <- ggmagic::fillColors(d, "a", colores_plot, opts$color_scale, NULL, NULL, opts$label_wrap)
 
   d$ct <- cumsum(d[[ifelse(opts$percentage, "percent", "b")]][order(d$a, decreasing = TRUE)]) -
     d[[ifelse(opts$percentage, "percent", "b")]][order(d$a, decreasing = TRUE)] / 2
@@ -359,6 +370,12 @@ gg_donut_CatNum <- function(data = NULL,
     opts$suffix <- "%"
   }
 
+  label_size <- opts$text_size
+  if (!is.null(opts$theme$labsData_sizeLabel)) label_size <- as.numeric(gsub("px", "",opts$theme$labsData_sizeLabel))/3
+
+  label_color <- opts$text_color
+  if (!is.null(opts$theme$labsData_colLabel)) label_color <-  opts$theme$labsData_colLabel
+
   gg <- ggplot(d, aes(x = 1, y = b, fill = a)) +
     geom_bar(stat = "identity") +
     coord_polar(theta = "y") +
@@ -369,30 +386,28 @@ gg_donut_CatNum <- function(data = NULL,
                                  format(d[[ifelse(opts$percentage, "percent", "b")]][order(d$a, decreasing = TRUE)],
                                         big.mark = opts$marks[1],
                                         decimal.mark = opts$marks[2],
-                                        digits = opts$nDigits,
-                                        nsmall = opts$nDigits),
+                                        digits = opts$n_digits,
+                                        nsmall = opts$n_digits),
                                  opts$suffix)),
               check_overlap = TRUE,
-              size = opts$text_size,
-              color = ifelse(opts$text_show, opts$text_color, "transparent")) +
+              size = label_size,
+              color = ifelse(opts$text_show, label_color, "transparent")) +
     labs(title = opts$title, subtitle = opts$subtitle, caption = opts$caption, x = "", y = "") +
     scale_fill_manual(values = fillCol, name = opts$legend_title)
 
-  if (is.null(opts$theme)) {
-    gg <- gg +
-      ggmagic::tma() +
-      theme_ds_clean()
-  } else {
-    gg <- gg +
-      opts$theme +
-      theme_ds_clean()
-  }
+  theme_user <- opts$theme
+  optsTheme <- list( colors = opts$colors, background = opts$background)
+  themeCustom <- modifyList(optsTheme, theme_user %||% list())
+  gg <- gg + ggmagic::tma(custom = themeCustom) + theme_ds_clean()
+
 
   gg +
     theme_leg() +
     theme(legend.position = opts$legend_position,
-          plot.caption = element_text(hjust = 1)) +
-    guides(fill = guide_legend(nrow = 1))
+          plot.caption = element_text(hjust = 1),
+          plot.background = element_rect(fill = opts$background, colour = opts$background),
+          panel.background = element_rect(fill = opts$background, colour = opts$background)) #+
+    #guides(fill = guide_legend(nrow = 1))
 }
 
 

@@ -14,7 +14,7 @@ gg_area_CatNum <- function(data = NULL,
                            agg_text = NULL,
                            caption = NULL,
                            colors = NULL,
-                           color_opacity = 0.7,
+                           fill_opacity = 0.7,
                            drop_na = FALSE,
                            hor_label = NULL,
                            hor_line = NULL,
@@ -51,7 +51,7 @@ gg_area_CatNum <- function(data = NULL,
     agg_text = agg_text,
     caption = caption,
     colors = colors,
-    color_opacity = color_opacity,
+    fill_opacity = fill_opacity,
     drop_na = drop_na,
     hor_label = hor_label,
     hor_line = hor_line,
@@ -123,7 +123,10 @@ gg_area_CatNum <- function(data = NULL,
   d <- ggmagic::sortSlice(d, "b", "a", opts$orientation, opts$sort, opts$slice_n)
   d <- ggmagic::orderCategory(d, "a", opts$orientation, opts$order, opts$label_wrap)
   d <- ggmagic::labelPosition(d, "b", opts$label_ratio, opts$percentage)
-  fillCol <- ggmagic::fillColors(d, "a", opts$colors, opts$color_scale, NULL, NULL, opts$label_wrap)
+
+  colores_plot <- opts$colors
+  if (!is.null(opts$theme$colors)) colores_plot <- opts$theme$colors
+  fillCol <- ggmagic::fillColors(d, "a", colores_plot, opts$color_scale, NULL, NULL, opts$label_wrap)
 
   if (opts$percentage & is.null(opts$suffix)) {
     opts$suffix <- "%"
@@ -131,12 +134,18 @@ gg_area_CatNum <- function(data = NULL,
 
   d$a <- as.factor(d$a)
 
+  label_size <- opts$text_size
+  if (!is.null(opts$theme$labsData_sizeLabel)) label_size <- as.numeric(gsub("px", "",opts$theme$labsData_sizeLabel))/3
+
+  label_color <- opts$text_color
+  if (!is.null(opts$theme$labsData_colLabel)) label_color <-  opts$theme$labsData_colLabel
+
   varP <- ifelse(opts$percentage, "percent", "b")
   minLim <- min(d[[varP]], na.rm = T)
   maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.15 * max(d[[varP]], na.rm = T))
 
   gg <- ggplot(d, aes(x = a, group = 1, y = d[[varP]], fill = "b")) +
-    geom_area(alpha = opts$color_opacity) +
+    geom_area(alpha = opts$fill_opacity) +
     geom_point(shape = as.integer(opts$shape_type), colour = unique(fillCol), size = opts$shape_size) +
     geom_line(aes(color = varP)) +
         geom_vline(xintercept = lineXY[2],
@@ -158,8 +167,8 @@ gg_area_CatNum <- function(data = NULL,
                                         nsmall = opts$n_digits),
                                  opts$suffix)),
               check_overlap = TRUE,
-              size = opts$text_size,
-              color = ifelse(opts$text_show, opts$text_color, "transparent")) +
+              size = label_size,
+              color = ifelse(opts$text_show, label_color, "transparent")) +
     labs(title = opts$title, subtitle = opts$subtitle, caption = opts$caption, x = labelsXY[1], y = labelsXY[2]) +
     scale_color_manual(values = unique(fillCol)) +
     scale_fill_manual(name = "", values = c("b" =  unique(fillCol))) +
@@ -178,11 +187,10 @@ gg_area_CatNum <- function(data = NULL,
       coord_flip()
   }
 
-  if (is.null(opts$theme)) {
-    gg <- gg + ggmagic::tma(orientation = opts$orientation)
-  } else {
-    gg <- gg + opts$theme
-  }
+  theme_user <- opts$theme
+  optsTheme <- list( colors = opts$colors, background = opts$background)
+  themeCustom <- modifyList(optsTheme, theme_user %||% list())
+  gg <- gg + ggmagic::tma(custom = themeCustom, orientation = opts$orientation)
 
   gg <- gg + theme(legend.position = "none",
                    plot.caption = element_text(hjust = 1),
@@ -206,7 +214,7 @@ gg_area_Cat <- function(data = NULL,
                         agg_text = NULL,
                         caption = NULL,
                         colors = NULL,
-                        color_opacity = 0.7,
+                        fill_opacity = 0.7,
                         drop_na = FALSE,
                         hor_label = NULL,
                         hor_line = NULL,
@@ -242,7 +250,7 @@ gg_area_Cat <- function(data = NULL,
     agg_text = agg_text,
     caption = caption,
     colors = colors,
-    color_opacity = color_opacity,
+    fill_opacity = fill_opacity,
     drop_na = drop_na,
     hor_label = hor_label,
     hor_line = hor_line,
@@ -303,9 +311,10 @@ gg_area_CatCatNum <- function(data = NULL,
                               agg_text = NULL,
                               caption = NULL,
                               colors = NULL,
-                              color_opacity = 0.7,
+                              fill_opacity = 0.7,
                               color_scale ="discrete",
-                              drop_na_v = c(FALSE, FALSE),
+                              drop_na = FALSE,
+                              drop_na_legend = FALSE,
                               graph_type = 'grouped',
                               highlight_value = NULL,
                               highlight_value_color = '#F9B233',
@@ -313,7 +322,8 @@ gg_area_CatCatNum <- function(data = NULL,
                               hor_line = NULL,
                               hor_line_label = NULL,
                               label_ratio = 1,
-                              label_wrap_v = c(12, 12),
+                              label_wrap = 12,
+                              label_wrap_legend = 12,
                               legend_position = "bottom",
                               legend_show = TRUE,
                               legend_title = NULL,
@@ -350,9 +360,10 @@ gg_area_CatCatNum <- function(data = NULL,
     agg_text = agg_text,
     caption = caption,
     colors = colors,
-    color_opacity = color_opacity,
+    fill_opacity = fill_opacity,
     color_scale = color_scale,
-    drop_na_v = drop_na_v,
+    drop_na = drop_na,
+    drop_na_legend = drop_na_legend,
     graph_type = graph_type,
     highlight_value = highlight_value,
     highlight_value_color = highlight_value_color,
@@ -360,7 +371,8 @@ gg_area_CatCatNum <- function(data = NULL,
     hor_line = hor_line,
     hor_line_label = hor_line_label,
     label_ratio = label_ratio,
-    label_wrap_v = label_wrap_v,
+    label_wrap = label_wrap,
+    label_wrap_legend = label_wrap_legend,
     legend_position = legend_position,
     legend_show = legend_show,
     legend_title = legend_title,
@@ -417,9 +429,13 @@ gg_area_CatCatNum <- function(data = NULL,
                                    hor = opts$hor_line,
                                    ver = opts$ver_line)
 
-  if (any(opts$drop_na_v))
+  if (opts$drop_na)
     d <- d %>%
-    tidyr::drop_na(which(opts$drop_na_v))
+    tidyr::drop_na(b)
+
+  if(opts$drop_na_legend)
+    d <- d %>%
+    tidyr::drop_na(a)
 
   opts$n_digits <- ifelse(!is.null(opts$n_digits), opts$n_digits, 0)
 
@@ -440,8 +456,8 @@ gg_area_CatCatNum <- function(data = NULL,
 
   }
 
-  d <- ggmagic::orderCategory(d, "a", opts$orientation, opts$order1, opts$label_wrap_v[1])
-  d <- ggmagic::orderCategory(d, "b", opts$orientation, opts$order2, opts$label_wrap_v[2])
+  d <- ggmagic::orderCategory(d, "a", opts$orientation, opts$order1, opts$label_wrap_legend)
+  d <- ggmagic::orderCategory(d, "b", opts$orientation, opts$order2, opts$label_wrap)
 
   if (opts$graph_type == "stacked") {
     d <- d %>%
@@ -452,18 +468,26 @@ gg_area_CatCatNum <- function(data = NULL,
     d <- ggmagic::labelPosition(d, "c", opts$label_ratio, opts$percentage, zeroToNa = TRUE)
   }
 
-  fillCol <- ggmagic::fillColors(d, "a", opts$colors, opts$color_scale, NULL, NULL, opts$label_wrap_v[1])
+  colores_plot <- opts$colors
+  if (!is.null(opts$theme$colors)) colores_plot <- opts$theme$colors
+  fillCol <- ggmagic::fillColors(d, "a", colores_plot, opts$color_scale, NULL, NULL, opts$label_wrap)
 
   if (opts$percentage & is.null(opts$suffix)) {
     opts$suffix <- "%"
   }
+
+  label_size <- opts$text_size
+  if (!is.null(opts$theme$labsData_sizeLabel)) label_size <- as.numeric(gsub("px", "",opts$theme$labsData_sizeLabel))/3
+
+  label_color <- opts$text_color
+  if (!is.null(opts$theme$labsData_colLabel)) label_color <-  opts$theme$labsData_colLabel
 
   varP <- ifelse(opts$percentage, "percent", "c")
   minLim <- min(d[[varP]], na.rm = T)
   maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.15 * max(d[[varP]], na.rm = T))
 
   gg <- ggplot(d, aes(x = b, y = d[[varP]], colour = a, fill = a, group = a)) +
-    geom_area(alpha = as.numeric(opts$color_opacity), position = ifelse(opts$graph_type == "stacked", "stack", "dodge")) +
+    geom_area(alpha = as.numeric(opts$fill_opacity), position = ifelse(opts$graph_type == "stacked", "stack", "dodge")) +
     geom_point(shape = as.integer(opts$shape_type), position = ifelse(opts$graph_type == "stacked", "stack", "dodge"), show.legend = FALSE) +
     geom_vline(xintercept = lineXY[2],
                color = ifelse((opts$orientation == "hor" & !is.null(opts$hor_line)) | (opts$orientation == "ver" & !is.null(opts$ver_line)),
@@ -503,8 +527,8 @@ gg_area_CatCatNum <- function(data = NULL,
                                           nsmall = opts$n_digits),
                                    opts$suffix)),
                 check_overlap = TRUE,
-                size = opts$text_size,
-                color = ifelse(opts$text_show, opts$text_color, "transparent"),
+                size = label_size,
+                color = ifelse(opts$text_show, label_color, "transparent"),
                 position = position_stack(vjust = opts$label_ratio))
   } else {
     gg <- gg +
@@ -528,11 +552,10 @@ gg_area_CatCatNum <- function(data = NULL,
       coord_flip()
   }
 
-  if (is.null(opts$theme)) {
-    gg <- gg + ggmagic::tma(orientation = opts$orientation)
-  } else {
-    gg <- gg + opts$theme
-  }
+  theme_user <- opts$theme
+  optsTheme <- list( colors = opts$colors, background = opts$background)
+  themeCustom <- modifyList(optsTheme, theme_user %||% list())
+  gg <- gg + ggmagic::tma(custom = themeCustom, orientation = opts$orientation)
 
 
 
@@ -568,16 +591,19 @@ gg_area_CatCat <- function(data = NULL,
                            agg_text = NULL,
                            caption = NULL,
                            colors = NULL,
-                           color_opacity = "0.7",
+                           fill_opacity = "0.7",
                            color_scale ="discrete",
-                           drop_na_v = c(FALSE, FALSE),
+                           drop_na = FALSE,
+                           drop_na_legend = FALSE,
                            graph_type = 'grouped',
                            highlight_value = NULL,
                            highlight_value_color = '#F9B233',
                            hor_label = NULL,
                            hor_line = NULL,
+                           hor_line_label = NULL,
                            label_ratio = 1,
-                           label_wrap_v = c(12, 12),
+                           label_wrap = 12,
+                           label_wrap_legend = 12,
                            legend_position = "bottom",
                            legend_show = TRUE,
                            legend_title = NULL,
@@ -613,16 +639,19 @@ gg_area_CatCat <- function(data = NULL,
     agg_text = agg_text,
     caption = caption,
     colors = colors,
-    color_opacity = color_opacity,
+    fill_opacity = fill_opacity,
     color_scale = color_scale,
-    drop_na_v = drop_na_v,
+    drop_na = drop_na,
+    drop_na_legend = drop_na_legend,
     graph_type = graph_type,
     highlight_value = highlight_value,
     highlight_value_color = highlight_value_color,
     hor_label = hor_label,
     hor_line = hor_line,
+    hor_line_label = hor_line_label,
     label_ratio = label_ratio,
-    label_wrap_v = label_wrap_v,
+    label_wrap = label_wrap,
+    label_wrap_legend = label_wrap_legend,
     legend_position = legend_position,
     legend_show = legend_show,
     legend_title = legend_title,

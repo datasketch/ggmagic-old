@@ -32,7 +32,7 @@ hgch_bubbles_CatNum <- function(data = NULL,
     opts$colors <- ggmagic::fillColors(d, "a", colorDefault, opts$color_scale, opts$highlight_value, opts$highlight_valueColor, opts$label_wrap)
   }
 
-  if (opts$dropNa)
+  if (opts$drop_na)
     d <- d %>%
     tidyr::drop_na()
 
