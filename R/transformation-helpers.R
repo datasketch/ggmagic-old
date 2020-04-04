@@ -1,10 +1,4 @@
-# aggregation
-#'@export
-agg <- function(aggregation, ...) {
-  if (!is.null(aggregation) | nchar(aggregation) > 0 | !is.na(aggregation)) {
-    do.call(aggregation, list(..., na.rm = TRUE))
-  }
-}
+
 
 # defines horLabel and verLabel depending orientation
 #'@export
@@ -181,5 +175,8 @@ dsColorsHex <- function(hex = FALSE) {
   c
 }
 
+dsColors <- function(){
+  c("#3DB26F", "#FECA84", "#74D1F7", "#F75E64", "#8097A4", "#B70F7F", "#5D6AE9", "#53255E", "#BDCAD1")
+}
 
 

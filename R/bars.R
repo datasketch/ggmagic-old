@@ -1,3 +1,6 @@
+
+
+
 #' Bar (categories, numbers)
 #'
 #' Compare aggregations among category's levels
@@ -79,10 +82,10 @@ gg_bar_CatNum <- function(data = NULL,
   )
   opts <- modifyList(defaultOptions, opts %||% list())
 
- options(scipen = 9999)
+  #options(scipen = 9999)
   f <- fringe(data)
-  nms <- getClabels(f)
-  d <- f$d
+  nms <- getFringeLabels(f)
+  d <- getFringeDataFrame(f)
 
   opts$title <-  opts$title %||% ""
   opts$subtitle <- opts$subtitle %||% ""
@@ -106,9 +109,9 @@ gg_bar_CatNum <- function(data = NULL,
                                    hor = opts$hor_line,
                                    ver = opts$ver_line)
 
-  if (opts$drop_na)
-    d <- d %>%
-    tidyr::drop_na()
+  if (opts$drop_na){
+    d <- d %>% tidyr::drop_na()
+  }
 
   opts$n_digits <- ifelse(!is.null(opts$n_digits), opts$n_digits, 0)
 

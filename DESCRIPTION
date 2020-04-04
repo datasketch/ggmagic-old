@@ -6,10 +6,14 @@ Maintainer: Juan Pablo Marin Diaz <jpmarindiaz@gmail.com>
 Description: Plot recommendation with tidy data fringes.
 Depends:
     R (>= 3.0.0),
-    tools,
-    datafringe,
-    leaflet,
     tidyverse,
+License: What license is it under?
+LazyData: no
+RoxygenNote: 7.1.0
+Imports:
+    homodatum,
+    d3.format,
+    paletero,
     forcats,
     waffle,
     scales,
@@ -23,6 +27,5 @@ Depends:
     jpeg,
     rsvg,
     svglite
-License: What license is it under?
-LazyData: no
-RoxygenNote: 7.0.2
+Suggests: 
+    testthat (>= 2.1.0)

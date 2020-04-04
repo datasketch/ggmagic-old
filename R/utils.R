@@ -1,11 +1,11 @@
-mergeOptions <- function(opts,defaultOpts){
-  optNames <- names(defaultOpts)
-  o <- list()
-  for(i in optNames){
-    o[[i]] <- opts[[i]] %||% defaultOpts[[i]]
-  }
-  o
-}
+# mergeOptions <- function(opts,defaultOpts){
+#   optNames <- names(defaultOpts)
+#   o <- list()
+#   for(i in optNames){
+#     o[[i]] <- opts[[i]] %||% defaultOpts[[i]]
+#   }
+#   o
+# }
 
 
 sysfile <- function(..., package = "ggmagic"){

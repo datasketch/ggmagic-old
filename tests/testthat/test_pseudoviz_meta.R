@@ -1,7 +1,7 @@
 context("ggmagic meta data")
 
 test_that("Viz meta info", {
-  ggFtype()
+  # ggFtype()
   #library(ggmagic)
   # db <- Rd_db("ggmagic")
   # meta <- map(db, tools:::.Rd_get_section, "section")
