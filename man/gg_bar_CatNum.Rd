@@ -8,6 +8,7 @@ gg_bar_CatNum(
   data = NULL,
   agg = "sum",
   agg_text = NULL,
+  background = "transparent",
   caption = NULL,
   colors = NULL,
   color_scale = "discrete",

@@ -12,6 +12,7 @@
 gg_line_CatNum <- function(data = NULL,
                            agg = "sum",
                            agg_text = NULL,
+                           background = "transparent",
                            caption = NULL,
                            colors = NULL,
                            drop_na = FALSE,
@@ -48,6 +49,7 @@ gg_line_CatNum <- function(data = NULL,
   defaultOptions <- list(
     agg = agg,
     agg_text = agg_text,
+    background = background,
     caption = caption,
     colors = colors,
     drop_na = drop_na,
@@ -141,7 +143,7 @@ gg_line_CatNum <- function(data = NULL,
 
   varP <- ifelse(opts$percentage, "percent", "b")
   minLim <- ifelse(min(d[[varP]], na.rm = T) < 0, min(d[[varP]], na.rm = T), 0)
-  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.1 * max(d[[varP]], na.rm = T))
+  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T))
 
   gg <- ggplot(d, aes(x = a, y = d[[varP]], colour = a, group = 1)) +
     geom_line() +
@@ -209,6 +211,7 @@ gg_line_CatNum <- function(data = NULL,
 #' @export gg_line_Cat
 gg_line_Cat <- function(data = NULL,
                         agg_text = NULL,
+                        background = "transparent",
                         caption = NULL,
                         colors = NULL,
                         drop_na = FALSE,
@@ -244,6 +247,7 @@ gg_line_Cat <- function(data = NULL,
 
   defaultOptions <- list(
     agg_text = agg_text,
+    background = background,
     caption = caption,
     colors = colors,
     drop_na = drop_na,
@@ -305,6 +309,7 @@ gg_line_Cat <- function(data = NULL,
 gg_line_CatCatNum <- function(data = NULL,
                               agg = "sum",
                               agg_text = NULL,
+                              background = "transparent",
                               caption = NULL,
                               colors = NULL,
                               color_opacity = 0.7,
@@ -355,6 +360,7 @@ gg_line_CatCatNum <- function(data = NULL,
   defaultOptions <- list(
     agg = agg,
     agg_text = agg_text,
+    background = background,
     caption = caption,
     colors = colors,
     color_opacity = color_opacity,
@@ -468,7 +474,7 @@ gg_line_CatCatNum <- function(data = NULL,
 
   varP <- ifelse(opts$percentage, "percent", "c")
   minLim <- min(d[[varP]], na.rm = T)
-  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.1 * max(d[[varP]], na.rm = T))
+  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T))
 
   gg <- ggplot(d, aes(x = b, y = d[[varP]], colour = a, group = a)) +
     geom_line() +
@@ -544,6 +550,7 @@ gg_line_CatCatNum <- function(data = NULL,
 #' @export gg_line_CatCat
 gg_line_CatCat <- function(data = NULL,
                            agg_text = NULL,
+                           background = "transparent",
                            caption = NULL,
                            colors = NULL,
                            color_scale ="discrete",
@@ -592,6 +599,7 @@ gg_line_CatCat <- function(data = NULL,
 
   defaultOptions <- list(
     agg_text = agg_text,
+    background = background,
     caption = caption,
     colors = colors,
     color_scale = color_scale,

@@ -8,6 +8,7 @@ gg_area_CatNum(
   data = NULL,
   agg = "sum",
   agg_text = NULL,
+  background = "transparent",
   caption = NULL,
   colors = NULL,
   fill_opacity = 0.7,

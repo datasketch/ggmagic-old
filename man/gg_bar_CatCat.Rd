@@ -7,6 +7,7 @@
 gg_bar_CatCat(
   data = NULL,
   agg_text = NULL,
+  background = "transparent",
   caption = NULL,
   colors = NULL,
   color_opacity = "0.7",

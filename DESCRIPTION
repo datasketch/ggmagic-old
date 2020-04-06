@@ -25,4 +25,4 @@ Depends:
     svglite
 License: What license is it under?
 LazyData: no
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0

@@ -8,6 +8,7 @@ gg_line_CatCatNum(
   data = NULL,
   agg = "sum",
   agg_text = NULL,
+  background = "transparent",
   caption = NULL,
   colors = NULL,
   color_opacity = 0.7,

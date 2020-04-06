@@ -12,6 +12,7 @@
 gg_bar_CatNum <- function(data = NULL,
                           agg = "sum",
                           agg_text = NULL,
+                          background = "transparent",
                           caption = NULL,
                           colors = NULL,
                           color_scale ="discrete",
@@ -49,6 +50,7 @@ gg_bar_CatNum <- function(data = NULL,
   defaultOptions <- list(
     agg = agg,
     agg_text = agg_text,
+    background = background,
     caption = caption,
     colors = colors,
     color_scale = color_scale,
@@ -140,7 +142,7 @@ gg_bar_CatNum <- function(data = NULL,
 
   varP <- ifelse(opts$percentage, "percent", "b")
   minLim <- ifelse(min(d[[varP]], na.rm = T) < 0, min(d[[varP]], na.rm = T), 0)
-  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.15 * max(d[[varP]], na.rm = T))
+  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T))
   # sq <- nchar(round(maxLim - minLim, 0)) - 1
   # minLim <- round(minLim *  10^(-sq), 0) * 10^sq
   # maxLim <- round(maxLim *  10^(-sq), 0) * 10^sq
@@ -210,6 +212,7 @@ gg_bar_CatNum <- function(data = NULL,
 #' @export gg_bar_Cat
 gg_bar_Cat <- function(data = NULL,
                        agg_text = NULL,
+                       background = "transparent",
                        caption = NULL,
                        colors = NULL,
                        color_scale ="discrete",
@@ -246,6 +249,7 @@ gg_bar_Cat <- function(data = NULL,
 
   defaultOptions <- list(
     agg_text = agg_text,
+    background = background,
     caption = caption,
     colors = colors,
     color_scale = color_scale,
@@ -307,6 +311,7 @@ gg_bar_Cat <- function(data = NULL,
 gg_bar_CatCatNum <- function(data = NULL,
                              agg = "sum",
                              agg_text = NULL,
+                             background = "transparent",
                              caption = NULL,
                              colors = NULL,
                              color_scale ="discrete",
@@ -351,6 +356,7 @@ gg_bar_CatCatNum <- function(data = NULL,
   defaultOptions <- list(
     agg = agg,
     agg_text = agg_text,
+    background = background,
     caption = caption,
     colors = colors,
     color_scale = color_scale,
@@ -472,7 +478,7 @@ gg_bar_CatCatNum <- function(data = NULL,
 
   varP <- ifelse(opts$percentage, "percent", "c")
   minLim <- ifelse(min(d[[varP]], na.rm = T) < 0, min(d[[varP]], na.rm = T), 0)
-  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.15 * max(d[[varP]], na.rm = T))
+  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T))
   # sq <- nchar(round(maxLim - minLim, 0)) - 2
   # minLim <- round(minLim *  10^(-sq), 0) * 10^sq
   # maxLim <- round(maxLim *  10^(-sq), 0) * 10^sq
@@ -587,6 +593,7 @@ gg_bar_CatCatNum <- function(data = NULL,
 #' @export gg_bar_CatCat
 gg_bar_CatCat <- function(data = NULL,
                           agg_text = NULL,
+                          background = "transparent",
                           caption = NULL,
                           colors = NULL,
                           color_opacity = "0.7",
@@ -634,6 +641,7 @@ gg_bar_CatCat <- function(data = NULL,
 
   defaultOptions <- list(
     agg_text = agg_text,
+    background = background,
     caption = caption,
     colors = colors,
     color_opacity = color_opacity,

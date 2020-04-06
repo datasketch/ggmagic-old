@@ -7,6 +7,7 @@
 gg_pie_Cat(
   data = NULL,
   agg_text = NULL,
+  background = "transparent",
   caption = NULL,
   colors = NULL,
   color_scale = "discrete",

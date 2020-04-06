@@ -144,7 +144,7 @@ gg_area_CatNum <- function(data = NULL,
 
   varP <- ifelse(opts$percentage, "percent", "b")
   minLim <- min(d[[varP]], na.rm = T)
-  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.15 * max(d[[varP]], na.rm = T))
+  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T))
 
   gg <- ggplot(d, aes(x = a, group = 1, y = d[[varP]], fill = "b")) +
     geom_area(alpha = opts$fill_opacity) +
@@ -486,7 +486,7 @@ gg_area_CatCatNum <- function(data = NULL,
 
   varP <- ifelse(opts$percentage, "percent", "c")
   minLim <- min(d[[varP]], na.rm = T)
-  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.15 * max(d[[varP]], na.rm = T))
+  maxLim <- ceiling(max(d[[varP]], na.rm = T) + 0.3 * max(d[[varP]], na.rm = T))
 
   gg <- ggplot(d, aes(x = b, y = d[[varP]], colour = a, fill = a, group = a)) +
     geom_area(alpha = as.numeric(opts$fill_opacity), position = ifelse(opts$graph_type == "stacked", "stack", "dodge")) +

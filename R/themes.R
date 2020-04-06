@@ -189,6 +189,8 @@ getTheme <- function(theme = NULL){
     bordercolor = 'transparent',
     colores = NULL,
 
+    stylesY_gridLineDashStyle = 'dotted',
+    stylesY_gridLineColor =  "#5A6B72",
 
     font_family = "Ubuntu",
     font_size = '11px',
@@ -197,7 +199,6 @@ getTheme <- function(theme = NULL){
     font_size_subtitle = '17px',
     font_size_caption = '13px',
 
-    color = '#5A6B72',
     marginBottom = 0,
     marginLeft = 0,
     marginRight = 0,
@@ -205,7 +206,7 @@ getTheme <- function(theme = NULL){
     plotBackgroundColor = "transparent",
     plotBorderColor = "transparent",
     plotBorderWidth = 1,
-    gridColor =  "#cccccc",
+    gridColor =  "transparent",
     angleTicks = 0,
     axis_x = list(color = "#5A6B72"),
     axis_y = list(color = "#5A6B72")
@@ -234,8 +235,8 @@ tma <- function(custom = NULL, orientation = "ver", ...) {
         axis.text.x = element_text(color = custom$font_color, size = custom$font_size, angle = custom$angleTicks),
         axis.text.y = element_text(color = custom$font_color, size = custom$font_size, angle = custom$angleTicks),
         #  plot.margin = margin(custom$marginTop, custom$marginRight, custom$marginBottom, custom$marginLeft),
-        panel.grid.major.y = element_line(size = 0.4, linetype = 'dotted', colour = ifelse(orientation == "ver", "#5A6B72", "transparent")),
-        panel.grid.major.x = element_line(size = 0.4, linetype = 'dotted', colour = ifelse(orientation == "ver", "transparent", "#5A6B72")),
+        panel.grid.major.y = element_line(size = 0.4, linetype = custom$stylesY_gridLineDashStyle, colour = ifelse(orientation == "ver", custom$stylesY_gridLineColor, "transparent")),
+        panel.grid.major.x = element_line(size = 0.4, linetype = 'dotted', colour = ifelse(orientation == "ver", "transparent", custom$stylesY_gridLineColor)),
         panel.grid.minor = element_line(size = 0.4, linetype = 'solid', colour = "transparent"),
         axis.ticks = element_line(colour = 'transparent'),
         axis.line.x = element_line(colour = ifelse(orientation == "ver", custom$axis_x$color, "transparent")),
@@ -252,7 +253,7 @@ theme_leg <- function(custom = NULL, ...) {
     legend.title= element_blank(),
     legend.key = element_rect(fill = "transparent", colour = "transparent"),
     legend.key.size = unit(0.5, "cm"),
-    legend.text=element_text(color=custom$color,size=11, margin = margin(0, .3, 0, 0, "cm")),
+    legend.text=element_text(color=custom$font_color,size=11, margin = margin(0, .3, 0, 0, "cm")),
     legend.background = element_rect(colour = NA, fill = 'transparent'),
     plot.caption = element_text(hjust = 1),
     #legend.box.spacing = unit(0.3, "cm"),
