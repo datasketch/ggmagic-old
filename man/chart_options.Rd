@@ -22,6 +22,8 @@ gg_bar_DatNum(data, ...)
 
 \item{drop_na}{defaults to FALSE}
 
+\item{format_num}{defaults to "1,500.00"}
+
 \item{highlight_value}{defaults to NULL}
 
 \item{highlight_value_color}{defaults to '#F9B233'}

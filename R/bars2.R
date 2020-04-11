@@ -11,7 +11,8 @@
 #' gg_bar_CatNum(sampleData("Cat-Num", nrow = 10))
 #' @export gg_bar_CatNum
 gg_bar_DatNum <- function(data, ...){
-  opts <- mergeOptions(...)
+  opts <- mergeOptions(..., defaults = ggmagic_defaults())
+  str(opts)
   #opts <- getDefaultOptions()
   if (is.null(data)) {
     stop("need a dataset to visualize")
@@ -19,9 +20,7 @@ gg_bar_DatNum <- function(data, ...){
   f <- fringe(data)
   nms <- getFringeLabels(f)
   d <- getFringeDataFrame(f)
-
   #axis_text_angle
-  #axis titles
   labelsXY <- c(nms[1], nms[2])
 
   # Drop NAs
@@ -36,27 +35,28 @@ gg_bar_DatNum <- function(data, ...){
   # Handle colors
   color_by <- opts$color_by
   palette <- opts$palette_colors
-  d$..colors <- mapColors(f, color_by, palette, colors_df)
+  d$..colors <- paletero::map_colors(f, color_by, palette, colors_df)
+
+  # Handle number/strings/dates formats
+  f_date <- makeup_format(sample = opts$format_dat_sample, locale = opts$locale)
+  f_nums <- makeup_format(sample = opts$format_num_sample)
 
 
-  gg <- ggplot(d, aes(x = a, y = b, fill = colors )) +
+  gg <- ggplot(d, aes(x = a, y = b, fill = ..colors )) +
     geom_bar(stat = "identity") +
     scale_fill_identity() +
-    labs(title = opts$title, subtitle = opts$subtitle,
-         caption = opts$caption, x = labelsXY[1], y = labelsXY[2]) +
-    scale_fill_gradientn(colours = opts$palette_colors) +
-    scale_y_continuous(labels = d3.format::d3_format("$,.3~s")) +
-    scale_x_date(date_labels =  "%b %Y")
+    labs(title = opts$title, subtitle = opts$subtitle, caption = opts$caption,
+         x = labelsXY[1], y = labelsXY[2]) +
+    scale_y_continuous(labels = f_nums) +
+    scale_x_date(labels = f_date)
 
-  theme_user <- opts$theme
-  optsTheme <- list( colors = opts$colors, background = opts$background)
-  themeCustom <- modifyList(optsTheme, theme_user %||% list())
-  gg <- gg + ggmagic::tma(custom = themeCustom, orientation = opts$orientation)
-
-
-  gg + theme(legend.position = "none",
-             plot.caption = element_text(hjust = 1),
-             axis.text.x = element_text(angle = angleText))
-
+  theme_vars <- names(default_theme_opts())
+  opts_theme <- removeNulls(opts[theme_vars])
+  str(opts_theme)
+  opts_theme <- removeNulls(modifyList(opts$theme, opts_theme))
+  message("before theme_datasketch")
+  str(opts_theme)
+  gg + theme_datasketch(opts_theme)
+  # gg + theme_datasketch(opts$theme)
 
 }

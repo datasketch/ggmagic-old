@@ -9,6 +9,7 @@
 #' @param colors defaults to NULL
 #' @param color_scale defaults to discrete"
 #' @param drop_na defaults to FALSE
+#' @param format_num defaults to "1,500.00"
 #' @param highlight_value defaults to NULL
 #' @param highlight_value_color defaults to '#F9B233'
 #' @param hor_label defaults to NULL
@@ -37,7 +38,7 @@
 NULL
 #> NULL
 
-mergeOptions <- function(...){
+mergeOptions <- function(..., defaults = NULL){
   args <- list(...)
   # str(args)
   opts_list <- args$opts
@@ -45,42 +46,38 @@ mergeOptions <- function(...){
   args$opts <- NULL
   args_opts <- modifyList(args, opts_list %||% list())
   # str(args_opts)
-  modifyList(getDefaultOptions("DatNum"), args_opts)
+  modifyList(defaults, args_opts)
 }
 
-getDefaultOptions <- function(x){
+ggmagic_defaults <- function(x){
   opts <- list(
       agg = "sum",
       agg_text = NULL,
       axis_text_angle = NULL,
-      background_color = "#DDDDDD",
-      caption = "",
-      # colors = NULL,
-      ########## color_is = "variable" # "fixed"
+      background_color = "#FAFAF0",
+      caption = NULL,
       color_by = NULL,# which variable?
-      palette_colors = dsColors(),
+      palette_colors = NULL,
       #color_scale ="discrete",
       drop_na = FALSE,
-      highlight_value = NULL,
-      highlight_value_color = '#F9B233',
+      format_num_sample = "1,500.00",
+      format_dat_sample = "Jun 24 2010",
+      # highlight_value = NULL,
+      # highlight_value_color = '#F9B233',
       hor_label = NULL,
       hor_line = NULL,
-      label_ratio = 1,
-      label_wrap = 12,
-      marks = c(".", ","),
-      n_digits = 0,
+      # label_ratio = 1,
+      # label_wrap = 12,
+      locale = "en-US",
       orientation = "ver",
-      # percentage = FALSE, ######## Replace with Format
-      prefix = NULL,
       slice_n = NULL,
       sort = "no",
-      subtitle = "",
-      suffix = NULL,
+      subtitle = NULL,
       text_color = "#5A6B72",
-      text_show = TRUE,
-      text_size = 3,
-      theme = NULL,
-      title = "",
+      # text_show = TRUE, # show values?
+      text_size = 11,
+      theme = default_theme_opts(),
+      title = NULL,
       ver_label = NULL,
       ver_line = NULL
   )
@@ -96,7 +93,8 @@ getDefaultOptions <- function(x){
   # zoom?
 
   opts$agg_text<- opts$agg_text %||% opts$agg
-  opts$palete_colors <- opts$palete_colors %||% opts$theme$palete_colors
+  opts$palette_colors <- opts$palette_colors %||% opts$theme$palette_colors
+  opts$background_color <- opts$background_color %||% opts$theme$background_color
 
   opts
 }

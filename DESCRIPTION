@@ -7,25 +7,14 @@ Description: Plot recommendation with tidy data fringes.
 Depends:
     R (>= 3.0.0),
     tidyverse,
-License: What license is it under?
+License: MIT + file LICENSE
+Encoding: UTF-8
 LazyData: no
 RoxygenNote: 7.1.0
 Imports:
     homodatum,
-    d3.format,
     paletero,
-    forcats,
-    waffle,
-    scales,
-    grid,
-    gridExtra,
-    ggTimeSeries,
-    ggpmisc,
-    treemapify,
-    packcircles,
-    zoo,
-    jpeg,
-    rsvg,
-    svglite
+    makeup,
+    ggtext
 Suggests: 
     testthat (>= 2.1.0)

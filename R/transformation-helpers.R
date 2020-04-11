@@ -163,20 +163,4 @@ fillColors <- function(data, col, colors, color_scale, highlightValue, highlight
   fillCol
 }
 
-# ds palette
-#' @export
-dsColorsHex <- function(hex = FALSE) {
-  if (hex) {
-    c <- c(0:9, "A", "B", "C", "D", "E", "F")
-
-  } else {
-    c <- c("#3DB26F", "#FECA84", "#74D1F7", "#F75E64", "#8097A4", "#B70F7F", "#5D6AE9", "#53255E", "#BDCAD1")
-  }
-  c
-}
-
-dsColors <- function(){
-  c("#3DB26F", "#FECA84", "#74D1F7", "#F75E64", "#8097A4", "#B70F7F", "#5D6AE9", "#53255E", "#BDCAD1")
-}
-
 

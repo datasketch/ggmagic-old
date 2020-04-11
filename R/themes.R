@@ -1,73 +1,87 @@
-#' @export
-getPalette <- function(type = "qualitative", rev = FALSE){
-  dsGreen <- "#95C11E"
-  dsYellow <- "#FFED00"
-  dsMagenta <- "#E5007D"
-  dsBlue <- "#009EE3"
-  dsOrange <- "#F9B233"
-  dsPink <- "#EF8998"
-  dsLightBlue <- "#16C5E0"
-  dsPurple <- "#A839B0"
-  dsRed <- "#C92F2F"
-  dsGray <- "#A9A9A9"
-  dsLila <- "#9B71AF"
-  dsPalette <- c(dsBlue,dsMagenta,dsGreen,dsOrange,dsYellow,dsPink,
-                 dsLightBlue,dsPurple,dsRed,dsGray, dsLila)
-  p <- rep(dsPalette,3)
-  if(type == "sequential") {
-    p <-  c(dsMagenta,dsBlue)
-  }
-  if(rev) p <- rev(p)
-  p
-}
-
-#' @export
-theme_ds_clean <- function(){
-  theme_ds() + theme(
-    axis.line=element_blank(),
-    axis.title.x=element_blank(),
-    axis.text.x=element_blank(),
-    axis.text.y=element_blank(),
-    axis.ticks=element_blank(),
-    axis.ticks.x=element_blank(),
-    axis.ticks.y=element_blank(),
-    axis.title.y = element_blank(),
-    panel.grid.major=element_blank())
-}
 
 
-#' @export
-theme_ds <- function(...){
-  type <- 'outer'
-  inner <- type == 'inner'
-  palette <- list(
-    background = "#ffffff", # #ffffff #F0EDFF #F8EDFA #FDF8FD
-    text = list(inner = "#555555", outer = "#111111"),
-    line = list(inner = "#826A50", outer = "#362C21"),
-    gridline = "#c9c7d3",
-    swatch = c("#111111","#65ADC2","#233B43","#E84646","#C29365","#362C21","#316675","#168E7F","#109B37"),
-    gradient = list(low = "#65ADC2", high = "#362C21")
+default_theme_opts <- function(){
+
+  datasketch_colors <- c("#f9e853", "#9cec5b", "#50c5b7",
+                         "#b33f90", "#ff9a2c", "#54419b",
+                         "#f75e64", "#5d6ae9")
+  list(
+    logo = "",
+    logo_position = "",
+    palette_colors = datasketch_colors,
+    background_color = '#FaFaF5',
+    accent_color = "#d2a045",
+    text_size = 11,
+    text_color = "#6D8089",
+    text_family = "Ubuntu",
+    line_color = "#DDDDF9",
+    line_size = 1,
+    title_color = "#444444",
+    title_allign = "left", # left - center - right
+    title_family = "Montserrat",
+    subtitle_color = "#999999",
+    subtitle_allign = "left", # left - center - right
+    caption_color = "#AAAAAA",
+    caption_allign = "right", # left - center - right
+    axis_title_color = '#5A6B72',
+    axis_line_color = '#DDDDF9',
+    axis_ticks_color = '#DDDDF9',
+    grid_color =  "#fafafa"
   )
-  spacing <- 0.5
-  line_colour <- "#1d1d1d"
-  text_colour <- "#555555"
-  text_size <- 12
-  line_weight <- 0.5
-  x_title_spacing <- function(spacing)
-    max(-1.2, -(spacing / 1.25) + 0.5)
-  y_title_spacing <- function(spacing)
-    max(0.8, min(2.4, spacing))
+}
+
+
+theme_datasketch <- function(opts = NULL){
+
+  thm <- list(
+    line_colour = opts$line_color,
+    line_size = opts$line_size,
+    rect_colour = opts$rect_color %||% opts$background_color,
+    text_colour = opts$text_color,
+    text_size = opts$text_size,
+    axis_text_colour = opts$axis_text_color %||% opts$text_color,
+    axis_line_colour = opts$axis_line_color %||% opts$line_color,
+    axis_line_x_colour = opts$axis_line_x_color %||% opts$line_color,
+    axis_line_y_colour = opts$axis_line_y_color %||% opts$line_color,
+    axis_text_x_colour = opts$axis_text_x_color %||% opts$text_color,
+    axis_text_y_colour = opts$axis_text_y_color  %||% opts$text_color,
+    axis_title_colour = opts$axis_title_color %||% opts$text_color,
+    axis_title_x_colour = opts$axis_title_x_color %||% opts$text_color,
+    # axis_title_x_angle = opts$axis_title_x_angle,
+    axis_title_y_colour = opts$axis_title_y_color%||% opts$text_color,
+    # axis_title_y_angle = opts$axis_title_y_angle,
+    axis_ticks_colour = opts$axis_ticks_color %||% opts$line_color, # transparent
+    legend_background_colour = opts$legend_background_color %||% opts$text_color,
+    legend_background_fill = opts$legend_background_fill %||% opts$background_color,
+    legend_key_colour = opts$legend_key_color %||% opts$background_color,
+    legend_key_fill = opts$legend_key_fill %||% opts$background_color,
+    legend_text_colour = opts$legend_text_color %||% opts$text_color,
+    panel_background_fill = opts$panel_background_fill %||% opts$background_color,
+    panel_border_size = opts$panel_border_size %||% opts$line_size,
+    # panel_border_colour = opts$panel_border_color,
+    panel_grid_major_colour = opts$panel_grid_major_color %||% opts$grid_color,
+    panel_grid_minor_colour = opts$panel_grid_minor_color %||% opts$grid_color,
+    strip_background_fill = opts$strip_background_fill %||% opts$accent_color,
+    plot_background_colour = opts$plot_background_color %||% opts$background_color,
+    plot_background_fill = opts$plot_background_fill%||% opts$background_color,
+    plot_title_family = opts$plot_title_family %||% opts$title_family,
+    plot_title_colour = opts$plot_title_color %||% opts$text_color,
+    plot_subtitle_family = opts$plot_subtitle_family %||% opts$text_family,
+    plot_subtitle_colour = opts$plot_subtitle_color %||% opts$text_color,
+    plot_caption_family = opts$plot_caption_family %||% opts$text_family,
+    plot_caption_colour = opts$plot_caption_color %||% opts$text_color
+  )
+
 
   theme(
-    #legend.title=element_blank(),
     line = element_line(
-      colour = line_colour,
-      size = line_weight,
+      colour = thm$line_colour,
+      size = thm$line_size,
       linetype = 1,
       lineend = "butt"),
     rect = element_rect(
       fill = "white",
-      colour = text_colour,
+      colour = thm$rect_colour,
       size = 0.5,
       linetype = 1),
     text = element_text(
@@ -75,188 +89,160 @@ theme_ds <- function(...){
       margin=margin(),
       family = '',
       face = "plain",
-      colour = text_colour,
-      size = text_size,
+      colour = thm$text_colour,
+      size = thm$text_size,
       hjust = 0.5,
       vjust = 0.5,
       angle = 0,
-      lineheight = 0.9),
+      lineheight = 1.2),
     axis.text = element_text(
       debug=FALSE,
-      margin=margin(),
+      margin=margin(6, 0, 6, 0),
       size = rel(0.8),
-      colour = text_colour),
-    strip.text = element_text(
-      debug=FALSE,
-      margin=margin(),
-      size = rel(0.8)),
+      colour = thm$axis_text_color),
     axis.line = element_line(
-      colour = line_colour),
-    axis.line.x = element_line(colour = line_colour),
-    axis.line.y = element_line(colour = line_colour),
+      colour = thm$axis_line_colour,
+      #size = thm$line_size
+      size = rel(0.5)
+      ),
+    axis.line.x = element_line(
+      colour = thm$axis_line_x_colour),
+    axis.line.y = element_line(
+      colour = thm$axis_line_y_colour),
     axis.text.x = element_text(
       debug=FALSE,
-      margin=margin(0.1 * spacing, 0.1 * spacing, 0.1 * spacing, 0.1 * spacing, unit = 'cm'),
+      # margin=margin(6, 0, 6, 0),
       vjust = 1,
-      colour = text_colour,
-      face='bold'),
+      colour = thm$axis_text_x_colour,
+      angle = thm$axis_text_x_angle,
+      face='plain'),
     axis.text.y = element_text(
       debug=FALSE,
-      margin=margin(0.1 * spacing, 0.1 * spacing, 0.1 * spacing, 0.1 * spacing, unit = 'cm'),
+      margin=margin(),
       hjust = 1,
-      colour = text_colour,
-      face='bold'),
-    axis.ticks = element_line(colour = line_colour),
-    axis.title = element_text(face='bold',colour = text_colour),
+      colour = thm$axis_text_y_colour,
+      angle = thm$axis_text_y_angle,
+      face='plain'),
+    axis.title = element_text(
+      face='plain',
+      lineheight = 1.5,
+      colour = thm$axis_title_colour),
     axis.title.x = element_text(
       debug=FALSE,
-      margin=margin(),
-      vjust=x_title_spacing(spacing)),
+      colour = thm$axis_title_x_colour,
+      # margin=margin(),
+      vjust=1),
     axis.title.y = element_text(
       debug=FALSE,
-      margin=margin(),
+      colour = thm$axis_title_y_colour,
+      # margin=margin(),
       angle = 90,
-      vjust=y_title_spacing(spacing)),
-    axis.ticks.length = grid::unit(0.15, "cm"),
-    axis.ticks.length.x.bottom = grid::unit(0.15, "cm"),
-    axis.ticks.length.x.top = grid::unit(0.15, "cm"),
-    axis.ticks.length.y.left = grid::unit(0.15, "cm"),
-    axis.ticks.length.y.right = grid::unit(0.15, "cm"),
+      vjust=1),
+    axis.ticks = element_line(
+      colour = thm$axis_ticks_colour %||% thm$axis_line_colour),
+    # axis.ticks.length = grid::unit(0.15, "cm"),
+    # axis.ticks.length.x.bottom = grid::unit(0.15, "cm"),
+    # axis.ticks.length.x.top = grid::unit(0.15, "cm"),
+    # axis.ticks.length.y.left = grid::unit(0.15, "cm"),
+    # axis.ticks.length.y.right = grid::unit(0.15, "cm"),
     legend.background = element_rect(
-      colour = ifelse(inner, 'white', palette$background),
-      fill = ifelse(inner, 'white', palette$background)),
-    legend.margin = grid::unit(0.2 * spacing, "cm"),
+      colour = thm$legend_background_colour,
+      fill = thm$legend_background_fill),
+    #legend.margin = #grid::unit(0.2 * spacing, "cm"),
     legend.key = element_rect(
-      colour = ifelse(inner, 'white', palette$background),
-      fill = palette$background),
-    legend.key.size = grid::unit(
-      1.2, "lines"),
+      colour = thm$legend_key_colour,
+      fill = thm$legend_key_fill),
+    # legend.key.size = grid::unit( 1.2, "lines"),
     legend.key.height = NULL,
     legend.key.width = NULL,
     legend.text = element_text(
       debug=FALSE,
+      colour = thm$legend_text_colour,
       margin=margin(),
       size = rel(0.8)),
     legend.position = "right",
     legend.direction = NULL,
     legend.justification = "center",
     legend.box = NULL,
-    panel.background = element_rect(fill = palette$background,colour = NA),
-    panel.border = element_blank(),
-    panel.grid.major = element_line(linetype='dashed',colour = palette$gridline),
-    panel.grid.minor = element_blank(),
-    panel.margin = grid::unit(0.5 * spacing, 'cm'),
+    panel.background = element_rect(
+      fill = thm$panel_background_fill,
+      colour = NA),
+    panel.border = element_rect(
+      size = thm$panel_border_size,
+      fill = 'transparent',
+      colour = thm$panel_border_colour),
+    panel.grid.major = element_line(
+      # size = NULL,
+      linetype='solid',
+      colour = thm$panel_grid_major_colour),
+    # panel.grid.major.y = element_line(
+    #   size = 0.5,
+    #   linetype = 'solid',
+    #   colour = ifelse(orientation == "ver", "#5A6B72", "transparent")),
+    # panel.grid.major.x = element_line(
+    #   size = 0.5,
+    #   linetype = 'solid',
+    #   colour = ifelse(orientation == "ver", "transparent", "#5A6B72")),
+    panel.grid.minor = element_line(
+      linetype='solid',
+      colour = thm$panel_grid_minor_colour),
+    # panel.margin = grid::unit(0.5 * spacing, 'cm'),
     panel.margin.x = NULL,
     panel.margin.y = NULL,
     panel.ontop = FALSE,
+    strip.text = element_text(
+      debug=FALSE,
+      margin=margin(),
+      size = rel(0.8)),
     strip.background = element_rect(
-      fill = ifelse(inner, 'white', palette$background),
+      fill = thm$strip_background_fill,
       colour = NA),
     strip.text.x = element_text(
       debug=FALSE,
       margin=margin(),
-      size = rel(1.1),
-      face = 'bold'),
+      size = rel(1),
+      face = 'plain'),
     strip.text.y = element_text(
       debug=FALSE,
       margin=margin(),
       angle = -90,
-      face = 'bold',
-      size = rel(1.1)),
+      face = 'plain',
+      size = rel(1)),
     strip.switch.pad.grid = grid::unit(0, 'cm'),
     strip.switch.pad.wrap = grid::unit(0, 'cm'),
     plot.background = element_rect(
-      colour = ifelse(inner, 'white', palette$background),
-      fill = ifelse(inner, 'white', palette$background)),
-
-    plot.title = element_text(
+      colour = thm$plot_background_colour,
+      fill = thm$plot_background_fill),
+    plot.title.position = "plot",
+    plot.title = ggtext::element_textbox_simple(
       debug=FALSE,
-      margin=margin(0, 0, 6.6, 0),
+      family = thm$plot_title_family,
+      colour = thm$plot_title_colour,
+      margin=margin(6, 0, 6, 0),
       size = rel(1.2),
-      vjust = spacing,
-      face='bold'),
-    plot.margin = grid::unit(c(0.625, 0.625, 0.625, 0.625) * spacing, 'cm'),
+      hjust = 0,
+      vjust = 1,
+      face='plain'),
+    plot.subtitle = element_text(
+      debug=FALSE,
+      family = thm$plot_subtitle_family,
+      colour = thm$plot_subtitle_colour,
+      margin=margin(3, 0, 9, 0),
+      size = rel(1),
+      hjust = 0,
+      vjust = 1,
+      face='plain'),
+    plot.caption = element_text(
+      debug=FALSE,
+      family = thm$plot_subtitle_family,
+      colour = thm$plot_caption_colour,
+      margin=margin(6, 0, 6, 0),
+      size = rel(0.8),
+      hjust = 1,
+      vjust = 1,
+      lineheight = 1.5,
+      face='plain'),
+    # plot.margin = grid::unit(c(0.625, 0.625, 0.625, 0.625) * spacing, 'cm'),
     complete = TRUE
-  )
-}
-
-
-
-getTheme <- function(theme = NULL){
-
-  getDefaultTheme <- list(
-    background = 'transparent',
-    bordercolor = 'transparent',
-    colores = NULL,
-
-
-    font_family = "Ubuntu",
-    font_size = '11px',
-    font_color = '#5A6B72',
-    font_size_title = '23px',
-    font_size_subtitle = '17px',
-    font_size_caption = '13px',
-
-    color = '#5A6B72',
-    marginBottom = 0,
-    marginLeft = 0,
-    marginRight = 0,
-    marginTop = 0,
-    plotBackgroundColor = "transparent",
-    plotBorderColor = "transparent",
-    plotBorderWidth = 1,
-    gridColor =  "#cccccc",
-    angleTicks = 0,
-    axis_x = list(color = "#5A6B72"),
-    axis_y = list(color = "#5A6B72")
-  )
-  theme <- modifyList(getDefaultTheme, theme %||% list())
-  theme
-
-}
-
-
-
-#' @export
-tma <- function(custom = NULL, orientation = "ver", ...) {
-
-  custom <- getTheme(theme = custom)
-  theme(
-        plot.title = element_text(family = custom$font_family, colour = custom$font_color, size = as.numeric(gsub('px', '',custom$font_size_title)), hjust = 0.5),
-        plot.subtitle = element_text(family = custom$font_family, colour = custom$font_color, size = as.numeric(gsub('px', '',custom$font_size_subtitle)), hjust = 0.5),
-        plot.caption = element_text(family = custom$font_family, colour = custom$font_color, size = as.numeric(gsub('px', '',custom$font_size_caption))),
-        plot.background = element_rect(fill = custom$background, colour = custom$background),
-        panel.background = element_rect(fill = custom$background),
-        panel.border = element_rect(size = custom$plotBorderWidth, fill = 'transparent', colour = custom$plotBorderColor),
-        text = element_text( family = custom$font_family, size = as.numeric(gsub('px', '',custom$font_size))),
-        axis.title.x = element_text(colour = custom$font_color), #color label eje x
-        axis.title.y = element_text(colour = custom$font_color),
-        axis.text.x = element_text(color = custom$font_color, size = custom$font_size, angle = custom$angleTicks),
-        axis.text.y = element_text(color = custom$font_color, size = custom$font_size, angle = custom$angleTicks),
-        #  plot.margin = margin(custom$marginTop, custom$marginRight, custom$marginBottom, custom$marginLeft),
-        panel.grid.major.y = element_line(size = 0.4, linetype = 'dotted', colour = ifelse(orientation == "ver", "#5A6B72", "transparent")),
-        panel.grid.major.x = element_line(size = 0.4, linetype = 'dotted', colour = ifelse(orientation == "ver", "transparent", "#5A6B72")),
-        panel.grid.minor = element_line(size = 0.4, linetype = 'solid', colour = "transparent"),
-        axis.ticks = element_line(colour = 'transparent'),
-        axis.line.x = element_line(colour = ifelse(orientation == "ver", custom$axis_x$color, "transparent")),
-        axis.line.y = element_line(colour = ifelse(orientation == "ver", "transparent", custom$axis_y$color)),
-        legend.text=element_text(color=custom$font_color, size=as.numeric(gsub('px', '',custom$font_size)))
-        #axis.text = element_text(size = (custom$fontSize-2), family = custom$fontFamily)
-  )
-}
-
-#' @export
-theme_leg <- function(custom = NULL, ...) {
-  custom <- getTheme(theme = custom)
-  theme(
-    legend.title= element_blank(),
-    legend.key = element_rect(fill = "transparent", colour = "transparent"),
-    legend.key.size = unit(0.5, "cm"),
-    legend.text=element_text(color=custom$color,size=11, margin = margin(0, .3, 0, 0, "cm")),
-    legend.background = element_rect(colour = NA, fill = 'transparent'),
-    plot.caption = element_text(hjust = 1),
-    #legend.box.spacing = unit(0.3, "cm"),
-    #legend.box.margin = margin(0.3, 0.3, 0.3, 0.3, "cm"),
-    legend.box.background = element_rect(colour = "transparent", fill = "transparent")
   )
 }

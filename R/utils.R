@@ -30,10 +30,24 @@ sysfile <- function(..., package = "ggmagic"){
 }
 
 
+is.empty <- function(x){
+  if(length(x) == 0) return(TRUE)
+  if(length(x) == 1 && nchar(x) == 0) return(TRUE)
+  !as.logical(length(x))
+}
+
 # is.empty <- function(x){
 #   #   !is.null(x)
 #   !as.logical(length(x))
 # }
+
+
+removeNulls <- function(x){
+  if (length(x) == 0 || !is.list(x))
+    return(x)
+  if(is.empty(x)) return(list())
+  x[!unlist(lapply(x,is.null))]
+}
 
 
 file_path_sans_ext <- function (x)
