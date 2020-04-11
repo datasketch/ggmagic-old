@@ -1,5 +1,12 @@
 
 
+merge_theme_options <- function(opts){
+  theme_vars <- names(default_theme_opts())
+  opts_theme <- removeNulls(opts[theme_vars])
+  str(opts_theme)
+  opts_theme <- removeNulls(modifyList(opts$theme, opts_theme))
+}
+
 default_theme_opts <- function(){
 
   datasketch_colors <- c("#f9e853", "#9cec5b", "#50c5b7",

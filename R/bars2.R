@@ -1,6 +1,3 @@
-
-
-
 #' Bar Chart Date Numeric
 #'
 #' @param data A data.frame
@@ -41,7 +38,6 @@ gg_bar_DatNum <- function(data, ...){
   f_date <- makeup_format(sample = opts$format_dat_sample, locale = opts$locale)
   f_nums <- makeup_format(sample = opts$format_num_sample)
 
-
   gg <- ggplot(d, aes(x = a, y = b, fill = ..colors )) +
     geom_bar(stat = "identity") +
     scale_fill_identity() +
@@ -50,13 +46,7 @@ gg_bar_DatNum <- function(data, ...){
     scale_y_continuous(labels = f_nums) +
     scale_x_date(labels = f_date)
 
-  theme_vars <- names(default_theme_opts())
-  opts_theme <- removeNulls(opts[theme_vars])
-  str(opts_theme)
-  opts_theme <- removeNulls(modifyList(opts$theme, opts_theme))
-  message("before theme_datasketch")
-  str(opts_theme)
+  opts_theme <- merge_theme_options(opts)
   gg + theme_datasketch(opts_theme)
-  # gg + theme_datasketch(opts$theme)
 
 }

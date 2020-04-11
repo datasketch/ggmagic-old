@@ -8,13 +8,6 @@ test_that("Bars", {
   data
   # opts <- getDefaultOptions()
 
-  makeup(getFringeDataFrame(fringe(data))$a, sample = "Enero 4")
-
-  v <- as.Date(homodatum:::Dat_show(data[[1]]))
-  makeup(v, sample = "Enero 4")
-  makeup(v, sample = "Enero 4 2020")
-  makeup_dat(v, sample = "Ene 4")
-
   gg_bar_DatNum(data)
   gg_bar_DatNum(data, title = "Nice title")
   gg_bar_DatNum(data, background_color = "#FF9876")
