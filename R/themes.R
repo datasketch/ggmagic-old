@@ -1,10 +1,32 @@
 
 
 merge_theme_options <- function(opts){
+  if(!is.null(opts$logo)) opts$footer_include <- TRUE
+  opts$logo_path <- local_logo_path(logo = opts$logo, opts$background_color)
+  message(opts$logo_path)
+  if(opts$footer_include){
+    if(is.null(opts$logo)) stop("Add logo")
+    opts$caption <- opts$caption %||% ""
+    opts$caption <- glue::glue_data(opts, "{caption}<br>
+                          <span style = 'font-size:6pt;'>{footer_text}</span>
+                          <img src='{logo_path}' width = '{logo_width}'/>")
+  }
+  opts$theme$footer_include <- opts$footer_include
+
   theme_vars <- names(default_theme_opts())
   opts_theme <- removeNulls(opts[theme_vars])
   str(opts_theme)
   opts_theme <- removeNulls(modifyList(opts$theme, opts_theme))
+}
+
+local_logo_path <- function(logo = NULL, background = "#ffffff"){
+  if(is.null(logo)) return()
+  if(logo == "datasketch"){
+    logo_path <- system.file("logo",package = "ggmagic")
+    light_dark <- paletero::which_contrast(background)
+    logo <- file.path(logo_path,paste0("ds-logo-",light_dark,".png"))
+  }
+  logo
 }
 
 default_theme_opts <- function(){
@@ -14,7 +36,6 @@ default_theme_opts <- function(){
                          "#f75e64", "#5d6ae9")
   list(
     logo = "",
-    logo_position = "",
     palette_colors = datasketch_colors,
     background_color = '#FaFaF5',
     accent_color = "#d2a045",
@@ -28,6 +49,7 @@ default_theme_opts <- function(){
     title_family = "Montserrat",
     subtitle_color = "#999999",
     subtitle_allign = "left", # left - center - right
+    caption = "", # Needed to update chart caption when logo defined
     caption_color = "#AAAAAA",
     caption_allign = "right", # left - center - right
     axis_title_color = '#5A6B72',
@@ -39,6 +61,10 @@ default_theme_opts <- function(){
 
 
 theme_datasketch <- function(opts = NULL){
+
+  caption_margin_bottom <- 30
+  if(opts$footer_include)
+    caption_margin_bottom <- 60
 
   thm <- list(
     line_colour = opts$line_color,
@@ -73,10 +99,13 @@ theme_datasketch <- function(opts = NULL){
     plot_background_fill = opts$plot_background_fill%||% opts$background_color,
     plot_title_family = opts$plot_title_family %||% opts$title_family,
     plot_title_colour = opts$plot_title_color %||% opts$text_color,
+    plot_title_hjust = opts$plot_title_hjust %||% 0,
     plot_subtitle_family = opts$plot_subtitle_family %||% opts$text_family,
     plot_subtitle_colour = opts$plot_subtitle_color %||% opts$text_color,
+    plot_subtitle_hjust = opts$plot_subtitle_hjust %||% 0,
     plot_caption_family = opts$plot_caption_family %||% opts$text_family,
-    plot_caption_colour = opts$plot_caption_color %||% opts$text_color
+    plot_caption_colour = opts$plot_caption_color %||% opts$text_color,
+    plot_caption_hjust = opts$plot_title_hjust %||% 1
   )
 
 
@@ -111,7 +140,7 @@ theme_datasketch <- function(opts = NULL){
       colour = thm$axis_line_colour,
       #size = thm$line_size
       size = rel(0.5)
-      ),
+    ),
     axis.line.x = element_line(
       colour = thm$axis_line_x_colour),
     axis.line.y = element_line(
@@ -138,12 +167,14 @@ theme_datasketch <- function(opts = NULL){
       debug=FALSE,
       colour = thm$axis_title_x_colour,
       # margin=margin(),
+      size = rel(0.9),
       vjust=1),
     axis.title.y = element_text(
       debug=FALSE,
       colour = thm$axis_title_y_colour,
       # margin=margin(),
       angle = 90,
+      size = rel(0.9),
       vjust=1),
     axis.ticks = element_line(
       colour = thm$axis_ticks_colour %||% thm$axis_line_colour),
@@ -222,31 +253,35 @@ theme_datasketch <- function(opts = NULL){
       fill = thm$plot_background_fill),
     plot.title.position = "plot",
     plot.title = ggtext::element_textbox_simple(
+      # plot.title = ggtext::element_markdown(
       debug=FALSE,
       family = thm$plot_title_family,
       colour = thm$plot_title_colour,
       margin=margin(6, 0, 6, 0),
       size = rel(1.2),
-      hjust = 0,
+      hjust = thm$plot_title_hjust,
       vjust = 1,
       face='plain'),
     plot.subtitle = element_text(
       debug=FALSE,
       family = thm$plot_subtitle_family,
       colour = thm$plot_subtitle_colour,
-      margin=margin(3, 0, 9, 0),
+      margin=margin(3, 0, 15, 0),
       size = rel(1),
-      hjust = 0,
+      hjust = thm$plot_subtitle_hjust %||% thm$plot_title_hjust,
       vjust = 1,
       face='plain'),
-    plot.caption = element_text(
+    # plot.caption.position = "plot",
+    plot.caption = ggtext::element_markdown(
       debug=FALSE,
       family = thm$plot_subtitle_family,
       colour = thm$plot_caption_colour,
-      margin=margin(6, 0, 6, 0),
+      margin=margin(12, 0, caption_margin_bottom, 0),
       size = rel(0.8),
-      hjust = 1,
+      hjust = thm$plot_caption_hjust,
       vjust = 1,
+      valign = 0.5,
+      align_heights = TRUE,
       lineheight = 1.5,
       face='plain'),
     # plot.margin = grid::unit(c(0.625, 0.625, 0.625, 0.625) * spacing, 'cm'),

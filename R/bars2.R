@@ -9,12 +9,12 @@
 #' @export gg_bar_CatNum
 gg_bar_DatNum <- function(data, ...){
   opts <- mergeOptions(..., defaults = ggmagic_defaults())
-  str(opts)
-  #opts <- getDefaultOptions()
+  # str(opts)
+  #opts <- ggmagic_defaults()
   if (is.null(data)) {
     stop("need a dataset to visualize")
   }
-  f <- fringe(data)
+  f <- homodatum::fringe(data)
   nms <- getFringeLabels(f)
   d <- getFringeDataFrame(f)
   #axis_text_angle
@@ -47,6 +47,10 @@ gg_bar_DatNum <- function(data, ...){
     scale_x_date(labels = f_date)
 
   opts_theme <- merge_theme_options(opts)
-  gg + theme_datasketch(opts_theme)
+  str(opts_theme)
+  gg <- gg +
+    labs(caption = opts_theme$caption) +
+    theme_datasketch(opts_theme)
+  gg
 
 }
