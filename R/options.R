@@ -49,16 +49,18 @@ mergeOptions <- function(..., defaults = NULL){
   modifyList(defaults, args_opts)
 }
 
-ggmagic_defaults <- function(x){
+ggmagic_defaults <- function(){
   opts <- list(
       agg = "sum",
       agg_text = NULL,
       axis_text_angle = NULL,
       background_color = "#FAFAF0",
+      branding_include = FALSE,
+      branding_background_color = NULL,
+      color_by = NULL,# which variable?
       footer_include = FALSE,
       footer_text = "",
       footer_align = "right",
-      color_by = NULL,# which variable?
       palette_colors = NULL,
       #color_scale ="discrete",
       drop_na = FALSE,
@@ -71,7 +73,7 @@ ggmagic_defaults <- function(x){
       # label_ratio = 1,
       # label_wrap = 12,
       locale = "en-US",
-      logo = NULL,
+      logo = "datasketch",
       logo_width = 80,
       orientation = "ver",
       slice_n = NULL,

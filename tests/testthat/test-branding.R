@@ -1,6 +1,10 @@
-# test_that("branding works", {
+test_that("branding works", {
 
   library(gridExtra)
+  library(homodatum)
+  library(makeup)
+  library(ggtext)
+  library(gridtext)
 
   data <- sampleData("Dat-Num", n = 10, rep = FALSE)
   opts <- list(
@@ -9,64 +13,24 @@
     title = "Nice chart",
     subtitle = "I really like this",
     caption = "This is some info about the chart",
-    theme = list(background_color = "#888810")
+    # footer_include = FALSE,
+    branding_include = TRUE,
+    logo_position = "left",
+    branding_background_color = "#444444",
+    branding_text = "Developed with love in Bogotá.",
+    logo = "datasketch"
+    # theme = list(background_color = "#dddddd")
   )
-  gg <- gg_bar_DatNum(data, opts = opts)
-  gg
+  # opts <- modifyList(ggmagic_defaults(), opts)
+  # opts_theme <- merge_theme_options(opts)
 
+  ggg <- gg_bar_DatNum(data, opts = opts)
+  ggg
 
-  hjust <- 1
-  footer_background_color <- "#666060"
-  footer_text_color <- "#99c448"
-
-  grid.newpage()
-  img_src <- system.file("extdata", "Rlogo.png", package = "gridtext")
-  text <- glue::glue("<img src='{img_src}' width='30'/>")
-  logo <- richtext_grob(text,
-                        x = hjust,
-                        y = 0,
-                        hjust = hjust,
-                        vjust = 0,
-                        # margin = unit(c(25,0,25,0),'pt'),
-                        gp = gpar(fontsize = 10,
-                                  fontfamily = "Ubuntu",
-                                  col = footer_text_color
-                        ))
-  text <- richtext_grob("Hola Este es otro texto",
-                        x = 0,
-                        y = 0,
-                        hjust = 0,
-                        vjust = 0,
-                        margin = unit(c(0,0,0,0),'pt'),
-                        padding = unit(c(20,0,20,0),'pt'),
-                        box_gp = gpar(col = "black", fill = "cornsilk"),
-                        gp = gpar(fontsize = 10,
-                                  fontfamily = "Ubuntu",
-                                  col = footer_text_color
-                        ))
-
-  grid.newpage()
-  grid.draw(text)
-  grid.newpage()
-  textTree <- grobTree(text, logo)
-  grid.draw(textTree)
-  rect <- rectGrob(
-    y = 0,
-    width = 1,
-    height = unit(85, "pt"),
-    gp=gpar(fill=footer_background_color ,
-            col = footer_background_color,
-            alpha=0.5)
-    )
-  footer <- grobTree(rect, textTree)
-  grid.newpage()
-  grid.draw(footer)
-
-  g <- grid.arrange(gg, bottom = footer
-                    #heights = unit(c(100,10), c("pt", "pt"))
-                    )
-  grid.draw(g)
+  ggsave("~/Downloads/plot.png", ggg)
+  ggsave("~/Downloads/plot.svg", ggg)
+  ggsave("~/Downloads/plot.pdf", ggg, device = cairo_pdf)
 
 
 
-# })
+})

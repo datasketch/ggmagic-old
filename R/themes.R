@@ -1,7 +1,7 @@
 
 
 merge_theme_options <- function(opts){
-  if(!is.null(opts$logo)) opts$footer_include <- TRUE
+  # if(!is.null(opts$logo)) opts$footer_include <- TRUE
   opts$logo_path <- local_logo_path(logo = opts$logo, opts$background_color)
   message(opts$logo_path)
   if(opts$footer_include){
@@ -12,6 +12,7 @@ merge_theme_options <- function(opts){
                           <img src='{logo_path}' width = '{logo_width}'/>")
   }
   opts$theme$footer_include <- opts$footer_include
+  opts$theme$branding_include <- opts$branding_include
 
   theme_vars <- names(default_theme_opts())
   opts_theme <- removeNulls(opts[theme_vars])
@@ -36,7 +37,10 @@ default_theme_opts <- function(){
                          "#f75e64", "#5d6ae9")
   list(
     logo = "",
+    logo_position = "right",
     palette_colors = datasketch_colors,
+    branding_text = NULL,
+    branding_background_color = NULL,
     background_color = '#FaFaF5',
     accent_color = "#d2a045",
     text_size = 11,
@@ -62,9 +66,9 @@ default_theme_opts <- function(){
 
 theme_datasketch <- function(opts = NULL){
 
-  caption_margin_bottom <- 30
-  if(opts$footer_include)
-    caption_margin_bottom <- 60
+  caption_margin_bottom <- 0
+  if(opts$branding_include)
+    caption_margin_bottom <- 22
 
   thm <- list(
     line_colour = opts$line_color,
@@ -107,6 +111,8 @@ theme_datasketch <- function(opts = NULL){
     plot_caption_colour = opts$plot_caption_color %||% opts$text_color,
     plot_caption_hjust = opts$plot_title_hjust %||% 1
   )
+  message("thm")
+  str(thm)
 
 
   theme(
@@ -210,7 +216,7 @@ theme_datasketch <- function(opts = NULL){
       fill = 'transparent',
       colour = thm$panel_border_colour),
     panel.grid.major = element_line(
-      # size = NULL,
+      size = 0.3,
       linetype='solid',
       colour = thm$panel_grid_major_colour),
     # panel.grid.major.y = element_line(
@@ -223,6 +229,7 @@ theme_datasketch <- function(opts = NULL){
     #   colour = ifelse(orientation == "ver", "transparent", "#5A6B72")),
     panel.grid.minor = element_line(
       linetype='solid',
+      size = 0.3,
       colour = thm$panel_grid_minor_colour),
     # panel.margin = grid::unit(0.5 * spacing, 'cm'),
     panel.margin.x = NULL,
@@ -276,7 +283,7 @@ theme_datasketch <- function(opts = NULL){
       debug=FALSE,
       family = thm$plot_subtitle_family,
       colour = thm$plot_caption_colour,
-      margin=margin(12, 0, caption_margin_bottom, 0),
+      margin=margin(3, 0, caption_margin_bottom, 0),
       size = rel(0.8),
       hjust = thm$plot_caption_hjust,
       vjust = 1,

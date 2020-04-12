@@ -51,6 +51,8 @@ gg_bar_DatNum <- function(data, ...){
   gg <- gg +
     labs(caption = opts_theme$caption) +
     theme_datasketch(opts_theme)
-  gg
+  ggg <- add_branding_bar(gg, opts_theme)
+  # grid.draw(ggg)
+  ggg
 
 }
