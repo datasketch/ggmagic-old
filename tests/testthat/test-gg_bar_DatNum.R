@@ -1,30 +1,32 @@
-test_that("Bars", {
+test_that("gg bar DatNum", {
 
   library(homodatum)
   library(paletero)
   library(makeup)
 
   data <- sampleData("Dat-Num", n = 10, rep = FALSE)
-  data <- sampleData("Dat-Num")
   data
-  # opts <- ggmagic:::ggmagic_defaults()
+  # opts <- ggmagic:::theme_defaults()
 
   gg_bar_DatNum(data)
   gg_bar_DatNum(data, logo = "datasketch", caption ="some caption")
-  gg_bar_DatNum(data, footer_include = TRUE, caption ="some caption")
-  gg_bar_DatNum(data, footer_include = TRUE, logo = "datasketch")
+  gg_bar_DatNum(data,
+                branding_include = TRUE,
+                branding_text ="Hecho con amor")
   gg_bar_DatNum(data, title = "Nice **title**")
 
   gg_bar_DatNum(data, title = "Nice **title**",
                 caption = "Hola _caption_",
+                branding_include = TRUE,
                 logo = "https://www.r-project.org/logo/Rlogo.png",
                 logo_width = 20)
 
   gg_bar_DatNum(data, title = "Nice **title**",
                 caption = "Hola _caption_",
                 logo = "https://www.r-project.org/logo/Rlogo.png",
-                footer_text = "Visualización por: ",
-                logo_width = 20)
+                branding_include = TRUE,
+                branding_background_color = "#ccccfa",
+                footer_text = "Visualización por: ")
 
 
   gg_bar_DatNum(data, background_color = "#FF9876")
@@ -40,6 +42,8 @@ test_that("Bars", {
     theme = list(background_color = "#888810")
   )
   gg_bar_DatNum(data, opts = opts)
+  gg_bar_DatNum(data,   format_dat_sample = "Ene 10",
+                locale = "es-CO")
 
 
   opts <- list(

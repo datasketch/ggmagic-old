@@ -30,18 +30,27 @@ local_logo_path <- function(logo = NULL, background = "#ffffff"){
   logo
 }
 
+
+datasketch_style <- function(){
+  list(
+    palette = c("#f9e853", "#9cec5b", "#50c5b7",
+                "#b33f90", "#ff9a2c", "#54419b",
+                "#f75e64", "#5d6ae9"),
+    background = "#FaFaF5"
+  )
+}
+
 default_theme_opts <- function(){
 
-  datasketch_colors <- c("#f9e853", "#9cec5b", "#50c5b7",
-                         "#b33f90", "#ff9a2c", "#54419b",
-                         "#f75e64", "#5d6ae9")
+
   list(
     logo = "",
     logo_position = "right",
-    palette_colors = datasketch_colors,
-    branding_text = NULL,
-    branding_background_color = NULL,
-    background_color = '#FaFaF5',
+    palette_colors = datasketch_style()$palette,
+    branding_include = FALSE,
+    branding_text = "",
+    branding_background_color = datasketch_style()$background,
+    background_color = datasketch_style()$background,
     accent_color = "#d2a045",
     text_size = 11,
     text_color = "#6D8089",
@@ -53,7 +62,7 @@ default_theme_opts <- function(){
     title_family = "Montserrat",
     subtitle_color = "#999999",
     subtitle_allign = "left", # left - center - right
-    caption = "", # Needed to update chart caption when logo defined
+    # caption = "", # Needed to update chart caption when logo defined
     caption_color = "#AAAAAA",
     caption_allign = "right", # left - center - right
     axis_title_color = '#5A6B72',
@@ -66,9 +75,9 @@ default_theme_opts <- function(){
 
 theme_datasketch <- function(opts = NULL){
 
-  caption_margin_bottom <- 0
+  plot_margin_bottom <- 5
   if(opts$branding_include)
-    caption_margin_bottom <- 22
+    plot_margin_bottom <- 18
 
   thm <- list(
     line_colour = opts$line_color,
@@ -109,7 +118,7 @@ theme_datasketch <- function(opts = NULL){
     plot_subtitle_hjust = opts$plot_subtitle_hjust %||% 0,
     plot_caption_family = opts$plot_caption_family %||% opts$text_family,
     plot_caption_colour = opts$plot_caption_color %||% opts$text_color,
-    plot_caption_hjust = opts$plot_title_hjust %||% 1
+    plot_caption_hjust = opts$plot_title_hjust %||% 0
   )
   message("thm")
   str(thm)
@@ -283,7 +292,7 @@ theme_datasketch <- function(opts = NULL){
       debug=FALSE,
       family = thm$plot_subtitle_family,
       colour = thm$plot_caption_colour,
-      margin=margin(3, 0, caption_margin_bottom, 0),
+      margin=margin(3, 0, 5, 0),
       size = rel(0.8),
       hjust = thm$plot_caption_hjust,
       vjust = 1,
@@ -291,7 +300,7 @@ theme_datasketch <- function(opts = NULL){
       align_heights = TRUE,
       lineheight = 1.5,
       face='plain'),
-    # plot.margin = grid::unit(c(0.625, 0.625, 0.625, 0.625) * spacing, 'cm'),
+    plot.margin = margin(5, 5, plot_margin_bottom, 5),,
     complete = TRUE
   )
 }

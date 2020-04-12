@@ -21,7 +21,7 @@ test_that("branding works", {
     logo = "datasketch"
     # theme = list(background_color = "#dddddd")
   )
-  # opts <- modifyList(ggmagic_defaults(), opts)
+  # opts <- modifyList(theme_defaults(), opts)
   # opts_theme <- merge_theme_options(opts)
 
   ggg <- gg_bar_DatNum(data, opts = opts)

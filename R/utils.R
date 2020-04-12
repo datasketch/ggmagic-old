@@ -17,7 +17,6 @@ sysfile <- function(..., package = "ggmagic"){
   path
 }
 
-#' @export
 `%||%` <- function (x, y)
 {
   if (is_empty(x))
