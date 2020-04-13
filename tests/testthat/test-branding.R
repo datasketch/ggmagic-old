@@ -27,9 +27,9 @@ test_that("branding works", {
   ggg <- gg_bar_DatNum(data, opts = opts)
   ggg
 
-  ggsave("~/Downloads/plot.png", ggg)
-  ggsave("~/Downloads/plot.svg", ggg)
-  ggsave("~/Downloads/plot.pdf", ggg, device = cairo_pdf)
+  # ggsave("~/Downloads/plot.png", ggg)
+  # ggsave("~/Downloads/plot.svg", ggg)
+  # ggsave("~/Downloads/plot.pdf", ggg, device = cairo_pdf)
 
 
 

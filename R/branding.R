@@ -77,7 +77,7 @@ add_branding_bar <- function(gg, opts_theme, debug = FALSE){
   ggg
 }
 
-
+#' @export
 print.ggmagic <- function(x, ...) {
   grid::grid.draw(x)
 }
