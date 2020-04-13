@@ -1,5 +1,8 @@
 test_that("branding works", {
 
+  # extrafont::loadfonts(device="postscript")
+  extrafont::loadfonts()
+
   library(gridExtra)
   library(homodatum)
   library(makeup)
@@ -11,10 +14,10 @@ test_that("branding works", {
     format_dat_sample = "Ene 10",
     locale = "es-CO",
     title = "Nice chart",
-    subtitle = "I really like this",
+    # subtitle = "I really like this",
     caption = "This is some info about the chart",
     # footer_include = FALSE,
-    background_color = "#ccaabb",
+    background_color = "#a0aaaa",
     branding_include = TRUE,
     logo_position = "left",
     branding_background_color = "#444444",
@@ -31,7 +34,9 @@ test_that("branding works", {
 
 
   opts <- list(
-    background_color = "#ccaabb",
+    title = "Nice chart",
+    subtitle = "I really like this",
+    background_color = "#a0aaaa",
     branding_include = TRUE,
     logo_position = "left",
     branding_text = "Developed with love in Bogotá."

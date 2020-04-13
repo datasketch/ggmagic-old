@@ -62,7 +62,7 @@ gg_bar_DatNum <- function(data, ...){
 
   # opts_theme <- merge_theme_options(opts)
   message("opts$theme")
-  str(opts$theme)
+  # str(opts$theme)
   gg <- gg + theme_datasketch(opts$theme)
   add_branding_bar(gg, opts$theme)
 

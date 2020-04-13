@@ -4,8 +4,8 @@ add_branding_bar <- function(gg, opts_theme, debug = FALSE){
   if(!opts_theme$branding_include){
     return(gg)
   }
-  message("in branding")
-  str(opts_theme)
+  # message("in branding")
+  # str(opts_theme)
   background_color <- opts_theme$background_color
   branding_background_color <- opts_theme$branding_background_color %||% background_color
   logo <- opts_theme$logo %||% local_logo_path("datasketch", branding_background_color)
@@ -56,7 +56,7 @@ add_branding_bar <- function(gg, opts_theme, debug = FALSE){
                           col = ifelse(debug,"black","transparent"),
                           fill = ifelse(debug,"black","transparent"),
                           alpha = ifelse(debug,0.3,1)),
-                        gp = grid::gpar(fontsize = 10,
+                        gp = grid::gpar(fontsize = 8,
                                   fontfamily = "Ubuntu",
                                   col = branding_text_color
                         ))

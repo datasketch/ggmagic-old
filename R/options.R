@@ -110,7 +110,8 @@ ggmagic_default_opts <- function(
   themeOpts <- list(
     logo = NULL,
     palette_colors = datasketch_style()$palette,
-    background_color = datasketch_style()$background
+    background_color = datasketch_style()$background,
+    has_subtitle = FALSE
   )
   themeOpts <- modifyList(themeOpts, default_theme_opts())
 
@@ -134,6 +135,10 @@ ggmagic_defaults <- function(flat = FALSE){
 merge_ggmagic_options <- function(...){
   default_opts <- ggmagic_defaults(flat = TRUE)
   opts_flat <- mergeOptions(..., defaults = default_opts)
+
+  theme <- pull_opt_group(opts_flat, "theme")
+  theme$has_subtitle <- !is.null(opts_flat$subtitle)
+
   list(
     preprocess = pull_opt_group(opts_flat, "preprocess"),
     summarize = pull_opt_group(opts_flat, "summarize"),
@@ -141,7 +146,7 @@ merge_ggmagic_options <- function(...){
     style = pull_opt_group(opts_flat, "style"),
     chart = pull_opt_group(opts_flat, "chart"),
     title = pull_opt_group(opts_flat, "title"),
-    theme = pull_opt_group(opts_flat, "theme")
+    theme = theme
   )
 }
 

@@ -16,7 +16,7 @@ merge_theme_options <- function(opts){
 
   theme_vars <- names(default_theme_opts())
   opts_theme <- removeNulls(opts[theme_vars])
-  str(opts_theme)
+  # str(opts_theme)
   opts_theme <- removeNulls(modifyList(opts$theme, opts_theme))
 }
 
@@ -74,10 +74,17 @@ default_theme_opts <- function(){
 
 
 theme_datasketch <- function(opts = NULL){
-
+  message("in theme_datasketch")
+  # str(opts)
   plot_margin_bottom <- 8
   if(opts$branding_include)
     plot_margin_bottom <- 20
+  title_bottom <- 15
+  subtitle_bottom <- 6
+  if(opts$has_subtitle){
+    title_bottom <- 3
+    subtitle_bottom <- 15
+  }
 
   thm <- list(
     line_colour = opts$line_color,
@@ -120,8 +127,8 @@ theme_datasketch <- function(opts = NULL){
     plot_caption_colour = opts$plot_caption_color %||% opts$text_color,
     plot_caption_hjust = opts$plot_title_hjust %||% 0
   )
-  message("thm")
-  str(thm)
+  # message("thm")
+  # str(thm)
 
 
   theme(
@@ -273,7 +280,7 @@ theme_datasketch <- function(opts = NULL){
       debug=FALSE,
       family = thm$plot_title_family,
       colour = thm$plot_title_colour,
-      margin=margin(6, 0, 6, 0),
+      margin=margin(6, 0, title_bottom, 0),
       size = rel(1.2),
       hjust = thm$plot_title_hjust,
       vjust = 1,
@@ -282,12 +289,12 @@ theme_datasketch <- function(opts = NULL){
       debug=FALSE,
       family = thm$plot_subtitle_family,
       colour = thm$plot_subtitle_colour,
-      margin=margin(3, 0, 15, 0),
+      margin=margin(3, 0, subtitle_bottom, 0),
       size = rel(1),
       hjust = thm$plot_subtitle_hjust %||% thm$plot_title_hjust,
       vjust = 1,
       face='plain'),
-    # plot.caption.position = "plot",
+    plot.caption.position = "plot",
     plot.caption = ggtext::element_markdown(
       debug=FALSE,
       family = thm$plot_subtitle_family,

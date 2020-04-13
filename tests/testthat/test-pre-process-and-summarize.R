@@ -1,6 +1,6 @@
 test_that("Preprocess and summarize data", {
 
-  dd <- data_frame(x = c("A","A", "B", "C"), y = c("X","Y","Y","Z"), z = c(1,1,3,NA))
+  dd <- tibble(x = c("A","A", "B", "C"), y = c("X","Y","Y","Z"), z = c(1,1,3,NA))
 
   opts <- list(drop_na = TRUE)
   no_na <- preprocessData(dd, opts)
