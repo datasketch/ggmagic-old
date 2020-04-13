@@ -62,9 +62,14 @@ test_that("Options", {
 
   expect_equal(opts_ggmagic$theme$logo,opts_defaults$theme$logo)
 
-  myopts <- list(branding_text = "Braning text heeeere" )
+  myopts <- list(branding_text = "Braning text heeeere",
+                 background_color = "#F0F0F0")
   opts_ggmagic <- fun(opts = myopts)
   expect_equal(opts_ggmagic$theme$branding_text, myopts$branding_text)
+  expect_equal(opts_ggmagic$theme$background_color, myopts$background_color)
+
+
+
 
 
 })

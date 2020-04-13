@@ -14,6 +14,7 @@ test_that("branding works", {
     subtitle = "I really like this",
     caption = "This is some info about the chart",
     # footer_include = FALSE,
+    background_color = "#ccaabb",
     branding_include = TRUE,
     logo_position = "left",
     branding_background_color = "#444444",
@@ -26,6 +27,17 @@ test_that("branding works", {
 
   ggg <- gg_bar_DatNum(data, opts = opts)
   ggg
+
+
+
+  opts <- list(
+    background_color = "#ccaabb",
+    branding_include = TRUE,
+    logo_position = "left",
+    branding_text = "Developed with love in Bogotá."
+  )
+  gg_bar_DatNum(data, opts = opts)
+
 
   # ggsave("~/Downloads/plot.png", ggg)
   # ggsave("~/Downloads/plot.svg", ggg)

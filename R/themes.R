@@ -49,8 +49,8 @@ default_theme_opts <- function(){
     palette_colors = datasketch_style()$palette,
     branding_include = FALSE,
     branding_text = "",
-    branding_background_color = datasketch_style()$background,
     background_color = datasketch_style()$background,
+    branding_background_color = "",
     accent_color = "#d2a045",
     text_size = 11,
     text_color = "#6D8089",
@@ -75,9 +75,9 @@ default_theme_opts <- function(){
 
 theme_datasketch <- function(opts = NULL){
 
-  plot_margin_bottom <- 5
+  plot_margin_bottom <- 8
   if(opts$branding_include)
-    plot_margin_bottom <- 18
+    plot_margin_bottom <- 20
 
   thm <- list(
     line_colour = opts$line_color,
@@ -181,7 +181,7 @@ theme_datasketch <- function(opts = NULL){
     axis.title.x = element_text(
       debug=FALSE,
       colour = thm$axis_title_x_colour,
-      # margin=margin(),
+      margin=margin(0,0,3,0),
       size = rel(0.9),
       vjust=1),
     axis.title.y = element_text(
@@ -292,7 +292,7 @@ theme_datasketch <- function(opts = NULL){
       debug=FALSE,
       family = thm$plot_subtitle_family,
       colour = thm$plot_caption_colour,
-      margin=margin(3, 0, 5, 0),
+      margin=margin(3, 0, 8, 0),
       size = rel(0.8),
       hjust = thm$plot_caption_hjust,
       vjust = 1,
@@ -300,7 +300,7 @@ theme_datasketch <- function(opts = NULL){
       align_heights = TRUE,
       lineheight = 1.5,
       face='plain'),
-    plot.margin = margin(5, 5, plot_margin_bottom, 5),,
+    plot.margin = margin(5, 5, plot_margin_bottom, 5),
     complete = TRUE
   )
 }
