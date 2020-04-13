@@ -1,7 +1,7 @@
 
 #' Chart Options
 #'
-#' @name ggmagic_defaults
+#' @name ggmagic_default_opts
 #' @param agg defaults to "sum"
 #' @param agg_text defaults to NULL
 #' @param caption defaults to NULL
@@ -33,6 +33,7 @@
 #' @param ver_label defaults to NULL
 #' @param ver_line defaults to NULL
 #' @param opts defaults to NULL
+#' @import homodatum
 ggmagic_default_opts <- function(
                            agg = "sum",
                            agg_text = NULL,

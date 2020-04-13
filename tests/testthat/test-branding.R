@@ -17,8 +17,8 @@ test_that("branding works", {
     branding_include = TRUE,
     logo_position = "left",
     branding_background_color = "#444444",
-    branding_text = "Developed with love in Bogotá.",
-    logo = "datasketch"
+    branding_text = "Developed with love in Bogotá."
+    # logo = "datasketch" # Not necessary to include logo, included by default
     # theme = list(background_color = "#dddddd")
   )
   # opts <- modifyList(theme_defaults(), opts)

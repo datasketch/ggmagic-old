@@ -3,8 +3,8 @@
 #' This chart does not allow for chaning orientation
 #'
 #' @param data A data.frame
-#' @inherit chart_defaults
-#' @inheritDotParams chart_defaults
+#' @inherit ggmagic_default_opts
+#' @inheritDotParams ggmagic_default_opts
 #' @section ctypes:
 #' Cat-Num, Yea-Num
 #' @examples
@@ -20,7 +20,11 @@ gg_bar_CatNum <- function(data, ...){
   d <- getFringeDataFrame(f)
 
   #axis_text_angle
-  labelsXY <- c(nms[1], nms[2])
+  labelsXY <- opts$title$hor_title %||% nms[1]
+  labelsXY[2] <- opts$title$ver_title %||% nms[2]
+  if(opts$chart$orientation == "hor") labelsXY <- rev(labelsXY)
+  hor_title <- labelsXY[1]
+  ver_title <- labelsXY[2]
 
   # Drop NAs
   # TODO: Add NAs as categories or dates when it makes sense
@@ -31,7 +35,7 @@ gg_bar_CatNum <- function(data, ...){
 
   # Styles
   # Handle colors
-  color_by <- opts$style$color_by
+  color_by <- names(nms[match(opts$style$color_by, nms)])
   palette <- opts$theme$palette_colors
   d$..colors <- paletero::map_colors(d, color_by, palette, colors_df = NULL)
 
@@ -46,11 +50,11 @@ gg_bar_CatNum <- function(data, ...){
     labs(title = opts$title$title,
          subtitle = opts$title$subtitle,
          caption = opts$title$caption,
-         x = labelsXY[1], y = labelsXY[2]) +
+         x = hor_title, y = ver_title) +
     scale_y_continuous(labels = f_nums) +
     scale_x_discrete(labels = f_cats)
 
-  if (opts$chart$orientation == "ver")
+  if (opts$chart$orientation == "hor")
     gg <- gg + coord_flip()
 
   # opts_theme <- merge_theme_options(opts)

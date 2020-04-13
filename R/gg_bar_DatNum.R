@@ -4,8 +4,8 @@
 #'
 #' @param data A data.frame
 #' @param orientation Doesn't do anything for this type of chart.
-#' @inherit chart_defaults
-#' @inheritDotParams chart_defaults
+#' @inherit ggmagic_default_opts
+#' @inheritDotParams ggmagic_default_opts
 #' @section ctypes:
 #' Dat-Num, Yea-Num
 #' @examples
@@ -21,7 +21,11 @@ gg_bar_DatNum <- function(data, ...){
   d <- getFringeDataFrame(f)
 
   #axis_text_angle
-  labelsXY <- c(nms[1], nms[2])
+  labelsXY <- opts$title$hor_title %||% nms[1]
+  labelsXY[2] <- opts$title$ver_title %||% nms[2]
+  if(opts$chart$orientation == "hor") labelsXY <- rev(labelsXY)
+  hor_title <- labelsXY[1]
+  ver_title <- labelsXY[2]
 
   # Drop NAs
   # Add NAs as categories or dates when it makes sense
@@ -32,7 +36,8 @@ gg_bar_DatNum <- function(data, ...){
 
   # Styles
   # Handle colors
-  color_by <- opts$style$color_by
+  # color_by <- opts$style$color_by
+  color_by <- names(nms[match(opts$style$color_by, nms)])
   palette <- opts$theme$palette_colors
   d$..colors <- paletero::map_colors(d, color_by, palette, colors_df = NULL)
 
