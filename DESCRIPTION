@@ -15,6 +15,7 @@ Imports:
     homodatum,
     paletero,
     makeup,
+    dsvizopts,
     ggtext
 Suggests: 
     testthat (>= 2.1.0)

@@ -2,7 +2,7 @@ test_that("gg bar Cat Num", {
 
   library(homodatum)
   data <- sample_data("Cat-Num")
-  opts <- ggmagic:::ggmagic_defaults()
+  opts <- dsvizopts::dsviz_defaults()
 
   gg_bar_CatNum(data)
   gg_bar_CatNum(data, logo = "datasketch", caption ="some caption")

@@ -8,7 +8,7 @@ add_branding_bar <- function(gg, opts_theme, debug = FALSE){
   # str(opts_theme)
   background_color <- opts_theme$background_color
   branding_background_color <- opts_theme$branding_background_color %||% background_color
-  logo <- opts_theme$logo %||% local_logo_path("datasketch", branding_background_color)
+  logo <- opts_theme$logo %||% dsvizopts::local_logo_path("datasketch", branding_background_color)
   logo_height <- opts_theme$branding_logo_height %||% 15
   branding_position <- "bottom"
   logo_position <- opts_theme$logo_position %||% "right"

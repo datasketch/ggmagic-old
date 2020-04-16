@@ -14,18 +14,21 @@
 gg_bar_DatNum <- function(data, ...){
 
   if (is.null(data)) stop(" dataset to visualize")
-  opts <- merge_ggmagic_options(...)
+  opts <- dsvizopts::merge_dsviz_options(...)
 
   f <- homodatum::fringe(data)
   nms <- getFringeLabels(f)
   d <- getFringeDataFrame(f)
 
   #axis_text_angle
-  labelsXY <- opts$title$hor_title %||% nms[1]
-  labelsXY[2] <- opts$title$ver_title %||% nms[2]
-  if(opts$chart$orientation == "hor") labelsXY <- rev(labelsXY)
-  hor_title <- labelsXY[1]
-  ver_title <- labelsXY[2]
+  labsXY <- dsvizopts::labelsXY(opts$title$hor_title, opts$title$ver_title,
+                       nms, opts$chart$orientation)
+  hor_title <- labsXY[1]
+  ver_title <- labsXY[2]
+
+  # labelsXY <- opts$title$hor_title %||% nms[1]
+  # labelsXY[2] <- opts$title$ver_title %||% nms[2]
+  # if(opts$chart$orientation == "hor") labelsXY <- rev(labelsXY)
 
   # Drop NAs
   # Add NAs as categories or dates when it makes sense
@@ -52,7 +55,7 @@ gg_bar_DatNum <- function(data, ...){
     labs(title = opts$title$title,
          subtitle = opts$title$subtitle,
          caption = opts$title$caption,
-         x = labelsXY[1], y = labelsXY[2]) +
+         x = labsXY[1], y = labsXY[2]) +
     scale_y_continuous(labels = f_nums) +
     scale_x_date(labels = f_date)
 
@@ -60,9 +63,9 @@ gg_bar_DatNum <- function(data, ...){
   #   gg <- gg +
   #   coord_flip()
 
-  # opts_theme <- merge_theme_options(opts)
-  message("opts$theme")
-  # str(opts$theme)
+  # # opts_theme <- merge_theme_options(opts)
+  # message("opts$theme")
+  # # str(opts$theme)
   gg <- gg + theme_datasketch(opts$theme)
   add_branding_bar(gg, opts$theme)
 

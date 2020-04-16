@@ -1,76 +1,27 @@
 
 
-merge_theme_options <- function(opts){
-  # if(!is.null(opts$logo)) opts$footer_include <- TRUE
-  opts$logo_path <- local_logo_path(logo = opts$logo, opts$background_color)
-  message(opts$logo_path)
-  if(opts$footer_include){
-    if(is.null(opts$logo)) stop("Add logo")
-    opts$caption <- opts$caption %||% ""
-    opts$caption <- glue::glue_data(opts, "{caption}<br>
-                          <span style = 'font-size:6pt;'>{footer_text}</span>
-                          <img src='{logo_path}' width = '{logo_width}'/>")
-  }
-  opts$theme$footer_include <- opts$footer_include
-  opts$theme$branding_include <- opts$branding_include
-
-  theme_vars <- names(default_theme_opts())
-  opts_theme <- removeNulls(opts[theme_vars])
-  # str(opts_theme)
-  opts_theme <- removeNulls(modifyList(opts$theme, opts_theme))
-}
-
-local_logo_path <- function(logo = NULL, background = "#ffffff"){
-  if(is.null(logo)) return()
-  if(logo == "datasketch"){
-    logo_path <- system.file("logo",package = "ggmagic")
-    light_dark <- paletero::which_contrast(background)
-    logo <- file.path(logo_path,paste0("ds-logo-",light_dark,".png"))
-  }
-  logo
-}
+# merge_theme_options <- function(opts){
+#   # if(!is.null(opts$logo)) opts$footer_include <- TRUE
+#   opts$logo_path <- local_logo_path(logo = opts$logo, opts$background_color)
+#   message(opts$logo_path)
+#   if(opts$footer_include){
+#     if(is.null(opts$logo)) stop("Add logo")
+#     opts$caption <- opts$caption %||% ""
+#     opts$caption <- glue::glue_data(opts, "{caption}<br>
+#                           <span style = 'font-size:6pt;'>{footer_text}</span>
+#                           <img src='{logo_path}' width = '{logo_width}'/>")
+#   }
+#   opts$theme$footer_include <- opts$footer_include
+#   opts$theme$branding_include <- opts$branding_include
+#
+#   theme_vars <- names(default_theme_opts())
+#   opts_theme <- removeNulls(opts[theme_vars])
+#   # str(opts_theme)
+#   opts_theme <- removeNulls(modifyList(opts$theme, opts_theme))
+# }
 
 
-datasketch_style <- function(){
-  list(
-    palette = c("#f9e853", "#9cec5b", "#50c5b7",
-                "#b33f90", "#ff9a2c", "#54419b",
-                "#f75e64", "#5d6ae9"),
-    background = "#FaFaF5"
-  )
-}
 
-default_theme_opts <- function(){
-
-
-  list(
-    logo = "",
-    logo_position = "right",
-    palette_colors = datasketch_style()$palette,
-    branding_include = FALSE,
-    branding_text = "",
-    background_color = datasketch_style()$background,
-    branding_background_color = "",
-    accent_color = "#d2a045",
-    text_size = 11,
-    text_color = "#6D8089",
-    text_family = "Ubuntu",
-    line_color = "#DDDDF9",
-    line_size = 1,
-    title_color = "#444444",
-    title_allign = "left", # left - center - right
-    title_family = "Montserrat",
-    subtitle_color = "#999999",
-    subtitle_allign = "left", # left - center - right
-    # caption = "", # Needed to update chart caption when logo defined
-    caption_color = "#AAAAAA",
-    caption_allign = "right", # left - center - right
-    axis_title_color = '#5A6B72',
-    axis_line_color = '#DDDDF9',
-    axis_ticks_color = '#DDDDF9',
-    grid_color =  "#fafafa"
-  )
-}
 
 
 theme_datasketch <- function(opts = NULL){
@@ -199,7 +150,8 @@ theme_datasketch <- function(opts = NULL){
       size = rel(0.9),
       vjust=1),
     axis.ticks = element_line(
-      colour = thm$axis_ticks_colour %||% thm$axis_line_colour),
+      colour = thm$axis_ticks_colour %||% thm$axis_line_colour,
+      size = 0.3),
     # axis.ticks.length = grid::unit(0.15, "cm"),
     # axis.ticks.length.x.bottom = grid::unit(0.15, "cm"),
     # axis.ticks.length.x.top = grid::unit(0.15, "cm"),

@@ -13,7 +13,7 @@
 gg_bar_CatNum <- function(data, ...){
 
   if (is.null(data)) stop(" dataset to visualize")
-  opts <- merge_ggmagic_options(...)
+  opts <- dsvizopts::merge_dsviz_options(...)
 
   f <- homodatum::fringe(data)
   nms <- getFringeLabels(f)
