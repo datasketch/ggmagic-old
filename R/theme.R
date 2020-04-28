@@ -1,30 +1,4 @@
-
-
-# merge_theme_options <- function(opts){
-#   # if(!is.null(opts$logo)) opts$footer_include <- TRUE
-#   opts$logo_path <- local_logo_path(logo = opts$logo, opts$background_color)
-#   message(opts$logo_path)
-#   if(opts$footer_include){
-#     if(is.null(opts$logo)) stop("Add logo")
-#     opts$caption <- opts$caption %||% ""
-#     opts$caption <- glue::glue_data(opts, "{caption}<br>
-#                           <span style = 'font-size:6pt;'>{footer_text}</span>
-#                           <img src='{logo_path}' width = '{logo_width}'/>")
-#   }
-#   opts$theme$footer_include <- opts$footer_include
-#   opts$theme$branding_include <- opts$branding_include
-#
-#   theme_vars <- names(default_theme_opts())
-#   opts_theme <- removeNulls(opts[theme_vars])
-#   # str(opts_theme)
-#   opts_theme <- removeNulls(modifyList(opts$theme, opts_theme))
-# }
-
-
-
-
-
-theme_datasketch <- function(opts = NULL){
+add_ggmagic_theme <- function(opts = NULL){
   message("in theme_datasketch")
   # str(opts)
   plot_margin_bottom <- 8

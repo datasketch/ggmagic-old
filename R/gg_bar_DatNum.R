@@ -4,8 +4,8 @@
 #'
 #' @param data A data.frame
 #' @param orientation Doesn't do anything for this type of chart.
-#' @inherit ggmagic_default_opts
-#' @inheritDotParams ggmagic_default_opts
+#' @inherit dsvizopts::dsviz_default_opts
+#' @inheritDotParams dsvizopts::dsviz_default_opts
 #' @section ctypes:
 #' Dat-Num, Yea-Num
 #' @examples
@@ -13,7 +13,7 @@
 #' @export
 gg_bar_DatNum <- function(data, ...){
 
-  if (is.null(data)) stop(" dataset to visualize")
+  if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
   f <- homodatum::fringe(data)
@@ -21,18 +21,15 @@ gg_bar_DatNum <- function(data, ...){
   d <- getFringeDataFrame(f)
 
   #axis_text_angle
-  labsXY <- dsvizopts::labelsXY(opts$title$hor_title, opts$title$ver_title,
+  labsXY <- labelsXY(opts$title$hor_title, opts$title$ver_title,
                        nms, opts$chart$orientation)
   hor_title <- labsXY[1]
   ver_title <- labsXY[2]
 
-  # labelsXY <- opts$title$hor_title %||% nms[1]
-  # labelsXY[2] <- opts$title$ver_title %||% nms[2]
-  # if(opts$chart$orientation == "hor") labelsXY <- rev(labelsXY)
-
   # Drop NAs
   # Add NAs as categories or dates when it makes sense
-  d <- preprocessData(d, opts$preprocess)
+  d <- preprocessData(d, drop_na = opts$preprocess$drop_na,
+                      na_label = opts$preprocess$na_label, na_label_cols = "a")
 
   # Summarize
   d <- summarizeData(d, opts$summarize$agg, to_agg = b, a)
@@ -59,14 +56,8 @@ gg_bar_DatNum <- function(data, ...){
     scale_y_continuous(labels = f_nums) +
     scale_x_date(labels = f_date)
 
-  # if (opts$orientation == "hor")
-  #   gg <- gg +
-  #   coord_flip()
 
-  # # opts_theme <- merge_theme_options(opts)
-  # message("opts$theme")
-  # # str(opts$theme)
-  gg <- gg + theme_datasketch(opts$theme)
+  gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
 
 }

@@ -3,8 +3,8 @@
 #' This chart does not allow for chaning orientation
 #'
 #' @param data A data.frame
-#' @inherit ggmagic_default_opts
-#' @inheritDotParams ggmagic_default_opts
+#' @inherit dsvizopts::dsviz_default_opts
+#' @inheritDotParams dsvizopts::dsviz_default_opts
 #' @section ctypes:
 #' Cat-Num, Yea-Num
 #' @examples
@@ -28,7 +28,8 @@ gg_bar_CatNum <- function(data, ...){
 
   # Drop NAs
   # TODO: Add NAs as categories or dates when it makes sense
-  d <- preprocessData(d, opts$preprocess)
+  d <- preprocessData(d, drop_na = opts$preprocess$drop_na,
+                      na_label = opts$preprocess$na_label, na_label_cols = "a")
 
   # Summarize
   d <- summarizeData(d, opts$summarize$agg, to_agg = b, a)
@@ -57,10 +58,7 @@ gg_bar_CatNum <- function(data, ...){
   if (opts$chart$orientation == "hor")
     gg <- gg + coord_flip()
 
-  # opts_theme <- merge_theme_options(opts)
-  # str(opts_theme)
-  # ??? gg + labs(caption = opts_theme$caption)
-  gg <- gg + theme_datasketch(opts$theme)
+  gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
 
 }

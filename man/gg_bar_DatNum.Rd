@@ -10,37 +10,34 @@ gg_bar_DatNum(data, ...)
 \item{data}{A data.frame}
 
 \item{...}{
-  Arguments passed on to \code{\link[=ggmagic_default_opts]{ggmagic_default_opts}}
+  Arguments passed on to \code{\link[dsvizopts:dsviz_default_opts]{dsvizopts::dsviz_default_opts}}
   \describe{
-    \item{\code{agg}}{defaults to "sum"}
-    \item{\code{agg_text}}{defaults to NULL}
-    \item{\code{caption}}{defaults to NULL}
-    \item{\code{colors}}{defaults to NULL}
-    \item{\code{color_scale}}{defaults to discrete"}
-    \item{\code{drop_na}}{defaults to FALSE}
-    \item{\code{highlight_value}}{defaults to NULL}
-    \item{\code{highlight_value_color}}{defaults to '#F9B233'}
-    \item{\code{hor_label}}{defaults to NULL}
-    \item{\code{hor_line}}{defaults to NULL}
-    \item{\code{label_ratio}}{defaults to 1}
-    \item{\code{label_wrap}}{defaults to 12}
-    \item{\code{marks}}{defaults to c("." "")}
-    \item{\code{n_digits}}{defaults to NULL}
-    \item{\code{order}}{defaults to NULL}
-    \item{\code{percentage}}{defaults to FALSE}
-    \item{\code{prefix}}{defaults to NULL}
-    \item{\code{slice_n}}{defaults to NULL}
-    \item{\code{sort}}{defaults to "no"}
-    \item{\code{subtitle}}{defaults to NULL}
-    \item{\code{suffix}}{defaults to NULL}
-    \item{\code{text_color}}{defaults to "#5A6B72"}
-    \item{\code{text_show}}{defaults to TRUE}
-    \item{\code{text_size}}{defaults to 3}
-    \item{\code{theme}}{defaults to NULL}
-    \item{\code{title}}{defaults to NULL}
-    \item{\code{ver_label}}{defaults to NULL}
-    \item{\code{ver_line}}{defaults to NULL}
-    \item{\code{opts}}{defaults to NULL}
+    \item{\code{drop_na}}{drop NA values from input data}
+    \item{\code{na_label}}{replace NA values with string}
+    \item{\code{agg}}{Aggregation function for groups, defaults to sum}
+    \item{\code{agg_text}}{When there is aggegregaton agg_text is prepended to grouped variable}
+    \item{\code{sort}}{Whether to sort the data column: asc or desc}
+    \item{\code{slice_n}}{Slide the data from 1 to n}
+    \item{\code{order}}{Give the order of the categories}
+    \item{\code{axis_text_angle}}{Rotate axis ticks test}
+    \item{\code{color_by}}{Column to map colors}
+    \item{\code{format_dat_sample}}{Sample format for dates, e.g. "28/04/2020" or "February 28th 2020"}
+    \item{\code{format_num_sample}}{Sample format for numbers, e.g. "1,234.56" or "1'234.5678"}
+    \item{\code{format_cat_sample}}{Sample format for categories, e.g. "TITTLE", "lowercase", "Title Case"}
+    \item{\code{locale}}{Locale to use, e.g. "en-US"}
+    \item{\code{label_wrap}}{Number of characters to wrap long tick titles}
+    \item{\code{spline}}{Spline TRUE or FALSE for line charts (html only)}
+    \item{\code{prefix}}{Add preffix to values}
+    \item{\code{suffix}}{Add suffix to values}
+    \item{\code{label_wrap_legend}}{Wrap the legend string the given number of characters}
+    \item{\code{bubble_min}}{Relative min size of bubbles in chart}
+    \item{\code{bubble_max}}{Relative max size of bubbles in chart}
+    \item{\code{title}}{Chart title}
+    \item{\code{ver_title}}{Vertical axis title}
+    \item{\code{hor_title}}{Horizontal axis titble}
+    \item{\code{subtitle}}{Subtitle}
+    \item{\code{caption}}{Caption}
+    \item{\code{opts}}{All of the previous options can be passed as list of options opts}
   }}
 
 \item{orientation}{Doesn't do anything for this type of chart.}
