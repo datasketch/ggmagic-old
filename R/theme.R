@@ -1,5 +1,4 @@
 add_ggmagic_theme <- function(opts = NULL){
-  message("in theme_datasketch")
   # str(opts)
   plot_margin_bottom <- 8
   if(opts$branding_include)
@@ -29,7 +28,7 @@ add_ggmagic_theme <- function(opts = NULL){
     axis_title_y_colour = opts$axis_title_y_color%||% opts$text_color,
     # axis_title_y_angle = opts$axis_title_y_angle,
     axis_ticks_colour = opts$axis_ticks_color %||% opts$line_color, # transparent
-    legend_background_colour = opts$legend_background_color %||% opts$text_color,
+    legend_background_colour = opts$legend_background_color %||% opts$background_color,
     legend_background_fill = opts$legend_background_fill %||% opts$background_color,
     legend_key_colour = opts$legend_key_color %||% opts$background_color,
     legend_key_fill = opts$legend_key_fill %||% opts$background_color,
@@ -138,7 +137,7 @@ add_ggmagic_theme <- function(opts = NULL){
     legend.key = element_rect(
       colour = thm$legend_key_colour,
       fill = thm$legend_key_fill),
-    # legend.key.size = grid::unit( 1.2, "lines"),
+    legend.key.size = grid::unit( 1.2, "lines"),
     legend.key.height = NULL,
     legend.key.width = NULL,
     legend.text = element_text(
@@ -237,3 +236,34 @@ add_ggmagic_theme <- function(opts = NULL){
     complete = TRUE
   )
 }
+
+
+#' @export
+add_ggmagic_theme_clean <- function(opts = NULL){
+  add_ggmagic_theme(opts = opts) + theme(
+    axis.line=element_blank(),
+    axis.title.x=element_blank(),
+    axis.text.x=element_blank(),
+    axis.text.y=element_blank(),
+    axis.ticks=element_blank(),
+    axis.ticks.x=element_blank(),
+    axis.ticks.y=element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid.major=element_blank())
+}
+
+add_theme_ggmagic_legend <- function() {
+  theme(
+    legend.title= element_blank(),
+    legend.key = element_rect(fill = "transparent", colour = "transparent"),
+    legend.key.size = unit(0.5, "cm"),
+    legend.text=element_text(color=custom$font_color,size=11, margin = margin(0, .3, 0, 0, "cm")),
+    legend.background = element_rect(colour = NA, fill = 'transparent'),
+    plot.caption = element_text(hjust = 1),
+    #legend.box.spacing = unit(0.3, "cm"),
+    #legend.box.margin = margin(0.3, 0.3, 0.3, 0.3, "cm"),
+    legend.box.background = element_rect(colour = "transparent", fill = "transparent")
+  )
+}
+
+

@@ -1,12 +1,13 @@
 test_that("gg bar DatNum", {
 
-  library(homodatum)
-  library(paletero)
-  library(makeup)
 
   data <- sampleData("Dat-Num", n = 10, rep = FALSE)
-  data
-  # opts <- ggmagic:::theme_defaults()
+  opts <- dsvizopts::dsviz_defaults()
+
+  l <- ggmagic_prep(data, opts)
+
+
+
 
   gg_bar_DatNum(data)
   gg_bar_DatNum(data, logo = "datasketch", caption ="some caption")
@@ -39,7 +40,7 @@ test_that("gg bar DatNum", {
     title = "Nice chart",
     subtitle = "I really like this",
     caption = "This is some info about the chart",
-    theme = list(background_color = "#888810")
+    theme = list(background_color = "#a8a840", text_color = "#ffffff")
   )
   gg_bar_DatNum(data, opts = opts)
   gg_bar_DatNum(data,   format_dat_sample = "Ene 10",
@@ -54,7 +55,7 @@ test_that("gg bar DatNum", {
     caption = "This is some info about the chart",
     footer_text = "powered by: ",
     logo = "datasketch",
-    theme = list(background_color = "#888810")
+    theme = list(background_color = "#a8a840", text_color = "#ffffff")
   )
   gg <- gg_bar_DatNum(data, opts = opts)
   gg

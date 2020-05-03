@@ -12,53 +12,28 @@
 #' @export
 gg_bar_CatNum <- function(data, ...){
 
-  if (is.null(data)) stop(" dataset to visualize")
+  if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  f <- homodatum::fringe(data)
-  nms <- getFringeLabels(f)
-  d <- getFringeDataFrame(f)
+  l <- ggmagic_prep(data, opts)
 
-  #axis_text_angle
-  labelsXY <- opts$title$hor_title %||% nms[1]
-  labelsXY[2] <- opts$title$ver_title %||% nms[2]
-  if(opts$chart$orientation == "hor") labelsXY <- rev(labelsXY)
-  hor_title <- labelsXY[1]
-  ver_title <- labelsXY[2]
-
-  # Drop NAs
-  # TODO: Add NAs as categories or dates when it makes sense
-  d <- preprocessData(d, drop_na = opts$preprocess$drop_na,
-                      na_label = opts$preprocess$na_label, na_label_cols = "a")
-
-  # Summarize
-  d <- summarizeData(d, opts$summarize$agg, to_agg = b, a)
-
-  # Styles
-  # Handle colors
-  color_by <- names(nms[match(opts$style$color_by, nms)])
-  palette <- opts$theme$palette_colors
-  d$..colors <- paletero::map_colors(d, color_by, palette, colors_df = NULL)
-
-  # Handle number/strings/dates formats
-  f_cats <-  makeup::makeup_format(sample = opts$style$format_cat_sample,
-                                   type = "chr" )
-  f_nums <- makeup::makeup_format(sample = opts$style$format_num_sample)
-
-  gg <- ggplot(d, aes(x = a, y = b, fill = ..colors )) +
+  d <- l$d
+  gg <- ggplot(l$d, aes(x = a, y = b, fill = ..colors )) +
     geom_bar(stat = "identity") +
     scale_fill_identity() +
-    labs(title = opts$title$title,
-         subtitle = opts$title$subtitle,
-         caption = opts$title$caption,
-         x = hor_title, y = ver_title) +
-    scale_y_continuous(labels = f_nums) +
-    scale_x_discrete(labels = f_cats)
+    labs(title = l$titles$title,
+         subtitle = l$titles$subtitle,
+         caption = l$titles$caption,
+         x = l$titles$x,
+         y = l$titles$y) +
+    scale_y_continuous(labels = l$formats$f_nums) +
+    scale_x_discrete(labels = l$formats$f_cats)
 
-  if (opts$chart$orientation == "hor")
+  if (l$orientation == "hor")
     gg <- gg + coord_flip()
 
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
 
 }
+

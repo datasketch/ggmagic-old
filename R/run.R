@@ -1,4 +1,6 @@
 #' @import dsvizopts
+#' @import homodatum
+#' @import makeup
 #' @export
 run_gg <- function(d,ggname){
 

@@ -15,6 +15,9 @@ Ggplot2 visualization
 \description{
 Compare aggregations among category's levels
 }
+\details{
+Color by, does not work, defaults to Cat var
+}
 \section{ctypes}{
 
 Cat-Num, Dat-Num, Yea-Num
