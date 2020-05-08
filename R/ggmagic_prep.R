@@ -12,8 +12,8 @@ ggmagic_prep <- function(data, opts = NULL, extra_pattern = "."){
 
   needs_CatNum_agg <- f$frtype == "Cat"
 
-  nms <- getFringeLabels(f)
-  d <- getFringeDataFrame(f)
+  nms <- fringe_labels(f)
+  d <- fringe_data(f)
 
   if(needs_CatNum_agg){
     d <- d %>%
