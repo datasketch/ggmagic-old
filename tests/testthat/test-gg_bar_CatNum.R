@@ -10,6 +10,14 @@ test_that("gg bar Cat Num", {
   gg_bar_CatNum(data)
   gg_bar_CatNum(data, logo = "datasketch", caption ="some caption")
 
+  opts <- dsvizopts::dsviz_defaults()
+  opts$postprocess$sort <- "asc"
+  l <- ggmagic_prep(data, opts)
+  l$d
+  gg_bar_CatNum(data, sort = "asc")
+
+  gg_bar_CatNum(data, logo = "datasketch", caption ="some caption")
+
   gg_bar_CatNum(data, logo = "datasketch",
                 caption ="some caption",
                 color_by = names(data)[1])

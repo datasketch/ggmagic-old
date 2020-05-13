@@ -27,7 +27,7 @@ gg_bar_CatNum <- function(data, ...){
          x = l$titles$x,
          y = l$titles$y) +
     scale_y_continuous(labels = l$formats$f_nums) +
-    scale_x_discrete(labels = l$formats$f_cats)
+    scale_x_discrete(labels = l$formats$f_cats, limits = d$a)
 
   if (l$orientation == "hor")
     gg <- gg + coord_flip()
