@@ -1,7 +1,13 @@
 Package: ggmagic
 Title: Wrapper for Multiple Plots using ggplot.
 Version: 0.0.0.1
-Author: Juan Pablo Marin Diaz
+Authors@R: c( 
+    person(given = "Juan Pablo",
+           family = "Marin Diaz",
+           role = c("aut", "cre"),
+           email = "jpmarindiaz@gmail.com"),
+    person("Datasketch", role = c("cph", "fnd"))
+    )
 Maintainer: Juan Pablo Marin Diaz <jpmarindiaz@gmail.com>
 Description: Plot recommendation with tidy data fringes.
 Depends:

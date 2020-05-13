@@ -38,7 +38,11 @@ ggmagic_prep <- function(data, opts = NULL, extra_pattern = "."){
 
   # Postprocess
   d <- postprocess(d, "b", sort = opts$postprocess$sort, slice_n = opts$postprocess$slice_n)
-  d <- order_category(d, col = "a", order = opts$postprocess$order, label_wrap = opts$style$label_wrap)
+
+  if(f$dic$hdType[1] == "Cat"){
+    d <- dsvizopts::order_category(d, col = "a", order = opts$postprocess$order,
+                                   label_wrap = opts$style$label_wrap)
+  }
 
 
   # Styles
