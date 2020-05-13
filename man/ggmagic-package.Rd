@@ -8,4 +8,13 @@
 \description{
 Plot recommendation with tidy data fringes.
 }
+\author{
+\strong{Maintainer}: Juan Pablo Marin Diaz \email{jpmarindiaz@gmail.com}
+
+Other contributors:
+\itemize{
+  \item Datasketch [copyright holder, funder]
+}
+
+}
 \keyword{internal}

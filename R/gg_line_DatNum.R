@@ -1,15 +1,16 @@
-#' Bar Chart Date Numeric
+#' Line Chart Date Numeric
 #'
 #' This chart does not allow for chaning orientation
 #'
 #' @param data A data.frame
 #' @param orientation Doesn't do anything for this type of chart.
+#' @param order doesn't do anything
 #' @inherit dsvizopts::dsviz_default_opts
 #' @inheritDotParams dsvizopts::dsviz_default_opts
 #' @section ctypes:
 #' Dat-Num, Yea-Num
 #' @examples
-#' gg_bar_DatNum(sampleData("Cat-Num", nrow = 10))
+#' gg_line_DatNum(sampleData("Cat-Num", nrow = 10))
 #' @export
 gg_line_DatNum <- function(data, ...){
 
