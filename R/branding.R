@@ -38,7 +38,7 @@ add_branding_bar <- function(gg, opts_theme, debug = FALSE){
                         y = logo_y,
                         hjust = logo_hjust,
                         vjust = logo_vjust,
-                        margin = unit(c(5,5,5,5),'pt'),
+                        margin = unit(c(5,20,5,20),'pt'),
                         # padding = unit(c(0,0,5,5),'pt'),
                         gp = grid::gpar(fontsize = branding_text_size,
                                   fontfamily = text_family,
@@ -50,7 +50,7 @@ add_branding_bar <- function(gg, opts_theme, debug = FALSE){
                         y = text_y,
                         hjust = text_hjust,
                         vjust = text_vjust,
-                        margin = unit(c(5,5,8,5),'pt'),
+                        margin = unit(c(5,20,8,20),'pt'),
                         # padding = unit(c(5,0,5,5),'pt'),
                         box_gp = grid::gpar(
                           col = ifelse(debug,"black","transparent"),

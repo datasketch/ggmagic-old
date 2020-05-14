@@ -17,17 +17,19 @@ test_that("gg bar DatNum", {
   gg_bar_DatNum(data, title = "Nice **title**")
 
   gg_bar_DatNum(data, title = "Nice **title**",
+                subtitle = "This is some small information",
                 caption = "Hola _caption_",
                 branding_include = TRUE,
                 logo = "https://www.r-project.org/logo/Rlogo.png",
                 logo_width = 20)
 
   gg_bar_DatNum(data, title = "Nice **title**",
+                subtitle = "This is some small information",
                 caption = "Hola _caption_",
                 logo = "https://www.r-project.org/logo/Rlogo.png",
                 branding_include = TRUE,
                 branding_background_color = "#ccccfa",
-                footer_text = "Visualización por: ")
+                branding_text = "Visualización por mi")
 
 
   gg_bar_DatNum(data, background_color = "#FF9876")

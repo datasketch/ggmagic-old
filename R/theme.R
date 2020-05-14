@@ -205,7 +205,7 @@ add_ggmagic_theme <- function(opts = NULL){
       debug=FALSE,
       family = thm$plot_title_family,
       colour = thm$plot_title_colour,
-      margin=margin(6, 0, title_bottom, 0),
+      margin=margin(6, -3, title_bottom, 0),
       size = rel(1.2),
       hjust = thm$plot_title_hjust,
       vjust = 1,
@@ -232,7 +232,7 @@ add_ggmagic_theme <- function(opts = NULL){
       align_heights = TRUE,
       lineheight = 1.5,
       face='plain'),
-    plot.margin = margin(5, 5, plot_margin_bottom, 5),
+    plot.margin = margin(15, 20, plot_margin_bottom, 20),
     complete = TRUE
   )
 }
