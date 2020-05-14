@@ -10,6 +10,22 @@ test_that("gg bar DatNum", {
 
 
   gg_bar_DatNum(data)
+  gg_bar_DatNum(data, grid_color = "#44aa56", grid_size = 0.8, line_size = 0.3,
+                axis_line_color = "#aa0000")
+  gg_bar_DatNum(data,
+                grid_y_color = "#444444",
+                grid_x_color = "#ff4444",
+                grid_line_type = "dashed")
+
+  gg_bar_DatNum(data,
+                grid_y_color = "#444444",
+                grid_x_color = "#ff4444",
+                grid_size = 0.1,
+                grid_y_line_type = "dashed",
+                axis_line_color = "#00f100",
+                axis_line_size = 3)
+
+
   gg_bar_DatNum(data, logo = "datasketch", caption ="some caption")
   gg_bar_DatNum(data,
                 branding_include = TRUE,
