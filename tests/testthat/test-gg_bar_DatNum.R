@@ -21,9 +21,11 @@ test_that("gg bar DatNum", {
                 grid_y_color = "#444444",
                 grid_x_color = "#ff4444",
                 grid_size = 0.1,
+                axis_line_size = 5,
+                line_size = 0,
                 grid_y_line_type = "dashed",
-                axis_line_color = "#00f100",
-                axis_line_size = 3)
+                axis_line_color = "#00f100"
+                )
 
 
   gg_bar_DatNum(data, logo = "datasketch", caption ="some caption")
