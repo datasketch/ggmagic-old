@@ -7,7 +7,7 @@
 #' #' @section ctypes:
 #' #' Cat-Num, Yea-Num, Dat-Num,
 #' #' @examples
-#' #' gg_treemap_CatNum(sampleData("Cat-Num", nrow = 10))
+#' #' gg_treemap_CatNum(sample_data("Cat-Num", nrow = 10))
 #' #' @export gg_treemap_CatNum
 #' gg_treemap_CatNum <- function(data = NULL,
 #'                               agg = "sum",
@@ -141,7 +141,7 @@
 #' #' @section ctypes:
 #' #' Cat, Yea, Dat
 #' #' @examples
-#' #' gg_treemap_Cat(sampleData("Cat", nrow = 10))
+#' #' gg_treemap_Cat(sample_data("Cat", nrow = 10))
 #' #' @export gg_treemap_Cat
 #' gg_treemap_Cat <-  function(data = NULL,
 #'                             agg_text = NULL,
@@ -224,7 +224,7 @@
 #' #' @section ctypes:
 #' #' Cat-Cat-Num, Cat-Yea-Num, Cat-Dat-Num,
 #' #' @examples
-#' #' gg_treemap_CatCatNum(sampleData("Cat-Cat-Num", nrow = 10))
+#' #' gg_treemap_CatCatNum(sample_data("Cat-Cat-Num", nrow = 10))
 #' #' @export gg_treemap_CatCatNum
 #' gg_treemap_CatCatNum <- function(data = NULL,
 #'                                  agg = "sum",
@@ -386,7 +386,7 @@
 #' #' @section ctypes:
 #' #' Cat-Cat, Cat-Yea, Cat-Dat,
 #' #' @examples
-#' #' gg_treemap_CatCat(sampleData("Cat-Cat", nrow = 10))
+#' #' gg_treemap_CatCat(sample_data("Cat-Cat", nrow = 10))
 #' #' @export gg_treemap_CatCat
 #' gg_treemap_CatCat <- function(data = NULL,
 #'                               agg_text = NULL,

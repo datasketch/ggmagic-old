@@ -54,5 +54,5 @@ Cat, Yea, Dat
 }
 
 \examples{
-gg_donut_Cat(sampleData("Cat", nrow = 10))
+gg_donut_Cat(sample_data("Cat", nrow = 10))
 }

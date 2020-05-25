@@ -21,5 +21,5 @@ Cat, Yea, Dat
 }
 
 \examples{
-gg_pie_Cat(sampleData("Cat", nrow = 10))
+gg_pie_Cat(sample_data("Cat", nrow = 10))
 }

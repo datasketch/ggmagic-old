@@ -9,7 +9,7 @@
 #' @section ctypes:
 #' Cat-Num, Dat-Num, Yea-Num
 #' @examples
-#' gg_pie_CatNum(sampleData("Cat-Num", nrow = 10))
+#' gg_pie_CatNum(sample_data("Cat-Num", nrow = 10))
 #' @export gg_pie_CatNum
 gg_pie_CatNum <- function(data = NULL,
                           ...) {
@@ -51,7 +51,7 @@ gg_pie_CatNum <- function(data = NULL,
 #' @section ctypes:
 #' Cat, Yea, Dat
 #' @examples
-#' gg_pie_Cat(sampleData("Cat", nrow = 10))
+#' gg_pie_Cat(sample_data("Cat", nrow = 10))
 #' @export gg_pie_Cat
 gg_pie_Cat <- gg_pie_CatNum
 
@@ -65,7 +65,7 @@ gg_pie_Cat <- gg_pie_CatNum
 #' @section ctypes:
 #' Cat-Num, Dat-Num, Yea-Num
 #' @examples
-#' gg_donut_CatNum(sampleData("Cat-Num", nrow = 10))
+#' gg_donut_CatNum(sample_data("Cat-Num", nrow = 10))
 #' @export gg_donut_CatNum
 
 gg_donut_CatNum <- function(data = NULL,
@@ -114,7 +114,7 @@ gg_donut_CatNum <- function(data = NULL,
 #' @section ctypes:
 #' Cat, Yea, Dat
 #' @examples
-#' gg_donut_Cat(sampleData("Cat", nrow = 10))
+#' gg_donut_Cat(sample_data("Cat", nrow = 10))
 #' @export gg_donut_Cat
 gg_donut_Cat <- function(data = NULL,
                          agg_text = NULL,

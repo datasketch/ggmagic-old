@@ -10,7 +10,7 @@
 #' @section ctypes:
 #' Dat-Num, Yea-Num
 #' @examples
-#' gg_line_DatNum(sampleData("Cat-Num", nrow = 10))
+#' gg_scatter_NumNum(sample_data("Num-Num", nrow = 10))
 #' @export
 gg_scatter_NumNum <- function(data, ...){
 

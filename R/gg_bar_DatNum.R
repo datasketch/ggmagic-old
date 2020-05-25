@@ -9,7 +9,7 @@
 #' @section ctypes:
 #' Dat-Num, Yea-Num
 #' @examples
-#' gg_bar_DatNum(sampleData("Cat-Num", nrow = 10))
+#' gg_bar_DatNum(sample_data("Cat-Num", nrow = 10))
 #' @export
 gg_bar_DatNum <- function(data, ...){
 

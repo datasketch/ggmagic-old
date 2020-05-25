@@ -1,7 +1,7 @@
 test_that("branding works", {
 
   # extrafont::loadfonts(device="postscript")
-  extrafont::loadfonts()
+  # extrafont::loadfonts()
 
   library(gridExtra)
   library(homodatum)
@@ -9,7 +9,7 @@ test_that("branding works", {
   library(ggtext)
   library(gridtext)
 
-  data <- sampleData("Dat-Num", n = 10, rep = FALSE)
+  data <- sample_data("Dat-Num", n = 10, rep = FALSE)
   opts <- list(
     format_dat_sample = "Ene 10",
     locale = "es-CO",

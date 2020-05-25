@@ -7,7 +7,7 @@
 #' #' @section ctypes:
 #' #' Cat-Num
 #' #' @examples
-#' #' gg_area_CatNum(sampleData("Cat-Num", nrow = 10))
+#' #' gg_area_CatNum(sample_data("Cat-Num", nrow = 10))
 #' #' @export gg_area_CatNum
 #' gg_area_CatNum <- function(data = NULL,
 #'                            agg = "sum",
@@ -208,7 +208,7 @@
 #' #' @section ctypes:
 #' #' Cat
 #' #' @examples
-#' #' gg_area_Cat(sampleData("Cat", nrow = 10))
+#' #' gg_area_Cat(sample_data("Cat", nrow = 10))
 #' #' @export gg_area_Cat
 #' gg_area_Cat <- function(data = NULL,
 #'                         agg_text = NULL,
@@ -304,7 +304,7 @@
 #' #' @section ctypes:
 #' #' Cat-Cat-Num, Cat-Dat-Num, Cat-Yea-Num, Yea-Cat-Num, Yea-Dat-Num, Yea-Yea-Num, Dat-Cat-Num, Dat-Yea-Num, Dat-Dat-Num
 #' #' @examples
-#' #' gg_area_CatCatNum(sampleData("Cat-Cat-Num", nrow = 10))
+#' #' gg_area_CatCatNum(sample_data("Cat-Cat-Num", nrow = 10))
 #' #' @export gg_area_CatCatNum
 #' gg_area_CatCatNum <- function(data = NULL,
 #'                               agg = "sum",
@@ -585,7 +585,7 @@
 #' #' @section ctypes:
 #' #' Cat-Cat, Cat-Dat, Cat-Yea, Yea-Cat, Yea-Dat, Yea-Yea, Dat-Cat, Dat-Yea, Dat-Dat
 #' #' @examples
-#' #' gg_area_CatCat(sampleData("Cat-Cat", nrow = 10))
+#' #' gg_area_CatCat(sample_data("Cat-Cat", nrow = 10))
 #' #' @export gg_area_CatCat
 #' gg_area_CatCat <- function(data = NULL,
 #'                            agg_text = NULL,

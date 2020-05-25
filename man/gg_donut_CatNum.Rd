@@ -21,5 +21,5 @@ Cat-Num, Dat-Num, Yea-Num
 }
 
 \examples{
-gg_donut_CatNum(sampleData("Cat-Num", nrow = 10))
+gg_donut_CatNum(sample_data("Cat-Num", nrow = 10))
 }

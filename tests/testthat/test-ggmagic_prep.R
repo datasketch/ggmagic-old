@@ -1,6 +1,6 @@
 test_that("Test extra options", {
 
-  data <- sampleData("Cat-Num")
+  data <- sample_data("Cat-Num")
   opts <- dsviz_default_opts()
 
   # Pie
@@ -12,13 +12,13 @@ test_that("Test extra options", {
   l <- ggmagic_prep(data, opts, extra_pattern = "donut")
   expect_equal(names(l$extra), c("donut_dataLabels_pos", "donut_width"))
   expect_equal(l$extra$donut_dataLabels_pos, 1.1)
-  expect_equal(l$extra$donut_width, 0.1)
+  expect_equal(l$extra$donut_width, 0.2)
 
 })
 
 test_that("Cat -> CatNum aggregation works",{
 
-  data <- sampleData("Cat")
+  data <- sample_data("Cat")
   opts <- dsviz_default_opts()
   l <- ggmagic_prep(data, opts)
   d <- l$d

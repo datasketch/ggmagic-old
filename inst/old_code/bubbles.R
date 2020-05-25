@@ -9,7 +9,7 @@
 #'   if (is.null(data)) {
 #'     stop("Load an available dataset")
 #'   }
-#'   data <- sampleData('Cat-Num')
+#'   data <- sample_data('Cat-Num')
 #'   opts <- getOptions(opts = opts)
 #'
 #'   f <- fringe(data)

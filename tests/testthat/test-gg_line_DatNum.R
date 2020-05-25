@@ -1,7 +1,7 @@
 test_that("gg bar DatNum", {
 
 
-  data <- sampleData("Dat-Num", n = 30, rep = FALSE)
+  data <- sample_data("Dat-Num", n = 30, rep = FALSE)
   opts <- dsvizopts::dsviz_defaults()
 
   l <- ggmagic_prep(data, opts)

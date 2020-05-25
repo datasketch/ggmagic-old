@@ -7,7 +7,7 @@ library(ggmagic)
 
 # Area
 
-cat_data <- sampleData("Cat")
+cat_data <- sample_data("Cat")
 gg_area_Cat(data = cat_data,
             agg_text = "Count of ",
             caption = "This is a caption",
@@ -52,7 +52,7 @@ gg_area_Cat(data = cat_data,
             ))
 
 
-catnum_data <- sampleData("Cat-Num", 300)
+catnum_data <- sample_data("Cat-Num", 300)
 gg_area_CatNum(data = catnum_data)
 gg_area_CatNum(data = catnum_data,
                agg = "mean",
@@ -70,17 +70,17 @@ gg_area_CatNum(data = catnum_data,
                ver_label = "Vertical axis",
                ver_line = 27)
 
-catcat_data <- sampleData("Cat-Cat", 300)
+catcat_data <- sample_data("Cat-Cat", 300)
 gg_area_CatCat(catcat_data)
 
-catcatnum_data <- sampleData("Cat-Cat-Num", 300)
+catcatnum_data <- sample_data("Cat-Cat-Num", 300)
 gg_area_CatCatNum(data = catcatnum_data,
                   percentage = TRUE,
                   legend_show = FALSE)
 
 
 # Lines
-cat_data <- sampleData("Cat")
+cat_data <- sample_data("Cat")
 gg_line_Cat(cat_data,
             opts = list(
               agg_text = "Count of ",
@@ -105,25 +105,25 @@ gg_line_Cat(cat_data,
             ))
 
 
-catnum_data <- sampleData("Cat-Num", 300)
+catnum_data <- sample_data("Cat-Num", 300)
 gg_line_CatNum(data = catnum_data)
 
 
-catcat_data <- sampleData("Cat-Cat")
+catcat_data <- sample_data("Cat-Cat")
 gg_line_CatCat(catcat_data)
 
 
-catcatnum_data <- sampleData("Cat-Cat-Num")
+catcatnum_data <- sample_data("Cat-Cat-Num")
 gg_line_CatCatNum(catcatnum_data)
 
 
 # Barras
 
 
-cat_data <- sampleData("Cat")
+cat_data <- sample_data("Cat")
 gg_bar_Cat(data = cat_data)
 
-catnum_data <- sampleData("Cat-Num", 300)
+catnum_data <- sample_data("Cat-Num", 300)
 gg_bar_CatNum(data = catnum_data)
 gg_bar_CatNum(data = catnum_data,
                agg = "mean",
@@ -140,11 +140,11 @@ gg_bar_CatNum(data = catnum_data,
                title = "This is a title",
                ver_label = "Vertical axis")
 
-catcat_data <- sampleData("Cat-Cat")
+catcat_data <- sample_data("Cat-Cat")
 gg_bar_CatCat(catcat_data)
 
 
-catcatnum_data <- sampleData("Cat-Cat-Num", 500)
+catcatnum_data <- sample_data("Cat-Cat-Num", 500)
 gg_bar_CatCatNum(catcatnum_data,
                  agg = "mean",
                  agg_text = "Mean of ",
@@ -155,11 +155,11 @@ gg_bar_CatCatNum(catcatnum_data,
 
 
 # pie
-cat_data <- sampleData("Cat")
+cat_data <- sample_data("Cat")
 gg_pie_Cat(data = cat_data)
 
 
-catnum_data <- sampleData("Cat-Num", 300)
+catnum_data <- sample_data("Cat-Num", 300)
 gg_pie_CatNum(data = catnum_data,
               agg = "mean",
               caption = "This is a caption",
@@ -169,19 +169,19 @@ gg_pie_CatNum(data = catnum_data,
               title = "This is a title")
 
 # dona
-cat_data <- sampleData("Cat")
+cat_data <- sample_data("Cat")
 gg_donut_Cat(data = cat_data)
 
 
 
 # Treemap
-cat_data <- sampleData("Cat", 300)
+cat_data <- sample_data("Cat", 300)
 gg_treemap_Cat(cat_data)
 
-catnum_data <- sampleData("Cat-Num", 300)
+catnum_data <- sample_data("Cat-Num", 300)
 gg_treemap_CatNum(catnum_data)
 
-catcatnum_data <- sampleData("Cat-Cat-Num", 500)
+catcatnum_data <- sample_data("Cat-Cat-Num", 500)
 gg_treemap_CatCatNum(catcatnum_data,
                      group_color = "#CCCCCC",
                      drop_na_v = c(TRUE, TRUE))

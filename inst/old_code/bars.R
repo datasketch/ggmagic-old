@@ -10,7 +10,7 @@
 #' @section ctypes:
 #' Cat-Num, Dat-Num, Yea-Num
 #' @examples
-#' gg_bar_CatNum(sampleData("Cat-Num", nrow = 10))
+#' gg_bar_CatNum(sample_data("Cat-Num", nrow = 10))
 #' @export gg_bar_CatNum
 gg_bar_CatNum <- function(data = NULL,
                           agg = "sum",
@@ -209,7 +209,7 @@ gg_bar_CatNum <- function(data = NULL,
 #' @section ctypes:
 #' Cat, Yea, Dat
 #' @examples
-#' gg_bar_Cat(sampleData("Cat", nrow = 10))
+#' gg_bar_Cat(sample_data("Cat", nrow = 10))
 #' @export gg_bar_Cat
 gg_bar_Cat <- function(data = NULL,
                        agg_text = NULL,
@@ -305,7 +305,7 @@ gg_bar_Cat <- function(data = NULL,
 #' @section ctypes:
 #' Cat-Cat-Num, Cat-Dat-Num, Cat-Yea-Num, Yea-Cat-Num, Yea-Dat-Num, Yea-Yea-Num, Dat-Cat-Num, Dat-Yea-Num, Dat-Dat-Num
 #' @examples
-#' gg_bar_CatCatNum(sampleData("Cat-Cat-Num", nrow = 10))
+#' gg_bar_CatCatNum(sample_data("Cat-Cat-Num", nrow = 10))
 #' @export gg_bar_CatCatNum
 gg_bar_CatCatNum <- function(data = NULL,
                              agg = "sum",
@@ -586,7 +586,7 @@ gg_bar_CatCatNum <- function(data = NULL,
 #' @section ctypes:
 #' Cat-Cat, Cat-Dat, Cat-Yea, Yea-Cat, Yea-Dat, Yea-Yea, Dat-Cat, Dat-Yea, Dat-Dat
 #' @examples
-#' gg_bar_CatCat(sampleData("Cat-Cat", nrow = 10))
+#' gg_bar_CatCat(sample_data("Cat-Cat", nrow = 10))
 #' @export gg_bar_CatCat
 gg_bar_CatCat <- function(data = NULL,
                           agg_text = NULL,

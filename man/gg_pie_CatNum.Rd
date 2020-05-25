@@ -24,5 +24,5 @@ Cat-Num, Dat-Num, Yea-Num
 }
 
 \examples{
-gg_pie_CatNum(sampleData("Cat-Num", nrow = 10))
+gg_pie_CatNum(sample_data("Cat-Num", nrow = 10))
 }
