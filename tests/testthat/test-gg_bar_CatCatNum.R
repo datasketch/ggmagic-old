@@ -1,20 +1,13 @@
 test_that("gg bar Cat Num", {
 
-
   library(homodatum)
-  data <- sample_data("Cat-Num")
-  gg_bar_CatNum(data)
+  data <- sample_data("Cat-Cat-Num")
   opts <- dsvizopts::dsviz_defaults()
-
-  f <- homodatum::fringe(data)
-  d <- fringe_d(f)
-
-  summarizeData(d, opts$summarize$agg, to_agg = b, a)
 
   l <- ggmagic_prep(data, opts)
 
 
-  gg_bar_CatNum(data)
+  gg_bar_CatCatNum(data)
   gg_bar_CatNum(data, logo = "datasketch", caption ="some caption")
 
   opts <- dsvizopts::dsviz_defaults()

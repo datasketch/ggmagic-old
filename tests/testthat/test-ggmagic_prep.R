@@ -28,4 +28,14 @@ test_that("Cat -> CatNum aggregation works",{
 
 })
 
+test_that("CatCatNum",{
+
+  d <- sample_data("Cat-Cat")
+  # color_by Always colors by second column
+  opts <- dsviz_default_opts()
+  ggmagic_prep(d, opts)
+
+
+})
+
 
