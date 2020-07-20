@@ -25,7 +25,7 @@ ggmagic_prep <- function(data, opts = NULL,
   }
 
 
-  if(f$frtype == "Cat-Dat-Num"){
+  if(f$frtype %in% c("Cat-Dat-Num","Cat-Yea-Num")){
     labelsXY <- opts$title$hor_title %||% nms[2]
     labelsXY[2] <- opts$title$ver_title %||% nms[3]
     color_title <- opts$title$color_title %||% nms[1]
@@ -42,18 +42,29 @@ ggmagic_prep <- function(data, opts = NULL,
   # TODO: Add NAs as categories or dates when it makes sense
   d <- dsvizopts::preprocessData(d, drop_na = opts$preprocess$drop_na,
                       na_label = opts$preprocess$na_label, na_label_cols = "a")
+
   # Summarize
-
-
   if(f$frtype == c("Cat-Num")){
     d <- dsvizopts::summarizeData(d, opts$summarize$agg, to_agg = b, a)
   }
-  if(f$frtype == c("Cat-Cat-Num")){
+  if(f$frtype %in% c("Cat-Cat-Num", "Cat-Yea-Num", "Cat-Dat-Num")){
     d <- summarizeData(d, opts$summarize$agg, to_agg = c, a, b)
   }
 
   # Postprocess
-  d <- dsvizopts::postprocess(d, "b", sort = opts$postprocess$sort, slice_n = opts$postprocess$slice_n)
+  if(f$frtype == c("Cat-Num")){
+    d <- dsvizopts::postprocess(d, "b", sort = opts$postprocess$sort,
+                                slice_n = opts$postprocess$slice_n)
+  }
+
+  # Complete missing with 0s
+  if(family == "area" && opts$extra$graph_type == "stacked"){
+    d <- d %>%
+      ungroup() %>%
+      #filter(!is.na(b)) %>% # Remove missing years
+      tidyr::complete(a,nesting(b), fill = list(c = 0))
+
+  }
 
   if(f$dic$hdType[1] == "Cat"){
     d <- dsvizopts::order_category(d, col = "a", order = opts$postprocess$order,
@@ -69,7 +80,7 @@ ggmagic_prep <- function(data, opts = NULL,
   palette <- opts$theme$palette_colors
 
   d$..colors <- paletero::map_colors(d, color_by, palette, colors_df = NULL)
-  if(f$frtype == "Cat-Dat-Num" && family == "line"){
+  if(f$frtype %in% c("Cat-Dat-Num", "Cat-Yea-Num") && family %in% c("line","area")){
     d$..colors <- paletero::map_colors(d, color_by = "a", palette, colors_df = NULL)
   }
   if(grepl("Cat-Cat",f$frtype)){

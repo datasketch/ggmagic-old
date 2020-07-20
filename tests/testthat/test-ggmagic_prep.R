@@ -39,3 +39,20 @@ test_that("CatCatNum",{
 })
 
 
+test_that("CatYeaNum Stacked completion",{
+
+  data <- tibble(
+    cats = c("A","B","B", "C"),
+    years = Yea(c(2011,2010, 2011, 2012)),
+    nums = 1:4
+  )
+  opts <- dsviz_default_opts()
+  opts$extra$graph_type <- "stacked"
+  l <- ggmagic_prep(data, opts, family = "area")
+  expect_equal(nrow(l$d),9) # Completes
+
+
+
+
+})
+

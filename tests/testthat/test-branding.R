@@ -1,7 +1,7 @@
 test_that("branding works", {
 
-  # extrafont::loadfonts(device="postscript")
-  # extrafont::loadfonts()
+  extrafont::loadfonts(device="postscript")
+  extrafont::loadfonts()
 
   library(gridExtra)
   library(homodatum)

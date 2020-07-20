@@ -57,7 +57,7 @@ add_branding_bar <- function(gg, opts_theme, debug = FALSE){
                           fill = ifelse(debug,"black","transparent"),
                           alpha = ifelse(debug,0.3,1)),
                         gp = grid::gpar(fontsize = 8,
-                                  fontfamily = "Ubuntu",
+                                  fontfamily = text_family,
                                   col = branding_text_color
                         ))
   # grid.draw(text_grob)
