@@ -15,6 +15,8 @@ gg_bar_CatNum <- function(data, ...){
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
+  check_fonts(opts$theme)
+
   l <- ggmagic_prep(data, opts)
 
   d <- l$d
@@ -28,6 +30,7 @@ gg_bar_CatNum <- function(data, ...){
          y = l$titles$y) +
     scale_y_continuous(labels = l$formats$f_nums) +
     scale_x_discrete(labels = l$formats$f_cats, limits = d$a)
+    #scale_x_discrete(labels = l$formats$f_cats)
 
   if (l$orientation == "hor")
     gg <- gg + coord_flip()

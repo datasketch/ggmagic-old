@@ -5,7 +5,8 @@
 # bar_CatNum f_cats f_nums
 # dataLabels_location extra for pie
 
-ggmagic_prep <- function(data, opts = NULL, extra_pattern = "."){
+ggmagic_prep <- function(data, opts = NULL,
+                         extra_pattern = ".", family = ""){
 
   # Handle homodatum
   f <- homodatum::fringe(data)
@@ -24,9 +25,15 @@ ggmagic_prep <- function(data, opts = NULL, extra_pattern = "."){
   }
 
 
-  #axis_text_angle
-  labelsXY <- opts$title$hor_title %||% nms[1]
-  labelsXY[2] <- opts$title$ver_title %||% nms[2]
+  if(f$frtype == "Cat-Dat-Num"){
+    labelsXY <- opts$title$hor_title %||% nms[2]
+    labelsXY[2] <- opts$title$ver_title %||% nms[3]
+    color_title <- opts$title$color_title %||% nms[1]
+  }else{
+    labelsXY <- opts$title$hor_title %||% nms[1]
+    labelsXY[2] <- opts$title$ver_title %||% nms[2]
+    color_title <- NULL
+  }
   if(opts$chart$orientation == "hor") labelsXY <- rev(labelsXY)
   hor_title <- labelsXY[1]
   ver_title <- labelsXY[2]
@@ -58,12 +65,18 @@ ggmagic_prep <- function(data, opts = NULL, extra_pattern = "."){
   # Handle colors
   color_by <- names(nms[match(opts$style$color_by, nms)])
   # color_by <- "a" pie
-  palette <- opts$theme$palette_colors
-  d$..colors <- paletero::map_colors(d, color_by, palette, colors_df = NULL)
 
+  palette <- opts$theme$palette_colors
+
+  d$..colors <- paletero::map_colors(d, color_by, palette, colors_df = NULL)
+  if(f$frtype == "Cat-Dat-Num" && family == "line"){
+    d$..colors <- paletero::map_colors(d, color_by = "a", palette, colors_df = NULL)
+  }
   if(grepl("Cat-Cat",f$frtype)){
     d$..colors <- paletero::map_colors(d, color_by = "b", palette, colors_df = NULL)
   }
+
+
 
 
   # Handle number/strings/dates formats
@@ -92,12 +105,16 @@ ggmagic_prep <- function(data, opts = NULL, extra_pattern = "."){
 
   list(
     d = d,
+    colors = list(
+      c_cats = NULL # user for custom color values
+    ),
     titles = list(
       title = opts$title$title,
       subtitle = opts$title$subtitle,
       caption = opts$title$caption,
       x = hor_title,
-      y = ver_title
+      y = ver_title,
+      color = color_title
     ),
     orientation = opts$chart$orientation,
     formats = list(
