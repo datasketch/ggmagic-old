@@ -10,6 +10,25 @@ add_ggmagic_theme <- function(opts = NULL){
     subtitle_bottom <- 15
   }
 
+
+  grid_line_type <- opts$grid_line_type
+
+  if (grid_line_type == "Solid") {
+    grid_line_type <- 1
+  } else if (grid_line_type  == "Dot") {
+    grid_line_type <- 3
+  } else if (grid_line_type  == "Dash") {
+    grid_line_type <- 2
+  } else if (grid_line_type  == "DashDot") {
+    grid_line_type <- 4
+  } else if (grid_line_type  == "LongDash") {
+    grid_line_type <- 5
+  } else if (grid_line_type  == "ShortDash") {
+    grid_line_type <- 8
+  } else {
+    grid_line_type <- 1
+  }
+
   thm <- list(
     line_colour = opts$line_color,
     line_size = opts$line_size,
@@ -43,9 +62,9 @@ add_ggmagic_theme <- function(opts = NULL){
     grid_size = opts$grid_size %||% opts$line_size,
     grid_x_size = opts$grid_x_size %||% opts$grid_size,
     grid_y_size = opts$grid_y_size %||% opts$grid_size,
-    grid_line_type = opts$grid_line_type,
-    grid_x_line_type = opts$grid_x_line_type %||% opts$grid_line_type,
-    grid_y_line_type = opts$grid_y_line_type %||% opts$grid_line_type,
+    grid_line_type = grid_line_type,
+    grid_x_line_type = opts$grid_x_line_type %||% grid_line_type,
+    grid_y_line_type = opts$grid_y_line_type %||% grid_line_type,
     grid_color = opts$grid_color,
     grid_x_color = opts$grid_x_color %||% opts$grid_color,
     grid_y_color = opts$grid_y_color %||% opts$grid_color,

@@ -16,7 +16,7 @@ Depends:
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: no
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Imports:
     homodatum,
     paletero,
