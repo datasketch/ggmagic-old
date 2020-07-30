@@ -127,7 +127,7 @@ ggmagic_prep <- function(data, opts = NULL,
       y = ver_title,
       color = color_title
     ),
-    orientation = opts$chart$orientation,
+    orientation = opts$chart$orientation %||% "ver",
     formats = list(
       f_cats = f_cats,
       f_nums = f_nums,
