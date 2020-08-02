@@ -6,6 +6,11 @@ test_that("gg bar Cat Num", {
   gg_bar_CatNum(data)
   gg_bar_CatNum(data, title = "datasketch", caption ="some caption")
 
+
+  data <- sample_data("Cat-Num")
+  gg <- gg_bar_CatNum(data, color_by = names(data)[1])
+  gg
+
   gg_bar_CatNum(data, sort = "asc")
 
   gg_bar_CatNum(data, logo = "datasketch", caption ="some caption")

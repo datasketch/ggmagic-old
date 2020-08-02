@@ -15,7 +15,7 @@ gg_bar_CatNum <- function(data, ...){
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  check_fonts(opts$theme)
+  #check_fonts(opts$theme)
 
   l <- ggmagic_prep(data, opts)
 
