@@ -21,9 +21,6 @@ gg_bar_DatNum(data, ...)
     \item{\code{order}}{Give the order of the categories}
     \item{\code{axis_text_angle}}{Rotate axis ticks test}
     \item{\code{color_by}}{Column to map colors}
-    \item{\code{format_dat_sample}}{Sample format for dates, e.g. "28/04/2020" or "February 28th 2020"}
-    \item{\code{format_num_sample}}{Sample format for numbers, e.g. "1,234.56" or "1'234.5678"}
-    \item{\code{format_cat_sample}}{Sample format for categories, e.g. "TITTLE", "lowercase", "Title Case"}
     \item{\code{locale}}{Locale to use, e.g. "en-US"}
     \item{\code{label_wrap}}{Number of characters to wrap long tick titles}
     \item{\code{spline}}{Spline TRUE or FALSE for line charts (html only)}
