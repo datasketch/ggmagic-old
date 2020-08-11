@@ -46,9 +46,26 @@ ggmagic_prep <- function(data, opts = NULL,
   # Summarize
   if(f$frtype == c("Cat-Num")){
     d <- dsvizopts::summarizeData(d, opts$summarize$agg, to_agg = b, a)
+    if (opts$postprocess$percentage) {
+      d$b <- (d$b/sum(d$b))*100
+      opts$style$suffix <- "%"
+    }
   }
   if(f$frtype %in% c("Cat-Cat-Num", "Cat-Yea-Num", "Cat-Dat-Num")){
     d <- summarizeData(d, opts$summarize$agg, to_agg = c, a, b)
+    if (opts$postprocess$percentage) {
+      by_col <- opts$postprocess$percentage_col
+
+      if (is.null(by_col)) {
+        by_col <- "a"
+      } else {
+        by_col <- names(nms[match(by_col, nms)])
+      }
+
+      d <- d %>% group_by_(by_col) %>%
+        dplyr::mutate(c = (c / sum(c, na.rm = TRUE)) * 100)
+      opts$style$suffix <- "%"
+    }
   }
 
   # Postprocess
