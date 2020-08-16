@@ -1,11 +1,19 @@
 test_that("gg bar Cat Num", {
 
   library(homodatum)
-  data <- sample_data("Cat-Num")
 
+  data <- sample_data("Cat")
+  gg_bar_Cat(data)
+
+  data <- sample_data("Cat-Num")
   gg_bar_CatNum(data)
   gg_bar_CatNum(data, title = "datasketch", caption ="some caption")
 
+  d <- palmerpenguins::penguins
+  g <- gg_bar_CatNum(d %>% select(sex, body_mass_g),
+                     title = "Penguins",
+                     subtitle = as.character(Sys.time()))
+  g
 
   data <- sample_data("Cat-Num")
   gg <- gg_bar_CatNum(data, color_by = names(data)[1])

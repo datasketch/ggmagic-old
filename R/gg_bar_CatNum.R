@@ -40,3 +40,13 @@ gg_bar_CatNum <- function(data, ...){
 
 }
 
+#' Bar Chart Cat
+#'
+#' This chart does not allow for chaning orientation
+#'
+#' @param data A data.frame
+#' @examples
+#' gg_bar_Cat(sample_data("Cat", nrow = 10))
+#' @export
+gg_bar_Cat <- gg_bar_CatNum
+
