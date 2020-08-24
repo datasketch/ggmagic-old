@@ -23,6 +23,7 @@ Imports:
     makeup,
     dsvizopts,
     ggtext,
-    gridExtra
+    gridExtra,
+    treemapify
 Suggests: 
     testthat (>= 2.1.0)
