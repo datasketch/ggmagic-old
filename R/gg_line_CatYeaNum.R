@@ -27,7 +27,7 @@ gg_line_CatYeaNum <- function(data, ...){
          caption = l$titles$caption,
          x = l$titles$x,
          y = l$titles$y,
-         colour = l$titles$color) +
+         colour = l$titles$legend) +
     scale_y_continuous(labels = l$formats$f_nums)
 
   gg <- gg + add_ggmagic_theme(opts$theme)

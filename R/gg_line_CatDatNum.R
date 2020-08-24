@@ -28,7 +28,7 @@ gg_line_CatDatNum <- function(data, ...){
          caption = l$titles$caption,
          x = l$titles$x,
          y = l$titles$y,
-         colour = l$titles$color) +
+         colour = l$titles$legend) +
     scale_y_continuous(labels = l$formats$f_nums) +
     scale_x_date(labels = l$formats$f_dats)
 

@@ -32,7 +32,8 @@ gg_bar_CatYeaNum <- function(data, ...){
          subtitle = l$titles$subtitle,
          caption = l$titles$caption,
          x = l$titles$x,
-         y = l$titles$y) +
+         y = l$titles$y,
+         fill = l$titles$legend) +
     scale_y_continuous(labels = l$formats$f_nums) +
     scale_fill_manual(values=l$d$..colors, labels = l$formats$f_cat)
 

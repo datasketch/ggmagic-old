@@ -31,7 +31,7 @@ gg_area_CatDatNum <- function(data, ...){
          caption = l$titles$caption,
          x = l$titles$x,
          y = l$titles$y,
-         fill = l$titles$color) +
+         fill = l$titles$legend) +
     scale_y_continuous(labels = l$formats$f_nums) +
     scale_x_date(labels = l$formats$f_dats) +
     guides(color = FALSE)

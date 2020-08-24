@@ -31,7 +31,7 @@ gg_area_CatYeaNum <- function(data, ...){
          caption = l$titles$caption,
          x = l$titles$x,
          y = l$titles$y,
-         fill = l$titles$color) +
+         fill = l$titles$legend) +
     scale_y_continuous(labels = l$formats$f_nums) +
     guides(color = FALSE)
 

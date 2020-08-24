@@ -130,7 +130,6 @@ ggmagic_prep <- function(data, opts = NULL,
 
   extra <- dsvizopts::get_extra_opts(opts, extra_pattern)
 
-
   list(
     d = d,
     colors = list(
@@ -142,7 +141,8 @@ ggmagic_prep <- function(data, opts = NULL,
       caption = opts$title$caption,
       x = hor_title,
       y = ver_title,
-      color = color_title
+      color = color_title,
+      legend = opts$title$legend_title %||% " "
     ),
     orientation = opts$chart$orientation %||% "ver",
     formats = list(
