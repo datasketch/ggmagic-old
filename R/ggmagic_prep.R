@@ -97,10 +97,10 @@ ggmagic_prep <- function(data, opts = NULL,
   palette <- opts$theme$palette_colors
 
   d$..colors <- paletero::map_colors(d, color_by, palette, colors_df = NULL)
-  if(f$frtype %in% c("Cat-Dat-Num", "Cat-Yea-Num") && family %in% c("line","area")){
+  if(f$frtype %in% c("Cat-Dat-Num", "Cat-Yea-Num") && family %in% c("line","area", "bar")){
     d$..colors <- paletero::map_colors(d, color_by = "a", palette, colors_df = NULL)
   }
-  if(grepl("Cat-Cat",f$frtype)){
+  if(grepl("Cat-Cat|Cat-Yea",f$frtype)){
     d$..colors <- paletero::map_colors(d, color_by = "b", palette, colors_df = NULL)
   }
 
