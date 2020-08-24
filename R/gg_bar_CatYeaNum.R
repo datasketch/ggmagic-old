@@ -44,3 +44,14 @@ gg_bar_CatYeaNum <- function(data, ...){
   add_branding_bar(gg, opts$theme)
  gg
 }
+
+
+#' bar Chart Cat Yea
+#'
+#' This chart does not allow for chaning orientation
+#'
+#' @param data A data.frame
+#' @examples
+#' gg_bar_CatYea(sample_data("Cat-Yea", nrow = 10))
+#' @export
+gg_bar_CatYea <- gg_bar_CatYeaNum

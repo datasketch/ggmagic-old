@@ -31,6 +31,16 @@ gg_area_YeaNum <- function(data, ...){
     scale_y_continuous(labels = l$formats$f_nums)
 
   gg <- gg + add_ggmagic_theme(opts$theme)
-  add_branding_bar(gg, opts$theme)
+  add_branding_area(gg, opts$theme)
 
 }
+
+#' Area Chart Cat
+#'
+#' This chart does not allow for chaning orientation
+#'
+#' @param data A data.frame
+#' @examples
+#' gg_area_Cat(sample_data("Cat", nrow = 10))
+#' @export
+gg_area_Yea <- gg_area_YeaNum

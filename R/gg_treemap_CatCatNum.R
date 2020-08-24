@@ -17,7 +17,7 @@ gg_treemap_CatCatNum <- function(data, ...){
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  l <- ggmagic_prep(data, opts, family = "bar")
+  l <- ggmagic_prep(data, opts, family = "treemap")
 
   gg <- ggplot(l$d, aes(area = c, fill = a, label = b,
                         subgroup = a)) +
@@ -34,5 +34,15 @@ gg_treemap_CatCatNum <- function(data, ...){
   }
 
   gg <- gg + add_ggmagic_theme(opts$theme)
-  add_branding_bar(gg, opts$theme)
+  add_branding_treemap(gg, opts$theme)
 }
+
+#' treemap Chart Cat Cat
+#'
+#' This chart does not allow for chaning orientation
+#'
+#' @param data A data.frame
+#' @examples
+#' gg_treemap_CatCat(sample_data("Cat-Cat", nrow = 10))
+#' @export
+gg_treemap_CatCat <- gg_treemap_CatCatNum

@@ -38,3 +38,13 @@ gg_treemap_CatYeaNum <- function(data, ...){
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_treemap(gg, opts$theme)
 }
+
+#' treemap Chart Cat Yea
+#'
+#' This chart does not allow for chaning orientation
+#'
+#' @param data A data.frame
+#' @examples
+#' gg_treemap_CatYea(sample_data("Cat-Yea", nrow = 10))
+#' @export
+gg_treemap_CatYea <- gg_treemap_CatYeaNum

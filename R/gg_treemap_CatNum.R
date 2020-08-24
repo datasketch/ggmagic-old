@@ -30,5 +30,15 @@ gg_treemap_CatNum <- function(data, ...){
   }
 
   gg <- gg + add_ggmagic_theme(opts$theme)
-  add_branding_bar(gg, opts$theme)
+  add_branding_treemap(gg, opts$theme)
 }
+
+#' treemap Chart Cat
+#'
+#' This chart does not allow for chaning orientation
+#'
+#' @param data A data.frame
+#' @examples
+#' gg_treemap_Cat(sample_data("Cat", nrow = 10))
+#' @export
+gg_treemap_Cat <- gg_treemap_CatNum
