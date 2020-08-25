@@ -42,7 +42,7 @@ gg_bar_CatYeaNum <- function(data, ...){
 
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
- gg
+
 }
 
 
