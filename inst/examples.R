@@ -7,14 +7,14 @@ library(ggmagic)
 
 # Area
 
-cat_data <- sample_data("Cat")
-gg_area_Cat(data = cat_data,
+cat_data <- sample_data("Dat", rep = T, n = 300)
+gg_area_Dat(data = cat_data,
             agg_text = "Count of ",
             caption = "This is a caption",
             colors = c("#FEAFEA"),
             color_opacity = 0.1,
             drop_na = TRUE,
-            hor_label = "Horizontal axis",
+            hor_title = "Horizontal axis",
             hor_line = 5,
             order = c("TypeD", "TypeE"),
             percentage = TRUE,
@@ -23,32 +23,23 @@ gg_area_Cat(data = cat_data,
             start_zero = F,
             subtitle = "This is a subtitle",
             text_color = "#c44adf",
-            text_size = 5,
+            text_size = 15,
             title = "This is a title",
-            #ver_label = "Vertical axis",
-            ver_line = 27,
-            theme = tma(custom = list(background = '#DADADA')))
-gg_area_Cat(data = cat_data,
+            ver_title = "Vertical axis")
+gg_area_Dat(data = cat_data,
             opts = list(
               agg_text = "Count of ",
               caption = "This is a caption",
-              colors = c("#FEAFEA"),
-              color_opacity = 0.1,
               drop_na = TRUE,
-              hor_label = "Horizontal axis",
-              hor_line = 5,
-              order = c("TypeD", "TypeE"),
-              percentage = TRUE,
-              shape_size = 5,
-              shape_type = 1,
-              start_zero = F,
+              hor_title = "Horizontal axis",
               subtitle = "This is a subtitle",
               text_color = "#c44adf",
-              text_size = 5,
+              text_size = 15,
               title = "This is a title",
-              ver_label = "Vertical axis",
+              ver_title = "Vertical axis",
               ver_line = 27,
-              theme = tma(custom = list(background = '#DADADA'))
+              branding_include = T,
+              theme = list(background_color = '#fafafa')
             ))
 
 
@@ -60,14 +51,14 @@ gg_area_CatNum(data = catnum_data,
                colors = c("#FEAFEA"),
                color_opacity = 1,
                drop_na = TRUE,
-               hor_label = "Horizontal axis",
+               hor_title = "Horizontal axis",
                shape_size = 5,
                shape_type = 1,
                subtitle = "This is a subtitle",
                text_color = "#c44adf",
                text_size = 5,
                title = "This is a title",
-               ver_label = "Vertical axis",
+               ver_title = "Vertical axis",
                ver_line = 27)
 
 catcat_data <- sample_data("Cat-Cat", 300)
@@ -88,7 +79,7 @@ gg_line_Cat(cat_data,
               colors = c("#FEAFEA"),
               color_opacity = 0.1,
               drop_na = TRUE,
-              hor_label = "Horizontal axis",
+              hor_title = "Horizontal axis",
               hor_line = 5,
               order = c("TypeD", "TypeE"),
               percentage = TRUE,
@@ -99,7 +90,7 @@ gg_line_Cat(cat_data,
               text_color = "#c44adf",
               text_size = 5,
               title = "This is a title",
-              ver_label = "Vertical axis",
+              ver_title = "Vertical axis",
               ver_line = 27,
               theme = tma(custom = list(background = '#DADADA'))
             ))
@@ -133,12 +124,12 @@ gg_bar_CatNum(data = catnum_data,
                drop_na = TRUE,
                highlight_value = "CatB",
                highlight_value_color = "#CDA015",
-               hor_label = "Horizontal axis",
+               hor_title = "Horizontal axis",
                subtitle = "This is a subtitle",
                text_color = "#FEA0D0",
                text_size = 5,
                title = "This is a title",
-               ver_label = "Vertical axis")
+               ver_title = "Vertical axis")
 
 catcat_data <- sample_data("Cat-Cat")
 gg_bar_CatCat(catcat_data)

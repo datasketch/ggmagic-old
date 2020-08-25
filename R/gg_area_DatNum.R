@@ -1,4 +1,4 @@
-#' Area Chart Year Numeric
+#' Area Chart Datr Numeric
 #'
 #' This chart does not allow for chaning orientation
 #'
@@ -8,11 +8,11 @@
 #' @inherit dsvizopts::dsviz_default_opts
 #' @inheritDotParams dsvizopts::dsviz_default_opts
 #' @section ctypes:
-#' Dat-Num, Yea-Num
+#' Dat-Num, Dat-Num
 #' @examples
-#' gg_area_YeaNum(sample_data("Cat-Num", nrow = 10))
+#' gg_area_DatNum(sample_data("Cat-Num", nrow = 10))
 #' @export
-gg_area_YeaNum <- function(data, ...){
+gg_area_DatNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
@@ -35,3 +35,13 @@ gg_area_YeaNum <- function(data, ...){
   add_branding_bar(gg, opts$theme)
 
 }
+
+#' Area Chart Cat
+#'
+#' This chart does not allow for chaning orientation
+#'
+#' @param data A data.frame
+#' @examples
+#' gg_area_Dat(sample_data("Dat", nrow = 10))
+#' @export
+gg_area_Dat <- gg_area_DatNum

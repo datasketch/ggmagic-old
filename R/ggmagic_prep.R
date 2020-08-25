@@ -11,8 +11,8 @@ ggmagic_prep <- function(data, opts = NULL,
   # Handle homodatum
   f <- homodatum::fringe(data)
 
-  needs_CatNum_agg <- f$frtype == "Cat"
-  needs_CatCat_agg <- f$frtype == "Cat-Cat"
+  needs_CatNum_agg <- f$frtype %in% c("Cat", "Dat", "Yea")
+  needs_CatCat_agg <- f$frtype %in% c("Cat-Cat", "Cat-Dat" ,"Cat-Yea")
   is_CatCat <- grepl("Cat-Cat", f$frtype)
 
   nms <- fringe_labels(f)
