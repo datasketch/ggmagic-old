@@ -21,7 +21,7 @@ gg_treemap_CatCatNum <- function(data, ...){
 
   gg <- ggplot(l$d, aes(area = c, fill = a, label = b,
                         subgroup = a)) +
-    geom_treemap() +
+    treemapify::geom_treemap() +
     labs(title = l$titles$title,
          subtitle = l$titles$subtitle,
          caption = l$titles$caption,
