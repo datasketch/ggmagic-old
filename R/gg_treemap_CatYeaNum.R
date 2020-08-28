@@ -36,7 +36,7 @@ gg_treemap_CatYeaNum <- function(data, ...){
   }
 
   gg <- gg + add_ggmagic_theme(opts$theme)
-  add_branding_treemap(gg, opts$theme)
+  add_branding_bar(gg, opts$theme)
 }
 
 #' treemap Chart Cat Yea

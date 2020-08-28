@@ -31,7 +31,7 @@ gg_area_YeaNum <- function(data, ...){
     scale_y_continuous(labels = l$formats$f_nums)
 
   gg <- gg + add_ggmagic_theme(opts$theme)
-  add_branding_area(gg, opts$theme)
+  add_branding_bar(gg, opts$theme)
 
 }
 
