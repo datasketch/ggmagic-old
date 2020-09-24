@@ -25,8 +25,9 @@ gg_treemap_CatNum <- function(data, ...){
     scale_fill_manual(values=l$d$..colors, labels = l$formats$f_cat)
 
   if (l$dataLabels$show) {
-   gg <- gg + treemapify::geom_treemap_text(colour = l$dataLabels$color %||% "#2b2b2b",
-                                size = l$dataLabels$size %||% 11)
+   gg <- gg + treemapify::geom_treemap_text(label=l$dataLabels$f_nums(l$d$b),
+                                            size = l$dataLabels$size*5,
+                                            colour = l$dataLabels$color)
   }
 
   gg <- gg + add_ggmagic_theme(opts$theme)

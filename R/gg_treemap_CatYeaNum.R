@@ -31,8 +31,10 @@ gg_treemap_CatYeaNum <- function(data, ...){
     scale_fill_manual(values=l$d$..colors, labels = l$formats$f_cat)
 
   if (l$dataLabels$show) {
-    gg <- gg + treemapify::geom_treemap_text(colour = l$dataLabels$color %||% "#2b2b2b",
-                                 size = l$dataLabels$size %||% 11)
+    gg <- gg + treemapify::geom_treemap_text(
+      label = paste0(l$d$b,  "\n", l$dataLabels$f_nums(l$d$c)),
+      colour = l$dataLabels$color,
+      size = l$dataLabels$size*5)
   }
 
   gg <- gg + add_ggmagic_theme(opts$theme)

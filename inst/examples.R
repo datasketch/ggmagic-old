@@ -218,3 +218,8 @@ gg_pie_CatNum(sample_data("Cat-Num", nrow = 100),  dataLabels_show = T, percenta
 
 gg_donut_CatNum(sample_data("Cat-Num", nrow = 100),  dataLabels_show = T, percentage = T)
 gg_donut_Cat(sample_data("Cat"), dataLabels_show = T)
+
+
+cat_data <- sample_data("Cat", 300)
+gg_treemap_Cat(cat_data, dataLabels_show = T)
+gg_treemap_CatCatNum(sample_data("Cat-Cat-Num"), dataLabels_show = T)
