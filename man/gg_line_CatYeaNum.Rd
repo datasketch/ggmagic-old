@@ -49,5 +49,5 @@ Yea-Num, Yea-Num
 }
 
 \examples{
-gg_area_CatYea(sample_data("Cat-Num", nrow = 10))
+gg_line_CatYeaNum(sample_data("Cat-Yea-Num", nrow = 10))
 }

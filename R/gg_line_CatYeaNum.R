@@ -10,7 +10,7 @@
 #' @section ctypes:
 #' Yea-Num, Yea-Num
 #' @examples
-#' gg_area_CatYea(sample_data("Cat-Num", nrow = 10))
+#' gg_line_CatYeaNum(sample_data("Cat-Yea-Num", nrow = 10))
 #' @export
 gg_line_CatYeaNum <- function(data, ...){
 
@@ -29,7 +29,14 @@ gg_line_CatYeaNum <- function(data, ...){
          y = l$titles$y,
          colour = l$titles$legend) +
     scale_y_continuous(labels = l$formats$f_nums)
-
+  if (l$dataLabels$show) {
+    gg <- gg + geom_text(aes(y = labPos,
+                             label = l$dataLabels$f_nums(c)),
+                         check_overlap = TRUE,
+                         size = l$dataLabels$size,
+                         color = l$dataLabels$color,
+                         position = l$dataLabels$f_label_position)
+  }
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
 

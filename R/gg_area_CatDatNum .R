@@ -10,7 +10,7 @@
 #' @section ctypes:
 #' Yea-Num, Yea-Num
 #' @examples
-#' gg_area_CatYea(sample_data("Cat-Num", nrow = 10))
+#' gg_area_CatDatNum(sample_data("Cat-Dat-Num", nrow = 10))
 #' @export
 gg_area_CatDatNum <- function(data, ...){
 
@@ -36,6 +36,14 @@ gg_area_CatDatNum <- function(data, ...){
     scale_x_date(labels = l$formats$f_dats) +
     guides(color = FALSE)
 
+  if (l$dataLabels$show) {
+    gg <- gg + geom_text(aes(y = labPos,
+                             label = l$dataLabels$f_nums(c)),
+                         check_overlap = TRUE,
+                         size = l$dataLabels$size,
+                         color = l$dataLabels$color,
+                         position = l$dataLabels$f_label_position)
+  }
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
 

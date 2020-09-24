@@ -49,5 +49,5 @@ Dat-Num, Yea-Num
 }
 
 \examples{
-gg_line_CatDatNum(sample_data("Cat-Num", nrow = 10))
+gg_line_CatDatNum(sample_data("Cat-Dat-Num", nrow = 10))
 }

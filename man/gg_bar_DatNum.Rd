@@ -48,5 +48,5 @@ Dat-Num, Yea-Num
 }
 
 \examples{
-gg_bar_DatNum(sample_data("Cat-Num", nrow = 10))
+gg_bar_DatNum(sample_data("Dat-Num", nrow = 10))
 }

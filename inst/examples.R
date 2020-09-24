@@ -197,3 +197,20 @@ gg_bar_CatYea(sample_data("Cat-Yea"), dataLabels_show = T, graph_type="stacked",
 
 gg_bar_DatNum(sample_data("Dat-Num", nrow = 100),  dataLabels_show = T)
 
+gg_area_CatDatNum(sample_data("Cat-Dat-Num", nrow = 100),dataLabels_show = T,
+                  graph_type="stacked", percentage = T)
+
+gg_area_CatYeaNum(sample_data("Cat-Yea-Num", nrow = 100),dataLabels_show = T,
+                  graph_type="stacked", percentage = T)
+gg_area_DatNum(sample_data("Dat-Num"), dataLabels_show = T)
+gg_line_CatDatNum(sample_data("Cat-Dat-Num"), dataLabels_show = T)
+
+gg_line_CatYeaNum(sample_data("Cat-Yea-Num"), dataLabels_show = T)
+gg_line_CatYea(sample_data("Cat-Yea", 100), dataLabels_show = T)
+gg_line_DatNum(sample_data("Dat-Num"), dataLabels_show = T)
+
+gg_line_YeaNum(sample_data("Yea-Num", nrow = 10), dataLabels_show = T)
+gg_line_Yea(sample_data("Yea", rep = TRUE), dataLabels_show = T)
+
+
+gg_pie_CatNum(sample_data("Cat-Num", nrow = 100),  dataLabels_show = T)

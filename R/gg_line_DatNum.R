@@ -10,7 +10,7 @@
 #' @section ctypes:
 #' Dat-Num, Yea-Num
 #' @examples
-#' gg_line_DatNum(sample_data("Cat-Num", nrow = 10))
+#' gg_line_DatNum(sample_data("Dat-Num", nrow = 10))
 #' @export
 gg_line_DatNum <- function(data, ...){
 
@@ -30,6 +30,13 @@ gg_line_DatNum <- function(data, ...){
     scale_y_continuous(labels = l$formats$f_nums) +
     scale_x_date(labels = l$formats$f_dats)
 
+  if (l$dataLabels$show) {
+    gg <- gg + geom_text(aes(y = labPos,
+                             label = l$dataLabels$f_nums(b)),
+                         check_overlap = TRUE,
+                         size = l$dataLabels$size,
+                         color = l$dataLabels$color)
+  }
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
 

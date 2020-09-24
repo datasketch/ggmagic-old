@@ -22,14 +22,14 @@ ggmagic_prep <- function(data, opts = NULL,
     d <- d %>%
       dplyr::group_by_all() %>%
       dplyr::summarise(b = n())
-    f$frtype <- "Cat-Num"
+    f$frtype <- paste0(f$frtype, "-Num")
   }
 
   if(needs_CatCat_agg){
     d <- d %>%
       dplyr::group_by_all() %>%
       dplyr::summarise(c = n())
-    f$frtype <- "Cat-Cat-Num"
+    f$frtype <- paste0(f$frtype, "-Num")
   }
 
 
@@ -52,15 +52,19 @@ ggmagic_prep <- function(data, opts = NULL,
                       na_label = opts$preprocess$na_label, na_label_cols = "a")
 
   # Summarize
-  if(f$frtype %in% c("Cat-Num", "Dat-Num")){
+  if(f$frtype %in% c("Cat-Num", "Dat-Num", "Yea-Num")){
     d <- dsvizopts::summarizeData(d, opts$summarize$agg, to_agg = b, a)
     if (opts$postprocess$percentage) {
       d$b <- (d$b/sum(d$b))*100
       opts$style$suffix <- "%"
     }
     d <- ggmagic::labelPosition(d, "b", opts$style$label_ratio)
+
+    #if (family == "pie") d$labPos <- cumsum(d[["b"]][order(d$a, decreasing = TRUE)]) - d[["b"]][order(d$a, decreasing = TRUE)] / 2
+
     label_position <- NULL
   }
+
   if(f$frtype %in% c("Cat-Cat-Num", "Cat-Yea-Num", "Cat-Dat-Num")){
     d <- summarizeData(d, opts$summarize$agg, to_agg = c, a, b)
     if (opts$postprocess$percentage) {
@@ -83,6 +87,7 @@ ggmagic_prep <- function(data, opts = NULL,
     } else {
       d$labPos <- d$c
       label_position <-  position_stack(vjust = 0.5)
+      if (family %in% c("area")) label_position <-  position_stack(vjust = 1)
     }
   }
 

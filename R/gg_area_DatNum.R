@@ -30,7 +30,13 @@ gg_area_DatNum <- function(data, ...){
          y = l$titles$y) +
     scale_y_continuous(labels = l$formats$f_nums) +
     scale_x_date(labels = l$formats$f_dats)
-
+  if (l$dataLabels$show) {
+    gg <- gg + geom_text(aes(y = labPos,
+                             label = l$dataLabels$f_nums(b)),
+                         check_overlap = TRUE,
+                         size = l$dataLabels$size,
+                         color = l$dataLabels$color)
+  }
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
 

@@ -35,6 +35,14 @@ gg_area_CatYeaNum <- function(data, ...){
     scale_y_continuous(labels = l$formats$f_nums) +
     guides(color = FALSE)
 
+  if (l$dataLabels$show) {
+    gg <- gg + geom_text(aes(y = labPos,
+                             label = l$dataLabels$f_nums(c)),
+                         check_overlap = TRUE,
+                         size = l$dataLabels$size,
+                         color = l$dataLabels$color,
+                         position = l$dataLabels$f_label_position)
+  }
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
 

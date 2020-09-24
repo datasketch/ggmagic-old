@@ -10,7 +10,7 @@
 #' @section ctypes:
 #' Dat-Num, Yea-Num
 #' @examples
-#' gg_line_YeaNum(sample_data("Cat-Num", nrow = 10))
+#' gg_line_YeaNum(sample_data("Yea-Num", nrow = 10))
 #' @export
 gg_line_YeaNum <- function(data, ...){
 
@@ -29,7 +29,31 @@ gg_line_YeaNum <- function(data, ...){
          y = l$titles$y) +
     scale_y_continuous(labels = l$formats$f_nums)
 
+  if (l$dataLabels$show) {
+    gg <- gg + geom_text(aes(y = labPos,
+                             label = l$dataLabels$f_nums(b)),
+                         check_overlap = TRUE,
+                         size = l$dataLabels$size,
+                         color = l$dataLabels$color)
+  }
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
 
 }
+
+
+#' Line Chart Year
+#'
+#' This chart does not allow for chaning orientation
+#'
+#' @param data A data.frame
+#' @param orientation Doesn't do anything for this type of chart.
+#' @param order doesn't do anything
+#' @inherit dsvizopts::dsviz_default_opts
+#' @inheritDotParams dsvizopts::dsviz_default_opts
+#' @section ctypes:
+#' Yea
+#' @examples
+#' gg_line_Yea(sample_data("Yea", nrow = 10))
+#' @export
+gg_line_Yea <- gg_line_YeaNum
