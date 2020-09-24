@@ -20,6 +20,7 @@ gg_bar_CatNum <- function(data, ...){
   l <- ggmagic_prep(data, opts)
 
   d <- l$d
+
   gg <- ggplot(l$d, aes(x = a, y = b, fill = ..colors )) +
     geom_bar(stat = "identity") +
     scale_fill_identity() +
@@ -30,6 +31,15 @@ gg_bar_CatNum <- function(data, ...){
          y = l$titles$y) +
     scale_y_continuous(labels = l$formats$f_nums) +
     scale_x_discrete(labels = l$formats$f_cats, limits = d$a)
+
+  if (l$dataLabels$show) {
+    gg <- gg + geom_text(aes(y = labPos,
+                           label = l$dataLabels$f_nums(b)),
+                       check_overlap = TRUE,
+                       size = l$dataLabels$size,
+                       color = l$dataLabels$color)
+  }
+
     #scale_x_discrete(labels = l$formats$f_cats)
 
   if (l$orientation == "hor")

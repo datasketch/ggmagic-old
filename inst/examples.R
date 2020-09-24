@@ -181,3 +181,19 @@ gg_treemap_CatCatNum(catcatnum_data,
                      drop_na_v = c(TRUE, TRUE),
                      text_show_v = c(F, F),
                      legend_show = FALSE)
+
+
+
+# Labels
+gg_bar_Cat(sample_data("Cat"), dataLabels_show = T, graph_type="stacked", percentage = T)
+gg_bar_CatCat(sample_data("Cat-Cat"), dataLabels_show = T, graph_type="stacked", percentage = T)
+gg_bar_CatCatNum(sample_data("Cat-Cat-Num"), dataLabels_show = T, graph_type="stacked", percentage = T)
+gg_bar_CatCatNum(sample_data("Cat-Cat-Num"), dataLabels_show = T)
+
+gg_bar_CatYeaNum(sample_data("Cat-Yea-Num"), dataLabels_show = T)
+gg_bar_CatYeaNum(sample_data("Cat-Yea-Num"), dataLabels_show = T, graph_type="stacked")
+gg_bar_CatYeaNum(sample_data("Cat-Yea-Num"), dataLabels_show = T, graph_type="stacked", percentage = T)
+gg_bar_CatYea(sample_data("Cat-Yea"), dataLabels_show = T, graph_type="stacked", percentage = T)
+
+gg_bar_DatNum(sample_data("Dat-Num", nrow = 100),  dataLabels_show = T)
+

@@ -37,6 +37,16 @@ gg_bar_CatYeaNum <- function(data, ...){
     scale_y_continuous(labels = l$formats$f_nums) +
     scale_fill_manual(values=l$d$..colors, labels = l$formats$f_cat)
 
+
+  if (l$dataLabels$show) {
+    gg <- gg + geom_text(aes(y = labPos,
+                             label = l$dataLabels$f_nums(c)),
+                         check_overlap = TRUE,
+                         size = l$dataLabels$size,
+                         color = l$dataLabels$color,
+                         position = l$dataLabels$f_label_position)
+  }
+
   if (l$orientation == "hor")
     gg <- gg + coord_flip()
 

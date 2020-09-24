@@ -9,7 +9,7 @@
 #' @section ctypes:
 #' Dat-Num, Yea-Num
 #' @examples
-#' gg_bar_DatNum(sample_data("Cat-Num", nrow = 10))
+#' gg_bar_DatNum(sample_data("Dat-Num", nrow = 10))
 #' @export
 gg_bar_DatNum <- function(data, ...){
 
@@ -17,7 +17,7 @@ gg_bar_DatNum <- function(data, ...){
   opts <- dsvizopts::merge_dsviz_options(...)
 
   l <- ggmagic_prep(data, opts)
-
+  print(l$d)
   gg <- ggplot(l$d, aes(x = a, y = b, fill = ..colors )) +
     geom_bar(stat = "identity") +
     scale_fill_identity() +
@@ -28,7 +28,13 @@ gg_bar_DatNum <- function(data, ...){
          y = l$titles$y) +
     scale_y_continuous(labels = l$formats$f_nums) +
     scale_x_date(labels = l$formats$f_dats)
-
+  if (l$dataLabels$show) {
+    gg <- gg + geom_text(aes(y = labPos,
+                             label = l$dataLabels$f_nums(b)),
+                         check_overlap = TRUE,
+                         size = l$dataLabels$size,
+                         color = l$dataLabels$color)
+  }
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
 

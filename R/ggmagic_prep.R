@@ -18,10 +18,18 @@ ggmagic_prep <- function(data, opts = NULL,
   nms <- fringe_labels(f)
   d <- fringe_d(f)
 
-  if(needs_CatNum_agg || needs_CatCat_agg){
+  if(needs_CatNum_agg){
     d <- d %>%
       dplyr::group_by_all() %>%
       dplyr::summarise(b = n())
+    f$frtype <- "Cat-Num"
+  }
+
+  if(needs_CatCat_agg){
+    d <- d %>%
+      dplyr::group_by_all() %>%
+      dplyr::summarise(c = n())
+    f$frtype <- "Cat-Cat-Num"
   }
 
 
@@ -44,12 +52,14 @@ ggmagic_prep <- function(data, opts = NULL,
                       na_label = opts$preprocess$na_label, na_label_cols = "a")
 
   # Summarize
-  if(f$frtype == c("Cat-Num")){
+  if(f$frtype %in% c("Cat-Num", "Dat-Num")){
     d <- dsvizopts::summarizeData(d, opts$summarize$agg, to_agg = b, a)
     if (opts$postprocess$percentage) {
       d$b <- (d$b/sum(d$b))*100
       opts$style$suffix <- "%"
     }
+    d <- ggmagic::labelPosition(d, "b", opts$style$label_ratio)
+    label_position <- NULL
   }
   if(f$frtype %in% c("Cat-Cat-Num", "Cat-Yea-Num", "Cat-Dat-Num")){
     d <- summarizeData(d, opts$summarize$agg, to_agg = c, a, b)
@@ -65,6 +75,14 @@ ggmagic_prep <- function(data, opts = NULL,
       d <- d %>% group_by_(by_col) %>%
         dplyr::mutate(c = (c / sum(c, na.rm = TRUE)) * 100)
       opts$style$suffix <- "%"
+    }
+
+    if (opts$chart$graph_type == "grouped") {
+      d <- ggmagic::labelPosition(d, "c", opts$style$label_ratio, zeroToNa = TRUE)
+      label_position <- position_dodge(width = 0.55)
+    } else {
+      d$labPos <- d$c
+      label_position <-  position_stack(vjust = 0.5)
     }
   }
 
@@ -152,9 +170,10 @@ ggmagic_prep <- function(data, opts = NULL,
     ),
     dataLabels = list(
       show = opts$dataLabels$dataLabels_show,
-      color = opts$dataLabels$dataLabels_color,
-      size = opts$dataLabels$dataLabels_size,
-      f_nums = f_nums_dataLabel
+      color = opts$dataLabels$dataLabels_color %||% opts$theme$text_color,
+      size = (opts$dataLabels$dataLabels_size %||% opts$theme$text_size)/3,
+      f_nums = f_nums_dataLabel,
+      f_label_position =  label_position
     ),
     extra = extra,
     theme = opts$theme
