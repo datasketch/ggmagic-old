@@ -214,3 +214,7 @@ gg_line_Yea(sample_data("Yea", rep = TRUE), dataLabels_show = T)
 
 
 gg_pie_CatNum(sample_data("Cat-Num", nrow = 100),  dataLabels_show = T)
+gg_pie_CatNum(sample_data("Cat-Num", nrow = 100),  dataLabels_show = T, percentage = T)
+
+gg_donut_CatNum(sample_data("Cat-Num", nrow = 100),  dataLabels_show = T, percentage = T)
+gg_donut_Cat(sample_data("Cat"), dataLabels_show = T)

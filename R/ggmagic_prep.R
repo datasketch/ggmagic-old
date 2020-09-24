@@ -146,10 +146,6 @@ ggmagic_prep <- function(data, opts = NULL,
   f_dats <- makeup::makeup_format(sample = opts$style$format_dat_sample,
                           locale = opts$style$locale)
 
-  # Calculate extra opts for pie or donut
-  if(grepl("pie|donut", extra_pattern)){
-    d$..ylabpos <- sum(d$b) - cumsum(d$b) + 0.5 *d$b
-  }
 
   extra <- dsvizopts::get_extra_opts(opts, extra_pattern)
 

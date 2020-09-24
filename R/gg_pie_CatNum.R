@@ -22,18 +22,17 @@ gg_pie_CatNum <- function(data = NULL,
   gg <- ggplot(l$d, aes(x = 1, y = b, fill = a)) +
     geom_bar(width = 1, stat = "identity", color = l$theme$background_color) +
     scale_fill_manual(l$titles$x,values = l$d$..colors) +
-    # xlim(c(0.5, 1.5)) +
     coord_polar(theta = "y") +
     labs(title = l$titles$title,
          subtitle = l$titles$subtitle,
          caption = l$titles$caption)
   if(l$dataLabels$show){
-    gg <- gg + geom_text(aes(y = ..ylabpos,
-                             label = l$dataLabels$f_nums(l$d$b)),
-                         x = l$extra$pie_dataLabels_pos + 0.5,
-                         size = l$dataLabels$size %||% 0.3 * l$theme$text_size,
-                         color = l$dataLabels$color %||% l$theme$text_color,
-                         check_overlap = TRUE)
+    gg <- gg +  geom_text(aes(#y =..ylabpos,
+                              label = l$dataLabels$f_nums(b)),
+                          position = position_stack(vjust = 0.5),
+                          check_overlap = TRUE,
+                          size = l$dataLabels$size,
+                          color = l$dataLabels$color)
   }
 
   gg <- gg + add_ggmagic_theme_clean(opts$theme)
@@ -91,12 +90,12 @@ gg_donut_CatNum <- function(data = NULL,
          subtitle = l$titles$subtitle,
          caption = l$titles$caption)
   if(l$dataLabels$show){
-    gg <- gg + geom_text(aes(y = ..ylabpos,
-                             label = l$dataLabels$f_nums(l$d$b)),
-                         x = l$extra$donut_dataLabels_pos + 0.5,
-                         size = l$dataLabels$size %||% 0.3 * l$theme$text_size,
-                         color = l$dataLabels$color %||% l$theme$text_color,
-                         check_overlap = TRUE)
+    gg <- gg +  geom_text(aes(#y =..ylabpos,
+      label = l$dataLabels$f_nums(b)),
+      position = position_stack(vjust = 0.5),
+      check_overlap = TRUE,
+      size = l$dataLabels$size,
+      color = l$dataLabels$color)
   }
 
   gg <- gg + add_ggmagic_theme_clean(opts$theme)
@@ -115,85 +114,5 @@ gg_donut_CatNum <- function(data = NULL,
 #' Cat, Yea, Dat
 #' @examples
 #' gg_donut_Cat(sample_data("Cat", nrow = 10))
-#' @export gg_donut_Cat
-gg_donut_Cat <- function(data = NULL,
-                         agg_text = NULL,
-                         caption = NULL,
-                         colors = NULL,
-                         color_scale ="discrete",
-                         drop_na = FALSE,
-                         highlight_value = NULL,
-                         highlight_value_color = '#F9B233',
-                         hor_label = NULL,
-                         hor_line = NULL,
-                         label_ratio = 1,
-                         label_wrap = 12,
-                         legend_position = "bottom",
-                         legend_show = TRUE,
-                         legend_title = NULL,
-                         marks = c(".", ","),
-                         n_digits = NULL,
-                         order = NULL,
-                         orientation = "ver",
-                         percentage = FALSE,
-                         prefix = NULL,
-                         slice_n = NULL,
-                         sort = "no",
-                         subtitle = NULL,
-                         suffix = NULL,
-                         text_color = "#5A6B72",
-                         text_show = TRUE,
-                         text_size = 3,
-                         theme = NULL,
-                         title = NULL,
-                         opts = NULL, ...) {
-
-  if (is.null(data)) {
-    stop("Load an available dataset")
-  }
-
-  defaultOptions <- list(
-    agg_text = agg_text,
-    caption = caption,
-    colors = colors,
-    color_scale = color_scale,
-    drop_na = drop_na,
-    highlight_value = highlight_value,
-    highlight_value_color = highlight_value_color,
-    label_ratio = label_ratio,
-    label_wrap = label_wrap,
-    legend_position = legend_position,
-    legend_show = legend_show,
-    legend_title = legend_title,
-    marks = marks,
-    n_digits = n_digits,
-    order = order,
-    orientation = orientation,
-    percentage = percentage,
-    prefix = prefix,
-    slice_n = slice_n,
-    sort = sort,
-    subtitle = subtitle,
-    suffix = suffix,
-    text_color = text_color,
-    text_show = text_show,
-    text_size = text_size,
-    theme = theme,
-    title = title
-  )
-  opts <- modifyList(defaultOptions, opts %||% list())
-
-  f <- fringe(data)
-  nms <- getClabels(f)
-  d <- f$d
-
-  d <- d %>%
-    dplyr::group_by_all() %>%
-    dplyr::summarise(b = n())
-
-  prefix_agg <- ifelse(is.null(opts$agg_text), "Count", opts$agg_text)
-  names(d) <- c(f$dic_$d$label, paste0(prefix_agg, f$dic_$d$label))
-
-  gg <- gg_donut_CatNum(data = d, opts = opts, ...)
-  gg
-}
+#' @export gg_pie_Cat
+gg_donut_Cat <- gg_donut_CatNum
