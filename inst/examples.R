@@ -223,3 +223,9 @@ gg_donut_Cat(sample_data("Cat"), dataLabels_show = T)
 cat_data <- sample_data("Cat", 300)
 gg_treemap_Cat(cat_data, dataLabels_show = T)
 gg_treemap_CatCatNum(sample_data("Cat-Cat-Num"), dataLabels_show = T)
+
+
+
+# Scatter -----------------------------------------------------------------
+gg_scatter_NumNum(sample_data("Num-Num"))
+gg_scatter_CatNumNum(sample_data("Cat-Num-Num"))

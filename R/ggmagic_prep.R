@@ -14,7 +14,7 @@ ggmagic_prep <- function(data, opts = NULL,
   needs_CatNum_agg <- f$frtype %in% c("Cat", "Dat", "Yea")
   needs_CatCat_agg <- f$frtype %in% c("Cat-Cat", "Cat-Dat" ,"Cat-Yea")
   is_CatCat <- grepl("Cat-Cat", f$frtype)
-
+  label_position <- NULL
   nms <- fringe_labels(f)
   d <- fringe_d(f)
 
@@ -62,7 +62,6 @@ ggmagic_prep <- function(data, opts = NULL,
 
     #if (family == "pie") d$labPos <- cumsum(d[["b"]][order(d$a, decreasing = TRUE)]) - d[["b"]][order(d$a, decreasing = TRUE)] / 2
 
-    label_position <- NULL
   }
 
   if(f$frtype %in% c("Cat-Cat-Num", "Cat-Yea-Num", "Cat-Dat-Num")){
@@ -120,7 +119,7 @@ ggmagic_prep <- function(data, opts = NULL,
   palette <- opts$theme$palette_colors
 
   d$..colors <- paletero::map_colors(d, color_by, palette, colors_df = NULL)
-  if(f$frtype %in% c("Cat-Dat-Num", "Cat-Yea-Num") && family %in% c("line","area", "bar", "treemap")){
+  if(f$frtype %in% c("Cat-Dat-Num", "Cat-Yea-Num", "Cat-Num-Num", "Cat-Num-Num-Num") && family %in% c("line","area", "bar", "treemap", "scatter")){
     d$..colors <- paletero::map_colors(d, color_by = "a", palette, colors_df = NULL)
   }
   if(grepl("Cat-Cat|Cat-Yea",f$frtype)){
