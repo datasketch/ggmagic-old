@@ -37,7 +37,8 @@ gg_area_CatDatNum <- function(data, ...){
     guides(color = FALSE)
 
   if (l$dataLabels$show) {
-    gg <- gg + geom_text(aes(y = labPos,
+    labpos <- d$..labpos
+    gg <- gg + geom_text(aes(y = labpos,
                              label = l$dataLabels$f_nums(c)),
                          check_overlap = TRUE,
                          size = l$dataLabels$size,

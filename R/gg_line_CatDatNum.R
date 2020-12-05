@@ -33,7 +33,8 @@ gg_line_CatDatNum <- function(data, ...){
     scale_x_date(labels = l$formats$f_dats)
 
   if (l$dataLabels$show) {
-    gg <- gg + geom_text(aes(y = labPos,
+    labpos <- d$..labpos
+    gg <- gg + geom_text(aes(y = labpos,
                              label = l$dataLabels$f_nums(c)),
                          check_overlap = TRUE,
                          size = l$dataLabels$size,

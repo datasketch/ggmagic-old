@@ -84,7 +84,7 @@ ggmagic_prep <- function(data, opts = NULL,
       d <- ggmagic::labelPosition(d, "c", opts$style$label_ratio, zeroToNa = TRUE)
       label_position <- position_dodge(width = 0.55)
     } else {
-      d$labPos <- d$c
+      d$..labpos <- d$c
       label_position <-  position_stack(vjust = 0.5)
       if (family %in% c("area")) label_position <-  position_stack(vjust = 1)
     }

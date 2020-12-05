@@ -5,6 +5,11 @@ test_that("gg bar Cat Num", {
   data <- sample_data("Cat")
   gg_bar_Cat(data)
 
+  # Error
+  gg <- gg_bar_Cat(d = data.frame(x="1"), title = "Another Chart")
+  gg
+
+
   data <- sample_data("Cat-Num")
   gg_bar_CatNum(data)
   gg_bar_CatNum(data, title = "datasketch", caption ="some caption")
@@ -14,6 +19,19 @@ test_that("gg bar Cat Num", {
                      title = "Penguins",
                      subtitle = as.character(Sys.time()))
   g
+
+  #
+
+  data <- palmerpenguins::penguins %>% select(sex, body_mass_g)
+  opts <- opts <- dsvizopts::dsviz_defaults()
+
+  gg_bar_CatNum(data, palette_colors = rainbow(3),color_by = 1)
+
+  gg_bar_CatNum(data, palette_colors = rainbow(3),
+                color_by = 1, sort = "asc", percentage = TRUE,
+                format_sample_num = "2.16%", dataLabels_show = TRUE,
+                dataLabels_format_sample = "2.16"
+                )
 
   data <- sample_data("Cat-Num")
   gg <- gg_bar_CatNum(data, color_by = names(data)[1])

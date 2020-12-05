@@ -33,9 +33,11 @@ gg_bar_CatNum <- function(data, ...){
     scale_x_discrete(labels = l$formats$f_cats, limits = d$a)
 
   if (l$dataLabels$show) {
-    gg <- gg + geom_text(aes(y = labPos,
+    labpos <- d$..labpos
+    gg <- gg + geom_text(aes(y = labpos,
                            label = l$dataLabels$f_nums(b)),
                        check_overlap = TRUE,
+                       nudge_y = 2,
                        size = l$dataLabels$size,
                        color = l$dataLabels$color)
   }

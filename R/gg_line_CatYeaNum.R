@@ -30,7 +30,8 @@ gg_line_CatYeaNum <- function(data, ...){
          colour = l$titles$legend) +
     scale_y_continuous(labels = l$formats$f_nums)
   if (l$dataLabels$show) {
-    gg <- gg + geom_text(aes(y = labPos,
+    labpos <- d$..labpos
+    gg <- gg + geom_text(aes(y = labpos,
                              label = l$dataLabels$f_nums(c)),
                          check_overlap = TRUE,
                          size = l$dataLabels$size,
