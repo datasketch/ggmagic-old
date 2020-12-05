@@ -113,7 +113,12 @@ ggmagic_prep <- function(data, opts = NULL,
 
   # Styles
   # Handle colors
-  color_by <- names(nms[match(opts$style$color_by, nms)])
+  if(!is.numeric(opts$style$color_by)){
+    color_by <- names(nms[match(opts$style$color_by, nms)])
+    if(is.na(color_by)) stop("color_by column not found")
+  }else{
+    color_by <- opts$style$color_by
+  }
   # color_by <- "a" pie
 
   palette <- opts$theme$palette_colors
