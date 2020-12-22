@@ -8,6 +8,11 @@
 ggmagic_prep <- function(data, opts = NULL,
                          extra_pattern = ".", family = ""){
 
+  # Handle case if palette_colors = NULL
+  if(is.null(opts$theme$palette_colors)){
+    opts$theme$palette_colors <- opts$theme$palette_colors_categorical
+  }
+
   # Handle homodatum
   f <- homodatum::fringe(data)
 
@@ -49,7 +54,7 @@ ggmagic_prep <- function(data, opts = NULL,
   # Drop NAs
   # TODO: Add NAs as categories or dates when it makes sense
   d <- dsvizopts::preprocessData(d, drop_na = opts$preprocess$drop_na,
-                      na_label = opts$preprocess$na_label, na_label_cols = "a")
+                                 na_label = opts$preprocess$na_label, na_label_cols = "a")
 
   # Summarize
   if(f$frtype %in% c("Cat-Num", "Dat-Num", "Yea-Num")){
@@ -113,10 +118,12 @@ ggmagic_prep <- function(data, opts = NULL,
 
   # Styles
   # Handle colors
-  if(!is.numeric(opts$style$color_by)){
-    color_by <- names(nms[match(opts$style$color_by, nms)])
-    if(is.na(color_by)) stop("color_by column not found")
-  }else{
+  if(!is.null(opts$style$color_by)){
+    if(!is.numeric(opts$style$color_by)){
+      color_by <- names(nms[match(opts$style$color_by, nms)])
+      if(is.na(color_by)) stop("color_by column not found")
+    }
+  } else{
     color_by <- opts$style$color_by
   }
   # color_by <- "a" pie
@@ -148,7 +155,7 @@ ggmagic_prep <- function(data, opts = NULL,
                                             suffix = opts$style$suffix)
 
   f_dats <- makeup::makeup_format(sample = opts$style$format_dat_sample,
-                          locale = opts$style$locale)
+                                  locale = opts$style$locale)
 
 
   extra <- dsvizopts::get_extra_opts(opts, extra_pattern)
