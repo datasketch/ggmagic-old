@@ -19,10 +19,10 @@ labelPosition <- function(data, col, labelRatio = 0.5,  zeroToNa = FALSE) {
   small <- half < max(data[[col]] * labelRatio, na.rm = TRUE)
   small <- which(small)
   half[small] <- data[[col]][small] + max(data[[col]], na.rm = TRUE) / 50
-  data$labPos <- half
+  data$..labpos <- half
   # do I want zero labels to be shown?
   if (zeroToNa) {
-    data$labPos[data[[col]] == 0] <- NA
+    data$..labpos[data[[col]] == 0] <- NA
   }
   data
 }

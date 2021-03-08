@@ -56,3 +56,14 @@ test_that("CatYeaNum Stacked completion",{
 
 })
 
+
+test_that("Color by works with strings and numbers",{
+
+  data <- d %>% select(sex, body_mass_g)
+  opts <- dsvizopts::dsviz_defaults()
+
+  opts$style$color_by <- 1
+  l <- ggmagic_prep(data, opts)
+
+})
+

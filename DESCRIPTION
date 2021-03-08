@@ -27,3 +27,7 @@ Imports:
     treemapify
 Suggests: 
     testthat (>= 2.1.0)
+Remotes:
+    datasketch/paletero,
+    datasketch/makeup,
+    datasketch/dsvizopts
