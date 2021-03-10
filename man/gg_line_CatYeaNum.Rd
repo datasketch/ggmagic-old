@@ -10,30 +10,9 @@ gg_line_CatYeaNum(data, ...)
 \item{data}{A data.frame}
 
 \item{...}{
-  Arguments passed on to \code{\link[dsvizopts:dsviz_default_opts]{dsvizopts::dsviz_default_opts}}
+  Arguments passed on to \code{\link[dsvizopts:chart_viz_options]{dsvizopts::dsviz_default_opts}}
   \describe{
-    \item{\code{drop_na}}{drop NA values from input data}
-    \item{\code{na_label}}{replace NA values with string}
-    \item{\code{agg}}{Aggregation function for groups, defaults to sum}
-    \item{\code{agg_text}}{When there is aggegregaton agg_text is prepended to grouped variable}
-    \item{\code{sort}}{Whether to sort the data column: asc or desc}
-    \item{\code{slice_n}}{Slide the data from 1 to n}
-    \item{\code{axis_text_angle}}{Rotate axis ticks test}
-    \item{\code{color_by}}{Column to map colors}
-    \item{\code{locale}}{Locale to use, e.g. "en-US"}
-    \item{\code{label_wrap}}{Number of characters to wrap long tick titles}
-    \item{\code{spline}}{Spline TRUE or FALSE for line charts (html only)}
-    \item{\code{prefix}}{Add preffix to values}
-    \item{\code{suffix}}{Add suffix to values}
-    \item{\code{label_wrap_legend}}{Wrap the legend string the given number of characters}
-    \item{\code{bubble_min}}{Relative min size of bubbles in chart}
-    \item{\code{bubble_max}}{Relative max size of bubbles in chart}
-    \item{\code{title}}{Chart title}
-    \item{\code{ver_title}}{Vertical axis title}
-    \item{\code{hor_title}}{Horizontal axis titble}
-    \item{\code{subtitle}}{Subtitle}
-    \item{\code{caption}}{Caption}
-    \item{\code{opts}}{All of the previous options can be passed as list of options opts}
+    \item{\code{}}{}
   }}
 
 \item{orientation}{Doesn't do anything for this type of chart.}
