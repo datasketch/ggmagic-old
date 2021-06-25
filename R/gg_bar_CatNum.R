@@ -14,14 +14,15 @@ gg_bar_CatNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
-
+  data[[1]] <- homodatum::as_Cat(data[[1]])
+  data[[2]] <- homodatum::as_Num(data[[2]])
   #check_fonts(opts$theme)
 
   l <- ggmagic_prep(data, opts, extra_pattern = ".", plot =  "bar", ftype = "Cat-Num")
 
   d <- l$d
 
-  gg <- ggplot(l$d, aes(x = a, y = b, fill = ..colors )) +
+  gg <- ggplot(l$d, aes(x = a, y = value, fill = ..colors )) +
     geom_bar(stat = "identity") +
     scale_fill_identity() +
     labs(title = l$titles$title,
@@ -62,5 +63,48 @@ gg_bar_CatNum <- function(data, ...){
 #' @examples
 #' gg_bar_Cat(sample_data("Cat", nrow = 10))
 #' @export
-gg_bar_Cat <- gg_bar_CatNum
+gg_bar_Cat <- function(data, ...){
+
+  if (is.null(data)) stop("need dataset to visualize")
+
+  data[[1]] <- homodatum::as_Cat(data[[1]])
+
+  opts <- dsvizopts::merge_dsviz_options(...)
+
+  l <- ggmagic_prep(data, opts, extra_pattern = ".", plot =  "bar", ftype = "Cat")
+
+  d <- l$d
+
+  gg <- ggplot(l$d, aes(x = a, y = value, fill = ..colors )) +
+    geom_bar(stat = "identity") +
+    scale_fill_identity() +
+    labs(title = l$titles$title,
+         subtitle = l$titles$subtitle,
+         caption = l$titles$caption,
+         x = l$titles$x,
+         y = l$titles$y) +
+    scale_y_continuous(labels = l$formats$f_nums) +
+    scale_x_discrete(labels = l$formats$f_cats, limits = d$a)
+
+  if (l$dataLabels$show) {
+    gg <- gg + geom_text(
+      aes(label = l$dataLabels$f_nums(d$value), y = d$value + 0.05),
+      position = position_dodge(0.9),
+      vjust = 0,
+      check_overlap = TRUE,
+      size = l$dataLabels$size,
+      color = l$dataLabels$color
+    )
+
+  }
+
+  #scale_x_discrete(labels = l$formats$f_cats)
+
+  if (l$orientation == "hor")
+    gg <- gg + coord_flip()
+
+  gg <- gg + add_ggmagic_theme(opts$theme)
+  add_branding_bar(gg, opts$theme)
+
+}
 

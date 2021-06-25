@@ -22,6 +22,7 @@ ggmagic_prep <- function(data, opts = NULL, extra_pattern = ".", plot =  "bar", 
                                         ftype = ftype,
                                         agg =  opts$summarize$agg,
                                         color_by = opts$style$color_by,
+                                        ptage = opts$postprocess$percentage,
                                         ptage_col = opts$postprocess$percentage_col,
                                         drop_na = opts$preprocess$drop_na,
                                         na_label = opts$preprocess$na_label,
@@ -52,7 +53,7 @@ ggmagic_prep <- function(data, opts = NULL, extra_pattern = ".", plot =  "bar", 
 
   # axis labels -------------------------------------------------------------
 
-  nms_dic <- list_d$nms[names(list_d$nms) %in% c("a", "b", "c", "d")]
+  nms_dic <- list_d$nms_lab
 
   labelsXY <- dsvizprep::labelsXY(hor_title = opts$title$hor_title %||% nms_dic[[(1 + (length(nms_dic) - 2))]], #
                                   ver_title = opts$title$ver_title %||% nms_dic[[length(nms_dic)]],
