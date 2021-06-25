@@ -37,12 +37,18 @@ ggmagic_prep <- function(data, opts = NULL, extra_pattern = ".", plot =  "bar", 
                                         label_wrap = opts$style$label_wrap,
                                         group_extra_num = TRUE)
   # format setting of data being displayed
-  data_format <- dsvizprep::format_prep(data = list_d$data,
-                                        dic = list_d$dic,
-                                        formats = list(sample_num = opts$style$format_sample_num,
-                                                       sample_cat = opts$style$format_sample_cat,
-                                                       prefix = opts$style$prefix,
-                                                       suffix = opts$style$suffix))
+  data_format <- list_d$data
+  # Handle number/strings/dates formats
+  f_cats <-  makeup::makeup_format(sample = opts$style$format_sample_cat,
+                                   type = "chr" )
+  f_nums <- makeup::makeup_format(sample = opts$style$format_sample_num,
+                                  #locale = opts$style$locale,
+                                  prefix = opts$style$prefix,
+                                  suffix = opts$style$suffix)
+
+  f_dats <- makeup::makeup_format(sample = opts$style$format_sample_dat,
+                                  locale = opts$style$locale)
+
 
   # axis labels -------------------------------------------------------------
 
@@ -64,21 +70,24 @@ ggmagic_prep <- function(data, opts = NULL, extra_pattern = ".", plot =  "bar", 
       x = hor_title,
       y = ver_title
     ),
+    orientation = opts$chart$orientation %||% "ver",
+    formats = list(
+      f_cats = f_cats,
+      f_nums = f_nums,
+      f_dats = f_dats
+    ),
     dataLabels = list(
       show = opts$dataLabels$dataLabels_show,
       type = opts$dataLabels$dataLabels_type,
       color = opts$dataLabels$dataLabels_color %||% opts$theme$text_color,
       size = (opts$dataLabels$dataLabels_size  %||% opts$theme$text_size) /3,
       dataLabels_text_outline = opts$dataLabels$dataLabels_text_outline,
-      format_dataLabels = format_dataLabels
+      f_nums = makeup::makeup_format(sample = opts$dataLabels$dataLabels_format_sample %||% opts$style$format_num_sample,
+                                     locale = opts$style$locale,
+                                     prefix = opts$style$prefix,
+                                     suffix = opts$style$suffix)
     ),
-    theme = c(opts$theme,
-              isNullCaption = is.null(opts$title$caption),
-              bar_pointWidth = opts$theme$bar_pointWidth,
-              credits = show_caption,
-              y_credits = y_caption,
-              suffix = suffix_enter,
-              prefix = opts$style$prefix),
+    theme = opts$theme,
     spline = opts$style$spline,
     graph_type = opts$chart$graph_type,
     extra = dsvizopts::get_extra_opts(opts, extra_pattern)

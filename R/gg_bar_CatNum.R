@@ -17,7 +17,7 @@ gg_bar_CatNum <- function(data, ...){
 
   #check_fonts(opts$theme)
 
-  l <- ggmagic_prep(data, opts)
+  l <- ggmagic_prep(data, opts, extra_pattern = ".", plot =  "bar", ftype = "Cat-Num")
 
   d <- l$d
 
@@ -29,17 +29,19 @@ gg_bar_CatNum <- function(data, ...){
          caption = l$titles$caption,
          x = l$titles$x,
          y = l$titles$y) +
-    scale_y_continuous(labels = l$formats$f_nums) +
+    scale_y_continuous(labels = l$formats$f_nums, n.breaks = nrow(d)) +
     scale_x_discrete(labels = l$formats$f_cats, limits = d$a)
 
   if (l$dataLabels$show) {
-    labpos <- d$..labpos
-    gg <- gg + geom_text(aes(y = labpos,
-                           label = l$dataLabels$f_nums(b)),
-                       check_overlap = TRUE,
-                       nudge_y = 2,
-                       size = l$dataLabels$size,
-                       color = l$dataLabels$color)
+    gg <- gg + geom_text(
+      aes(label = l$dataLabels$f_nums(d$value), y = d$value + 0.05),
+      position = position_dodge(0.9),
+      vjust = 0,
+      check_overlap = TRUE,
+      size = l$dataLabels$size,
+      color = l$dataLabels$color
+    )
+
   }
 
     #scale_x_discrete(labels = l$formats$f_cats)
