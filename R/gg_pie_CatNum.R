@@ -17,7 +17,7 @@ gg_pie_CatNum <- function(data = NULL,
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  l <- ggmagic_prep(data, opts, extra_pattern = "pie")
+  l <- ggmagic_prep(data, opts, extra_pattern = "pie", ftype = "Cat-Num")
 
   gg <- ggplot(l$d, aes(x = 1, y = b, fill = a)) +
     geom_bar(width = 1, stat = "identity", color = l$theme$background_color) +
@@ -73,7 +73,7 @@ gg_donut_CatNum <- function(data = NULL,
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  l <- ggmagic_prep(data, opts, extra_pattern = "donut")
+  l <- ggmagic_prep(data, opts, extra_pattern = "donut", ftype = "Cat-Num")
 
   # Calculate width
   #dwidth <- -1/(d$x) + 1.5

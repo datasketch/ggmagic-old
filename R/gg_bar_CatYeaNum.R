@@ -17,7 +17,7 @@ gg_bar_CatYeaNum <- function(data, ...){
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  l <- ggmagic_prep(data, opts, family = "bar")
+  l <- ggmagic_prep(data, opts, ftype = "Cat-Yea-Num", plot = "bar")
   l$d$b <- as.character(l$d$b)
 
   ggpos <- "stack"

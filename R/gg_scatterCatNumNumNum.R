@@ -17,7 +17,7 @@ gg_scatter_CatNumNumNum <- function(data, ...){
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  l <- ggmagic_prep(data, opts, family = "scatter")
+  l <- ggmagic_prep(data, opts, plot = "scatter", ftype = "Cat-Num-Num-Num")
 
   gg <- ggplot(l$d, aes(x = b, y = c, color = a, group = a, size = d)) +
     geom_point() +

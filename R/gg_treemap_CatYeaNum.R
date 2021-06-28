@@ -17,7 +17,8 @@ gg_treemap_CatYeaNum <- function(data, ...){
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  l <- ggmagic_prep(data, opts, family = "treemap")
+  l <- ggmagic_prep(data, opts, extra_pattern = ".", plot =  "treemap", ftype = "Cat-Yea-Num")
+
   l$d$b <- as.character(l$d$b)
 
 
@@ -49,4 +50,33 @@ gg_treemap_CatYeaNum <- function(data, ...){
 #' @examples
 #' gg_treemap_CatYea(sample_data("Cat-Yea", nrow = 10))
 #' @export
-gg_treemap_CatYea <- gg_treemap_CatYeaNum
+gg_treemap_CatYea <- function(data, ...){
+
+  if (is.null(data)) stop("need dataset to visualize")
+  opts <- dsvizopts::merge_dsviz_options(...)
+
+  l <- ggmagic_prep(data, opts, extra_pattern = ".", plot =  "treemap", ftype = "Cat-Yea")
+
+  l$d$b <- as.character(l$d$b)
+
+
+  gg <- ggplot(l$d, aes(area = c, fill = a, label = b,
+                        subgroup = a)) +
+    geom_treemap() +
+    labs(title = l$titles$title,
+         subtitle = l$titles$subtitle,
+         caption = l$titles$caption,
+         fill = l$titles$legend) +
+    scale_fill_manual(values=l$d$..colors, labels = l$formats$f_cat)
+
+  if (l$dataLabels$show) {
+    gg <- gg + treemapify::geom_treemap_text(
+      label = paste0(l$d$b,  "\n", l$dataLabels$f_nums(l$d$c)),
+      colour = l$dataLabels$color,
+      size = l$dataLabels$size*5)
+  }
+
+  gg <- gg + add_ggmagic_theme(opts$theme)
+  add_branding_bar(gg, opts$theme)
+}
+

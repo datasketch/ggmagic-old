@@ -17,7 +17,7 @@ gg_line_CatDatNum <- function(data, ...){
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  l <- ggmagic_prep(data, opts, family = "line")
+  l <- ggmagic_prep(data, opts, ftype = "Cat-Dat-Num", plot = "line")
 
   gg <- ggplot(l$d, aes(x = b, y = c, color = a, group = a)) +
     geom_line() +

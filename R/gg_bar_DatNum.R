@@ -16,7 +16,7 @@ gg_bar_DatNum <- function(data, ...){
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  l <- ggmagic_prep(data, opts)
+  l <- ggmagic_prep(data, opts, ftype = "Dat-Num", plot = "bar")
   print(l$d)
   gg <- ggplot(l$d, aes(x = a, y = b, fill = ..colors )) +
     geom_bar(stat = "identity") +

@@ -17,7 +17,7 @@ gg_area_CatYeaNum <- function(data, ...){
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  l <- ggmagic_prep(data, opts, family = "area")
+  l <- ggmagic_prep(data, opts, ftype = "Cat-Yea-Num", plot = "area")
   position <- "identity"
   if(opts$extra$graph_type == "stacked") position <- "stack"
 

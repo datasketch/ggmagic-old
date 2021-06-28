@@ -17,7 +17,7 @@ gg_area_YeaNum <- function(data, ...){
   if (is.null(data)) stop("need dataset to visualize")
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  l <- ggmagic_prep(data, opts)
+  l <- ggmagic_prep(data, opts, ftype = "Yea-Num", plot = "area")
 
   gg <- ggplot(l$d, aes(x = a, y = b, color = ..colors, fill = ..colors, group = 1)) +
     geom_area(alpha = l$extra$area_alpha) +
