@@ -15,24 +15,28 @@
 gg_treemap_CatCatNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
+
+  data[[1]] <- as_Cat(data[[1]])
+  data[[2]] <- as_Cat(data[[2]])
+  data[[3]] <- as_Num(data[[3]])
   opts <- dsvizopts::merge_dsviz_options(...)
 
   l <- ggmagic_prep(data, opts, plot =  "treemap", ftype = "Cat-Cat-Num")
 
-  gg <- ggplot(l$d, aes(area = c, fill = a, label = b,
+  gg <- ggplot(l$d, aes(area = value, fill = a, label = b,
                         subgroup = a)) +
     treemapify::geom_treemap() +
     labs(title = l$titles$title,
          subtitle = l$titles$subtitle,
          caption = l$titles$caption,
          fill = l$titles$legend) +
-    scale_fill_manual(values=l$d$..colors, labels = l$formats$f_cat)
+    scale_fill_manual(values=unique(l$d$..colors), labels = l$formats$f_cat)
 
   if (l$dataLabels$show) {
     gg <- gg + treemapify::geom_treemap_text(
-      label = paste0(l$d$b,  "\n", l$dataLabels$f_nums(l$d$c)),
+      label = paste0(l$d$b,  "\n", l$dataLabels$f_nums(l$d$value)),
                                  colour = l$dataLabels$color,
-                                 size = l$dataLabels$size*5)
+                                 size = l$dataLabels$size*3)
   }
 
   gg <- gg + add_ggmagic_theme(opts$theme)
@@ -50,24 +54,27 @@ gg_treemap_CatCatNum <- function(data, ...){
 gg_treemap_CatCat <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
-  opts <- dsvizopts::merge_dsviz_options(...)
 
+  data[[1]] <- as_Cat(data[[1]])
+  data[[2]] <- as_Cat(data[[2]])
+
+  opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, plot =  "treemap", ftype = "Cat-Cat")
 
-  gg <- ggplot(l$d, aes(area = c, fill = a, label = b,
+  gg <- ggplot(l$d, aes(area = value, fill = a, label = b,
                         subgroup = a)) +
     treemapify::geom_treemap() +
     labs(title = l$titles$title,
          subtitle = l$titles$subtitle,
          caption = l$titles$caption,
          fill = l$titles$legend) +
-    scale_fill_manual(values=l$d$..colors, labels = l$formats$f_cat)
+    scale_fill_manual(values=unique(l$d$..colors), labels = l$formats$f_cat)
 
   if (l$dataLabels$show) {
     gg <- gg + treemapify::geom_treemap_text(
-      label = paste0(l$d$b,  "\n", l$dataLabels$f_nums(l$d$c)),
+      label = paste0(l$d$b,  "\n", l$dataLabels$f_nums(l$d$value)),
       colour = l$dataLabels$color,
-      size = l$dataLabels$size*5)
+      size = l$dataLabels$size*3)
   }
 
   gg <- gg + add_ggmagic_theme(opts$theme)

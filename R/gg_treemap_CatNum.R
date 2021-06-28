@@ -13,11 +13,15 @@
 gg_treemap_CatNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
+
+  data[[1]] <- as_Cat(data[[1]])
+  data[[2]] <- as_Num(data[[2]])
+
   opts <- dsvizopts::merge_dsviz_options(...)
 
   l <- ggmagic_prep(data, opts, extra_pattern = ".", plot =  "treemap", ftype = "Cat-Num")
 
-  gg <- ggplot(l$d, aes(area = b, fill = a, label = a)) +
+  gg <- ggplot(l$d, aes(area = value, fill = a, label = a)) +
     treemapify::geom_treemap() +
     labs(title = l$titles$title,
          subtitle = l$titles$subtitle,
@@ -25,8 +29,8 @@ gg_treemap_CatNum <- function(data, ...){
     scale_fill_manual(values=l$d$..colors, labels = l$formats$f_cat)
 
   if (l$dataLabels$show) {
-   gg <- gg + treemapify::geom_treemap_text(label=l$dataLabels$f_nums(l$d$b),
-                                            size = l$dataLabels$size*5,
+   gg <- gg + treemapify::geom_treemap_text(label=l$dataLabels$f_nums(l$d$value),
+                                            size = l$dataLabels$size*3,
                                             colour = l$dataLabels$color)
   }
 
@@ -45,11 +49,13 @@ gg_treemap_CatNum <- function(data, ...){
 gg_treemap_Cat <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
-  opts <- dsvizopts::merge_dsviz_options(...)
 
+  data[[1]] <- as_Cat(data[[1]])
+
+  opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, plot =  "treemap", ftype = "Cat")
 
-  gg <- ggplot(l$d, aes(area = b, fill = a, label = a)) +
+  gg <- ggplot(l$d, aes(area = value, fill = a, label = a)) +
     treemapify::geom_treemap() +
     labs(title = l$titles$title,
          subtitle = l$titles$subtitle,
@@ -57,8 +63,8 @@ gg_treemap_Cat <- function(data, ...){
     scale_fill_manual(values=l$d$..colors, labels = l$formats$f_cat)
 
   if (l$dataLabels$show) {
-    gg <- gg + treemapify::geom_treemap_text(label=l$dataLabels$f_nums(l$d$b),
-                                             size = l$dataLabels$size*5,
+    gg <- gg + treemapify::geom_treemap_text(label=l$dataLabels$f_nums(l$d$value),
+                                             size = l$dataLabels$size*3,
                                              colour = l$dataLabels$color)
   }
 
