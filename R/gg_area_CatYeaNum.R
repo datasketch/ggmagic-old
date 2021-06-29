@@ -15,13 +15,17 @@
 gg_area_CatYeaNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
-  opts <- dsvizopts::merge_dsviz_options(...)
+  data[[1]] <- as_Cat(data[[1]])
+  data[[2]] <- as_Cat(data[[2]])
+  data[[3]] <- as_Num(data[[3]])
 
+  opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, ftype = "Cat-Yea-Num", plot = "area")
+
   position <- "identity"
   if(opts$extra$graph_type == "stacked") position <- "stack"
 
-  gg <- ggplot(l$d, aes(x = b, y = c, color = a, fill = a, group = a)) +
+  gg <- ggplot(l$d, aes(x = b, y = value, color = a, fill = a, group = a)) +
     geom_area(alpha = l$extra$area_alpha, position = position) +
     #scale_color_identity() +
     scale_color_manual(values = unique(l$d$..colors)) +
@@ -36,13 +40,23 @@ gg_area_CatYeaNum <- function(data, ...){
     guides(color = FALSE)
 
   if (l$dataLabels$show) {
-    labpos <- d$..labpos
-    gg <- gg + geom_text(aes(y = labpos,
-                             label = l$dataLabels$f_nums(c)),
-                         check_overlap = TRUE,
-                         size = l$dataLabels$size,
-                         color = l$dataLabels$color,
-                         position = l$dataLabels$f_label_position)
+    if (position == "identity") {
+      gg <- gg +
+        geom_text(
+          aes(label = l$dataLabels$f_nums(l$d$value), y = l$d$value + 0.05),
+          position = position_dodge(0.9),
+          vjust = 0,
+          check_overlap = TRUE,
+          size = l$dataLabels$size,
+          color = l$dataLabels$color
+        )
+    } else {
+      gg <- gg + geom_text(label = l$dataLabels$f_nums(l$d$value),
+                           position = position_stack(vjust = 0.5),
+                           check_overlap = TRUE,
+                           size = l$dataLabels$size,
+                           color = l$dataLabels$color)
+    }
   }
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)

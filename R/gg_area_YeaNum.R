@@ -15,11 +15,14 @@
 gg_area_YeaNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
+  data[[1]] <- as_Cat(data[[1]])
+  data[[2]] <- as_Num(data[[2]])
+
   opts <- dsvizopts::merge_dsviz_options(...)
 
   l <- ggmagic_prep(data, opts, ftype = "Yea-Num", plot = "area")
 
-  gg <- ggplot(l$d, aes(x = a, y = b, color = ..colors, fill = ..colors, group = 1)) +
+  gg <- ggplot(l$d, aes(x = a, y = value, color = ..colors, fill = ..colors, group = 1)) +
     geom_area(alpha = l$extra$area_alpha) +
     scale_color_identity() +
     scale_fill_identity() +
@@ -30,9 +33,19 @@ gg_area_YeaNum <- function(data, ...){
          y = l$titles$y) +
     scale_y_continuous(labels = l$formats$f_nums)
 
+  if (l$dataLabels$show) {
+    gg <-   gg +
+      geom_text(
+        aes(label = l$dataLabels$f_nums(l$d$value), y = l$d$value + 0.05),
+        position = position_dodge(0.9),
+        vjust = 0,
+        check_overlap = TRUE,
+        size = l$dataLabels$size,
+        color = l$dataLabels$color
+      )
+  }
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
-
 }
 
 #' Area Chart Cat
