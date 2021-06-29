@@ -14,11 +14,14 @@
 gg_bar_DatNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
+  data[[1]] <- as_Dat(data[[1]])
+  data[[2]] <- as_Num(data[[2]])
+
   opts <- dsvizopts::merge_dsviz_options(...)
 
   l <- ggmagic_prep(data, opts, ftype = "Dat-Num", plot = "bar")
-  print(l$d)
-  gg <- ggplot(l$d, aes(x = a, y = b, fill = ..colors )) +
+
+  gg <- ggplot(l$d, aes(x = a, y = value, fill = ..colors )) +
     geom_bar(stat = "identity") +
     scale_fill_identity() +
     labs(title = l$titles$title,
@@ -27,14 +30,18 @@ gg_bar_DatNum <- function(data, ...){
          x = l$titles$x,
          y = l$titles$y) +
     scale_y_continuous(labels = l$formats$f_nums) +
-    scale_x_date(labels = l$formats$f_dats)
+    scale_x_date(labels = l$formats$f_dats )
+
   if (l$dataLabels$show) {
-    labpos <- d$..labpos
-    gg <- gg + geom_text(aes(y = labpos,
-                             label = l$dataLabels$f_nums(b)),
-                         check_overlap = TRUE,
-                         size = l$dataLabels$size,
-                         color = l$dataLabels$color)
+    gg <- gg +
+      geom_text(
+        aes(label = l$dataLabels$f_nums(l$d$value), y = l$d$value + 0.05),
+        position = position_dodge(0.9),
+        vjust = 0,
+        check_overlap = TRUE,
+        size = l$dataLabels$size,
+        color = l$dataLabels$color
+      )
   }
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)

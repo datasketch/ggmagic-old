@@ -13,10 +13,14 @@
 gg_bar_CatCatNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
+  data[[1]] <- as_Cat(data[[1]])
+  data[[2]] <- as_Cat(data[[2]])
+  data[[3]] <- as_Num(data[[3]])
+
+
   opts <- dsvizopts::merge_dsviz_options(...)
 
-  l <- ggmagic_prep(data, opts)
-
+  l <- ggmagic_prep(data, opts, extra_pattern = ".", plot =  "bar", ftype = "Cat-Cat-Num")
   d <- l$d
 
   ggpos <- "stack"
@@ -24,9 +28,8 @@ gg_bar_CatCatNum <- function(data, ...){
     ggpos <- position_dodge2(width = 0.9, preserve = "single")
 
   #gg <- ggplot(l$d, aes(x = a, y = c, fill = ..colors ))
-  gg <- ggplot(l$d, aes(x = a, y = c, fill = b )) +
+  gg <- ggplot(l$d, aes(x = b, y = value, fill = a )) +
     geom_bar(stat = "identity", position = ggpos) +
-    scale_fill_identity() +
     labs(title = l$titles$title,
          subtitle = l$titles$subtitle,
          caption = l$titles$caption,
@@ -34,17 +37,27 @@ gg_bar_CatCatNum <- function(data, ...){
          y = l$titles$y,
          fill = l$titles$legend) +
     scale_y_continuous(labels = l$formats$f_nums) +
-    scale_fill_manual(values=l$d$..colors, labels = l$formats$f_cat)
+    scale_fill_manual(values=unique(l$d$..colors), labels = l$formats$f_cat)
 
 
   if (l$dataLabels$show) {
-    labpos <- d$..labpos
-    gg <- gg + geom_text(aes(y = labpos,
-                             label = l$dataLabels$f_nums(c)),
-                         check_overlap = TRUE,
-                         size = l$dataLabels$size,
-                         color = l$dataLabels$color,
-                         position = l$dataLabels$f_label_position)
+    if (ggpos == "grouped") {
+      gg <- gg +
+        geom_text(
+          aes(label = l$dataLabels$f_nums(l$d$value), y = l$d$value + 0.05),
+          position = position_dodge(0.9),
+          vjust = 0,
+          check_overlap = TRUE,
+          size = l$dataLabels$size,
+          color = l$dataLabels$color
+        )
+    } else {
+      gg <- gg + geom_text(label = l$dataLabels$f_nums(l$d$value),
+                           position = position_stack(vjust = 0.5),
+                           check_overlap = TRUE,
+                           size = l$dataLabels$size,
+                           color = l$dataLabels$color)
+    }
   }
 
   if (l$orientation == "hor")
@@ -63,4 +76,59 @@ gg_bar_CatCatNum <- function(data, ...){
 #' @examples
 #' gg_bar_CatCat(sample_data("Cat-Cat", nrow = 10))
 #' @export
-gg_bar_CatCat <- gg_bar_CatCatNum
+gg_bar_CatCat <- function(data, ...){
+
+  if (is.null(data)) stop("need dataset to visualize")
+  data[[1]] <- as_Cat(data[[1]])
+  data[[2]] <- as_Cat(data[[2]])
+
+  opts <- dsvizopts::merge_dsviz_options(...)
+  l <- ggmagic_prep(data, opts, extra_pattern = ".", plot =  "bar", ftype = "Cat-Cat")
+
+  d <- l$d
+
+  ggpos <- "stack"
+  if(l$extra$graph_type == "grouped")
+    ggpos <- position_dodge2(width = 0.9, preserve = "single")
+
+  #gg <- ggplot(l$d, aes(x = a, y = c, fill = ..colors ))
+  gg <- ggplot(l$d, aes(x = b, y = value, fill = a )) +
+    geom_bar(stat = "identity", position = ggpos) +
+    labs(title = l$titles$title,
+         subtitle = l$titles$subtitle,
+         caption = l$titles$caption,
+         x = l$titles$x,
+         y = l$titles$y,
+         fill = l$titles$legend) +
+    scale_y_continuous(labels = l$formats$f_nums) +
+    scale_fill_manual(values=unique(l$d$..colors), labels = l$formats$f_cat)
+
+
+  if (l$dataLabels$show) {
+    if (ggpos == "grouped") {
+      gg <- gg +
+        geom_text(
+          aes(label = l$dataLabels$f_nums(l$d$value), y = l$d$value + 0.05),
+          position = position_dodge(0.9),
+          vjust = 0,
+          check_overlap = TRUE,
+          size = l$dataLabels$size,
+          color = l$dataLabels$color
+        )
+    } else {
+      gg <- gg + geom_text(label = l$dataLabels$f_nums(l$d$value),
+                           position = position_stack(vjust = 0.5),
+                           check_overlap = TRUE,
+                           size = l$dataLabels$size,
+                           color = l$dataLabels$color)
+    }
+  }
+
+  if (l$orientation == "hor")
+    gg <- gg + coord_flip()
+
+  gg <- gg + add_ggmagic_theme(opts$theme)
+  add_branding_bar(gg, opts$theme)
+
+}
+

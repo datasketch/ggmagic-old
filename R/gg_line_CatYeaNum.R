@@ -15,8 +15,11 @@
 gg_line_CatYeaNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
-  opts <- dsvizopts::merge_dsviz_options(...)
+  data[[1]] <- as_Cat(data[[1]])
+  data[[2]] <- as_Cat(data[[2]])
+  data[[3]] <- as_Num(data[[3]])
 
+  opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, ftype = "Cat-Yea-Num", plot = "line")
 
   gg <- ggplot(l$d, aes(x = b, y = value, color = a, fill = a, group = a)) +
@@ -57,8 +60,10 @@ gg_line_CatYeaNum <- function(data, ...){
 gg_line_CatYea <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
-  opts <- dsvizopts::merge_dsviz_options(...)
+  data[[1]] <- as_Cat(data[[1]])
+  data[[2]] <- as_Cat(data[[2]])
 
+  opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, ftype = "Cat-Yea", plot = "line")
 
   gg <- ggplot(l$d, aes(x = b, y = value, color = a, fill = a, group = a)) +
