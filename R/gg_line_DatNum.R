@@ -15,11 +15,13 @@
 gg_line_DatNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
-  opts <- dsvizopts::merge_dsviz_options(...)
+  data[[1]] <- as_Dat(data[[1]])
+  data[[2]] <- as_Num(data[[2]])
 
+  opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, ftype = "Dat-Num")
 
-  gg <- ggplot(l$d, aes(x = a, y = b, color = ..colors, group = 1)) +
+  gg <- ggplot(l$d, aes(x = a, y = value, color = ..colors, group = 1)) +
     geom_line() +
     scale_color_identity() +
     labs(title = l$titles$title,
@@ -31,12 +33,15 @@ gg_line_DatNum <- function(data, ...){
     scale_x_date(labels = l$formats$f_dats)
 
   if (l$dataLabels$show) {
-    labpos <- d$..labpos
-    gg <- gg + geom_text(aes(y = labpos,
-                             label = l$dataLabels$f_nums(b)),
-                         check_overlap = TRUE,
-                         size = l$dataLabels$size,
-                         color = l$dataLabels$color)
+    gg <- gg +
+      geom_text(
+        aes(label = l$dataLabels$f_nums(l$d$value), y = l$d$value + 0.05),
+        position = position_dodge(0.9),
+        vjust = 0,
+        check_overlap = TRUE,
+        size = l$dataLabels$size,
+        color = l$dataLabels$color
+      )
   }
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)
