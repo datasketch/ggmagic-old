@@ -21,6 +21,7 @@ ggmagic_prep <- function(data, opts = NULL, extra_pattern = ".", plot =  "bar", 
   list_d <- dsvizprep::data_charts_prep(data = data,
                                         ftype = ftype,
                                         agg =  opts$summarize$agg,
+                                        plot = plot,
                                         color_by = opts$style$color_by,
                                         ptage = opts$postprocess$percentage,
                                         ptage_col = opts$postprocess$percentage_col,
@@ -50,6 +51,19 @@ ggmagic_prep <- function(data, opts = NULL, extra_pattern = ".", plot =  "bar", 
   f_dats <- makeup::makeup_format(sample = opts$style$format_sample_dat,
                                   locale = opts$style$locale)
 
+
+  if (plot == "scatter") {
+    f_nums <- list (x = makeup::makeup_format(sample = opts$extra$scatter_format_num_sample_x,
+                                              prefix = opts$extra$scatter_prefix_x,
+                                              suffix = opts$extra$scatter_suffix_x),
+                    y = makeup::makeup_format(sample = opts$extra$scatter_format_num_sample_y,
+                                              prefix = opts$extra$scatter_prefix_y,
+                                              suffix = opts$extra$scatter_suffix_y),
+                    z = makeup::makeup_format(sample = opts$extra$scatter_format_num_sample_size,
+                                              prefix = opts$extra$scatter_prefix_size,
+                                              suffix = opts$extra$scatter_suffix_size)
+    )
+  }
 
   # axis labels -------------------------------------------------------------
 

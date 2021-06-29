@@ -15,21 +15,24 @@
 gg_scatter_CatNumNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
-  opts <- dsvizopts::merge_dsviz_options(...)
+  data[[1]] <- as_Cat(data[[1]])
+  data[[2]] <- as_Num(data[[2]])
+  data[[3]] <- as_Num(data[[3]])
 
+  opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, plot = "scatter", ftype = "Cat-Num-Num")
 
-  gg <- ggplot(l$d, aes(x = b, y = c, color = a, group = a)) +
+  gg <- ggplot(l$d, aes(x = value_x, y = value_y, color = value_cat, group = value_cat)) +
     geom_point(size = 3) +
-    scale_color_manual(values = unique(l$d$..colors)) +
+    scale_color_manual(values = l$d$..colors) +
     labs(title = l$titles$title,
          subtitle = l$titles$subtitle,
          caption = l$titles$caption,
          x = l$titles$x,
          y = l$titles$y,
          colour = l$titles$legend) +
-    scale_y_continuous(labels = l$formats$f_CatNums) +
-    scale_x_continuous(labels = l$formats$f_CatNums)
+    scale_y_continuous(labels = l$formats$f_nums$x) +
+    scale_x_continuous(labels = l$formats$f_nums$y)
 
   gg <- gg + add_ggmagic_theme(opts$theme)
   add_branding_bar(gg, opts$theme)

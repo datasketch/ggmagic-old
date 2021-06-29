@@ -15,11 +15,13 @@ gg_pie_CatNum <- function(data = NULL,
                           ...) {
 
   if (is.null(data)) stop("need dataset to visualize")
-  opts <- dsvizopts::merge_dsviz_options(...)
+  data[[1]] <- homodatum::as_Cat(data[[1]])
+  data[[2]] <- homodatum::as_Num(data[[2]])
 
+  opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, extra_pattern = "pie", ftype = "Cat-Num")
 
-  gg <- ggplot(l$d, aes(x = 1, y = b, fill = a)) +
+  gg <- ggplot(l$d, aes(x = 1, y = value, fill = a)) +
     geom_bar(width = 1, stat = "identity", color = l$theme$background_color) +
     scale_fill_manual(l$titles$x,values = l$d$..colors) +
     coord_polar(theta = "y") +
@@ -28,7 +30,7 @@ gg_pie_CatNum <- function(data = NULL,
          caption = l$titles$caption)
   if(l$dataLabels$show){
     gg <- gg +  geom_text(aes(#y =..ylabpos,
-                              label = l$dataLabels$f_nums(b)),
+                              label = l$dataLabels$f_nums(value)),
                           position = position_stack(vjust = 0.5),
                           check_overlap = TRUE,
                           size = l$dataLabels$size,
@@ -71,8 +73,10 @@ gg_donut_CatNum <- function(data = NULL,
                             ...) {
 
   if (is.null(data)) stop("need dataset to visualize")
-  opts <- dsvizopts::merge_dsviz_options(...)
+  data[[1]] <- homodatum::as_Cat(data[[1]])
+  data[[2]] <- homodatum::as_Num(data[[2]])
 
+  opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, extra_pattern = "donut", ftype = "Cat-Num")
 
   # Calculate width
@@ -81,7 +85,7 @@ gg_donut_CatNum <- function(data = NULL,
   x_donut_min <- -1/(l$extra$donut_width) + 1.5
 
   d <- l$d
-  gg <- ggplot(d, aes(x = 1, y = b, fill = a)) +
+  gg <- ggplot(d, aes(x = 1, y = value, fill = a)) +
     geom_bar(width = 1, stat = "identity", color = l$theme$background_color) +
     scale_fill_manual(l$titles$x, values = d$..colors) +
     xlim(x_donut_min, 1.5) +
@@ -91,7 +95,7 @@ gg_donut_CatNum <- function(data = NULL,
          caption = l$titles$caption)
   if(l$dataLabels$show){
     gg <- gg +  geom_text(aes(#y =..ylabpos,
-      label = l$dataLabels$f_nums(b)),
+      label = l$dataLabels$f_nums(value)),
       position = position_stack(vjust = 0.5),
       check_overlap = TRUE,
       size = l$dataLabels$size,
