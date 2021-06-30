@@ -230,7 +230,15 @@ gg_donut_Cat(sample_data("Cat"), dataLabels_show = T)
 cat_data <- sample_data("Cat", 300)
 gg_treemap_Cat(cat_data, dataLabels_show = T)
 gg_treemap_CatCatNum(sample_data("Cat-Cat-Num"), dataLabels_show = T)
+gg_treemap_CatCatNum(sample_data("Cat-Cat-Num"), dataLabels_show = T, legend_position = "bottom")
+gg_bar_CatCatNum(sample_data("Cat-Cat-Num"), legend_position = "bottom")
 
+
+cat_data <- sample_data("Cat")
+gg_treemap_Cat(data = cat_data)
+gg_treemap_Cat(data = cat_data, color_by = names(cat_data))
+gg_treemap_Cat(data = cat_data, color_by = names(cat_data),  palette_type = "sequential")
+gg_treemap_Cat(data = cat_data, color_by = names(cat_data),  palette_type = "divergent")
 
 
 # Scatter -----------------------------------------------------------------

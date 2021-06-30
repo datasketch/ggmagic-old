@@ -41,7 +41,7 @@ gg_bar_CatCatNum <- function(data, ...){
 
 
   if (l$dataLabels$show) {
-    if (ggpos == "grouped") {
+    if (l$extra$graph_type == "grouped") {
       gg <- gg +
         geom_text(
           aes(label = l$dataLabels$f_nums(l$d$value), y = l$d$value + 0.05),
@@ -105,7 +105,7 @@ gg_bar_CatCat <- function(data, ...){
 
 
   if (l$dataLabels$show) {
-    if (ggpos == "grouped") {
+    if (l$extra$graph_type == "grouped") {
       gg <- gg +
         geom_text(
           aes(label = l$dataLabels$f_nums(l$d$value), y = l$d$value + 0.05),
