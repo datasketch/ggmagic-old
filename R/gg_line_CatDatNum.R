@@ -21,6 +21,7 @@ gg_line_CatDatNum <- function(data, ...){
 
   opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, ftype = "Cat-Dat-Num", plot = "line")
+  default_theme <- c(opts$theme, orientation = l$orientation)
 
   gg <- ggplot(l$d, aes(x = b, y = value, color = a, group = a)) +
     geom_line() +
@@ -46,7 +47,7 @@ gg_line_CatDatNum <- function(data, ...){
         color = l$dataLabels$color
       )
   }
-  gg <- gg + add_ggmagic_theme(opts$theme)
+  gg <- gg + add_ggmagic_theme(default_theme)
   add_branding_bar(gg, opts$theme)
 
 }

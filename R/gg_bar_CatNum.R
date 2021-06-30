@@ -13,13 +13,12 @@
 gg_bar_CatNum <- function(data, ...){
 
   if (is.null(data)) stop("need dataset to visualize")
-  opts <- dsvizopts::merge_dsviz_options(...)
   data[[1]] <- homodatum::as_Cat(data[[1]])
   data[[2]] <- homodatum::as_Num(data[[2]])
   #check_fonts(opts$theme)
-
+  opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, extra_pattern = ".", plot =  "bar", ftype = "Cat-Num")
-
+  default_theme <- c(opts$theme, orientation = l$orientation)
   d <- l$d
 
   gg <- ggplot(l$d, aes(x = a, y = value, fill = ..colors )) +
@@ -50,7 +49,7 @@ gg_bar_CatNum <- function(data, ...){
   if (l$orientation == "hor")
     gg <- gg + coord_flip()
 
-  gg <- gg + add_ggmagic_theme(opts$theme)
+  gg <- gg + add_ggmagic_theme(default_theme)
   add_branding_bar(gg, opts$theme)
 
 }
@@ -70,8 +69,8 @@ gg_bar_Cat <- function(data, ...){
   data[[1]] <- homodatum::as_Cat(data[[1]])
 
   opts <- dsvizopts::merge_dsviz_options(...)
-
   l <- ggmagic_prep(data, opts, extra_pattern = ".", plot =  "bar", ftype = "Cat")
+  default_theme <- c(opts$theme, orientation = l$orientation)
 
   d <- l$d
 
@@ -103,7 +102,7 @@ gg_bar_Cat <- function(data, ...){
   if (l$orientation == "hor")
     gg <- gg + coord_flip()
 
-  gg <- gg + add_ggmagic_theme(opts$theme)
+  gg <- gg + add_ggmagic_theme(default_theme)
   add_branding_bar(gg, opts$theme)
 
 }

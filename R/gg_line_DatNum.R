@@ -20,6 +20,7 @@ gg_line_DatNum <- function(data, ...){
 
   opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, ftype = "Dat-Num")
+  default_theme <- c(opts$theme, orientation = l$orientation)
 
   gg <- ggplot(l$d, aes(x = a, y = value, color = ..colors, group = 1)) +
     geom_line() +
@@ -44,6 +45,6 @@ gg_line_DatNum <- function(data, ...){
       )
   }
   gg <- gg + add_ggmagic_theme(opts$theme)
-  add_branding_bar(gg, opts$theme)
+  add_branding_bar(gg, default_theme)
 
 }

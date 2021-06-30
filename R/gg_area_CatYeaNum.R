@@ -21,6 +21,7 @@ gg_area_CatYeaNum <- function(data, ...){
 
   opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, ftype = "Cat-Yea-Num", plot = "area")
+  default_theme <- c(opts$theme, orientation = l$orientation)
 
   position <- "identity"
   if(opts$extra$graph_type == "stacked") position <- "stack"
@@ -58,7 +59,7 @@ gg_area_CatYeaNum <- function(data, ...){
                            color = l$dataLabels$color)
     }
   }
-  gg <- gg + add_ggmagic_theme(opts$theme)
+  gg <- gg + add_ggmagic_theme(default_theme)
   add_branding_bar(gg, opts$theme)
 
 }

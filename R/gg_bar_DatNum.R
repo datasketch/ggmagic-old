@@ -18,8 +18,8 @@ gg_bar_DatNum <- function(data, ...){
   data[[2]] <- as_Num(data[[2]])
 
   opts <- dsvizopts::merge_dsviz_options(...)
-
   l <- ggmagic_prep(data, opts, ftype = "Dat-Num", plot = "bar")
+  default_theme <- c(opts$theme, orientation = l$orientation)
 
   gg <- ggplot(l$d, aes(x = a, y = value, fill = ..colors )) +
     geom_bar(stat = "identity") +
@@ -43,7 +43,7 @@ gg_bar_DatNum <- function(data, ...){
         color = l$dataLabels$color
       )
   }
-  gg <- gg + add_ggmagic_theme(opts$theme)
+  gg <- gg + add_ggmagic_theme(default_theme)
   add_branding_bar(gg, opts$theme)
 
 }

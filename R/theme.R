@@ -10,6 +10,43 @@ add_ggmagic_theme <- function(opts = NULL){
     subtitle_bottom <- 15
   }
 
+  orientation <- opts$orientation %||% "ver"
+  if (orientation == "hor") {
+    grid_size_y_orientation <- opts$grid_x_size
+    grid_size_x_orientation <- opts$grid_y_size
+    axis_line_y_size_orientation <- opts$axis_line_x_size
+    axis_line_x_size_orientation <- opts$axis_line_y_size
+    axis_line_x_colour_orientation = opts$axis_line_y_color
+    axis_line_y_colour_orientation = opts$axis_line_x_color
+    axis_title_y_color_orientation = opts$axis_title_x_colour
+    axis_title_x_color_orientation = opts$axis_title_y_colour
+    axis_text_x_colour_orientation = opts$axis_text_y_color
+    axis_text_y_colour_orientation = opts$axis_text_x_color
+    axis_title_x_colour_orientation = opts$axis_title_y_color
+    axis_title_y_colour_orientation = opts$axis_title_x_color
+    grid_x_line_type_orientation = opts$grid_y_line_type
+    grid_y_line_type_orientation = opts$grid_x_line_type
+    grid_x_color_orientation = opts$grid_y_color
+    grid_y_color_orientation = opts$grid_x_color
+  } else {
+    grid_size_y_orientation <- opts$grid_y_size
+    grid_size_x_orientation <- opts$grid_x_size
+    axis_line_y_size_orientation <- opts$axis_line_y_size
+    axis_line_x_size_orientation <- opts$axis_line_x_size
+    axis_line_x_colour_orientation = opts$axis_line_x_color
+    axis_line_y_colour_orientation = opts$axis_line_y_color
+    axis_title_y_color_orientation = opts$axis_title_y_colour
+    axis_title_x_color_orientation = opts$axis_title_x_colour
+    axis_text_x_colour_orientation = opts$axis_text_x_color
+    axis_text_y_colour_orientation = opts$axis_text_y_color
+    axis_title_x_colour_orientation = opts$axis_title_x_color
+    axis_title_y_colour_orientation = opts$axis_title_y_color
+    grid_x_line_type_orientation = opts$grid_x_line_type
+    grid_y_line_type_orientation = opts$grid_y_line_type
+    grid_x_color_orientation = opts$grid_x_color
+    grid_y_color_orientation = opts$grid_y_color
+  }
+
 
   grid_line_type <- opts$grid_line_type
 
@@ -37,17 +74,17 @@ add_ggmagic_theme <- function(opts = NULL){
     text_size = opts$text_size,
     axis_text_colour = opts$axis_text_color %||% opts$text_color,
     axis_line_size = opts$axis_line_size %||% opts$line_size,
-    axis_line_x_size = opts$axis_line_x_size %||% opts$axis_line_size %||% opts$line_size,
-    axis_line_y_size = opts$axis_line_y_size %||% opts$axis_line_size %||% opts$line_size,
+    axis_line_x_size = axis_line_x_size_orientation  %||% opts$axis_line_size %||% opts$line_size,
+    axis_line_y_size = axis_line_x_size_orientation  %||% opts$axis_line_size %||% opts$line_size,
     axis_line_colour = opts$axis_line_color %||% opts$line_color,
-    axis_line_x_colour = opts$axis_line_x_color %||% opts$axis_line_color %||% opts$line_color,
-    axis_line_y_colour = opts$axis_line_y_color %||% opts$axis_line_color %||% opts$line_color,
-    axis_text_x_colour = opts$axis_text_x_color %||% opts$text_color,
-    axis_text_y_colour = opts$axis_text_y_color  %||% opts$text_color,
+    axis_line_x_colour = axis_line_x_colour_orientation %||% opts$axis_line_color %||% opts$line_color,
+    axis_line_y_colour = axis_line_y_colour_orientation %||% opts$axis_line_color %||% opts$line_color,
+    axis_text_x_colour = axis_text_x_colour_orientation %||% opts$text_color,
+    axis_text_y_colour = axis_text_y_colour_orientation %||% opts$text_color,
     axis_title_colour = opts$axis_title_color %||% opts$text_color,
-    axis_title_x_colour = opts$axis_title_x_color %||% opts$text_color,
+    axis_title_x_colour = axis_title_x_colour_orientation %||% opts$text_color,
     # axis_title_x_angle = opts$axis_title_x_angle,
-    axis_title_y_colour = opts$axis_title_y_color%||% opts$text_color,
+    axis_title_y_colour = axis_title_y_color_orientation %||% opts$text_color,
     # axis_title_y_angle = opts$axis_title_y_angle,
     axis_ticks_colour = opts$axis_ticks_color %||% opts$line_color, # transparent
     legend_background_colour = opts$legend_background_color %||% opts$background_color,
@@ -60,8 +97,8 @@ add_ggmagic_theme <- function(opts = NULL){
     panel_border_size = opts$panel_border_size %||% opts$line_size,
     # panel_border_colour = opts$panel_border_color,
     grid_size = opts$grid_size %||% opts$line_size,
-    grid_x_size = opts$grid_x_size %||% opts$grid_size,
-    grid_y_size = opts$grid_y_size %||% opts$grid_size,
+    grid_x_size = grid_size_x_orientation %||% opts$grid_size,
+    grid_y_size = grid_size_y_orientation %||% opts$grid_size,
     grid_line_type = grid_line_type,
     grid_x_line_type = opts$grid_x_line_type %||% grid_line_type,
     grid_y_line_type = opts$grid_y_line_type %||% grid_line_type,

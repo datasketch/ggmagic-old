@@ -21,6 +21,7 @@ gg_bar_CatYeaNum <- function(data, ...){
 
   opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, ftype = "Cat-Yea-Num", plot = "bar")
+  default_theme <- c(opts$theme, orientation = l$orientation)
 
   ggpos <- "stack"
   if(l$extra$graph_type == "grouped")
@@ -63,7 +64,7 @@ gg_bar_CatYeaNum <- function(data, ...){
   if (l$orientation == "hor")
     gg <- gg + coord_flip()
 
-  gg <- gg + add_ggmagic_theme(opts$theme)
+  gg <- gg + add_ggmagic_theme(default_theme)
   add_branding_bar(gg, opts$theme)
 
 }
@@ -85,6 +86,7 @@ gg_bar_CatYea <- function(data, ...){
 
   opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, ftype = "Cat-Yea", plot = "bar")
+  default_theme <- c(opts$theme, orientation = l$orientation)
 
   ggpos <- "stack"
   if(l$extra$graph_type == "grouped")
@@ -127,7 +129,7 @@ gg_bar_CatYea <- function(data, ...){
   if (l$orientation == "hor")
     gg <- gg + coord_flip()
 
-  gg <- gg + add_ggmagic_theme(opts$theme)
+  gg <- gg + add_ggmagic_theme(default_theme)
   add_branding_bar(gg, opts$theme)
 
 }

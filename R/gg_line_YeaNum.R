@@ -20,6 +20,7 @@ gg_line_YeaNum <- function(data, ...) {
 
   opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, ftype = "Yea-Num")
+  default_theme <- c(opts$theme, orientation = l$orientation)
 
   gg <- ggplot(l$d, aes(x = a, y = value, color = ..colors, group = 1)) +
     geom_line() +
@@ -41,7 +42,7 @@ gg_line_YeaNum <- function(data, ...) {
       color = l$dataLabels$color
     )
   }
-  gg <- gg + add_ggmagic_theme(opts$theme)
+  gg <- gg + add_ggmagic_theme(default_theme)
   add_branding_bar(gg, opts$theme)
 
 }
@@ -68,6 +69,7 @@ gg_line_Yea <- function(data, ...) {
 
   opts <- dsvizopts::merge_dsviz_options(...)
   l <- ggmagic_prep(data, opts, ftype = "Yea")
+  default_theme <- c(opts$theme, orientation = l$orientation)
 
   gg <- ggplot(l$d, aes(x = a, y = value, color = ..colors, group = 1)) +
     geom_line() +
@@ -90,7 +92,7 @@ gg_line_Yea <- function(data, ...) {
         color = l$dataLabels$color
       )
   }
-  gg <- gg + add_ggmagic_theme(opts$theme)
+  gg <- gg + add_ggmagic_theme(default_theme)
   add_branding_bar(gg, opts$theme)
 
 }

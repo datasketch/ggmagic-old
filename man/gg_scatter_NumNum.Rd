@@ -24,7 +24,7 @@ This scatter
 }
 \section{ctypes}{
 
-Dat-Num, Yea-Num
+Num-Num
 }
 
 \examples{
