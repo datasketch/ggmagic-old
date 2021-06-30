@@ -113,8 +113,13 @@ gg_line_CatCatNum(catcatnum_data)
 
 cat_data <- sample_data("Cat")
 gg_bar_Cat(data = cat_data)
-gg_bar_Cat(data = cat_data, grid_x_size = 0, axis_line_y_size = 0)
-gg_bar_Cat(data = cat_data, orientation = "hor",grid_x_size = 0, axis_line_y_size = 0)
+gg_bar_Cat(data = cat_data, orientation = "hor")
+gg_bar_Cat(data = cat_data, grid_y_size = 0, axis_line_y_size = 0)
+gg_bar_Cat(data = cat_data, orientation = "hor",grid_x_size = 0, axis_line_x_size = 0)
+gg_bar_Cat(data = cat_data, orientation = "hor", color_by = names(cat_data),
+           text_family = "Yellowtail", title_family = "Yellowtail", title = "test font")
+gg_bar_Cat(data = cat_data, orientation = "hor", color_by = names(cat_data),  palette_type = "sequential")
+gg_bar_Cat(data = cat_data, orientation = "hor", color_by = names(cat_data),  palette_type = "divergent")
 
 catnum_data <- sample_data("Cat-Num", 300)
 gg_bar_CatNum(data = catnum_data)

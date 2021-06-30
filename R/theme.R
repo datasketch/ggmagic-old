@@ -10,6 +10,11 @@ add_ggmagic_theme <- function(opts = NULL){
     subtitle_bottom <- 15
   }
 
+  sysfonts::font_add_google(name = opts$text_family, family = opts$text_family)
+  sysfonts::font_add_google(name = opts$legend_family, family = opts$legend_family)
+  sysfonts::font_add_google(name = opts$title_family, family = opts$title_family)
+  showtext::showtext_auto()
+
   orientation <- opts$orientation %||% "ver"
   if (orientation == "hor") {
     grid_size_y_orientation <- opts$grid_x_size
@@ -75,7 +80,7 @@ add_ggmagic_theme <- function(opts = NULL){
     axis_text_colour = opts$axis_text_color %||% opts$text_color,
     axis_line_size = opts$axis_line_size %||% opts$line_size,
     axis_line_x_size = axis_line_x_size_orientation  %||% opts$axis_line_size %||% opts$line_size,
-    axis_line_y_size = axis_line_x_size_orientation  %||% opts$axis_line_size %||% opts$line_size,
+    axis_line_y_size = axis_line_y_size_orientation  %||% opts$axis_line_size %||% opts$line_size,
     axis_line_colour = opts$axis_line_color %||% opts$line_color,
     axis_line_x_colour = axis_line_x_colour_orientation %||% opts$axis_line_color %||% opts$line_color,
     axis_line_y_colour = axis_line_y_colour_orientation %||% opts$axis_line_color %||% opts$line_color,
@@ -138,7 +143,7 @@ add_ggmagic_theme <- function(opts = NULL){
     text = element_text(
       debug=FALSE,
       margin=margin(),
-      family = '',
+      family = opts$text_family,
       face = "plain",
       colour = thm$text_colour,
       size = thm$text_size,
