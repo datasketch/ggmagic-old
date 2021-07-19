@@ -20,7 +20,8 @@ Imports:
     dsvizopts,
     ggtext,
     gridExtra,
-    treemapify
+    treemapify,
+    showtext
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: no
