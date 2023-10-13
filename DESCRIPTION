@@ -1,6 +1,6 @@
 Package: ggmagic
 Title: Wrapper for Multiple Plots using ggplot.
-Version: 0.1.0
+Version: 0.1
 Authors@R: c( 
     person(given = "Juan Pablo",
            family = "Marin Diaz",
@@ -8,27 +8,17 @@ Authors@R: c(
            email = "jpmarindiaz@gmail.com"),
     person("Datasketch", role = c("cph", "fnd"))
     )
-Maintainer: Juan Pablo Marin Diaz <jpmarindiaz@gmail.com>
 Description: Plot recommendation with tidy data fringes.
 Depends:
     R (>= 3.0.0),
-    tidyverse
+    dplyr,
+    dsdataprep,
+    dsopts,
+    ggplot2,
+    hdtable
 Imports:
-    paletero,
-    makeup,
-    homodatum,
-    dsvizopts,
-    ggtext,
-    gridExtra,
-    treemapify,
-    showtext
-License: MIT + file LICENSE
+    purrr
+License: MIT
 Encoding: UTF-8
-LazyData: no
-RoxygenNote: 7.1.2
-Suggests: 
-    testthat (>= 2.1.0)
-Remotes:
-    datasketch/paletero,
-    datasketch/makeup,
-    datasketch/dsvizopts
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
