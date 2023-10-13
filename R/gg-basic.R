@@ -15,7 +15,8 @@ gg_basic_pie <- function(data, x_col, y_col) {
 
 gg_basic_donut <- function(data, x_col, y_col) {
   data <- gg_donut_prep_data(data = data, y_col = y_col)
-  ggplot(data, aes(ymax = ymax, ymin = ymin, xmax = 4, xmin = 3, fill = .data[[x_col]])) +
+  ggplot(data,
+         mapping = aes(ymax = ymax, ymin = ymin, xmax = 4, xmin = 3, fill = .data[[x_col]])) +
     geom_rect() +
     coord_polar(theta="y") +
     xlim(c(2, 4))
