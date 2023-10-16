@@ -9,7 +9,7 @@ gg_basic_bar <- function(data, x_col, y_col, fill = NULL, opts) {
 
   if (is.null(fill)) {
     gg <- ggplot(data = data,
-                 mapping = aes(x = .data[[x_col]], y = .data[[y_col]])) +
+                 mapping = aes(x = .data[[x_col]], y = .data[[y_col]], fill = ..colors) )+
       geom_bar(stat = "identity")
 
   } else {

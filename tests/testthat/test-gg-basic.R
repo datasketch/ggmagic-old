@@ -6,7 +6,7 @@ test_that("Basic plots (first layer)", {
     arrange(-Mean) |>
     slice(1:10)
 
-  opts <- list(bar_orientation = "hor")
+  opts <- list(bar_orientation = "hor", bar_graph_type = "basic")
   bar_plot <- gg_basic_bar(data = data, x_col = "city", y_col = "Mean", opts = opts)
   expect_true(inherits(bar_plot, "ggplot"))
   expect_true("GeomBar" %in% sapply(bar_plot$layers, function(x) class(x$geom)[1]))
@@ -68,6 +68,5 @@ test_that("Basic plots (first layer)", {
   scatter_plot
   data <- lubridate::lakers |> tidyr::drop_na(x, y)
   scatter_plot <- gg_basic_scatter(data = data, x_col = "x", y_col = "y", fill = "game_type")
-  scatter_plot
 
 })
