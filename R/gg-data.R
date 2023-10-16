@@ -71,7 +71,9 @@ gg_data <- function(data, dic = NULL, vars = NULL, opts = NULL, opts_tooltip = N
   opts$group_var <- c(l_hdtype$Cat, l_hdtype$Yea, l_hdtype$Dat)
   opts$to_agg <- l_hdtype$Num
   opts$data <- data$data
+  if (!is.null(opts$group_var)) {
   data <- do.call("aggregation_data", opts)
+  }
   if (!is.null(l_hdtype$Yea)) {
     data[[l_hdtype$Yea]] <- as.character(data[[l_hdtype$Yea]] )
   }
