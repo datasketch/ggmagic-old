@@ -14,13 +14,42 @@ gg_hdtype <- function(dic, vars) {
   }
   dic <- dic |>
     arrange(factor(id, levels = vars),
-            factor(hdtype, levels = c("Cat", "Dat", "Num")),)
+            factor(hdtype, levels = c("Cat", "Yea" ,"Dat", "Num")),)
 
   l <- dic |>
     group_by(hdtype) |>
     summarise(id_list = list(id))  %>%
     {setNames(.$id_list, .$hdtype)}
   l
+}
+
+
+#' @keywords internal
+gg_vars <- function(dic, vars) {
+  if (!is.null(vars)) {
+    dic <- dic[dic$id %in% vars,]
+  }
+  dic <- dic |>
+    arrange(factor(id, levels = vars),
+            factor(hdtype, levels = c("Cat", "Yea" ,"Dat", "Num")),)
+
+  var_fill <- NULL
+  var_cat <- dic |> filter(hdtype %in% c("Yea", "Cat")) %>% .$id
+
+  if (length(var_cat) == 2) {
+    var_fill <- var_cat[1]
+    var_cat <- var_cat[2]
+  }
+
+
+  l <- list (
+    var_cat = var_cat,
+    var_fill = var_fill,
+    var_dat = dic |> filter(hdtype %in% c("Dat")) %>% .$id,
+    var_num = dic |> filter(hdtype %in% c("Num")) %>% .$id
+  )
+
+  l[!sapply(l, identical, character(0))]
 }
 
 #' @keywords internal
@@ -34,18 +63,25 @@ gg_extract_hdtype <- function(l) {
 gg_data <- function(data, dic = NULL, vars = NULL, opts = NULL, opts_tooltip = NULL) {
   if (is.null(data)) return()
   data <- gg_transform_hdtable(data, dic)
+  dic <- data$dic
   if (!"hdtable" %in% class(data)) return()
   l_hdtype <- gg_hdtype(data$dic, vars = vars)
   hdtype <- gg_extract_hdtype(l_hdtype)
-  opts$group_var <- l_hdtype$Cat
+  vars <- gg_vars(dic = data$dic, vars = vars)
+  opts$group_var <- c(l_hdtype$Cat, l_hdtype$Yea, l_hdtype$Dat)
   opts$to_agg <- l_hdtype$Num
   opts$data <- data$data
   data <- do.call("aggregation_data", opts)
+  if (!is.null(l_hdtype$Yea)) {
+    data[[l_hdtype$Yea]] <- as.character(data[[l_hdtype$Yea]] )
+  }
   # opts_tooltip$data <- data
   # data$..label <- do.call("prep_tooltip", opts_tooltip)
   list(
   data = data,
-  hdtype = hdtype
+  dic = dic,
+  hdtype = hdtype,
+  vars = vars
   )
 }
 

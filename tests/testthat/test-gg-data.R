@@ -24,6 +24,6 @@ test_that("Data prep to make ggplots", {
   #opts <- dsopts::dsopts_default("dataprep")
   opts <- list(agg = "sum")
   results <- gg_data(iris, vars = c("species", "petal_width"), opts = opts)
-  expect_equal(names(results), c("data", "hdtype"))
+  expect_equal(names(results), c("data", "dic", "hdtype", "vars"))
 
 })
