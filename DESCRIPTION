@@ -17,7 +17,8 @@ Depends:
     ggplot2,
     hdtable
 Imports:
-    purrr
+    purrr,
+    treemapify
 License: MIT
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

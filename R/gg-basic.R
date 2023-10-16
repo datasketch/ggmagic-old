@@ -53,3 +53,50 @@ gg_basic_donut <- function(data, x_col, y_col) {
 }
 
 
+
+gg_basic_lines <- function(data, x_col, y_col, fill = NULL, opts) {
+
+
+  if (is.null(fill)) {
+    gg <- ggplot(data = data,
+                 mapping = aes(x = .data[[x_col]], y = .data[[y_col]])) +
+      geom_line()
+
+  } else {
+    gg <-  ggplot(data, aes(x = .data[[x_col]], y = .data[[y_col]], color = .data[[fill]], fill = .data[[fill]])) +
+      geom_line()
+  }
+
+
+  gg
+
+}
+
+
+gg_basic_treemap <- function(data, x_col, y_col, fill = NULL, opts) {
+  if (is.null(fill)) {
+    gg <- ggplot(data = data,
+                 mapping = aes(fill = .data[[x_col]], area = .data[[y_col]])) +
+      treemapify::geom_treemap()
+  } else {
+    gg <-  ggplot(data, aes(fill = .data[[x_col]], area = .data[[y_col]], subgroup = .data[[fill]])) +
+      treemapify::geom_treemap()
+  }
+  gg
+}
+
+
+gg_basic_scatter <- function(data, x_col, y_col, fill = NULL, opts) {
+
+  if (is.null(fill)) {
+    gg <- ggplot(data = data,
+                 mapping = aes(x = .data[[x_col]], y = .data[[y_col]])) +
+      geom_point()
+  } else {
+    gg <-  ggplot(data, aes(x = .data[[x_col]], y = .data[[y_col]], color = .data[[fill]], fill = .data[[fill]])) +
+      geom_point()
+  }
+  gg
+}
+
+

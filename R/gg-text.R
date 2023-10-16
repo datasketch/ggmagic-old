@@ -67,6 +67,11 @@ gg_add_text <- function(gg, viz, opts) {
     gg + geom_text(x = 3.5, aes(y = label_position, label = ..label))
   }
 
+  if (viz == "treemap") {
+    gg + treemapify::geom_treemap_text(label = data$..label)
+  }
+
+
 }
 
 

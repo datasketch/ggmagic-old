@@ -133,4 +133,16 @@ test_that("Add text in ggplot chart", {
     gg_add_text(viz = "donut", opts = opts_text)
   donut_plot
 
+  data <- txhousing |>
+    group_by(city) |>
+    summarise(Mean = mean(sales)) |>
+    arrange(-Mean) |>
+    slice(1:10)
+  data$..label <- data$city
+  opts_text <- list(datalabel_show = TRUE)
+  treemap_plot <- gg_basic_treemap(data = data, x_col = "Mean", y_col = "Mean", opts = NULL) |>
+    gg_add_text(viz = "treemap", opts = opts_text)
+
+
+
 })
