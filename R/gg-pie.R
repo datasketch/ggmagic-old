@@ -16,3 +16,20 @@ gg_pie <- function(data, dic = NULL, vars = NULL, ...) {
     gg_clean_theme(dsopts_merge(..., categories = "theme"))
   gg
 }
+
+gg_pie_Cat <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  vars <- dic |> filter(hdtype %in% "Cat") %>% .$id
+  vars <- vars[1]
+  gg_pie(data = data, dic = dic, vars = vars, ..., agg = "count")
+}
+
+gg_pie_CatNum <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  var_cat <- dic |> filter(hdtype %in% "Cat") %>% .$id
+  var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
+  vars <- c(var_cat[1], var_num[1])
+  gg_pie(data = data, dic = dic, vars = vars, ...)
+}
