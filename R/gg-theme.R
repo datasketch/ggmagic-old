@@ -329,7 +329,7 @@ gg_theme <- function(opts = NULL){
 
 #' @export
 gg_clean_theme<- function(opts = NULL){
-  add_ggmagic_theme(opts = opts) + theme(
+  gg_theme(opts = opts) + theme(
     axis.line=element_blank(),
     axis.title.x=element_blank(),
     axis.text.x=element_blank(),
