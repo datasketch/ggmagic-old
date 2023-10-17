@@ -14,7 +14,7 @@ gg_hdtype <- function(dic, vars) {
   }
   dic <- dic |>
     arrange(factor(id, levels = vars),
-            factor(hdtype, levels = c("Cat", "Yea" ,"Dat", "Num")),)
+            factor(hdtype, levels = c("Cat", "Yea", "Dat", "Num")),)
 
   l <- dic |>
     group_by(hdtype) |>
