@@ -59,7 +59,7 @@ gg_basic_lines <- function(data, x_col, y_col, fill = NULL, opts) {
   if (is.null(fill)) {
     gg <- ggplot(data = data,
                  mapping = aes(x = .data[[x_col]], y = .data[[y_col]])) +
-      geom_line()
+      geom_line(color = unique(data$..colors))
 
   } else {
     gg <-  ggplot(data, aes(x = .data[[x_col]], y = .data[[y_col]], color = .data[[fill]], fill = .data[[fill]])) +

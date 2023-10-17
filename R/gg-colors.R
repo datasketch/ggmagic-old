@@ -37,32 +37,35 @@ gg_color <- function(gg, opts, data, viz) {
   color_palette <- opts[[paste0("color_palette_", color_palette_type)]]
   color_var_length <- NULL
   color_by <- opts$color_by
+
   if (is.null(color_by)) {
     if (viz %in% c("scatter", "treemap")) {
       l_color <- find_extreme_colors(color_palette)
       gg <- gg + scale_color_gradient(low = l_color$low, high = l_color$high)
     } else if (viz == "bar") {
       gg <- gg + scale_fill_identity()
-    } else {
+    } else if (viz == "line") {
+      print(unique(data$..colors))
+      gg <- gg + scale_color_manual(values = data$..colors)
+      } else {
       gg <- gg + scale_fill_manual(values = unique(data$..colors))
     }
   } else {
     if (is.character(data[[color_by]]) | is.factor(data[[color_by]])) {
       if (viz %in% c("pie", "donut", "treemap")) {
         gg <- gg + scale_fill_manual(values = unique(data$..colors))
-      }
-      if (viz == "bar") {
+      } else if (viz == "bar") {
         if (opts$bar_graph_type != "basic") {
           gg <- gg + scale_fill_manual(values = unique(data$..colors))
         } else {
           gg <- gg + scale_fill_identity()
         }
+      } else if (viz == "line") {
+        gg <- gg + scale_color_manual(values = unique(data$..colors))
       } else {
-        gg <- gg + scale_color_manual(unique(data$..colors))
-      }
-    } else {
       l_color <- find_extreme_colors(color_palette)
       gg <- gg + scale_color_gradient(low = l_color$low, high = l_color$high)
+      }
     }
   }
   gg
