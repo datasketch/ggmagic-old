@@ -67,13 +67,20 @@ gg_data <- function(data, dic = NULL, vars = NULL, opts = NULL, opts_tooltip = N
   if (!"hdtable" %in% class(data)) return()
   l_hdtype <- gg_hdtype(data$dic, vars = vars)
   hdtype <- gg_extract_hdtype(l_hdtype)
-  vars <- gg_vars(dic = data$dic, vars = vars)
+
   opts$group_var <- c(l_hdtype$Cat, l_hdtype$Yea, l_hdtype$Dat)
   opts$to_agg <- l_hdtype$Num
   opts$data <- data$data
   if (!is.null(opts$group_var)) {
   data <- do.call("aggregation_data", opts)
   }
+  if (opts$agg == "count") {
+    dic <- create_dic(data)
+    vars <- c(vars, "count")
+  }
+
+  vars <- gg_vars(dic = dic, vars = vars)
+
   if (!is.null(l_hdtype$Yea)) {
     data[[l_hdtype$Yea]] <- as.character(data[[l_hdtype$Yea]] )
   }

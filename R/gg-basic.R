@@ -36,7 +36,6 @@ gg_basic_bar <- function(data, x_col, y_col, fill = NULL, opts) {
 
 gg_basic_pie <- function(data, x_col, y_col) {
   data <- gg_pie_prep_data(data = data, x_col = x_col, y_col = y_col)
-  print(data)
   ggplot(data,
          mapping = aes(x = "", y = prop, fill = .data[[x_col]])) +
     geom_bar(stat="identity") +
