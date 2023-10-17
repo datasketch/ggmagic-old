@@ -7,7 +7,7 @@ gg_pie <- function(data, dic = NULL, vars = NULL, ...) {
   vars <- data_prep$vars
   data <-  data_prep$data
   data <- gg_data_color(data = data, opts = color_opts, viz = "pie")
-
+  gg_validator(data_prep$dic, var_cat = vars$var_cat)
   gg <- gg_basic_pie(data = data,
                      x_col = vars$var_cat,
                      y_col = vars$var_num) |>
