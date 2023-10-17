@@ -1,8 +1,8 @@
 gg_treemap <- function(data, dic = NULL, vars = NULL, ...) {
-  # opts <- dsopts::dsopts_merge(...)
-  data_opts <- list("agg" = "sum")#dsopts_merge(opts, categories = "dataprep")
+  opts <- dsopts::dsopts_merge(...)
+  data_opts <- list(agg = opts$agg)#dsopts_merge(opts, categories = "dataprep")
   data_prep <- gg_data(data, dic, vars = vars, opts = data_opts)
-  color_opts <- NULL#dsopts_merge(opts, categories = "dataprep")
+  color_opts <-  dsopts_merge(..., categories = "colorprep")
   hdtype <-  data_prep$hdtype
   vars <- data_prep$vars
   data <-  data_prep$data
@@ -16,6 +16,7 @@ gg_treemap <- function(data, dic = NULL, vars = NULL, ...) {
                      fill = vars$var_fill,
                      opts = opts_treemap) |>
     gg_add_text(viz = "treemap", opts = list(datalabel_show = FALSE)) |>
-    gg_color(opts = NULL, data = NULL, viz = "treemap")
+    gg_color(opts = color_opts, data = data, viz = "treemap") +
+    gg_clean_theme(dsopts_merge(..., categories = "theme"))
   gg
 }

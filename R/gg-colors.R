@@ -48,7 +48,7 @@ gg_color <- function(gg, opts, data, viz) {
     }
   } else {
     if (is.character(data[[color_by]]) | is.factor(data[[color_by]])) {
-      if (viz %in% c("pie", "donut")) {
+      if (viz %in% c("pie", "donut", "treemap")) {
         gg <- gg + scale_fill_manual(values = unique(data$..colors))
       }
       if (viz == "bar") {
